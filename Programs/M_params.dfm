@@ -605,9 +605,9 @@ object M_paramsFRM: TM_paramsFRM
     object RzBitBtn1: TRzBitBtn
       Left = 105
       Top = 362
-      Width = 83
+      Width = 80
       Height = 37
-      Caption = 'Cancle'
+      Caption = 'Cancel'
       DoubleBuffered = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -680,7 +680,7 @@ object M_paramsFRM: TM_paramsFRM
     object RzBitBtn2: TRzBitBtn
       Left = 8
       Top = 362
-      Width = 73
+      Width = 80
       Height = 37
       Caption = 'Ok'
       DoubleBuffered = True

@@ -73,7 +73,7 @@ type
     { Private declarations }
     cn:TIBCConnection;
     procedure ShowOneRecord(RecordIndex:Integer);
-  procedure ShowXLabels(Key:string;LabelValueLine:TstringArray; LabelArray:TlabelArray;FieldsArray:TFieldArray);
+  procedure ShowXLabels(LabelValueLine:TstringArray; LabelArray:TlabelArray;FieldsArray:TFieldArray);
   public
     { Public declarations }
   end;
@@ -140,7 +140,7 @@ begin
 
 end;
 
-procedure TM_paramsFRM.ShowXLabels(Key:String;LabelValueLine:TstringArray; LabelArray:TlabelArray;FieldsArray:TFieldArray);
+procedure TM_paramsFRM.ShowXLabels(LabelValueLine:TstringArray; LabelArray:TlabelArray;FieldsArray:TFieldArray);
 
 
 Var
@@ -148,12 +148,14 @@ Var
         TheField:TwwDBEdit;
         LabelCaption:String;
         i:integer;
+        key:string;
 
 begin
         if self.FindGeneralParameterSQL.State in [dsEdit,dsInsert] then begin // to save previoius record
               self.FindGeneralParameterSQL.Post ;
         end;
 
+        Key:=LabelValueLine[0];
 
         With Self.FindGeneralParameterSQL do begin
           Close;
@@ -168,7 +170,7 @@ begin
        end;
 
 
-       for i:= Low(LabelValueLine) to High(LabelValueLine) do begin
+       for i:= Low(LabelValueLine)+1 to High(LabelValueLine) do begin
 
            LabelCaption:=LabelValueLine[i];   // find the caption of the label in the array
            TheLabel:=LabelArray[I];
@@ -205,15 +207,14 @@ Var
         line:Array of String;
         LabelArray : TLabelArray;
         FieldsArray :TFieldArray;
-        key:String;
 
 begin
        //zero Element is used for the key
-       LabelArray :=[ Ps1Lbl  ,pf1lbl, pi1lbl,ps2lbl, ps3lbl, ps4lbl, ps5lbl,ps6lbl ];
-       FIeldsArray:=[ VS1FLD ,VF1FLD, VI1FLD,vs2FLD, vs3FLD, vs4FLD, Vs5FLD,Vs6FLD];
-       Key:=LabelValuesArray[RecordIndex][0];
+       LabelArray :=[ PIdLbl,Ps1Lbl  ,pf1lbl, pi1lbl,ps2lbl, ps3lbl, ps4lbl, ps5lbl,ps6lbl ];
+       FIeldsArray:=[ ParamFLD,VS1FLD ,VF1FLD, VI1FLD,vs2FLD, vs3FLD, vs4FLD, Vs5FLD,Vs6FLD];
 
-       ShowXLabels(key,LabelValuesArray[RecordIndex],LabelArray,FieldsArray);
+
+       ShowXLabels(LabelValuesArray[RecordIndex],LabelArray,FieldsArray);
 
 
 end;
