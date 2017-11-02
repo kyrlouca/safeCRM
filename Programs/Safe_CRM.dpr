@@ -6,7 +6,8 @@ uses
   U_Database in 'U_Database.pas' {U_databaseFRM: TDataModule},
   G_generalProcs in 'G_generalProcs.pas',
   G_KyrSQL in 'G_KyrSQL.pas',
-  M_Main in 'M_Main.pas' {M_mainFRM};
+  M_Main in 'M_Main.pas' {M_mainFRM},
+  M_Company in 'M_Company.pas' {M_CompanyFRM};
 
 {$R *.res}
 

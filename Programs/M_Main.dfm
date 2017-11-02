@@ -3,14 +3,15 @@ object M_mainFRM: TM_mainFRM
   Top = 0
   BorderStyle = bsSingle
   Caption = 'M_mainFRM'
-  ClientHeight = 419
-  ClientWidth = 753
+  ClientHeight = 399
+  ClientWidth = 789
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
@@ -19,7 +20,7 @@ object M_mainFRM: TM_mainFRM
   object RzSizePanel1: TRzSizePanel
     Left = 0
     Top = 0
-    Width = 753
+    Width = 789
     Height = 83
     Margins.Top = 0
     Margins.Bottom = 0
@@ -35,8 +36,7 @@ object M_mainFRM: TM_mainFRM
     RealTimeDrag = True
     SizeBarWidth = 1
     TabOrder = 0
-    ExplicitLeft = -235
-    ExplicitWidth = 898
+    ExplicitWidth = 753
     object PanelButtonsBTN: TPanel
       Left = 2
       Top = 2
@@ -178,25 +178,24 @@ object M_mainFRM: TM_mainFRM
   end
   object ButtonsPNL: TPanel
     Left = 0
-    Top = 374
-    Width = 753
+    Top = 354
+    Width = 789
     Height = 45
     Align = alBottom
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitLeft = -235
-    ExplicitTop = 364
-    ExplicitWidth = 898
+    ExplicitTop = 374
+    ExplicitWidth = 753
     object Panel1: TPanel
-      Left = 616
+      Left = 652
       Top = 2
       Width = 135
       Height = 41
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 761
+      ExplicitLeft = 616
       object BitBtn1: TRzBitBtn
         Left = 54
         Top = 1
@@ -277,18 +276,16 @@ object M_mainFRM: TM_mainFRM
   object RzSizePanel2: TRzSizePanel
     Left = 0
     Top = 83
-    Width = 753
-    Height = 291
+    Width = 789
+    Height = 271
     Margins.Top = 0
     Margins.Bottom = 0
     Align = alClient
     SizeBarWidth = 1
     TabOrder = 2
     VisualStyle = vsClassic
-    ExplicitLeft = -235
-    ExplicitTop = -4
-    ExplicitWidth = 898
-    ExplicitHeight = 413
+    ExplicitWidth = 753
+    ExplicitHeight = 291
     object LoginBTN: TRzBitBtn
       Left = 14
       Top = 25
@@ -373,6 +370,63 @@ object M_mainFRM: TM_mainFRM
       Caption = 'Button1'
       TabOrder = 1
       OnClick = Button1Click
+    end
+  end
+  object MainMenu1: TMainMenu
+    OwnerDraw = True
+    Left = 256
+    Top = 16
+    object ab1: TMenuItem
+      Caption = 'Search'
+      object Hawb1: TMenuItem
+        Caption = 'Hawb'
+      end
+      object Customers2: TMenuItem
+        Caption = 'Customers'
+      end
+    end
+    object ables1: TMenuItem
+      Caption = 'Tables'
+      object ExchangeRates1: TMenuItem
+        Caption = 'Exchange Rates'
+      end
+    end
+    object User1: TMenuItem
+      Caption = 'User'
+      object ChangePassword1: TMenuItem
+        Caption = 'Change Password'
+      end
+    end
+    object System1: TMenuItem
+      Caption = 'System'
+      object Security1: TMenuItem
+        Caption = 'Security'
+        object UserSecurity1: TMenuItem
+          Caption = 'User Security'
+        end
+      end
+      object BaseTables1: TMenuItem
+        Caption = 'Base Tables'
+        object Countries2: TMenuItem
+          Caption = #917#964#945#953#961#949#943#949#962
+          OnClick = Countries2Click
+        end
+      end
+      object Params1: TMenuItem
+        Caption = 'Params'
+        object EmailSMSmessages1: TMenuItem
+          Caption = 'Email/SMS messages'
+        end
+        object XMLparameters2: TMenuItem
+          Caption = 'XML parameters'
+        end
+        object SystemParameters1: TMenuItem
+          Caption = 'System Parameters'
+        end
+      end
+    end
+    object Help1: TMenuItem
+      Caption = 'Help'
     end
   end
 end
