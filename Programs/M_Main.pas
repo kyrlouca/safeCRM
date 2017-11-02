@@ -37,9 +37,11 @@ type
     XMLparameters2: TMenuItem;
     SystemParameters1: TMenuItem;
     Help1: TMenuItem;
+    N1: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses G_generalProcs, M_params, M_Company;
+uses G_generalProcs, M_params, M_Company, M_Student;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -68,6 +70,12 @@ end;
 procedure TM_mainFRM.Countries2Click(Sender: TObject);
 begin
 gpShowModal(TM_CompanyFRM);
+end;
+
+procedure TM_mainFRM.N1Click(Sender: TObject);
+begin
+gpShowModal(TM_StudentFRM);
+
 end;
 
 end.

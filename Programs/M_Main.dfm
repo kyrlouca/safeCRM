@@ -411,6 +411,10 @@ object M_mainFRM: TM_mainFRM
           Caption = #917#964#945#953#961#949#943#949#962
           OnClick = Countries2Click
         end
+        object N1: TMenuItem
+          Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
+          OnClick = N1Click
+        end
       end
       object Params1: TMenuItem
         Caption = 'Params'

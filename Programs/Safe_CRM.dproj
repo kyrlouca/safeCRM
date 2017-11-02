@@ -110,8 +110,8 @@
             <Form>M_mainFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="M_Company.pas">
-            <Form>M_CompanyFRM</Form>
+        <DCCReference Include="M_Student.pas">
+            <Form>M_StudentFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

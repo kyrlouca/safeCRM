@@ -7,7 +7,7 @@ uses
   G_generalProcs in 'G_generalProcs.pas',
   G_KyrSQL in 'G_KyrSQL.pas',
   M_Main in 'M_Main.pas' {M_mainFRM},
-  M_Company in 'M_Company.pas' {M_CompanyFRM};
+  M_Student in 'M_Student.pas' {M_StudentFRM};
 
 {$R *.res}
 
@@ -16,5 +16,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
+  Application.CreateForm(TM_StudentFRM, M_StudentFRM);
   Application.Run;
 end.
