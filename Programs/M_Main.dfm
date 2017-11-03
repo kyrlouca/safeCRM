@@ -358,8 +358,8 @@ object M_mainFRM: TM_mainFRM
       Margin = -1
     end
     object Button1: TButton
-      Left = 328
-      Top = 152
+      Left = 272
+      Top = 54
       Width = 75
       Height = 25
       Caption = 'Button1'
@@ -421,6 +421,10 @@ object M_mainFRM: TM_mainFRM
         object N4: TMenuItem
           Caption = #917#943#948#951' '#922#972#963#964#959#965#962
           OnClick = N4Click
+        end
+        object N5: TMenuItem
+          Caption = #917#954#960#945#953#948#949#965#964#941#962
+          OnClick = N5Click
         end
       end
       object Params1: TMenuItem

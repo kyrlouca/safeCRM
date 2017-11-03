@@ -61,6 +61,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
+    procedure InsertHawbBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -76,7 +77,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, V_Seminar;
 
 
 {$R *.DFM}
@@ -153,6 +154,21 @@ procedure TL_SeminarFRM.Grid1TitleButtonClick(Sender: TObject;
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 
 end;
+
+procedure TL_SeminarFRM.InsertHawbBTNClick(Sender: TObject);
+vAR
+
+Frm:TV_SeminarFRM;
+begin
+  frm := TV_SeminarFRM.Create(nil);
+  frm.IN_ACTION :='INSERT';
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+end;
+
 
 procedure TL_SeminarFRM.CanelBTNClick(Sender: TObject);
 begin

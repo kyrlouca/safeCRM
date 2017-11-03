@@ -1,4 +1,4 @@
-unit M_seminarType;
+unit M_Instructor;
 
 interface
 
@@ -10,7 +10,7 @@ uses
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   vcl.wwcheckbox;
 type
-  TM_SeminarTypeFRM = class(TForm)
+  TM_InstructorFRM = class(TForm)
     Panel1: TPanel;
     Panel4: TPanel;
     Panel2: TPanel;
@@ -24,10 +24,9 @@ type
     Panel3: TPanel;
     TableSRC: TDataSource;
     Panel5: TPanel;
-    TableSQL: TIBCQuery;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
-    Σεμινάρια: TLabel;
+    Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
     BitBtn1: TBitBtn;
@@ -35,33 +34,69 @@ type
     GroupBox1: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
-    Label1: TLabel;
     Label5: TLabel;
     SerialFLD: TRzDBLabel;
     FirstFLD: TwwDBEdit;
-    wwDBEdit1: TwwDBEdit;
-    wwDBEdit2: TwwDBEdit;
     wwIncrementalSearch1: TwwIncrementalSearch;
     RzPanel2: TRzPanel;
     RzPanel3: TRzPanel;
     Grid1: TwwDBGrid;
+    Label17: TLabel;
     Label15: TLabel;
     Nav1Button: TwwNavButton;
     Nav1Button1: TwwNavButton;
     wwCheckBox1: TwwCheckBox;
-    wwDBComboBox1: TwwDBComboBox;
-    TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_COST: TFloatField;
-    TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLSEMINAR_CATEGORY: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
-    Label4: TLabel;
+    GroupBox2: TGroupBox;
+    Label1: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    wwDBEdit7: TwwDBEdit;
+    wwDBEdit8: TwwDBEdit;
+    wwDBEdit9: TwwDBEdit;
+    wwDBEdit10: TwwDBEdit;
+    wwDBEdit11: TwwDBEdit;
     wwDBEdit3: TwwDBEdit;
     wwDBEdit4: TwwDBEdit;
-    TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLDURATION_DAYS: TIntegerField;
+    wwDBEdit5: TwwDBEdit;
+    wwDBEdit6: TwwDBEdit;
+    wwDBEdit1: TwwDBEdit;
+    wwDBEdit2: TwwDBEdit;
+    wwDBEdit12: TwwDBEdit;
+    TableSQL: TIBCQuery;
+    TableSQLSERIAL_NUMBER: TIntegerField;
+    TableSQLNATIONAL_ID: TWideStringField;
+    TableSQLFK_COMPANY_SERIAL: TIntegerField;
+    TableSQLFIRST_NAME: TWideStringField;
+    TableSQLLAST_NAME: TWideStringField;
+    TableSQLFULL_NAME: TWideStringField;
+    TableSQLNICKNAME: TWideStringField;
+    TableSQLSTATUS: TWideStringField;
+    TableSQLOCCUPATION: TWideStringField;
+    TableSQLPHONE_MOBILE: TWideStringField;
+    TableSQLPHONE_FIXED: TWideStringField;
+    TableSQLPHONE_ALTERNATE: TWideStringField;
+    TableSQLFAX: TWideStringField;
+    TableSQLEMAIL: TWideStringField;
+    TableSQLEMAIL_2: TSmallintField;
+    TableSQLADDRESS: TWideStringField;
+    TableSQLADDRESS_STREET: TWideStringField;
+    TableSQLADDRESS_POST_CODE: TWideStringField;
+    TableSQLADDRESS_CITY: TWideStringField;
+    TableSQLADDRESS_DISTRICT: TWideStringField;
+    TableSQLDATE_STARTED: TDateField;
+    TableSQLDATE_BIRTH: TDateField;
+    TableSQLDATE_USER: TDateField;
+    TableSQLLIST_SOURCE: TWideStringField;
+    TableSQLFACEBOOK: TWideStringField;
+    TableSQLWEBSITE: TWideStringField;
+    TableSQLTWITTER: TWideStringField;
+    TableSQLSTATUS_ACTIVE: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -84,7 +119,7 @@ type
   end;
 
 var
-  M_SeminarTypeFRM: TM_SeminarTypeFRM;
+  M_InstructorFRM: TM_InstructorFRM;
 
 implementation
 
@@ -93,26 +128,24 @@ uses   U_Database, G_generalProcs;
 
 {$R *.DFM}
 
-procedure TM_SeminarTypeFRM.BitBtn2Click(Sender: TObject);
+procedure TM_InstructorFRM.BitBtn2Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure TM_SeminarTypeFRM.TableSQLBeforeEdit(
+procedure TM_InstructorFRM.TableSQLBeforeEdit(
   DataSet: TDataSet);
 begin
 //   Dataset.FieldByName('Serial_number').ReadOnly:=true;
 end;
 
 
-procedure TM_SeminarTypeFRM.TableSQLNewRecord(DataSet: TDataSet);
+procedure TM_InstructorFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
-Dataset.FieldByName('ANAD_APPROVED').value:='Y';
-Dataset.FieldByName('SEMINAR_CORP_TYPE').value:='M';
-
+  Dataset.FieldByName('status_active').Value:='Y';
 end;
 
-procedure TM_SeminarTypeFRM.TableSRCStateChange(Sender: TObject);
+procedure TM_InstructorFRM.TableSRCStateChange(Sender: TObject);
 begin
 
 
@@ -126,12 +159,12 @@ begin
 
 end;
 
-procedure TM_SeminarTypeFRM.RzBitBtn1Click(Sender: TObject);
+procedure TM_InstructorFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
 end;
 
-procedure TM_SeminarTypeFRM.FormActivate(Sender: TObject);
+procedure TM_InstructorFRM.FormActivate(Sender: TObject);
 begin
 ksOpenTables([TableSQL]);
 if IN_ACTION='INSERT' then begin
@@ -140,19 +173,19 @@ end;
 
 end;
 
-procedure TM_SeminarTypeFRM.FormClose(Sender: TObject;
+procedure TM_InstructorFRM.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
 if TableSQL.State in [dsInsert, dsEdit] then
    TableSQL.Post;
 end;
 
-procedure TM_SeminarTypeFRM.FormCreate(Sender: TObject);
+procedure TM_InstructorFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
 end;
 
-procedure TM_SeminarTypeFRM.Grid1TitleButtonClick(Sender: TObject;
+procedure TM_InstructorFRM.Grid1TitleButtonClick(Sender: TObject;
   AFieldName: string);
   var
          sortInfoHawb:TSOrtInfo;
@@ -166,12 +199,12 @@ procedure TM_SeminarTypeFRM.Grid1TitleButtonClick(Sender: TObject;
 
 end;
 
-procedure TM_SeminarTypeFRM.Nav1InsertClick(Sender: TObject);
+procedure TM_InstructorFRM.Nav1InsertClick(Sender: TObject);
 begin
   FirstFLD.SetFocus;
 end;
 
-procedure TM_SeminarTypeFRM.CanelBTNClick(Sender: TObject);
+procedure TM_InstructorFRM.CanelBTNClick(Sender: TObject);
 begin
 TableSQL.Cancel;
 close;

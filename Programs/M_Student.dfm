@@ -442,6 +442,7 @@ object M_StudentFRM: TM_StudentFRM
       Width = 128
       Height = 22
       DataSource = TableSRC
+      SearchField = 'first_name'
       ShowMatchText = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -663,7 +664,7 @@ object M_StudentFRM: TM_StudentFRM
         Width = 121
         Height = 22
         ShowButton = True
-        Style = csDropDown
+        Style = csDropDownList
         MapList = True
         AllowClearKey = False
         DataField = 'SEX'
