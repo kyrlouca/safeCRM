@@ -109,6 +109,7 @@ object M_mainFRM: TM_mainFRM
           7D52B57D52B57D52B57D52B57D52B57D52B57D52B57D52FFFFFF}
         ParentShowHint = False
         ShowHint = True
+        OnClick = SpeedButton1Click
       end
       object SpeedButton2: TSpeedButton
         Left = 66
@@ -373,10 +374,10 @@ object M_mainFRM: TM_mainFRM
     object ab1: TMenuItem
       Caption = 'Search'
       object Hawb1: TMenuItem
-        Caption = 'Hawb'
+        Caption = #931#949#956#953#957#940#961#953#945
       end
       object Customers2: TMenuItem
-        Caption = 'Customers'
+        Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962
       end
     end
     object ables1: TMenuItem

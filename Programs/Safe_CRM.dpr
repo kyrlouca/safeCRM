@@ -20,8 +20,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
-  Application.CreateForm(TM_SeminarTypeFRM, M_SeminarTypeFRM);
-  Application.CreateForm(TM_CostTypeFRM, M_CostTypeFRM);
-  Application.CreateForm(TL_SeminarFRM, L_SeminarFRM);
   Application.Run;
 end.

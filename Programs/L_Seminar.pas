@@ -7,7 +7,8 @@ uses
   StdCtrls, Mask, DBCtrls, Db, wwSpeedButton, wwDBNavigator,
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
-  G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker;
+  G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
+  Vcl.WinXCtrls;
 type
   TL_SeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -39,6 +40,17 @@ type
     TableSQLDURATION_HOURS: TIntegerField;
     TableSQLCOST_ACTUAL: TFloatField;
     TableSQLAMOUNT_ANAD: TFloatField;
+    TableSQLCOMMENTS: TWideStringField;
+    TableSQLACTIVE_STATUS: TWideStringField;
+    TableSQLSTATUS_DESCRIPTION: TWideStringField;
+    TableSQLSEMINAR_NAME: TWideStringField;
+    InsertHawbBTN: TRzBitBtn;
+    DeletehawbBTN: TRzBitBtn;
+    RzGroupBox1: TRzGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    FilterBox: TwwDBComboBox;
+    FindSeminarFLD: TSearchBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -48,7 +60,6 @@ type
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
-    procedure Nav1InsertClick(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
   private
     { Private declarations }
@@ -141,11 +152,6 @@ procedure TL_SeminarFRM.Grid1TitleButtonClick(Sender: TObject;
         SortInfoHawb.Table:=Table;
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 
-end;
-
-procedure TL_SeminarFRM.Nav1InsertClick(Sender: TObject);
-begin
-  FirstFLD.SetFocus;
 end;
 
 procedure TL_SeminarFRM.CanelBTNClick(Sender: TObject);

@@ -48,6 +48,7 @@ type
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure N4Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,7 +63,7 @@ implementation
 {$R *.dfm}
 
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
-  U_Database, M_CostType;
+  U_Database, M_CostType, L_Seminar;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -100,6 +101,12 @@ end;
 procedure TM_mainFRM.N4Click(Sender: TObject);
 begin
   gpShowModal(TM_CostTypeFRM);
+
+end;
+
+procedure TM_mainFRM.SpeedButton1Click(Sender: TObject);
+begin
+  gpShowModal(TL_SeminarFRM);
 
 end;
 
