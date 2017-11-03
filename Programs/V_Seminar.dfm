@@ -288,21 +288,6 @@ object V_SeminarFRM: TV_SeminarFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    object wwIncrementalSearch1: TwwIncrementalSearch
-      Left = 387
-      Top = 2
-      Width = 128
-      Height = 22
-      DataSource = SeminarSRC
-      ShowMatchText = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-    end
     object RzToolbar1: TRzToolbar
       Left = 1
       Top = 1
@@ -330,7 +315,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Color = clBlue
       GradientColorStart = clSilver
       GradientColorStop = clSkyBlue
-      TabOrder = 1
+      TabOrder = 0
       VisualStyle = vsGradient
       ToolbarControls = (
         BtnLeft
@@ -379,7 +364,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Height = 423
     Align = alClient
     TabOrder = 3
-    object RzPageControl1: TRzPageControl
+    object PageControlPC: TRzPageControl
       Left = 1
       Top = 1
       Width = 916
@@ -389,6 +374,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Align = alClient
       TabIndex = 1
       TabOrder = 0
+      OnChanging = PageControlPCChanging
       ExplicitWidth = 692
       FixedDimension = 19
       object SeminarTS: TRzTabSheet
@@ -832,11 +818,10 @@ object V_SeminarFRM: TV_SeminarFRM
         end
       end
       object StudentsTS: TRzTabSheet
+        OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
-        OnEnter = StudentsTSEnter
-        ExplicitLeft = -39
-        ExplicitTop = 148
-        ExplicitWidth = 688
+        ExplicitLeft = 2
+        ExplicitTop = 19
         object RzGroupBox1: TRzGroupBox
           Left = 30
           Top = 3
@@ -856,6 +841,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Width = 401
             Height = 326
             Selected.Strings = (
+              'SERIAL_NUMBER'#9'8'#9'A/A'
               'FIRST_NAME'#9'19'#9#908#957#959#956#945
               'LAST_NAME'#9'24'#9#917#960#943#952#949#964#959
               'ATTENDANCE_STATUS'#9'8'#9'Status')
@@ -885,7 +871,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = True
-            ExplicitWidth = 625
           end
         end
         object RzGroupBox2: TRzGroupBox
@@ -907,9 +892,10 @@ object V_SeminarFRM: TV_SeminarFRM
             Width = 437
             Height = 278
             Selected.Strings = (
-              'FIRST_NAME'#9'19'#9#908#957#959#956#945#9#9
-              'LAST_NAME'#9'24'#9#917#960#943#952#949#964#959#9#9
-              'ATTENDANCE_STATUS'#9'8'#9'Status'#9#9)
+              'SERIAL_NUMBER'#9'10'#9#913'/'#913
+              'LAST_NAME'#9'24'#9#917#960#943#952#949#964#959
+              'FIRST_NAME'#9'19'#9#908#957#959#956#945
+              'ATTENDANCE_STATUS'#9'8'#9'Status')
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -936,7 +922,24 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = True
+            OnDblClick = wwDBGrid1DblClick
           end
+        end
+        object wwIncrementalSearch1: TwwIncrementalSearch
+          Left = 528
+          Top = 15
+          Width = 128
+          Height = 22
+          DataSource = NonAttendSRC
+          SearchField = 'last_name'
+          ShowMatchText = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
         end
       end
       object CostTS: TRzTabSheet
@@ -1038,14 +1041,17 @@ object V_SeminarFRM: TV_SeminarFRM
       Required = True
     end
     object SeminarSQLFK_SEMINAR: TIntegerField
+      DisplayLabel = #932#973#960#959#962' '#931#949#956#953#957#945#961#943#959#965
       FieldName = 'FK_SEMINAR'
       Required = True
     end
     object SeminarSQLFK_INSTRUCTOR: TIntegerField
+      DisplayLabel = #917#954#960#945#953#948#949#965#964#942#962
       FieldName = 'FK_INSTRUCTOR'
       Required = True
     end
     object SeminarSQLFK_VENUE: TIntegerField
+      DisplayLabel = #935#974#961#959#962' '#931#949#956#953#957#945#961#943#959#965
       FieldName = 'FK_VENUE'
       Required = True
     end
@@ -1077,6 +1083,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Size = 3
     end
     object SeminarSQLSEMINAR_NAME: TWideStringField
+      DisplayLabel = #928#949#961#953#947#961#945#966#942' '#931#949#956#953#957#945#961#943#959#965
       FieldName = 'SEMINAR_NAME'
       Size = 160
     end
@@ -1827,8 +1834,8 @@ object V_SeminarFRM: TV_SeminarFRM
     SQL.Strings = (
       'select'
       
-        ' pe.first_name,pe.last_name , sp.fk_seminar_serial, sp.fk_person' +
-        '_serial, sp.attendance_status'
+        ' pe.serial_number, pe.first_name,pe.last_name , sp.fk_seminar_se' +
+        'rial, sp.fk_person_serial, sp.attendance_status'
       'from'
       'seminar_person   sp'
       'left outer join'
@@ -1845,6 +1852,12 @@ object V_SeminarFRM: TV_SeminarFRM
         Name = 'SERIAL_NUMBER'
         Value = nil
       end>
+    object AttendingSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 8
+      FieldName = 'SERIAL_NUMBER'
+      ReadOnly = True
+    end
     object AttendingSQLFIRST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
       DisplayWidth = 19
@@ -1935,14 +1948,16 @@ object V_SeminarFRM: TV_SeminarFRM
     SQL.Strings = (
       'select'
       
-        ' pe.first_name,pe.last_name , sp.fk_seminar_serial, sp.fk_person' +
-        '_serial, sp.attendance_status'
+        'pe.serial_number, pe.first_name,pe.last_name , sp.fk_seminar_ser' +
+        'ial, sp.fk_person_serial, sp.attendance_status'
       'from'
       '    person pe  left outer join'
       '    seminar_person sp on pe.serial_number=sp.fk_person_serial'
       'where'
-      '    sp.fk_seminar_serial <> :SeminarSerial'
-      'order by pe.last_name, pe.first_name')
+      
+        '   ( sp.fk_seminar_serial is null or   sp.fk_seminar_serial <> :' +
+        'SeminarSerial)'
+      'Order by pe.last_name')
     DetailFields = 'FK_SEMINAR_SERIAL'
     Active = True
     Left = 730
@@ -1953,18 +1968,25 @@ object V_SeminarFRM: TV_SeminarFRM
         Name = 'SeminarSerial'
         Value = nil
       end>
-    object NonAttendSQLFIRST_NAME: TWideStringField
-      DisplayLabel = #908#957#959#956#945
-      DisplayWidth = 19
-      FieldName = 'FIRST_NAME'
+    object NonAttendSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = #913'/'#913
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
       ReadOnly = True
-      FixedChar = True
-      Size = 30
+      Required = True
     end
     object NonAttendSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
       DisplayWidth = 24
       FieldName = 'LAST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
+    object NonAttendSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 19
+      FieldName = 'FIRST_NAME'
       ReadOnly = True
       FixedChar = True
       Size = 30
@@ -1976,12 +1998,14 @@ object V_SeminarFRM: TV_SeminarFRM
       FixedChar = True
       Size = 1
     end
-    object NonAttendSQLFK_SEMINAR_SERIAL: TIntegerField
-      FieldName = 'FK_SEMINAR_SERIAL'
+    object NonAttendSQLFK_PERSON_SERIAL: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 10
+      FieldName = 'FK_PERSON_SERIAL'
       Visible = False
     end
-    object NonAttendSQLFK_PERSON_SERIAL: TIntegerField
-      FieldName = 'FK_PERSON_SERIAL'
+    object NonAttendSQLFK_SEMINAR_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_SERIAL'
       Visible = False
     end
   end

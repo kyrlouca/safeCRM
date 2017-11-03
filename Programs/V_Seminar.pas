@@ -23,7 +23,6 @@ type
     RzBitBtn1: TRzBitBtn;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
-    wwIncrementalSearch1: TwwIncrementalSearch;
     DbImages: TImageList;
     RzToolbar1: TRzToolbar;
     BtnLeft: TRzToolButton;
@@ -31,7 +30,7 @@ type
     BtnPost: TRzToolButton;
     BtnRefresh: TRzToolButton;
     Panel3: TPanel;
-    RzPageControl1: TRzPageControl;
+    PageControlPC: TRzPageControl;
     SeminarTS: TRzTabSheet;
     StudentsTS: TRzTabSheet;
     CostTS: TRzTabSheet;
@@ -91,13 +90,16 @@ type
     AttendingSRC: TDataSource;
     AttendingSQLFK_SEMINAR_SERIAL: TIntegerField;
     NonAttendSQL: TIBCQuery;
+    NonAttendSRC: TDataSource;
+    wwDBGrid1: TwwDBGrid;
+    NonAttendSQLSERIAL_NUMBER: TIntegerField;
     NonAttendSQLFIRST_NAME: TWideStringField;
     NonAttendSQLLAST_NAME: TWideStringField;
     NonAttendSQLFK_SEMINAR_SERIAL: TIntegerField;
     NonAttendSQLFK_PERSON_SERIAL: TIntegerField;
     NonAttendSQLATTENDANCE_STATUS: TWideStringField;
-    NonAttendSRC: TDataSource;
-    wwDBGrid1: TwwDBGrid;
+    AttendingSQLSERIAL_NUMBER: TIntegerField;
+    wwIncrementalSearch1: TwwIncrementalSearch;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure SeminarSRCStateChange(Sender: TObject);
@@ -110,7 +112,10 @@ type
     procedure InstructorBTNClick(Sender: TObject);
     procedure VenueBTNClick(Sender: TObject);
     procedure SeminarTypeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
-    procedure StudentsTSEnter(Sender: TObject);
+    procedure StudentsTSShow(Sender: TObject);
+    procedure PageControlPCChanging(Sender: TObject; NewIndex: Integer;
+      var AllowChange: Boolean);
+    procedure wwDBGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -134,7 +139,9 @@ uses   U_Database, G_generalProcs, M_Instructor, M_Venue;
 
 procedure TV_SeminarFRM.BitBtn2Click(Sender: TObject);
 begin
-  close;
+  if SeminarSQL.State in [dsEdit,dsInsert] then begin
+    seminarSQL.Post;
+  end;
 end;
 
 procedure TV_SeminarFRM.TableSQLBeforeEdit(
@@ -181,7 +188,7 @@ begin
 
  end;
 
-procedure TV_SeminarFRM.StudentsTSEnter(Sender: TObject);
+procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
 begin
@@ -190,6 +197,9 @@ begin
   NonAttendSQL.Close;
   NonAttendSQL.ParamByName('seminarSerial').Value:=seminarSerial;
   NonAttendSQL.Open;
+
+  ksOpenTables([AttendingSQL]);
+
 end;
 
 procedure TV_SeminarFRM.InstructorBTNClick(Sender: TObject);
@@ -231,6 +241,24 @@ begin
   end;
 end;
 
+procedure TV_SeminarFRM.wwDBGrid1DblClick(Sender: TObject);
+var
+  qr:TksQuery;
+  Personserial:Integer;
+  seminarSerial:Integer;
+  str:string;
+begin
+  PersonSerial:=NonAttendSQL.FieldByName('serial_number').AsInteger;
+  SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+  if Personserial<1 then exit;
+  str:=' insert into seminar_person  (fk_seminar_serial,fk_person_serial,attendance_status) '
+    +' values(:seminar,:person,:attend)';
+  ksExecSQLVar(cn,str,[seminarSerial,Personserial,'fff']);
+
+
+
+end;
+
 procedure TV_SeminarFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
@@ -247,6 +275,7 @@ begin
   end else if IN_ACTION='EDIT' then begin
      EditSeminar(IN_SEMINAR_SERIAL);
   end;
+PageControlPC.ActivePageIndex:=0;
 
 end;
 
@@ -265,6 +294,20 @@ end;
 procedure TV_SeminarFRM.Nav1InsertClick(Sender: TObject);
 begin
 //  FirstFLD.SetFocus;
+end;
+
+procedure TV_SeminarFRM.PageControlPCChanging(Sender: TObject;
+  NewIndex: Integer; var AllowChange: Boolean);
+begin
+  try
+    if SeminarSQL.State in [dsInsert,dsEdit] then
+      SeminarSQl.Post;
+  except
+    allowChange:= false;
+    exit;
+  end;
+  allowChange:=  (SeminarSQL.FieldByName('serial_number').AsInteger >0);
+
 end;
 
 procedure TV_SeminarFRM.CanelBTNClick(Sender: TObject);

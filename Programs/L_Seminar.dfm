@@ -591,9 +591,10 @@ object L_SeminarFRM: TL_SeminarFRM
         Width = 625
         Height = 312
         Selected.Strings = (
+          'SERIAL_NUMBER'#9'6'#9'A/A'
           'SEMINAR_NAME'#9'20'#9#928#949#961#953#947#961#945#966#942
           'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
-          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962#9'F'
+          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
           'DURATION_HOURS'#9'10'#9#911#961#949#962
           'DURATION_DAYS'#9'10'#9#924#941#961#949#962
           'STATUS_DESCRIPTION'#9'9'#9'Status')
@@ -626,6 +627,7 @@ object L_SeminarFRM: TL_SeminarFRM
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
         ExplicitLeft = -64
+        ExplicitTop = 35
       end
     end
     object RzPanel4: TRzPanel
@@ -712,6 +714,11 @@ object L_SeminarFRM: TL_SeminarFRM
     AfterInsert = TableSQLAfterInsert
     Left = 49
     Top = 5
+    object TableSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 6
+      FieldName = 'SERIAL_NUMBER'
+    end
     object TableSQLSEMINAR_NAME: TWideStringField
       DisplayLabel = #928#949#961#953#947#961#945#966#942
       DisplayWidth = 20
@@ -744,10 +751,6 @@ object L_SeminarFRM: TL_SeminarFRM
       FieldName = 'STATUS_DESCRIPTION'
       ReadOnly = True
       FixedChar = True
-    end
-    object TableSQLSERIAL_NUMBER: TIntegerField
-      FieldName = 'SERIAL_NUMBER'
-      Visible = False
     end
     object TableSQLFK_SEMINAR: TIntegerField
       FieldName = 'FK_SEMINAR'

@@ -30,8 +30,6 @@ type
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    BitBtn1: TBitBtn;
-    CanelBTN: TBitBtn;
     GroupBox1: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
