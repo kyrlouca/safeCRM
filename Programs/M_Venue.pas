@@ -72,7 +72,7 @@ type
     cn:TIBCConnection;
   public
     { Public declarations }
-    MyInsertState:Boolean;
+   IN_SERIAL:Integer;
     IN_ACTION:String;
 
   end;
@@ -128,11 +128,23 @@ end;
 procedure TM_venuFRM.FormActivate(Sender: TObject);
 begin
 ksOpenTables([TableSQL]);
-if IN_ACTION='INSERT' then begin
-   TableSQL.Insert;
-end;
+  if IN_ACTION='INSERT' then begin
+    TableSQL.Insert;
+  end else if IN_ACTION='EDIT' then begin
+    TableSQL.Close;
+    tABLESQL.AddWhere('serial_number = :serial');
+    TableSQL.ParamByName('serial').Value:=in_serial;
+    TableSQL.Open;
+  end else if IN_ACTION='DISPLAY' then begin
+   TableSQL.Close;
+   tABLESQL.AddWhere('serial_number = :serial');
+   TableSQL.ParamByName('serial').Value:=in_serial;
+   TableSQL.ReadOnly:=true;
+   TableSQL.Open;
+  end;
 
 end;
+
 
 procedure TM_venuFRM.FormClose(Sender: TObject;
   var Action: TCloseAction);

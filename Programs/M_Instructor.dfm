@@ -460,8 +460,6 @@ object M_InstructorFRM: TM_InstructorFRM
     Height = 423
     Align = alClient
     TabOrder = 2
-    ExplicitLeft = -224
-    ExplicitTop = 127
     object Panel5: TPanel
       Left = 672
       Top = 1

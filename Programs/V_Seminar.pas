@@ -37,15 +37,13 @@ type
     StudentsTS: TRzTabSheet;
     CostTS: TRzTabSheet;
     DaysTS: TRzTabSheet;
-    GroupBox1: TGroupBox;
+    FirstGRP: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
     Label1: TLabel;
-    Label5: TLabel;
     SerialFLD: TRzDBLabel;
     Label6: TLabel;
     FirstFLD: TwwDBEdit;
-    wwDBEdit1: TwwDBEdit;
     wwCheckBox1: TwwCheckBox;
     wwDBComboBox1: TwwDBComboBox;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
@@ -63,27 +61,37 @@ type
     SeminarSQLSEMINAR_NAME: TWideStringField;
     SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
     SeminarSQLANAD_APPROVED: TWideStringField;
-    DatePassedFLD: TwwDBDateTimePicker;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
+    SeminarTypeFLD: TwwDBComboBox;
+    SeminarSQLCOST_ESTIMATE: TFloatField;
+    wwDBEdit4: TwwDBEdit;
+    SecondGRP: TRzGroupBox;
+    Label5: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    wwDBEdit2: TwwDBEdit;
-    wwDBEdit3: TwwDBEdit;
     Label9: TLabel;
     Label10: TLabel;
-    SeminarTypeFLD: TwwDBComboBox;
+    DatePassedFLD: TwwDBDateTimePicker;
+    wwDBDateTimePicker1: TwwDBDateTimePicker;
+    wwDBEdit1: TwwDBEdit;
+    wwDBEdit2: TwwDBEdit;
     InstructorFLD: TwwDBComboBox;
     VenueFLD: TwwDBComboBox;
+    Label11: TLabel;
+    InstructorBTN: TSpeedButton;
+    VenueBTN: TSpeedButton;
+    Label12: TLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure SeminarSRCStateChange(Sender: TObject);
-    procedure SeminarSQLAfterInsert(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure Nav1InsertClick(Sender: TObject);
+    procedure InstructorBTNClick(Sender: TObject);
+    procedure VenueBTNClick(Sender: TObject);
+    procedure SeminarTypeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -100,7 +108,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, M_Instructor, M_Venue;
 
 
 {$R *.DFM}
@@ -131,29 +139,84 @@ begin
 
 end;
 
+procedure TV_SeminarFRM.SeminarTypeFLDCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+var
+  qr:TksQuery;
+  serial:Integer;
+begin
+ serial:=strToIntdef(SeminarTypeFLD.Value,0);
+ if (not select) or (serial<0) then exit;
+ qr:=TksQuery.Create(cn,'select * from seminar_type where serial_number= :serial');
+ try
+   qr.ParamByName('serial').Value:=serial;
+   qr.Open;
+   seminarSQL.fieldbyName('seminar_name').value:= qr.FieldByName('seminar_name').AsString;
+   seminarSQL.fieldbyName('DURATION_HOURS').value:= qr.FieldByName('DURATION_HOURS').AsString;
+   seminarSQL.fieldbyName('DURATION_DAYS').value:= qr.FieldByName('DURATION_DAYS').AsString;
+   seminarSQL.fieldbyName('ANAD_APPROVED').value:= qr.FieldByName('ANAD_APPROVED').AsString;
+   seminarSQL.fieldbyName('COST_ESTIMATE').value:= qr.FieldByName('SEMINAR_COST').AsString;
+ finally
+   qr.Free;
+ end;
+
+ end;
+
+procedure TV_SeminarFRM.InstructorBTNClick(Sender: TObject);
+vAR
+
+Frm:TM_InstructorFRM;
+Serial:Integer;
+begin
+  if seminarSQL.State in [dsEdit] then SeminarSQL.Post;
+  serial:=strToIntdef(InstructorFLD.Value,0);
+  if Serial<1 then exit;
+  frm := TM_InstructorFRM.Create(nil);
+  frm.IN_ACTION :='DISPLAY';
+  frm.in_INSTRUCTOR_SERIAL:=Serial;
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+end;
+
+
+procedure TV_SeminarFRM.VenueBTNClick(Sender: TObject);
+vAR
+
+Frm:TM_venuFRM;
+Serial:Integer;
+begin
+  if seminarSQL.State in [dsEdit] then SeminarSQL.Post;
+  serial:=strToIntdef(venueFLD.Value,0);
+  if Serial<1 then exit;
+  frm := TM_venuFRM.Create(nil);
+  frm.IN_ACTION :='EDIT';
+  frm.in_SERIAL:=Serial;
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+end;
+
 procedure TV_SeminarFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
 end;
 
-procedure TV_SeminarFRM.SeminarSQLAfterInsert(DataSet: TDataSet);
-begin
-//      StationIDFLD.SetFocus;
-
-end;
-
-
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
 begin
+  ksfillComboF1(cn,SeminarTYpeFLD,'SEMINAR_TYPE','SERIAL_NUMBER','SEMINAR_NAME','SEMINAR_NAME');
+  ksfillComboF1(cn,InstructorFLD,'INSTRUCTOR','SERIAL_NUMBER','FULL_NAME','FULL_NAME');
+  ksfillComboF1(cn,VenueFLD,'VENUE','SERIAL_NUMBER','VENUE_NAME','VENUE_NAME');
   ksOpenTables([SeminarSQL]);
   if IN_ACTION='INSERT' then begin
     SeminarSQL.Insert;
   end else if IN_ACTION='EDIT' then begin
      EditSeminar(IN_SEMINAR_SERIAL);
   end;
-  ksfillComboF1(cn,SeminarTYpeFLD,'SEMINAR_TYPE','SERIAL_NUMBER','SEMINAR_NAME','SEMINAR_NAME');
-  ksfillComboF1(cn,InstructorFLD,'INSTRUCTOR','SERIAL_NUMBER','FULL_NAME','FULL_NAME');
-  ksfillComboF1(cn,VenueFLD,'VENUE','SERIAL_NUMBER','VENUE_NAME','VENUE_NAME');
 
 end;
 
@@ -187,7 +250,6 @@ Var
         Dataset:TIBCQuery;
 Begin
         Dataset:=SeminarSQL;
-
         with Dataset do begin
           close;
           ParamByName('SerialNumber').value:=SeminarSerial;
@@ -197,12 +259,8 @@ Begin
         end;
 
 //        ksOpenTables([SenderInvoiceDS]);
-//        DisplayClearanceStatus();
-
-
-
-//        if HawbFLD.CanFocus then
-//          HawbFLD.SetFocus;
+          if FirstFLD.CanFocus then
+          firstFLD.SetFocus;
 
 End;
 

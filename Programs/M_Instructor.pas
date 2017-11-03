@@ -113,8 +113,9 @@ type
     cn:TIBCConnection;
   public
     { Public declarations }
-    MyInsertState:Boolean;
+
     IN_ACTION:String;
+    in_INSTRUCTOR_SERIAL:Integer;
 
   end;
 
@@ -166,9 +167,20 @@ end;
 
 procedure TM_InstructorFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL]);
 if IN_ACTION='INSERT' then begin
+   ksOpenTables([TableSQL]);
    TableSQL.Insert;
+end else if IN_ACTION='EDIT' then begin
+   TableSQL.Close;
+   tABLESQL.AddWhere('serial_number = :serial');
+   TableSQL.ParamByName('serial').Value:=in_INSTRUCTOR_SERIAL;
+   TableSQL.Open;
+end else if IN_ACTION='DISPLAY' then begin
+   TableSQL.Close;
+   tABLESQL.AddWhere('serial_number = :serial');
+   TableSQL.ParamByName('serial').Value:=in_INSTRUCTOR_SERIAL;
+   TableSQL.ReadOnly:=true;
+   TableSQL.Open;
 end;
 
 end;

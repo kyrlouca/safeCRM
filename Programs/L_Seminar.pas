@@ -51,6 +51,9 @@ type
     Label2: TLabel;
     FilterBox: TwwDBComboBox;
     FindSeminarFLD: TSearchBox;
+    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
+    TableSQLANAD_APPROVED: TWideStringField;
+    RzBitBtn2: TRzBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -62,9 +65,11 @@ type
     procedure RzBitBtn1Click(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
     procedure InsertHawbBTNClick(Sender: TObject);
+    procedure Grid1DblClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
+    procedure EditSeminar();
   public
     { Public declarations }
     MyInsertState:Boolean;
@@ -139,6 +144,31 @@ end;
 procedure TL_SeminarFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
+end;
+
+procedure TL_SeminarFRM.Grid1DblClick(Sender: TObject);
+begin
+  EditSeminar;
+end;
+
+procedure TL_SeminarFRM.EditSeminar();
+vAR
+  serial:Integer;
+  Frm:TV_SeminarFRM;
+begin
+  SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
+  if serial<1 then exit;
+
+  frm := TV_SeminarFRM.Create(nil);
+  frm.IN_ACTION :='EDIT';
+  frm.IN_SEMINAR_SERIAL:=serial;
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+
+
 end;
 
 procedure TL_SeminarFRM.Grid1TitleButtonClick(Sender: TObject;

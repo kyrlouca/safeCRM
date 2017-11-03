@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  vcl.wwcheckbox;
+  vcl.wwcheckbox, Vcl.ComCtrls, RzDBEdit;
 type
   TM_SeminarTypeFRM = class(TForm)
     Panel1: TPanel;
@@ -62,6 +62,9 @@ type
     wwDBEdit4: TwwDBEdit;
     TableSQLDURATION_HOURS: TIntegerField;
     TableSQLDURATION_DAYS: TIntegerField;
+    TableSQLCOMMENTS: TWideStringField;
+    Label7: TLabel;
+    RzDBRichEdit1: TRzDBRichEdit;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

@@ -476,7 +476,7 @@
     object GroupBox1: TGroupBox
       Left = 399
       Top = 6
-      Width = 274
+      Width = 338
       Height = 331
       Caption = #928#955#951#961#959#966#959#961#943#949#962
       Font.Charset = DEFAULT_CHARSET
@@ -487,11 +487,11 @@
       ParentFont = False
       TabOrder = 2
       object Label2: TLabel
-        Left = 58
+        Left = 37
         Top = 46
-        Width = 37
+        Width = 58
         Height = 14
-        Caption = #908#957#959#956#945
+        Caption = #928#949#961#953#947#961#945#966#942
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -514,7 +514,7 @@
       end
       object Label1: TLabel
         Left = 56
-        Top = 95
+        Top = 167
         Width = 39
         Height = 14
         Caption = #922#972#963#964#959#962
@@ -551,7 +551,7 @@
       end
       object Label15: TLabel
         Left = 28
-        Top = 137
+        Top = 209
         Width = 67
         Height = 14
         Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
@@ -564,7 +564,7 @@
       end
       object Label4: TLabel
         Left = 21
-        Top = 187
+        Top = 259
         Width = 74
         Height = 14
         Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
@@ -577,7 +577,7 @@
       end
       object Label6: TLabel
         Left = 19
-        Top = 167
+        Top = 239
         Width = 76
         Height = 14
         Caption = #916#953#940#961#954#949#953#945' '#956#941#961#949#962
@@ -588,10 +588,23 @@
         Font.Style = []
         ParentFont = False
       end
+      object Label7: TLabel
+        Left = 61
+        Top = 99
+        Width = 35
+        Height = 14
+        Caption = #931#967#972#955#953#945
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
       object FirstFLD: TwwDBEdit
         Left = 102
         Top = 43
-        Width = 161
+        Width = 219
         Height = 22
         DataField = 'SEMINAR_NAME'
         DataSource = TableSRC
@@ -603,7 +616,7 @@
       object wwDBEdit1: TwwDBEdit
         Left = 102
         Top = 68
-        Width = 161
+        Width = 219
         Height = 22
         DataField = 'SEMINAR_CATEGORY'
         DataSource = TableSRC
@@ -614,19 +627,19 @@
       end
       object wwDBEdit2: TwwDBEdit
         Left = 102
-        Top = 92
+        Top = 164
         Width = 75
         Height = 22
         DataField = 'SEMINAR_COST'
         DataSource = TableSRC
-        TabOrder = 2
+        TabOrder = 3
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
       end
       object wwCheckBox1: TwwCheckBox
         Left = 66
-        Top = 115
+        Top = 187
         Width = 51
         Height = 17
         DisableThemes = False
@@ -640,11 +653,11 @@
         Caption = #913#925#913#916
         DataField = 'ANAD_APPROVED'
         DataSource = TableSRC
-        TabOrder = 3
+        TabOrder = 4
       end
       object wwDBComboBox1: TwwDBComboBox
         Left = 101
-        Top = 134
+        Top = 206
         Width = 76
         Height = 22
         ShowButton = True
@@ -660,32 +673,47 @@
           #924#972#957#959'-'#917#960#967'.'#9'M'
           #928#972#955#965'-'#917#960#967'.'#9'P')
         Sorted = False
-        TabOrder = 4
+        TabOrder = 5
         UnboundDataType = wwDefault
       end
       object wwDBEdit3: TwwDBEdit
         Left = 102
-        Top = 164
-        Width = 161
+        Top = 236
+        Width = 75
         Height = 22
         DataField = 'DURATION_DAYS'
         DataSource = TableSRC
-        TabOrder = 5
+        TabOrder = 6
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
       end
       object wwDBEdit4: TwwDBEdit
         Left = 102
-        Top = 188
+        Top = 260
         Width = 75
         Height = 22
         DataField = 'DURATION_HOURS'
         DataSource = TableSRC
-        TabOrder = 6
+        TabOrder = 7
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
+      end
+      object RzDBRichEdit1: TRzDBRichEdit
+        Left = 102
+        Top = 96
+        Width = 219
+        Height = 49
+        DataField = 'COMMENTS'
+        DataSource = TableSRC
+        Font.Charset = GREEK_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        TabOrder = 2
+        Zoom = 100
       end
     end
     object RzPanel2: TRzPanel
@@ -757,12 +785,13 @@
       'INSERT INTO SEMINAR_TYPE'
       
         '  (SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED, SEM' +
-        'INAR_CATEGORY, SEMINAR_CORP_TYPE, DURATION_HOURS, DURATION_DAYS)'
+        'INAR_CATEGORY, SEMINAR_CORP_TYPE, DURATION_HOURS, DURATION_DAYS,' +
+        ' COMMENTS)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :SEMINAR_NAME, :SEMINAR_COST, :ANAD_APPROVED,' +
         ' :SEMINAR_CATEGORY, :SEMINAR_CORP_TYPE, :DURATION_HOURS, :DURATI' +
-        'ON_DAYS)')
+        'ON_DAYS, :COMMENTS)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE'
       'WHERE'
@@ -775,14 +804,14 @@
         'SEMINAR_COST = :SEMINAR_COST, ANAD_APPROVED = :ANAD_APPROVED, SE' +
         'MINAR_CATEGORY = :SEMINAR_CATEGORY, SEMINAR_CORP_TYPE = :SEMINAR' +
         '_CORP_TYPE, DURATION_HOURS = :DURATION_HOURS, DURATION_DAYS = :D' +
-        'URATION_DAYS'
+        'URATION_DAYS, COMMENTS = :COMMENTS'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED,' +
         ' SEMINAR_CATEGORY, SEMINAR_CORP_TYPE, DURATION_HOURS, DURATION_D' +
-        'AYS FROM SEMINAR_TYPE'
+        'AYS, COMMENTS FROM SEMINAR_TYPE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -810,6 +839,7 @@
       DisplayLabel = #908#957#959#956#945
       DisplayWidth = 28
       FieldName = 'SEMINAR_NAME'
+      Required = True
       Size = 160
     end
     object TableSQLSEMINAR_CORP_TYPE: TWideStringField
@@ -833,7 +863,9 @@
       Visible = False
     end
     object TableSQLSEMINAR_COST: TFloatField
+      DisplayLabel = #922#972#963#964#959#962
       FieldName = 'SEMINAR_COST'
+      Required = True
       Visible = False
       DisplayFormat = '0.00'
     end
@@ -844,10 +876,18 @@
       Size = 30
     end
     object TableSQLDURATION_HOURS: TIntegerField
+      DisplayLabel = #911#961#949#962
       FieldName = 'DURATION_HOURS'
+      Required = True
     end
     object TableSQLDURATION_DAYS: TIntegerField
+      DisplayLabel = #924#941#961#949#962
       FieldName = 'DURATION_DAYS'
+      Required = True
+    end
+    object TableSQLCOMMENTS: TWideStringField
+      FieldName = 'COMMENTS'
+      Size = 160
     end
   end
   object WriteTrans: TIBCTransaction
