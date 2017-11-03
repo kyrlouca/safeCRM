@@ -12,17 +12,12 @@ uses
 type
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
-    Panel4: TPanel;
     Panel2: TPanel;
     SeminarSRC: TDataSource;
     SeminarSQL: TIBCQuery;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     Label4: TLabel;
-    RzPanel1: TRzPanel;
-    RzBitBtn1: TRzBitBtn;
-    BitBtn1: TBitBtn;
-    CanelBTN: TBitBtn;
     DbImages: TImageList;
     RzToolbar1: TRzToolbar;
     BtnLeft: TRzToolButton;
@@ -86,21 +81,24 @@ type
     AttendingSQLLAST_NAME: TWideStringField;
     AttendingSQLFK_PERSON_SERIAL: TIntegerField;
     AttendingSQLATTENDANCE_STATUS: TWideStringField;
-    Grid1: TwwDBGrid;
+    MembersGRD: TwwDBGrid;
     AttendingSRC: TDataSource;
     AttendingSQLFK_SEMINAR_SERIAL: TIntegerField;
     NonAttendSQL: TIBCQuery;
     NonAttendSRC: TDataSource;
-    wwDBGrid1: TwwDBGrid;
-    NonAttendSQLSERIAL_NUMBER: TIntegerField;
-    NonAttendSQLFIRST_NAME: TWideStringField;
-    NonAttendSQLLAST_NAME: TWideStringField;
-    NonAttendSQLFK_SEMINAR_SERIAL: TIntegerField;
-    NonAttendSQLFK_PERSON_SERIAL: TIntegerField;
-    NonAttendSQLATTENDANCE_STATUS: TWideStringField;
+    AllPersonsGRD: TwwDBGrid;
     AttendingSQLSERIAL_NUMBER: TIntegerField;
-    wwIncrementalSearch1: TwwIncrementalSearch;
-    procedure BitBtn2Click(Sender: TObject);
+    SearchPersonFLD: TwwIncrementalSearch;
+    NonAttendSQLSERIAL_NUMBER: TIntegerField;
+    NonAttendSQLLAST_NAME: TWideStringField;
+    NonAttendSQLFIRST_NAME: TWideStringField;
+    NonAttendSQLNATIONAL_ID: TWideStringField;
+    Panel4: TRzPanel;
+    RzPanel1: TRzPanel;
+    RzBitBtn1: TRzBitBtn;
+    BitBtn1: TBitBtn;
+    CanelBTN: TBitBtn;
+    procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -115,11 +113,20 @@ type
     procedure StudentsTSShow(Sender: TObject);
     procedure PageControlPCChanging(Sender: TObject; NewIndex: Integer;
       var AllowChange: Boolean);
-    procedure wwDBGrid1DblClick(Sender: TObject);
+    procedure AllPersonsGRDDblClick(Sender: TObject);
+    procedure AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure MembersGRDKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure MembersGRDDblClick(Sender: TObject);
+    procedure SearchPersonFLDKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     cn:TIBCConnection;
   Procedure EditSeminar(Const SeminarSerial:integer);
+  procedure RemovePerson();
+  procedure InsertPerson();
   public
     { Public declarations }
     IN_ACTION:String;
@@ -137,7 +144,7 @@ uses   U_Database, G_generalProcs, M_Instructor, M_Venue;
 
 {$R *.DFM}
 
-procedure TV_SeminarFRM.BitBtn2Click(Sender: TObject);
+procedure TV_SeminarFRM.BitBtn1Click(Sender: TObject);
 begin
   if SeminarSQL.State in [dsEdit,dsInsert] then begin
     seminarSQL.Post;
@@ -222,6 +229,20 @@ begin
 end;
 
 
+procedure TV_SeminarFRM.MembersGRDDblClick(Sender: TObject);
+begin
+    RemovePerson();
+
+end;
+
+procedure TV_SeminarFRM.MembersGRDKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  IF KEY=VK_RETURN THEN begin
+    RemovePerson();
+  end;
+end;
+
 procedure TV_SeminarFRM.VenueBTNClick(Sender: TObject);
 vAR
 
@@ -241,7 +262,28 @@ begin
   end;
 end;
 
-procedure TV_SeminarFRM.wwDBGrid1DblClick(Sender: TObject);
+procedure TV_SeminarFRM.SearchPersonFLDKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+
+  IF KEY=VK_RETURN THEN begin
+    if SearchPersonFLD.Text='' then
+      exit;
+    InsertPerson();
+    SearchPersonFLD.Clear;
+    SearchPersonFLD.ClearSelection;
+
+
+  end;
+
+end;
+
+procedure TV_SeminarFRM.AllPersonsGRDDblClick(Sender: TObject);
+begin
+  InsertPerson();
+end;
+
+procedure TV_SeminarFRM.InsertPerson();
 var
   qr:TksQuery;
   Personserial:Integer;
@@ -255,7 +297,19 @@ begin
     +' values(:seminar,:person,:attend)';
   ksExecSQLVar(cn,str,[seminarSerial,Personserial,'fff']);
 
+  AttendingSQL.Refresh;
+  NonAttendSQL.Refresh;
 
+
+
+end;
+
+procedure TV_SeminarFRM.AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  IF KEY=VK_RETURN THEN begin
+    InsertPerson();
+  end;
 
 end;
 
@@ -290,6 +344,24 @@ procedure TV_SeminarFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
 end;
+
+procedure TV_SeminarFRM.RemovePerson();
+var
+  qr:TksQuery;
+  Personserial:Integer;
+  seminarSerial:Integer;
+  str:string;
+begin
+  PersonSerial:=AttendingSQL.FieldByName('fk_person_serial').AsInteger;
+  SeminarSerial:=AttendingSQL.FieldByName('fk_seminar_serial').AsInteger;
+  if (Personserial<1) or (seminarSerial<1) then exit;
+  str:=' delete from seminar_person where fk_person_serial= :personSerial and fk_seminar_serial= :seminarSerial';
+  ksExecSQLVar(cn,str,[Personserial,seminarSerial]);
+
+  AttendingSQL.Refresh;
+  NonAttendSQL.Refresh;
+end;
+
 
 procedure TV_SeminarFRM.Nav1InsertClick(Sender: TObject);
 begin

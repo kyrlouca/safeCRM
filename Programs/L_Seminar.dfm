@@ -626,8 +626,8 @@ object L_SeminarFRM: TL_SeminarFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
-        ExplicitLeft = -64
-        ExplicitTop = 35
+        ExplicitLeft = -1
+        ExplicitTop = 0
       end
     end
     object RzPanel4: TRzPanel
