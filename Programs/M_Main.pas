@@ -38,10 +38,16 @@ type
     SystemParameters1: TMenuItem;
     Help1: TMenuItem;
     N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,7 +61,8 @@ implementation
 
 {$R *.dfm}
 
-uses G_generalProcs, M_params, M_Company, M_Student;
+uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
+  U_Database, M_CostType;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -75,6 +82,24 @@ end;
 procedure TM_mainFRM.N1Click(Sender: TObject);
 begin
 gpShowModal(TM_StudentFRM);
+
+end;
+
+procedure TM_mainFRM.N2Click(Sender: TObject);
+begin
+gpShowModal(TM_venuFRM);
+
+end;
+
+procedure TM_mainFRM.N3Click(Sender: TObject);
+begin
+  gpShowModal(TM_SeminarTypeFRM);
+
+end;
+
+procedure TM_mainFRM.N4Click(Sender: TObject);
+begin
+  gpShowModal(TM_CostTypeFRM);
 
 end;
 

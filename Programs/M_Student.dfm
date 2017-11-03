@@ -347,7 +347,6 @@ object M_StudentFRM: TM_StudentFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Next'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 2
@@ -364,7 +363,6 @@ object M_StudentFRM: TM_StudentFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Button1'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 3
@@ -398,7 +396,6 @@ object M_StudentFRM: TM_StudentFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Delete'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 5
@@ -591,7 +588,7 @@ object M_StudentFRM: TM_StudentFRM
       object FirstFLD: TwwDBEdit
         Left = 102
         Top = 44
-        Width = 155
+        Width = 161
         Height = 22
         DataField = 'FIRST_NAME'
         DataSource = TableSRC
@@ -636,6 +633,7 @@ object M_StudentFRM: TM_StudentFRM
         CalendarAttributes.Font.Style = []
         DataField = 'DATE_BIRTH'
         DataSource = TableSRC
+        Date = 43041.000000000000000000
         Epoch = 1950
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -693,8 +691,10 @@ object M_StudentFRM: TM_StudentFRM
         NullAndBlankState = cbUnchecked
         Alignment = taLeftJustify
         Caption = #917#957#949#961#947#972#962
+        Checked = True
         DataField = 'STATUS_ACTIVE'
         DataSource = TableSRC
+        State = cbChecked
         TabOrder = 6
       end
     end
@@ -714,7 +714,6 @@ object M_StudentFRM: TM_StudentFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 328
       end
       object Grid1: TwwDBGrid
         Left = 0
@@ -1003,7 +1002,7 @@ object M_StudentFRM: TM_StudentFRM
   end
   object TableSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
-    KeyGenerator = 'GEN_COMPANY'
+    KeyGenerator = 'GEN_PERSON'
     SQLInsert.Strings = (
       'INSERT INTO PERSON'
       

@@ -114,6 +114,22 @@
             <Form>M_StudentFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="M_Venue.pas">
+            <Form>M_venuFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_seminarType.pas">
+            <Form>M_SeminarTypeFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_CostType.pas">
+            <Form>M_CostTypeFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="L_Seminar.pas">
+            <Form>L_SeminarFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

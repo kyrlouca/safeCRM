@@ -1,7 +1,7 @@
-object M_CompanyFRM: TM_CompanyFRM
+object M_venuFRM: TM_venuFRM
   Left = 365
   Top = 153
-  Caption = 'Company Details'
+  Caption = '--'
   ClientHeight = 558
   ClientWidth = 918
   Color = clBtnFace
@@ -40,9 +40,9 @@ object M_CompanyFRM: TM_CompanyFRM
       Height = 45
       Align = alClient
       Alignment = taCenter
-      Caption = #917#964#945#953#961#949#943#949#962
+      Caption = #935#974#961#959#953' '#917#954#960#945#943#948#949#965#963#951#962
       Layout = tlCenter
-      ExplicitWidth = 119
+      ExplicitWidth = 264
       ExplicitHeight = 32
     end
   end
@@ -351,6 +351,7 @@ object M_CompanyFRM: TM_CompanyFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Next'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 2
@@ -367,6 +368,7 @@ object M_CompanyFRM: TM_CompanyFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Button1'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 3
@@ -400,6 +402,7 @@ object M_CompanyFRM: TM_CompanyFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Delete'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 5
@@ -476,9 +479,9 @@ object M_CompanyFRM: TM_CompanyFRM
       ExplicitLeft = 672
     end
     object GroupBox1: TGroupBox
-      Left = 335
+      Left = 423
       Top = 6
-      Width = 274
+      Width = 370
       Height = 331
       Caption = #928#955#951#961#959#966#959#961#943#949#962
       Font.Charset = DEFAULT_CHARSET
@@ -515,11 +518,11 @@ object M_CompanyFRM: TM_CompanyFRM
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 6
+        Left = 60
         Top = 145
-        Width = 89
+        Width = 35
         Height = 14
-        Caption = #919#956#949#961'. '#917#947#947#961#945#966#942#962
+        Caption = #931#967#972#955#953#945
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -528,11 +531,11 @@ object M_CompanyFRM: TM_CompanyFRM
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 44
+        Left = 38
         Top = 73
-        Width = 51
+        Width = 57
         Height = 14
-        Caption = #921#948#953#959#954#942#964#951#962
+        Caption = #932#959#960#959#952#949#963#943#945
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -543,7 +546,7 @@ object M_CompanyFRM: TM_CompanyFRM
       object SerialFLD: TRzDBLabel
         Left = 102
         Top = 19
-        Width = 115
+        Width = 67
         Height = 20
         Alignment = taRightJustify
         BorderOuter = fsFlat
@@ -552,11 +555,11 @@ object M_CompanyFRM: TM_CompanyFRM
         DataSource = TableSRC
       end
       object Label17: TLabel
-        Left = 52
+        Left = 21
         Top = 95
-        Width = 43
+        Width = 74
         Height = 14
-        Caption = 'Contact'
+        Caption = #919#956#949#961'. '#922#972#963#964#959#962
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -565,11 +568,11 @@ object M_CompanyFRM: TM_CompanyFRM
         ParentFont = False
       end
       object Label15: TLabel
-        Left = 18
+        Left = 19
         Top = 120
-        Width = 77
+        Width = 76
         Height = 14
-        Caption = #913#961'. '#917#947#947#961#945#966#942#962
+        Caption = #935#969#961#951#964#953#954#972#964#951#964#945
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -580,9 +583,9 @@ object M_CompanyFRM: TM_CompanyFRM
       object FirstFLD: TwwDBEdit
         Left = 102
         Top = 43
-        Width = 161
+        Width = 256
         Height = 22
-        DataField = 'COMPANY_NAME'
+        DataField = 'VENUE_NAME'
         DataSource = TableSRC
         TabOrder = 0
         UnboundDataType = wwDefault
@@ -592,9 +595,9 @@ object M_CompanyFRM: TM_CompanyFRM
       object wwDBEdit1: TwwDBEdit
         Left = 102
         Top = 68
-        Width = 161
+        Width = 256
         Height = 22
-        DataField = 'COMPANY_OWNER'
+        DataField = 'VENUE_LOCATION'
         DataSource = TableSRC
         TabOrder = 1
         UnboundDataType = wwDefault
@@ -604,47 +607,35 @@ object M_CompanyFRM: TM_CompanyFRM
       object wwDBEdit2: TwwDBEdit
         Left = 102
         Top = 92
-        Width = 161
+        Width = 67
         Height = 22
-        DataField = 'CONTACT_PERSON'
+        DataField = 'VENUE_COST'
         DataSource = TableSRC
         TabOrder = 2
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
       end
-      object DatePassedFLD: TwwDBDateTimePicker
-        Left = 102
-        Top = 142
-        Width = 115
-        Height = 23
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'Arial'
-        CalendarAttributes.Font.Style = []
-        DataField = 'DATE_STARTED'
-        DataSource = TableSRC
-        Date = 43041.000000000000000000
-        Epoch = 1950
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ShowButton = True
-        TabOrder = 4
-        DisplayFormat = 'dd/mm/yyyy'
-      end
       object wwDBEdit13: TwwDBEdit
         Left = 102
         Top = 117
-        Width = 115
+        Width = 67
         Height = 22
-        DataField = 'REGISTRATION_NUMBER'
+        DataField = 'VENUE_CAPACITY'
         DataSource = TableSRC
         TabOrder = 3
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+      end
+      object wwDBEdit7: TwwDBEdit
+        Left = 101
+        Top = 142
+        Width = 256
+        Height = 22
+        DataField = 'COMMENTS'
+        DataSource = TableSRC
+        TabOrder = 4
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
@@ -653,7 +644,7 @@ object M_CompanyFRM: TM_CompanyFRM
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
-      Width = 328
+      Width = 408
       Height = 421
       Align = alLeft
       BorderOuter = fsNone
@@ -661,21 +652,22 @@ object M_CompanyFRM: TM_CompanyFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 328
+        Width = 408
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 328
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 9
-        Width = 320
+        Width = 401
         Height = 412
         Selected.Strings = (
-          'COMPANY_NAME'#9'18'#9#908#957#959#956#945' '#917#964#945#953#961#949#943#945#962
-          'COMPANY_OWNER'#9'11'#9#921#948#953#959#954#964#942#964#951#962
-          'DATE_STARTED'#9'12'#9#919#956#949#961'.')
+          'VENUE_NAME'#9'25'#9#927#957#959#956#945#963#943#945
+          'VENUE_LOCATION'#9'19'#9#932#959#960#959#952#949#963#943#945
+          'VENUE_CAPACITY'#9'12'#9#935#969#961#951#964#953#954#972#964#951#964#945)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -705,245 +697,6 @@ object M_CompanyFRM: TM_CompanyFRM
         OnTitleButtonClick = Grid1TitleButtonClick
       end
     end
-    object GroupBox2: TGroupBox
-      Left = 623
-      Top = 6
-      Width = 274
-      Height = 331
-      Caption = #917#960#953#954#959#953#957#969#957#943#945
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 3
-      object Label10: TLabel
-        Left = 21
-        Top = 21
-        Width = 56
-        Height = 14
-        Caption = #932#951#955#941#966#969#957#959
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label11: TLabel
-        Left = 55
-        Top = 70
-        Width = 22
-        Height = 14
-        Caption = #934#945#958
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label12: TLabel
-        Left = 42
-        Top = 45
-        Width = 35
-        Height = 14
-        Caption = #922#953#957#951#964#972
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label13: TLabel
-        Left = 50
-        Top = 95
-        Width = 27
-        Height = 14
-        Caption = 'Email'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label14: TLabel
-        Left = 19
-        Top = 120
-        Width = 58
-        Height = 14
-        Caption = #921#963#964#959#963#949#955#943#948#945
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label6: TLabel
-        Left = 22
-        Top = 182
-        Width = 55
-        Height = 14
-        Caption = #916#953#949#973#952#965#957#963#951
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label7: TLabel
-        Left = 49
-        Top = 207
-        Width = 28
-        Height = 14
-        Caption = #927#948#972#962
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label8: TLabel
-        Left = 6
-        Top = 232
-        Width = 71
-        Height = 14
-        Caption = #932#945#967'. '#922#974#948#953#954#945#962
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label9: TLabel
-        Left = 49
-        Top = 257
-        Width = 28
-        Height = 14
-        Caption = #928#972#955#951
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object wwDBEdit8: TwwDBEdit
-        Left = 82
-        Top = 18
-        Width = 121
-        Height = 22
-        DataField = 'PHONE_FIXED'
-        DataSource = TableSRC
-        TabOrder = 0
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit9: TwwDBEdit
-        Left = 82
-        Top = 42
-        Width = 121
-        Height = 22
-        DataField = 'PHONE_MOBILE'
-        DataSource = TableSRC
-        TabOrder = 1
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit10: TwwDBEdit
-        Left = 82
-        Top = 67
-        Width = 121
-        Height = 22
-        DataField = 'FAX'
-        DataSource = TableSRC
-        TabOrder = 2
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit11: TwwDBEdit
-        Left = 82
-        Top = 92
-        Width = 121
-        Height = 22
-        DataField = 'EMAIL'
-        DataSource = TableSRC
-        TabOrder = 3
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit12: TwwDBEdit
-        Left = 82
-        Top = 117
-        Width = 121
-        Height = 22
-        DataField = 'WEBSITE'
-        DataSource = TableSRC
-        TabOrder = 4
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit3: TwwDBEdit
-        Left = 82
-        Top = 179
-        Width = 161
-        Height = 22
-        DataField = 'ADDRESS'
-        DataSource = TableSRC
-        TabOrder = 5
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit4: TwwDBEdit
-        Left = 82
-        Top = 204
-        Width = 161
-        Height = 22
-        DataField = 'ADDRESS_STREET'
-        DataSource = TableSRC
-        TabOrder = 6
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit5: TwwDBEdit
-        Left = 82
-        Top = 229
-        Width = 161
-        Height = 22
-        DataField = 'ADDRESS_POST_CODE'
-        DataSource = TableSRC
-        TabOrder = 7
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit6: TwwDBEdit
-        Left = 82
-        Top = 254
-        Width = 161
-        Height = 22
-        DataField = 'ADDRESS_CITY'
-        DataSource = TableSRC
-        TabOrder = 8
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-    end
   end
   object TableSRC: TDataSource
     DataSet = TableSQL
@@ -953,74 +706,43 @@ object M_CompanyFRM: TM_CompanyFRM
   end
   object TableSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
-    KeyGenerator = 'GEN_COMPANY'
+    KeyGenerator = 'GEN_VENUE'
     SQLInsert.Strings = (
-      'INSERT INTO COMPANY'
+      'INSERT INTO VENUE'
       
-        '  (SERIAL_NUMBER, REGISTRATION_NUMBER, COMPANY_NAME, COMPANY_OWN' +
-        'ER, STATUS, OCCUPATION, PHONE_MOBILE, PHONE_FIXED, PHONE_ALTERNA' +
-        'TE, PHONE_CONTACT_PERSON, FAX, EMAIL, EMAIL_OWNER, EMAIL_CONTACT' +
-        '_PERSON, FACEBOOK, TWITTER, LINKEDIN, WEBSITE, ADDRESS, ADDRESS_' +
-        'OWNER, ADDRESS_STREET, ADDRESS_POST_CODE, ADDRESS_CITY, LOCATION' +
-        '_DETAILS, DATE_STARTED, LIST_SOURCE, YEAR_CREATED, EMPLOYEES, CO' +
-        'NTACT_PERSON, COMMUNICATION_TYPE, DATE_USER, REGISTRATION_SP, MA' +
-        'IN_ACTIVITIES)'
+        '  (SERIAL_NUMBER, VENUE_NAME, VENUE_LOCATION, VENUE_CAPACITY, VE' +
+        'NUE_COST, COMMENTS)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :REGISTRATION_NUMBER, :COMPANY_NAME, :COMPANY' +
-        '_OWNER, :STATUS, :OCCUPATION, :PHONE_MOBILE, :PHONE_FIXED, :PHON' +
-        'E_ALTERNATE, :PHONE_CONTACT_PERSON, :FAX, :EMAIL, :EMAIL_OWNER, ' +
-        ':EMAIL_CONTACT_PERSON, :FACEBOOK, :TWITTER, :LINKEDIN, :WEBSITE,' +
-        ' :ADDRESS, :ADDRESS_OWNER, :ADDRESS_STREET, :ADDRESS_POST_CODE, ' +
-        ':ADDRESS_CITY, :LOCATION_DETAILS, :DATE_STARTED, :LIST_SOURCE, :' +
-        'YEAR_CREATED, :EMPLOYEES, :CONTACT_PERSON, :COMMUNICATION_TYPE, ' +
-        ':DATE_USER, :REGISTRATION_SP, :MAIN_ACTIVITIES)')
+        '  (:SERIAL_NUMBER, :VENUE_NAME, :VENUE_LOCATION, :VENUE_CAPACITY' +
+        ', :VENUE_COST, :COMMENTS)')
     SQLDelete.Strings = (
-      'DELETE FROM COMPANY'
+      'DELETE FROM VENUE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLUpdate.Strings = (
-      'UPDATE COMPANY'
+      'UPDATE VENUE'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, REGISTRATION_NUMBER = :REGISTR' +
-        'ATION_NUMBER, COMPANY_NAME = :COMPANY_NAME, COMPANY_OWNER = :COM' +
-        'PANY_OWNER, STATUS = :STATUS, OCCUPATION = :OCCUPATION, PHONE_MO' +
-        'BILE = :PHONE_MOBILE, PHONE_FIXED = :PHONE_FIXED, PHONE_ALTERNAT' +
-        'E = :PHONE_ALTERNATE, PHONE_CONTACT_PERSON = :PHONE_CONTACT_PERS' +
-        'ON, FAX = :FAX, EMAIL = :EMAIL, EMAIL_OWNER = :EMAIL_OWNER, EMAI' +
-        'L_CONTACT_PERSON = :EMAIL_CONTACT_PERSON, FACEBOOK = :FACEBOOK, ' +
-        'TWITTER = :TWITTER, LINKEDIN = :LINKEDIN, WEBSITE = :WEBSITE, AD' +
-        'DRESS = :ADDRESS, ADDRESS_OWNER = :ADDRESS_OWNER, ADDRESS_STREET' +
-        ' = :ADDRESS_STREET, ADDRESS_POST_CODE = :ADDRESS_POST_CODE, ADDR' +
-        'ESS_CITY = :ADDRESS_CITY, LOCATION_DETAILS = :LOCATION_DETAILS, ' +
-        'DATE_STARTED = :DATE_STARTED, LIST_SOURCE = :LIST_SOURCE, YEAR_C' +
-        'REATED = :YEAR_CREATED, EMPLOYEES = :EMPLOYEES, CONTACT_PERSON =' +
-        ' :CONTACT_PERSON, COMMUNICATION_TYPE = :COMMUNICATION_TYPE, DATE' +
-        '_USER = :DATE_USER, REGISTRATION_SP = :REGISTRATION_SP, MAIN_ACT' +
-        'IVITIES = :MAIN_ACTIVITIES'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, VENUE_NAME = :VENUE_NAME, VENU' +
+        'E_LOCATION = :VENUE_LOCATION, VENUE_CAPACITY = :VENUE_CAPACITY, ' +
+        'VENUE_COST = :VENUE_COST, COMMENTS = :COMMENTS'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, REGISTRATION_NUMBER, COMPANY_NAME, COMPANY' +
-        '_OWNER, STATUS, OCCUPATION, PHONE_MOBILE, PHONE_FIXED, PHONE_ALT' +
-        'ERNATE, PHONE_CONTACT_PERSON, FAX, EMAIL, EMAIL_OWNER, EMAIL_CON' +
-        'TACT_PERSON, FACEBOOK, TWITTER, LINKEDIN, WEBSITE, ADDRESS, ADDR' +
-        'ESS_OWNER, ADDRESS_STREET, ADDRESS_POST_CODE, ADDRESS_CITY, LOCA' +
-        'TION_DETAILS, DATE_STARTED, LIST_SOURCE, YEAR_CREATED, EMPLOYEES' +
-        ', CONTACT_PERSON, COMMUNICATION_TYPE, DATE_USER, REGISTRATION_SP' +
-        ', MAIN_ACTIVITIES FROM COMPANY'
+        'SELECT SERIAL_NUMBER, VENUE_NAME, VENUE_LOCATION, VENUE_CAPACITY' +
+        ', VENUE_COST, COMMENTS FROM VENUE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
-      'SELECT NULL FROM COMPANY'
+      'SELECT NULL FROM VENUE'
       'WHERE'
       'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
       'FOR UPDATE WITH LOCK')
     SQLRecCount.Strings = (
       'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM COMPANY'
+      'SELECT 1 AS C  FROM VENUE'
       ''
       ') q')
     Connection = U_databaseFRM.DataConnection
@@ -1030,181 +752,42 @@ object M_CompanyFRM: TM_CompanyFRM
       'SELECT'
       '*'
       'FROM'
-      'Company order by CompanY_Name')
+      'venue'
+      'order by Venue_name')
     Active = True
     AfterInsert = TableSQLAfterInsert
     Left = 49
     Top = 5
-    object TableSQLCOMPANY_NAME: TWideStringField
-      DisplayLabel = #908#957#959#956#945' '#917#964#945#953#961#949#943#945#962
-      DisplayWidth = 18
-      FieldName = 'COMPANY_NAME'
+    object TableSQLVENUE_NAME: TWideStringField
+      DisplayLabel = #927#957#959#956#945#963#943#945
+      DisplayWidth = 25
+      FieldName = 'VENUE_NAME'
       Required = True
       Size = 160
     end
-    object TableSQLCOMPANY_OWNER: TWideStringField
-      DisplayLabel = #921#948#953#959#954#964#942#964#951#962
-      DisplayWidth = 11
-      FieldName = 'COMPANY_OWNER'
+    object TableSQLVENUE_LOCATION: TWideStringField
+      DisplayLabel = #932#959#960#959#952#949#963#943#945
+      DisplayWidth = 19
+      FieldName = 'VENUE_LOCATION'
       Size = 160
     end
-    object TableSQLDATE_STARTED: TDateField
-      DisplayLabel = #919#956#949#961'.'
+    object TableSQLVENUE_CAPACITY: TIntegerField
+      DisplayLabel = #935#969#961#951#964#953#954#972#964#951#964#945
       DisplayWidth = 12
-      FieldName = 'DATE_STARTED'
-    end
-    object TableSQLCONTACT_PERSON: TWideStringField
-      DisplayLabel = #931#973#957#948#949#963#956#959#962
-      DisplayWidth = 11
-      FieldName = 'CONTACT_PERSON'
-      Visible = False
-      Size = 160
+      FieldName = 'VENUE_CAPACITY'
     end
     object TableSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = #913
+      DisplayWidth = 10
       FieldName = 'SERIAL_NUMBER'
       Visible = False
     end
-    object TableSQLREGISTRATION_NUMBER: TWideStringField
-      FieldName = 'REGISTRATION_NUMBER'
-      Visible = False
-      FixedChar = True
-    end
-    object TableSQLSTATUS: TWideStringField
-      FieldName = 'STATUS'
-      Visible = False
-      FixedChar = True
-      Size = 3
-    end
-    object TableSQLOCCUPATION: TWideStringField
-      FieldName = 'OCCUPATION'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLPHONE_MOBILE: TWideStringField
-      FieldName = 'PHONE_MOBILE'
-      Visible = False
-      FixedChar = True
-      Size = 15
-    end
-    object TableSQLPHONE_FIXED: TWideStringField
-      FieldName = 'PHONE_FIXED'
-      Visible = False
-      FixedChar = True
-      Size = 15
-    end
-    object TableSQLPHONE_ALTERNATE: TWideStringField
-      FieldName = 'PHONE_ALTERNATE'
-      Visible = False
-      FixedChar = True
-    end
-    object TableSQLPHONE_CONTACT_PERSON: TWideStringField
-      FieldName = 'PHONE_CONTACT_PERSON'
-      Visible = False
-      FixedChar = True
-      Size = 15
-    end
-    object TableSQLFAX: TWideStringField
-      FieldName = 'FAX'
-      Visible = False
-      FixedChar = True
-      Size = 15
-    end
-    object TableSQLEMAIL: TWideStringField
-      FieldName = 'EMAIL'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLEMAIL_OWNER: TWideStringField
-      FieldName = 'EMAIL_OWNER'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLEMAIL_CONTACT_PERSON: TWideStringField
-      FieldName = 'EMAIL_CONTACT_PERSON'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLFACEBOOK: TWideStringField
-      FieldName = 'FACEBOOK'
-      Visible = False
-      Size = 80
-    end
-    object TableSQLTWITTER: TWideStringField
-      FieldName = 'TWITTER'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLLINKEDIN: TWideStringField
-      FieldName = 'LINKEDIN'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLWEBSITE: TWideStringField
-      FieldName = 'WEBSITE'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLADDRESS: TWideStringField
-      FieldName = 'ADDRESS'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLADDRESS_OWNER: TSmallintField
-      FieldName = 'ADDRESS_OWNER'
+    object TableSQLVENUE_COST: TFloatField
+      FieldName = 'VENUE_COST'
       Visible = False
     end
-    object TableSQLADDRESS_STREET: TWideStringField
-      FieldName = 'ADDRESS_STREET'
-      Visible = False
-      Size = 80
-    end
-    object TableSQLADDRESS_POST_CODE: TWideStringField
-      FieldName = 'ADDRESS_POST_CODE'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object TableSQLADDRESS_CITY: TWideStringField
-      FieldName = 'ADDRESS_CITY'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object TableSQLLOCATION_DETAILS: TWideStringField
-      FieldName = 'LOCATION_DETAILS'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLLIST_SOURCE: TWideStringField
-      FieldName = 'LIST_SOURCE'
-      Visible = False
-      Size = 160
-    end
-    object TableSQLYEAR_CREATED: TSmallintField
-      FieldName = 'YEAR_CREATED'
-      Visible = False
-    end
-    object TableSQLEMPLOYEES: TIntegerField
-      FieldName = 'EMPLOYEES'
-      Visible = False
-    end
-    object TableSQLCOMMUNICATION_TYPE: TWideStringField
-      FieldName = 'COMMUNICATION_TYPE'
-      Visible = False
-      FixedChar = True
-      Size = 3
-    end
-    object TableSQLDATE_USER: TDateField
-      FieldName = 'DATE_USER'
-      Visible = False
-    end
-    object TableSQLREGISTRATION_SP: TWideStringField
-      FieldName = 'REGISTRATION_SP'
-      Visible = False
-      FixedChar = True
-    end
-    object TableSQLMAIN_ACTIVITIES: TWideStringField
-      FieldName = 'MAIN_ACTIVITIES'
+    object TableSQLCOMMENTS: TWideStringField
+      FieldName = 'COMMENTS'
       Visible = False
       Size = 160
     end
