@@ -306,6 +306,7 @@ object V_SeminarFRM: TV_SeminarFRM
     object RzToolbar1: TRzToolbar
       Left = 1
       Top = 1
+      Width = 281
       Height = 37
       Align = alLeft
       AutoResize = False
@@ -345,8 +346,8 @@ object V_SeminarFRM: TV_SeminarFRM
         Caption = 'Left'
       end
       object BtnRight: TRzToolButton
-        Left = 4
-        Top = 27
+        Left = 44
+        Top = 2
         Hint = 'Right'
         DisabledIndex = 11
         ImageIndex = 10
@@ -354,16 +355,16 @@ object V_SeminarFRM: TV_SeminarFRM
         Caption = 'Right'
       end
       object BtnPost: TRzToolButton
-        Left = 4
-        Top = 52
+        Left = 84
+        Top = 2
         Hint = 'Post'
         DisabledIndex = 13
         ImageIndex = 12
         Caption = 'Post'
       end
       object BtnRefresh: TRzToolButton
-        Left = 4
-        Top = 77
+        Left = 124
+        Top = 2
         Hint = 'Refresh'
         DisabledIndex = 15
         ImageIndex = 14
@@ -378,32 +379,21 @@ object V_SeminarFRM: TV_SeminarFRM
     Height = 423
     Align = alClient
     TabOrder = 3
-    object Panel5: TPanel
-      Left = 693
-      Top = 1
-      Width = 224
-      Height = 421
-      Align = alRight
-      BevelOuter = bvNone
-      Locked = True
-      TabOrder = 0
-    end
     object RzPageControl1: TRzPageControl
       Left = 1
       Top = 1
-      Width = 692
+      Width = 916
       Height = 421
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = StudentsTS
       Align = alClient
-      TabIndex = 0
-      TabOrder = 1
+      TabIndex = 1
+      TabOrder = 0
+      ExplicitWidth = 692
       FixedDimension = 19
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
-        ExplicitTop = 19
         ExplicitWidth = 685
-        ExplicitHeight = 399
         object FirstGRP: TGroupBox
           Left = 24
           Top = -1
@@ -843,12 +833,126 @@ object V_SeminarFRM: TV_SeminarFRM
       end
       object StudentsTS: TRzTabSheet
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
+        OnEnter = StudentsTSEnter
+        ExplicitLeft = -39
+        ExplicitTop = 148
+        ExplicitWidth = 688
+        object RzGroupBox1: TRzGroupBox
+          Left = 30
+          Top = 3
+          Width = 403
+          Height = 342
+          Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          object Grid1: TwwDBGrid
+            Left = 1
+            Top = 15
+            Width = 401
+            Height = 326
+            Selected.Strings = (
+              'FIRST_NAME'#9'19'#9#908#957#959#956#945
+              'LAST_NAME'#9'24'#9#917#960#943#952#949#964#959
+              'ATTENDANCE_STATUS'#9'8'#9'Status')
+            IniAttributes.Delimiter = ';;'
+            IniAttributes.UnicodeIniFile = False
+            TitleColor = clBtnFace
+            FixedCols = 0
+            ShowHorzScrollBar = True
+            Align = alClient
+            Color = 12713983
+            DataSource = AttendingSRC
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            KeyOptions = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 0
+            TitleAlignment = taLeftJustify
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -13
+            TitleFont.Name = 'Arial'
+            TitleFont.Style = []
+            TitleLines = 1
+            TitleButtons = True
+            ExplicitWidth = 625
+          end
+        end
+        object RzGroupBox2: TRzGroupBox
+          Left = 527
+          Top = 43
+          Width = 439
+          Height = 294
+          Caption = #922#945#964#940#955#959#947#959#962
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          object wwDBGrid1: TwwDBGrid
+            Left = 1
+            Top = 15
+            Width = 437
+            Height = 278
+            Selected.Strings = (
+              'FIRST_NAME'#9'19'#9#908#957#959#956#945#9#9
+              'LAST_NAME'#9'24'#9#917#960#943#952#949#964#959#9#9
+              'ATTENDANCE_STATUS'#9'8'#9'Status'#9#9)
+            IniAttributes.Delimiter = ';;'
+            IniAttributes.UnicodeIniFile = False
+            TitleColor = clBtnFace
+            FixedCols = 0
+            ShowHorzScrollBar = True
+            Align = alClient
+            Color = 12713983
+            DataSource = NonAttendSRC
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            KeyOptions = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 0
+            TitleAlignment = taLeftJustify
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -13
+            TitleFont.Name = 'Arial'
+            TitleFont.Style = []
+            TitleLines = 1
+            TitleButtons = True
+          end
+        end
       end
       object CostTS: TRzTabSheet
         Caption = #922#972#963#964#959#962
+        ExplicitWidth = 688
       end
       object DaysTS: TRzTabSheet
         Caption = #919#956#941#961#949#962
+        ExplicitWidth = 688
+      end
+      object TabSheet1: TRzTabSheet
+        Caption = #928#945#961#959#965#963#953#959#955#972#947#953#959
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
       end
     end
   end
@@ -1673,5 +1777,218 @@ object V_SeminarFRM: TV_SeminarFRM
       E001E00180078007F07FF07FFE0FFE0FF87FF87FFE1FFE1FFC7FFC7FFE3FFE3F
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  object AttendingSQL: TIBCQuery
+    UpdatingTable = 'SEMINAR_PERSON'
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR_PERSON'
+      '  (FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, ATTENDANCE_STATUS)'
+      'VALUES'
+      '  (:FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :ATTENDANCE_STATUS)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR_PERSON'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIA' +
+        'L = :Old_FK_PERSON_SERIAL')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR_PERSON'
+      'SET'
+      
+        '  FK_SEMINAR_SERIAL = :FK_SEMINAR_SERIAL, FK_PERSON_SERIAL = :FK' +
+        '_PERSON_SERIAL, ATTENDANCE_STATUS = :ATTENDANCE_STATUS'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIA' +
+        'L = :Old_FK_PERSON_SERIAL')
+    SQLRefresh.Strings = (
+      
+        'SELECT FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, ATTENDANCE_STATUS FR' +
+        'OM SEMINAR_PERSON'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :FK_SEMINAR_SERIAL AND FK_PERSON_SERIAL = ' +
+        ':FK_PERSON_SERIAL')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR_PERSON'
+      'WHERE'
+      
+        'FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIAL ' +
+        '= :Old_FK_PERSON_SERIAL'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR_PERSON'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'select'
+      
+        ' pe.first_name,pe.last_name , sp.fk_seminar_serial, sp.fk_person' +
+        '_serial, sp.attendance_status'
+      'from'
+      'seminar_person   sp'
+      'left outer join'
+      'person pe on pe.serial_number=sp.fk_person_serial;')
+    MasterFields = 'SERIAL_NUMBER'
+    DetailFields = 'FK_SEMINAR_SERIAL'
+    MasterSource = SeminarSRC
+    Active = True
+    Left = 266
+    Top = 169
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'SERIAL_NUMBER'
+        Value = nil
+      end>
+    object AttendingSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 19
+      FieldName = 'FIRST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
+    object AttendingSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 24
+      FieldName = 'LAST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
+    object AttendingSQLATTENDANCE_STATUS: TWideStringField
+      DisplayLabel = 'Status'
+      DisplayWidth = 8
+      FieldName = 'ATTENDANCE_STATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object AttendingSQLFK_PERSON_SERIAL: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'FK_PERSON_SERIAL'
+      Required = True
+      Visible = False
+    end
+    object AttendingSQLFK_SEMINAR_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_SERIAL'
+      Required = True
+      Visible = False
+    end
+  end
+  object AttendingSRC: TDataSource
+    DataSet = AttendingSQL
+    OnStateChange = SeminarSRCStateChange
+    Left = 264
+    Top = 233
+  end
+  object NonAttendSQL: TIBCQuery
+    UpdatingTable = 'SEMINAR_PERSON'
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR_PERSON'
+      '  (FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, ATTENDANCE_STATUS)'
+      'VALUES'
+      '  (:FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :ATTENDANCE_STATUS)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR_PERSON'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIA' +
+        'L = :Old_FK_PERSON_SERIAL')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR_PERSON'
+      'SET'
+      
+        '  FK_SEMINAR_SERIAL = :FK_SEMINAR_SERIAL, FK_PERSON_SERIAL = :FK' +
+        '_PERSON_SERIAL, ATTENDANCE_STATUS = :ATTENDANCE_STATUS'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIA' +
+        'L = :Old_FK_PERSON_SERIAL')
+    SQLRefresh.Strings = (
+      
+        'SELECT FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, ATTENDANCE_STATUS FR' +
+        'OM SEMINAR_PERSON'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :FK_SEMINAR_SERIAL AND FK_PERSON_SERIAL = ' +
+        ':FK_PERSON_SERIAL')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR_PERSON'
+      'WHERE'
+      
+        'FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIAL ' +
+        '= :Old_FK_PERSON_SERIAL'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR_PERSON'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'select'
+      
+        ' pe.first_name,pe.last_name , sp.fk_seminar_serial, sp.fk_person' +
+        '_serial, sp.attendance_status'
+      'from'
+      '    person pe  left outer join'
+      '    seminar_person sp on pe.serial_number=sp.fk_person_serial'
+      'where'
+      '    sp.fk_seminar_serial <> :SeminarSerial'
+      'order by pe.last_name, pe.first_name')
+    DetailFields = 'FK_SEMINAR_SERIAL'
+    Active = True
+    Left = 730
+    Top = 297
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'SeminarSerial'
+        Value = nil
+      end>
+    object NonAttendSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 19
+      FieldName = 'FIRST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
+    object NonAttendSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 24
+      FieldName = 'LAST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
+    object NonAttendSQLATTENDANCE_STATUS: TWideStringField
+      DisplayLabel = 'Status'
+      DisplayWidth = 8
+      FieldName = 'ATTENDANCE_STATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object NonAttendSQLFK_SEMINAR_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_SERIAL'
+      Visible = False
+    end
+    object NonAttendSQLFK_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_PERSON_SERIAL'
+      Visible = False
+    end
+  end
+  object NonAttendSRC: TDataSource
+    DataSet = NonAttendSQL
+    OnStateChange = SeminarSRCStateChange
+    Left = 768
+    Top = 233
   end
 end

@@ -31,7 +31,6 @@ type
     BtnPost: TRzToolButton;
     BtnRefresh: TRzToolButton;
     Panel3: TPanel;
-    Panel5: TPanel;
     RzPageControl1: TRzPageControl;
     SeminarTS: TRzTabSheet;
     StudentsTS: TRzTabSheet;
@@ -80,6 +79,25 @@ type
     InstructorBTN: TSpeedButton;
     VenueBTN: TSpeedButton;
     Label12: TLabel;
+    TabSheet1: TRzTabSheet;
+    RzGroupBox1: TRzGroupBox;
+    RzGroupBox2: TRzGroupBox;
+    AttendingSQL: TIBCQuery;
+    AttendingSQLFIRST_NAME: TWideStringField;
+    AttendingSQLLAST_NAME: TWideStringField;
+    AttendingSQLFK_PERSON_SERIAL: TIntegerField;
+    AttendingSQLATTENDANCE_STATUS: TWideStringField;
+    Grid1: TwwDBGrid;
+    AttendingSRC: TDataSource;
+    AttendingSQLFK_SEMINAR_SERIAL: TIntegerField;
+    NonAttendSQL: TIBCQuery;
+    NonAttendSQLFIRST_NAME: TWideStringField;
+    NonAttendSQLLAST_NAME: TWideStringField;
+    NonAttendSQLFK_SEMINAR_SERIAL: TIntegerField;
+    NonAttendSQLFK_PERSON_SERIAL: TIntegerField;
+    NonAttendSQLATTENDANCE_STATUS: TWideStringField;
+    NonAttendSRC: TDataSource;
+    wwDBGrid1: TwwDBGrid;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure SeminarSRCStateChange(Sender: TObject);
@@ -92,6 +110,7 @@ type
     procedure InstructorBTNClick(Sender: TObject);
     procedure VenueBTNClick(Sender: TObject);
     procedure SeminarTypeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure StudentsTSEnter(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -161,6 +180,17 @@ begin
  end;
 
  end;
+
+procedure TV_SeminarFRM.StudentsTSEnter(Sender: TObject);
+var
+  SeminarSerial:Integer;
+begin
+
+  SeminarSerial:= SEminarSQL.FieldByName('serial_number').AsInteger;
+  NonAttendSQL.Close;
+  NonAttendSQL.ParamByName('seminarSerial').Value:=seminarSerial;
+  NonAttendSQL.Open;
+end;
 
 procedure TV_SeminarFRM.InstructorBTNClick(Sender: TObject);
 vAR
