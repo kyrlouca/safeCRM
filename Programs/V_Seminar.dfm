@@ -137,13 +137,13 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 990
       Height = 536
       Hint = ''
-      ActivePage = StudentsTS
+      ActivePage = SeminarTS
       Align = alClient
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 0
       OnChanging = PageControlPCChanging
-      ExplicitWidth = 924
-      ExplicitHeight = 421
+      ExplicitLeft = -63
+      ExplicitTop = 0
       FixedDimension = 19
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
@@ -904,13 +904,13 @@ object V_SeminarFRM: TV_SeminarFRM
           end
         end
       end
-      object CostTS: TRzTabSheet
-        Caption = #922#972#963#964#959#962
+      object DaysTS: TRzTabSheet
+        Caption = #920#941#956#945#964#945
         ExplicitWidth = 920
         ExplicitHeight = 398
       end
-      object DaysTS: TRzTabSheet
-        Caption = #919#956#941#961#949#962
+      object CostTS: TRzTabSheet
+        Caption = #922#972#963#964#959#962
         ExplicitWidth = 920
         ExplicitHeight = 398
       end
@@ -2047,8 +2047,8 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
-    Left = 266
-    Top = 169
+    Left = 626
+    Top = 249
     ParamData = <
       item
         DataType = ftUnknown
@@ -2099,8 +2099,8 @@ object V_SeminarFRM: TV_SeminarFRM
   object AttendingSRC: TDataSource
     DataSet = AttendingSQL
     OnStateChange = SeminarSRCStateChange
-    Left = 264
-    Top = 233
+    Left = 632
+    Top = 185
   end
   object NonAttendSQL: TIBCQuery
     UpdatingTable = 'person'
@@ -2168,8 +2168,8 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     ReadOnly = True
     Active = True
-    Left = 730
-    Top = 297
+    Left = 762
+    Top = 289
     ParamData = <
       item
         DataType = ftUnknown

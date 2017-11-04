@@ -65,6 +65,22 @@ type
     TableSQLCOMMENTS: TWideStringField;
     Label7: TLabel;
     RzDBRichEdit1: TRzDBRichEdit;
+    GroupBox2: TGroupBox;
+    RzPanel4: TRzPanel;
+    seminarSubjectSQL: TIBCQuery;
+    SeminarSubjectSRC: TDataSource;
+    seminarSubjectSQLSERIAL_NUMBER: TIntegerField;
+    seminarSubjectSQLSUBJECT: TWideStringField;
+    seminarSubjectSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField;
+    wwDBNavigator1: TwwDBNavigator;
+    wwDBNavigator1Prior: TwwNavButton;
+    wwDBNavigator1Next: TwwNavButton;
+    wwDBNavigator1Insert: TwwNavButton;
+    wwDBNavigator1Delete: TwwNavButton;
+    wwDBNavigator1Post: TwwNavButton;
+    wwDBNavigator1Cancel: TwwNavButton;
+    wwDBNavigator1Refresh: TwwNavButton;
+    wwDBGrid1: TwwDBGrid;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -136,7 +152,7 @@ end;
 
 procedure TM_SeminarTypeFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL]);
+ksOpenTables([TableSQL,SeminarSubjectSQL]);
 if IN_ACTION='INSERT' then begin
    TableSQL.Insert;
 end;

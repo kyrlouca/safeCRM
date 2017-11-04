@@ -710,7 +710,7 @@ object M_InstructorFRM: TM_InstructorFRM
       end
     end
     object GroupBox1: TGroupBox
-      Left = 375
+      Left = 387
       Top = 16
       Width = 274
       Height = 331
@@ -866,6 +866,26 @@ object M_InstructorFRM: TM_InstructorFRM
         WantReturns = False
         WordWrap = False
       end
+      object wwCheckBox2: TwwCheckBox
+        Left = 63
+        Top = 148
+        Width = 54
+        Height = 17
+        DisableThemes = False
+        AlwaysTransparent = False
+        ValueChecked = 'Y'
+        ValueUnchecked = 'N'
+        DisplayValueChecked = 'Y'
+        DisplayValueUnchecked = 'N'
+        NullAndBlankState = cbUnchecked
+        Alignment = taLeftJustify
+        Caption = #913#925#913#916
+        Checked = True
+        DataField = 'CERTIFIED_ANAD'
+        DataSource = TableSRC
+        State = cbChecked
+        TabOrder = 5
+      end
     end
     object RzPanel2: TRzPanel
       Left = 1
@@ -951,7 +971,7 @@ object M_InstructorFRM: TM_InstructorFRM
         ', PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET,' +
         ' ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED' +
         ', DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER' +
-        ', STATUS_ACTIVE)'
+        ', STATUS_ACTIVE, FULL_NAME, CERTIFIED_ANAD)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :NATIONAL_ID, :FK_COMPANY_SERIAL, :FIRST_NAME' +
@@ -959,7 +979,8 @@ object M_InstructorFRM: TM_InstructorFRM
         'HONE_FIXED, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRESS, ' +
         ':ADDRESS_STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_DIS' +
         'TRICT, :DATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, :FA' +
-        'CEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE)')
+        'CEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE, :FULL_NAME, :CERTIFI' +
+        'ED_ANAD)')
     SQLDelete.Strings = (
       'DELETE FROM INSTRUCTOR'
       'WHERE'
@@ -979,7 +1000,8 @@ object M_InstructorFRM: TM_InstructorFRM
         'DISTRICT, DATE_STARTED = :DATE_STARTED, DATE_BIRTH = :DATE_BIRTH' +
         ', DATE_USER = :DATE_USER, LIST_SOURCE = :LIST_SOURCE, FACEBOOK =' +
         ' :FACEBOOK, WEBSITE = :WEBSITE, TWITTER = :TWITTER, STATUS_ACTIV' +
-        'E = :STATUS_ACTIVE'
+        'E = :STATUS_ACTIVE, FULL_NAME = :FULL_NAME, CERTIFIED_ANAD = :CE' +
+        'RTIFIED_ANAD'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -989,7 +1011,7 @@ object M_InstructorFRM: TM_InstructorFRM
         'IXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STR' +
         'EET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STA' +
         'RTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWI' +
-        'TTER, STATUS_ACTIVE FROM INSTRUCTOR'
+        'TTER, STATUS_ACTIVE, FULL_NAME, CERTIFIED_ANAD FROM INSTRUCTOR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1160,6 +1182,13 @@ object M_InstructorFRM: TM_InstructorFRM
     end
     object TableSQLSTATUS_ACTIVE: TWideStringField
       FieldName = 'STATUS_ACTIVE'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLCERTIFIED_ANAD: TWideStringField
+      FieldName = 'CERTIFIED_ANAD'
       Required = True
       Visible = False
       FixedChar = True

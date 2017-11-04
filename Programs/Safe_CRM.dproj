@@ -138,10 +138,6 @@
             <Form>M_StudentFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="M_Instruct.pas">
-            <Form>M_InstructFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

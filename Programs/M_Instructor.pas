@@ -97,6 +97,8 @@ type
     TableSQLWEBSITE: TWideStringField;
     TableSQLTWITTER: TWideStringField;
     TableSQLSTATUS_ACTIVE: TWideStringField;
+    wwCheckBox2: TwwCheckBox;
+    TableSQLCERTIFIED_ANAD: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

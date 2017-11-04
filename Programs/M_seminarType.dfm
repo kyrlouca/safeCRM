@@ -2,7 +2,7 @@
   Left = 365
   Top = 153
   Caption = 'Company Details'
-  ClientHeight = 558
+  ClientHeight = 641
   ClientWidth = 918
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -47,11 +47,12 @@
   end
   object Panel4: TPanel
     Left = 0
-    Top = 515
+    Top = 598
     Width = 918
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 817
       Top = 1
@@ -460,24 +461,26 @@
     Left = 0
     Top = 92
     Width = 918
-    Height = 423
+    Height = 506
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 423
     object Panel5: TPanel
       Left = 693
       Top = 1
       Width = 224
-      Height = 421
+      Height = 504
       Align = alRight
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 421
     end
     object GroupBox1: TGroupBox
       Left = 399
       Top = 6
       Width = 338
-      Height = 331
+      Height = 299
       Caption = #928#955#951#961#959#966#959#961#943#949#962
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -720,10 +723,11 @@
       Left = 1
       Top = 1
       Width = 376
-      Height = 421
+      Height = 504
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 421
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -737,7 +741,7 @@
         Left = 0
         Top = 9
         Width = 361
-        Height = 412
+        Height = 495
         Selected.Strings = (
           'SEMINAR_NAME'#9'28'#9#908#957#959#956#945
           'SEMINAR_CORP_TYPE'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972
@@ -769,6 +773,183 @@
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
+        ExplicitLeft = 3
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 399
+      Top = 311
+      Width = 490
+      Height = 132
+      Caption = #920#941#956#945#964#945
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      object RzPanel4: TRzPanel
+        Left = 2
+        Top = 16
+        Width = 486
+        Height = 33
+        Align = alTop
+        BorderOuter = fsNone
+        TabOrder = 0
+        object wwDBNavigator1: TwwDBNavigator
+          Left = 0
+          Top = 0
+          Width = 175
+          Height = 33
+          DataSource = SeminarSubjectSRC
+          RepeatInterval.InitialDelay = 500
+          RepeatInterval.Interval = 100
+          Align = alLeft
+          ExplicitHeight = 25
+          object wwDBNavigator1Prior: TwwNavButton
+            Left = 0
+            Top = 0
+            Width = 25
+            Height = 25
+            Hint = 'Move to prior record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'wwDBNavigator1Prior'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 0
+            Style = nbsPrior
+          end
+          object wwDBNavigator1Next: TwwNavButton
+            Left = 25
+            Top = 0
+            Width = 25
+            Height = 25
+            Hint = 'Move to next record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'wwDBNavigator1Next'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 1
+            Style = nbsNext
+          end
+          object wwDBNavigator1Insert: TwwNavButton
+            Left = 50
+            Top = 0
+            Width = 25
+            Height = 25
+            Hint = 'Insert new record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'wwDBNavigator1Insert'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 2
+            Style = nbsInsert
+          end
+          object wwDBNavigator1Delete: TwwNavButton
+            Left = 75
+            Top = 0
+            Width = 25
+            Height = 25
+            Hint = 'Delete current record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'wwDBNavigator1Delete'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 3
+            Style = nbsDelete
+          end
+          object wwDBNavigator1Post: TwwNavButton
+            Left = 100
+            Top = 0
+            Width = 25
+            Height = 25
+            Hint = 'Post changes of current record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'wwDBNavigator1Post'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 4
+            Style = nbsPost
+          end
+          object wwDBNavigator1Cancel: TwwNavButton
+            Left = 125
+            Top = 0
+            Width = 25
+            Height = 25
+            Hint = 'Cancel changes made to current record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'wwDBNavigator1Cancel'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 5
+            Style = nbsCancel
+          end
+          object wwDBNavigator1Refresh: TwwNavButton
+            Left = 150
+            Top = 0
+            Width = 25
+            Height = 25
+            Hint = 'Refresh the contents of the dataset'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'wwDBNavigator1Refresh'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 6
+            Style = nbsRefresh
+          end
+        end
+      end
+      object wwDBGrid1: TwwDBGrid
+        Left = 2
+        Top = 49
+        Width = 486
+        Height = 81
+        Selected.Strings = (
+          'SERIAL_NUMBER'#9'10'#9'A/A'
+          'SUBJECT'#9'55'#9#920#941#956#945)
+        IniAttributes.Delimiter = ';;'
+        IniAttributes.UnicodeIniFile = False
+        TitleColor = clBtnFace
+        FixedCols = 1
+        ShowHorzScrollBar = True
+        Align = alClient
+        DataSource = SeminarSubjectSRC
+        TabOrder = 1
+        TitleAlignment = taLeftJustify
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        TitleLines = 1
+        TitleButtons = False
       end
     end
   end
@@ -900,5 +1081,86 @@
     IsolationLevel = iblReadOnlyReadCommitted
     Left = 200
     Top = 209
+  end
+  object seminarSubjectSQL: TIBCQuery
+    KeyFields = 'SERIAL_NUMBER'
+    KeyGenerator = 'GEN_SEMINAR_TYPE'
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR_TYPE_SUBJECT'
+      '  (SERIAL_NUMBER, SUBJECT, FK_SEMINAR_TYPE_SERIAL)'
+      'VALUES'
+      '  (:SERIAL_NUMBER, :SUBJECT, :FK_SEMINAR_TYPE_SERIAL)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR_TYPE_SUBJECT'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR_TYPE_SUBJECT'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, SUBJECT = :SUBJECT, FK_SEMINAR' +
+        '_TYPE_SERIAL = :FK_SEMINAR_TYPE_SERIAL'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, SUBJECT, FK_SEMINAR_TYPE_SERIAL FROM SEMIN' +
+        'AR_TYPE_SUBJECT'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR_TYPE_SUBJECT'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR_TYPE_SUBJECT'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'SELECT'
+      '*'
+      'FROM'
+      'SEMINAR_type_subject')
+    MasterFields = 'SERIAL_NUMBER'
+    DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
+    MasterSource = TableSRC
+    Active = True
+    Left = 105
+    Top = 125
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'SERIAL_NUMBER'
+        Value = nil
+      end>
+    object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
+    end
+    object seminarSubjectSQLSUBJECT: TWideStringField
+      DisplayLabel = #920#941#956#945
+      DisplayWidth = 55
+      FieldName = 'SUBJECT'
+      FixedChar = True
+      Size = 60
+    end
+    object seminarSubjectSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'FK_SEMINAR_TYPE_SERIAL'
+      Required = True
+      Visible = False
+    end
+  end
+  object SeminarSubjectSRC: TDataSource
+    DataSet = seminarSubjectSQL
+    OnStateChange = TableSRCStateChange
+    Left = 184
+    Top = 145
   end
 end
