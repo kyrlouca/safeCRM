@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  System.ImageList, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit;
+  System.ImageList, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups;
 type
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -137,6 +137,7 @@ type
     SeminarDaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     SeminarDaySQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarDayFLD: TwwDBDateTimePicker;
+    RzCalendar1: TRzCalendar;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

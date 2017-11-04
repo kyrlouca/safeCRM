@@ -67,7 +67,8 @@ implementation
 {$R *.dfm}
 
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
-  U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct;
+  U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
+  p_attendance;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -77,7 +78,7 @@ end;
 procedure TM_mainFRM.Button1Click(Sender: TObject);
 begin
 //gpShowModal(TM_paramsFRM);
-gpShowModal(TM_InstructFRM);
+gpShowModal(TP_attendanceFRM);
 end;
 
 procedure TM_mainFRM.Countries2Click(Sender: TObject);

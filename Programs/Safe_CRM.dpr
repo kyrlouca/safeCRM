@@ -13,7 +13,8 @@ uses
   L_Seminar in 'L_Seminar.pas' {L_SeminarFRM},
   V_Seminar in 'V_Seminar.pas' {V_SeminarFRM},
   M_Instructor in 'M_Instructor.pas' {M_InstructorFRM},
-  M_Student in 'M_Student.pas' {M_StudentFRM};
+  M_Student in 'M_Student.pas' {M_StudentFRM},
+  p_attendance in 'p_attendance.pas' {P_attendanceFRM};
 
 {$R *.res}
 
@@ -22,6 +23,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
-  Application.CreateForm(TM_StudentFRM, M_StudentFRM);
   Application.Run;
 end.

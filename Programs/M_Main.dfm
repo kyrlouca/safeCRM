@@ -185,7 +185,6 @@ object M_mainFRM: TM_mainFRM
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitTop = 354
     object Panel1: TPanel
       Left = 652
       Top = 2
@@ -282,7 +281,6 @@ object M_mainFRM: TM_mainFRM
     SizeBarWidth = 1
     TabOrder = 2
     VisualStyle = vsClassic
-    ExplicitHeight = 271
     object Image1: TImage
       Left = 0
       Top = 0
