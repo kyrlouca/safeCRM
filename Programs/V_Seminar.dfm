@@ -2,8 +2,8 @@ object V_SeminarFRM: TV_SeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 558
-  ClientWidth = 926
+  ClientHeight = 673
+  ClientWidth = 992
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object V_SeminarFRM: TV_SeminarFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 926
+    Width = 992
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -31,12 +31,12 @@ object V_SeminarFRM: TV_SeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 918
+    ExplicitWidth = 926
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 918
+      Width = 984
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -49,15 +49,14 @@ object V_SeminarFRM: TV_SeminarFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 926
+    Width = 992
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 918
+    ExplicitWidth = 926
     object RzToolbar1: TRzToolbar
       Left = 1
       Top = 1
-      Width = 281
       Height = 37
       Align = alLeft
       AutoResize = False
@@ -97,8 +96,8 @@ object V_SeminarFRM: TV_SeminarFRM
         Caption = 'Left'
       end
       object BtnRight: TRzToolButton
-        Left = 44
-        Top = 2
+        Left = 4
+        Top = 27
         Hint = 'Right'
         DisabledIndex = 11
         ImageIndex = 10
@@ -106,16 +105,16 @@ object V_SeminarFRM: TV_SeminarFRM
         Caption = 'Right'
       end
       object BtnPost: TRzToolButton
-        Left = 84
-        Top = 2
+        Left = 4
+        Top = 52
         Hint = 'Post'
         DisabledIndex = 13
         ImageIndex = 12
         Caption = 'Post'
       end
       object BtnRefresh: TRzToolButton
-        Left = 124
-        Top = 2
+        Left = 4
+        Top = 77
         Hint = 'Refresh'
         DisabledIndex = 15
         ImageIndex = 14
@@ -126,28 +125,30 @@ object V_SeminarFRM: TV_SeminarFRM
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 926
-    Height = 466
+    Width = 992
+    Height = 581
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 918
-    ExplicitHeight = 423
+    ExplicitWidth = 926
+    ExplicitHeight = 466
     object PageControlPC: TRzPageControl
       Left = 1
       Top = 1
-      Width = 924
-      Height = 421
+      Width = 990
+      Height = 536
       Hint = ''
       ActivePage = StudentsTS
       Align = alClient
       TabIndex = 1
       TabOrder = 0
       OnChanging = PageControlPCChanging
-      ExplicitHeight = 384
+      ExplicitWidth = 924
+      ExplicitHeight = 421
       FixedDimension = 19
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
-        ExplicitWidth = 685
+        ExplicitWidth = 920
+        ExplicitHeight = 398
         object FirstGRP: TGroupBox
           Left = 24
           Top = -1
@@ -588,14 +589,23 @@ object V_SeminarFRM: TV_SeminarFRM
       object StudentsTS: TRzTabSheet
         OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
-        ExplicitLeft = 2
-        ExplicitTop = 19
-        ExplicitWidth = 912
+        ExplicitWidth = 920
+        ExplicitHeight = 398
+        object RzPanel2: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 986
+          Height = 18
+          Align = alTop
+          BorderOuter = fsNone
+          TabOrder = 0
+        end
         object RzGroupBox1: TRzGroupBox
-          Left = 30
-          Top = 3
+          Left = 0
+          Top = 18
           Width = 403
-          Height = 342
+          Height = 495
+          Align = alLeft
           Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -603,12 +613,14 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 0
+          TabOrder = 1
+          ExplicitTop = 0
+          ExplicitHeight = 513
           object MembersGRD: TwwDBGrid
             Left = 1
-            Top = 15
+            Top = 44
             Width = 401
-            Height = 326
+            Height = 450
             Selected.Strings = (
               'SERIAL_NUMBER'#9'8'#9'A/A'
               'LAST_NAME'#9'24'#9#917#960#943#952#949#964#959
@@ -642,13 +654,180 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = True
             OnDblClick = MembersGRDDblClick
             OnKeyDown = MembersGRDKeyDown
+            ExplicitTop = 88
+            ExplicitHeight = 406
+          end
+          object RzSizePanel2: TRzSizePanel
+            Left = 1
+            Top = 15
+            Width = 401
+            Height = 29
+            Align = alTop
+            TabOrder = 1
+          end
+        end
+        object RzPanel3: TRzPanel
+          Left = 403
+          Top = 18
+          Width = 94
+          Height = 495
+          Align = alLeft
+          BorderOuter = fsNone
+          TabOrder = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitHeight = 986
+          object ToRightBTN: TBitBtn
+            Left = 3
+            Top = 141
+            Width = 37
+            Height = 37
+            Cancel = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFC1C1C1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF202020ABABABFDFDFDFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFD4D4D4E8E8E8FEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000001111119F9F9F
+              F6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6363634E4E4EADADADF9F9F9FFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+              0000000000080808727272E5E5E5FFFFFFFFFFFFFFFFFFFFFFFFBFBFBF535353
+              111111434343B6B6B6FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFF0000000000000000000505054E4E4EE8E8E8FFFFFFFFFFFFFF
+              FFFFFCFCFCBBBBBB1A1A1A0000000101012323236868689E9E9EBEBEBECACACA
+              C7C7C7B4B4B48F8F8F5E5E5E2424240000000000000000000000000000003030
+              30D5D5D5FCFCFCFFFFFFFFFFFFFCFCFC9494940A0A0A00000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              000000000000000000252525AAAAAAFAFAFAFFFFFFFFFFFFFBFBFB9A9A9A0C0C
+              0C00000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000010101141414929292FFFFFFFFFFFF
+              FFFFFFFCFCFCA5A5A52727270505050000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000001010113131392
+              9292FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD7D7D78181813B3B3B090909000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00242424ABABABFAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCE9
+              E9E9CFCFCF8F8F8F5C5C5C3636361B1B1B0C0C0C060606000000000000000000
+              000000000000323232D6D6D6FCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+              00000000000000000606064F4F4FE8E8E8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFF000000000000080808737373E5E5E5FFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000111111A0A0A0F6F6F6FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF202020AAAAAAFDFDFD
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC2
+              C2C2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            ParentFont = False
+            TabOrder = 0
+            OnClick = ToRightBTNClick
+          end
+          object ToLeftBTN: TBitBtn
+            Left = 49
+            Top = 216
+            Width = 39
+            Height = 37
+            Cancel = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC2C2C2FFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDACACAC202020FFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6A0A0A011
+              1111000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFEFEFEE8E8E8AAAAAAFFFFFFFFFFFFFFFFFFFFFFFFE5E5
+              E5717171080808000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9F9ADADAD4D4D4DB9B9B9FFFFFFFFFFFF
+              FFFFFFE8E8E84E4E4E060606000000000000000000FFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFBB7B7B7424242111111515151F0
+              F0F0FFFFFFFDFDFDD5D5D5303030000000000000000000000000000000242424
+              5E5E5E8F8F8FB3B3B3C6C6C6CACACABEBEBE9F9F9F6868682323230101010000
+              00191919BABABAFFFFFFF6F6F6AAAAAA25252500000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000A0A0A939393FCFCFCFFFFFF9393931414140101010000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000C0C0C999999FAFAFAFFFFFFFFFFFF434343141414
+              0101010000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000000050505262626A3A3A3FCFCFCFFFFFFFFFFFFFF
+              FFFFE5E5E5ACACAC252525000000000000000000000000000000000000000000
+              0000000000000000000000000000000909093A3A3A818181D7D7D7FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDD7D7D732323200000000000000000000
+              00000000000606060B0B0B1B1B1B3636365C5C5C8F8F8FCFCFCFE8E8E8FCFCFC
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE9E9E94F4F
+              4F060606000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFE5E5E5737373080808000000000000FFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6A0A0A0111111000000FFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDAB
+              ABAB202020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFC3C3C3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            ParentFont = False
+            TabOrder = 1
+            OnClick = ToLeftBTNClick
           end
         end
         object RzGroupBox2: TRzGroupBox
-          Left = 527
-          Top = 43
-          Width = 439
-          Height = 294
+          Left = 497
+          Top = 18
+          Width = 391
+          Height = 495
+          Align = alLeft
           Caption = #922#945#964#940#955#959#947#959#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -656,17 +835,17 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 1
+          TabOrder = 3
           object AllPersonsGRD: TwwDBGrid
             Left = 1
-            Top = 15
-            Width = 437
-            Height = 278
+            Top = 57
+            Width = 389
+            Height = 437
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959
               'FIRST_NAME'#9'10'#9#908#957#959#956#945
-              'NATIONAL_ID'#9'20'#9#932#945#965#964#972#964#951#964#945)
+              'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -695,66 +874,72 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = True
             OnDblClick = AllPersonsGRDDblClick
             OnKeyDown = AllPersonsGRDKeyDown
-            ExplicitLeft = -47
+            ExplicitWidth = 384
           end
-        end
-        object SearchPersonFLD: TwwIncrementalSearch
-          Left = 528
-          Top = 15
-          Width = 128
-          Height = 22
-          DataSource = NonAttendSRC
-          SearchField = 'last_name'
-          ShowMatchText = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 2
-          OnKeyDown = SearchPersonFLDKeyDown
+          object RzSizePanel1: TRzSizePanel
+            Left = 1
+            Top = 15
+            Width = 389
+            Height = 42
+            Align = alTop
+            TabOrder = 1
+            ExplicitWidth = 292
+            object SearchPersonFLD: TwwIncrementalSearch
+              Left = 8
+              Top = 7
+              Width = 128
+              Height = 22
+              DataSource = NonAttendSRC
+              SearchField = 'last_name'
+              ShowMatchText = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              OnKeyDown = SearchPersonFLDKeyDown
+            end
+          end
         end
       end
       object CostTS: TRzTabSheet
         Caption = #922#972#963#964#959#962
-        ExplicitWidth = 688
+        ExplicitWidth = 920
+        ExplicitHeight = 398
       end
       object DaysTS: TRzTabSheet
         Caption = #919#956#941#961#949#962
-        ExplicitWidth = 688
+        ExplicitWidth = 920
+        ExplicitHeight = 398
       end
       object TabSheet1: TRzTabSheet
         Caption = #928#945#961#959#965#963#953#959#955#972#947#953#959
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitWidth = 920
+        ExplicitHeight = 398
       end
     end
     object Panel4: TRzPanel
       Left = 1
-      Top = 422
-      Width = 924
+      Top = 537
+      Width = 990
       Height = 43
       Align = alBottom
       BorderOuter = fsFlat
       BorderSides = [sdLeft, sdRight, sdBottom]
       TabOrder = 1
-      ExplicitLeft = 0
-      ExplicitTop = 398
-      ExplicitWidth = 920
+      ExplicitTop = 422
+      ExplicitWidth = 924
       object RzPanel1: TRzPanel
-        Left = 823
+        Left = 889
         Top = 0
         Width = 100
         Height = 42
         Align = alRight
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitLeft = 822
-        ExplicitTop = 2
-        ExplicitHeight = 39
+        ExplicitLeft = 823
         object RzBitBtn1: TRzBitBtn
           Left = 6
           Top = 3
@@ -1136,7 +1321,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800000210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800040210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2013,7 +2198,7 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object NonAttendSQLNATIONAL_ID: TWideStringField
       DisplayLabel = #932#945#965#964#972#964#951#964#945
-      DisplayWidth = 20
+      DisplayWidth = 13
       FieldName = 'NATIONAL_ID'
       FixedChar = True
     end

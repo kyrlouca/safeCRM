@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  System.ImageList, Vcl.ImgList, RzTabs, vcl.wwcheckbox;
+  System.ImageList, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit;
 type
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -74,21 +74,16 @@ type
     VenueBTN: TSpeedButton;
     Label12: TLabel;
     TabSheet1: TRzTabSheet;
-    RzGroupBox1: TRzGroupBox;
-    RzGroupBox2: TRzGroupBox;
     AttendingSQL: TIBCQuery;
     AttendingSQLFIRST_NAME: TWideStringField;
     AttendingSQLLAST_NAME: TWideStringField;
     AttendingSQLFK_PERSON_SERIAL: TIntegerField;
     AttendingSQLATTENDANCE_STATUS: TWideStringField;
-    MembersGRD: TwwDBGrid;
     AttendingSRC: TDataSource;
     AttendingSQLFK_SEMINAR_SERIAL: TIntegerField;
     NonAttendSQL: TIBCQuery;
     NonAttendSRC: TDataSource;
-    AllPersonsGRD: TwwDBGrid;
     AttendingSQLSERIAL_NUMBER: TIntegerField;
-    SearchPersonFLD: TwwIncrementalSearch;
     NonAttendSQLSERIAL_NUMBER: TIntegerField;
     NonAttendSQLLAST_NAME: TWideStringField;
     NonAttendSQLFIRST_NAME: TWideStringField;
@@ -98,8 +93,18 @@ type
     RzBitBtn1: TRzBitBtn;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
+    RzPanel2: TRzPanel;
+    RzGroupBox1: TRzGroupBox;
+    MembersGRD: TwwDBGrid;
+    RzPanel3: TRzPanel;
+    ToRightBTN: TBitBtn;
+    ToLeftBTN: TBitBtn;
+    RzGroupBox2: TRzGroupBox;
+    AllPersonsGRD: TwwDBGrid;
+    RzSizePanel1: TRzSizePanel;
+    SearchPersonFLD: TwwIncrementalSearch;
+    RzSizePanel2: TRzSizePanel;
     procedure BitBtn1Click(Sender: TObject);
-    procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -121,6 +126,8 @@ type
     procedure MembersGRDDblClick(Sender: TObject);
     procedure SearchPersonFLDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure ToRightBTNClick(Sender: TObject);
+    procedure ToLeftBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -151,12 +158,15 @@ begin
   end;
 end;
 
-procedure TV_SeminarFRM.TableSQLBeforeEdit(
-  DataSet: TDataSet);
+procedure TV_SeminarFRM.ToLeftBTNClick(Sender: TObject);
 begin
-//   Dataset.FieldByName('Serial_number').ReadOnly:=true;
+InsertPerson();
 end;
 
+procedure TV_SeminarFRM.ToRightBTNClick(Sender: TObject);
+begin
+  RemovePerson();
+end;
 
 procedure TV_SeminarFRM.SeminarSRCStateChange(Sender: TObject);
 begin
