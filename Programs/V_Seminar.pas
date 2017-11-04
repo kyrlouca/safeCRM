@@ -19,11 +19,6 @@ type
     ReadTrans: TIBCTransaction;
     Label4: TLabel;
     DbImages: TImageList;
-    RzToolbar1: TRzToolbar;
-    BtnLeft: TRzToolButton;
-    BtnRight: TRzToolButton;
-    BtnPost: TRzToolButton;
-    BtnRefresh: TRzToolButton;
     Panel3: TPanel;
     PageControlPC: TRzPageControl;
     SeminarTS: TRzTabSheet;
@@ -104,6 +99,44 @@ type
     RzSizePanel1: TRzSizePanel;
     SearchPersonFLD: TwwIncrementalSearch;
     RzSizePanel2: TRzSizePanel;
+    RzPanel5: TRzPanel;
+    GroupBox1: TGroupBox;
+    RzPanel6: TRzPanel;
+    wwDBNavigator1: TwwDBNavigator;
+    wwDBNavigator1Prior: TwwNavButton;
+    wwDBNavigator1Next: TwwNavButton;
+    wwDBNavigator1Insert: TwwNavButton;
+    wwDBNavigator1Delete: TwwNavButton;
+    wwDBNavigator1Post: TwwNavButton;
+    wwDBNavigator1Cancel: TwwNavButton;
+    wwDBNavigator1Refresh: TwwNavButton;
+    wwDBGrid1: TwwDBGrid;
+    seminarSubjectSQL: TIBCQuery;
+    SeminarSubjectSRC: TDataSource;
+    seminarSubjectSQLSERIAL_NUMBER: TIntegerField;
+    seminarSubjectSQLSUBJECT: TWideStringField;
+    seminarSubjectSQLFK_SEMINAR_SERIAL: TIntegerField;
+    RzPanel4: TRzPanel;
+    RzPanel7: TRzPanel;
+    GroupBox2: TGroupBox;
+    RzPanel8: TRzPanel;
+    wwDBNavigator2: TwwDBNavigator;
+    wwNavButton1: TwwNavButton;
+    wwNavButton2: TwwNavButton;
+    wwNavButton3: TwwNavButton;
+    wwNavButton4: TwwNavButton;
+    wwNavButton5: TwwNavButton;
+    wwNavButton6: TwwNavButton;
+    wwNavButton7: TwwNavButton;
+    wwDBGrid2: TwwDBGrid;
+    SeminarDaySQL: TIBCQuery;
+    SeminarDaySRC: TDataSource;
+    SeminarDaySQLSERIAL_NUMBER: TIntegerField;
+    SeminarDaySQLSEMINAR_DAY: TDateField;
+    SeminarDaySQLDURATION_HOURS: TIntegerField;
+    SeminarDaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
+    SeminarDaySQLFK_SEMINAR_SERIAL: TIntegerField;
+    SeminarDayFLD: TwwDBDateTimePicker;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -128,12 +161,18 @@ type
       Shift: TShiftState);
     procedure ToRightBTNClick(Sender: TObject);
     procedure ToLeftBTNClick(Sender: TObject);
+    procedure SeminarSQLNewRecord(DataSet: TDataSet);
+    procedure SeminarTSShow(Sender: TObject);
+    procedure DaysTSShow(Sender: TObject);
+    procedure SeminarDaySQLNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
   Procedure EditSeminar(Const SeminarSerial:integer);
   procedure RemovePerson();
   procedure InsertPerson();
+  procedure UseSeminarTemplate(Const SeminarSerial, TypeSerial:Integer);
+
   public
     { Public declarations }
     IN_ACTION:String;
@@ -168,6 +207,18 @@ begin
   RemovePerson();
 end;
 
+procedure TV_SeminarFRM.SeminarDaySQLNewRecord(DataSet: TDataSet);
+begin
+  Dataset.FieldByName('fk_seminar_serial').Value:=seminarSubjectSQL.FieldByName('fk_seminar_serial').AsInteger;
+end;
+
+procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
+begin
+Dataset.FieldByName('ANAD_APPROVED').Value:='Y';
+Dataset.FieldByName('SEMINAR_CORP_TYPE').Value:='P';
+
+end;
+
 procedure TV_SeminarFRM.SeminarSRCStateChange(Sender: TObject);
 begin
 
@@ -182,27 +233,68 @@ begin
 
 end;
 
+procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
+begin
+SeminarTypeFLD.SetFocus;
+end;
+
+
 procedure TV_SeminarFRM.SeminarTypeFLDCloseUp(Sender: TwwDBComboBox;
   Select: Boolean);
 var
-  qr:TksQuery;
-  serial:Integer;
+  TypeSerial:Integer;
+  SeminarSerial:Integer;
 begin
- serial:=strToIntdef(SeminarTypeFLD.Value,0);
- if (not select) or (serial<0) then exit;
+ if SeminarSQL.State in [dsEdit,dsInsert] then SeminarSQL.Post;
+ SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+ TYpeserial:=SeminarSQL.FieldByName('FK_Seminar').AsInteger;
+ if (not select) or (Seminarserial<1) or (TypeSerial<1) then exit;
+ UseSeminarTEmplate(SeminarSerial,TypeSerial);
+ ksOpenTables([SeminarSQL])
+
+end;
+
+procedure TV_SeminarFRM.UseSeminarTemplate(Const SeminarSerial, TypeSerial:Integer);
+var
+  serial:Integer;
+  qr:TksQuery;
+   fhours, fdays:integer;
+   fName,fAnad:String;
+   fcost:double;
+begin
+
  qr:=TksQuery.Create(cn,'select * from seminar_type where serial_number= :serial');
  try
-   qr.ParamByName('serial').Value:=serial;
+   qr.ParamByName('serial').Value:=TYpeSerial;
    qr.Open;
-   seminarSQL.fieldbyName('seminar_name').value:= qr.FieldByName('seminar_name').AsString;
-   seminarSQL.fieldbyName('DURATION_HOURS').value:= qr.FieldByName('DURATION_HOURS').AsString;
-   seminarSQL.fieldbyName('DURATION_DAYS').value:= qr.FieldByName('DURATION_DAYS').AsString;
-   seminarSQL.fieldbyName('ANAD_APPROVED').value:= qr.FieldByName('ANAD_APPROVED').AsString;
-   seminarSQL.fieldbyName('COST_ESTIMATE').value:= qr.FieldByName('SEMINAR_COST').AsString;
+   fname:=qr.FieldByName('seminar_name').AsString;
+   fhours:=qr.FieldByName('DURATION_HOURS').AsInteger;;
+   fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
+   fAnad:=   qr.FieldByName('ANAD_APPROVED').AsString;
+   fCost:=  qr.FieldByName('SEMINAR_COST').AsFloat;
+   ksExecSQLVar(cn,'update seminar set seminar_Name= :fname, Duration_hours = :fhours, Duration_days= :fdays, anad_approved= :fAnad, cost_eSTIMATE= :focst where serial_number= :fSerial',
+   [fname,fhours,fdays,fAnad,fcost,seminarSerial] );
+
  finally
    qr.Free;
  end;
 
+ ksExecSQLVar(cn,'delete from seminar_subject where fk_seminar_serial= :semSerial',[SeminarSerial]);
+ qr:=TksQuery.Create(cn,'select * from seminar_type_subject where FK_SEMINAR_TYPE_SERIAL= :serial');
+ try
+   qr.ParamByName('serial').Value:=TypeSerial;
+   qr.Open;
+   while not qr.Eof do begin
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_SUBJECT');
+    fname:=qr.FieldByName('SUBJECT').AsString;
+    ksExecSQLVar(cn,'INSERT INTO SEMINAR_SUBJECT (SERIAL_NUMBER, FK_SEMINAR_SERIAL,SUBJECT) VALUES (:serial,:semSerial, :subject)',
+    [serial,seminarSerial,fname] );
+    qr.Next;
+   end;
+
+ finally
+   qr.Free;
+ end;
  end;
 
 procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);
@@ -399,6 +491,11 @@ close;
 end;
 
 
+
+procedure TV_SeminarFRM.DaysTSShow(Sender: TObject);
+begin
+ksOpenTables([seminarSubjectSQL,SeminarDaySQL]);
+end;
 
 Procedure TV_SeminarFRM.EditSeminar(Const SeminarSerial:integer);
 Var

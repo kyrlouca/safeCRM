@@ -164,6 +164,7 @@ begin
   frm.IN_SEMINAR_SERIAL:=serial;
   try
     frm.ShowModal;
+    ksOpenTables([TableSQL]);
   finally
     frm.Free;
   end;

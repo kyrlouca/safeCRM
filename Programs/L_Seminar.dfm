@@ -411,7 +411,6 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 693
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -626,8 +625,6 @@ object L_SeminarFRM: TL_SeminarFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
-        ExplicitLeft = -1
-        ExplicitTop = 0
       end
     end
     object RzPanel4: TRzPanel

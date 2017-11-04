@@ -477,7 +477,7 @@
       ExplicitHeight = 421
     end
     object GroupBox1: TGroupBox
-      Left = 399
+      Left = 401
       Top = 6
       Width = 338
       Height = 299
@@ -777,8 +777,8 @@
       end
     end
     object GroupBox2: TGroupBox
-      Left = 399
-      Top = 311
+      Left = 401
+      Top = 327
       Width = 490
       Height = 132
       Caption = #920#941#956#945#964#945
@@ -1084,7 +1084,7 @@
   end
   object seminarSubjectSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
-    KeyGenerator = 'GEN_SEMINAR_TYPE'
+    KeyGenerator = 'GEN_SEMINAR_TYPE_SUBJECT'
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR_TYPE_SUBJECT'
       '  (SERIAL_NUMBER, SUBJECT, FK_SEMINAR_TYPE_SERIAL)'

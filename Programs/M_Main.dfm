@@ -2,7 +2,7 @@ object M_mainFRM: TM_mainFRM
   Left = 0
   Top = 0
   BorderStyle = bsSingle
-  Caption = 'M_mainFRM'
+  Caption = 'EnaSimple'
   ClientHeight = 436
   ClientWidth = 789
   Color = clBtnFace
@@ -26,7 +26,7 @@ object M_mainFRM: TM_mainFRM
     Margins.Bottom = 0
     Align = alTop
     BorderOuter = fsGroove
-    Caption = 'Safe CRM - V0.01'
+    Caption = 'Safe CRM - V0.05'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlue
     Font.Height = -48
@@ -283,11 +283,12 @@ object M_mainFRM: TM_mainFRM
     TabOrder = 2
     VisualStyle = vsClassic
     ExplicitHeight = 271
-    object RzFormShape1: TRzFormShape
+    object Image1: TImage
       Left = 0
       Top = 0
       Width = 789
       Height = 308
+      Align = alClient
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000033C0000
         013B0802000000970E1328000000647A5458745261772070726F66696C652074
@@ -7229,8 +7230,10 @@ object M_mainFRM: TM_mainFRM
         C7FEBA4745F3B21F3E1EDCD568C7D42A324B2C0B592B9D143DA3469D50B3666C
         6D56BA5EEDD166A17AA7A927182726E52BD65974761A06C32A753421B69AABA6
         BB01D75E82B64FFBF11FB4AA436D1FE5BA540000000049454E44AE426082}
-      ExplicitLeft = 192
-      ExplicitTop = 184
+      Proportional = True
+      Stretch = True
+      ExplicitLeft = 392
+      ExplicitTop = 120
       ExplicitWidth = 105
       ExplicitHeight = 105
     end

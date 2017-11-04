@@ -43,7 +43,7 @@ type
     N4: TMenuItem;
     N5: TMenuItem;
     ables2: TMenuItem;
-    RzFormShape1: TRzFormShape;
+    Image1: TImage;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
