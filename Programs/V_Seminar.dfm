@@ -33,16 +33,29 @@ object V_SeminarFRM: TV_SeminarFRM
     TabOrder = 0
     object Label4: TLabel
       AlignWithMargins = True
-      Left = 4
+      Left = 189
       Top = 4
-      Width = 984
+      Width = 799
       Height = 45
       Align = alClient
       Alignment = taCenter
       Caption = #931#949#956#953#957#940#961#953#959
       Layout = tlCenter
-      ExplicitWidth = 128
-      ExplicitHeight = 32
+      ExplicitLeft = 8
+      ExplicitTop = 28
+      ExplicitWidth = 984
+    end
+    object RzPanel9: TRzPanel
+      Left = 1
+      Top = 1
+      Width = 185
+      Height = 51
+      Align = alLeft
+      Caption = 'Active'
+      TabOrder = 0
+      ExplicitLeft = 8
+      ExplicitTop = 6
+      ExplicitHeight = 41
     end
   end
   object Panel2: TPanel
@@ -66,7 +79,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 990
       Height = 536
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = TabSheet1
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -74,20 +87,18 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 4
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
-        ExplicitTop = 20
-        ExplicitHeight = 513
         object FirstGRP: TGroupBox
           Left = 24
           Top = 23
           Width = 370
-          Height = 202
+          Height = 210
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -97,8 +108,8 @@ object V_SeminarFRM: TV_SeminarFRM
           ParentFont = False
           TabOrder = 0
           object Label2: TLabel
-            Left = 44
-            Top = 74
+            Left = 48
+            Top = 73
             Width = 58
             Height = 14
             Caption = #928#949#961#953#947#961#945#966#942
@@ -124,7 +135,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label1: TLabel
             Left = 5
-            Top = 143
+            Top = 178
             Width = 97
             Height = 14
             Caption = #917#957#948#949#953#954#964#953#954#972' '#922#972#963#964#959#962
@@ -148,7 +159,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label6: TLabel
             Left = 35
-            Top = 99
+            Top = 136
             Width = 67
             Height = 14
             Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
@@ -160,11 +171,24 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label12: TLabel
-            Left = 13
+            Left = 11
             Top = 48
-            Width = 89
+            Width = 95
             Height = 14
-            Caption = #917#943#948#959#962' '#931#949#956#953#957#945#961#943#959#965
+            Caption = #932#973#960#959#962' '#931#949#956#953#957#945#961#943#959#965
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label13: TLabel
+            Left = 71
+            Top = 98
+            Width = 35
+            Height = 14
+            Caption = #931#967#972#955#953#945
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -186,7 +210,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object wwCheckBox1: TwwCheckBox
             Left = 75
-            Top = 119
+            Top = 156
             Width = 51
             Height = 17
             DisableThemes = False
@@ -204,7 +228,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object wwDBComboBox1: TwwDBComboBox
             Left = 112
-            Top = 95
+            Top = 132
             Width = 76
             Height = 22
             ShowButton = True
@@ -251,7 +275,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object wwDBEdit4: TwwDBEdit
             Left = 112
-            Top = 138
+            Top = 175
             Width = 76
             Height = 22
             DataField = 'COST_ESTIMATE'
@@ -261,12 +285,24 @@ object V_SeminarFRM: TV_SeminarFRM
             WantReturns = False
             WordWrap = False
           end
+          object wwDBEdit3: TwwDBEdit
+            Left = 112
+            Top = 95
+            Width = 252
+            Height = 22
+            DataField = 'COMMENTS'
+            DataSource = SeminarSRC
+            TabOrder = 5
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
         end
         object SecondGRP: TRzGroupBox
           Left = 400
           Top = 23
           Width = 273
-          Height = 198
+          Height = 210
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -328,8 +364,8 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label10: TLabel
-            Left = 6
-            Top = 156
+            Left = 7
+            Top = 160
             Width = 74
             Height = 14
             Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
@@ -519,20 +555,10 @@ object V_SeminarFRM: TV_SeminarFRM
             TwoColumnDisplay = True
           end
         end
-        object RzCalendar1: TRzCalendar
-          Left = 280
-          Top = 288
-          Width = 161
-          Height = 186
-          BorderOuter = fsLowered
-          TabOrder = 2
-        end
       end
       object StudentsTS: TRzTabSheet
         OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
-        ExplicitTop = 20
-        ExplicitHeight = 513
         object RzPanel2: TRzPanel
           Left = 0
           Top = 0
@@ -556,7 +582,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitHeight = 495
           object MembersGRD: TwwDBGrid
             Left = 1
             Top = 44
@@ -595,7 +620,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = True
             OnDblClick = MembersGRDDblClick
             OnKeyDown = MembersGRDKeyDown
-            ExplicitHeight = 450
           end
           object RzSizePanel2: TRzSizePanel
             Left = 1
@@ -614,7 +638,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitHeight = 495
           object ToRightBTN: TBitBtn
             Left = 3
             Top = 141
@@ -774,7 +797,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 3
-          ExplicitHeight = 495
           object AllPersonsGRD: TwwDBGrid
             Left = 1
             Top = 57
@@ -813,7 +835,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = True
             OnDblClick = AllPersonsGRDDblClick
             OnKeyDown = AllPersonsGRDKeyDown
-            ExplicitHeight = 437
           end
           object RzSizePanel1: TRzSizePanel
             Left = 1
@@ -851,8 +872,6 @@ object V_SeminarFRM: TV_SeminarFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitTop = 20
-        ExplicitHeight = 513
         object RzPanel5: TRzPanel
           Left = 0
           Top = 0
@@ -876,7 +895,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitHeight = 488
           object RzPanel6: TRzPanel
             Left = 2
             Top = 16
@@ -1037,7 +1055,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitHeight = 437
           end
         end
         object RzPanel4: TRzPanel
@@ -1048,7 +1065,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitHeight = 488
           object RzPanel7: TRzPanel
             Left = 0
             Top = 0
@@ -1056,7 +1072,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 485
             Align = alLeft
             TabOrder = 0
-            ExplicitHeight = 488
           end
           object GroupBox2: TGroupBox
             Left = 97
@@ -1072,7 +1087,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
             TabOrder = 1
-            ExplicitHeight = 488
             object RzPanel8: TRzPanel
               Left = 2
               Top = 16
@@ -1235,7 +1249,6 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
-              ExplicitHeight = 437
               object SeminarDayFLD: TwwDBDateTimePicker
                 Left = -16
                 Top = 200
@@ -1259,13 +1272,9 @@ object V_SeminarFRM: TV_SeminarFRM
       end
       object CostTS: TRzTabSheet
         Caption = #922#972#963#964#959#962
-        ExplicitTop = 20
-        ExplicitHeight = 513
       end
       object TabSheet1: TRzTabSheet
         Caption = #928#945#961#959#965#963#953#959#955#972#947#953#959
-        ExplicitTop = 20
-        ExplicitHeight = 513
       end
     end
     object Panel4: TRzPanel
@@ -1510,7 +1519,7 @@ object V_SeminarFRM: TV_SeminarFRM
   object SeminarSRC: TDataSource
     DataSet = SeminarSQL
     OnStateChange = SeminarSRCStateChange
-    Left = 112
+    Left = 296
     Top = 9
   end
   object SeminarSQL: TIBCQuery
@@ -1519,16 +1528,16 @@ object V_SeminarFRM: TV_SeminarFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, ACTIVE_STATUS, SEMIN' +
-        'AR_CORP_TYPE, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLE' +
-        'TED, DURATION_DAYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, CO' +
-        'MMENTS, ANAD_APPROVED, COST_ESTIMATE)'
+        '  (SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYPE, F' +
+        'K_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATION_D' +
+        'AYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_AP' +
+        'PROVED, COST_ESTIMATE, STATUS)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :SEMINAR_NAME, :ACTIVE_STATUS, :' +
-        'SEMINAR_CORP_TYPE, :FK_INSTRUCTOR, :FK_VENUE, :DATE_STARTED, :DA' +
-        'TE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :COST_ACTUAL, :AM' +
-        'OUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :COST_ESTIMATE)')
+        '  (:SERIAL_NUMBER, :FK_SEMINAR, :SEMINAR_NAME, :SEMINAR_CORP_TYP' +
+        'E, :FK_INSTRUCTOR, :FK_VENUE, :DATE_STARTED, :DATE_COMPLETED, :D' +
+        'URATION_DAYS, :DURATION_HOURS, :COST_ACTUAL, :AMOUNT_ANAD, :COMM' +
+        'ENTS, :ANAD_APPROVED, :COST_ESTIMATE, :STATUS)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -1538,21 +1547,21 @@ object V_SeminarFRM: TV_SeminarFRM
       'SET'
       
         '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, SEMI' +
-        'NAR_NAME = :SEMINAR_NAME, ACTIVE_STATUS = :ACTIVE_STATUS, SEMINA' +
-        'R_CORP_TYPE = :SEMINAR_CORP_TYPE, FK_INSTRUCTOR = :FK_INSTRUCTOR' +
-        ', FK_VENUE = :FK_VENUE, DATE_STARTED = :DATE_STARTED, DATE_COMPL' +
-        'ETED = :DATE_COMPLETED, DURATION_DAYS = :DURATION_DAYS, DURATION' +
-        '_HOURS = :DURATION_HOURS, COST_ACTUAL = :COST_ACTUAL, AMOUNT_ANA' +
-        'D = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED = :ANAD_AP' +
-        'PROVED, COST_ESTIMATE = :COST_ESTIMATE'
+        'NAR_NAME = :SEMINAR_NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE' +
+        ', FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, DATE_STA' +
+        'RTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION' +
+        '_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, COST_A' +
+        'CTUAL = :COST_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :CO' +
+        'MMENTS, ANAD_APPROVED = :ANAD_APPROVED, COST_ESTIMATE = :COST_ES' +
+        'TIMATE, STATUS = :STATUS'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, ACTIVE_STATUS, S' +
-        'EMINAR_CORP_TYPE, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_CO' +
-        'MPLETED, DURATION_DAYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD' +
-        ', COMMENTS, ANAD_APPROVED, COST_ESTIMATE FROM SEMINAR'
+        'SELECT SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYP' +
+        'E, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATI' +
+        'ON_DAYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, COMMENTS, ANA' +
+        'D_APPROVED, COST_ESTIMATE, STATUS FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1576,9 +1585,10 @@ object V_SeminarFRM: TV_SeminarFRM
       'where '
       ' serial_number= :SerialNumber'
       '')
+    Active = True
     OnNewRecord = SeminarSQLNewRecord
-    Left = 49
-    Top = 5
+    Left = 17
+    Top = 269
     ParamData = <
       item
         DataType = ftUnknown
@@ -1587,18 +1597,24 @@ object V_SeminarFRM: TV_SeminarFRM
       end>
     object SeminarSQLSERIAL_NUMBER: TIntegerField
       FieldName = 'SERIAL_NUMBER'
-      Required = True
     end
     object SeminarSQLFK_SEMINAR: TIntegerField
-      DisplayLabel = #932#973#960#959#962' '#931#949#956#953#957#945#961#943#959#965
       FieldName = 'FK_SEMINAR'
     end
+    object SeminarSQLSEMINAR_NAME: TWideStringField
+      FieldName = 'SEMINAR_NAME'
+      Size = 160
+    end
+    object SeminarSQLSEMINAR_CORP_TYPE: TWideStringField
+      FieldName = 'SEMINAR_CORP_TYPE'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
     object SeminarSQLFK_INSTRUCTOR: TIntegerField
-      DisplayLabel = #917#954#960#945#953#948#949#965#964#942#962
       FieldName = 'FK_INSTRUCTOR'
     end
     object SeminarSQLFK_VENUE: TIntegerField
-      DisplayLabel = #935#974#961#959#962' '#931#949#956#953#957#945#961#943#959#965
       FieldName = 'FK_VENUE'
     end
     object SeminarSQLDATE_STARTED: TDateField
@@ -1623,22 +1639,6 @@ object V_SeminarFRM: TV_SeminarFRM
       FieldName = 'COMMENTS'
       Size = 160
     end
-    object SeminarSQLACTIVE_STATUS: TWideStringField
-      FieldName = 'ACTIVE_STATUS'
-      FixedChar = True
-      Size = 3
-    end
-    object SeminarSQLSEMINAR_NAME: TWideStringField
-      DisplayLabel = #928#949#961#953#947#961#945#966#942' '#931#949#956#953#957#945#961#943#959#965
-      FieldName = 'SEMINAR_NAME'
-      Size = 160
-    end
-    object SeminarSQLSEMINAR_CORP_TYPE: TWideStringField
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
     object SeminarSQLANAD_APPROVED: TWideStringField
       FieldName = 'ANAD_APPROVED'
       Required = True
@@ -1647,6 +1647,11 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object SeminarSQLCOST_ESTIMATE: TFloatField
       FieldName = 'COST_ESTIMATE'
+    end
+    object SeminarSQLSTATUS: TWideStringField
+      FieldName = 'STATUS'
+      FixedChar = True
+      Size = 1
     end
   end
   object WriteTrans: TIBCTransaction
@@ -1664,7 +1669,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800080210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088000C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2396,6 +2401,7 @@ object V_SeminarFRM: TV_SeminarFRM
       item
         DataType = ftUnknown
         Name = 'SERIAL_NUMBER'
+        ParamType = ptInput
         Value = nil
       end>
     object AttendingSQLSERIAL_NUMBER: TIntegerField
@@ -2600,12 +2606,13 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
-    Left = 17
-    Top = 285
+    Left = 25
+    Top = 333
     ParamData = <
       item
         DataType = ftUnknown
         Name = 'SERIAL_NUMBER'
+        ParamType = ptInput
         Value = nil
       end>
     object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
@@ -2628,8 +2635,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object SeminarSubjectSRC: TDataSource
     DataSet = seminarSubjectSQL
-    Left = 104
-    Top = 273
+    Left = 176
+    Top = 401
   end
   object SeminarDaySQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'

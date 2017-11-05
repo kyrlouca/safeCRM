@@ -52,7 +52,6 @@
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 817
       Top = 1
@@ -348,7 +347,6 @@
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Next'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 2
@@ -365,7 +363,6 @@
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Button1'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 3
@@ -382,7 +379,6 @@
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Insert'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         OnClick = Nav1InsertClick
@@ -400,7 +396,6 @@
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Delete'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 5
@@ -464,7 +459,6 @@
     Height = 506
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 423
     object Panel5: TPanel
       Left = 693
       Top = 1
@@ -474,7 +468,6 @@
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 421
     end
     object GroupBox1: TGroupBox
       Left = 401
@@ -654,8 +647,10 @@
         NullAndBlankState = cbUnchecked
         Alignment = taLeftJustify
         Caption = #913#925#913#916
+        Checked = True
         DataField = 'ANAD_APPROVED'
         DataSource = TableSRC
+        State = cbChecked
         TabOrder = 4
       end
       object wwDBComboBox1: TwwDBComboBox
@@ -675,6 +670,7 @@
         Items.Strings = (
           #924#972#957#959'-'#917#960#967'.'#9'M'
           #928#972#955#965'-'#917#960#967'.'#9'P')
+        ItemIndex = 0
         Sorted = False
         TabOrder = 5
         UnboundDataType = wwDefault
@@ -727,7 +723,6 @@
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 421
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -773,7 +768,6 @@
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
-        ExplicitLeft = 3
       end
     end
     object GroupBox2: TGroupBox
@@ -806,7 +800,6 @@
           RepeatInterval.InitialDelay = 500
           RepeatInterval.Interval = 100
           Align = alLeft
-          ExplicitHeight = 25
           object wwDBNavigator1Prior: TwwNavButton
             Left = 0
             Top = 0
@@ -835,7 +828,6 @@
             Spacing = 4
             Transparent = False
             Caption = 'wwDBNavigator1Next'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -868,7 +860,6 @@
             Spacing = 4
             Transparent = False
             Caption = 'wwDBNavigator1Delete'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 3
@@ -1013,6 +1004,7 @@
       '*'
       'FROM'
       'SEMINAR_type ORDER BY SEMINAR_NAME')
+    Active = True
     OnNewRecord = TableSQLNewRecord
     Left = 49
     Top = 5
@@ -1060,14 +1052,17 @@
       DisplayLabel = #911#961#949#962
       FieldName = 'DURATION_HOURS'
       Required = True
+      Visible = False
     end
     object TableSQLDURATION_DAYS: TIntegerField
       DisplayLabel = #924#941#961#949#962
       FieldName = 'DURATION_DAYS'
       Required = True
+      Visible = False
     end
     object TableSQLCOMMENTS: TWideStringField
       FieldName = 'COMMENTS'
+      Visible = False
       Size = 160
     end
   end
@@ -1134,9 +1129,10 @@
     Top = 125
     ParamData = <
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'SERIAL_NUMBER'
-        Value = nil
+        ParamType = ptInput
+        Value = 3
       end>
     object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'

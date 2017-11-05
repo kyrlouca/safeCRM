@@ -18,9 +18,9 @@ type
     { Private declarations }
   public
     { Public declarations }
+     cn:TIBCConnection;
     procedure ConnectToDatabase;
-//    procedure ConnectToCabImage;
-//    function OpenFile(const InFileName: string; var InFile: TextFile): Boolean;
+
   end;
 
 var
@@ -29,6 +29,8 @@ var
 implementation
 
 {$R *.DFM}
+
+uses G_KyrSQL;
 
 procedure TU_databaseFRM.ConnectToDatabase;
 var
@@ -80,6 +82,25 @@ end;
 procedure TU_databaseFRM.DataModuleCreate(Sender: TObject);
 begin
   ConnectToDatabase;
+  cn:=DataConnection;
+
+   if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['I'])=0 then begin
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['I','Initial','Σε Προετοιμασία']);
+   end;
+
+   if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['A'])=0 then begin
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['A','Active','Σε Εξέλιξη']);
+   end;
+
+   if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['P'])=0 then begin
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['P','Planned','Μελλοντικά']);
+   end;
+
+   if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['F'])=0 then begin
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['F','Completed','Ολοκληρωμένο']);
+   end;
+
+
 
 end;
 

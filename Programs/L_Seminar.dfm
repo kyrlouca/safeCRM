@@ -650,16 +650,16 @@ object L_SeminarFRM: TL_SeminarFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, ACTIVE_STATUS, SEMIN' +
-        'AR_CORP_TYPE, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLE' +
-        'TED, DURATION_DAYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, CO' +
-        'MMENTS, ANAD_APPROVED)'
+        '  (SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYPE, F' +
+        'K_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATION_D' +
+        'AYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_AP' +
+        'PROVED, COST_ESTIMATE, STATUS)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :SEMINAR_NAME, :ACTIVE_STATUS, :' +
-        'SEMINAR_CORP_TYPE, :FK_INSTRUCTOR, :FK_VENUE, :DATE_STARTED, :DA' +
-        'TE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :COST_ACTUAL, :AM' +
-        'OUNT_ANAD, :COMMENTS, :ANAD_APPROVED)')
+        '  (:SERIAL_NUMBER, :FK_SEMINAR, :SEMINAR_NAME, :SEMINAR_CORP_TYP' +
+        'E, :FK_INSTRUCTOR, :FK_VENUE, :DATE_STARTED, :DATE_COMPLETED, :D' +
+        'URATION_DAYS, :DURATION_HOURS, :COST_ACTUAL, :AMOUNT_ANAD, :COMM' +
+        'ENTS, :ANAD_APPROVED, :COST_ESTIMATE, :STATUS)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -669,21 +669,21 @@ object L_SeminarFRM: TL_SeminarFRM
       'SET'
       
         '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, SEMI' +
-        'NAR_NAME = :SEMINAR_NAME, ACTIVE_STATUS = :ACTIVE_STATUS, SEMINA' +
-        'R_CORP_TYPE = :SEMINAR_CORP_TYPE, FK_INSTRUCTOR = :FK_INSTRUCTOR' +
-        ', FK_VENUE = :FK_VENUE, DATE_STARTED = :DATE_STARTED, DATE_COMPL' +
-        'ETED = :DATE_COMPLETED, DURATION_DAYS = :DURATION_DAYS, DURATION' +
-        '_HOURS = :DURATION_HOURS, COST_ACTUAL = :COST_ACTUAL, AMOUNT_ANA' +
-        'D = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED = :ANAD_AP' +
-        'PROVED'
+        'NAR_NAME = :SEMINAR_NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE' +
+        ', FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, DATE_STA' +
+        'RTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION' +
+        '_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, COST_A' +
+        'CTUAL = :COST_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :CO' +
+        'MMENTS, ANAD_APPROVED = :ANAD_APPROVED, COST_ESTIMATE = :COST_ES' +
+        'TIMATE, STATUS = :STATUS'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, ACTIVE_STATUS, S' +
-        'EMINAR_CORP_TYPE, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_CO' +
-        'MPLETED, DURATION_DAYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD' +
-        ', COMMENTS, ANAD_APPROVED FROM SEMINAR'
+        'SELECT SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYP' +
+        'E, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATI' +
+        'ON_DAYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, COMMENTS, ANA' +
+        'D_APPROVED, COST_ESTIMATE, STATUS FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -701,10 +701,10 @@ object L_SeminarFRM: TL_SeminarFRM
     UpdateTransaction = WriteTrans
     SQL.Strings = (
       'SELECT'
-      'sem.*,sa.status_description'
+      'sem.*,sa.description,sa.description_greek'
       'FROM'
       '    seminar sem left outer join'
-      '    status_activity sa on sem.active_status=sa.status'
+      '    status_activity sa on sem.status=sa.status'
       'order by date_started'
       '')
     Active = True
@@ -742,26 +742,23 @@ object L_SeminarFRM: TL_SeminarFRM
       DisplayWidth = 10
       FieldName = 'DURATION_DAYS'
     end
-    object TableSQLSTATUS_DESCRIPTION: TWideStringField
-      DisplayLabel = 'Status'
-      DisplayWidth = 9
-      FieldName = 'STATUS_DESCRIPTION'
-      ReadOnly = True
-      FixedChar = True
-    end
     object TableSQLFK_SEMINAR: TIntegerField
       FieldName = 'FK_SEMINAR'
+      Visible = False
+    end
+    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
+      FieldName = 'SEMINAR_CORP_TYPE'
       Required = True
       Visible = False
+      FixedChar = True
+      Size = 1
     end
     object TableSQLFK_INSTRUCTOR: TIntegerField
       FieldName = 'FK_INSTRUCTOR'
-      Required = True
       Visible = False
     end
     object TableSQLFK_VENUE: TIntegerField
       FieldName = 'FK_VENUE'
-      Required = True
       Visible = False
     end
     object TableSQLCOST_ACTUAL: TFloatField
@@ -777,25 +774,34 @@ object L_SeminarFRM: TL_SeminarFRM
       Visible = False
       Size = 160
     end
-    object TableSQLACTIVE_STATUS: TWideStringField
-      FieldName = 'ACTIVE_STATUS'
-      Visible = False
-      FixedChar = True
-      Size = 3
-    end
-    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      Visible = False
-      FixedChar = True
-      Size = 1
-    end
     object TableSQLANAD_APPROVED: TWideStringField
       FieldName = 'ANAD_APPROVED'
       Required = True
       Visible = False
       FixedChar = True
       Size = 1
+    end
+    object TableSQLCOST_ESTIMATE: TFloatField
+      FieldName = 'COST_ESTIMATE'
+      Visible = False
+    end
+    object TableSQLSTATUS: TWideStringField
+      FieldName = 'STATUS'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLDESCRIPTION: TWideStringField
+      FieldName = 'DESCRIPTION'
+      ReadOnly = True
+      Visible = False
+      FixedChar = True
+    end
+    object TableSQLDESCRIPTION_GREEK: TWideStringField
+      FieldName = 'DESCRIPTION_GREEK'
+      ReadOnly = True
+      Visible = False
+      Size = 160
     end
   end
   object WriteTrans: TIBCTransaction

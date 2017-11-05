@@ -34,23 +34,7 @@ type
     FirstFLD: TwwDBEdit;
     wwCheckBox1: TwwCheckBox;
     wwDBComboBox1: TwwDBComboBox;
-    SeminarSQLSERIAL_NUMBER: TIntegerField;
-    SeminarSQLFK_SEMINAR: TIntegerField;
-    SeminarSQLFK_INSTRUCTOR: TIntegerField;
-    SeminarSQLFK_VENUE: TIntegerField;
-    SeminarSQLDATE_STARTED: TDateField;
-    SeminarSQLDATE_COMPLETED: TDateField;
-    SeminarSQLDURATION_DAYS: TIntegerField;
-    SeminarSQLDURATION_HOURS: TIntegerField;
-    SeminarSQLCOST_ACTUAL: TFloatField;
-    SeminarSQLAMOUNT_ANAD: TFloatField;
-    SeminarSQLCOMMENTS: TWideStringField;
-    SeminarSQLACTIVE_STATUS: TWideStringField;
-    SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
-    SeminarSQLANAD_APPROVED: TWideStringField;
     SeminarTypeFLD: TwwDBComboBox;
-    SeminarSQLCOST_ESTIMATE: TFloatField;
     wwDBEdit4: TwwDBEdit;
     SecondGRP: TRzGroupBox;
     Label5: TLabel;
@@ -137,7 +121,25 @@ type
     SeminarDaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     SeminarDaySQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarDayFLD: TwwDBDateTimePicker;
-    RzCalendar1: TRzCalendar;
+    Label13: TLabel;
+    wwDBEdit3: TwwDBEdit;
+    RzPanel9: TRzPanel;
+    SeminarSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSQLFK_SEMINAR: TIntegerField;
+    SeminarSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
+    SeminarSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSQLFK_VENUE: TIntegerField;
+    SeminarSQLDATE_STARTED: TDateField;
+    SeminarSQLDATE_COMPLETED: TDateField;
+    SeminarSQLDURATION_DAYS: TIntegerField;
+    SeminarSQLDURATION_HOURS: TIntegerField;
+    SeminarSQLCOST_ACTUAL: TFloatField;
+    SeminarSQLAMOUNT_ANAD: TFloatField;
+    SeminarSQLCOMMENTS: TWideStringField;
+    SeminarSQLANAD_APPROVED: TWideStringField;
+    SeminarSQLCOST_ESTIMATE: TFloatField;
+    SeminarSQLSTATUS: TWideStringField;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -215,6 +217,7 @@ end;
 
 procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
 begin
+Dataset.FieldByName('Status').Value:='I';
 Dataset.FieldByName('ANAD_APPROVED').Value:='Y';
 Dataset.FieldByName('SEMINAR_CORP_TYPE').Value:='P';
 
