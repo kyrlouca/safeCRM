@@ -97,10 +97,12 @@ type
     DaySQLDAYSERIAL: TIntegerField;
     DaySQLSEMINAR_DAY: TDateField;
     DaySQLDURATION_HOURS: TIntegerField;
-    SaveBTN: TButton;
     VPresenceSQLDaySerial: TIntegerField;
-    Button1: TButton;
     DaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
+    RzPanel5: TRzPanel;
+    RzPanel6: TRzPanel;
+    SavePresBTN: TBitBtn;
+    CanelBTN: TBitBtn;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -116,7 +118,8 @@ type
     procedure Button1Click(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
     procedure wwDBLookupCombo1Change(Sender: TObject);
-    procedure SaveBTNClick(Sender: TObject);
+    procedure DaySQLAfterScroll(DataSet: TDataSet);
+    procedure SavePresBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -184,11 +187,6 @@ begin
 close;
 end;
 
-procedure TP_attendanceFRM.SaveBTNClick(Sender: TObject);
-begin
-  SavePresenceTable();
-end;
-
 procedure TP_attendanceFRM.Sd1SyncDataSets(Sender: TObject; MoveDataSet,
   BaseDataSet: TDataSet);
 begin
@@ -202,6 +200,18 @@ begin
 
 //  aDate:=DateFLD.Date;
 //  showMessage(FormatDateTime('dd-mmm-yyyy',aDate));
+end;
+
+procedure TP_attendanceFRM.DaySQLAfterScroll(DataSet: TDataSet);
+var
+  daySerial:Integer;
+  seminarSerial:Integer;
+begin
+  VpresenceSQL.close;
+  VpresenceSQL.Open;
+  SeminarSerial:=DaySQL.FieldByName('SeminarSerial').AsInteger;
+  daySerial:=DaySQL.FieldByName('Dayserial').AsInteger;
+   UpdatePresenceTable(seminarSerial,daySerial);
 end;
 
 procedure TP_attendanceFRM.TableSQLAfterScroll(DataSet: TDataSet);
@@ -263,7 +273,8 @@ str:=
   +'        where'
   +'        inSP.fk_seminar_serial= :SeminarSerial and inPP.fk_day_serial = :DaySerial'
   +'  )as yIn'
-  +'  on  xOUt.PersonSerial = yIN.PersonSerial';
+  +'  on  xOUt.PersonSerial = yIN.PersonSerial'
+  +'  order by last_name, first_name';
 
 
   if not VPresenceSQL.Active then
@@ -291,6 +302,12 @@ str:=
   finally
     qr.Free;
   end;
+end;
+
+procedure TP_attendanceFRM.SavePresBTNClick(Sender: TObject);
+begin
+  SavePresenceTable();
+
 end;
 
 procedure TP_attendanceFRM.SavePresenceTable();
@@ -339,9 +356,15 @@ begin
 end;
 
 procedure TP_attendanceFRM.CanelBTNClick(Sender: TObject);
+var
+  daySerial:Integer;
+  seminarSerial:Integer;
 begin
-TableSQL.Cancel;
-  close;
+  VpresenceSQL.close;
+  VpresenceSQL.Open;
+  SeminarSerial:=DaySQL.FieldByName('SeminarSerial').AsInteger;
+  daySerial:=DaySQL.FieldByName('Dayserial').AsInteger;
+   UpdatePresenceTable(seminarSerial,daySerial);
 end;
 
 End.
