@@ -31,7 +31,6 @@ object P_attendanceFRM: TP_attendanceFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 918
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -53,8 +52,6 @@ object P_attendanceFRM: TP_attendanceFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitLeft = 232
-    ExplicitTop = 531
     object RzPanel1: TRzPanel
       Left = 814
       Top = 1
@@ -63,7 +60,6 @@ object P_attendanceFRM: TP_attendanceFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 817
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -140,6 +136,15 @@ object P_attendanceFRM: TP_attendanceFRM
         Margin = -1
       end
     end
+    object SaveBTN: TButton
+      Left = 519
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'SaveBTN'
+      TabOrder = 1
+      OnClick = SaveBTNClick
+    end
   end
   object Panel2: TPanel
     Left = 0
@@ -148,7 +153,6 @@ object P_attendanceFRM: TP_attendanceFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 918
     object wwIncrementalSearch1: TwwIncrementalSearch
       Left = 255
       Top = 6
@@ -289,7 +293,6 @@ object P_attendanceFRM: TP_attendanceFRM
         Caption = 'Nav1SearchDialog'
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
-        Dialog = Sd1
         Index = 6
         Style = nbsSearchDialog
       end
@@ -302,7 +305,6 @@ object P_attendanceFRM: TP_attendanceFRM
     Height = 423
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 918
     object Panel5: TPanel
       Left = 501
       Top = 1
@@ -312,20 +314,24 @@ object P_attendanceFRM: TP_attendanceFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 504
       object wwDBGrid1: TwwDBGrid
         Left = 0
         Top = 36
         Width = 413
         Height = 385
+        ControlType.Strings = (
+          'Is_Present;CheckBox;Y;N')
         Selected.Strings = (
-          'Name'#9'20'#9'Name'
-          'percentage'#9'10'#9'percentage'
-          'PersonSerial'#9'10'#9'PersonSerial')
+          'PersonSerial'#9'4'#9'ps'
+          'DaySerial'#9'4'#9'ds'
+          'Last_name'#9'16'#9#917#960#943#952#949#964#959
+          'First_Name'#9'10'#9#908#957#959#956#945
+          'Is_Present'#9'12'#9#928#945#961#974#957
+          'percentage_present'#9'15'#9'% '#911#961#945#962#9'F')
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
-        FixedCols = 0
+        FixedCols = 4
         ShowHorzScrollBar = True
         Align = alClient
         DataSource = vPresenceSRC
@@ -354,7 +360,7 @@ object P_attendanceFRM: TP_attendanceFRM
           Width = 184
           Height = 36
           AutosizeStyle = asSizeNavButtons
-          DataSource = TableSRC
+          DataSource = vPresenceSRC
           RepeatInterval.InitialDelay = 500
           RepeatInterval.Interval = 100
           Align = alLeft
@@ -363,9 +369,6 @@ object P_attendanceFRM: TP_attendanceFRM
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
-          ExplicitLeft = 2
-          ExplicitTop = 2
-          ExplicitHeight = 71
           object wwNavButton1: TwwNavButton
             Left = 0
             Top = 0
@@ -394,6 +397,7 @@ object P_attendanceFRM: TP_attendanceFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Next'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -410,6 +414,7 @@ object P_attendanceFRM: TP_attendanceFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button1'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 2
@@ -442,6 +447,7 @@ object P_attendanceFRM: TP_attendanceFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Delete'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 4
@@ -475,25 +481,12 @@ object P_attendanceFRM: TP_attendanceFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      object Label6: TLabel
-        Left = 52
-        Top = 59
-        Width = 58
+      object Label9: TLabel
+        Left = 43
+        Top = 15
+        Width = 42
         Height = 14
-        Caption = #928#949#961#953#947#961#945#966#942
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label7: TLabel
-        Left = 60
-        Top = 67
-        Width = 58
-        Height = 14
-        Caption = #928#949#961#953#947#961#945#966#942
+        Caption = #917#960#953#955#959#947#942
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -509,11 +502,10 @@ object P_attendanceFRM: TP_attendanceFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 328
       end
       object wwDBLookupCombo1: TwwDBLookupCombo
-        Left = 112
-        Top = 15
+        Left = 91
+        Top = 13
         Width = 121
         Height = 21
         DropDownAlignment = taLeftJustify
@@ -603,7 +595,6 @@ object P_attendanceFRM: TP_attendanceFRM
           7C51B47C51B47C51B47C51B47C51B47C51B47C51FFFFFFFFFFFF}
         ParentFont = False
         TabOrder = 2
-        OnClick = BitBtn2Click
       end
       object RzPanel4: TRzPanel
         Left = 0
@@ -612,16 +603,16 @@ object P_attendanceFRM: TP_attendanceFRM
         Height = 150
         Align = alBottom
         TabOrder = 3
-        ExplicitWidth = 253
         object Grid1: TwwDBGrid
           Left = 2
           Top = 2
-          Width = 361
+          Width = 399
           Height = 146
           Selected.Strings = (
-            'SUBJECT'#9'16'#9#920#941#956#945
+            'DAYSERIAL'#9'10'#9'DAYSERIAL'
+            'SUBJECT'#9'23'#9#920#941#956#945
             'SEMINAR_DAY'#9'10'#9#924#941#961#945
-            'DURATION_HOURS'#9'10'#9#911#961#949#962)
+            'DURATION_HOURS'#9'6'#9#911#961#949#962)
           IniAttributes.Delimiter = ';;'
           IniAttributes.UnicodeIniFile = False
           TitleColor = clBtnFace
@@ -650,13 +641,22 @@ object P_attendanceFRM: TP_attendanceFRM
           TitleButtons = True
         end
       end
+      object Button1: TButton
+        Left = 336
+        Top = 219
+        Width = 75
+        Height = 25
+        Caption = 'Button1'
+        TabOrder = 4
+        OnClick = Button1Click
+      end
     end
     object FirstGRP: TGroupBox
-      Left = 4
-      Top = 60
-      Width = 250
+      Left = 28
+      Top = 51
+      Width = 269
       Height = 194
-      Caption = #928#955#951#961#959#966#959#961#943#949#962
+      Caption = #931#949#956#953#957#940#961#953#959
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -836,15 +836,6 @@ object P_attendanceFRM: TP_attendanceFRM
         WordWrap = False
       end
     end
-    object Button1: TButton
-      Left = 400
-      Top = 272
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 3
-      OnClick = Button1Click
-    end
   end
   object TableSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
@@ -908,7 +899,7 @@ object P_attendanceFRM: TP_attendanceFRM
       'Seminar '
       'where status='#39'A'#39
       'order by '
-      'seminar_name asc, date_started desc')
+      'date_started desc')
     Active = True
     AfterScroll = TableSQLAfterScroll
     Left = 49
@@ -987,36 +978,38 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object DaySQL: TIBCQuery
     SQLInsert.Strings = (
-      'INSERT INTO SEMINAR_SUBJECT'
-      '  (SERIAL_NUMBER, SUBJECT, FK_SEMINAR_SERIAL)'
+      'INSERT INTO SEMINAR'
+      '  (SERIAL_NUMBER, SEMINAR_NAME, DATE_STARTED, DATE_COMPLETED)'
       'VALUES'
-      '  (:SERIAL_NUMBER, :SUBJECT, :FK_SEMINAR_SERIAL)')
+      
+        '  (:SERIAL_NUMBER, :SEMINAR_NAME, :DATE_STARTED, :DATE_COMPLETED' +
+        ')')
     SQLDelete.Strings = (
-      'DELETE FROM SEMINAR_SUBJECT'
+      'DELETE FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLUpdate.Strings = (
-      'UPDATE SEMINAR_SUBJECT'
+      'UPDATE SEMINAR'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, SUBJECT = :SUBJECT, FK_SEMINAR' +
-        '_SERIAL = :FK_SEMINAR_SERIAL'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, SEMINAR_NAME = :SEMINAR_NAME, ' +
+        'DATE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, SUBJECT, FK_SEMINAR_SERIAL FROM SEMINAR_SU' +
-        'BJECT'
+        'SELECT SERIAL_NUMBER, SEMINAR_NAME, DATE_STARTED, DATE_COMPLETED' +
+        ' FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
-      'SELECT NULL FROM SEMINAR_SUBJECT'
+      'SELECT NULL FROM SEMINAR'
       'WHERE'
       'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
       'FOR UPDATE WITH LOCK')
     SQLRecCount.Strings = (
       'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM SEMINAR_SUBJECT'
+      'SELECT 1 AS C  FROM SEMINAR'
       ''
       ') q')
     Connection = U_databaseFRM.DataConnection
@@ -1025,18 +1018,24 @@ object P_attendanceFRM: TP_attendanceFRM
     SQL.Strings = (
       'SELECT'
       
+        'se.serial_number as SeminarSerial,se.seminar_name,se.date_starte' +
+        'd,se.date_completed,'
+      
         'ss.serial_number as SubjectSerial,ss.fk_seminar_serial, ss.subje' +
         'ct,'
       
-        'ssd.serial_number as daySerial, ssd.seminar_day,ssd.duration_hou' +
-        'rs'
+        'ssd.serial_number as daySerial, ssd.FK_SEMINAR_SUBJECT_SERIAL, s' +
+        'sd.seminar_day,ssd.duration_hours'
       'FROM'
-      '    seminar_subject ss left outer join '
+      '    seminar se left outer join'
+      
+        '    seminar_subject ss  on se.serial_number=ss.fk_seminar_serial' +
+        '  left outer join'
       
         '    seminar_subject_day ssd on  ss.serial_number = ssd.fk_semina' +
         'r_subject_serial'
       'where '
-      'ss.fk_seminar_serial= :SeminarSerial')
+      'se.serial_number= :SeminarSerial')
     DetailFields = 'FK_SEMINAR_SERIAL'
     Active = True
     Left = 289
@@ -1047,10 +1046,16 @@ object P_attendanceFRM: TP_attendanceFRM
         Name = 'SeminarSerial'
         Value = nil
       end>
+    object DaySQLDAYSERIAL: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'DAYSERIAL'
+      ReadOnly = True
+    end
     object DaySQLSUBJECT: TWideStringField
       DisplayLabel = #920#941#956#945
-      DisplayWidth = 16
+      DisplayWidth = 23
       FieldName = 'SUBJECT'
+      ReadOnly = True
       FixedChar = True
       Size = 60
     end
@@ -1062,43 +1067,43 @@ object P_attendanceFRM: TP_attendanceFRM
     end
     object DaySQLDURATION_HOURS: TIntegerField
       DisplayLabel = #911#961#949#962
-      DisplayWidth = 10
+      DisplayWidth = 6
       FieldName = 'DURATION_HOURS'
       ReadOnly = True
     end
+    object DaySQLSEMINARSERIAL: TIntegerField
+      FieldName = 'SEMINARSERIAL'
+      Required = True
+      Visible = False
+    end
+    object DaySQLSEMINAR_NAME: TWideStringField
+      FieldName = 'SEMINAR_NAME'
+      Visible = False
+      Size = 160
+    end
+    object DaySQLDATE_STARTED: TDateField
+      FieldName = 'DATE_STARTED'
+      Visible = False
+    end
+    object DaySQLDATE_COMPLETED: TDateField
+      FieldName = 'DATE_COMPLETED'
+      Visible = False
+    end
     object DaySQLSUBJECTSERIAL: TIntegerField
       FieldName = 'SUBJECTSERIAL'
-      Required = True
+      ReadOnly = True
       Visible = False
     end
     object DaySQLFK_SEMINAR_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SERIAL'
-      Required = True
-      Visible = False
-    end
-    object DaySQLDAYSERIAL: TIntegerField
-      FieldName = 'DAYSERIAL'
       ReadOnly = True
       Visible = False
     end
-  end
-  object Sd1: TwwSearchDialog
-    Selected.Strings = (
-      'SEMINAR_NAME'#9'20'#9#928#949#961#953#947#961#945#966#942#9#9
-      'DATE_STARTED'#9'10'#9#904#957#945#961#958#951#9#9
-      'SERIAL_NUMBER'#9'10'#9#913'/'#913#9#9)
-    GridTitleAlignment = taLeftJustify
-    GridColor = clWhite
-    GridOptions = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgPerfectRowFit]
-    SearchTable = TableSQL
-    ShadowSearchTable = DaySQL
-    Caption = 'Search'
-    MaxWidth = 0
-    MaxHeight = 209
-    CharCase = ecNormal
-    OnSyncDataSets = Sd1SyncDataSets
-    Left = 193
-    Top = 61
+    object DaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_SUBJECT_SERIAL'
+      ReadOnly = True
+      Visible = False
+    end
   end
   object vPresenceSRC: TIBCDataSource
     DataSet = VPresenceSQL
@@ -1118,38 +1123,71 @@ object P_attendanceFRM: TP_attendanceFRM
     Top = 153
   end
   object VPresenceSQL: TVirtualTable
+    Options = [voSkipUnSupportedFieldTypes]
     Active = True
     FieldDefs = <
       item
-        Name = 'Name'
-        DataType = ftString
-        Size = 20
-      end
-      item
-        Name = 'percentage'
-        DataType = ftInteger
-      end
-      item
         Name = 'PersonSerial'
         DataType = ftInteger
+      end
+      item
+        Name = 'First_Name'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'Last_name'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'percentage_present'
+        DataType = ftInteger
+      end
+      item
+        Name = 'Is_Present'
+        DataType = ftString
+        Size = 1
+      end
+      item
+        Name = 'DaySerial'
+        DataType = ftInteger
       end>
-    Left = 320
-    Top = 228
-    Data = {
-      0400030004004E616D6501001400000000000A0070657263656E746167650300
-      0000000000000C00506572736F6E53657269616C030000000000000000000000
-      0000}
-    object VPresenceSQLName: TStringField
-      DisplayWidth = 20
-      FieldName = 'Name'
-    end
-    object VPresenceSQLpercentage: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'percentage'
-    end
+    Left = 448
+    Top = 372
     object VPresenceSQLPersonSerial: TIntegerField
-      DisplayWidth = 10
+      DisplayLabel = 'ps'
+      DisplayWidth = 4
       FieldName = 'PersonSerial'
+    end
+    object VPresenceSQLDaySerial: TIntegerField
+      DisplayLabel = 'ds'
+      DisplayWidth = 4
+      FieldName = 'DaySerial'
+    end
+    object VPresenceSQLLast_name: TStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 16
+      FieldName = 'Last_name'
+      Size = 30
+    end
+    object VPresenceSQLFirst_Name: TStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 10
+      FieldName = 'First_Name'
+      Size = 30
+    end
+    object VPresenceSQLIs_Present: TStringField
+      DisplayLabel = #928#945#961#974#957
+      DisplayWidth = 12
+      FieldName = 'Is_Present'
+      Size = 1
+    end
+    object VPresenceSQLpercentage_present: TIntegerField
+      DisplayLabel = '% '#911#961#945#962
+      DisplayWidth = 15
+      FieldName = 'percentage_present'
+      DisplayFormat = '0%'
     end
   end
 end

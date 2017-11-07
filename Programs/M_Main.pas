@@ -44,6 +44,8 @@ type
     N5: TMenuItem;
     ables2: TMenuItem;
     Image1: TImage;
+    N6: TMenuItem;
+    HelpFile1: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -53,6 +55,9 @@ type
     procedure N4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure N5Click(Sender: TObject);
+    procedure ExchangeRates1Click(Sender: TObject);
+    procedure N6Click(Sender: TObject);
+    procedure HelpFile1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,7 +73,7 @@ implementation
 
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
-  p_attendance;
+  p_attendance, H_Help;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -84,6 +89,17 @@ end;
 procedure TM_mainFRM.Countries2Click(Sender: TObject);
 begin
 gpShowModal(TM_CompanyFRM);
+end;
+
+procedure TM_mainFRM.ExchangeRates1Click(Sender: TObject);
+begin
+  gpShowModal(TL_SeminarFRM);
+end;
+
+procedure TM_mainFRM.HelpFile1Click(Sender: TObject);
+begin
+gpShowModal(TH_HelpFRM);
+
 end;
 
 procedure TM_mainFRM.N1Click(Sender: TObject);
@@ -113,6 +129,12 @@ end;
 procedure TM_mainFRM.N5Click(Sender: TObject);
 begin
   gpShowModal(TM_InstructorFRM);
+
+end;
+
+procedure TM_mainFRM.N6Click(Sender: TObject);
+begin
+gpShowModal(TP_attendanceFRM);
 
 end;
 

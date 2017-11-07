@@ -1,6 +1,7 @@
 object L_SeminarFRM: TL_SeminarFRM
   Left = 365
   Top = 153
+  Align = alClient
   Caption = '--'
   ClientHeight = 558
   ClientWidth = 918
@@ -286,29 +287,14 @@ object L_SeminarFRM: TL_SeminarFRM
     Left = 0
     Top = 53
     Width = 918
-    Height = 139
+    Height = 100
     Align = alTop
     TabOrder = 1
-    object wwIncrementalSearch1: TwwIncrementalSearch
-      Left = 23
-      Top = 6
-      Width = 128
-      Height = 22
-      DataSource = TableSRC
-      ShowMatchText = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-    end
     object RzGroupBox1: TRzGroupBox
-      Left = 665
-      Top = 2
+      Left = 7
+      Top = 0
       Width = 237
-      Height = 132
+      Height = 97
       Caption = 'Filter Seminars'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -318,7 +304,7 @@ object L_SeminarFRM: TL_SeminarFRM
       GradientColorStop = clWhite
       GroupStyle = gsUnderline
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
       object Label1: TLabel
         Left = 12
         Top = 53
@@ -397,20 +383,21 @@ object L_SeminarFRM: TL_SeminarFRM
   end
   object Panel3: TPanel
     Left = 0
-    Top = 192
+    Top = 153
     Width = 918
-    Height = 323
+    Height = 362
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
-      Left = 761
+      Left = 720
       Top = 1
       Width = 224
-      Height = 321
+      Height = 360
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 761
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -467,6 +454,7 @@ object L_SeminarFRM: TL_SeminarFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 1
+        OnClick = DeletehawbBTNClick
         Glyph.Data = {
           DE010000424DDE01000000000000760000002800000024000000120000000100
           0400000000006801000000000000000000001000000000000000000000000000
@@ -568,35 +556,164 @@ object L_SeminarFRM: TL_SeminarFRM
       end
     end
     object RzPanel2: TRzPanel
-      Left = 137
+      Left = 96
       Top = 1
       Width = 624
-      Height = 321
+      Height = 360
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 137
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
         Width = 624
-        Height = 9
+        Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        object Nav1: TwwDBNavigator
+          Left = 1
+          Top = 7
+          Width = 184
+          Height = 26
+          AutosizeStyle = asSizeNavButtons
+          DataSource = TableSRC
+          RepeatInterval.InitialDelay = 500
+          RepeatInterval.Interval = 100
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          object Nav1Button: TwwNavButton
+            Left = 0
+            Top = 0
+            Width = 31
+            Height = 26
+            Hint = 'Move to first record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Button'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 0
+            Style = nbsFirst
+          end
+          object Nav1Prior: TwwNavButton
+            Left = 31
+            Top = 0
+            Width = 31
+            Height = 26
+            Hint = 'Move to prior record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Prior'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 1
+            Style = nbsPrior
+          end
+          object Nav1Next: TwwNavButton
+            Left = 62
+            Top = 0
+            Width = 31
+            Height = 26
+            Hint = 'Move to next record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Next'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 2
+            Style = nbsNext
+          end
+          object Nav1Button1: TwwNavButton
+            Left = 93
+            Top = 0
+            Width = 31
+            Height = 26
+            Hint = 'Move to last record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Button1'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 3
+            Style = nbsLast
+          end
+          object Nav1Insert: TwwNavButton
+            Left = 124
+            Top = 0
+            Width = 30
+            Height = 26
+            Hint = 'Insert new record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Insert'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            OnClick = Nav1InsertClick
+            Index = 4
+            Style = nbsInsert
+          end
+          object Nav1Delete: TwwNavButton
+            Left = 154
+            Top = 0
+            Width = 30
+            Height = 26
+            Hint = 'Delete current record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Delete'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 5
+            Style = nbsDelete
+          end
+        end
+        object wwIncrementalSearch1: TwwIncrementalSearch
+          Left = 215
+          Top = 5
+          Width = 128
+          Height = 22
+          DataSource = TableSRC
+          ShowMatchText = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
       end
       object Grid1: TwwDBGrid
         Left = 0
-        Top = 9
+        Top = 33
         Width = 625
-        Height = 312
+        Height = 327
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
           'SEMINAR_NAME'#9'20'#9#928#949#961#953#947#961#945#966#942
           'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
           'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
           'DURATION_HOURS'#9'10'#9#911#961#949#962
-          'DURATION_DAYS'#9'10'#9#924#941#961#949#962
-          'STATUS_DESCRIPTION'#9'9'#9'Status')
+          'DURATION_DAYS'#9'10'#9#924#941#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -630,8 +747,8 @@ object L_SeminarFRM: TL_SeminarFRM
     object RzPanel4: TRzPanel
       Left = 1
       Top = 1
-      Width = 136
-      Height = 321
+      Width = 95
+      Height = 360
       Align = alLeft
       Alignment = taLeftJustify
       BorderOuter = fsNone
@@ -806,13 +923,13 @@ object L_SeminarFRM: TL_SeminarFRM
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
-    Left = 169
-    Top = 77
+    Left = 193
+    Top = 5
   end
   object ReadTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
     IsolationLevel = iblReadOnlyReadCommitted
-    Left = 248
-    Top = 65
+    Left = 280
+    Top = 65521
   end
 end

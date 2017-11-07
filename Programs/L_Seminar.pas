@@ -25,7 +25,6 @@ type
     RzBitBtn1: TRzBitBtn;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
-    wwIncrementalSearch1: TwwIncrementalSearch;
     RzPanel2: TRzPanel;
     RzPanel3: TRzPanel;
     Grid1: TwwDBGrid;
@@ -56,6 +55,14 @@ type
     TableSQLSTATUS: TWideStringField;
     TableSQLDESCRIPTION: TWideStringField;
     TableSQLDESCRIPTION_GREEK: TWideStringField;
+    Nav1: TwwDBNavigator;
+    Nav1Button: TwwNavButton;
+    Nav1Prior: TwwNavButton;
+    Nav1Next: TwwNavButton;
+    Nav1Button1: TwwNavButton;
+    Nav1Insert: TwwNavButton;
+    Nav1Delete: TwwNavButton;
+    wwIncrementalSearch1: TwwIncrementalSearch;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -68,10 +75,14 @@ type
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
     procedure InsertHawbBTNClick(Sender: TObject);
     procedure Grid1DblClick(Sender: TObject);
+    procedure DeletehawbBTNClick(Sender: TObject);
+    procedure Nav1InsertClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
     procedure EditSeminar();
+    procedure DeleteSeminar();
+  procedure  InsertSeminar();
   public
     { Public declarations }
     MyInsertState:Boolean;
@@ -174,6 +185,21 @@ begin
 
 end;
 
+procedure TL_SeminarFRM.DeleteSeminar();
+vAR
+  serial:Integer;
+  Frm:TV_SeminarFRM;
+begin
+  SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
+  if serial<1 then exit;
+  ksExecSQLVar(cn,'delete from seminar where serial_number= :serial',[serial]);
+  ksOpenTables([TableSQL])
+
+
+end;
+
+
+
 procedure TL_SeminarFRM.Grid1TitleButtonClick(Sender: TObject;
   AFieldName: string);
   var
@@ -189,8 +215,14 @@ procedure TL_SeminarFRM.Grid1TitleButtonClick(Sender: TObject;
 end;
 
 procedure TL_SeminarFRM.InsertHawbBTNClick(Sender: TObject);
-vAR
+begin
+  InsertSeminar();
+  ksOpenTables([TableSQL]);
+end;
 
+
+procedure TL_SeminarFRM.InsertSeminar();
+vAR
 Frm:TV_SeminarFRM;
 begin
   frm := TV_SeminarFRM.Create(nil);
@@ -203,10 +235,23 @@ begin
 end;
 
 
+procedure TL_SeminarFRM.Nav1InsertClick(Sender: TObject);
+begin
+  InsertSeminar();
+  ksOpenTables([TableSQL]);
+
+  abort;
+end;
+
 procedure TL_SeminarFRM.CanelBTNClick(Sender: TObject);
 begin
 TableSQL.Cancel;
 close;
+end;
+
+procedure TL_SeminarFRM.DeletehawbBTNClick(Sender: TObject);
+begin
+DeleteSeminar();
 end;
 
 End.

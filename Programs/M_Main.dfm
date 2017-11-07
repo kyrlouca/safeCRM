@@ -7323,8 +7323,49 @@ object M_mainFRM: TM_mainFRM
   end
   object MainMenu1: TMainMenu
     OwnerDraw = True
-    Left = 288
-    Top = 65520
+    Left = 616
+    Top = 24
+    object ables1: TMenuItem
+      Caption = #931#949#956#953#957#940#961#953#945
+      object ExchangeRates1: TMenuItem
+        Caption = #923#943#963#964#945' '#931#949#956#953#957#945#961#943#969#957
+        OnClick = ExchangeRates1Click
+      end
+      object N6: TMenuItem
+        Caption = #928#945#961#959#965#963#943#949#962
+        OnClick = N6Click
+      end
+    end
+    object ables2: TMenuItem
+      Caption = #928#949#955#940#964#949#962
+      object Countries2: TMenuItem
+        Caption = #917#964#945#953#961#949#943#949#962
+        OnClick = Countries2Click
+      end
+      object N1: TMenuItem
+        Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
+        OnClick = N1Click
+      end
+    end
+    object BaseTables1: TMenuItem
+      Caption = #931#964#945#964#953#954#941#962' '#928#955#951#961#959#966#943#949#962
+      object N2: TMenuItem
+        Caption = #935#974#961#959#953' '#917#954#960#945#943#948#949#965#963#951#962
+        OnClick = N2Click
+      end
+      object N3: TMenuItem
+        Caption = #932#973#960#959#953' '#931#949#956#953#957#945#961#943#969#957
+        OnClick = N3Click
+      end
+      object N5: TMenuItem
+        Caption = #917#954#960#945#953#948#949#965#964#941#962
+        OnClick = N5Click
+      end
+      object N4: TMenuItem
+        Caption = #917#943#948#951' '#922#972#963#964#959#965#962
+        OnClick = N4Click
+      end
+    end
     object ab1: TMenuItem
       Caption = 'Search'
       object Hawb1: TMenuItem
@@ -7332,12 +7373,6 @@ object M_mainFRM: TM_mainFRM
       end
       object Customers2: TMenuItem
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962
-      end
-    end
-    object ables1: TMenuItem
-      Caption = 'Tables'
-      object ExchangeRates1: TMenuItem
-        Caption = 'Exchange Rates'
       end
     end
     object User1: TMenuItem
@@ -7352,36 +7387,6 @@ object M_mainFRM: TM_mainFRM
         Caption = 'Security'
         object UserSecurity1: TMenuItem
           Caption = 'User Security'
-        end
-      end
-      object BaseTables1: TMenuItem
-        Caption = 'Base Tables'
-        object N2: TMenuItem
-          Caption = #935#974#961#959#953' '#917#954#960#945#943#948#949#965#963#951#962
-          OnClick = N2Click
-        end
-        object N3: TMenuItem
-          Caption = #917#943#948#951' '#931#949#956#953#957#945#961#943#969#957
-          OnClick = N3Click
-        end
-        object N5: TMenuItem
-          Caption = #917#954#960#945#953#948#949#965#964#941#962
-          OnClick = N5Click
-        end
-        object N4: TMenuItem
-          Caption = #917#943#948#951' '#922#972#963#964#959#965#962
-          OnClick = N4Click
-        end
-      end
-      object ables2: TMenuItem
-        Caption = 'Tables'
-        object Countries2: TMenuItem
-          Caption = #917#964#945#953#961#949#943#949#962
-          OnClick = Countries2Click
-        end
-        object N1: TMenuItem
-          Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
-          OnClick = N1Click
         end
       end
       object Params1: TMenuItem
@@ -7399,6 +7404,10 @@ object M_mainFRM: TM_mainFRM
     end
     object Help1: TMenuItem
       Caption = 'Help'
+      object HelpFile1: TMenuItem
+        Caption = 'Help File'
+        OnClick = HelpFile1Click
+      end
     end
   end
 end

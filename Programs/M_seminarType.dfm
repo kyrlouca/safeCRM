@@ -1,7 +1,7 @@
 ﻿object M_SeminarTypeFRM: TM_SeminarTypeFRM
   Left = 365
   Top = 153
-  Caption = 'Company Details'
+  Caption = '--'
   ClientHeight = 641
   ClientWidth = 918
   Color = clBtnFace
@@ -39,9 +39,9 @@
       Height = 45
       Align = alClient
       Alignment = taCenter
-      Caption = #917#943#948#951' '#931#949#956#953#957#945#961#943#969#957
+      Caption = #932#973#960#959#953' '#931#949#956#953#957#945#961#943#969#957
       Layout = tlCenter
-      ExplicitWidth = 217
+      ExplicitWidth = 235
       ExplicitHeight = 32
     end
   end
@@ -670,7 +670,7 @@
         Items.Strings = (
           #924#972#957#959'-'#917#960#967'.'#9'M'
           #928#972#955#965'-'#917#960#967'.'#9'P')
-        ItemIndex = 0
+        ItemIndex = 1
         Sorted = False
         TabOrder = 5
         UnboundDataType = wwDefault
@@ -1132,7 +1132,7 @@
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 3
+        Value = 1
       end>
     object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'

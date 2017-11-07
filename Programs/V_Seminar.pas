@@ -8,7 +8,8 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  System.ImageList, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups;
+  System.ImageList, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
+  Vcl.ComCtrls, RzDBEdit;
 type
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -54,15 +55,9 @@ type
     Label12: TLabel;
     TabSheet1: TRzTabSheet;
     AttendingSQL: TIBCQuery;
-    AttendingSQLFIRST_NAME: TWideStringField;
-    AttendingSQLLAST_NAME: TWideStringField;
-    AttendingSQLFK_PERSON_SERIAL: TIntegerField;
-    AttendingSQLATTENDANCE_STATUS: TWideStringField;
     AttendingSRC: TDataSource;
-    AttendingSQLFK_SEMINAR_SERIAL: TIntegerField;
     NonAttendSQL: TIBCQuery;
     NonAttendSRC: TDataSource;
-    AttendingSQLSERIAL_NUMBER: TIntegerField;
     NonAttendSQLSERIAL_NUMBER: TIntegerField;
     NonAttendSQLLAST_NAME: TWideStringField;
     NonAttendSQLFIRST_NAME: TWideStringField;
@@ -94,12 +89,8 @@ type
     wwDBNavigator1Post: TwwNavButton;
     wwDBNavigator1Cancel: TwwNavButton;
     wwDBNavigator1Refresh: TwwNavButton;
-    wwDBGrid1: TwwDBGrid;
     seminarSubjectSQL: TIBCQuery;
     SeminarSubjectSRC: TDataSource;
-    seminarSubjectSQLSERIAL_NUMBER: TIntegerField;
-    seminarSubjectSQLSUBJECT: TWideStringField;
-    seminarSubjectSQLFK_SEMINAR_SERIAL: TIntegerField;
     RzPanel4: TRzPanel;
     RzPanel7: TRzPanel;
     GroupBox2: TGroupBox;
@@ -115,14 +106,8 @@ type
     wwDBGrid2: TwwDBGrid;
     SeminarDaySQL: TIBCQuery;
     SeminarDaySRC: TDataSource;
-    SeminarDaySQLSERIAL_NUMBER: TIntegerField;
-    SeminarDaySQLSEMINAR_DAY: TDateField;
-    SeminarDaySQLDURATION_HOURS: TIntegerField;
-    SeminarDaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
-    SeminarDaySQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarDayFLD: TwwDBDateTimePicker;
     Label13: TLabel;
-    wwDBEdit3: TwwDBEdit;
     RzPanel9: TRzPanel;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
     SeminarSQLFK_SEMINAR: TIntegerField;
@@ -140,6 +125,22 @@ type
     SeminarSQLANAD_APPROVED: TWideStringField;
     SeminarSQLCOST_ESTIMATE: TFloatField;
     SeminarSQLSTATUS: TWideStringField;
+    RzDBRichEdit1: TRzDBRichEdit;
+    BitBtn2: TBitBtn;
+    seminarSubjectSQLSERIAL_NUMBER: TIntegerField;
+    seminarSubjectSQLFK_SEMINAR_SERIAL: TIntegerField;
+    seminarSubjectSQLSUBJECT: TWideStringField;
+    AttendingSQLSERIAL_NUMBER: TIntegerField;
+    AttendingSQLFIRST_NAME: TWideStringField;
+    AttendingSQLLAST_NAME: TWideStringField;
+    AttendingSQLFK_SEMINAR_SERIAL: TIntegerField;
+    AttendingSQLFK_PERSON_SERIAL: TIntegerField;
+    AttendingSQLATTENDANCE_STATUS: TWideStringField;
+    wwDBGrid1: TwwDBGrid;
+    SeminarDaySQLSERIAL_NUMBER: TIntegerField;
+    SeminarDaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
+    SeminarDaySQLSEMINAR_DAY: TDateField;
+    SeminarDaySQLDURATION_HOURS: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -167,10 +168,11 @@ type
     procedure SeminarSQLNewRecord(DataSet: TDataSet);
     procedure SeminarTSShow(Sender: TObject);
     procedure DaysTSShow(Sender: TObject);
-    procedure SeminarDaySQLNewRecord(DataSet: TDataSet);
+    procedure BitBtn2Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
+  Procedure StartSeminar(Const SeminarSerial:integer);
   Procedure EditSeminar(Const SeminarSerial:integer);
   procedure RemovePerson();
   procedure InsertPerson();
@@ -200,6 +202,16 @@ begin
   end;
 end;
 
+procedure TV_SeminarFRM.BitBtn2Click(Sender: TObject);
+var
+  seminarSerial:Integer;
+begin
+
+  seminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+  StartSeminar(seminarSerial);
+  SeminarSQL.Refresh;
+end;
+
 procedure TV_SeminarFRM.ToLeftBTNClick(Sender: TObject);
 begin
 InsertPerson();
@@ -208,11 +220,6 @@ end;
 procedure TV_SeminarFRM.ToRightBTNClick(Sender: TObject);
 begin
   RemovePerson();
-end;
-
-procedure TV_SeminarFRM.SeminarDaySQLNewRecord(DataSet: TDataSet);
-begin
-  Dataset.FieldByName('fk_seminar_serial').Value:=seminarSubjectSQL.FieldByName('fk_seminar_serial').AsInteger;
 end;
 
 procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
@@ -249,12 +256,19 @@ var
   TypeSerial:Integer;
   SeminarSerial:Integer;
 begin
- if SeminarSQL.State in [dsEdit,dsInsert] then SeminarSQL.Post;
+ if SeminarSQL.State in [dsEdit,dsInsert] then begin
+   FirstFLD.Text:=seminarTypeFLD.Text;
+   SeminarSQL.Post;
+ end;
  SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
  TYpeserial:=SeminarSQL.FieldByName('FK_Seminar').AsInteger;
  if (not select) or (Seminarserial<1) or (TypeSerial<1) then exit;
  UseSeminarTEmplate(SeminarSerial,TypeSerial);
- ksOpenTables([SeminarSQL])
+// ksOpenTables([SeminarSQL])
+  SeminarSQL.close;
+  seminarSQL.ParamByName('serialNumber').Value:=seminarSerial;
+  seminarSQL.Open;
+  firstFLD.SetFocus;
 
 end;
 
@@ -519,6 +533,28 @@ Begin
           firstFLD.SetFocus;
 
 End;
+
+
+Procedure TV_SeminarFRM.StartSeminar(Const SeminarSerial:integer);
+var
+  qr:TksQuery;
+  status:String;
+Begin
+  if SeminarSerial<1 then exit;
+  qr:=TksQuery.Create(cn,'select * from Seminar where serial_number= :serial');
+  try
+    qr.ParamByName('serial').AsInteger:=seminarSerial;
+    qr.Open;
+    status:=qr.FieldByName('status').AsString;
+    if status='I' then begin
+      ksExecSQLVar(cn,'update seminar set status= ''A'' where serial_number= :serial',[SeminarSerial]);
+    end;
+  finally
+    qr.Free;
+  end;
+
+End;
+
 
 
 End.
