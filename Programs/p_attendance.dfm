@@ -144,25 +144,10 @@ object P_attendanceFRM: TP_attendanceFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    object wwIncrementalSearch1: TwwIncrementalSearch
-      Left = 255
-      Top = 6
-      Width = 128
-      Height = 22
-      DataSource = TableSRC
-      SearchField = 'seminar_name'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-    end
     object Nav1: TwwDBNavigator
       Left = 1
       Top = 7
-      Width = 184
+      Width = 112
       Height = 26
       AutosizeStyle = asSizeNavButtons
       DataSource = TableSRC
@@ -173,10 +158,27 @@ object P_attendanceFRM: TP_attendanceFRM
       Font.Height = -12
       Font.Name = 'Arial'
       Font.Style = []
-      object Nav1Prior: TwwNavButton
+      object Nav1First: TwwNavButton
         Left = 0
         Top = 0
-        Width = 27
+        Width = 23
+        Height = 26
+        Hint = 'Insert new record'
+        ImageIndex = -1
+        NumGlyphs = 2
+        Spacing = 4
+        Transparent = False
+        Caption = 'Nav1First'
+        Enabled = False
+        DisabledTextColors.ShadeColor = clGray
+        DisabledTextColors.HighlightColor = clBtnHighlight
+        Index = 0
+        Style = nbsFirst
+      end
+      object Nav1Prior: TwwNavButton
+        Left = 23
+        Top = 0
+        Width = 23
         Height = 26
         Hint = 'Move to prior record'
         ImageIndex = -1
@@ -187,13 +189,13 @@ object P_attendanceFRM: TP_attendanceFRM
         Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 0
+        Index = 1
         Style = nbsPrior
       end
       object Nav1Next: TwwNavButton
-        Left = 27
+        Left = 46
         Top = 0
-        Width = 27
+        Width = 22
         Height = 26
         Hint = 'Move to next record'
         ImageIndex = -1
@@ -203,13 +205,13 @@ object P_attendanceFRM: TP_attendanceFRM
         Caption = 'Nav1Next'
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 1
+        Index = 2
         Style = nbsNext
       end
       object Nav1Button1: TwwNavButton
-        Left = 54
+        Left = 68
         Top = 0
-        Width = 26
+        Width = 22
         Height = 26
         Hint = 'Move to last record'
         ImageIndex = -1
@@ -219,62 +221,13 @@ object P_attendanceFRM: TP_attendanceFRM
         Caption = 'Nav1Button1'
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 2
+        Index = 3
         Style = nbsLast
       end
-      object Nav1Insert: TwwNavButton
-        Left = 80
-        Top = 0
-        Width = 26
-        Height = 26
-        Hint = 'Insert new record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Insert'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 3
-        Style = nbsInsert
-      end
-      object Nav1Delete: TwwNavButton
-        Left = 106
-        Top = 0
-        Width = 26
-        Height = 26
-        Hint = 'Delete current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Delete'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 4
-        Style = nbsDelete
-      end
-      object Nav1Post: TwwNavButton
-        Left = 132
-        Top = 0
-        Width = 26
-        Height = 26
-        Hint = 'Post changes of current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Post'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 5
-        Style = nbsPost
-      end
       object Nav1SearchDialog: TwwNavButton
-        Left = 158
+        Left = 90
         Top = 0
-        Width = 26
+        Width = 22
         Height = 26
         Hint = 'Search the dataset'
         ImageIndex = -1
@@ -284,7 +237,7 @@ object P_attendanceFRM: TP_attendanceFRM
         Caption = 'Nav1SearchDialog'
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 6
+        Index = 4
         Style = nbsSearchDialog
       end
     end
@@ -297,18 +250,18 @@ object P_attendanceFRM: TP_attendanceFRM
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
-      Left = 501
+      Left = 457
       Top = 1
-      Width = 413
+      Width = 416
       Height = 421
-      Align = alRight
+      Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
       object wwDBGrid1: TwwDBGrid
         Left = 0
         Top = 36
-        Width = 413
+        Width = 416
         Height = 342
         ControlType.Strings = (
           'Is_Present;CheckBox;Y;N')
@@ -317,8 +270,8 @@ object P_attendanceFRM: TP_attendanceFRM
           'DaySerial'#9'4'#9'ds'
           'Last_name'#9'16'#9#917#960#943#952#949#964#959
           'First_Name'#9'10'#9#908#957#959#956#945
-          'Is_Present'#9'12'#9#928#945#961#974#957
-          'percentage_present'#9'15'#9'% '#911#961#945#962#9'F')
+          'Is_Present'#9'7'#9#928#945#961#974#957
+          'percentage_present'#9'9'#9'% '#911#961#945#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -335,20 +288,20 @@ object P_attendanceFRM: TP_attendanceFRM
         TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
-        ExplicitHeight = 269
       end
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
-        Width = 413
+        Width = 416
         Height = 36
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitWidth = 413
         object wwDBNavigator1: TwwDBNavigator
           Left = 0
           Top = 0
-          Width = 184
+          Width = 89
           Height = 36
           AutosizeStyle = asSizeNavButtons
           DataSource = vPresenceSRC
@@ -360,10 +313,27 @@ object P_attendanceFRM: TP_attendanceFRM
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
-          object wwNavButton1: TwwNavButton
+          object wwDBNavigator1Button: TwwNavButton
             Left = 0
             Top = 0
-            Width = 31
+            Width = 23
+            Height = 36
+            Hint = 'Move to first record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'wwDBNavigator1Button'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 0
+            Style = nbsFirst
+          end
+          object wwNavButton1: TwwNavButton
+            Left = 23
+            Top = 0
+            Width = 22
             Height = 36
             Hint = 'Move to prior record'
             ImageIndex = -1
@@ -374,13 +344,13 @@ object P_attendanceFRM: TP_attendanceFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 0
+            Index = 1
             Style = nbsPrior
           end
           object wwNavButton2: TwwNavButton
-            Left = 31
+            Left = 45
             Top = 0
-            Width = 31
+            Width = 22
             Height = 36
             Hint = 'Move to next record'
             ImageIndex = -1
@@ -391,13 +361,13 @@ object P_attendanceFRM: TP_attendanceFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 1
+            Index = 2
             Style = nbsNext
           end
           object wwNavButton3: TwwNavButton
-            Left = 62
+            Left = 67
             Top = 0
-            Width = 31
+            Width = 22
             Height = 36
             Hint = 'Move to last record'
             ImageIndex = -1
@@ -408,65 +378,15 @@ object P_attendanceFRM: TP_attendanceFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 2
-            Style = nbsLast
-          end
-          object wwNavButton4: TwwNavButton
-            Left = 93
-            Top = 0
-            Width = 31
-            Height = 36
-            Hint = 'Insert new record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'Nav1Insert'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 3
-            Style = nbsInsert
-          end
-          object wwNavButton5: TwwNavButton
-            Left = 124
-            Top = 0
-            Width = 30
-            Height = 36
-            Hint = 'Delete current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'Nav1Delete'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 4
-            Style = nbsDelete
-          end
-          object wwNavButton6: TwwNavButton
-            Left = 154
-            Top = 0
-            Width = 30
-            Height = 36
-            Hint = 'Post changes of current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'Nav1Post'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 5
-            Style = nbsPost
+            Style = nbsLast
           end
         end
       end
       object RzPanel5: TRzPanel
         Left = 0
         Top = 378
-        Width = 413
+        Width = 416
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
@@ -476,13 +396,14 @@ object P_attendanceFRM: TP_attendanceFRM
         ExplicitTop = 537
         ExplicitWidth = 990
         object RzPanel6: TRzPanel
-          Left = 312
+          Left = 315
           Top = 0
           Width = 100
           Height = 42
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitLeft = 312
         end
         object SavePresBTN: TBitBtn
           Left = 7
@@ -633,7 +554,7 @@ object P_attendanceFRM: TP_attendanceFRM
     object PanelX: TRzPanel
       Left = 1
       Top = 1
-      Width = 424
+      Width = 456
       Height = 421
       Align = alLeft
       BorderOuter = fsNone
@@ -654,11 +575,12 @@ object P_attendanceFRM: TP_attendanceFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 424
+        Width = 456
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 424
       end
       object wwDBLookupCombo1: TwwDBLookupCombo
         Left = 91
@@ -682,94 +604,25 @@ object P_attendanceFRM: TP_attendanceFRM
         OnChange = wwDBLookupCombo1Change
         OnCloseUp = wwDBLookupCombo1CloseUp
       end
-      object BitBtn2: TBitBtn
-        Left = 101
-        Top = 194
-        Width = 110
-        Height = 34
-        Caption = #928#945#961#959#965#963#943#949#962
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = []
-        Glyph.Data = {
-          F6060000424DF606000000000000360000002800000018000000180000000100
-          180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-          9265449265449266449266449266439266439265449266449266449265439266
-          43926543926644926543926543926644926643926643926643926643FFFFFFFF
-          FFFFFFFFFFFFFFFF936644E9D7C0E8D7C0E8D6C0E9D7C0E8D6C0E8D6C1E9D7C0
-          E8D6C0E8D6C0E8D7C0E9D7C0E9D6C0E8D7C0E8D6C0E8D6C0E8D6C0E8D6C0E8D7
-          C0926644FFFFFFFFFFFFFFFFFFFFFFFF946844E8D8C2E9D8C2E8D7C1E9D8C2E9
-          D7C2E8D7C2E8D8C2E8D8C1E9D7C1E8D7C2E9D8C2E8D7C2E9D8C2E9D7C2E8D8C2
-          E8D7C1E8D8C1E9D7C2946745FFFFFFFFFFFFFFFFFFFFFFFF966845E9D9C3E9D8
-          C43232D73232D73232D7E9D9C3E9D8C4E9D9C4E9D9C3E9D9C3E9D8C3E9D9C3E9
-          D8C3E9D9C4E9D9C3E9D9C4E9D9C3E9D9C3966845FFFFFFFFFFFFFFFFFFFFFFFF
-          976945E9DAC5EADAC5EADAC5EADAC51A1ADEEADAC5EADAC5EAD9C5E9DAC5EADA
-          C5E9DAC5EAD9C5EADAC5EADAC5E9DAC5EADAC5EADAC5E9D9C5976945FFFFFFFF
-          FFFFFFFFFFFFFFFF996A46EADCC8EBDBC8EADBC80808E4EADBC8EADBC8DDC7AF
-          DDC7AFDDC7AFDEC7AFDDC7AFDDC7AFDDC7AFDDC7AFDDC7AFDDC7AFEADCC8EBDB
-          C8996A46FFFFFFFFFFFFFFFFFFFFFFFF996B47EADCCAEADDCAEBDCCAEBDDCA08
-          08E4EBDCCBA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744D
-          A8744DEBDDCAEADCCA9A6B47FFFFFFFFFFFFFFFFFFFFFFFF9B6D47EBDECCEBDE
-          CC0808E40808E40808E4EBDECCECDECCECDECDEBDECCEBDECDECDECCEBDECDEB
-          DECCECDECDEBDDCCEBDECDECDECDECDECC9C6C48FFFFFFFFFFFFFFFFFFFFFFFF
-          9E6D48ECDFCFECDFCFECE0CFECDFCEECDFCFECDFCFECDFCFECDFCFEBE0CEEBDF
-          CFEBE0CEECDFCFECDFCFECDFCFECE0CFECE0CFECDFCFECE0CF9E6C48FFFFFFFF
-          FFFFFFFFFFFFFFFF9F6E49ECE1D1EDE1D1EDE1D1ECE1D1EDE1D1ECE1D1EDE1D1
-          ECE1D1ECE1D2EDE1D1ECE1D1EDE1D2ECE1D2ECE1D1EDE1D1ECE2D2EDE1D2ECE1
-          D19F6E48FFFFFFFFFFFFFFFFFFFFFFFFA1704AEDE3D4EDE3D33232D73232D732
-          32D7EDE3D4EDE2D4EDE3D4EDE3D3EDE3D4EDE2D4EEE3D4EDE2D4EDE3D4EDE2D4
-          EDE3D4EDE3D4EDE3D4A17049FFFFFFFFFFFFFFFFFFFFFFFFA2714AEEE4D6EEE4
-          D61A1ADEEEE5D6EEE4D6EEE5D6EEE5D7EDE5D6EEE4D6EEE5D7EEE4D7EEE5D6EE
-          E4D6EEE4D7EDE4D7EEE4D7EEE4D6EEE4D6A3714AFFFFFFFFFFFFFFFFFFFFFFFF
-          A4734AEFE6D8EEE6D8EEE5D90808E4EEE6D9EEE6D9E1CFBCE1CFBCE0CFBCE0CF
-          BCE1CFBBE1CFBBE0CFBCE1CFBCE0CFBBE0CFBBEEE5D9EEE6D8A5714AFFFFFFFF
-          FFFFFFFFFFFFFFFFA7734BEFE8DCEFE7DBEFE7DBF0E8DC0808E4EFE7DCA8744D
-          A8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DEFE8DBF0E7
-          DCA6734BFFFFFFFFFFFFFFFFFFFFFFFFA8744CEFE9DDF0E9DE0808E40808E408
-          08E4F0E9DDF0E9DEF0E9DEF0E9DEF0E9DDF0E9DEF0E9DEF0E9DEEFE9DEF0E9DE
-          F0E9DEF0E9DEF0E9DDA8754CFFFFFFFFFFFFFFFFFFFFFFFFA9764DF0EBE0F1EB
-          E0F1EAE0F0EBE0F0EBE0F0EAE0F1EBE0F0EAE0F0EAE0F1EBE0F0EAE0F1EAE0F1
-          EBE0F0EBE0F0EBDFF1EADFF0EAE0F0EAE0AA764DFFFFFFFFFFFFFFFFFFFFFFFF
-          AC774EF1ECE2F1ECE2F1ECE2F1ECE2F1ECE2F1ECE2F1EBE2F1ECE2F1ECE2F1EC
-          E2F1EBE2F1EBE2F1ECE2F1ECE2F0ECE2F1EBE2F0ECE2F1EBE2AC764EFFFFFFFF
-          FFFFFFFFFFFFFFFFAE784EF1EDE4F1EDE4F2EDE43232D7F2EDE4F1EDE4F1EDE4
-          F1EEE4F1EDE4F2EDE4F1EDE4F1EDE4F1EDE4F2EDE4F1EDE4F1EDE4F2EEE4F1ED
-          E4AD784EFFFFFFFFFFFFFFFFFFFFFFFFAE794FF2EFE5F2EEE6F2EEE61A1ADEF2
-          EEE5F2EEE6F2EEE6F2EFE6F1EEE6F1EEE6F2EEE6F2EEE6F1EEE5F2EEE6F2EEE5
-          F2EEE6F2EFE6F2EFE6AE794FFFFFFFFFFFFFFFFFFFFFFFFFB07A50F2EFE7F2EF
-          E7F2F0E70808E4F3EFE7F2EFE7E3D7C9E3D7C8E3D7C8E3D7C8E3D7C8E3D7C8E3
-          D7C9E3D7C9E3D7C8E3D7C9F3EFE8F3EFE8B07950FFFFFFFFFFFFFFFFFFFFFFFF
-          B17B50F3F0E8F3F0E90808E40808E4F3F0E8F2F0E9A8744DA8744DA8744DA874
-          4DA8744DA8744DA8744DA8744DA8744DA8744DF3F0E9F3F1E9B17A50FFFFFFFF
-          FFFFFFFFFFFFFFFFB27C51F3F1EAF3F1EAF3F1EA0808E4F3F1EAF3F1EAF3F1EA
-          F3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1
-          EAB27B50FFFFFFFFFFFFFFFFFFFFFFFFB47C51F3F1EAF3F1EAF3F1EAF3F1EAF3
-          F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EA
-          F3F1EAF3F1EAF3F1EAB47B50FFFFFFFFFFFFFFFFFFFFFFFFB47C51B47C51B47C
-          51B47C51B47C51B47C51B47D51B47C51B47C51B47C51B47C51B47C51B47C51B4
-          7C51B47C51B47C51B47C51B47C51B47C51B47C51FFFFFFFFFFFF}
-        ParentFont = False
-        TabOrder = 2
-      end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 271
-        Width = 424
-        Height = 150
+        Top = 224
+        Width = 456
+        Height = 197
         Align = alBottom
-        TabOrder = 3
+        BorderOuter = fsNone
+        TabOrder = 2
+        ExplicitWidth = 424
         object Grid1: TwwDBGrid
-          Left = 2
-          Top = 2
+          Left = 0
+          Top = 0
           Width = 399
-          Height = 146
+          Height = 197
           Selected.Strings = (
-            'DAYSERIAL'#9'10'#9'DAYSERIAL'
-            'SUBJECT'#9'23'#9#920#941#956#945
-            'SEMINAR_DAY'#9'10'#9#924#941#961#945
-            'DURATION_HOURS'#9'6'#9#911#961#949#962)
+            'DAYSERIAL'#9'10'#9'DAYSERIAL'#9#9
+            'SUBJECT'#9'23'#9#920#941#956#945#9#9
+            'SEMINAR_DAY'#9'10'#9#924#941#961#945#9#9
+            'DURATION_HOURS'#9'6'#9#911#961#949#962#9#9)
           IniAttributes.Delimiter = ';;'
           IniAttributes.UnicodeIniFile = False
           TitleColor = clBtnFace
@@ -796,6 +649,9 @@ object P_attendanceFRM: TP_attendanceFRM
           TitleFont.Style = []
           TitleLines = 1
           TitleButtons = True
+          ExplicitLeft = 2
+          ExplicitTop = 2
+          ExplicitHeight = 146
         end
       end
     end
@@ -803,7 +659,7 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 28
       Top = 51
       Width = 269
-      Height = 194
+      Height = 150
       Caption = #931#949#956#953#957#940#961#953#959
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -875,19 +731,6 @@ object P_attendanceFRM: TP_attendanceFRM
         Font.Style = []
         ParentFont = False
       end
-      object Label8: TLabel
-        Left = 11
-        Top = 155
-        Width = 28
-        Height = 14
-        Caption = #920#941#956#945
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
       object RzDBLabel1: TRzDBLabel
         Left = 75
         Top = 109
@@ -941,6 +784,7 @@ object P_attendanceFRM: TP_attendanceFRM
         Checked = True
         DataField = 'ANAD_APPROVED'
         DataSource = TableSRC
+        Enabled = False
         State = cbChecked
         TabOrder = 2
         ReadOnly = True
@@ -958,6 +802,7 @@ object P_attendanceFRM: TP_attendanceFRM
         DataField = 'SEMINAR_CORP_TYPE'
         DataSource = TableSRC
         DropDownCount = 8
+        Enabled = False
         ItemHeight = 0
         Items.Strings = (
           #924#972#957#959'-'#917#960#967'.'#9'M'
@@ -966,22 +811,6 @@ object P_attendanceFRM: TP_attendanceFRM
         Sorted = False
         TabOrder = 1
         UnboundDataType = wwDefault
-      end
-      object wwDBEdit1: TwwDBEdit
-        Left = 75
-        Top = 150
-        Width = 162
-        Height = 22
-        TabStop = False
-        Color = clBtnFace
-        DataField = 'SEMINAR_NAME'
-        DataSource = TableSRC
-        Enabled = False
-        ReadOnly = True
-        TabOrder = 3
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
       end
     end
   end
@@ -1187,8 +1016,8 @@ object P_attendanceFRM: TP_attendanceFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     Active = True
     AfterScroll = DaySQLAfterScroll
-    Left = 289
-    Top = 149
+    Left = 305
+    Top = 101
     ParamData = <
       item
         DataType = ftUnknown
@@ -1269,7 +1098,7 @@ object P_attendanceFRM: TP_attendanceFRM
     DataSet = DaySQL
     OnStateChange = TableSRCStateChange
     Left = 336
-    Top = 153
+    Top = 105
   end
   object VPresenceSQL: TVirtualTable
     Options = [voSkipUnSupportedFieldTypes]
@@ -1328,13 +1157,13 @@ object P_attendanceFRM: TP_attendanceFRM
     end
     object VPresenceSQLIs_Present: TStringField
       DisplayLabel = #928#945#961#974#957
-      DisplayWidth = 12
+      DisplayWidth = 7
       FieldName = 'Is_Present'
       Size = 1
     end
     object VPresenceSQLpercentage_present: TIntegerField
       DisplayLabel = '% '#911#961#945#962
-      DisplayWidth = 15
+      DisplayWidth = 9
       FieldName = 'percentage_present'
       DisplayFormat = '0%'
     end

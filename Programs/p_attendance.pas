@@ -23,7 +23,6 @@ type
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    wwIncrementalSearch1: TwwIncrementalSearch;
     PanelX: TRzPanel;
     RzPanel3: TRzPanel;
     DaySQL: TIBCQuery;
@@ -39,13 +38,10 @@ type
     Nav1Prior: TwwNavButton;
     Nav1Next: TwwNavButton;
     Nav1Button1: TwwNavButton;
-    Nav1Insert: TwwNavButton;
-    Nav1Delete: TwwNavButton;
-    Nav1Post: TwwNavButton;
+    Nav1First: TwwNavButton;
     Nav1SearchDialog: TwwNavButton;
     Label1: TLabel;
     wwDBLookupCombo1: TwwDBLookupCombo;
-    BitBtn2: TBitBtn;
     vPresenceSRC: TIBCDataSource;
     TableSRC: TIBCDataSource;
     DaySRC: TIBCDataSource;
@@ -56,11 +52,6 @@ type
     wwNavButton1: TwwNavButton;
     wwNavButton2: TwwNavButton;
     wwNavButton3: TwwNavButton;
-    wwNavButton4: TwwNavButton;
-    wwNavButton5: TwwNavButton;
-    wwNavButton6: TwwNavButton;
-    wwDBEdit1: TwwDBEdit;
-    Label8: TLabel;
     RzPanel4: TRzPanel;
     Grid1: TwwDBGrid;
     TableSQLSERIAL_NUMBER: TIntegerField;
@@ -103,6 +94,7 @@ type
     RzPanel6: TRzPanel;
     SavePresBTN: TBitBtn;
     CanelBTN: TBitBtn;
+    wwDBNavigator1Button: TwwNavButton;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -274,7 +266,7 @@ str:=
   +'        inSP.fk_seminar_serial= :SeminarSerial and inPP.fk_day_serial = :DaySerial'
   +'  )as yIn'
   +'  on  xOUt.PersonSerial = yIN.PersonSerial'
-  +'  order by last_name, first_name';
+  +'  order by last_name desc, first_name desc';
 
 
   if not VPresenceSQL.Active then

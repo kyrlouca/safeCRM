@@ -2,7 +2,7 @@ object V_SeminarFRM: TV_SeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 673
+  ClientHeight = 667
   ClientWidth = 992
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -66,16 +66,16 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 0
     Top = 92
     Width = 992
-    Height = 581
+    Height = 575
     Align = alClient
     TabOrder = 2
     object PageControlPC: TRzPageControl
       Left = 1
       Top = 1
       Width = 990
-      Height = 536
+      Height = 530
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = CostTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -83,7 +83,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 3
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -649,7 +649,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 25
           Width = 408
-          Height = 485
+          Height = 479
           Align = alClient
           Caption = #920#941#956#945#964#945
           Font.Charset = DEFAULT_CHARSET
@@ -799,7 +799,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 2
             Top = 49
             Width = 404
-            Height = 434
+            Height = 428
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'SUBJECT'#9'32'#9#920#941#956#945)
@@ -819,17 +819,13 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitLeft = 168
-            ExplicitTop = 128
-            ExplicitWidth = 320
-            ExplicitHeight = 120
           end
         end
         object RzPanel4: TRzPanel
           Left = 408
           Top = 25
           Width = 578
-          Height = 485
+          Height = 479
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 2
@@ -837,15 +833,16 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 0
             Top = 0
             Width = 97
-            Height = 485
+            Height = 479
             Align = alLeft
+            BorderOuter = fsNone
             TabOrder = 0
           end
           object GroupBox2: TGroupBox
             Left = 97
             Top = 0
             Width = 481
-            Height = 485
+            Height = 479
             Align = alClient
             Caption = #924#941#961#949#962' '#916#953#949#958#945#947#969#947#942#962
             Font.Charset = DEFAULT_CHARSET
@@ -995,13 +992,13 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 2
               Top = 49
               Width = 477
-              Height = 434
+              Height = 428
               ControlType.Strings = (
                 'SEMINAR_DAY;CustomEdit;SeminarDayFLD;F')
               Selected.Strings = (
-                'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
-                'SEMINAR_DAY'#9'15'#9#919#956#949#961#959#956#951#957#943#945#9#9
-                'DURATION_HOURS'#9'10'#9#916#953#940#961#954#949#953#945' ('#974#961#949#962')'#9#9)
+                'SERIAL_NUMBER'#9'10'#9'A/A'
+                'SEMINAR_DAY'#9'15'#9#919#956#949#961#959#956#951#957#943#945
+                'DURATION_HOURS'#9'10'#9#916#953#940#961#954#949#953#945' ('#974#961#949#962')')
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
@@ -1018,8 +1015,6 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
-              ExplicitLeft = 1
-              ExplicitTop = 55
               object SeminarDayFLD: TwwDBDateTimePicker
                 Left = -16
                 Top = 200
@@ -1057,7 +1052,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 18
           Width = 403
-          Height = 492
+          Height = 486
           Align = alLeft
           Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
           Font.Charset = DEFAULT_CHARSET
@@ -1071,7 +1066,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 1
             Top = 44
             Width = 401
-            Height = 447
+            Height = 441
             Selected.Strings = (
               'SERIAL_NUMBER'#9'8'#9'A/A'
               'LAST_NAME'#9'24'#9#917#960#943#952#949#964#959
@@ -1119,7 +1114,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 403
           Top = 18
           Width = 94
-          Height = 492
+          Height = 486
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
@@ -1272,7 +1267,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 497
           Top = 18
           Width = 391
-          Height = 492
+          Height = 486
           Align = alLeft
           Caption = #922#945#964#940#955#959#947#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -1286,7 +1281,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 1
             Top = 57
             Width = 389
-            Height = 434
+            Height = 428
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959
@@ -1349,7 +1344,225 @@ object V_SeminarFRM: TV_SeminarFRM
         end
       end
       object CostTS: TRzTabSheet
+        OnShow = CostTSShow
         Caption = #922#972#963#964#959#962
+        object RzPanel10: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 986
+          Height = 25
+          Align = alTop
+          BorderOuter = fsNone
+          TabOrder = 0
+        end
+        object GroupBox3: TGroupBox
+          Left = 0
+          Top = 25
+          Width = 593
+          Height = 479
+          Align = alLeft
+          Caption = #922#972#963#964#959#962
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          object RzPanel11: TRzPanel
+            Left = 2
+            Top = 16
+            Width = 589
+            Height = 33
+            Align = alTop
+            BorderOuter = fsNone
+            TabOrder = 0
+            object wwDBNavigator3: TwwDBNavigator
+              Left = 0
+              Top = 0
+              Width = 175
+              Height = 33
+              DataSource = SeminarCostItemSRC
+              RepeatInterval.InitialDelay = 500
+              RepeatInterval.Interval = 100
+              Align = alLeft
+              object wwNavButton8: TwwNavButton
+                Left = 0
+                Top = 0
+                Width = 25
+                Height = 25
+                Hint = 'Move to prior record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'wwDBNavigator1Prior'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 0
+                Style = nbsPrior
+              end
+              object wwNavButton9: TwwNavButton
+                Left = 25
+                Top = 0
+                Width = 25
+                Height = 25
+                Hint = 'Move to next record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'wwDBNavigator1Next'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 1
+                Style = nbsNext
+              end
+              object wwNavButton10: TwwNavButton
+                Left = 50
+                Top = 0
+                Width = 25
+                Height = 25
+                Hint = 'Insert new record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'wwDBNavigator1Insert'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 2
+                Style = nbsInsert
+              end
+              object wwNavButton11: TwwNavButton
+                Left = 75
+                Top = 0
+                Width = 25
+                Height = 25
+                Hint = 'Delete current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'wwDBNavigator1Delete'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 3
+                Style = nbsDelete
+              end
+              object wwNavButton12: TwwNavButton
+                Left = 100
+                Top = 0
+                Width = 25
+                Height = 25
+                Hint = 'Post changes of current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'wwDBNavigator1Post'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 4
+                Style = nbsPost
+              end
+              object wwNavButton13: TwwNavButton
+                Left = 125
+                Top = 0
+                Width = 25
+                Height = 25
+                Hint = 'Cancel changes made to current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'wwDBNavigator1Cancel'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 5
+                Style = nbsCancel
+              end
+              object wwNavButton14: TwwNavButton
+                Left = 150
+                Top = 0
+                Width = 25
+                Height = 25
+                Hint = 'Refresh the contents of the dataset'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'wwDBNavigator1Refresh'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 6
+                Style = nbsRefresh
+              end
+            end
+          end
+          object CostGRD: TwwDBGrid
+            Left = 2
+            Top = 49
+            Width = 589
+            Height = 428
+            ControlType.Strings = (
+              'FK_COST_ITEM;CustomEdit;CostTypeFLD;T')
+            Selected.Strings = (
+              'SERIAL_NUMBER'#9'10'#9'A/A'
+              'FK_COST_ITEM'#9'10'#9#932#973#960#959#962' '#922#972#963#964#959#965#962
+              'NUMBER_OF_ITEMS'#9'15'#9#913#961#953#952#956#972#962' '#924#959#957#940#948#969#957
+              'AMOUNT_PER_ITEM'#9'14'#9#922#972#963#964#959#962'/'#924#959#957#940#948#945
+              'TotalAmnt'#9'10'#9#931#973#957#959#955#959)
+            IniAttributes.Delimiter = ';;'
+            IniAttributes.UnicodeIniFile = False
+            TitleColor = clBtnFace
+            FixedCols = 1
+            ShowHorzScrollBar = True
+            Align = alClient
+            DataSource = SeminarCostItemSRC
+            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter]
+            TabOrder = 1
+            TitleAlignment = taLeftJustify
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            TitleLines = 1
+            TitleButtons = False
+            OnUpdateFooter = CostGRDUpdateFooter
+            StyleElements = [seFont, seClient]
+            object CostTypeFLD: TwwDBLookupCombo
+              Left = 183
+              Top = 88
+              Width = 88
+              Height = 17
+              DropDownAlignment = taLeftJustify
+              Selected.Strings = (
+                'COST_NAME'#9'20'#9'COST_NAME'#9'F'
+                'AMOUNT'#9'10'#9'AMOUNT'#9'F'#9)
+              DataField = 'FK_COST_ITEM'
+              DataSource = SeminarCostItemSRC
+              LookupTable = CostItemTBL
+              LookupField = 'SERIAL_NUMBER'
+              Options = [loFixedDropDownHeight]
+              TabOrder = 0
+              AutoDropDown = False
+              ShowButton = True
+              PreciseEditRegion = False
+              AllowClearKey = False
+              OnDropDown = CostTypeFLDDropDown
+              OnCloseUp = CostTypeFLDCloseUp
+            end
+          end
+        end
       end
       object TabSheet1: TRzTabSheet
         Caption = #928#945#961#959#965#963#953#959#955#972#947#953#959
@@ -1357,7 +1570,7 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object Panel4: TRzPanel
       Left = 1
-      Top = 537
+      Top = 531
       Width = 990
       Height = 43
       Align = alBottom
@@ -1748,7 +1961,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800140210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800180210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2803,5 +3016,133 @@ object V_SeminarFRM: TV_SeminarFRM
     DataSet = SeminarDaySQL
     Left = 88
     Top = 369
+  end
+  object SeminarCostItemSQL: TIBCQuery
+    KeyFields = 'SERIAL_NUMBER'
+    KeyGenerator = 'GEN_SEMINAR_COST_ITEM'
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR_COST_ITEM'
+      
+        '  (SERIAL_NUMBER, FK_COST_ITEM, AMOUNT_PER_ITEM, NUMBER_OF_ITEMS' +
+        ', FK_SEMINAR_SERIAL)'
+      'VALUES'
+      
+        '  (:SERIAL_NUMBER, :FK_COST_ITEM, :AMOUNT_PER_ITEM, :NUMBER_OF_I' +
+        'TEMS, :FK_SEMINAR_SERIAL)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR_COST_ITEM'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR_COST_ITEM'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_COST_ITEM = :FK_COST_ITEM, ' +
+        'AMOUNT_PER_ITEM = :AMOUNT_PER_ITEM, NUMBER_OF_ITEMS = :NUMBER_OF' +
+        '_ITEMS, FK_SEMINAR_SERIAL = :FK_SEMINAR_SERIAL'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, FK_COST_ITEM, AMOUNT_PER_ITEM, NUMBER_OF_I' +
+        'TEMS, FK_SEMINAR_SERIAL FROM SEMINAR_COST_ITEM'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR_COST_ITEM'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR_COST_ITEM'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'SELECT'
+      '*'
+      'FROM'
+      'SEMINAR_cost_item')
+    MasterFields = 'SERIAL_NUMBER'
+    DetailFields = 'FK_SEMINAR_SERIAL'
+    MasterSource = SeminarSRC
+    OnCalcFields = SeminarCostItemSQLCalcFields
+    Left = 449
+    Top = 261
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'SERIAL_NUMBER'
+        ParamType = ptInput
+        Value = nil
+      end>
+    object SeminarCostItemSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
+    end
+    object SeminarCostItemSQLFK_COST_ITEM: TIntegerField
+      DisplayLabel = #932#973#960#959#962' '#922#972#963#964#959#965#962
+      DisplayWidth = 10
+      FieldName = 'FK_COST_ITEM'
+      Required = True
+    end
+    object SeminarCostItemSQLNUMBER_OF_ITEMS: TIntegerField
+      DisplayLabel = #913#961#953#952#956#972#962' '#924#959#957#940#948#969#957
+      DisplayWidth = 15
+      FieldName = 'NUMBER_OF_ITEMS'
+    end
+    object SeminarCostItemSQLAMOUNT_PER_ITEM: TFloatField
+      DisplayLabel = #922#972#963#964#959#962'/'#924#959#957#940#948#945
+      DisplayWidth = 14
+      FieldName = 'AMOUNT_PER_ITEM'
+      DisplayFormat = '0.00'
+    end
+    object SeminarCostItemSQLTotalAmnt: TFloatField
+      DisplayLabel = #931#973#957#959#955#959
+      DisplayWidth = 10
+      FieldKind = fkCalculated
+      FieldName = 'TotalAmnt'
+      DisplayFormat = '0.00'
+      Calculated = True
+    end
+    object SeminarCostItemSQLFK_SEMINAR_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_SERIAL'
+      Required = True
+      Visible = False
+    end
+  end
+  object SeminarCostItemSRC: TDataSource
+    DataSet = SeminarCostItemSQL
+    Left = 536
+    Top = 281
+  end
+  object CostItemTBL: TIBCTable
+    TableName = 'COST_ITEM_TYPE'
+    ReadOnly = True
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    IndexFieldNames = 'COST_NAME'
+    Left = 284
+    Top = 374
+    object CostItemTBLCOST_NAME: TWideStringField
+      DisplayWidth = 20
+      FieldName = 'COST_NAME'
+      FixedChar = True
+      Size = 60
+    end
+    object CostItemTBLAMOUNT: TFloatField
+      DisplayWidth = 10
+      FieldName = 'AMOUNT'
+    end
+    object CostItemTBLSERIAL_NUMBER: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+      Visible = False
+    end
   end
 end

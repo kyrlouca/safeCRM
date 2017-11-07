@@ -141,6 +141,31 @@ type
     SeminarDaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     SeminarDaySQLSEMINAR_DAY: TDateField;
     SeminarDaySQLDURATION_HOURS: TIntegerField;
+    RzPanel10: TRzPanel;
+    GroupBox3: TGroupBox;
+    RzPanel11: TRzPanel;
+    wwDBNavigator3: TwwDBNavigator;
+    wwNavButton8: TwwNavButton;
+    wwNavButton9: TwwNavButton;
+    wwNavButton10: TwwNavButton;
+    wwNavButton11: TwwNavButton;
+    wwNavButton12: TwwNavButton;
+    wwNavButton13: TwwNavButton;
+    wwNavButton14: TwwNavButton;
+    CostGRD: TwwDBGrid;
+    SeminarCostItemSQL: TIBCQuery;
+    SeminarCostItemSRC: TDataSource;
+    SeminarCostItemSQLSERIAL_NUMBER: TIntegerField;
+    SeminarCostItemSQLFK_COST_ITEM: TIntegerField;
+    SeminarCostItemSQLAMOUNT_PER_ITEM: TFloatField;
+    SeminarCostItemSQLNUMBER_OF_ITEMS: TIntegerField;
+    SeminarCostItemSQLFK_SEMINAR_SERIAL: TIntegerField;
+    CostTypeFLD: TwwDBLookupCombo;
+    CostItemTBL: TIBCTable;
+    CostItemTBLSERIAL_NUMBER: TIntegerField;
+    CostItemTBLCOST_NAME: TWideStringField;
+    CostItemTBLAMOUNT: TFloatField;
+    SeminarCostItemSQLTotalAmnt: TFloatField;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -169,6 +194,12 @@ type
     procedure SeminarTSShow(Sender: TObject);
     procedure DaysTSShow(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure CostTSShow(Sender: TObject);
+    procedure CostTypeFLDDropDown(Sender: TObject);
+    procedure CostTypeFLDCloseUp(Sender: TObject; LookupTable,
+      FillTable: TDataSet; modified: Boolean);
+    procedure SeminarCostItemSQLCalcFields(DataSet: TDataSet);
+    procedure CostGRDUpdateFooter(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -177,6 +208,7 @@ type
   procedure RemovePerson();
   procedure InsertPerson();
   procedure UseSeminarTemplate(Const SeminarSerial, TypeSerial:Integer);
+  Function UpdateCostFooter(Const SeminarSerial:Integer):Double;
 
   public
     { Public declarations }
@@ -220,6 +252,12 @@ end;
 procedure TV_SeminarFRM.ToRightBTNClick(Sender: TObject);
 begin
   RemovePerson();
+end;
+
+procedure TV_SeminarFRM.SeminarCostItemSQLCalcFields(DataSet: TDataSet);
+begin
+dataset.FieldByName('totalAmnt').Value:=Dataset.FieldByName('AMOUNT_PER_ITEM').AsFloat
+* Dataset.FieldByName('NUMBER_OF_ITEMS').AsInteger;
 end;
 
 procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
@@ -382,6 +420,20 @@ begin
   end;
 end;
 
+procedure TV_SeminarFRM.CostGRDUpdateFooter(Sender: TObject);
+var
+  amount:Double;
+  SeminarSErial:Integer;
+begin
+
+      SeminarSErial:=costgrd.DataSource.DataSet.FieldByName('fk_seminar_serial').AsInteger;
+      Amount:=UpdateCostFooter(SeminarSerial);
+
+   CostGRD.ColumnByName('TotalAmnt').FooterValue:=
+      FloatToStrF(Amount, ffCurrency, 10, 2);
+
+end;
+
 procedure TV_SeminarFRM.SearchPersonFLDKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
@@ -510,6 +562,24 @@ end;
 
 
 
+procedure TV_SeminarFRM.CostTSShow(Sender: TObject);
+begin
+ksOpenTables([CostItemTBL,SeminarCostItemSQL]);
+end;
+
+procedure TV_SeminarFRM.CostTypeFLDCloseUp(Sender: TObject; LookupTable,
+  FillTable: TDataSet; modified: Boolean);
+begin
+FillTable.FieldByName('amount_per_item').AsFloat:=LookupTable.FieldByName('amount').AsFloat;
+end;
+
+procedure TV_SeminarFRM.CostTypeFLDDropDown(Sender: TObject);
+begin
+with (Sender as TwwDBLookupCombo) do
+   (LookupTable as TIBCTable).IndexFieldNames :='COST_NAME';
+//    'COST_ITEM_TYPE_NAME_IDX';
+end;
+
 procedure TV_SeminarFRM.DaysTSShow(Sender: TObject);
 begin
 ksOpenTables([seminarSubjectSQL,SeminarDaySQL]);
@@ -524,11 +594,8 @@ Begin
           close;
           ParamByName('SerialNumber').value:=SeminarSerial;
           Open;
-//          clrType:=FieldbyName('FK_CLEARANCE_INSTRUCTION').AsString;
-//          CustomerSerial:=FieldByName('fk_customer_Code').AsInteger;
         end;
 
-//        ksOpenTables([SenderInvoiceDS]);
           if FirstFLD.CanFocus then
           firstFLD.SetFocus;
 
@@ -555,6 +622,38 @@ Begin
 
 End;
 
+
+Function TV_SeminarFRM.UpdateCostFooter(Const SeminarSerial:Integer):Double;
+var
+  qr : TksQuery;
+  str:String;
+
+begin
+
+    if SeminarSerial<1 then begin
+    result:=0;
+    exit;
+    end;
+    Str:=
+' select'
+  +'  sum(nullif(  sci.number_of_items ,0)*NulliF(sci.amount_per_item,0) ) as Total'
+  +'  from seminar_cost_item sci'
+  +'  where sci.fk_seminar_serial= :seminarSerial';
+
+  try
+
+    qr:= TksQuery.Create(cn,str);
+    with qr do begin
+      ParamByName('SeminarSerial').Value:=Seminarserial;
+    open;
+      result:=FieldbyName('Total').AsFloat;
+    close;
+    end;
+
+  finally
+   qr.Free;
+  end;
+end;
 
 
 End.
