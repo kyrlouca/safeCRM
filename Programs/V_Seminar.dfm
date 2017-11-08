@@ -75,7 +75,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 990
       Height = 530
       Hint = ''
-      ActivePage = CostTS
+      ActivePage = StudentsTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -83,7 +83,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 3
+      TabIndex = 2
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -1543,7 +1543,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 183
               Top = 88
               Width = 88
-              Height = 17
+              Height = 22
               DropDownAlignment = taLeftJustify
               Selected.Strings = (
                 'COST_NAME'#9'20'#9'COST_NAME'#9'F'
@@ -1565,7 +1565,7 @@ object V_SeminarFRM: TV_SeminarFRM
         end
       end
       object TabSheet1: TRzTabSheet
-        Caption = #928#945#961#959#965#963#953#959#955#972#947#953#959
+        Caption = #933#960#949#957#952#965#956#943#963#949#953#962
       end
     end
     object Panel4: TRzPanel
@@ -1961,7 +1961,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800180210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088001C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

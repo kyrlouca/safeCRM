@@ -95,6 +95,7 @@ type
     SavePresBTN: TBitBtn;
     CanelBTN: TBitBtn;
     wwDBNavigator1Button: TwwNavButton;
+    wwDBLookupCombo2: TwwDBLookupCombo;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

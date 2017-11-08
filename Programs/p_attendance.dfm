@@ -297,7 +297,6 @@ object P_attendanceFRM: TP_attendanceFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitWidth = 413
         object wwDBNavigator1: TwwDBNavigator
           Left = 0
           Top = 0
@@ -392,9 +391,6 @@ object P_attendanceFRM: TP_attendanceFRM
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 2
-        ExplicitLeft = 1
-        ExplicitTop = 537
-        ExplicitWidth = 990
         object RzPanel6: TRzPanel
           Left = 315
           Top = 0
@@ -403,7 +399,6 @@ object P_attendanceFRM: TP_attendanceFRM
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitLeft = 312
         end
         object SavePresBTN: TBitBtn
           Left = 7
@@ -580,7 +575,6 @@ object P_attendanceFRM: TP_attendanceFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 424
       end
       object wwDBLookupCombo1: TwwDBLookupCombo
         Left = 91
@@ -612,17 +606,16 @@ object P_attendanceFRM: TP_attendanceFRM
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 2
-        ExplicitWidth = 424
         object Grid1: TwwDBGrid
           Left = 0
           Top = 0
           Width = 399
           Height = 197
           Selected.Strings = (
-            'DAYSERIAL'#9'10'#9'DAYSERIAL'#9#9
-            'SUBJECT'#9'23'#9#920#941#956#945#9#9
-            'SEMINAR_DAY'#9'10'#9#924#941#961#945#9#9
-            'DURATION_HOURS'#9'6'#9#911#961#949#962#9#9)
+            'DAYSERIAL'#9'10'#9'DAYSERIAL'
+            'SUBJECT'#9'23'#9#920#941#956#945
+            'SEMINAR_DAY'#9'10'#9#924#941#961#945
+            'DURATION_HOURS'#9'6'#9#911#961#949#962)
           IniAttributes.Delimiter = ';;'
           IniAttributes.UnicodeIniFile = False
           TitleColor = clBtnFace
@@ -649,10 +642,23 @@ object P_attendanceFRM: TP_attendanceFRM
           TitleFont.Style = []
           TitleLines = 1
           TitleButtons = True
-          ExplicitLeft = 2
-          ExplicitTop = 2
-          ExplicitHeight = 146
         end
+      end
+      object wwDBLookupCombo2: TwwDBLookupCombo
+        Left = 336
+        Top = 96
+        Width = 121
+        Height = 21
+        DropDownAlignment = taLeftJustify
+        LookupTable = TableSQL
+        LookupField = 'SEMINAR_NAME'
+        Navigator = True
+        TabOrder = 3
+        AutoDropDown = True
+        ShowButton = True
+        PreciseEditRegion = False
+        AllowClearKey = False
+        ShowMatchText = True
       end
     end
     object FirstGRP: TGroupBox
