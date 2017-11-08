@@ -9,7 +9,7 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   System.ImageList, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
-  Vcl.ComCtrls, RzDBEdit;
+  Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp;
 type
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -166,6 +166,47 @@ type
     CostItemTBLCOST_NAME: TWideStringField;
     CostItemTBLAMOUNT: TFloatField;
     SeminarCostItemSQLTotalAmnt: TFloatField;
+    SeminarReminderSRC: TDataSource;
+    SeminarReminderSQL: TIBCQuery;
+    GroupBox4: TGroupBox;
+    wwDBGrid3: TwwDBGrid;
+    RzPanel12: TRzPanel;
+    GroupBox5: TGroupBox;
+    Label14: TLabel;
+    Label15: TLabel;
+    RzDBLabel1: TRzDBLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    wwDBEdit3: TwwDBEdit;
+    wwDBEdit5: TwwDBEdit;
+    RzDBRichEdit2: TRzDBRichEdit;
+    RzDBRadioGroup1: TRzDBRadioGroup;
+    RzDBRadioGroup2: TRzDBRadioGroup;
+    RzDBRadioGroup3: TRzDBRadioGroup;
+    RzPanel13: TRzPanel;
+    wwDBNavigator4: TwwDBNavigator;
+    wwNavButton15: TwwNavButton;
+    wwNavButton16: TwwNavButton;
+    wwNavButton17: TwwNavButton;
+    wwNavButton18: TwwNavButton;
+    wwNavButton19: TwwNavButton;
+    wwNavButton20: TwwNavButton;
+    wwNavButton21: TwwNavButton;
+    wwNavButton22: TwwNavButton;
+    wwIncrementalSearch1: TwwIncrementalSearch;
+    SeminarReminderSQLSERIAL_NUMBER: TIntegerField;
+    SeminarReminderSQLFK_SEMINAR_SERIAL: TIntegerField;
+    SeminarReminderSQLDESCRIPTION: TWideStringField;
+    SeminarReminderSQLREMINDER_MESSAGE: TWideStringField;
+    SeminarReminderSQLAFTER_OR_BEFORE: TWideStringField;
+    SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField;
+    SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TWideStringField;
+    SeminarReminderSQLSTART_OR_END: TWideStringField;
+    SeminarReminderSQLDAYS_OR_MONTHS: TWideStringField;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
