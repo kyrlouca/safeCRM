@@ -204,9 +204,10 @@ type
     SeminarReminderSQLREMINDER_MESSAGE: TWideStringField;
     SeminarReminderSQLAFTER_OR_BEFORE: TWideStringField;
     SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField;
-    SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TWideStringField;
     SeminarReminderSQLSTART_OR_END: TWideStringField;
     SeminarReminderSQLDAYS_OR_MONTHS: TWideStringField;
+    RzDBRadioGroup4: TRzDBRadioGroup;
+    SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -241,6 +242,7 @@ type
       FillTable: TDataSet; modified: Boolean);
     procedure SeminarCostItemSQLCalcFields(DataSet: TDataSet);
     procedure CostGRDUpdateFooter(Sender: TObject);
+    procedure TabSheet1Show(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -249,6 +251,8 @@ type
   procedure RemovePerson();
   procedure InsertPerson();
   procedure UseSeminarTemplate(Const SeminarSerial, TypeSerial:Integer);
+   procedure GetReminderFromTemplate(Const SeminarSerial, TypeSerial:Integer);
+
   Function UpdateCostFooter(Const SeminarSerial:Integer):Double;
 
   public
@@ -283,6 +287,12 @@ begin
   seminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
   StartSeminar(seminarSerial);
   SeminarSQL.Refresh;
+end;
+
+procedure TV_SeminarFRM.TabSheet1Show(Sender: TObject);
+begin
+ksOpenTables([SeminarReminderSQL]);
+
 end;
 
 procedure TV_SeminarFRM.ToLeftBTNClick(Sender: TObject);
@@ -334,15 +344,18 @@ procedure TV_SeminarFRM.SeminarTypeFLDCloseUp(Sender: TwwDBComboBox;
 var
   TypeSerial:Integer;
   SeminarSerial:Integer;
+//  ReminderSerial:Integer;
 begin
  if SeminarSQL.State in [dsEdit,dsInsert] then begin
    FirstFLD.Text:=seminarTypeFLD.Text;
    SeminarSQL.Post;
  end;
+// ReminderSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
  SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
  TYpeserial:=SeminarSQL.FieldByName('FK_Seminar').AsInteger;
  if (not select) or (Seminarserial<1) or (TypeSerial<1) then exit;
  UseSeminarTEmplate(SeminarSerial,TypeSerial);
+ GetReminderFromTemplate(SEminarSerial,TYpeSerial);
 // ksOpenTables([SeminarSQL])
   SeminarSQL.close;
   seminarSQL.ParamByName('serialNumber').Value:=seminarSerial;
@@ -394,7 +407,51 @@ begin
  end;
  end;
 
-procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);
+
+ procedure TV_SeminarFRM.GetReminderFromTemplate(Const SeminarSerial, TypeSerial:Integer);
+var
+  serial:Integer;
+  qr:TksQuery;
+  str:String;
+   fdesc,fmessage,fafter,fperson,fstart,fDays:string;
+   fnumber_of_days:Integer;
+begin
+
+ ksExecSQLVar(cn,'delete from SEMINAR_REMINDER where fk_seminar_serial=:serial',[SeminarSerial]);
+
+  str:=
+  ' INSERT INTO SEMINAR_REMINDER'
+  +'  (SERIAL_NUMBER,fk_seminar_serial, description,reminder_message,after_or_before,person_or_seminar,number_of_days_months,start_or_end,days_or_months)'
+  +'  VALUES (:serial,:seminarSerial, :a3,:A4, :a5, :A6,:A7,:a8,:A9)';
+
+
+ qr:=TksQuery.Create(cn,'select * from seminar_type_reminder where fk_seminar_type_serial= :Typeserial');
+ try
+   qr.ParamByName('Typeserial').Value:=TYpeSerial;
+   qr.Open;
+   while not qr.Eof do begin
+
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_reminder');
+    fdesc:=qr.FieldByName('Description').AsString;
+    fmessage:=qr.FieldByName('reminder_message').AsString;
+    fafter:=qr.FieldByName('after_or_before').AsString;
+    fperson:=qr.FieldByName('person_or_seminar').AsString;
+    fstart:=qr.FieldByName('START_OR_END').AsString;
+    fnumber_of_days:=qr.FieldByName('NUMBER_OF_DAYS_MONTHS').AsInteger;;
+    fDays:=   qr.FieldByName('DAYS_OR_MONTHS').AsString;
+    ksExecSQLVar(cn,str,[serial,SeminarSerial,fdesc,fmessage,fafter,fperson,fnumber_of_days,fstart, fdays ] );
+    qr.Next;
+
+   end;
+ finally
+   qr.Free;
+ end;
+
+
+ end;
+
+
+ procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
 begin

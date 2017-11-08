@@ -90,7 +90,6 @@ type
     SeminarReminderSQLAFTER_OR_BEFORE: TWideStringField;
     SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField;
     SeminarReminderSQLDAYS_OR_MONTHS: TWideStringField;
-    SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TWideStringField;
     SeminarReminderSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField;
     GroupBox3: TGroupBox;
     wwDBGrid2: TwwDBGrid;
@@ -125,6 +124,7 @@ type
     Label14: TLabel;
     SeminarReminderSQLREMINDER_MESSAGE: TWideStringField;
     RzPanel5: TRzPanel;
+    SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

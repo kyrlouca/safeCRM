@@ -32,7 +32,6 @@
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 918
     object SeminarPC: TRzPageControl
       Left = 0
       Top = 50
@@ -50,15 +49,9 @@
       ParentFont = False
       TabIndex = 2
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitTop = 70
-      ExplicitWidth = 914
-      ExplicitHeight = 526
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
-        ExplicitLeft = 2
-        ExplicitWidth = 914
         object RzPanel2: TRzPanel
           Left = 0
           Top = 39
@@ -67,7 +60,6 @@
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitHeight = 461
           object RzPanel3: TRzPanel
             Left = 0
             Top = 0
@@ -114,8 +106,6 @@
             TitleLines = 1
             TitleButtons = True
             OnTitleButtonClick = Grid1TitleButtonClick
-            ExplicitLeft = 1
-            ExplicitTop = 19
           end
         end
         object GroupBox1: TGroupBox
@@ -373,7 +363,6 @@
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
           TabOrder = 2
-          ExplicitWidth = 910
           object wwDBNavigator2: TwwDBNavigator
             Left = 1
             Top = 7
@@ -542,8 +531,6 @@
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
         Caption = #920#941#956#945#964#945
-        ExplicitWidth = 910
-        ExplicitHeight = 500
         object GroupBox2: TGroupBox
           Left = 20
           Top = 15
@@ -715,14 +702,12 @@
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitHeight = 80
           end
         end
       end
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #933#960#949#957#952#965#956#943#963#949#953#962
-        ExplicitTop = 25
         object GroupBox3: TGroupBox
           Left = 28
           Top = 23
@@ -776,9 +761,6 @@
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 1
-            ExplicitLeft = 2
-            ExplicitTop = 16
-            ExplicitWidth = 486
           end
         end
         object GroupBox4: TGroupBox
@@ -968,6 +950,7 @@
               'A'
               'B')
             Caption = #913#960#959#963#964#959#955#942
+            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -994,6 +977,7 @@
               'S'
               'E')
             Caption = #917#957#949#961#947#959#960#959#943#951#963#951
+            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1020,6 +1004,7 @@
               'M'
               'D')
             Caption = #924#959#957#940#948#945' '#935#961#972#957#959#965
+            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1042,7 +1027,6 @@
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
           TabOrder = 2
-          ExplicitTop = 8
           object wwDBNavigator4: TwwDBNavigator
             Left = 1
             Top = 7
@@ -1102,6 +1086,7 @@
               Spacing = 4
               Transparent = False
               Caption = 'Nav1Next'
+              Enabled = False
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
               Index = 2
@@ -1118,6 +1103,7 @@
               Spacing = 4
               Transparent = False
               Caption = 'Nav1Button1'
+              Enabled = False
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
               Index = 3
@@ -1134,6 +1120,7 @@
               Spacing = 4
               Transparent = False
               Caption = 'Nav1Insert'
+              Enabled = False
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
               OnClick = Nav1InsertClick
@@ -1151,6 +1138,7 @@
               Spacing = 4
               Transparent = False
               Caption = 'Nav1Delete'
+              Enabled = False
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
               Index = 5
@@ -1221,6 +1209,7 @@
             'S'
             'P')
           Caption = #928#945#961#945#955#942#960#964#951#962
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -1255,9 +1244,6 @@
       TabOrder = 1
       Transparent = True
       WordWrap = False
-      ExplicitLeft = 5
-      ExplicitTop = 5
-      ExplicitWidth = 908
     end
   end
   object Panel4: TRzPanel
@@ -1269,7 +1255,6 @@
     BorderOuter = fsFlatRounded
     BorderSides = [sdLeft, sdRight, sdBottom]
     TabOrder = 1
-    ExplicitWidth = 918
     object RzPanel1: TRzPanel
       Left = 860
       Top = 0
@@ -1278,7 +1263,6 @@
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 816
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -1729,13 +1713,13 @@
       'INSERT INTO SEMINAR_TYPE_REMINDER'
       
         '  (SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL, DESCRIPTION, REMINDER_' +
-        'MESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, NUMBER_OF_DAYS_MONT' +
-        'HS, START_OR_END, DAYS_OR_MONTHS)'
+        'MESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_' +
+        'OR_MONTHS, NUMBER_OF_DAYS_MONTHS)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_TYPE_SERIAL, :DESCRIPTION, :REMIN' +
-        'DER_MESSAGE, :AFTER_OR_BEFORE, :PERSON_OR_SEMINAR, :NUMBER_OF_DA' +
-        'YS_MONTHS, :START_OR_END, :DAYS_OR_MONTHS)')
+        'DER_MESSAGE, :AFTER_OR_BEFORE, :PERSON_OR_SEMINAR, :START_OR_END' +
+        ', :DAYS_OR_MONTHS, :NUMBER_OF_DAYS_MONTHS)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE_REMINDER'
       'WHERE'
@@ -1747,16 +1731,16 @@
         '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL = :FK_S' +
         'EMINAR_TYPE_SERIAL, DESCRIPTION = :DESCRIPTION, REMINDER_MESSAGE' +
         ' = :REMINDER_MESSAGE, AFTER_OR_BEFORE = :AFTER_OR_BEFORE, PERSON' +
-        '_OR_SEMINAR = :PERSON_OR_SEMINAR, NUMBER_OF_DAYS_MONTHS = :NUMBE' +
-        'R_OF_DAYS_MONTHS, START_OR_END = :START_OR_END, DAYS_OR_MONTHS =' +
-        ' :DAYS_OR_MONTHS'
+        '_OR_SEMINAR = :PERSON_OR_SEMINAR, START_OR_END = :START_OR_END, ' +
+        'DAYS_OR_MONTHS = :DAYS_OR_MONTHS, NUMBER_OF_DAYS_MONTHS = :NUMBE' +
+        'R_OF_DAYS_MONTHS'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL, DESCRIPTION, REMIN' +
-        'DER_MESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, NUMBER_OF_DAYS_' +
-        'MONTHS, START_OR_END, DAYS_OR_MONTHS FROM SEMINAR_TYPE_REMINDER'
+        'DER_MESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, D' +
+        'AYS_OR_MONTHS, NUMBER_OF_DAYS_MONTHS FROM SEMINAR_TYPE_REMINDER'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1781,7 +1765,6 @@
     MasterFields = 'SERIAL_NUMBER'
     DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
     MasterSource = TableSRC
-    Active = True
     Left = 281
     Top = 301
     ParamData = <
@@ -1816,13 +1799,6 @@
       FixedChar = True
       Size = 1
     end
-    object SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TWideStringField
-      DisplayLabel = 'Days/Months After'
-      DisplayWidth = 10
-      FieldName = 'NUMBER_OF_DAYS_MONTHS'
-      FixedChar = True
-      Size = 3
-    end
     object SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField
       DisplayLabel = 'Target'
       DisplayWidth = 17
@@ -1849,6 +1825,9 @@
       Required = True
       Visible = False
       Size = 160
+    end
+    object SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField
+      FieldName = 'NUMBER_OF_DAYS_MONTHS'
     end
   end
 end
