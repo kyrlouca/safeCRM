@@ -109,8 +109,8 @@
           end
         end
         object GroupBox1: TGroupBox
-          Left = 406
-          Top = 45
+          Left = 398
+          Top = 56
           Width = 338
           Height = 299
           Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -309,7 +309,7 @@
             Items.Strings = (
               #924#972#957#959'-'#917#960#967'.'#9'M'
               #928#972#955#965'-'#917#960#967'.'#9'P')
-            ItemIndex = 1
+            ItemIndex = 0
             Sorted = False
             TabOrder = 5
             UnboundDataType = wwDefault
@@ -692,7 +692,9 @@
             FixedCols = 1
             ShowHorzScrollBar = True
             Align = alClient
+            Color = 12713983
             DataSource = SeminarSubjectSRC
+            Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
             TabOrder = 1
             TitleAlignment = taLeftJustify
             TitleFont.Charset = DEFAULT_CHARSET
@@ -708,64 +710,9 @@
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #933#960#949#957#952#965#956#943#963#949#953#962
-        object GroupBox3: TGroupBox
-          Left = 28
-          Top = 23
-          Width = 421
-          Height = 322
-          Caption = #933#960#949#957#952#965#956#943#963#949#953#962
-          Ctl3D = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentCtl3D = False
-          ParentFont = False
-          TabOrder = 0
-          object wwDBGrid2: TwwDBGrid
-            Left = 1
-            Top = 48
-            Width = 419
-            Height = 273
-            Selected.Strings = (
-              'SERIAL_NUMBER'#9'3'#9'A/A'
-              'DESCRIPTION'#9'12'#9'DESCRIPTION'
-              'AFTER_OR_BEFORE'#9'7'#9'Timing'
-              'DAYS_OR_MONTHS'#9'9'#9'Period Type'
-              'NUMBER_OF_DAYS_MONTHS'#9'10'#9'Days/Months After'
-              'PERSON_OR_SEMINAR'#9'17'#9'Target'
-              'START_OR_END'#9'8'#9'Start/End ')
-            IniAttributes.Delimiter = ';;'
-            IniAttributes.UnicodeIniFile = False
-            TitleColor = clBtnFace
-            FixedCols = 1
-            ShowHorzScrollBar = True
-            Align = alClient
-            DataSource = SeminarReminderSRC
-            TabOrder = 0
-            TitleAlignment = taLeftJustify
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -12
-            TitleFont.Name = 'Tahoma'
-            TitleFont.Style = []
-            TitleLines = 1
-            TitleButtons = False
-          end
-          object RzPanel5: TRzPanel
-            Left = 1
-            Top = 15
-            Width = 419
-            Height = 33
-            Align = alTop
-            BorderOuter = fsNone
-            TabOrder = 1
-          end
-        end
         object GroupBox4: TGroupBox
-          Left = 470
-          Top = 3
+          Left = 485
+          Top = 53
           Width = 338
           Height = 482
           Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -775,9 +722,9 @@
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 1
+          TabOrder = 0
           object Label9: TLabel
-            Left = 37
+            Left = 43
             Top = 46
             Width = 58
             Height = 14
@@ -790,7 +737,7 @@
             ParentFont = False
           end
           object Label10: TLabel
-            Left = 74
+            Left = 80
             Top = 21
             Width = 21
             Height = 14
@@ -803,7 +750,7 @@
             ParentFont = False
           end
           object RzDBLabel1: TRzDBLabel
-            Left = 101
+            Left = 107
             Top = 17
             Width = 75
             Height = 20
@@ -814,11 +761,11 @@
             DataSource = TableSRC
           end
           object Label15: TLabel
-            Left = -21
+            Left = 48
             Top = 423
-            Width = 120
+            Width = 53
             Height = 14
-            Caption = #967#961#972#957#959#962' '#949#957#949#961#947#959#960#959#943#951#963#951#962
+            Caption = #924#949#964#940' '#913#960#972
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -827,11 +774,11 @@
             ParentFont = False
           end
           object Label16: TLabel
-            Left = 61
-            Top = 74
-            Width = 35
+            Left = 58
+            Top = 71
+            Width = 43
             Height = 14
-            Caption = #931#967#972#955#953#945
+            Caption = #924#942#957#965#956#945
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -840,11 +787,10 @@
             ParentFont = False
           end
           object Label12: TLabel
-            Left = 11
-            Top = 222
-            Width = 94
-            Height = 22
-            AutoSize = False
+            Left = 28
+            Top = 212
+            Width = 73
+            Height = 14
             Caption = #925#945' '#945#960#959#963#964#945#955#949#943
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -855,11 +801,11 @@
             WordWrap = True
           end
           object Label13: TLabel
-            Left = 19
-            Top = 146
-            Width = 71
+            Left = 63
+            Top = 149
+            Width = 38
             Height = 14
-            Caption = #913#960#959#963#964#959#955#942' '#963#949
+            Caption = #913#966#959#961#940
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -868,12 +814,12 @@
             ParentFont = False
           end
           object Label11: TLabel
-            Left = 11
-            Top = 291
-            Width = 94
-            Height = 22
-            AutoSize = False
-            Caption = #925#945' '#917#957#949#961#947#959#960#959#943#951#952#949#943
+            Left = 33
+            Top = 279
+            Width = 68
+            Height = 28
+            Alignment = taRightJustify
+            Caption = #919#956#949#961#959#956#951#956#943#945' '#913#957#945#966#959#961#940#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -883,8 +829,8 @@
             WordWrap = True
           end
           object Label14: TLabel
-            Left = 11
-            Top = 355
+            Left = 7
+            Top = 345
             Width = 94
             Height = 22
             AutoSize = False
@@ -897,8 +843,8 @@
             ParentFont = False
             WordWrap = True
           end
-          object wwDBEdit5: TwwDBEdit
-            Left = 102
+          object REminderDescFLD: TwwDBEdit
+            Left = 108
             Top = 43
             Width = 219
             Height = 22
@@ -910,19 +856,19 @@
             WordWrap = False
           end
           object wwDBEdit8: TwwDBEdit
-            Left = 118
+            Left = 108
             Top = 419
             Width = 75
             Height = 22
             DataField = 'NUMBER_OF_DAYS_MONTHS'
             DataSource = SeminarReminderSRC
-            TabOrder = 2
+            TabOrder = 6
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
           end
           object RzDBRichEdit2: TRzDBRichEdit
-            Left = 102
+            Left = 107
             Top = 71
             Width = 219
             Height = 49
@@ -937,20 +883,19 @@
             Zoom = 100
           end
           object RzDBRadioGroup2: TRzDBRadioGroup
-            Left = 111
+            Left = 108
             Top = 212
             Width = 125
             Height = 60
             DataField = 'AFTER_OR_BEFORE'
             DataSource = SeminarReminderSRC
             Items.Strings = (
-              #924#949#964#940' '
-              #928#961#943#957)
+              #924#949#964#940' '#964#959' '#931#949#956#953#957#940#961#953#959
+              #928#961#943#957' '#964#959' '#931#949#956#953#957#940#961#953#959)
             Values.Strings = (
               'A'
               'B')
             Caption = #913#960#959#963#964#959#955#942
-            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -960,11 +905,10 @@
             ParentFont = False
             SpaceEvenly = True
             TabOrder = 3
-            VerticalSpacing = 2
             VisualStyle = vsGradient
           end
           object RzDBRadioGroup3: TRzDBRadioGroup
-            Left = 111
+            Left = 108
             Top = 279
             Width = 125
             Height = 60
@@ -976,8 +920,7 @@
             Values.Strings = (
               'S'
               'E')
-            Caption = #917#957#949#961#947#959#960#959#943#951#963#951
-            Enabled = False
+            Caption = #931#951#956#945#957#964#953#954#942' '#919#956#949#961#959#956#951#957#943#945
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -987,11 +930,10 @@
             ParentFont = False
             SpaceEvenly = True
             TabOrder = 4
-            VerticalSpacing = 2
             VisualStyle = vsGradient
           end
           object RzDBRadioGroup4: TRzDBRadioGroup
-            Left = 111
+            Left = 108
             Top = 345
             Width = 125
             Height = 60
@@ -1004,7 +946,6 @@
               'M'
               'D')
             Caption = #924#959#957#940#948#945' '#935#961#972#957#959#965
-            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1014,7 +955,31 @@
             ParentFont = False
             SpaceEvenly = True
             TabOrder = 5
-            VerticalSpacing = 2
+            VisualStyle = vsGradient
+          end
+          object RzDBRadioGroup1: TRzDBRadioGroup
+            Left = 107
+            Top = 149
+            Width = 125
+            Height = 60
+            DataField = 'PERSON_OR_SEMINAR'
+            DataSource = SeminarReminderSRC
+            Items.Strings = (
+              #931#949#956#953#957#940#961#953#959
+              #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962)
+            Values.Strings = (
+              'S'
+              'P')
+            Caption = #928#945#961#945#955#942#960#964#951#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ItemHeight = 14
+            ParentFont = False
+            SpaceEvenly = True
+            TabOrder = 2
             VisualStyle = vsGradient
           end
         end
@@ -1026,7 +991,7 @@
           Align = alTop
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
-          TabOrder = 2
+          TabOrder = 1
           object wwDBNavigator4: TwwDBNavigator
             Left = 1
             Top = 7
@@ -1086,7 +1051,6 @@
               Spacing = 4
               Transparent = False
               Caption = 'Nav1Next'
-              Enabled = False
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
               Index = 2
@@ -1103,7 +1067,6 @@
               Spacing = 4
               Transparent = False
               Caption = 'Nav1Button1'
-              Enabled = False
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
               Index = 3
@@ -1120,7 +1083,6 @@
               Spacing = 4
               Transparent = False
               Caption = 'Nav1Insert'
-              Enabled = False
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
               OnClick = Nav1InsertClick
@@ -1138,7 +1100,6 @@
               Spacing = 4
               Transparent = False
               Caption = 'Nav1Delete'
-              Enabled = False
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
               Index = 5
@@ -1185,6 +1146,7 @@
             Width = 128
             Height = 22
             DataSource = SeminarReminderSRC
+            SearchField = 'Description'
             ShowMatchText = True
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1195,32 +1157,132 @@
             TabOrder = 1
           end
         end
-        object RzDBRadioGroup1: TRzDBRadioGroup
-          Left = 581
-          Top = 149
-          Width = 125
-          Height = 60
-          DataField = 'PERSON_OR_SEMINAR'
-          DataSource = SeminarReminderSRC
-          Items.Strings = (
-            #931#949#956#953#957#940#961#953#959
-            #917#954#960#945#953#948#949#965#972#956#949#957#959#962)
-          Values.Strings = (
-            'S'
-            'P')
-          Caption = #928#945#961#945#955#942#960#964#951#962
-          Enabled = False
+        object GroupBox3: TGroupBox
+          Left = 43
+          Top = 53
+          Width = 421
+          Height = 322
+          Caption = #933#960#949#957#952#965#956#943#963#949#953#962
+          Ctl3D = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'Arial'
+          Font.Height = -12
+          Font.Name = 'Tahoma'
           Font.Style = []
-          ItemHeight = 14
+          ParentCtl3D = False
           ParentFont = False
-          SpaceEvenly = True
-          TabOrder = 3
-          VerticalSpacing = 2
-          VisualStyle = vsGradient
+          TabOrder = 2
+          object RzPanel5: TRzPanel
+            Left = 1
+            Top = 15
+            Width = 419
+            Height = 10
+            Align = alTop
+            BorderOuter = fsNone
+            TabOrder = 0
+          end
+          object wwDBGrid2: TwwDBGrid
+            Left = 1
+            Top = 25
+            Width = 419
+            Height = 296
+            ControlType.Strings = (
+              'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
+              'DAYS_OR_MONTHS;CustomEdit;NamePersonFLD;F'
+              'START_OR_END;CustomEdit;StartEndLD;F')
+            Selected.Strings = (
+              'SERIAL_NUMBER'#9'3'#9'A/A'
+              'DESCRIPTION'#9'10'#9#928#949#961#953#947#961#945#966#942
+              'NUMBER_OF_DAYS_MONTHS'#9'5'#9#931#949
+              'DAYS_OR_MONTHS'#9'10'#9#919#956#941#961#949#962'/'#924#942#957#949#962
+              'AFTER_OR_BEFORE'#9'8'#9#928#961#953#957'/'#924#949#964#940
+              'START_OR_END'#9'16'#9#919#956#949#961#959#956#951#957#943#945)
+            IniAttributes.Delimiter = ';;'
+            IniAttributes.UnicodeIniFile = False
+            TitleColor = clBtnFace
+            FixedCols = 1
+            ShowHorzScrollBar = True
+            Align = alClient
+            Color = 12713983
+            DataSource = SeminarReminderSRC
+            Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+            ReadOnly = True
+            TabOrder = 1
+            TitleAlignment = taLeftJustify
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            TitleLines = 1
+            TitleButtons = False
+            object AfterFLD: TwwDBComboBox
+              Left = 94
+              Top = 81
+              Width = 76
+              Height = 20
+              ShowButton = True
+              Style = csDropDownList
+              MapList = True
+              AllowClearKey = False
+              AutoDropDown = True
+              DataField = 'AFTER_OR_BEFORE'
+              DataSource = SeminarReminderSRC
+              DropDownCount = 8
+              ItemHeight = 0
+              Items.Strings = (
+                #924#949#964#940#9'A'
+                #928#961#953#957#9'B')
+              ItemIndex = 0
+              Sorted = False
+              TabOrder = 0
+              UnboundDataType = wwDefault
+            end
+            object NamePersonFLD: TwwDBComboBox
+              Left = 94
+              Top = 137
+              Width = 76
+              Height = 20
+              ShowButton = True
+              Style = csDropDownList
+              MapList = True
+              AllowClearKey = False
+              AutoDropDown = True
+              DataField = 'DAYS_OR_MONTHS'
+              DataSource = SeminarReminderSRC
+              DropDownCount = 8
+              ItemHeight = 0
+              Items.Strings = (
+                #924#941#961#949#962#9'D'
+                #924#942#957#949#962#9'M')
+              ItemIndex = 0
+              Sorted = False
+              TabOrder = 1
+              UnboundDataType = wwDefault
+            end
+            object StartEndLD: TwwDBComboBox
+              Left = 198
+              Top = 233
+              Width = 76
+              Height = 20
+              ShowButton = True
+              Style = csDropDownList
+              MapList = True
+              AllowClearKey = False
+              AutoDropDown = True
+              DataField = 'START_OR_END'
+              DataSource = SeminarReminderSRC
+              DropDownCount = 8
+              ItemHeight = 0
+              Items.Strings = (
+                #913#960#972' '#964#951#957' '#904#957#945#961#958#951#9'S'
+                #913#960#972' '#964#959' '#932#941#955#959#962#9'E')
+              ItemIndex = 0
+              Sorted = False
+              TabOrder = 2
+              UnboundDataType = wwDefault
+            end
+          end
         end
       end
     end
@@ -1233,7 +1295,7 @@
       Align = alTop
       AutoSize = True
       BorderOuter = fsFlatRounded
-      Caption = #932#973#960#959#953' '#931#949#956#953#957#945#961#943#969#957
+      Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
       Color = clBlue
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlue
@@ -1608,14 +1670,14 @@
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
-    Left = 441
-    Top = 5
+    Left = 473
+    Top = 77
   end
   object ReadTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
     IsolationLevel = iblReadOnlyReadCommitted
-    Left = 568
-    Top = 1
+    Left = 560
+    Top = 65
   end
   object seminarSubjectSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
@@ -1673,7 +1735,7 @@
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 1
+        Value = 3
       end>
     object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
@@ -1765,6 +1827,7 @@
     MasterFields = 'SERIAL_NUMBER'
     DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
     MasterSource = TableSRC
+    Active = True
     Left = 281
     Top = 301
     ParamData = <
@@ -1772,7 +1835,7 @@
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 1
+        Value = 3
       end>
     object SeminarReminderSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
@@ -1780,54 +1843,61 @@
       FieldName = 'SERIAL_NUMBER'
     end
     object SeminarReminderSQLDESCRIPTION: TWideStringField
-      DisplayWidth = 12
+      DisplayLabel = #928#949#961#953#947#961#945#966#942
+      DisplayWidth = 10
       FieldName = 'DESCRIPTION'
+      Required = True
       Size = 160
     end
-    object SeminarReminderSQLAFTER_OR_BEFORE: TWideStringField
-      DisplayLabel = 'Timing'
-      DisplayWidth = 7
-      FieldName = 'AFTER_OR_BEFORE'
-      FixedChar = True
-      Size = 1
+    object SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField
+      DisplayLabel = #931#949
+      DisplayWidth = 5
+      FieldName = 'NUMBER_OF_DAYS_MONTHS'
+      Required = True
     end
     object SeminarReminderSQLDAYS_OR_MONTHS: TWideStringField
-      DisplayLabel = 'Period Type'
-      DisplayWidth = 9
+      DisplayLabel = #919#956#941#961#949#962'/'#924#942#957#949#962
+      DisplayWidth = 10
       FieldName = 'DAYS_OR_MONTHS'
       Required = True
       FixedChar = True
       Size = 1
     end
-    object SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField
-      DisplayLabel = 'Target'
-      DisplayWidth = 17
-      FieldName = 'PERSON_OR_SEMINAR'
+    object SeminarReminderSQLAFTER_OR_BEFORE: TWideStringField
+      DisplayLabel = #928#961#953#957'/'#924#949#964#940
+      DisplayWidth = 8
+      FieldName = 'AFTER_OR_BEFORE'
       Required = True
       FixedChar = True
       Size = 1
     end
     object SeminarReminderSQLSTART_OR_END: TWideStringField
-      DisplayLabel = 'Start/End '
-      DisplayWidth = 8
+      DisplayLabel = #919#956#949#961#959#956#951#957#943#945
+      DisplayWidth = 16
       FieldName = 'START_OR_END'
+      Required = True
       FixedChar = True
       Size = 1
     end
     object SeminarReminderSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField
-      DisplayWidth = 21
       FieldName = 'FK_SEMINAR_TYPE_SERIAL'
       Required = True
       Visible = False
     end
     object SeminarReminderSQLREMINDER_MESSAGE: TWideStringField
+      DisplayLabel = #924#942#957#965#956#945
       FieldName = 'REMINDER_MESSAGE'
       Required = True
       Visible = False
       Size = 160
     end
-    object SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField
-      FieldName = 'NUMBER_OF_DAYS_MONTHS'
+    object SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField
+      DisplayLabel = #928#945#961#945#955#942#960#964#951#962
+      FieldName = 'PERSON_OR_SEMINAR'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
     end
   end
 end

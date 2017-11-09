@@ -169,24 +169,7 @@ type
     SeminarReminderSRC: TDataSource;
     SeminarReminderSQL: TIBCQuery;
     GroupBox4: TGroupBox;
-    wwDBGrid3: TwwDBGrid;
     RzPanel12: TRzPanel;
-    GroupBox5: TGroupBox;
-    Label14: TLabel;
-    Label15: TLabel;
-    RzDBLabel1: TRzDBLabel;
-    Label16: TLabel;
-    Label17: TLabel;
-    Label18: TLabel;
-    Label19: TLabel;
-    Label20: TLabel;
-    Label21: TLabel;
-    wwDBEdit3: TwwDBEdit;
-    wwDBEdit5: TwwDBEdit;
-    RzDBRichEdit2: TRzDBRichEdit;
-    RzDBRadioGroup1: TRzDBRadioGroup;
-    RzDBRadioGroup2: TRzDBRadioGroup;
-    RzDBRadioGroup3: TRzDBRadioGroup;
     RzPanel13: TRzPanel;
     wwDBNavigator4: TwwDBNavigator;
     wwNavButton15: TwwNavButton;
@@ -206,8 +189,28 @@ type
     SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField;
     SeminarReminderSQLSTART_OR_END: TWideStringField;
     SeminarReminderSQLDAYS_OR_MONTHS: TWideStringField;
-    RzDBRadioGroup4: TRzDBRadioGroup;
     SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField;
+    GroupBox5: TGroupBox;
+    Label14: TLabel;
+    Label15: TLabel;
+    RzDBLabel1: TRzDBLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    REminderDescFLD: TwwDBEdit;
+    wwDBEdit3: TwwDBEdit;
+    RzDBRichEdit2: TRzDBRichEdit;
+    RzDBRadioGroup2: TRzDBRadioGroup;
+    RzDBRadioGroup3: TRzDBRadioGroup;
+    RzDBRadioGroup4: TRzDBRadioGroup;
+    RzDBRadioGroup1: TRzDBRadioGroup;
+    wwDBGrid3: TwwDBGrid;
+    AfterFLD: TwwDBComboBox;
+    NamePersonFLD: TwwDBComboBox;
+    StartEndLD: TwwDBComboBox;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -243,6 +246,7 @@ type
     procedure SeminarCostItemSQLCalcFields(DataSet: TDataSet);
     procedure CostGRDUpdateFooter(Sender: TObject);
     procedure TabSheet1Show(Sender: TObject);
+    procedure wwNavButton19Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -516,6 +520,11 @@ begin
   finally
     frm.Free;
   end;
+end;
+
+procedure TV_SeminarFRM.wwNavButton19Click(Sender: TObject);
+begin
+REminderDescFLD.SetFocus;
 end;
 
 procedure TV_SeminarFRM.CostGRDUpdateFooter(Sender: TObject);

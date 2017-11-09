@@ -397,7 +397,6 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 761
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -563,7 +562,6 @@ object L_SeminarFRM: TL_SeminarFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 137
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -728,7 +726,7 @@ object L_SeminarFRM: TL_SeminarFRM
         Font.Name = 'Arial'
         Font.Style = []
         KeyOptions = []
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+        Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         ParentFont = False
         ReadOnly = True
         TabOrder = 1

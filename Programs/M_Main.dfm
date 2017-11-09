@@ -7323,7 +7323,7 @@ object M_mainFRM: TM_mainFRM
   end
   object MainMenu1: TMainMenu
     OwnerDraw = True
-    Left = 616
+    Left = 192
     Top = 24
     object ables1: TMenuItem
       Caption = #931#949#956#953#957#940#961#953#945
@@ -7348,13 +7348,13 @@ object M_mainFRM: TM_mainFRM
       end
     end
     object BaseTables1: TMenuItem
-      Caption = #931#964#945#964#953#954#941#962' '#928#955#951#961#959#966#943#949#962
+      Caption = #928#943#957#945#954#949#962
       object N2: TMenuItem
         Caption = #935#974#961#959#953' '#917#954#960#945#943#948#949#965#963#951#962
         OnClick = N2Click
       end
       object N3: TMenuItem
-        Caption = #932#973#960#959#953' '#931#949#956#953#957#945#961#943#969#957
+        Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
         OnClick = N3Click
       end
       object N5: TMenuItem
