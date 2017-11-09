@@ -7409,5 +7409,12 @@ object M_mainFRM: TM_mainFRM
         OnClick = HelpFile1Click
       end
     end
+    object Reports1: TMenuItem
+      Caption = 'Reports'
+      object Reminders1: TMenuItem
+        Caption = 'Reminders'
+        OnClick = Reminders1Click
+      end
+    end
   end
 end

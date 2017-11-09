@@ -46,6 +46,8 @@ type
     Image1: TImage;
     N6: TMenuItem;
     HelpFile1: TMenuItem;
+    Reports1: TMenuItem;
+    Reminders1: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -58,6 +60,7 @@ type
     procedure ExchangeRates1Click(Sender: TObject);
     procedure N6Click(Sender: TObject);
     procedure HelpFile1Click(Sender: TObject);
+    procedure Reminders1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,7 +76,7 @@ implementation
 
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
-  p_attendance, H_Help;
+  p_attendance, H_Help, R_Reminders;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -135,6 +138,12 @@ end;
 procedure TM_mainFRM.N6Click(Sender: TObject);
 begin
 gpShowModal(TP_attendanceFRM);
+
+end;
+
+procedure TM_mainFRM.Reminders1Click(Sender: TObject);
+begin
+  gpShowModal(TR_remindersFRM);
 
 end;
 
