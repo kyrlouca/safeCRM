@@ -8,8 +8,8 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  System.ImageList, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
-  Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp;
+  System.ImageList,System.DateUtils, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
+  Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP;
 type
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -18,7 +18,6 @@ type
     SeminarSQL: TIBCQuery;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
-    Label4: TLabel;
     DbImages: TImageList;
     Panel3: TPanel;
     PageControlPC: TRzPageControl;
@@ -108,7 +107,6 @@ type
     SeminarDaySRC: TDataSource;
     SeminarDayFLD: TwwDBDateTimePicker;
     Label13: TLabel;
-    RzPanel9: TRzPanel;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
     SeminarSQLFK_SEMINAR: TIntegerField;
     SeminarSQLSEMINAR_NAME: TWideStringField;
@@ -211,6 +209,11 @@ type
     AfterFLD: TwwDBComboBox;
     NamePersonFLD: TwwDBComboBox;
     StartEndLD: TwwDBComboBox;
+    Button1: TButton;
+    Date1FLD: TwwDBDateTimePicker;
+    DateTimePicker1: TDateTimePicker;
+    Label4: TRzPanel;
+    RzPanel9: TRzPanel;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -247,6 +250,7 @@ type
     procedure CostGRDUpdateFooter(Sender: TObject);
     procedure TabSheet1Show(Sender: TObject);
     procedure wwNavButton19Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -271,7 +275,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, M_Instructor, M_Venue;
+uses   U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs;
 
 
 {$R *.DFM}
@@ -291,6 +295,36 @@ begin
   seminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
   StartSeminar(seminarSerial);
   SeminarSQL.Refresh;
+end;
+
+
+
+procedure TV_SeminarFRM.Button1Click(Sender: TObject);
+var
+  DateSeminar,DateToday:TDateTime;
+  diff:Integer;
+  isAfter,IsStartDate:Boolean;
+  DaysNumber:integer;
+  isDayUnit:Boolean;
+begin
+  isAfter:=SeminarReminderSQL.FieldByName('AFTER_OR_BEFORE').AsString='A';
+  IsStartDate:=SeminarReminderSQL.FieldByName('Start_or_end').AsString='S';
+  IsDayUnit:=SeminarReminderSQL.FieldByName('DAYS_OR_MONTHS').AsString='D';
+  DaysNumber:=SeminarReminderSQL.FieldByName('number_of_days_months').AsInteger;
+
+  DateTOday:=Now;
+
+
+  if isStartDate then
+      DateSeminar:=SeminarSQL.FieldByName('date_started').AsDateTime
+  else
+      DateSeminar:=SeminarSQL.FieldByName('date_Completed').AsDateTime;
+
+
+
+  diff:= CalcDays(DateSeminar,DateToday,isAfter,isDayUnit,DaysNumber);
+  ShowMessage(intToStr(diff));
+
 end;
 
 procedure TV_SeminarFRM.TabSheet1Show(Sender: TObject);
@@ -747,9 +781,8 @@ begin
   +'  from seminar_cost_item sci'
   +'  where sci.fk_seminar_serial= :seminarSerial';
 
+  qr:= TksQuery.Create(cn,str);
   try
-
-    qr:= TksQuery.Create(cn,str);
     with qr do begin
       ParamByName('SeminarSerial').Value:=Seminarserial;
     open;

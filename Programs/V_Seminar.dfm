@@ -2,7 +2,7 @@ object V_SeminarFRM: TV_SeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 675
+  ClientHeight = 758
   ClientWidth = 992
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -31,27 +31,31 @@ object V_SeminarFRM: TV_SeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    object Label4: TLabel
+    object Label4: TRzPanel
       AlignWithMargins = True
-      Left = 189
+      Left = 4
       Top = 4
-      Width = 799
+      Width = 984
       Height = 45
       Align = alClient
-      Alignment = taCenter
+      AutoSize = True
+      BorderOuter = fsNone
       Caption = #931#949#956#953#957#940#961#953#959
-      Layout = tlCenter
-      ExplicitWidth = 128
-      ExplicitHeight = 32
-    end
-    object RzPanel9: TRzPanel
-      Left = 1
-      Top = 1
-      Width = 185
-      Height = 51
-      Align = alLeft
-      Caption = 'Active'
+      ParentColor = True
       TabOrder = 0
+      Transparent = True
+      WordWrap = False
+      object RzPanel9: TRzPanel
+        Left = 0
+        Top = 0
+        Width = 185
+        Height = 45
+        Align = alLeft
+        BorderOuter = fsNone
+        Caption = 'Active'
+        TabOrder = 0
+        ExplicitLeft = 8
+      end
     end
   end
   object Panel2: TPanel
@@ -66,7 +70,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 0
     Top = 92
     Width = 992
-    Height = 583
+    Height = 666
     Align = alClient
     TabOrder = 2
     ExplicitHeight = 575
@@ -74,7 +78,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Left = 1
       Top = 1
       Width = 990
-      Height = 538
+      Height = 621
       Hint = ''
       ActivePage = TabSheet1
       Align = alClient
@@ -653,7 +657,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 25
           Width = 408
-          Height = 487
+          Height = 570
           Align = alClient
           Caption = #920#941#956#945#964#945
           Font.Charset = DEFAULT_CHARSET
@@ -804,7 +808,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 2
             Top = 49
             Width = 404
-            Height = 436
+            Height = 519
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'SUBJECT'#9'55'#9#920#941#956#945)
@@ -824,13 +828,14 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitHeight = 436
           end
         end
         object RzPanel4: TRzPanel
           Left = 408
           Top = 25
           Width = 578
-          Height = 487
+          Height = 570
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 2
@@ -839,7 +844,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 0
             Top = 0
             Width = 97
-            Height = 487
+            Height = 570
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 0
@@ -849,7 +854,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 97
             Top = 0
             Width = 481
-            Height = 487
+            Height = 570
             Align = alClient
             Caption = #924#941#961#949#962' '#916#953#949#958#945#947#969#947#942#962
             Font.Charset = DEFAULT_CHARSET
@@ -1000,7 +1005,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 2
               Top = 49
               Width = 477
-              Height = 436
+              Height = 519
               ControlType.Strings = (
                 'SEMINAR_DAY;CustomEdit;SeminarDayFLD;F')
               Selected.Strings = (
@@ -1023,6 +1028,7 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
+              ExplicitHeight = 436
               object SeminarDayFLD: TwwDBDateTimePicker
                 Left = -16
                 Top = 200
@@ -1061,7 +1067,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 18
           Width = 403
-          Height = 494
+          Height = 577
           Align = alLeft
           Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
           Font.Charset = DEFAULT_CHARSET
@@ -1076,7 +1082,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 1
             Top = 44
             Width = 401
-            Height = 449
+            Height = 532
             Selected.Strings = (
               'SERIAL_NUMBER'#9'8'#9'A/A'
               'LAST_NAME'#9'24'#9#917#960#943#952#949#964#959
@@ -1125,7 +1131,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 403
           Top = 18
           Width = 94
-          Height = 494
+          Height = 577
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
@@ -1279,7 +1285,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 497
           Top = 18
           Width = 391
-          Height = 494
+          Height = 577
           Align = alLeft
           Caption = #922#945#964#940#955#959#947#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -1294,7 +1300,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 1
             Top = 57
             Width = 389
-            Height = 436
+            Height = 519
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959
@@ -1328,6 +1334,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = True
             OnDblClick = AllPersonsGRDDblClick
             OnKeyDown = AllPersonsGRDKeyDown
+            ExplicitHeight = 436
           end
           object RzSizePanel1: TRzSizePanel
             Left = 1
@@ -1373,7 +1380,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 25
           Width = 593
-          Height = 487
+          Height = 570
           Align = alLeft
           Caption = #922#972#963#964#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -1524,7 +1531,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 2
             Top = 49
             Width = 589
-            Height = 436
+            Height = 519
             ControlType.Strings = (
               'FK_COST_ITEM;CustomEdit;CostTypeFLD;T')
             Selected.Strings = (
@@ -1552,6 +1559,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = False
             OnUpdateFooter = CostGRDUpdateFooter
             StyleElements = [seFont, seClient]
+            ExplicitHeight = 436
             object CostTypeFLD: TwwDBLookupCombo
               Left = 183
               Top = 88
@@ -1581,6 +1589,7 @@ object V_SeminarFRM: TV_SeminarFRM
         OnShow = TabSheet1Show
         Caption = #933#960#949#957#952#965#956#943#963#949#953#962
         ExplicitLeft = 0
+        ExplicitHeight = 512
         object GroupBox4: TGroupBox
           Left = 43
           Top = 53
@@ -2158,11 +2167,44 @@ object V_SeminarFRM: TV_SeminarFRM
             VisualStyle = vsGradient
           end
         end
+        object Button1: TButton
+          Left = 41
+          Top = 432
+          Width = 75
+          Height = 25
+          Caption = 'Button1'
+          TabOrder = 3
+          OnClick = Button1Click
+        end
+        object Date1FLD: TwwDBDateTimePicker
+          Left = 139
+          Top = 434
+          Width = 121
+          Height = 24
+          CalendarAttributes.Font.Charset = DEFAULT_CHARSET
+          CalendarAttributes.Font.Color = clWindowText
+          CalendarAttributes.Font.Height = -11
+          CalendarAttributes.Font.Name = 'Tahoma'
+          CalendarAttributes.Font.Style = []
+          CalendarAttributes.PopupYearOptions.StartYear = 2017
+          Epoch = 1950
+          ShowButton = True
+          TabOrder = 4
+        end
+        object DateTimePicker1: TDateTimePicker
+          Left = 176
+          Top = 404
+          Width = 186
+          Height = 24
+          Date = 43048.446421909720000000
+          Time = 43048.446421909720000000
+          TabOrder = 5
+        end
       end
     end
     object Panel4: TRzPanel
       Left = 1
-      Top = 539
+      Top = 622
       Width = 990
       Height = 43
       Align = alBottom
