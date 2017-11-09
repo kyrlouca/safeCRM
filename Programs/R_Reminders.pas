@@ -61,6 +61,16 @@ type
     ppDBText3: TppDBText;
     Vt: TVirtualTable;
     ppVariable1: TppVariable;
+    ppDBText5: TppDBText;
+    ppLabel1: TppLabel;
+    ppLabel2: TppLabel;
+    ppLabel3: TppLabel;
+    ppLabel6: TppLabel;
+    ppLabel7: TppLabel;
+    ppLabel8: TppLabel;
+    ppLabel9: TppLabel;
+    wwDBGrid1: TwwDBGrid;
+    DataSource1: TDataSource;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -118,7 +128,7 @@ end;
 
 procedure TR_remindersFRM.ppVariable1Calc(Sender: TObject; var Value: Variant);
 begin
- value:=vt.FieldByName('DaysCalc').AsString;
+ value:=vt.FieldByName('DaysCalc').AsInteger;
 end;
 
 procedure TR_remindersFRM.RzBitBtn1Click(Sender: TObject);
@@ -177,31 +187,32 @@ toDate:= ToDateFLD.Date;
 with SeminarReminderSQL do
 begin
      Close;
-     SeminarREminderSQL.RestoreSQL;
-     Prepare;
      Open ;
+     vt.Close;
+      vt.DeleteFields;
+      Vt.IndexFieldNames := '';
       vt.Assign(SeminarReminderSQL);
-      vt.Close;
-      vt.FieldDefs[0].Attributes :=
-      vt.FieldDefs[0].Attributes - [faReadOnly];
-      vt.AddField('DaysCalc',ftString,10);
+//      vt.FieldDefs[0].Attributes := vt.FieldDefs[0].Attributes - [faReadOnly];
+      vt.AddField('DaysCalc',ftInteger,0);
+      Vt.IndexFieldNames := 'DaysCalc Asc';
       vt.Open;
       i:=0;
+      VT.First;
       while not vt.Eof do begin
         vt.Edit;
-        vt.FieldByName('DaysCalc').Value:=CalcDaysLeft(2);
+        vt.FieldByName('DaysCalc').AsInteger:=CalcDaysLeft(2);
         vt.Post;
         vt.Next;
         inc(i);
       end;
-      vt.Close;
-      Vt.IndexFieldNames := 'DaysCalc Asc';
-      vt.Open;
+//      vt.Close;
+//      Vt.IndexFieldNames := 'DaysCalc Asc';
+//      vt.Open;
 
 
+     SeminarReminderSRC.DataSet:=vt;
+//     PpReport1.Print;
 
-     PpReport1.Print;
-     close;
 end;
 
 end;
