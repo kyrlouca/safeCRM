@@ -68,11 +68,13 @@ type
     procedure RzBitBtn1Click(Sender: TObject);
     procedure PrintRBtnClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
-    procedure SeminarReminderSQLFilterRecord(DataSet: TDataSet;
-      var Accept: Boolean);
     procedure ppVariable1Calc(Sender: TObject; var Value: Variant);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
+    cn:TIBCConnection;
+  Function CalcDaysLeft(Const ReminderSerial:Integer):Integer;
+  Function Calc2(Const ReminderSerial:Integer):Integer;
   public
     { Public declarations }
   end;
@@ -82,7 +84,7 @@ var
 
 implementation
 
-uses U_Database, G_SFCommonProcs;
+uses U_Database, G_SFCommonProcs, G_KyrSQL;
 
 
 {$R *.DFM}
@@ -116,7 +118,7 @@ end;
 
 procedure TR_remindersFRM.ppVariable1Calc(Sender: TObject; var Value: Variant);
 begin
- value:=vt.FieldByName('maka').AsString;
+ value:=vt.FieldByName('DaysCalc').AsString;
 end;
 
 procedure TR_remindersFRM.RzBitBtn1Click(Sender: TObject);
@@ -124,8 +126,9 @@ begin
   close;
 end;
 
-procedure TR_remindersFRM.SeminarReminderSQLFilterRecord(DataSet: TDataSet;
-  var Accept: Boolean);
+
+Function TR_remindersFRM.CalcDaysLeft(Const ReminderSerial:Integer):Integer;
+
 var
   DateSeminar,DateToday:TDateTime;
   diff:Integer;
@@ -133,20 +136,20 @@ var
   DaysNumber:integer;
   isDayUnit:Boolean;
 begin
-  isAfter:=SeminarReminderSQL.FieldByName('AFTER_OR_BEFORE').AsString='A';
-  IsStartDate:=SeminarReminderSQL.FieldByName('Start_or_end').AsString='S';
-  IsDayUnit:=SeminarReminderSQL.FieldByName('DAYS_OR_MONTHS').AsString='D';
-  DaysNumber:=SeminarReminderSQL.FieldByName('number_of_days_months').AsInteger;
+  isAfter:=vt.FieldByName('AFTER_OR_BEFORE').AsString='A';
+  IsStartDate:=Vt.FieldByName('Start_or_end').AsString='S';
+  IsDayUnit:=Vt.FieldByName('DAYS_OR_MONTHS').AsString='D';
+  DaysNumber:=Vt.FieldByName('number_of_days_months').AsInteger;
 
   DateTOday:=Now;
 
 
   if isStartDate then
-      DateSeminar:=SeminarReminderSQL.FieldByName('date_started').AsDateTime
+      DateSeminar:=Vt.FieldByName('date_started').AsDateTime
   else
-      DateSeminar:=SeminarReminderSQL.FieldByName('date_Completed').AsDateTime;
+      DateSeminar:=Vt.FieldByName('date_Completed').AsDateTime;
 
-  diff:= CalcDays(DateSeminar,DateToday,isAfter,isDayUnit,DaysNumber);
+  result:= CalcDays(DateSeminar,DateToday,isAfter,isDayUnit,DaysNumber);
 end;
 
 procedure TR_remindersFRM.ppLabel10GetText(Sender: TObject;
@@ -181,18 +184,18 @@ begin
       vt.Close;
       vt.FieldDefs[0].Attributes :=
       vt.FieldDefs[0].Attributes - [faReadOnly];
-      vt.AddField('maka',ftString,10);
+      vt.AddField('DaysCalc',ftString,10);
       vt.Open;
       i:=0;
       while not vt.Eof do begin
         vt.Edit;
-        vt.FieldByName('maka').Value:=IntToStr(i);
+        vt.FieldByName('DaysCalc').Value:=CalcDaysLeft(2);
         vt.Post;
         vt.Next;
         inc(i);
       end;
       vt.Close;
-      Vt.IndexFieldNames := 'maka Desc';
+      Vt.IndexFieldNames := 'DaysCalc Asc';
       vt.Open;
 
 
@@ -211,6 +214,66 @@ if (Trim(ToDateFLD.text)='') then
 if (Trim(FromDateFLD.text)='') then
    FromDateFLD.Date:=now;
 
+end;
+
+
+procedure TR_remindersFRM.FormCreate(Sender: TObject);
+begin
+  cn:=U_databaseFRM.DataConnection;
+end;
+
+Function TR_remindersFRM.Calc2(Const ReminderSerial:Integer):Integer;
+var
+  mySign:Integer;
+
+  DateSeminar,DateToday:TDateTime;
+  diff:Integer;
+  isAfter,IsStartDate:Boolean;
+  DaysNumber:integer;
+  isDayUnit:Boolean;
+  qr:TksQuery;
+begin
+
+
+{
+  qr:=qr.Create(cn,'aa');
+  try
+
+
+  finally
+    qr.Free;
+  end;
+
+  isAfter:=Vt.FieldByName('AFTER_OR_BEFORE').AsString='A';
+  IsStartDate:=Vt.FieldByName('Start_or_end').AsString='S';
+  IsDayUnit:=Vt.FieldByName('DAYS_OR_MONTHS').AsString='D';
+  DaysNumber:=vt.FieldByName('number_of_days_months').AsInteger;
+
+  if isStartDate then
+      DateSeminar:=Vt.FieldByName('date_started').AsDateTime
+  else
+      DateSeminar:=Vt.FieldByName('date_Completed').AsDateTime;
+
+
+  if isAfter then
+    mySign:=1
+  else
+    mySign:=-1;
+
+  try
+    if IsDayUnit then
+      DateReminder:= IncDay( DateSeminar, mySign * NumberOfUnits)
+    else
+      DateReminder:= IncMonth( DateSeminar, mySign * NumberOFUnits);
+
+    DateREminder:=Trunc( DateREminder);
+    result:= Trunc(DateReminder)-TRunc(DateRef);
+
+  except
+    result:=-1;
+  end;
+
+  }
 end;
 
 end.
