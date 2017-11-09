@@ -16,7 +16,8 @@ uses
   M_Student in 'M_Student.pas' {M_StudentFRM},
   p_attendance in 'p_attendance.pas' {P_attendanceFRM},
   H_Help in 'H_Help.pas' {H_HelpFRM},
-  G_SFCommonProcs in 'G_SFCommonProcs.pas';
+  G_SFCommonProcs in 'G_SFCommonProcs.pas',
+  R_Reminders in 'R_Reminders.pas' {R_remindersFRM};
 
 {$R *.res}
 
@@ -26,5 +27,6 @@ begin
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
   Application.CreateForm(TH_HelpFRM, H_HelpFRM);
+  Application.CreateForm(TR_remindersFRM, R_remindersFRM);
   Application.Run;
 end.
