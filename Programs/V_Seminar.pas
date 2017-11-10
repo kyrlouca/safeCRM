@@ -307,6 +307,7 @@ var
   DaysNumber:integer;
   isDayUnit:Boolean;
 begin
+{
   isAfter:=SeminarReminderSQL.FieldByName('AFTER_OR_BEFORE').AsString='A';
   IsStartDate:=SeminarReminderSQL.FieldByName('Start_or_end').AsString='S';
   IsDayUnit:=SeminarReminderSQL.FieldByName('DAYS_OR_MONTHS').AsString='D';
@@ -324,7 +325,7 @@ begin
 
   diff:= CalcDays(DateSeminar,DateToday,isAfter,isDayUnit,DaysNumber);
   ShowMessage(intToStr(diff));
-
+}
 end;
 
 procedure TV_SeminarFRM.TabSheet1Show(Sender: TObject);

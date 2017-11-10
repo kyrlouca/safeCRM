@@ -3,7 +3,7 @@ unit R_Reminders;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Windows, Messages, SysUtils,System.DateUtils,System.math, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Buttons, ExtCtrls, wwSpeedButton, wwDBNavigator, Db, Wwdatsrc,
    DBAccess, IBC, MemDS, IBCError,  Grids, Wwdbigrd, Wwdbgrid, Wwkeycb, wwDialog, wwidlg,
   Mask, wwdbedit,  DBGrids, wwdbdatetimepicker, ppDB, ppCtrls,
@@ -12,6 +12,11 @@ uses
   RzPanel, Vcl.Imaging.pngimage, VirtualTable;
 
 type
+  TReminderResult= Record
+    daysLeft:Integer;
+    DateFinal:Tdate;
+  End;
+
   TR_remindersFRM = class(TForm)
     Panel1: TPanel;
     Panel3: TPanel;
@@ -69,8 +74,6 @@ type
     ppLabel7: TppLabel;
     ppLabel8: TppLabel;
     ppLabel9: TppLabel;
-    wwDBGrid1: TwwDBGrid;
-    DataSource1: TDataSource;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -83,8 +86,8 @@ type
   private
     { Private declarations }
     cn:TIBCConnection;
-  Function CalcDaysLeft(Const ReminderSerial:Integer):Integer;
-  Function Calc2(Const ReminderSerial:Integer):Integer;
+  Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
+  Function CalcDaysLeft(Const ReminderSerial:Integer):TReminderResult;
   public
     { Public declarations }
   end;
@@ -137,10 +140,10 @@ begin
 end;
 
 
-Function TR_remindersFRM.CalcDaysLeft(Const ReminderSerial:Integer):Integer;
+Function TR_remindersFRM.CalcDaysLeft(Const ReminderSerial:Integer):TReminderResult;
 
 var
-  DateSeminar,DateToday:TDateTime;
+  DateSeminar,DateReference:TDate;
   diff:Integer;
   isAfter,IsStartDate:Boolean;
   DaysNumber:integer;
@@ -151,7 +154,7 @@ begin
   IsDayUnit:=Vt.FieldByName('DAYS_OR_MONTHS').AsString='D';
   DaysNumber:=Vt.FieldByName('number_of_days_months').AsInteger;
 
-  DateTOday:=Now;
+  DateReference:=Date;
 
 
   if isStartDate then
@@ -159,8 +162,36 @@ begin
   else
       DateSeminar:=Vt.FieldByName('date_Completed').AsDateTime;
 
-  result:= CalcDays(DateSeminar,DateToday,isAfter,isDayUnit,DaysNumber);
+    result.DateFinal:= FindActionDate(DateSeminar,isAfter,isDayUnit,DaysNumber);
+    Result.daysLeft:=Floor(result.DateFinal) -  Floor(DateReference);
 end;
+
+
+
+Function TR_remindersFRM.FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
+var
+  mySign:Integer;
+  DateReminder:TDate;
+begin
+  if isAfter then
+    mySign:=1
+  else
+    mySign:=-1;
+
+  try
+    if IsDayUnit then
+      DateReminder:= IncDay( DateSeminar, mySign * NumberOfUnits)
+    else
+      DateReminder:= IncMonth( DateSeminar, mySign * NumberOFUnits);
+
+    Result:=Trunc( DateREminder);
+  except
+    result:=EncodeDate(1900,01,01);
+  end;
+
+
+end;
+
 
 procedure TR_remindersFRM.ppLabel10GetText(Sender: TObject;
   var Text: String);
@@ -194,24 +225,24 @@ begin
       vt.Assign(SeminarReminderSQL);
 //      vt.FieldDefs[0].Attributes := vt.FieldDefs[0].Attributes - [faReadOnly];
       vt.AddField('DaysCalc',ftInteger,0);
-      Vt.IndexFieldNames := 'DaysCalc Asc';
+      vt.AddField('ActionDate',ftDate,0);
+//      Vt.IndexFieldNames := 'DaysCalc Asc'; //need to populate table and then create index
       vt.Open;
-      i:=0;
       VT.First;
       while not vt.Eof do begin
         vt.Edit;
-        vt.FieldByName('DaysCalc').AsInteger:=CalcDaysLeft(2);
+        vt.FieldByName('DaysCalc').AsInteger:=CalcDaysLeft(2).daysLeft;
+        vt.FieldByName('ActionDate').AsDateTime:=CalcDaysLeft(2).DateFinal;
         vt.Post;
         vt.Next;
-        inc(i);
       end;
-//      vt.Close;
-//      Vt.IndexFieldNames := 'DaysCalc Asc';
-//      vt.Open;
+      vt.Close;
+      Vt.IndexFieldNames := 'ActionDate Asc';
+      vt.Open;
 
 
      SeminarReminderSRC.DataSet:=vt;
-//     PpReport1.Print;
+     PpReport1.Print;
 
 end;
 
@@ -233,58 +264,5 @@ begin
   cn:=U_databaseFRM.DataConnection;
 end;
 
-Function TR_remindersFRM.Calc2(Const ReminderSerial:Integer):Integer;
-var
-  mySign:Integer;
-
-  DateSeminar,DateToday:TDateTime;
-  diff:Integer;
-  isAfter,IsStartDate:Boolean;
-  DaysNumber:integer;
-  isDayUnit:Boolean;
-  qr:TksQuery;
-begin
-
-
-{
-  qr:=qr.Create(cn,'aa');
-  try
-
-
-  finally
-    qr.Free;
-  end;
-
-  isAfter:=Vt.FieldByName('AFTER_OR_BEFORE').AsString='A';
-  IsStartDate:=Vt.FieldByName('Start_or_end').AsString='S';
-  IsDayUnit:=Vt.FieldByName('DAYS_OR_MONTHS').AsString='D';
-  DaysNumber:=vt.FieldByName('number_of_days_months').AsInteger;
-
-  if isStartDate then
-      DateSeminar:=Vt.FieldByName('date_started').AsDateTime
-  else
-      DateSeminar:=Vt.FieldByName('date_Completed').AsDateTime;
-
-
-  if isAfter then
-    mySign:=1
-  else
-    mySign:=-1;
-
-  try
-    if IsDayUnit then
-      DateReminder:= IncDay( DateSeminar, mySign * NumberOfUnits)
-    else
-      DateReminder:= IncMonth( DateSeminar, mySign * NumberOFUnits);
-
-    DateREminder:=Trunc( DateREminder);
-    result:= Trunc(DateReminder)-TRunc(DateRef);
-
-  except
-    result:=-1;
-  end;
-
-  }
-end;
 
 end.

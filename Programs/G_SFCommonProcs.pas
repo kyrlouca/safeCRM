@@ -15,7 +15,7 @@ type
 
 
 function test1():Integer;
-Function CalcDays(const DateSeminar,DateRef:TDateTime;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Integer;
+Function CalcDaysOld(const DateSeminar,DateRef:TDateTime;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Integer;
 
 implementation
 function test1():Integer;
@@ -23,7 +23,7 @@ begin
   result:=1;
 end;
 
-Function CalcDays(const DateSeminar,DateRef:TDateTime;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Integer;
+Function CalcDaysOld(const DateSeminar,DateRef:TDateTime;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Integer;
 var
   mySign:Integer;
   DateReminder:TDatetime;
