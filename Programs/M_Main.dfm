@@ -7252,6 +7252,7 @@ object M_mainFRM: TM_mainFRM
       ParentFont = False
       TabOrder = 0
       TextStyle = tsRecessed
+      OnClick = LoginBTNClick
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C006000000000000000000000000000000000000000000000000
@@ -7335,6 +7336,10 @@ object M_mainFRM: TM_mainFRM
         Caption = #928#945#961#959#965#963#943#949#962
         OnClick = N6Click
       end
+      object N7: TMenuItem
+        Caption = #932#953#956#959#955#972#947#951#963#951
+        OnClick = N7Click
+      end
     end
     object ables2: TMenuItem
       Caption = #928#949#955#940#964#949#962
@@ -7412,7 +7417,7 @@ object M_mainFRM: TM_mainFRM
     object Reports1: TMenuItem
       Caption = 'Reports'
       object Reminders1: TMenuItem
-        Caption = 'Reminders'
+        Caption = #933#960#949#957#952#965#956#943#963#949#953#962
         OnClick = Reminders1Click
       end
     end

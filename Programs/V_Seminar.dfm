@@ -78,7 +78,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 990
       Height = 621
       Hint = ''
-      ActivePage = TabSheet1
+      ActivePage = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -86,7 +86,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 4
+      TabIndex = 0
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -662,7 +662,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitHeight = 479
           object RzPanel6: TRzPanel
             Left = 2
             Top = 16
@@ -823,7 +822,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitHeight = 436
           end
         end
         object RzPanel4: TRzPanel
@@ -842,7 +840,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitHeight = 479
           end
           object GroupBox2: TGroupBox
             Left = 97
@@ -1106,7 +1103,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = True
             OnDblClick = MembersGRDDblClick
             OnKeyDown = MembersGRDKeyDown
-            ExplicitHeight = 441
           end
           object RzSizePanel2: TRzSizePanel
             Left = 1
@@ -1125,7 +1121,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitHeight = 486
           object ToRightBTN: TBitBtn
             Left = 3
             Top = 141
@@ -1924,11 +1919,11 @@ object V_SeminarFRM: TV_SeminarFRM
             DataField = 'SERIAL_NUMBER'
           end
           object Label16: TLabel
-            Left = 44
+            Left = 17
             Top = 423
-            Width = 56
+            Width = 82
             Height = 14
-            Caption = #924#949#964#940' '#945#960#972' '
+            Caption = #931#949' '#956#941#961#949#962'/'#924#942#957#949#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2153,7 +2148,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Height = 25
           Caption = 'Button1'
           TabOrder = 3
-          OnClick = Button1Click
         end
         object Date1FLD: TwwDBDateTimePicker
           Left = 139
@@ -2491,8 +2485,8 @@ object V_SeminarFRM: TV_SeminarFRM
       '')
     Active = True
     OnNewRecord = SeminarSQLNewRecord
-    Left = 17
-    Top = 269
+    Left = 25
+    Top = 261
     ParamData = <
       item
         DataType = ftUnknown
@@ -2574,7 +2568,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800280210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088002C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3510,8 +3504,8 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
-    Left = 25
-    Top = 333
+    Left = 281
+    Top = 461
     ParamData = <
       item
         DataType = ftInteger
@@ -3627,8 +3621,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object SeminarDaySRC: TDataSource
     DataSet = SeminarDaySQL
-    Left = 88
-    Top = 369
+    Left = 184
+    Top = 465
   end
   object SeminarCostItemSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'

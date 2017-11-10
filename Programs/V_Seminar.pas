@@ -250,7 +250,6 @@ type
     procedure CostGRDUpdateFooter(Sender: TObject);
     procedure TabSheet1Show(Sender: TObject);
     procedure wwNavButton19Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -298,35 +297,6 @@ begin
 end;
 
 
-
-procedure TV_SeminarFRM.Button1Click(Sender: TObject);
-var
-  DateSeminar,DateToday:TDateTime;
-  diff:Integer;
-  isAfter,IsStartDate:Boolean;
-  DaysNumber:integer;
-  isDayUnit:Boolean;
-begin
-{
-  isAfter:=SeminarReminderSQL.FieldByName('AFTER_OR_BEFORE').AsString='A';
-  IsStartDate:=SeminarReminderSQL.FieldByName('Start_or_end').AsString='S';
-  IsDayUnit:=SeminarReminderSQL.FieldByName('DAYS_OR_MONTHS').AsString='D';
-  DaysNumber:=SeminarReminderSQL.FieldByName('number_of_days_months').AsInteger;
-
-  DateTOday:=Now;
-
-
-  if isStartDate then
-      DateSeminar:=SeminarSQL.FieldByName('date_started').AsDateTime
-  else
-      DateSeminar:=SeminarSQL.FieldByName('date_Completed').AsDateTime;
-
-
-
-  diff:= CalcDays(DateSeminar,DateToday,isAfter,isDayUnit,DaysNumber);
-  ShowMessage(intToStr(diff));
-}
-end;
 
 procedure TV_SeminarFRM.TabSheet1Show(Sender: TObject);
 begin

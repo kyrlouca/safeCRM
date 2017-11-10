@@ -48,6 +48,7 @@ type
     HelpFile1: TMenuItem;
     Reports1: TMenuItem;
     Reminders1: TMenuItem;
+    N7: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -61,6 +62,8 @@ type
     procedure N6Click(Sender: TObject);
     procedure HelpFile1Click(Sender: TObject);
     procedure Reminders1Click(Sender: TObject);
+    procedure LoginBTNClick(Sender: TObject);
+    procedure N7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,7 +79,7 @@ implementation
 
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
-  p_attendance, H_Help, R_Reminders;
+  p_attendance, H_Help, R_Reminders, I_invoiceSeminar;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -103,6 +106,17 @@ procedure TM_mainFRM.HelpFile1Click(Sender: TObject);
 begin
 gpShowModal(TH_HelpFRM);
 
+end;
+
+procedure TM_mainFRM.LoginBTNClick(Sender: TObject);
+begin
+//TODO  Certificates
+//TODO  only if student has more than %presence in ALL subjects (some students may attend a subject in another seminar)
+//TODO  seminar has Status (intial, planned, completed, etc,)
+//TODO   seminar-tabsheets save aux tables with ACCEPT button. Save on Close
+//TODO   DISCOUNTS
+//TODO Reports
+//TODO companies used as persons (type=company) for invoice reasons
 end;
 
 procedure TM_mainFRM.N1Click(Sender: TObject);
@@ -138,6 +152,12 @@ end;
 procedure TM_mainFRM.N6Click(Sender: TObject);
 begin
 gpShowModal(TP_attendanceFRM);
+
+end;
+
+procedure TM_mainFRM.N7Click(Sender: TObject);
+begin
+  gpShowModal(TI_InvoiceSeminarFRM);
 
 end;
 

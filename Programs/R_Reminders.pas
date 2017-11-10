@@ -27,8 +27,6 @@ type
     GroupBox1: TGroupBox;
     Label6: TLabel;
     FromDateFLD: TwwDBDateTimePicker;
-    Label1: TLabel;
-    ToDateFLD: TwwDBDateTimePicker;
     PrintRBtn: TBitBtn;
     Panel11: TRzPanel;
     BitBtn1: TBitBtn;
@@ -40,7 +38,7 @@ type
     ppHeaderBand3: TppHeaderBand;
     ppLine5: TppLine;
     ppLabel5: TppLabel;
-    ppDetailBand3: TppDetailBand;
+    ddBand: TppDetailBand;
     ppDBText4: TppDBText;
     ppFooterBand3: TppFooterBand;
     ppLine6: TppLine;
@@ -74,6 +72,13 @@ type
     ppLabel7: TppLabel;
     ppLabel8: TppLabel;
     ppLabel9: TppLabel;
+    ppVariable2: TppVariable;
+    ppDBText6: TppDBText;
+    ppShape1: TppShape;
+    ppVariable3: TppVariable;
+    ppLabel10: TppLabel;
+    ppLabel11: TppLabel;
+    ppLabel12: TppLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -83,11 +88,14 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure ppVariable1Calc(Sender: TObject; var Value: Variant);
     procedure FormCreate(Sender: TObject);
+    procedure ppVariable2Calc(Sender: TObject; var Value: Variant);
+    procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
+    procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
   Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
-  Function CalcDaysLeft(Const ReminderSerial:Integer):TReminderResult;
+  Function CalcDaysLeft():TReminderResult;
   public
     { Public declarations }
   end;
@@ -134,27 +142,52 @@ begin
  value:=vt.FieldByName('DaysCalc').AsInteger;
 end;
 
+procedure TR_remindersFRM.ppVariable2Calc(Sender: TObject; var Value: Variant);
+begin
+ value:=vt.FieldByName('ActionDate').AsDateTime;
+
+end;
+
+procedure TR_remindersFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
+begin
+   value:=FromDateFLD.Date;
+end;
+
 procedure TR_remindersFRM.RzBitBtn1Click(Sender: TObject);
 begin
   close;
 end;
 
 
-Function TR_remindersFRM.CalcDaysLeft(Const ReminderSerial:Integer):TReminderResult;
+
+
+procedure TR_remindersFRM.VtFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+  accept := Dataset.FieldByName('DaysCalc').asInteger >= 0;
+end;
+
+Function TR_remindersFRM.CalcDaysLeft():TReminderResult;
 
 var
   DateSeminar,DateReference:TDate;
-  diff:Integer;
   isAfter,IsStartDate:Boolean;
   DaysNumber:integer;
   isDayUnit:Boolean;
+  Serial:integer;
 begin
+
+
   isAfter:=vt.FieldByName('AFTER_OR_BEFORE').AsString='A';
   IsStartDate:=Vt.FieldByName('Start_or_end').AsString='S';
   IsDayUnit:=Vt.FieldByName('DAYS_OR_MONTHS').AsString='D';
   DaysNumber:=Vt.FieldByName('number_of_days_months').AsInteger;
 
-  DateReference:=Date;
+  try
+    DateReference:=FromDateFLD.Date;
+  except
+    DateReference:=Date;
+  end;
 
 
   if isStartDate then
@@ -196,7 +229,7 @@ end;
 procedure TR_remindersFRM.ppLabel10GetText(Sender: TObject;
   var Text: String);
 begin
-Text:= 'Period :'+ FromDateFLD.Text+ ' - '+ ToDateFLD.Text;
+Text:= 'Reference Date :'+ FromDateFLD.Text;
 
 end;
 
@@ -205,15 +238,10 @@ procedure TR_remindersFRM.PrintRBtnClick(Sender: TObject);
 
 Var
    FromDate:TDateTime;
-   ToDate :TDateTime;
-   SFromDate:String;
-   SToDate:String;
-   i:integer;
+   DaysLeft:integer;
 begin
 
 fromDate:=FromDateFLD.Date;
-toDate:= ToDateFLD.Date;
-
 
 with SeminarReminderSQL do
 begin
@@ -222,6 +250,7 @@ begin
      vt.Close;
       vt.DeleteFields;
       Vt.IndexFieldNames := '';
+      vt.OnFilterRecord:=nil;
       vt.Assign(SeminarReminderSQL);
 //      vt.FieldDefs[0].Attributes := vt.FieldDefs[0].Attributes - [faReadOnly];
       vt.AddField('DaysCalc',ftInteger,0);
@@ -231,13 +260,17 @@ begin
       VT.First;
       while not vt.Eof do begin
         vt.Edit;
-        vt.FieldByName('DaysCalc').AsInteger:=CalcDaysLeft(2).daysLeft;
-        vt.FieldByName('ActionDate').AsDateTime:=CalcDaysLeft(2).DateFinal;
-        vt.Post;
+        DaysLeft:=CalcDaysLeft().daysLeft;
+//        if DaysLeft>=0  then begin
+          vt.FieldByName('DaysCalc').AsInteger:=daysLeft;
+          vt.FieldByName('ActionDate').AsDateTime:=CalcDaysLeft().DateFinal;
+          vt.Post;
+//        end;
         vt.Next;
       end;
       vt.Close;
       Vt.IndexFieldNames := 'ActionDate Asc';
+      vt.OnFilterRecord:=VtFilterRecord;
       vt.Open;
 
 
@@ -250,8 +283,6 @@ end;
 
 procedure TR_remindersFRM.FormActivate(Sender: TObject);
 begin
-if (Trim(ToDateFLD.text)='') then
-  toDateFLD.Date:=now;
 
 if (Trim(FromDateFLD.text)='') then
    FromDateFLD.Date:=now;

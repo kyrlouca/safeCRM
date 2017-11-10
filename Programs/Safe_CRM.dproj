@@ -138,10 +138,6 @@
             <Form>M_StudentFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="p_attendance.pas">
-            <Form>P_attendanceFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="H_Help.pas">
             <Form>H_HelpFRM</Form>
             <FormType>dfm</FormType>
@@ -149,6 +145,10 @@
         <DCCReference Include="G_SFCommonProcs.pas"/>
         <DCCReference Include="R_Reminders.pas">
             <Form>R_remindersFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="I_invoiceSeminar.pas">
+            <Form>I_InvoiceSeminarFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
