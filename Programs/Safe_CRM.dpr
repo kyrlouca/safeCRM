@@ -17,7 +17,8 @@ uses
   H_Help in 'H_Help.pas' {H_HelpFRM},
   G_SFCommonProcs in 'G_SFCommonProcs.pas',
   R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
-  I_invoiceSeminar in 'I_invoiceSeminar.pas' {I_InvoiceSeminarFRM};
+  I_invoiceSeminar in 'I_invoiceSeminar.pas' {I_InvoiceSeminarFRM},
+  p_attendance in 'p_attendance.pas' {P_attendanceFRM};
 
 {$R *.res}
 
@@ -29,5 +30,7 @@ begin
   Application.CreateForm(TH_HelpFRM, H_HelpFRM);
   Application.CreateForm(TR_remindersFRM, R_remindersFRM);
   Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
+  Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
+  Application.CreateForm(TP_attendanceFRM, P_attendanceFRM);
   Application.Run;
 end.

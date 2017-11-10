@@ -285,13 +285,14 @@ begin
         SerialNumber:=ksGenerateSerial(cn,'GEN_INVOICE');
 
         InvoiceSQL.Insert;
-        InvoiceSQL.FieldByName('serial_number').Value:=SEminarSerial;
+        InvoiceSQL.FieldByName('serial_number').Value:=SerialNumber;
         InvoiceSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
         InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
         InvoiceSQL.FieldByName('AMOUNT_GROSS').Value:=Price;
         InvoiceSQL.FieldByName('Invoice_status').Value:='U';
         InvoiceSQL.FieldByName('DATE_INVOICED').Value:=NOW;
         InvoiceSQL.Post;
+        qr.Next;
     end;
   finally
     qr.Free;
