@@ -668,25 +668,21 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       object wwDBGrid1: TwwDBGrid
         Left = 6
         Top = 59
-        Width = 523
+        Width = 547
         Height = 313
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'10'#9'SERIAL_NUMBER'
-          'FK_SEMINAR_SERIAL'#9'10'#9'FK_SEMINAR_SERIAL'
-          'FK_PERSON_SERIAL'#9'10'#9'FK_PERSON_SERIAL'
-          'AMOUNT_GROSS'#9'10'#9'AMOUNT_GROSS'
-          'INVOICE_STATUS'#9'1'#9'INVOICE_STATUS'
-          'DATE_INVOICED'#9'10'#9'DATE_INVOICED'
-          'VAT_RATE'#9'10'#9'VAT_RATE'
-          'DISCOUNT_BY_SAFE'#9'10'#9'DISCOUNT_BY_SAFE'
-          'DISCOUNT_CUSTOMER'#9'10'#9'DISCOUNT_CUSTOMER'
-          'AMOUNT_NET'#9'10'#9'AMOUNT_NET'
-          'AMOUNT_VAT'#9'10'#9'AMOUNT_VAT'
-          'AMOUNT_WITH_VAT'#9'10'#9'AMOUNT_WITH_VAT')
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'FK_PERSON_SERIAL'#9'6'#9'P/P'
+          'LAST_NAME'#9'17'#9'Last Name'
+          'FIRST_NAME'#9'19'#9'First Name'
+          'AMOUNT_GROSS'#9'9'#9'Amnt Gross'
+          'DISCOUNT_CUSTOMER'#9'8'#9'Disc Cu'
+          'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'
+          'AMOUNT_NET'#9'12'#9'Net AMount')
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
-        FixedCols = 0
+        FixedCols = 4
         ShowHorzScrollBar = True
         DataSource = InvoiceSRC
         TabOrder = 2
@@ -1211,8 +1207,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Transaction = ReadTrans
     UpdateTransaction = WriteTrans
     SQL.Strings = (
-      'select * from invoice where'
-      'fk_seminar_serial = :seminarSerial')
+      'select'
+      'inv.*,'
+      'per.first_name,per.last_name'
+      'from'
+      'invoice  inv left outer join'
+      'person per on per.serial_number=inv.fk_person_serial'
+      'where fk_seminar_serial = :seminarSerial')
     CachedUpdates = True
     Options.LongStrings = False
     Options.LocalMasterDetail = True
@@ -1226,57 +1227,92 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Value = nil
       end>
     object InvoiceSQLSERIAL_NUMBER: TIntegerField
-      DisplayWidth = 10
+      DisplayLabel = 'A/A'
+      DisplayWidth = 6
       FieldName = 'SERIAL_NUMBER'
       Required = True
+    end
+    object InvoiceSQLFK_PERSON_SERIAL: TIntegerField
+      DisplayLabel = 'P/P'
+      DisplayWidth = 6
+      FieldName = 'FK_PERSON_SERIAL'
+      Required = True
+    end
+    object InvoiceSQLLAST_NAME: TWideStringField
+      DisplayLabel = 'Last Name'
+      DisplayWidth = 17
+      FieldName = 'LAST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
+    object InvoiceSQLFIRST_NAME: TWideStringField
+      DisplayLabel = 'First Name'
+      DisplayWidth = 19
+      FieldName = 'FIRST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
+    object InvoiceSQLAMOUNT_GROSS: TFloatField
+      DisplayLabel = 'Amnt Gross'
+      DisplayWidth = 9
+      FieldName = 'AMOUNT_GROSS'
+      DisplayFormat = '0.00'
+    end
+    object InvoiceSQLDISCOUNT_CUSTOMER: TFloatField
+      DisplayLabel = 'Disc Cu'
+      DisplayWidth = 8
+      FieldName = 'DISCOUNT_CUSTOMER'
+      DisplayFormat = '0.00'
+    end
+    object InvoiceSQLDISCOUNT_BY_SAFE: TFloatField
+      DisplayLabel = 'Discount X'
+      DisplayWidth = 8
+      FieldName = 'DISCOUNT_BY_SAFE'
+      DisplayFormat = '0.00'
+    end
+    object InvoiceSQLAMOUNT_NET: TFloatField
+      DisplayLabel = 'Net AMount'
+      DisplayWidth = 12
+      FieldName = 'AMOUNT_NET'
+      DisplayFormat = '0.00'
+    end
+    object InvoiceSQLVAT_RATE: TFloatField
+      DisplayWidth = 10
+      FieldName = 'VAT_RATE'
+      Visible = False
+      DisplayFormat = '0%'
+    end
+    object InvoiceSQLAMOUNT_VAT: TFloatField
+      DisplayWidth = 10
+      FieldName = 'AMOUNT_VAT'
+      Visible = False
+      DisplayFormat = '0.00'
+    end
+    object InvoiceSQLAMOUNT_WITH_VAT: TFloatField
+      DisplayWidth = 10
+      FieldName = 'AMOUNT_WITH_VAT'
+      Visible = False
+      DisplayFormat = '0.00'
     end
     object InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField
       DisplayWidth = 10
       FieldName = 'FK_SEMINAR_SERIAL'
       Required = True
-    end
-    object InvoiceSQLFK_PERSON_SERIAL: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'FK_PERSON_SERIAL'
-      Required = True
-    end
-    object InvoiceSQLAMOUNT_GROSS: TFloatField
-      DisplayWidth = 10
-      FieldName = 'AMOUNT_GROSS'
+      Visible = False
     end
     object InvoiceSQLINVOICE_STATUS: TWideStringField
       DisplayWidth = 1
       FieldName = 'INVOICE_STATUS'
+      Visible = False
       FixedChar = True
       Size = 1
     end
     object InvoiceSQLDATE_INVOICED: TDateField
       DisplayWidth = 10
       FieldName = 'DATE_INVOICED'
-    end
-    object InvoiceSQLVAT_RATE: TFloatField
-      DisplayWidth = 10
-      FieldName = 'VAT_RATE'
-    end
-    object InvoiceSQLDISCOUNT_BY_SAFE: TFloatField
-      DisplayWidth = 10
-      FieldName = 'DISCOUNT_BY_SAFE'
-    end
-    object InvoiceSQLDISCOUNT_CUSTOMER: TFloatField
-      DisplayWidth = 10
-      FieldName = 'DISCOUNT_CUSTOMER'
-    end
-    object InvoiceSQLAMOUNT_NET: TFloatField
-      DisplayWidth = 10
-      FieldName = 'AMOUNT_NET'
-    end
-    object InvoiceSQLAMOUNT_VAT: TFloatField
-      DisplayWidth = 10
-      FieldName = 'AMOUNT_VAT'
-    end
-    object InvoiceSQLAMOUNT_WITH_VAT: TFloatField
-      DisplayWidth = 10
-      FieldName = 'AMOUNT_WITH_VAT'
+      Visible = False
     end
   end
   object InvoiceSRC: TIBCDataSource

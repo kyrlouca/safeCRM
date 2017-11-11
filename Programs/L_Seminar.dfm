@@ -767,14 +767,15 @@ object L_SeminarFRM: TL_SeminarFRM
       
         '  (SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYPE, F' +
         'K_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATION_D' +
-        'AYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_AP' +
-        'PROVED, COST_ESTIMATE, STATUS)'
+        'AYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_APP' +
+        'ROVED, FEE_ESTIMATE, STATUS, IS_INVOICED, IS_CERTIFICATED)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR, :SEMINAR_NAME, :SEMINAR_CORP_TYP' +
         'E, :FK_INSTRUCTOR, :FK_VENUE, :DATE_STARTED, :DATE_COMPLETED, :D' +
-        'URATION_DAYS, :DURATION_HOURS, :COST_ACTUAL, :AMOUNT_ANAD, :COMM' +
-        'ENTS, :ANAD_APPROVED, :COST_ESTIMATE, :STATUS)')
+        'URATION_DAYS, :DURATION_HOURS, :FEE_ACTUAL, :AMOUNT_ANAD, :COMME' +
+        'NTS, :ANAD_APPROVED, :FEE_ESTIMATE, :STATUS, :IS_INVOICED, :IS_C' +
+        'ERTIFICATED)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -787,18 +788,20 @@ object L_SeminarFRM: TL_SeminarFRM
         'NAR_NAME = :SEMINAR_NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE' +
         ', FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, DATE_STA' +
         'RTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION' +
-        '_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, COST_A' +
-        'CTUAL = :COST_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :CO' +
-        'MMENTS, ANAD_APPROVED = :ANAD_APPROVED, COST_ESTIMATE = :COST_ES' +
-        'TIMATE, STATUS = :STATUS'
+        '_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_AC' +
+        'TUAL = :FEE_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMM' +
+        'ENTS, ANAD_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMA' +
+        'TE, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATE' +
+        'D = :IS_CERTIFICATED'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYP' +
         'E, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATI' +
-        'ON_DAYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, COMMENTS, ANA' +
-        'D_APPROVED, COST_ESTIMATE, STATUS FROM SEMINAR'
+        'ON_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD' +
+        '_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOICED, IS_CERTIFICATED FR' +
+        'OM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -876,8 +879,8 @@ object L_SeminarFRM: TL_SeminarFRM
       FieldName = 'FK_VENUE'
       Visible = False
     end
-    object TableSQLCOST_ACTUAL: TFloatField
-      FieldName = 'COST_ACTUAL'
+    object TableSQLFEE_ACTUAL: TFloatField
+      FieldName = 'FEE_ACTUAL'
       Visible = False
     end
     object TableSQLAMOUNT_ANAD: TFloatField
@@ -896,12 +899,26 @@ object L_SeminarFRM: TL_SeminarFRM
       FixedChar = True
       Size = 1
     end
-    object TableSQLCOST_ESTIMATE: TFloatField
-      FieldName = 'COST_ESTIMATE'
+    object TableSQLFEE_ESTIMATE: TFloatField
+      FieldName = 'FEE_ESTIMATE'
       Visible = False
     end
     object TableSQLSTATUS: TWideStringField
       FieldName = 'STATUS'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLIS_INVOICED: TWideStringField
+      FieldName = 'IS_INVOICED'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLIS_CERTIFICATED: TWideStringField
+      FieldName = 'IS_CERTIFICATED'
+      Required = True
       Visible = False
       FixedChar = True
       Size = 1

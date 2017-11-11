@@ -38,7 +38,7 @@
       Width = 962
       Height = 548
       Hint = ''
-      ActivePage = ReminderTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -47,8 +47,9 @@
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 2
+      TabIndex = 0
       TabOrder = 0
+      OnChanging = SeminarPCChanging
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
@@ -75,7 +76,7 @@
             Width = 361
             Height = 466
             Selected.Strings = (
-              'SEMINAR_NAME'#9'28'#9#908#957#959#956#945
+              'SEMINAR_NAME'#9'28'#9#928#949#961#953#947#961#945#966#942#9'F'
               'SEMINAR_CORP_TYPE'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972
               'ANAD_APPROVED'#9'6'#9#913#925#913#916)
             IniAttributes.Delimiter = ';;'
@@ -112,7 +113,7 @@
           Left = 398
           Top = 56
           Width = 338
-          Height = 299
+          Height = 329
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -122,7 +123,7 @@
           ParentFont = False
           TabOrder = 1
           object Label2: TLabel
-            Left = 37
+            Left = 54
             Top = 46
             Width = 58
             Height = 14
@@ -135,7 +136,7 @@
             ParentFont = False
           end
           object Label3: TLabel
-            Left = 74
+            Left = 91
             Top = 21
             Width = 21
             Height = 14
@@ -148,11 +149,11 @@
             ParentFont = False
           end
           object Label1: TLabel
-            Left = 56
+            Left = 32
             Top = 167
-            Width = 39
+            Width = 81
             Height = 14
-            Caption = #922#972#963#964#959#962
+            Caption = #932#941#955#959#962' '#935#961#941#969#963#951#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -161,7 +162,7 @@
             ParentFont = False
           end
           object Label5: TLabel
-            Left = 61
+            Left = 78
             Top = 71
             Width = 34
             Height = 14
@@ -174,7 +175,7 @@
             ParentFont = False
           end
           object SerialFLD: TRzDBLabel
-            Left = 102
+            Left = 119
             Top = 19
             Width = 75
             Height = 20
@@ -185,7 +186,7 @@
             DataSource = TableSRC
           end
           object Label8: TLabel
-            Left = 28
+            Left = 45
             Top = 209
             Width = 67
             Height = 14
@@ -198,8 +199,8 @@
             ParentFont = False
           end
           object Label4: TLabel
-            Left = 21
-            Top = 259
+            Left = 39
+            Top = 263
             Width = 74
             Height = 14
             Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
@@ -211,7 +212,7 @@
             ParentFont = False
           end
           object Label6: TLabel
-            Left = 19
+            Left = 36
             Top = 239
             Width = 76
             Height = 14
@@ -224,7 +225,7 @@
             ParentFont = False
           end
           object Label7: TLabel
-            Left = 61
+            Left = 78
             Top = 99
             Width = 35
             Height = 14
@@ -236,8 +237,21 @@
             Font.Style = []
             ParentFont = False
           end
+          object Label17: TLabel
+            Left = 15
+            Top = 291
+            Width = 97
+            Height = 14
+            Caption = #913#961#953#952#956#972#962' '#924#945#952#951#964#974#957
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
           object FirstFLD: TwwDBEdit
-            Left = 102
+            Left = 119
             Top = 43
             Width = 219
             Height = 22
@@ -249,7 +263,7 @@
             WordWrap = False
           end
           object wwDBEdit1: TwwDBEdit
-            Left = 102
+            Left = 119
             Top = 68
             Width = 219
             Height = 22
@@ -261,11 +275,11 @@
             WordWrap = False
           end
           object wwDBEdit2: TwwDBEdit
-            Left = 102
+            Left = 119
             Top = 164
             Width = 75
             Height = 22
-            DataField = 'SEMINAR_COST'
+            DataField = 'FEE_ESTIMATE'
             DataSource = TableSRC
             TabOrder = 3
             UnboundDataType = wwDefault
@@ -273,7 +287,7 @@
             WordWrap = False
           end
           object wwCheckBox1: TwwCheckBox
-            Left = 66
+            Left = 83
             Top = 187
             Width = 51
             Height = 17
@@ -293,7 +307,7 @@
             TabOrder = 4
           end
           object wwDBComboBox1: TwwDBComboBox
-            Left = 101
+            Left = 118
             Top = 206
             Width = 76
             Height = 22
@@ -315,7 +329,7 @@
             UnboundDataType = wwDefault
           end
           object wwDBEdit3: TwwDBEdit
-            Left = 102
+            Left = 119
             Top = 236
             Width = 75
             Height = 22
@@ -327,7 +341,7 @@
             WordWrap = False
           end
           object wwDBEdit4: TwwDBEdit
-            Left = 102
+            Left = 119
             Top = 260
             Width = 75
             Height = 22
@@ -339,7 +353,7 @@
             WordWrap = False
           end
           object RzDBRichEdit1: TRzDBRichEdit
-            Left = 102
+            Left = 119
             Top = 96
             Width = 219
             Height = 49
@@ -352,6 +366,18 @@
             Font.Style = []
             TabOrder = 2
             Zoom = 100
+          end
+          object wwDBEdit5: TwwDBEdit
+            Left = 119
+            Top = 288
+            Width = 75
+            Height = 22
+            DataField = 'MAX_CAPACITY'
+            DataSource = TableSRC
+            TabOrder = 8
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
           end
         end
         object Panel5: TRzPanel
@@ -456,7 +482,7 @@
               Caption = 'Nav1Insert'
               DisabledTextColors.ShadeColor = clGray
               DisabledTextColors.HighlightColor = clBtnHighlight
-              OnClick = Nav1InsertClick
+              OnClick = wwNavButton5Click
               Index = 4
               Style = nbsInsert
             end
@@ -1560,12 +1586,12 @@
       
         '  (SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED, SEM' +
         'INAR_CATEGORY, SEMINAR_CORP_TYPE, DURATION_HOURS, DURATION_DAYS,' +
-        ' COMMENTS)'
+        ' COMMENTS, FEE_ESTIMATE, MAX_CAPACITY)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :SEMINAR_NAME, :SEMINAR_COST, :ANAD_APPROVED,' +
         ' :SEMINAR_CATEGORY, :SEMINAR_CORP_TYPE, :DURATION_HOURS, :DURATI' +
-        'ON_DAYS, :COMMENTS)')
+        'ON_DAYS, :COMMENTS, :FEE_ESTIMATE, :MAX_CAPACITY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE'
       'WHERE'
@@ -1578,14 +1604,15 @@
         'SEMINAR_COST = :SEMINAR_COST, ANAD_APPROVED = :ANAD_APPROVED, SE' +
         'MINAR_CATEGORY = :SEMINAR_CATEGORY, SEMINAR_CORP_TYPE = :SEMINAR' +
         '_CORP_TYPE, DURATION_HOURS = :DURATION_HOURS, DURATION_DAYS = :D' +
-        'URATION_DAYS, COMMENTS = :COMMENTS'
+        'URATION_DAYS, COMMENTS = :COMMENTS, FEE_ESTIMATE = :FEE_ESTIMATE' +
+        ', MAX_CAPACITY = :MAX_CAPACITY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED,' +
         ' SEMINAR_CATEGORY, SEMINAR_CORP_TYPE, DURATION_HOURS, DURATION_D' +
-        'AYS, COMMENTS FROM SEMINAR_TYPE'
+        'AYS, COMMENTS, FEE_ESTIMATE, MAX_CAPACITY FROM SEMINAR_TYPE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1611,7 +1638,7 @@
     Left = 49
     Top = 5
     object TableSQLSEMINAR_NAME: TWideStringField
-      DisplayLabel = #908#957#959#956#945
+      DisplayLabel = #928#949#961#953#947#961#945#966#942
       DisplayWidth = 28
       FieldName = 'SEMINAR_NAME'
       Required = True
@@ -1640,7 +1667,6 @@
     object TableSQLSEMINAR_COST: TFloatField
       DisplayLabel = #922#972#963#964#959#962
       FieldName = 'SEMINAR_COST'
-      Required = True
       Visible = False
       DisplayFormat = '0.00'
     end
@@ -1666,6 +1692,15 @@
       FieldName = 'COMMENTS'
       Visible = False
       Size = 160
+    end
+    object TableSQLFEE_ESTIMATE: TFloatField
+      FieldName = 'FEE_ESTIMATE'
+      Visible = False
+    end
+    object TableSQLMAX_CAPACITY: TIntegerField
+      FieldName = 'MAX_CAPACITY'
+      Required = True
+      Visible = False
     end
   end
   object WriteTrans: TIBCTransaction
@@ -1735,7 +1770,7 @@
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 3
+        Value = 8
       end>
     object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
@@ -1835,7 +1870,7 @@
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 3
+        Value = 8
       end>
     object SeminarReminderSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'

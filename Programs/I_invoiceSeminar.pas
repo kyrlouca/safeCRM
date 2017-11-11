@@ -98,6 +98,8 @@ type
     InvoiceSQLAMOUNT_NET: TFloatField;
     InvoiceSQLAMOUNT_VAT: TFloatField;
     InvoiceSQLAMOUNT_WITH_VAT: TFloatField;
+    InvoiceSQLFIRST_NAME: TWideStringField;
+    InvoiceSQLLAST_NAME: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -270,7 +272,7 @@ begin
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
     isMono:=qr.FieldByName('SEMINAR_CORP_TYPE').Value='M';
-    Price:=qr.FieldByName('amount_anad').AsFloat;
+    Price:=qr.FieldByName('Cost_estim').AsFloat;
   finally
     qr.Free;
   end;

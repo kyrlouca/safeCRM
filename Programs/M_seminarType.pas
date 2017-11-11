@@ -128,6 +128,10 @@ type
     AfterFLD: TwwDBComboBox;
     NamePersonFLD: TwwDBComboBox;
     StartEndLD: TwwDBComboBox;
+    TableSQLFEE_ESTIMATE: TFloatField;
+    Label17: TLabel;
+    wwDBEdit5: TwwDBEdit;
+    TableSQLMAX_CAPACITY: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -141,6 +145,9 @@ type
     procedure TableSQLNewRecord(DataSet: TDataSet);
     procedure SubjectTSShow(Sender: TObject);
     procedure ReminderTSShow(Sender: TObject);
+    procedure wwNavButton5Click(Sender: TObject);
+    procedure SeminarPCChanging(Sender: TObject; NewIndex: Integer;
+      var AllowChange: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -194,6 +201,11 @@ begin
 
 end;
 
+procedure TM_SeminarTypeFRM.wwNavButton5Click(Sender: TObject);
+begin
+FirstFLD.SetFocus;
+end;
+
 procedure TM_SeminarTypeFRM.ReminderTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
@@ -208,6 +220,15 @@ procedure TM_SeminarTypeFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
 end;
+
+procedure TM_SeminarTypeFRM.SeminarPCChanging(Sender: TObject;
+  NewIndex: Integer; var AllowChange: Boolean);
+begin
+  If TableSQL.State in [dsEdit,dsInsert] then begin
+    TableSQL.Post;
+  end;
+ AllowChange:= TableSQL.FieldByName('serial_number').AsInteger > 0;
+ End;
 
 procedure TM_SeminarTypeFRM.SubjectTSShow(Sender: TObject);
 var

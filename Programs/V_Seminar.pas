@@ -68,7 +68,6 @@ type
     CanelBTN: TBitBtn;
     RzPanel2: TRzPanel;
     RzGroupBox1: TRzGroupBox;
-    MembersGRD: TwwDBGrid;
     RzPanel3: TRzPanel;
     ToRightBTN: TBitBtn;
     ToLeftBTN: TBitBtn;
@@ -107,22 +106,6 @@ type
     SeminarDaySRC: TDataSource;
     SeminarDayFLD: TwwDBDateTimePicker;
     Label13: TLabel;
-    SeminarSQLSERIAL_NUMBER: TIntegerField;
-    SeminarSQLFK_SEMINAR: TIntegerField;
-    SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
-    SeminarSQLFK_INSTRUCTOR: TIntegerField;
-    SeminarSQLFK_VENUE: TIntegerField;
-    SeminarSQLDATE_STARTED: TDateField;
-    SeminarSQLDATE_COMPLETED: TDateField;
-    SeminarSQLDURATION_DAYS: TIntegerField;
-    SeminarSQLDURATION_HOURS: TIntegerField;
-    SeminarSQLCOST_ACTUAL: TFloatField;
-    SeminarSQLAMOUNT_ANAD: TFloatField;
-    SeminarSQLCOMMENTS: TWideStringField;
-    SeminarSQLANAD_APPROVED: TWideStringField;
-    SeminarSQLCOST_ESTIMATE: TFloatField;
-    SeminarSQLSTATUS: TWideStringField;
     RzDBRichEdit1: TRzDBRichEdit;
     BitBtn2: TBitBtn;
     seminarSubjectSQLSERIAL_NUMBER: TIntegerField;
@@ -214,6 +197,29 @@ type
     DateTimePicker1: TDateTimePicker;
     Label4: TRzPanel;
     RzPanel9: TRzPanel;
+    SeminarSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSQLFK_SEMINAR: TIntegerField;
+    SeminarSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
+    SeminarSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSQLFK_VENUE: TIntegerField;
+    SeminarSQLDATE_STARTED: TDateField;
+    SeminarSQLDATE_COMPLETED: TDateField;
+    SeminarSQLDURATION_DAYS: TIntegerField;
+    SeminarSQLDURATION_HOURS: TIntegerField;
+    SeminarSQLFEE_ACTUAL: TFloatField;
+    SeminarSQLAMOUNT_ANAD: TFloatField;
+    SeminarSQLCOMMENTS: TWideStringField;
+    SeminarSQLANAD_APPROVED: TWideStringField;
+    SeminarSQLFEE_ESTIMATE: TFloatField;
+    SeminarSQLSTATUS: TWideStringField;
+    SeminarSQLIS_INVOICED: TWideStringField;
+    SeminarSQLIS_CERTIFICATED: TWideStringField;
+    Label22: TLabel;
+    wwDBEdit5: TwwDBEdit;
+    SeminarSQLMAX_CAPACITY: TIntegerField;
+    AttendingSQLIS_GUEST: TWideStringField;
+    wwDBGrid4: TwwDBGrid;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -233,7 +239,6 @@ type
       Shift: TShiftState);
     procedure MembersGRDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure MembersGRDDblClick(Sender: TObject);
     procedure SearchPersonFLDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ToRightBTNClick(Sender: TObject);
@@ -284,6 +289,9 @@ begin
   if SeminarSQL.State in [dsEdit,dsInsert] then begin
     seminarSQL.Post;
   end;
+  if  AttendingSQL.state in [dsEdit,dsInsert] then begin
+    AttendingSQL.post;
+  end;
 end;
 
 procedure TV_SeminarFRM.BitBtn2Click(Sender: TObject);
@@ -325,6 +333,9 @@ begin
 Dataset.FieldByName('Status').Value:='I';
 Dataset.FieldByName('ANAD_APPROVED').Value:='Y';
 Dataset.FieldByName('SEMINAR_CORP_TYPE').Value:='P';
+Dataset.FieldByName('is_invoiced').Value:='N';
+Dataset.FieldByName('is_certificated').Value:='N';
+Dataset.FieldByName('Max_capacity').Value:=0;
 
 end;
 
@@ -380,7 +391,10 @@ var
    fhours, fdays:integer;
    fName,fAnad:String;
    fcost:double;
+   FFee:Double;
+   fMaxCapacity:Integer;
 begin
+
 
  qr:=TksQuery.Create(cn,'select * from seminar_type where serial_number= :serial');
  try
@@ -391,13 +405,16 @@ begin
    fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
    fAnad:=   qr.FieldByName('ANAD_APPROVED').AsString;
    fCost:=  qr.FieldByName('SEMINAR_COST').AsFloat;
-   ksExecSQLVar(cn,'update seminar set seminar_Name= :fname, Duration_hours = :fhours, Duration_days= :fdays, anad_approved= :fAnad, cost_eSTIMATE= :focst where serial_number= :fSerial',
-   [fname,fhours,fdays,fAnad,fcost,seminarSerial] );
+   fFee:=  qr.FieldByName('FEE_estimate').AsFloat;
+   fMaxCapacity:=  qr.FieldByName('Max_capacity').AsInteger;
+   ksExecSQLVar(cn,'update seminar set seminar_Name= :fname, Duration_hours = :fhours, Duration_days= :fdays, anad_approved= :fAnad, fee_actual= :fFee, max_capacity= :FMaxCapacity where serial_number= :fSerial',
+   [fname,fhours,fdays,fAnad,fFee,fMaxCapacity,seminarSerial] );
 
  finally
    qr.Free;
  end;
 
+ //NOw the subjects (may be a different functions)
  ksExecSQLVar(cn,'delete from seminar_subject where fk_seminar_serial= :semSerial',[SeminarSerial]);
  qr:=TksQuery.Create(cn,'select * from seminar_type_subject where FK_SEMINAR_TYPE_SERIAL= :serial');
  try
@@ -494,12 +511,6 @@ begin
 end;
 
 
-procedure TV_SeminarFRM.MembersGRDDblClick(Sender: TObject);
-begin
-    RemovePerson();
-
-end;
-
 procedure TV_SeminarFRM.MembersGRDKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -577,9 +588,9 @@ begin
   PersonSerial:=NonAttendSQL.FieldByName('serial_number').AsInteger;
   SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
   if Personserial<1 then exit;
-  str:=' insert into seminar_person  (fk_seminar_serial,fk_person_serial,attendance_status) '
-    +' values(:seminar,:person,:attend)';
-  ksExecSQLVar(cn,str,[seminarSerial,Personserial,'fff']);
+  str:=' insert into seminar_person  (fk_seminar_serial,fk_person_serial,attendance_status,is_guest) '
+    +' values(:seminar,:person,:attend,:gest)';
+  ksExecSQLVar(cn,str,[seminarSerial,Personserial,'fff','N']);
 
   AttendingSQL.Refresh;
   NonAttendSQL.Refresh;
@@ -599,7 +610,8 @@ end;
 
 procedure TV_SeminarFRM.RzBitBtn1Click(Sender: TObject);
 begin
-close;
+  ksPostTables([SeminarSQL,AttendingSQL]);
+  close;
 end;
 
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);

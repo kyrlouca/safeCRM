@@ -96,6 +96,8 @@ function ksCountRecVarSQL(const connection: TIBCConnection; const sql: string;  
 
   //  function ksOpenTables(Tables: Array of TDataset):Boolean;
 function ksOpenTables(Tables: array of TCustomDADataSet): Boolean;
+function ksPostTables(Tables: array of TCustomDADataSet): Boolean;
+
 function ksPrepSQL(const SqlString: string; const TableSQL: TIBCQuery): Boolean;
 function ksGenerateSerial(const connection: TIBCConnection; const GenName:  string): integer;
 
@@ -633,6 +635,23 @@ begin
   end;
   result := true;
 end;
+
+function ksPostTables(Tables: array of TCustomDADataSet): Boolean;
+var
+  I: Integer;
+  Table: TCustomDADataSet;
+
+begin
+  for i := low(Tables) to High(Tables) do begin
+    table := tables[i];
+    if (Table.State in [dsInsert,dsEdit]) then begin
+      Table.Post;
+    end;
+  end;
+  result := true;
+end;
+
+
 
 function ksGenerateSerial(const connection: TIBCConnection; const GenName:
   string): integer;
