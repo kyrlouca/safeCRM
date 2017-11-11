@@ -70,20 +70,6 @@ type
     Nav1Cancel: TwwNavButton;
     wwDBGrid1: TwwDBGrid;
     BitBtn1: TRzBitBtn;
-    InvoiceSQLSERIAL_NUMBER: TIntegerField;
-    InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField;
-    InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
-    InvoiceSQLINVOICE_STATUS: TWideStringField;
-    InvoiceSQLDATE_INVOICED: TDateField;
-    InvoiceSQLVAT_RATE: TFloatField;
-    InvoiceSQLDISCOUNT_BY_SAFE: TFloatField;
-    InvoiceSQLDISCOUNT_CUSTOMER: TFloatField;
-    InvoiceSQLAMOUNT_GROSS: TFloatField;
-    InvoiceSQLAMOUNT_NET: TFloatField;
-    InvoiceSQLAMOUNT_VAT: TFloatField;
-    InvoiceSQLAMOUNT_WITH_VAT: TFloatField;
-    InvoiceSQLFIRST_NAME: TWideStringField;
-    InvoiceSQLLAST_NAME: TWideStringField;
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLFK_SEMINAR: TIntegerField;
     TableSQLSEMINAR_NAME: TWideStringField;
@@ -103,6 +89,24 @@ type
     TableSQLIS_INVOICED: TWideStringField;
     TableSQLIS_CERTIFICATED: TWideStringField;
     TableSQLMAX_CAPACITY: TIntegerField;
+    personSQL: TIBCQuery;
+    personSQLFIRST_NAME: TWideStringField;
+    personSQLLAST_NAME: TWideStringField;
+    personSQLSERIAL_NUMBER: TIntegerField;
+    InvoiceSQLSERIAL_NUMBER: TIntegerField;
+    InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField;
+    InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
+    InvoiceSQLINVOICE_STATUS: TWideStringField;
+    InvoiceSQLDATE_INVOICED: TDateField;
+    InvoiceSQLVAT_RATE: TFloatField;
+    InvoiceSQLDISCOUNT_BY_SAFE: TFloatField;
+    InvoiceSQLDISCOUNT_CUSTOMER: TFloatField;
+    InvoiceSQLAMOUNT_GROSS: TFloatField;
+    InvoiceSQLAMOUNT_NET: TFloatField;
+    InvoiceSQLAMOUNT_VAT: TFloatField;
+    InvoiceSQLAMOUNT_WITH_VAT: TFloatField;
+    InvoiceSQLFirstName: TStringField;
+    InvoiceSQLLastName: TStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -119,6 +123,8 @@ type
     procedure wwDBLookupCombo1Change(Sender: TObject);
     procedure SavePresBTNClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure CanelBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -220,6 +226,15 @@ if TableSQL.State in [dsInsert, dsEdit] then
    TableSQL.Post;
 end;
 
+procedure TI_InvoiceSeminarFRM.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+
+  Canclose:= not InvoiceSQL.UpdatesPending;
+  if not CanClose then
+    showMessage('Save Or Cancel before Exit');
+end;
+
 procedure TI_InvoiceSeminarFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
@@ -244,7 +259,8 @@ begin
    showMessage('no updates');
    exit;
  end;
-  InvoiceSQL.Connection.StartTransaction;
+  if   not InvoiceSQL.Connection.DefaultTransaction.Active then
+    InvoiceSQL.Connection.StartTransaction;
   try
     InvoiceSQL.CommitUpdates;
 //  DataSet2.CommitUpdates;
@@ -316,13 +332,30 @@ var
 begin
 
   SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+ personSQL.Close;
+ personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;
+ personSQL.Open;
+
   GenerateInvoices(seminarSerial);
+//  InvoiceSQL.Refresh;
 end;
 
 procedure TI_InvoiceSeminarFRM.Button1Click(Sender: TObject);
 var
   seminarSerial:Integer;
 begin
+end;
+
+procedure TI_InvoiceSeminarFRM.CanelBTNClick(Sender: TObject);
+begin
+ if  InvoiceSQL.UpdatesPending then begin
+  InvoiceSQL.CancelUpdates;
+  if InvoiceSQL.Transaction.Active then
+    INvoiceSQL.Connection.Rollback;
+//
+ end;
+
 end;
 
 End.
