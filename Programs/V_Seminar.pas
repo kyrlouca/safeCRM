@@ -19,12 +19,11 @@ type
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     DbImages: TImageList;
-    Panel3: TPanel;
     PageControlPC: TRzPageControl;
     SeminarTS: TRzTabSheet;
     StudentsTS: TRzTabSheet;
     CostTS: TRzTabSheet;
-    DaysTS: TRzTabSheet;
+    SubjectTS: TRzTabSheet;
     FirstGRP: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
@@ -52,7 +51,7 @@ type
     InstructorBTN: TSpeedButton;
     VenueBTN: TSpeedButton;
     Label12: TLabel;
-    TabSheet1: TRzTabSheet;
+    ReminderTS: TRzTabSheet;
     AttendingSQL: TIBCQuery;
     AttendingSRC: TDataSource;
     NonAttendSQL: TIBCQuery;
@@ -245,7 +244,7 @@ type
     procedure ToLeftBTNClick(Sender: TObject);
     procedure SeminarSQLNewRecord(DataSet: TDataSet);
     procedure SeminarTSShow(Sender: TObject);
-    procedure DaysTSShow(Sender: TObject);
+    procedure SubjectTSShow(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure CostTSShow(Sender: TObject);
     procedure CostTypeFLDDropDown(Sender: TObject);
@@ -253,7 +252,7 @@ type
       FillTable: TDataSet; modified: Boolean);
     procedure SeminarCostItemSQLCalcFields(DataSet: TDataSet);
     procedure CostGRDUpdateFooter(Sender: TObject);
-    procedure TabSheet1Show(Sender: TObject);
+    procedure ReminderTSShow(Sender: TObject);
     procedure wwNavButton19Click(Sender: TObject);
   private
     { Private declarations }
@@ -286,12 +285,15 @@ uses   U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs;
 
 procedure TV_SeminarFRM.BitBtn1Click(Sender: TObject);
 begin
-  if SeminarSQL.State in [dsEdit,dsInsert] then begin
-    seminarSQL.Post;
+  ksPostTables([SeminarSQL]);
+  case PageControlPC.ActivePageIndex of
+    0: ksPostTables([SeminarSQL]);
+    1: ksPostTables([seminarSubjectSQL]);
+    2: ksPostTables([AttendingSQL]);
+    3: ksPostTables([SeminarCostItemSQL]);
+    4: ksPostTables([SeminarReminderSQL]);
   end;
-  if  AttendingSQL.state in [dsEdit,dsInsert] then begin
-    AttendingSQL.post;
-  end;
+
 end;
 
 procedure TV_SeminarFRM.BitBtn2Click(Sender: TObject);
@@ -306,7 +308,7 @@ end;
 
 
 
-procedure TV_SeminarFRM.TabSheet1Show(Sender: TObject);
+procedure TV_SeminarFRM.ReminderTSShow(Sender: TObject);
 begin
 ksOpenTables([SeminarReminderSQL]);
 
@@ -330,7 +332,7 @@ end;
 
 procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
 begin
-Dataset.FieldByName('Status').Value:='I';
+Dataset.FieldByName('Status').Value:='P';
 Dataset.FieldByName('ANAD_APPROVED').Value:='Y';
 Dataset.FieldByName('SEMINAR_CORP_TYPE').Value:='P';
 Dataset.FieldByName('is_invoiced').Value:='N';
@@ -704,7 +706,7 @@ with (Sender as TwwDBLookupCombo) do
 //    'COST_ITEM_TYPE_NAME_IDX';
 end;
 
-procedure TV_SeminarFRM.DaysTSShow(Sender: TObject);
+procedure TV_SeminarFRM.SubjectTSShow(Sender: TObject);
 begin
 ksOpenTables([seminarSubjectSQL,SeminarDaySQL]);
 end;
@@ -737,7 +739,7 @@ Begin
     qr.ParamByName('serial').AsInteger:=seminarSerial;
     qr.Open;
     status:=qr.FieldByName('status').AsString;
-    if status='I' then begin
+    if status='P' then begin
       ksExecSQLVar(cn,'update seminar set status= ''A'' where serial_number= :serial',[SeminarSerial]);
     end;
   finally
