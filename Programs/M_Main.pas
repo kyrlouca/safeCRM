@@ -79,7 +79,8 @@ implementation
 
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
-  p_attendance, H_Help, R_Reminders, I_invoiceSeminar;
+  p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
+  L_Companies;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -94,7 +95,8 @@ end;
 
 procedure TM_mainFRM.Countries2Click(Sender: TObject);
 begin
-gpShowModal(TM_CompanyFRM);
+//gpShowModal(TM_CompanyFRM);
+gpShowModal(TL_companiesFRM);
 end;
 
 procedure TM_mainFRM.ExchangeRates1Click(Sender: TObject);

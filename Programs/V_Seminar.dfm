@@ -3,7 +3,7 @@ object V_SeminarFRM: TV_SeminarFRM
   Top = 153
   Caption = '--'
   ClientHeight = 758
-  ClientWidth = 992
+  ClientWidth = 780
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object V_SeminarFRM: TV_SeminarFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 992
+    Width = 780
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -35,7 +35,7 @@ object V_SeminarFRM: TV_SeminarFRM
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 984
+      Width = 772
       Height = 45
       Align = alClient
       AutoSize = True
@@ -60,7 +60,7 @@ object V_SeminarFRM: TV_SeminarFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 992
+    Width = 780
     Height = 39
     Align = alTop
     TabOrder = 1
@@ -68,7 +68,7 @@ object V_SeminarFRM: TV_SeminarFRM
   object Panel3x: TRzPanel
     Left = 0
     Top = 92
-    Width = 992
+    Width = 780
     Height = 666
     Align = alClient
     BorderOuter = fsFlatRounded
@@ -76,10 +76,10 @@ object V_SeminarFRM: TV_SeminarFRM
     object PageControlPC: TRzPageControl
       Left = 2
       Top = 2
-      Width = 988
+      Width = 776
       Height = 619
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = StudentsTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -88,7 +88,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 2
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -96,10 +96,10 @@ object V_SeminarFRM: TV_SeminarFRM
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
         object FirstGRP: TGroupBox
-          Left = 24
+          Left = 28
           Top = 23
           Width = 370
-          Height = 274
+          Height = 298
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -109,7 +109,7 @@ object V_SeminarFRM: TV_SeminarFRM
           ParentFont = False
           TabOrder = 0
           object Label2: TLabel
-            Left = 48
+            Left = 51
             Top = 73
             Width = 58
             Height = 14
@@ -122,7 +122,7 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label3: TLabel
-            Left = 81
+            Left = 84
             Top = 24
             Width = 21
             Height = 14
@@ -135,8 +135,8 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label1: TLabel
-            Left = 20
-            Top = 251
+            Left = 24
+            Top = 270
             Width = 85
             Height = 14
             Caption = #932#941#955#959#962'  '#935#961#941#969#963#951#962
@@ -148,7 +148,7 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object SerialFLD: TRzDBLabel
-            Left = 112
+            Left = 115
             Top = 20
             Width = 75
             Height = 20
@@ -158,21 +158,8 @@ object V_SeminarFRM: TV_SeminarFRM
             DataField = 'SERIAL_NUMBER'
             DataSource = SeminarSRC
           end
-          object Label6: TLabel
-            Left = 38
-            Top = 184
-            Width = 67
-            Height = 14
-            Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
           object Label12: TLabel
-            Left = 11
+            Left = 14
             Top = 48
             Width = 95
             Height = 14
@@ -185,7 +172,7 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label13: TLabel
-            Left = 71
+            Left = 74
             Top = 95
             Width = 35
             Height = 14
@@ -197,9 +184,9 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
           end
-          object Label23: TLabel
-            Left = 39
-            Top = 227
+          object Companylbl: TLabel
+            Left = 65
+            Top = 216
             Width = 43
             Height = 14
             Caption = #917#964#945#953#961#949#943#945
@@ -210,30 +197,8 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
           end
-          object SpeedButton1: TSpeedButton
-            Left = 261
-            Top = 223
-            Width = 21
-            Height = 19
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Arial'
-            Font.Style = []
-            Glyph.Data = {
-              D6000000424DD60000000000000076000000280000000C0000000C0000000100
-              0400000000006000000000000000000000001000000000000000000000000000
-              80000080000000808000800000008000800080800000C0C0C000808080000000
-              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
-              0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
-              0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
-              0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
-            Layout = blGlyphBottom
-            ParentFont = False
-            OnClick = InstructorBTNClick
-          end
           object FirstFLD: TwwDBEdit
-            Left = 112
+            Left = 115
             Top = 70
             Width = 252
             Height = 22
@@ -245,9 +210,9 @@ object V_SeminarFRM: TV_SeminarFRM
             WordWrap = False
           end
           object wwCheckBox1: TwwCheckBox
-            Left = 76
-            Top = 202
-            Width = 51
+            Left = 3
+            Top = 247
+            Width = 129
             Height = 17
             DisableThemes = False
             AlwaysTransparent = False
@@ -257,14 +222,14 @@ object V_SeminarFRM: TV_SeminarFRM
             DisplayValueUnchecked = 'N'
             NullAndBlankState = cbUnchecked
             Alignment = taLeftJustify
-            Caption = #913#925#913#916
+            Caption = #917#960#953#967#959#961#942#947#951#963#951' '#913#925#913#916
             DataField = 'ANAD_APPROVED'
             DataSource = SeminarSRC
             TabOrder = 4
           end
           object wwDBComboBox1: TwwDBComboBox
-            Left = 112
-            Top = 177
+            Left = 32
+            Top = 159
             Width = 76
             Height = 22
             ShowButton = True
@@ -282,9 +247,10 @@ object V_SeminarFRM: TV_SeminarFRM
             Sorted = False
             TabOrder = 3
             UnboundDataType = wwDefault
+            Visible = False
           end
           object SeminarTypeFLD: TwwDBComboBox
-            Left = 112
+            Left = 115
             Top = 46
             Width = 144
             Height = 21
@@ -310,8 +276,8 @@ object V_SeminarFRM: TV_SeminarFRM
             OnCloseUp = SeminarTypeFLDCloseUp
           end
           object wwDBEdit4: TwwDBEdit
-            Left = 112
-            Top = 249
+            Left = 115
+            Top = 270
             Width = 76
             Height = 22
             DataField = 'FEE_ACTUAL'
@@ -322,7 +288,7 @@ object V_SeminarFRM: TV_SeminarFRM
             WordWrap = False
           end
           object RzDBRichEdit1: TRzDBRichEdit
-            Left = 112
+            Left = 115
             Top = 95
             Width = 219
             Height = 49
@@ -336,12 +302,51 @@ object V_SeminarFRM: TV_SeminarFRM
             TabOrder = 2
             Zoom = 100
           end
+          object MonoRGP: TwwRadioGroup
+            Left = 114
+            Top = 149
+            Width = 185
+            Height = 62
+            DisableThemes = False
+            Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
+            DataField = 'SEMINAR_CORP_TYPE'
+            DataSource = SeminarSRC
+            Items.Strings = (
+              #924#972#957#959'-'#917#960#953#967#949#953#961#953#963#953#945#954#972
+              #928#972#955#965'-'#917#960#953#967#949#953#961#953#963#953#945#954#972)
+            TabOrder = 6
+            Values.Strings = (
+              'M'
+              'P')
+            OnChange = MonoRGPChange
+          end
+          object CompanyFLD: TwwDBLookupCombo
+            Left = 114
+            Top = 214
+            Width = 143
+            Height = 22
+            DropDownAlignment = taLeftJustify
+            Selected.Strings = (
+              'LAST_NAME'#9'15'#9#908#957#959#956#945' '#917#964#945#953#961#949#943#945#962#9'F'
+              'NATIONAL_ID'#9'20'#9#913#961'. '#917#947#947#961#945#966#942#962#9'F')
+            DataField = 'FK_COMPANY_PERSON_SERIAL'
+            DataSource = SeminarSRC
+            LookupTable = CompanySQL
+            LookupField = 'SERIAL_NUMBER'
+            Options = [loRowLines, loTitles]
+            TabOrder = 7
+            AutoDropDown = True
+            ShowButton = True
+            PreciseEditRegion = False
+            AllowClearKey = True
+            ShowMatchText = True
+          end
         end
         object SecondGRP: TRzGroupBox
-          Left = 400
+          Left = 405
           Top = 23
           Width = 321
-          Height = 274
+          Height = 298
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -621,7 +626,7 @@ object V_SeminarFRM: TV_SeminarFRM
         end
         object BitBtn2: TBitBtn
           Left = 24
-          Top = 325
+          Top = 413
           Width = 160
           Height = 34
           Caption = #904#947#954#961#953#963#951' '#945#960#972' '#913#925#913#916
@@ -704,7 +709,7 @@ object V_SeminarFRM: TV_SeminarFRM
         object RzPanel5: TRzPanel
           Left = 0
           Top = 0
-          Width = 984
+          Width = 772
           Height = 25
           Align = alTop
           BorderOuter = fsNone
@@ -713,7 +718,7 @@ object V_SeminarFRM: TV_SeminarFRM
         object GroupBox1: TGroupBox
           Left = 0
           Top = 25
-          Width = 406
+          Width = 194
           Height = 568
           Align = alClient
           Caption = #920#941#956#945#964#945
@@ -727,7 +732,7 @@ object V_SeminarFRM: TV_SeminarFRM
           object RzPanel6: TRzPanel
             Left = 2
             Top = 16
-            Width = 402
+            Width = 190
             Height = 33
             Align = alTop
             BorderOuter = fsNone
@@ -863,7 +868,7 @@ object V_SeminarFRM: TV_SeminarFRM
           object wwDBGrid1: TwwDBGrid
             Left = 2
             Top = 49
-            Width = 402
+            Width = 190
             Height = 517
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
@@ -887,7 +892,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
         end
         object RzPanel4: TRzPanel
-          Left = 406
+          Left = 194
           Top = 25
           Width = 578
           Height = 568
@@ -1107,7 +1112,7 @@ object V_SeminarFRM: TV_SeminarFRM
         object RzPanel2: TRzPanel
           Left = 0
           Top = 0
-          Width = 984
+          Width = 772
           Height = 18
           Align = alTop
           BorderOuter = fsNone
@@ -1406,7 +1411,7 @@ object V_SeminarFRM: TV_SeminarFRM
         object RzPanel10: TRzPanel
           Left = 0
           Top = 0
-          Width = 984
+          Width = 772
           Height = 25
           Align = alTop
           BorderOuter = fsNone
@@ -1749,7 +1754,7 @@ object V_SeminarFRM: TV_SeminarFRM
         object RzPanel13: TRzPanel
           Left = 0
           Top = 0
-          Width = 984
+          Width = 772
           Height = 39
           Align = alTop
           BorderOuter = fsFlatRounded
@@ -2232,13 +2237,13 @@ object V_SeminarFRM: TV_SeminarFRM
     object Panel4: TRzPanel
       Left = 2
       Top = 621
-      Width = 988
+      Width = 776
       Height = 43
       Align = alBottom
       BorderOuter = fsFlatRounded
       TabOrder = 1
       object RzPanel1: TRzPanel
-        Left = 886
+        Left = 674
         Top = 2
         Width = 100
         Height = 39
@@ -2644,7 +2649,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800400210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800440210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3983,8 +3988,76 @@ object V_SeminarFRM: TV_SeminarFRM
     end
   end
   object CompanySQL: TIBCQuery
+    SQLInsert.Strings = (
+      'INSERT INTO PERSON'
+      '  (SERIAL_NUMBER, NATIONAL_ID, FIRST_NAME, LAST_NAME)'
+      'VALUES'
+      '  (:SERIAL_NUMBER, :NATIONAL_ID, :FIRST_NAME, :LAST_NAME)')
+    SQLDelete.Strings = (
+      'DELETE FROM PERSON'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE PERSON'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, NATIONAL_ID = :NATIONAL_ID, FI' +
+        'RST_NAME = :FIRST_NAME, LAST_NAME = :LAST_NAME'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, NATIONAL_ID, FIRST_NAME, LAST_NAME FROM PE' +
+        'RSON'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM PERSON'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM PERSON'
+      ''
+      ') q')
     Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    SQL.Strings = (
+      'select'
+      'per.serial_number, per.first_name,per.last_name ,per.national_id'
+      'from'
+      'person per'
+      'where'
+      'per.is_company='#39'Y'#39)
+    ReadOnly = True
     Left = 483
     Top = 509
+    object CompanySQLLAST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945' '#917#964#945#953#961#949#943#945#962
+      DisplayWidth = 15
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object CompanySQLNATIONAL_ID: TWideStringField
+      DisplayLabel = #913#961'. '#917#947#947#961#945#966#942#962
+      DisplayWidth = 20
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
+    object CompanySQLFIRST_NAME: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'FIRST_NAME'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object CompanySQLSERIAL_NUMBER: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+      Visible = False
+    end
   end
 end

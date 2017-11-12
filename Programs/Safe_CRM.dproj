@@ -122,20 +122,12 @@
             <Form>M_CostTypeFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="L_Seminar.pas">
-            <Form>L_SeminarFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="V_Seminar.pas">
             <Form>V_SeminarFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="M_Instructor.pas">
             <Form>M_InstructorFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="M_Student.pas">
-            <Form>M_StudentFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="H_Help.pas">
@@ -153,6 +145,18 @@
         </DCCReference>
         <DCCReference Include="p_attendance.pas">
             <Form>P_attendanceFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_CompanyNew.pas">
+            <Form>M_companyNewFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_Company.pas">
+            <Form>M_CompanyFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="L_Companies.pas">
+            <Form>L_companiesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

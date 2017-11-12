@@ -1,4 +1,4 @@
-unit M_Student;
+unit L_Companies;
 
 interface
 
@@ -8,66 +8,43 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  vcl.wwcheckbox;
+  Vcl.WinXCtrls;
 type
-  TM_StudentFRM = class(TForm)
+  TL_companiesFRM = class(TForm)
     Panel1: TPanel;
     Panel4: TPanel;
     Panel2: TPanel;
-    Nav1: TwwDBNavigator;
-    Nav1Prior: TwwNavButton;
-    Nav1Next: TwwNavButton;
-    Nav1Insert: TwwNavButton;
-    Nav1Delete: TwwNavButton;
-    Nav1Post: TwwNavButton;
-    Nav1Cancel: TwwNavButton;
     Panel3: TPanel;
     TableSRC: TDataSource;
     Panel5: TPanel;
-    TableSQL: TIBCQuery;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    GroupBox1: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label1: TLabel;
-    Label5: TLabel;
-    SerialFLD: TRzDBLabel;
-    FirstFLD: TwwDBEdit;
-    wwDBEdit1: TwwDBEdit;
-    wwDBEdit2: TwwDBEdit;
-    DatePassedFLD: TwwDBDateTimePicker;
-    wwIncrementalSearch1: TwwIncrementalSearch;
+    BitBtn1: TBitBtn;
+    CanelBTN: TBitBtn;
     RzPanel2: TRzPanel;
     RzPanel3: TRzPanel;
     Grid1: TwwDBGrid;
-    GroupBox2: TGroupBox;
-    Label10: TLabel;
-    Label11: TLabel;
-    Label12: TLabel;
-    Label13: TLabel;
-    Label14: TLabel;
-    wwDBEdit8: TwwDBEdit;
-    wwDBEdit9: TwwDBEdit;
-    wwDBEdit10: TwwDBEdit;
-    wwDBEdit11: TwwDBEdit;
-    wwDBEdit12: TwwDBEdit;
-    Label17: TLabel;
-    Label15: TLabel;
-    wwDBEdit13: TwwDBEdit;
+    RzPanel4: TRzPanel;
+    InsertHawbBTN: TRzBitBtn;
+    DeletehawbBTN: TRzBitBtn;
+    RzGroupBox1: TRzGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    FilterBox: TwwDBComboBox;
+    FindSeminarFLD: TSearchBox;
+    RzBitBtn2: TRzBitBtn;
+    Nav1: TwwDBNavigator;
     Nav1Button: TwwNavButton;
+    Nav1Prior: TwwNavButton;
+    Nav1Next: TwwNavButton;
     Nav1Button1: TwwNavButton;
-    Label6: TLabel;
-    Label7: TLabel;
-    wwDBEdit3: TwwDBEdit;
-    wwDBEdit4: TwwDBEdit;
-    wwDBEdit5: TwwDBEdit;
-    wwDBEdit6: TwwDBEdit;
-    Label8: TLabel;
-    Label9: TLabel;
+    Nav1Insert: TwwNavButton;
+    Nav1Delete: TwwNavButton;
+    wwIncrementalSearch1: TwwIncrementalSearch;
+    TableSQL: TIBCQuery;
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLNATIONAL_ID: TWideStringField;
     TableSQLFK_COMPANY_SERIAL: TIntegerField;
@@ -94,40 +71,32 @@ type
     TableSQLWEBSITE: TWideStringField;
     TableSQLTWITTER: TWideStringField;
     TableSQLSTATUS_ACTIVE: TWideStringField;
-    Label16: TLabel;
     TableSQLSEX: TWideStringField;
-    wwDBComboBox1: TwwDBComboBox;
-    CompanyFLD: TwwCheckBox;
     TableSQLIS_COMPANY: TWideStringField;
     TableSQLCOMPANY_OWNER: TWideStringField;
     TableSQLCOMPANY_CONTACT: TWideStringField;
-    CompanyGRP: TGroupBox;
-    Label18: TLabel;
-    Label20: TLabel;
-    Label21: TLabel;
-    Label22: TLabel;
-    wwDBEdit7: TwwDBEdit;
-    wwDBEdit14: TwwDBEdit;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
-    wwCheckBox1: TwwCheckBox;
     TableSQLCOMPANY_REGISTRATION_DATE: TDateField;
-    Label19: TLabel;
-    wwDBEdit15: TwwDBEdit;
+    TableSQLPHONE_CONTACT: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
+    procedure TableSQLAfterInsert(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
-    procedure Nav1InsertClick(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
-    procedure TableSQLNewRecord(DataSet: TDataSet);
-    procedure CompanyFLDClick(Sender: TObject);
+    procedure InsertHawbBTNClick(Sender: TObject);
+    procedure Grid1DblClick(Sender: TObject);
+    procedure DeletehawbBTNClick(Sender: TObject);
+    procedure Nav1InsertClick(Sender: TObject);
+    procedure RzBitBtn2Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
+    procedure EditSeminar();
+    procedure DeleteSeminar();
+  procedure  InsertSeminar();
   public
     { Public declarations }
     MyInsertState:Boolean;
@@ -136,35 +105,28 @@ type
   end;
 
 var
-  M_StudentFRM: TM_StudentFRM;
+  L_companiesFRM: TL_companiesFRM;
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, V_Seminar, M_CompanyNew;
 
 
 {$R *.DFM}
 
-procedure TM_StudentFRM.BitBtn2Click(Sender: TObject);
+procedure TL_companiesFRM.BitBtn2Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure TM_StudentFRM.TableSQLBeforeEdit(
+procedure TL_companiesFRM.TableSQLBeforeEdit(
   DataSet: TDataSet);
 begin
 //   Dataset.FieldByName('Serial_number').ReadOnly:=true;
 end;
 
 
-procedure TM_StudentFRM.TableSQLNewRecord(DataSet: TDataSet);
-begin
-Dataset.FieldByName('status_active').Value:='Y';
-//Dataset.FieldByName('is_company').Value:='N';
-
-end;
-
-procedure TM_StudentFRM.TableSRCStateChange(Sender: TObject);
+procedure TL_companiesFRM.TableSRCStateChange(Sender: TObject);
 begin
 
 
@@ -178,33 +140,76 @@ begin
 
 end;
 
-procedure TM_StudentFRM.RzBitBtn1Click(Sender: TObject);
+procedure TL_companiesFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
 end;
 
-procedure TM_StudentFRM.FormActivate(Sender: TObject);
+procedure TL_companiesFRM.RzBitBtn2Click(Sender: TObject);
+begin
+asf
+end;
+
+procedure TL_companiesFRM.TableSQLAfterInsert(DataSet: TDataSet);
+begin
+//      StationIDFLD.SetFocus;
+
+end;
+
+
+procedure TL_companiesFRM.FormActivate(Sender: TObject);
 begin
 ksOpenTables([TableSQL]);
-if IN_ACTION='INSERT' then begin
-   TableSQL.Insert;
-end;
 
 end;
 
-procedure TM_StudentFRM.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-if TableSQL.State in [dsInsert, dsEdit] then
-   TableSQL.Post;
-end;
-
-procedure TM_StudentFRM.FormCreate(Sender: TObject);
+procedure TL_companiesFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
 end;
 
-procedure TM_StudentFRM.Grid1TitleButtonClick(Sender: TObject;
+procedure TL_companiesFRM.Grid1DblClick(Sender: TObject);
+begin
+  EditSeminar;
+end;
+
+procedure TL_companiesFRM.EditSeminar();
+vAR
+  serial:Integer;
+  Frm:TM_companyNewFRM;
+begin
+  SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
+  if serial<1 then exit;
+
+  frm := TM_companyNewFRM.Create(nil);
+  frm.IN_ACTION :='EDIT';
+  frm.IN_person_sERIAL:=serial;
+  try
+    frm.ShowModal;
+    ksOpenTables([TableSQL]);
+  finally
+    frm.Free;
+  end;
+
+
+end;
+
+procedure TL_companiesFRM.DeleteSeminar();
+vAR
+  serial:Integer;
+  Frm:TV_SeminarFRM;
+begin
+  SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
+  if serial<1 then exit;
+  ksExecSQLVar(cn,'delete from seminar where serial_number= :serial',[serial]);
+  ksOpenTables([TableSQL])
+
+
+end;
+
+
+
+procedure TL_companiesFRM.Grid1TitleButtonClick(Sender: TObject;
   AFieldName: string);
   var
          sortInfoHawb:TSOrtInfo;
@@ -218,20 +223,44 @@ procedure TM_StudentFRM.Grid1TitleButtonClick(Sender: TObject;
 
 end;
 
-procedure TM_StudentFRM.Nav1InsertClick(Sender: TObject);
+procedure TL_companiesFRM.InsertHawbBTNClick(Sender: TObject);
 begin
-  FirstFLD.SetFocus;
+  InsertSeminar();
+  ksOpenTables([TableSQL]);
 end;
 
-procedure TM_StudentFRM.CanelBTNClick(Sender: TObject);
+
+procedure TL_companiesFRM.InsertSeminar();
+vAR
+Frm:TV_SeminarFRM;
+begin
+  frm := TV_SeminarFRM.Create(nil);
+  frm.IN_ACTION :='INSERT';
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+end;
+
+
+procedure TL_companiesFRM.Nav1InsertClick(Sender: TObject);
+begin
+  InsertSeminar();
+  ksOpenTables([TableSQL]);
+
+  abort;
+end;
+
+procedure TL_companiesFRM.CanelBTNClick(Sender: TObject);
 begin
 TableSQL.Cancel;
 close;
 end;
 
-procedure TM_StudentFRM.CompanyFLDClick(Sender: TObject);
+procedure TL_companiesFRM.DeletehawbBTNClick(Sender: TObject);
 begin
-  CompanyGRP.Visible:= CompanyFLD.Checked;
+DeleteSeminar();
 end;
 
 End.

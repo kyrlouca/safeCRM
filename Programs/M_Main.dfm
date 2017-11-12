@@ -7348,7 +7348,7 @@ object M_mainFRM: TM_mainFRM
         OnClick = Countries2Click
       end
       object N1: TMenuItem
-        Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
+        Caption = #902#964#959#956#945
         OnClick = N1Click
       end
     end

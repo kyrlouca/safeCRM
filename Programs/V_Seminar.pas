@@ -9,7 +9,8 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   System.ImageList,System.DateUtils, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
-  Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP;
+  Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
+  vcl.wwradiogroup;
 type
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -29,7 +30,6 @@ type
     Label3: TLabel;
     Label1: TLabel;
     SerialFLD: TRzDBLabel;
-    Label6: TLabel;
     FirstFLD: TwwDBEdit;
     wwCheckBox1: TwwCheckBox;
     wwDBComboBox1: TwwDBComboBox;
@@ -219,10 +219,15 @@ type
     SeminarSQLMAX_CAPACITY: TIntegerField;
     AttendingSQLIS_GUEST: TWideStringField;
     wwDBGrid4: TwwDBGrid;
-    Label23: TLabel;
-    SpeedButton1: TSpeedButton;
     SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     CompanySQL: TIBCQuery;
+    CompanySQLFIRST_NAME: TWideStringField;
+    CompanySQLLAST_NAME: TWideStringField;
+    CompanySQLNATIONAL_ID: TWideStringField;
+    CompanySQLSERIAL_NUMBER: TIntegerField;
+    MonoRGP: TwwRadioGroup;
+    Companylbl: TLabel;
+    CompanyFLD: TwwDBLookupCombo;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -258,6 +263,7 @@ type
     procedure CostGRDUpdateFooter(Sender: TObject);
     procedure ReminderTSShow(Sender: TObject);
     procedure wwNavButton19Click(Sender: TObject);
+    procedure MonoRGPChange(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -361,7 +367,8 @@ end;
 
 procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
 begin
-SeminarTypeFLD.SetFocus;
+  ksOpenTables([CompanySQL]);
+  SeminarTypeFLD.SetFocus;
 end;
 
 
@@ -523,6 +530,12 @@ begin
   IF KEY=VK_RETURN THEN begin
     RemovePerson();
   end;
+end;
+
+procedure TV_SeminarFRM.MonoRGPChange(Sender: TObject);
+begin
+CompanyFLD.Visible := MonoRGP.Value='P';
+Companylbl.Visible := MonoRGP.Value='P';
 end;
 
 procedure TV_SeminarFRM.VenueBTNClick(Sender: TObject);
