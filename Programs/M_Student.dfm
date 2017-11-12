@@ -3,7 +3,7 @@ object M_StudentFRM: TM_StudentFRM
   Top = 153
   Caption = '--'
   ClientHeight = 558
-  ClientWidth = 897
+  ClientWidth = 1001
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object M_StudentFRM: TM_StudentFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 897
+    Width = 1001
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -31,11 +31,12 @@ object M_StudentFRM: TM_StudentFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 897
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 889
+      Width = 993
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -48,18 +49,20 @@ object M_StudentFRM: TM_StudentFRM
   object Panel4: TPanel
     Left = 0
     Top = 515
-    Width = 897
+    Width = 1001
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitWidth = 897
     object RzPanel1: TRzPanel
-      Left = 796
+      Left = 900
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 796
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -140,10 +143,11 @@ object M_StudentFRM: TM_StudentFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 897
+    Width = 1001
     Height = 39
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 897
     object Nav1: TwwDBNavigator
       Left = 1
       Top = 7
@@ -312,12 +316,15 @@ object M_StudentFRM: TM_StudentFRM
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 897
+    Width = 1001
     Height = 423
     Align = alClient
     TabOrder = 2
+    ExplicitLeft = 224
+    ExplicitTop = 172
+    ExplicitWidth = 923
     object Panel5: TPanel
-      Left = 672
+      Left = 776
       Top = 1
       Width = 224
       Height = 421
@@ -325,12 +332,14 @@ object M_StudentFRM: TM_StudentFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 777
+      ExplicitTop = 6
     end
     object GroupBox1: TGroupBox
-      Left = 392
+      Left = 440
       Top = 6
       Width = 274
-      Height = 331
+      Height = 246
       Caption = #928#955#951#961#959#966#959#961#943#949#962
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -367,7 +376,7 @@ object M_StudentFRM: TM_StudentFRM
       end
       object Label1: TLabel
         Left = 11
-        Top = 145
+        Top = 148
         Width = 84
         Height = 14
         Caption = #919#956#949#961'. '#915#941#957#957#951#963#951#962
@@ -392,9 +401,9 @@ object M_StudentFRM: TM_StudentFRM
         ParentFont = False
       end
       object SerialFLD: TRzDBLabel
-        Left = 102
+        Left = 100
         Top = 19
-        Width = 115
+        Width = 98
         Height = 20
         Alignment = taRightJustify
         BorderOuter = fsFlat
@@ -443,7 +452,7 @@ object M_StudentFRM: TM_StudentFRM
         ParentFont = False
       end
       object FirstFLD: TwwDBEdit
-        Left = 102
+        Left = 100
         Top = 44
         Width = 161
         Height = 22
@@ -455,7 +464,7 @@ object M_StudentFRM: TM_StudentFRM
         WordWrap = False
       end
       object wwDBEdit1: TwwDBEdit
-        Left = 102
+        Left = 100
         Top = 69
         Width = 161
         Height = 22
@@ -467,7 +476,7 @@ object M_StudentFRM: TM_StudentFRM
         WordWrap = False
       end
       object wwDBEdit2: TwwDBEdit
-        Left = 101
+        Left = 100
         Top = 95
         Width = 161
         Height = 22
@@ -479,9 +488,9 @@ object M_StudentFRM: TM_StudentFRM
         WordWrap = False
       end
       object DatePassedFLD: TwwDBDateTimePicker
-        Left = 101
-        Top = 142
-        Width = 115
+        Left = 100
+        Top = 145
+        Width = 98
         Height = 23
         CalendarAttributes.Font.Charset = DEFAULT_CHARSET
         CalendarAttributes.Font.Color = clWindowText
@@ -490,7 +499,6 @@ object M_StudentFRM: TM_StudentFRM
         CalendarAttributes.Font.Style = []
         DataField = 'DATE_BIRTH'
         DataSource = TableSRC
-        Date = 43041.000000000000000000
         Epoch = 1950
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -503,9 +511,9 @@ object M_StudentFRM: TM_StudentFRM
         DisplayFormat = 'dd/mm/yyyy'
       end
       object wwDBEdit13: TwwDBEdit
-        Left = 102
+        Left = 100
         Top = 120
-        Width = 115
+        Width = 98
         Height = 22
         DataField = 'NATIONAL_ID'
         DataSource = TableSRC
@@ -515,9 +523,9 @@ object M_StudentFRM: TM_StudentFRM
         WordWrap = False
       end
       object wwDBComboBox1: TwwDBComboBox
-        Left = 101
+        Left = 100
         Top = 171
-        Width = 121
+        Width = 98
         Height = 22
         ShowButton = True
         Style = csDropDownList
@@ -534,9 +542,9 @@ object M_StudentFRM: TM_StudentFRM
         TabOrder = 5
         UnboundDataType = wwDefault
       end
-      object wwCheckBox1: TwwCheckBox
+      object CompanyFLD: TwwCheckBox
         Left = 49
-        Top = 207
+        Top = 199
         Width = 67
         Height = 17
         DisableThemes = False
@@ -547,18 +555,17 @@ object M_StudentFRM: TM_StudentFRM
         DisplayValueUnchecked = 'N'
         NullAndBlankState = cbUnchecked
         Alignment = taLeftJustify
-        Caption = #917#957#949#961#947#972#962
-        Checked = True
-        DataField = 'STATUS_ACTIVE'
+        Caption = #917#964#945#953#961#949#943#945
+        DataField = 'IS_COMPANY'
         DataSource = TableSRC
-        State = cbChecked
         TabOrder = 6
+        OnClick = CompanyFLDClick
       end
     end
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
-      Width = 385
+      Width = 433
       Height = 421
       Align = alLeft
       BorderOuter = fsNone
@@ -566,22 +573,26 @@ object M_StudentFRM: TM_StudentFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 385
+        Width = 433
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 385
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 9
-        Width = 368
+        Width = 425
         Height = 412
+        ControlType.Strings = (
+          'IS_COMPANY;CheckBox;Y;N')
         Selected.Strings = (
-          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'13'#9#908#957#959#956#945
-          'NATIONAL_ID'#9'9'#9#932#945#965#964#972#964#951#964#945
-          'PHONE_MOBILE'#9'12'#9#922#953#957#951#964#972)
+          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959#9#9
+          'FIRST_NAME'#9'13'#9#908#957#959#956#945#9#9
+          'IS_COMPANY'#9'1'#9' '#917#964#945#953#961#949#943#945#9#9
+          'NATIONAL_ID'#9'9'#9#932#945#965#964#972#964#951#964#945#9#9
+          'PHONE_MOBILE'#9'12'#9#922#953#957#951#964#972#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -612,10 +623,10 @@ object M_StudentFRM: TM_StudentFRM
       end
     end
     object GroupBox2: TGroupBox
-      Left = 678
+      Left = 720
       Top = 6
       Width = 274
-      Height = 331
+      Height = 355
       Caption = #917#960#953#954#959#953#957#969#957#943#945
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -850,6 +861,139 @@ object M_StudentFRM: TM_StudentFRM
         WordWrap = False
       end
     end
+    object CompanyGRP: TGroupBox
+      Left = 440
+      Top = 258
+      Width = 274
+      Height = 104
+      Caption = #917#964#945#953#961#949#943#945
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+      object Label18: TLabel
+        Left = 55
+        Top = 23
+        Width = 37
+        Height = 14
+        Caption = #908#957#959#956#945
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label20: TLabel
+        Left = 4
+        Top = 73
+        Width = 89
+        Height = 14
+        Caption = #919#956#949#961'. '#917#947#947#961#945#966#942#962
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label21: TLabel
+        Left = 16
+        Top = 48
+        Width = 76
+        Height = 14
+        Caption = #917#960#953#954#959#953#957#969#957#943#945' '#956#949
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label22: TLabel
+        Left = 43
+        Top = 95
+        Width = 4
+        Height = 14
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object wwDBEdit7: TwwDBEdit
+        Left = 100
+        Top = 20
+        Width = 161
+        Height = 22
+        DataField = 'COMPANY_OWNER'
+        DataSource = TableSRC
+        TabOrder = 0
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+      end
+      object wwDBEdit14: TwwDBEdit
+        Left = 100
+        Top = 45
+        Width = 161
+        Height = 22
+        DataField = 'LAST_NAME'
+        DataSource = TableSRC
+        TabOrder = 1
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+      end
+      object wwDBDateTimePicker1: TwwDBDateTimePicker
+        Left = 100
+        Top = 70
+        Width = 98
+        Height = 23
+        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
+        CalendarAttributes.Font.Color = clWindowText
+        CalendarAttributes.Font.Height = -11
+        CalendarAttributes.Font.Name = 'Arial'
+        CalendarAttributes.Font.Style = []
+        DataField = 'DATE_BIRTH'
+        DataSource = TableSRC
+        Epoch = 1950
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        ShowButton = True
+        TabOrder = 2
+        DisplayFormat = 'dd/mm/yyyy'
+      end
+    end
+    object wwCheckBox1: TwwCheckBox
+      Left = 440
+      Top = 390
+      Width = 67
+      Height = 17
+      TabStop = False
+      DisableThemes = False
+      AlwaysTransparent = False
+      ValueChecked = 'Y'
+      ValueUnchecked = 'N'
+      DisplayValueChecked = 'Y'
+      DisplayValueUnchecked = 'N'
+      NullAndBlankState = cbUnchecked
+      Alignment = taLeftJustify
+      Caption = #917#957#949#961#947#972#962
+      Checked = True
+      DataField = 'STATUS_ACTIVE'
+      DataSource = TableSRC
+      State = cbChecked
+      TabOrder = 5
+    end
   end
   object TableSRC: TDataSource
     DataSet = TableSQL
@@ -868,7 +1012,8 @@ object M_StudentFRM: TM_StudentFRM
         'ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET, ADDRESS' +
         '_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED, DATE_B' +
         'IRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER, STATUS' +
-        '_ACTIVE, SEX)'
+        '_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONTACT, COMPAN' +
+        'Y_REGISTRATION)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :NATIONAL_ID, :FK_COMPANY_SERIAL, :FIRST_NAME' +
@@ -876,7 +1021,8 @@ object M_StudentFRM: TM_StudentFRM
         'D, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRESS, :ADDRESS_' +
         'STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_DISTRICT, :D' +
         'ATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, :FACEBOOK, :' +
-        'WEBSITE, :TWITTER, :STATUS_ACTIVE, :SEX)')
+        'WEBSITE, :TWITTER, :STATUS_ACTIVE, :SEX, :IS_COMPANY, :COMPANY_O' +
+        'WNER, :COMPANY_CONTACT, :COMPANY_REGISTRATION)')
     SQLDelete.Strings = (
       'DELETE FROM PERSON'
       'WHERE'
@@ -896,7 +1042,9 @@ object M_StudentFRM: TM_StudentFRM
         'RTED = :DATE_STARTED, DATE_BIRTH = :DATE_BIRTH, DATE_USER = :DAT' +
         'E_USER, LIST_SOURCE = :LIST_SOURCE, FACEBOOK = :FACEBOOK, WEBSIT' +
         'E = :WEBSITE, TWITTER = :TWITTER, STATUS_ACTIVE = :STATUS_ACTIVE' +
-        ', SEX = :SEX'
+        ', SEX = :SEX, IS_COMPANY = :IS_COMPANY, COMPANY_OWNER = :COMPANY' +
+        '_OWNER, COMPANY_CONTACT = :COMPANY_CONTACT, COMPANY_REGISTRATION' +
+        ' = :COMPANY_REGISTRATION'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -906,7 +1054,8 @@ object M_StudentFRM: TM_StudentFRM
         'ONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET, ADD' +
         'RESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED, DA' +
         'TE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER, ST' +
-        'ATUS_ACTIVE, SEX FROM PERSON'
+        'ATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONTACT, CO' +
+        'MPANY_REGISTRATION FROM PERSON'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -946,6 +1095,14 @@ object M_StudentFRM: TM_StudentFRM
       Required = True
       FixedChar = True
       Size = 30
+    end
+    object TableSQLIS_COMPANY: TWideStringField
+      DisplayLabel = ' '#917#964#945#953#961#949#943#945
+      DisplayWidth = 1
+      FieldName = 'IS_COMPANY'
+      Required = True
+      FixedChar = True
+      Size = 1
     end
     object TableSQLNATIONAL_ID: TWideStringField
       DisplayLabel = #932#945#965#964#972#964#951#964#945
@@ -1081,6 +1238,22 @@ object M_StudentFRM: TM_StudentFRM
       Visible = False
       FixedChar = True
       Size = 1
+    end
+    object TableSQLCOMPANY_OWNER: TWideStringField
+      FieldName = 'COMPANY_OWNER'
+      Visible = False
+      Size = 160
+    end
+    object TableSQLCOMPANY_CONTACT: TWideStringField
+      FieldName = 'COMPANY_CONTACT'
+      Visible = False
+      Size = 160
+    end
+    object TableSQLCOMPANY_REGISTRATION: TWideStringField
+      FieldName = 'COMPANY_REGISTRATION'
+      Visible = False
+      FixedChar = True
+      Size = 30
     end
   end
   object WriteTrans: TIBCTransaction

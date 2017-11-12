@@ -97,6 +97,19 @@ type
     Label16: TLabel;
     TableSQLSEX: TWideStringField;
     wwDBComboBox1: TwwDBComboBox;
+    CompanyFLD: TwwCheckBox;
+    TableSQLIS_COMPANY: TWideStringField;
+    TableSQLCOMPANY_OWNER: TWideStringField;
+    TableSQLCOMPANY_CONTACT: TWideStringField;
+    TableSQLCOMPANY_REGISTRATION: TWideStringField;
+    CompanyGRP: TGroupBox;
+    Label18: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    wwDBEdit7: TwwDBEdit;
+    wwDBEdit14: TwwDBEdit;
+    wwDBDateTimePicker1: TwwDBDateTimePicker;
     wwCheckBox1: TwwCheckBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
@@ -109,6 +122,7 @@ type
     procedure Nav1InsertClick(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
     procedure TableSQLNewRecord(DataSet: TDataSet);
+    procedure CompanyFLDClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -144,6 +158,8 @@ end;
 procedure TM_StudentFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
 Dataset.FieldByName('status_active').Value:='Y';
+//Dataset.FieldByName('is_company').Value:='N';
+
 end;
 
 procedure TM_StudentFRM.TableSRCStateChange(Sender: TObject);
@@ -209,6 +225,11 @@ procedure TM_StudentFRM.CanelBTNClick(Sender: TObject);
 begin
 TableSQL.Cancel;
 close;
+end;
+
+procedure TM_StudentFRM.CompanyFLDClick(Sender: TObject);
+begin
+  CompanyGRP.Visible:= CompanyFLD.Checked;
 end;
 
 End.

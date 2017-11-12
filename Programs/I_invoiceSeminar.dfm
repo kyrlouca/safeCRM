@@ -1231,6 +1231,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Options.LongStrings = False
     Options.LocalMasterDetail = True
     Active = True
+    AfterScroll = InvoiceSQLAfterScroll
     Left = 65
     Top = 397
     ParamData = <

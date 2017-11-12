@@ -219,6 +219,10 @@ type
     SeminarSQLMAX_CAPACITY: TIntegerField;
     AttendingSQLIS_GUEST: TWideStringField;
     wwDBGrid4: TwwDBGrid;
+    Label23: TLabel;
+    SpeedButton1: TSpeedButton;
+    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    CompanySQL: TIBCQuery;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

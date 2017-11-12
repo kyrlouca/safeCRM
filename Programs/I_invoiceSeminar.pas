@@ -125,6 +125,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure CanelBTNClick(Sender: TObject);
+    procedure InvoiceSQLAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -172,6 +173,7 @@ begin
   InvoiceSQL.Close;
     InvoiceSQL.ParamByName('SeminarSerial').Value:=TableSQL.FieldByName('serial_number').AsInteger;
   InvoiceSQL.Open;
+
 
 end;
 
@@ -326,6 +328,15 @@ begin
 end;
 
 
+procedure TI_InvoiceSeminarFRM.InvoiceSQLAfterScroll(DataSet: TDataSet);
+begin
+ if  not InvoiceSQL.Connection.DefaultTransaction.Active then
+  InvoiceSQL.Connection.StartTransaction;
+//        InvoiceSQL.Connection.Rollback;
+
+
+end;
+
 procedure TI_InvoiceSeminarFRM.BitBtn1Click(Sender: TObject);
 var
   SeminarSerial:Integer;
@@ -349,6 +360,7 @@ end;
 
 procedure TI_InvoiceSeminarFRM.CanelBTNClick(Sender: TObject);
 begin
+  InvoiceSQL.Cancel;
  if  InvoiceSQL.UpdatesPending then begin
   InvoiceSQL.CancelUpdates;
   if InvoiceSQL.Transaction.Active then

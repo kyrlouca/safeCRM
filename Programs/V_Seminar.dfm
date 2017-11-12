@@ -136,7 +136,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label1: TLabel
             Left = 20
-            Top = 223
+            Top = 251
             Width = 85
             Height = 14
             Caption = #932#941#955#959#962'  '#935#961#941#969#963#951#962
@@ -196,6 +196,41 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
+          end
+          object Label23: TLabel
+            Left = 39
+            Top = 227
+            Width = 43
+            Height = 14
+            Caption = #917#964#945#953#961#949#943#945
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object SpeedButton1: TSpeedButton
+            Left = 261
+            Top = 223
+            Width = 21
+            Height = 19
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            Glyph.Data = {
+              D6000000424DD60000000000000076000000280000000C0000000C0000000100
+              0400000000006000000000000000000000001000000000000000000000000000
+              80000080000000808000800000008000800080800000C0C0C000808080000000
+              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+              0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+              0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+              0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
+            Layout = blGlyphBottom
+            ParentFont = False
+            OnClick = InstructorBTNClick
           end
           object FirstFLD: TwwDBEdit
             Left = 112
@@ -276,7 +311,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object wwDBEdit4: TwwDBEdit
             Left = 112
-            Top = 221
+            Top = 249
             Width = 76
             Height = 22
             DataField = 'FEE_ACTUAL'
@@ -1559,8 +1594,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = False
             OnUpdateFooter = CostGRDUpdateFooter
             StyleElements = [seFont, seClient]
-            ExplicitLeft = 1
-            ExplicitTop = 48
             object CostTypeFLD: TwwDBLookupCombo
               Left = 183
               Top = 88
@@ -2446,18 +2479,18 @@ object V_SeminarFRM: TV_SeminarFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYPE, F' +
-        'K_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATION_D' +
-        'AYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_APP' +
-        'ROVED, FEE_ESTIMATE, STATUS, IS_INVOICED, IS_CERTIFICATED, MAX_C' +
-        'APACITY)'
+        '  (SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_COMPAN' +
+        'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
+        'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
+        'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
+        'ED, IS_CERTIFICATED, MAX_CAPACITY)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :SEMINAR_NAME, :SEMINAR_CORP_TYP' +
-        'E, :FK_INSTRUCTOR, :FK_VENUE, :DATE_STARTED, :DATE_COMPLETED, :D' +
-        'URATION_DAYS, :DURATION_HOURS, :FEE_ACTUAL, :AMOUNT_ANAD, :COMME' +
-        'NTS, :ANAD_APPROVED, :FEE_ESTIMATE, :STATUS, :IS_INVOICED, :IS_C' +
-        'ERTIFICATED, :MAX_CAPACITY)')
+        '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
+        'OMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP_TYPE, :DATE_S' +
+        'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
+        'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
+        'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -2466,24 +2499,25 @@ object V_SeminarFRM: TV_SeminarFRM
       'UPDATE SEMINAR'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, SEMI' +
-        'NAR_NAME = :SEMINAR_NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE' +
-        ', FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, DATE_STA' +
-        'RTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION' +
-        '_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_AC' +
-        'TUAL = :FEE_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMM' +
-        'ENTS, ANAD_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMA' +
-        'TE, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATE' +
-        'D = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, FK_I' +
+        'NSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, FK_COMPANY_PER' +
+        'SON_SERIAL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_' +
+        'NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE, DATE_STARTED = :DA' +
+        'TE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :D' +
+        'URATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FE' +
+        'E_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD' +
+        '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
+        ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
+        'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYP' +
-        'E, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATI' +
-        'ON_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD' +
-        '_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOICED, IS_CERTIFICATED, M' +
-        'AX_CAPACITY FROM SEMINAR'
+        'SELECT SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_CO' +
+        'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
+        'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
+        'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
+        'VOICED, IS_CERTIFICATED, MAX_CAPACITY FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2591,6 +2625,9 @@ object V_SeminarFRM: TV_SeminarFRM
       FieldName = 'MAX_CAPACITY'
       Required = True
     end
+    object SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_COMPANY_PERSON_SERIAL'
+    end
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -2607,7 +2644,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C0101100088003C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800400210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3787,8 +3824,8 @@ object V_SeminarFRM: TV_SeminarFRM
     Connection = U_databaseFRM.DataConnection
     Transaction = ReadTrans
     IndexFieldNames = 'COST_NAME'
-    Left = 300
-    Top = 358
+    Left = 372
+    Top = 406
     object CostItemTBLCOST_NAME: TWideStringField
       DisplayWidth = 20
       FieldName = 'COST_NAME'
@@ -3944,5 +3981,10 @@ object V_SeminarFRM: TV_SeminarFRM
       Visible = False
       Size = 160
     end
+  end
+  object CompanySQL: TIBCQuery
+    Connection = U_databaseFRM.DataConnection
+    Left = 483
+    Top = 509
   end
 end
