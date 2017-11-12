@@ -111,6 +111,14 @@ type
     wwDBEdit16: TwwDBEdit;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
+    AttendingSQL: TIBCQuery;
+    AttendingSRC: TDataSource;
+    IBCUpdateSQL1: TIBCUpdateSQL;
+    NonAttendSQL: TIBCQuery;
+    NonAttendSQLSERIAL_NUMBER: TIntegerField;
+    NonAttendSQLLAST_NAME: TWideStringField;
+    NonAttendSQLFIRST_NAME: TWideStringField;
+    NonAttendSQLNATIONAL_ID: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure CompanySRCStateChange(Sender: TObject);
@@ -159,7 +167,7 @@ end;
 procedure TM_companyNewFRM.CompanySQLNewRecord(DataSet: TDataSet);
 begin
 Dataset.FieldByName('status_active').Value:='Y';
-//Dataset.FieldByName('is_company').Value:='N';
+Dataset.FieldByName('is_company').Value:='Y';
 
 end;
 

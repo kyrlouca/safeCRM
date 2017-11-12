@@ -277,6 +277,7 @@ object M_companyNewFRM: TM_companyNewFRM
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       ParentFont = False
       TabOrder = 2
+      OnClick = CanelBTNClick
     end
   end
   object Panel2: TPanel
@@ -465,15 +466,13 @@ object M_companyNewFRM: TM_companyNewFRM
       Width = 999
       Height = 421
       Hint = ''
-      ActivePage = InfoTS
+      ActivePage = EmpolyeesTS
       Align = alClient
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 2
       FixedDimension = 19
       object InfoTS: TRzTabSheet
         Caption = #928#955#951#961#959#966#959#961#943#949#962
-        ExplicitLeft = 2
-        ExplicitTop = 19
         object GroupBox2: TGroupBox
           Left = 361
           Top = 8
@@ -945,10 +944,9 @@ object M_companyNewFRM: TM_companyNewFRM
             ControlType.Strings = (
               'IS_GUEST;CheckBox;Y;N')
             Selected.Strings = (
-              'SERIAL_NUMBER'#9'8'#9'A/A'
-              'LAST_NAME'#9'19'#9#917#960#943#952#949#964#959
-              'FIRST_NAME'#9'15'#9#908#957#959#956#945
-              'IS_GUEST'#9'7'#9#917#954#964#945#954#964#959#962)
+              'SERIAL_NUMBER'#9'8'#9'A/A'#9#9
+              'LAST_NAME'#9'19'#9#917#960#943#952#949#964#959#9#9
+              'FIRST_NAME'#9'15'#9#908#957#959#956#945#9#9)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -956,6 +954,7 @@ object M_companyNewFRM: TM_companyNewFRM
             ShowHorzScrollBar = True
             Align = alClient
             BorderStyle = bsNone
+            DataSource = AttendingSRC
             TabOrder = 1
             TitleAlignment = taLeftJustify
             TitleFont.Charset = DEFAULT_CHARSET
@@ -965,6 +964,8 @@ object M_companyNewFRM: TM_companyNewFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitLeft = 5
+            ExplicitTop = 43
           end
         end
         object RzGroupBox2: TRzGroupBox
@@ -1063,7 +1064,7 @@ object M_companyNewFRM: TM_companyNewFRM
         '_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED, DATE_B' +
         'IRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER, STATUS' +
         '_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONTACT, COMPAN' +
-        'Y_REGISTRATION_DATE)'
+        'Y_REGISTRATION_DATE, PHONE_CONTACT)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :NATIONAL_ID, :FK_COMPANY_SERIAL, :FIRST_NAME' +
@@ -1072,7 +1073,8 @@ object M_companyNewFRM: TM_companyNewFRM
         'STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_DISTRICT, :D' +
         'ATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, :FACEBOOK, :' +
         'WEBSITE, :TWITTER, :STATUS_ACTIVE, :SEX, :IS_COMPANY, :COMPANY_O' +
-        'WNER, :COMPANY_CONTACT, :COMPANY_REGISTRATION_DATE)')
+        'WNER, :COMPANY_CONTACT, :COMPANY_REGISTRATION_DATE, :PHONE_CONTA' +
+        'CT)')
     SQLDelete.Strings = (
       'DELETE FROM PERSON'
       'WHERE'
@@ -1094,7 +1096,8 @@ object M_companyNewFRM: TM_companyNewFRM
         'E = :WEBSITE, TWITTER = :TWITTER, STATUS_ACTIVE = :STATUS_ACTIVE' +
         ', SEX = :SEX, IS_COMPANY = :IS_COMPANY, COMPANY_OWNER = :COMPANY' +
         '_OWNER, COMPANY_CONTACT = :COMPANY_CONTACT, COMPANY_REGISTRATION' +
-        '_DATE = :COMPANY_REGISTRATION_DATE'
+        '_DATE = :COMPANY_REGISTRATION_DATE, PHONE_CONTACT = :PHONE_CONTA' +
+        'CT'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1105,7 +1108,7 @@ object M_companyNewFRM: TM_companyNewFRM
         'RESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED, DA' +
         'TE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER, ST' +
         'ATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONTACT, CO' +
-        'MPANY_REGISTRATION_DATE FROM PERSON'
+        'MPANY_REGISTRATION_DATE, PHONE_CONTACT FROM PERSON'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1282,5 +1285,162 @@ object M_companyNewFRM: TM_companyNewFRM
     IsolationLevel = iblReadOnlyReadCommitted
     Left = 288
     Top = 9
+  end
+  object AttendingSQL: TIBCQuery
+    UpdatingTable = 'cOMPANY_PERSON'
+    SQLInsert.Strings = (
+      'INSERT INTO COMPANY_PERSON'
+      '  (SERIAL_NUMBER, FK_COMPANY_SERIAL, FK_PERSON_SERIAL)'
+      'VALUES'
+      '  (:SERIAL_NUMBER, :FK_COMPANY_SERIAL, :FK_PERSON_SERIAL)')
+    SQLDelete.Strings = (
+      'DELETE FROM COMPANY_PERSON'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE COMPANY_PERSON'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_COMPANY_SERIAL = :FK_COMPAN' +
+        'Y_SERIAL, FK_PERSON_SERIAL = :FK_PERSON_SERIAL'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, FK_COMPANY_SERIAL, FK_PERSON_SERIAL FROM C' +
+        'OMPANY_PERSON'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM COMPANY_PERSON'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM COMPANY_PERSON'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'select'
+      
+        ' pe.serial_number, pe.first_name,pe.last_name , cp.fk_company_se' +
+        'rial, cp.fk_person_serial'
+      'from'
+      'company_person  cp'
+      'left outer join'
+      'person pe on pe.serial_number=cp.fk_person_serial'
+      'and cp.fk_company_serial= :companySerial')
+    DetailFields = 'SERIAL_NUMBER'
+    Active = True
+    Left = 146
+    Top = 193
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'companySerial'
+        Value = nil
+      end>
+  end
+  object AttendingSRC: TDataSource
+    DataSet = AttendingSQL
+    Left = 296
+    Top = 193
+  end
+  object IBCUpdateSQL1: TIBCUpdateSQL
+    Left = 548
+    Top = 330
+  end
+  object NonAttendSQL: TIBCQuery
+    UpdatingTable = 'person'
+    SQLInsert.Strings = (
+      'INSERT INTO "COMPANY_PERSON"'
+      
+        '  ("SERIAL_NUMBER", "FK_COMPANY_SERIAL", "FK_PERSON_SERIAL", "TE' +
+        'MP")'
+      'VALUES'
+      
+        '  (:"SERIAL_NUMBER", :"FK_COMPANY_SERIAL", :"FK_PERSON_SERIAL", ' +
+        ':"TEMP")')
+    SQLDelete.Strings = (
+      'DELETE FROM "COMPANY_PERSON"'
+      'WHERE'
+      '  "SERIAL_NUMBER" = :"Old_SERIAL_NUMBER"')
+    SQLUpdate.Strings = (
+      'UPDATE "COMPANY_PERSON"'
+      'SET'
+      
+        '  "SERIAL_NUMBER" = :"SERIAL_NUMBER", "FK_COMPANY_SERIAL" = :"FK' +
+        '_COMPANY_SERIAL", "FK_PERSON_SERIAL" = :"FK_PERSON_SERIAL", "TEM' +
+        'P" = :"TEMP"'
+      'WHERE'
+      '  "SERIAL_NUMBER" = :"Old_SERIAL_NUMBER"')
+    SQLRefresh.Strings = (
+      
+        'SELECT "SERIAL_NUMBER", "FK_COMPANY_SERIAL", "FK_PERSON_SERIAL",' +
+        ' "TEMP" FROM "COMPANY_PERSON"'
+      'WHERE'
+      '  "SERIAL_NUMBER" = :"SERIAL_NUMBER"')
+    SQLLock.Strings = (
+      'SELECT NULL FROM "COMPANY_PERSON"'
+      'WHERE'
+      '"SERIAL_NUMBER" = :"Old_SERIAL_NUMBER"'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM COMPANY_PERSON'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      ' select'
+      
+        '     pout.serial_number,pout.last_name,pout.first_name, pout.nat' +
+        'ional_id'
+      ' from'
+      ' person pout left outer join'
+      '('
+      'select'
+      '    pe.serial_number, sp.fk_person_serial'
+      'from'
+      '    person pe inner join'
+      '    company_person sp on pe.serial_number=sp.fk_person_serial'
+      '    where sp.fk_company_serial= :companySerial'
+      ') as PeFound'
+      'on pout.serial_number= peFound.serial_number'
+      'where pefound.serial_number is null')
+    ReadOnly = True
+    Active = True
+    Left = 170
+    Top = 369
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'companySerial'
+        Value = nil
+      end>
+    object NonAttendSQLSERIAL_NUMBER: TIntegerField
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+    end
+    object NonAttendSQLLAST_NAME: TWideStringField
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object NonAttendSQLFIRST_NAME: TWideStringField
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object NonAttendSQLNATIONAL_ID: TWideStringField
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
   end
 end

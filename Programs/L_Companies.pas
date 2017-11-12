@@ -90,13 +90,12 @@ type
     procedure Grid1DblClick(Sender: TObject);
     procedure DeletehawbBTNClick(Sender: TObject);
     procedure Nav1InsertClick(Sender: TObject);
-    procedure RzBitBtn2Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
-    procedure EditSeminar();
-    procedure DeleteSeminar();
-  procedure  InsertSeminar();
+    procedure EditCompany();
+    procedure DeleteCompany();
+  procedure  InsertCompany();
   public
     { Public declarations }
     MyInsertState:Boolean;
@@ -145,11 +144,6 @@ begin
 close;
 end;
 
-procedure TL_companiesFRM.RzBitBtn2Click(Sender: TObject);
-begin
-asf
-end;
-
 procedure TL_companiesFRM.TableSQLAfterInsert(DataSet: TDataSet);
 begin
 //      StationIDFLD.SetFocus;
@@ -170,10 +164,10 @@ end;
 
 procedure TL_companiesFRM.Grid1DblClick(Sender: TObject);
 begin
-  EditSeminar;
+  EditCompany();
 end;
 
-procedure TL_companiesFRM.EditSeminar();
+procedure TL_companiesFRM.EditCompany();
 vAR
   serial:Integer;
   Frm:TM_companyNewFRM;
@@ -194,14 +188,14 @@ begin
 
 end;
 
-procedure TL_companiesFRM.DeleteSeminar();
+procedure TL_companiesFRM.DeleteCompany();
 vAR
   serial:Integer;
   Frm:TV_SeminarFRM;
 begin
   SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
   if serial<1 then exit;
-  ksExecSQLVar(cn,'delete from seminar where serial_number= :serial',[serial]);
+  ksExecSQLVar(cn,'delete from person where serial_number= :serial',[serial]);
   ksOpenTables([TableSQL])
 
 
@@ -225,16 +219,16 @@ end;
 
 procedure TL_companiesFRM.InsertHawbBTNClick(Sender: TObject);
 begin
-  InsertSeminar();
+  InsertCompany();
   ksOpenTables([TableSQL]);
 end;
 
 
-procedure TL_companiesFRM.InsertSeminar();
+procedure TL_companiesFRM.InsertCompany();
 vAR
-Frm:TV_SeminarFRM;
+Frm:TM_companyNewFRM;
 begin
-  frm := TV_SeminarFRM.Create(nil);
+  frm := TM_companyNewFRM.Create(nil);
   frm.IN_ACTION :='INSERT';
   try
     frm.ShowModal;
@@ -246,7 +240,7 @@ end;
 
 procedure TL_companiesFRM.Nav1InsertClick(Sender: TObject);
 begin
-  InsertSeminar();
+  InsertCompany();
   ksOpenTables([TableSQL]);
 
   abort;
@@ -260,7 +254,7 @@ end;
 
 procedure TL_companiesFRM.DeletehawbBTNClick(Sender: TObject);
 begin
-DeleteSeminar();
+DeleteCompany();
 end;
 
 End.

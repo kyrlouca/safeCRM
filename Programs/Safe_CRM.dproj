@@ -159,6 +159,10 @@
             <Form>L_companiesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="L_Seminar.pas">
+            <Form>L_SeminarFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

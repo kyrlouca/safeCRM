@@ -491,7 +491,6 @@ object L_companiesFRM: TL_companiesFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 2
-        OnClick = RzBitBtn2Click
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
           180000000000C006000000000000000000000000000000000000FFFFFFF8F8F8
@@ -703,7 +702,7 @@ object L_companiesFRM: TL_companiesFRM
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 625
+        Width = 569
         Height = 327
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'

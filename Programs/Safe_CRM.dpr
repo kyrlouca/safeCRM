@@ -19,7 +19,8 @@ uses
   p_attendance in 'p_attendance.pas' {P_attendanceFRM},
   M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM},
   M_Company in 'M_Company.pas' {M_CompanyFRM},
-  L_Companies in 'L_Companies.pas' {L_companiesFRM};
+  L_Companies in 'L_Companies.pas' {L_companiesFRM},
+  L_Seminar in 'L_Seminar.pas' {L_SeminarFRM};
 
 {$R *.res}
 
@@ -37,5 +38,6 @@ begin
   Application.CreateForm(TM_CompanyFRM, M_CompanyFRM);
   Application.CreateForm(TL_companiesFRM, L_companiesFRM);
   Application.CreateForm(TL_companiesFRM, L_companiesFRM);
+  Application.CreateForm(TL_SeminarFRM, L_SeminarFRM);
   Application.Run;
 end.
