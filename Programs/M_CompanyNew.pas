@@ -36,13 +36,9 @@ type
     RzPageControl1: TRzPageControl;
     PageControlPC: TRzPageControl;
     EmpolyeesTS: TRzTabSheet;
-    RzGroupBox1: TRzGroupBox;
-    RzSizePanel1: TRzSizePanel;
-    wwDBGrid1: TwwDBGrid;
     RzGroupBox2: TRzGroupBox;
     AllPersonsGRD: TwwDBGrid;
     RzSizePanel2: TRzSizePanel;
-    SearchPersonFLD: TwwIncrementalSearch;
     CompanySQLSERIAL_NUMBER: TIntegerField;
     CompanySQLNATIONAL_ID: TWideStringField;
     CompanySQLFK_COMPANY_SERIAL: TIntegerField;
@@ -111,14 +107,30 @@ type
     wwDBEdit16: TwwDBEdit;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
-    AttendingSQL: TIBCQuery;
-    AttendingSRC: TDataSource;
-    IBCUpdateSQL1: TIBCUpdateSQL;
-    NonAttendSQL: TIBCQuery;
-    NonAttendSQLSERIAL_NUMBER: TIntegerField;
-    NonAttendSQLLAST_NAME: TWideStringField;
-    NonAttendSQLFIRST_NAME: TWideStringField;
-    NonAttendSQLNATIONAL_ID: TWideStringField;
+    IncludedPersonsSQL: TIBCQuery;
+    IncludedPersonsSRC: TDataSource;
+    ExcludedPersonsSQL: TIBCQuery;
+    ExcludedPersonsSQLSERIAL_NUMBER: TIntegerField;
+    ExcludedPersonsSQLLAST_NAME: TWideStringField;
+    ExcludedPersonsSQLFIRST_NAME: TWideStringField;
+    ExcludedPersonsSQLNATIONAL_ID: TWideStringField;
+    ExcludedPersonsSRC: TDataSource;
+    RzPanel2: TRzPanel;
+    ToLeftBTN: TBitBtn;
+    ToRightBTN: TBitBtn;
+    IncludedPersonsSQLSERIAL_NUMBER: TIntegerField;
+    IncludedPersonsSQLFIRST_NAME: TWideStringField;
+    IncludedPersonsSQLLAST_NAME: TWideStringField;
+    IncludedPersonsSQLFK_COMPANY_SERIAL: TIntegerField;
+    IncludedPersonsSQLFK_PERSON_SERIAL: TIntegerField;
+    IncludedPersonsSQLNATIONAL_ID: TWideStringField;
+    IncludedPersonsSQLCOMPANY_OWNER: TWideStringField;
+    PersonSearchFLD: TwwIncrementalSearch;
+    RzPanel3: TRzPanel;
+    RzGroupBox1: TRzGroupBox;
+    RzSizePanel1: TRzSizePanel;
+    Grid1: TwwDBGrid;
+    ExcludedPersonsSQLPHONE_MOBILE: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure CompanySRCStateChange(Sender: TObject);
@@ -130,6 +142,13 @@ type
     procedure Nav1InsertClick(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
     procedure CompanySQLNewRecord(DataSet: TDataSet);
+    procedure ToRightBTNClick(Sender: TObject);
+    procedure EmpolyeesTSShow(Sender: TObject);
+    procedure ToLeftBTNClick(Sender: TObject);
+    procedure AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure PersonSearchFLDKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -139,6 +158,8 @@ type
     IN_ACTION:String;
     IN_PERSON_Serial:Integer;
     Procedure EditCompany(Const CompanySerial:integer);
+  procedure RemovePerson();
+  procedure InsertPerson();
 
   end;
 
@@ -152,6 +173,13 @@ uses   U_Database, G_generalProcs;
 
 {$R *.DFM}
 
+procedure TM_companyNewFRM.AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if Key=VK_RETURN then
+  InsertPerson();
+end;
+
 procedure TM_companyNewFRM.BitBtn2Click(Sender: TObject);
 begin
   close;
@@ -163,6 +191,16 @@ begin
 //   Dataset.FieldByName('Serial_number').ReadOnly:=true;
 end;
 
+
+procedure TM_companyNewFRM.ToLeftBTNClick(Sender: TObject);
+begin
+InsertPerson();
+end;
+
+procedure TM_companyNewFRM.ToRightBTNClick(Sender: TObject);
+begin
+RemovePerson();
+end;
 
 procedure TM_companyNewFRM.CompanySQLNewRecord(DataSet: TDataSet);
 begin
@@ -223,6 +261,19 @@ End;
 
 
 
+procedure TM_companyNewFRM.EmpolyeesTSShow(Sender: TObject);
+begin
+  IncludedPersonsSQL.Close;
+  IncludedPersonsSQL.ParamByName('CompanySerial').Value:=CompanySQL.FieldByName('serial_number').AsInteger;
+  IncludedPersonsSQL.Open;
+
+  ExcludedPersonsSQL.Close;
+  ExcludedPersonsSQL.ParamByName('CompanySerial').Value:=CompanySQL.FieldByName('serial_number').AsInteger;
+  ExcludedPersonsSQL.Open;
+
+
+end;
+
 procedure TM_companyNewFRM.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
@@ -254,10 +305,60 @@ begin
   FirstFLD.SetFocus;
 end;
 
+procedure TM_companyNewFRM.PersonSearchFLDKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+if Key=VK_RETURN then
+  InsertPerson()
+else if key=VK_DOWN  then
+  AllPersonsGRD.SetFocus;
+
+end;
+
 procedure TM_companyNewFRM.CanelBTNClick(Sender: TObject);
 begin
 CompanySQL.Cancel;
 close;
+end;
+
+
+procedure TM_companyNewFRM.RemovePerson();
+var
+  qr:TksQuery;
+  Personserial:Integer;
+  CompanySerial:Integer;
+  str:string;
+begin
+  PersonSerial:=IncludedPersonsSQL.FieldByName('fk_person_serial').AsInteger;
+  CompanySerial:=IncludedPersonsSQL.FieldByName('fk_company_serial').AsInteger;
+  if (Personserial<1) or (CompanySerial<1) then exit;
+  str:=' delete from company_person where fk_person_serial= :personSerial and fk_company_serial= :CompanySerial';
+  ksExecSQLVar(cn,str,[Personserial,CompanySerial]);
+
+  IncludedPersonsSQL.Refresh;
+  excludedPersonsSQL.Refresh;
+end;
+
+procedure TM_companyNewFRM.InsertPerson();
+var
+  qr:TksQuery;
+  Personserial:Integer;
+  CompanySerial:Integer;
+  str:string;
+begin
+  PersonSerial:=ExcludedPersonsSQL.FieldByName('serial_number').AsInteger;
+  CompanySerial:=companySQL.FieldByName('serial_number').AsInteger;
+  if Personserial<1 then exit;
+  str:=' insert into company_person  (fk_company_serial,fk_person_serial) '
+    +' values(:company,:person)';
+  ksExecSQLVar(cn,str,[CompanySerial,Personserial]);
+
+  IncludedPersonsSQL.Refresh;
+  excludedPersonsSQL.Refresh;
+  PersonSearchFLD.Clear;
+
+
+
 end;
 
 End.

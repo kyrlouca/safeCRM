@@ -49,6 +49,8 @@ type
     Reports1: TMenuItem;
     Reminders1: TMenuItem;
     N7: TMenuItem;
+    N8: TMenuItem;
+    N9: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -64,6 +66,7 @@ type
     procedure Reminders1Click(Sender: TObject);
     procedure LoginBTNClick(Sender: TObject);
     procedure N7Click(Sender: TObject);
+    procedure N9Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -161,6 +164,11 @@ procedure TM_mainFRM.N7Click(Sender: TObject);
 begin
   gpShowModal(TI_InvoiceSeminarFRM);
 
+end;
+
+procedure TM_mainFRM.N9Click(Sender: TObject);
+begin
+//
 end;
 
 procedure TM_mainFRM.Reminders1Click(Sender: TObject);

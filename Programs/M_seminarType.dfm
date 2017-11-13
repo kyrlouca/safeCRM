@@ -38,7 +38,7 @@
       Width = 962
       Height = 548
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = ReminderTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -47,9 +47,11 @@
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 2
       TabOrder = 0
       OnChanging = SeminarPCChanging
+      ExplicitLeft = 2
+      ExplicitTop = 49
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
@@ -76,7 +78,7 @@
             Width = 361
             Height = 466
             Selected.Strings = (
-              'SEMINAR_NAME'#9'28'#9#928#949#961#953#947#961#945#966#942#9'F'
+              'SEMINAR_NAME'#9'28'#9#928#949#961#953#947#961#945#966#942
               'SEMINAR_CORP_TYPE'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972
               'ANAD_APPROVED'#9'6'#9#913#925#913#916)
             IniAttributes.Delimiter = ';;'
@@ -735,7 +737,7 @@
       end
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
-        Caption = #933#960#949#957#952#965#956#943#963#949#953#962
+        Caption = #917#961#947#945#963#943#949#962
         object GroupBox4: TGroupBox
           Left = 485
           Top = 53
@@ -1018,6 +1020,7 @@
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
           TabOrder = 1
+          ExplicitLeft = 3
           object wwDBNavigator4: TwwDBNavigator
             Left = 1
             Top = 7

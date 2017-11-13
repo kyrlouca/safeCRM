@@ -7421,5 +7421,12 @@ object M_mainFRM: TM_mainFRM
         OnClick = Reminders1Click
       end
     end
+    object N8: TMenuItem
+      Caption = #917#961#947#945#963#943#949#962
+      object N9: TMenuItem
+        Caption = #916#953#945#967#949#943#961#953#963#951' '#917#961#947#945#963#953#974#957
+        OnClick = N9Click
+      end
+    end
   end
 end

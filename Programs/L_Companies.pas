@@ -31,10 +31,8 @@ type
     InsertHawbBTN: TRzBitBtn;
     DeletehawbBTN: TRzBitBtn;
     RzGroupBox1: TRzGroupBox;
-    Label1: TLabel;
     Label2: TLabel;
     FilterBox: TwwDBComboBox;
-    FindSeminarFLD: TSearchBox;
     RzBitBtn2: TRzBitBtn;
     Nav1: TwwDBNavigator;
     Nav1Button: TwwNavButton;

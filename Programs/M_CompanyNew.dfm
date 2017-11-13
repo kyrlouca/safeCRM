@@ -3,7 +3,7 @@ object M_companyNewFRM: TM_companyNewFRM
   Top = 153
   Caption = '--'
   ClientHeight = 558
-  ClientWidth = 1001
+  ClientWidth = 1080
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1001
+    Width = 1080
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -31,11 +31,12 @@ object M_companyNewFRM: TM_companyNewFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1001
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 993
+      Width = 1072
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -48,18 +49,20 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel4: TPanel
     Left = 0
     Top = 515
-    Width = 1001
+    Width = 1080
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitWidth = 1001
     object RzPanel1: TRzPanel
-      Left = 900
+      Left = 979
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 900
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -283,18 +286,21 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 1001
+    Width = 1080
     Height = 39
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 1001
   end
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 1001
+    Width = 1080
     Height = 423
     Align = alClient
     TabOrder = 2
+    ExplicitTop = 87
+    ExplicitWidth = 1001
     object CompanyGRP: TGroupBox
       Left = 48
       Top = 260
@@ -463,16 +469,18 @@ object M_companyNewFRM: TM_companyNewFRM
     object PageControlPC: TRzPageControl
       Left = 1
       Top = 1
-      Width = 999
+      Width = 1078
       Height = 421
       Hint = ''
       ActivePage = EmpolyeesTS
       Align = alClient
       TabIndex = 1
       TabOrder = 2
+      ExplicitWidth = 999
       FixedDimension = 19
       object InfoTS: TRzTabSheet
         Caption = #928#955#951#961#959#966#959#961#943#949#962
+        ExplicitWidth = 995
         object GroupBox2: TGroupBox
           Left = 361
           Top = 8
@@ -913,66 +921,16 @@ object M_companyNewFRM: TM_companyNewFRM
         end
       end
       object EmpolyeesTS: TRzTabSheet
+        OnShow = EmpolyeesTSShow
         Caption = #933#960#940#955#955#951#955#959#953
-        object RzGroupBox1: TRzGroupBox
-          Left = 0
-          Top = 0
-          Width = 425
-          Height = 398
-          Align = alLeft
-          Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          object RzSizePanel1: TRzSizePanel
-            Left = 1
-            Top = 15
-            Width = 423
-            Height = 29
-            Align = alTop
-            TabOrder = 0
-          end
-          object wwDBGrid1: TwwDBGrid
-            Left = 1
-            Top = 44
-            Width = 423
-            Height = 353
-            ControlType.Strings = (
-              'IS_GUEST;CheckBox;Y;N')
-            Selected.Strings = (
-              'SERIAL_NUMBER'#9'8'#9'A/A'#9#9
-              'LAST_NAME'#9'19'#9#917#960#943#952#949#964#959#9#9
-              'FIRST_NAME'#9'15'#9#908#957#959#956#945#9#9)
-            IniAttributes.Delimiter = ';;'
-            IniAttributes.UnicodeIniFile = False
-            TitleColor = clBtnFace
-            FixedCols = 3
-            ShowHorzScrollBar = True
-            Align = alClient
-            BorderStyle = bsNone
-            DataSource = AttendingSRC
-            TabOrder = 1
-            TitleAlignment = taLeftJustify
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -12
-            TitleFont.Name = 'Tahoma'
-            TitleFont.Style = []
-            TitleLines = 1
-            TitleButtons = False
-            ExplicitLeft = 5
-            ExplicitTop = 43
-          end
-        end
+        ExplicitLeft = 2
+        ExplicitTop = 19
+        ExplicitWidth = 995
         object RzGroupBox2: TRzGroupBox
-          Left = 425
-          Top = 0
-          Width = 391
-          Height = 398
+          Left = 634
+          Top = 17
+          Width = 578
+          Height = 381
           Align = alLeft
           Caption = #922#945#964#940#955#959#947#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -981,17 +939,21 @@ object M_companyNewFRM: TM_companyNewFRM
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 1
+          TabOrder = 0
+          ExplicitLeft = 524
+          ExplicitTop = 0
+          ExplicitHeight = 398
           object AllPersonsGRD: TwwDBGrid
             Left = 1
             Top = 57
-            Width = 389
-            Height = 340
+            Width = 576
+            Height = 323
             Selected.Strings = (
-              'SERIAL_NUMBER'#9'10'#9'A/A'
-              'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959
+              'SERIAL_NUMBER'#9'6'#9'A/A'
+              'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
               'FIRST_NAME'#9'10'#9#908#957#959#956#945
-              'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945)
+              'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945
+              'PHONE_MOBILE'#9'12'#9#922#953#957#951#964#972)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -1000,6 +962,7 @@ object M_companyNewFRM: TM_companyNewFRM
             Align = alClient
             BorderStyle = bsNone
             Color = clBtnFace
+            DataSource = ExcludedPersonsSRC
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1018,29 +981,255 @@ object M_companyNewFRM: TM_companyNewFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = True
+            OnKeyDown = AllPersonsGRDKeyDown
+            ExplicitHeight = 340
           end
           object RzSizePanel2: TRzSizePanel
             Left = 1
             Top = 15
-            Width = 389
+            Width = 576
             Height = 42
             Align = alTop
             TabOrder = 1
-            object SearchPersonFLD: TwwIncrementalSearch
-              Left = 8
-              Top = 7
-              Width = 128
+            object PersonSearchFLD: TwwIncrementalSearch
+              Left = 5
+              Top = 14
+              Width = 121
               Height = 22
-              SearchField = 'last_name'
+              DataSource = ExcludedPersonsSRC
+              SearchField = 'LAST_NAME'
               ShowMatchText = True
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
               TabOrder = 0
+              OnKeyDown = PersonSearchFLDKeyDown
             end
+          end
+        end
+        object RzPanel2: TRzPanel
+          Left = 548
+          Top = 17
+          Width = 86
+          Height = 381
+          Align = alLeft
+          BorderOuter = fsNone
+          TabOrder = 1
+          ExplicitLeft = 438
+          object ToLeftBTN: TBitBtn
+            Left = 41
+            Top = 214
+            Width = 39
+            Height = 37
+            Cancel = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC2C2C2FFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDACACAC202020FFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6A0A0A011
+              1111000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFEFEFEE8E8E8AAAAAAFFFFFFFFFFFFFFFFFFFFFFFFE5E5
+              E5717171080808000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9F9ADADAD4D4D4DB9B9B9FFFFFFFFFFFF
+              FFFFFFE8E8E84E4E4E060606000000000000000000FFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFBB7B7B7424242111111515151F0
+              F0F0FFFFFFFDFDFDD5D5D5303030000000000000000000000000000000242424
+              5E5E5E8F8F8FB3B3B3C6C6C6CACACABEBEBE9F9F9F6868682323230101010000
+              00191919BABABAFFFFFFF6F6F6AAAAAA25252500000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000A0A0A939393FCFCFCFFFFFF9393931414140101010000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000C0C0C999999FAFAFAFFFFFFFFFFFF434343141414
+              0101010000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000000050505262626A3A3A3FCFCFCFFFFFFFFFFFFFF
+              FFFFE5E5E5ACACAC252525000000000000000000000000000000000000000000
+              0000000000000000000000000000000909093A3A3A818181D7D7D7FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDD7D7D732323200000000000000000000
+              00000000000606060B0B0B1B1B1B3636365C5C5C8F8F8FCFCFCFE8E8E8FCFCFC
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE9E9E94F4F
+              4F060606000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFE5E5E5737373080808000000000000FFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6A0A0A0111111000000FFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDAB
+              ABAB202020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFC3C3C3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            ParentFont = False
+            TabOrder = 0
+            OnClick = ToLeftBTNClick
+          end
+          object ToRightBTN: TBitBtn
+            Left = 21
+            Top = 101
+            Width = 37
+            Height = 37
+            Cancel = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFC1C1C1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF202020ABABABFDFDFDFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFD4D4D4E8E8E8FEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000001111119F9F9F
+              F6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6363634E4E4EADADADF9F9F9FFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+              0000000000080808727272E5E5E5FFFFFFFFFFFFFFFFFFFFFFFFBFBFBF535353
+              111111434343B6B6B6FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFF0000000000000000000505054E4E4EE8E8E8FFFFFFFFFFFFFF
+              FFFFFCFCFCBBBBBB1A1A1A0000000101012323236868689E9E9EBEBEBECACACA
+              C7C7C7B4B4B48F8F8F5E5E5E2424240000000000000000000000000000003030
+              30D5D5D5FCFCFCFFFFFFFFFFFFFCFCFC9494940A0A0A00000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              000000000000000000252525AAAAAAFAFAFAFFFFFFFFFFFFFBFBFB9A9A9A0C0C
+              0C00000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000010101141414929292FFFFFFFFFFFF
+              FFFFFFFCFCFCA5A5A52727270505050000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000001010113131392
+              9292FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD7D7D78181813B3B3B090909000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00242424ABABABFAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCE9
+              E9E9CFCFCF8F8F8F5C5C5C3636361B1B1B0C0C0C060606000000000000000000
+              000000000000323232D6D6D6FCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+              00000000000000000606064F4F4FE8E8E8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFF000000000000080808737373E5E5E5FFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000111111A0A0A0F6F6F6FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF202020AAAAAAFDFDFD
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC2
+              C2C2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            ParentFont = False
+            TabOrder = 1
+            OnClick = ToRightBTNClick
+          end
+        end
+        object RzPanel3: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 1074
+          Height = 17
+          Align = alTop
+          BorderOuter = fsNone
+          TabOrder = 2
+          ExplicitWidth = 995
+        end
+        object RzGroupBox1: TRzGroupBox
+          Left = 0
+          Top = 17
+          Width = 548
+          Height = 381
+          Align = alLeft
+          Caption = #933#960#940#955#955#951#955#959#953
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+          object RzSizePanel1: TRzSizePanel
+            Left = 1
+            Top = 15
+            Width = 546
+            Height = 29
+            Align = alTop
+            TabOrder = 0
+            ExplicitWidth = 418
+          end
+          object Grid1: TwwDBGrid
+            Left = 1
+            Top = 44
+            Width = 512
+            Height = 336
+            Selected.Strings = (
+              'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+              'LAST_NAME'#9'23'#9#908#957#959#956#945#9#9
+              'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962#9#9
+              'COMPANY_OWNER'#9'24'#9#921#948#953#959#954#964#942#964#951#962#9#9
+              'COMPANY_CONTACT'#9'19'#9#917#960#953#954#959#953#957#969#957#943#945#9#9
+              'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972#9#9
+              'PHONE_MOBILE'#9'10'#9#932#951#955'. '#922#953#957#951#964#972#9#9)
+            IniAttributes.Delimiter = ';;'
+            IniAttributes.UnicodeIniFile = False
+            TitleColor = clBtnFace
+            FixedCols = 0
+            ShowHorzScrollBar = True
+            Align = alLeft
+            Color = 12713983
+            DataSource = IncludedPersonsSRC
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            KeyOptions = []
+            Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 1
+            TitleAlignment = taLeftJustify
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -13
+            TitleFont.Name = 'Arial'
+            TitleFont.Style = []
+            TitleLines = 1
+            TitleButtons = True
           end
         end
       end
@@ -1286,7 +1475,7 @@ object M_companyNewFRM: TM_companyNewFRM
     Left = 288
     Top = 9
   end
-  object AttendingSQL: TIBCQuery
+  object IncludedPersonsSQL: TIBCQuery
     UpdatingTable = 'cOMPANY_PERSON'
     SQLInsert.Strings = (
       'INSERT INTO COMPANY_PERSON'
@@ -1318,7 +1507,7 @@ object M_companyNewFRM: TM_companyNewFRM
       'FOR UPDATE WITH LOCK')
     SQLRecCount.Strings = (
       'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM COMPANY_PERSON'
+      'SELECT 1 AS C  FROM cOMPANY_PERSON'
       ''
       ') q')
     Connection = U_databaseFRM.DataConnection
@@ -1328,12 +1517,15 @@ object M_companyNewFRM: TM_companyNewFRM
       'select'
       
         ' pe.serial_number, pe.first_name,pe.last_name , cp.fk_company_se' +
-        'rial, cp.fk_person_serial'
+        'rial, cp.fk_person_serial,'
+      '     pe.national_id,pe.company_owner'
       'from'
       'company_person  cp'
       'left outer join'
       'person pe on pe.serial_number=cp.fk_person_serial'
-      'and cp.fk_company_serial= :companySerial')
+      'where'
+      'cp.fk_company_serial= :companySerial'
+      'order by pe.last_name')
     DetailFields = 'SERIAL_NUMBER'
     Active = True
     Left = 146
@@ -1344,17 +1536,60 @@ object M_companyNewFRM: TM_companyNewFRM
         Name = 'companySerial'
         Value = nil
       end>
+    object IncludedPersonsSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 6
+      FieldName = 'SERIAL_NUMBER'
+      ReadOnly = True
+    end
+    object IncludedPersonsSQLLAST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 23
+      FieldName = 'LAST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
+    object IncludedPersonsSQLNATIONAL_ID: TWideStringField
+      DisplayLabel = #913#961'. '#917#947#947#961#945#966#942#962
+      DisplayWidth = 17
+      FieldName = 'NATIONAL_ID'
+      ReadOnly = True
+      FixedChar = True
+    end
+    object IncludedPersonsSQLCOMPANY_OWNER: TWideStringField
+      DisplayLabel = #921#948#953#959#954#964#942#964#951#962
+      DisplayWidth = 24
+      FieldName = 'COMPANY_OWNER'
+      ReadOnly = True
+      Size = 160
+    end
+    object IncludedPersonsSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 15
+      FieldName = 'FIRST_NAME'
+      ReadOnly = True
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object IncludedPersonsSQLFK_COMPANY_SERIAL: TIntegerField
+      FieldName = 'FK_COMPANY_SERIAL'
+      Required = True
+      Visible = False
+    end
+    object IncludedPersonsSQLFK_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_PERSON_SERIAL'
+      Required = True
+      Visible = False
+    end
   end
-  object AttendingSRC: TDataSource
-    DataSet = AttendingSQL
+  object IncludedPersonsSRC: TDataSource
+    DataSet = IncludedPersonsSQL
     Left = 296
     Top = 193
   end
-  object IBCUpdateSQL1: TIBCUpdateSQL
-    Left = 548
-    Top = 330
-  end
-  object NonAttendSQL: TIBCQuery
+  object ExcludedPersonsSQL: TIBCQuery
     UpdatingTable = 'person'
     SQLInsert.Strings = (
       'INSERT INTO "COMPANY_PERSON"'
@@ -1401,7 +1636,7 @@ object M_companyNewFRM: TM_companyNewFRM
       ' select'
       
         '     pout.serial_number,pout.last_name,pout.first_name, pout.nat' +
-        'ional_id'
+        'ional_id,pout.phone_mobile'
       ' from'
       ' person pout left outer join'
       '('
@@ -1413,7 +1648,10 @@ object M_companyNewFRM: TM_companyNewFRM
       '    where sp.fk_company_serial= :companySerial'
       ') as PeFound'
       'on pout.serial_number= peFound.serial_number'
-      'where pefound.serial_number is null')
+      'where '
+      'pefound.serial_number is null'
+      'and pout.is_company='#39'N'#39
+      'order by pout.last_name')
     ReadOnly = True
     Active = True
     Left = 170
@@ -1424,23 +1662,43 @@ object M_companyNewFRM: TM_companyNewFRM
         Name = 'companySerial'
         Value = nil
       end>
-    object NonAttendSQLSERIAL_NUMBER: TIntegerField
+    object ExcludedPersonsSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 6
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
-    object NonAttendSQLLAST_NAME: TWideStringField
+    object ExcludedPersonsSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 18
       FieldName = 'LAST_NAME'
       FixedChar = True
       Size = 30
     end
-    object NonAttendSQLFIRST_NAME: TWideStringField
+    object ExcludedPersonsSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 10
       FieldName = 'FIRST_NAME'
       FixedChar = True
       Size = 30
     end
-    object NonAttendSQLNATIONAL_ID: TWideStringField
+    object ExcludedPersonsSQLNATIONAL_ID: TWideStringField
+      DisplayLabel = #932#945#965#964#972#964#951#964#945
+      DisplayWidth = 13
       FieldName = 'NATIONAL_ID'
       FixedChar = True
     end
+    object ExcludedPersonsSQLPHONE_MOBILE: TWideStringField
+      DisplayLabel = #922#953#957#951#964#972
+      DisplayWidth = 12
+      FieldName = 'PHONE_MOBILE'
+      FixedChar = True
+      Size = 15
+    end
+  end
+  object ExcludedPersonsSRC: TDataSource
+    DataSet = ExcludedPersonsSQL
+    Left = 264
+    Top = 353
   end
 end
