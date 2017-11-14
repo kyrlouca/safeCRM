@@ -60,7 +60,7 @@ type
     Nav1Delete: TwwNavButton;
     Nav1Post: TwwNavButton;
     Nav1Cancel: TwwNavButton;
-    wwDBGrid1: TwwDBGrid;
+    InvoiceGRD: TwwDBGrid;
     BitBtn1: TRzBitBtn;
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLFK_SEMINAR: TIntegerField;
@@ -112,6 +112,8 @@ type
     RzDBLabel3: TRzDBLabel;
     wwDBEdit1: TRzDBLabel;
     wwDBEdit2: TRzDBLabel;
+    Read1: TIBCTransaction;
+    write1: TIBCTransaction;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -126,6 +128,10 @@ type
     procedure CanelBTNClick(Sender: TObject);
     procedure AnadCheckFLDClick(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
+    procedure InvoiceGRDColEnter(Sender: TObject);
+    procedure InvoiceSQLBeforePost(DataSet: TDataSet);
+    procedure InvoiceGRDCalcCellColors(Sender: TObject; Field: TField;
+      State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -179,6 +185,41 @@ begin
 end;
 
 
+procedure TI_InvoiceSeminarFRM.InvoiceGRDCalcCellColors(Sender: TObject;
+  Field: TField; State: TGridDrawState; Highlight: Boolean; AFont: TFont;
+  ABrush: TBrush);
+begin
+  if (field.FieldName='AMOUNT_VAT')OR (field.FieldName='AMOUNT_WITH_VAT') then begin
+    Abrush.Color:=clBtnFace;
+  end;
+end;
+
+procedure TI_InvoiceSeminarFRM.InvoiceGRDColEnter(Sender: TObject);
+var
+  selectedField:String;
+begin
+  SelectedFIeld:=InvoiceGRD.SelectedField.FieldName;
+  if (selectedField ='AMOUNT_VAT')OR(selectedFIeld='AMOUNT_WITH_VAT') then begin
+    InvoiceGRD.SetActiveField('discount_customer');
+  end;
+end;
+
+procedure TI_InvoiceSeminarFRM.InvoiceSQLBeforePost(DataSet: TDataSet);
+Var
+  vatAMount,AmountForVat:Double;
+  Gross,DiscountCust,DiscountSafe:Double;
+  AmountCharged:DOuble;
+begin
+
+  AmountForVat:=Dataset.FieldByName('amount_gross').AsFloat -Dataset.FieldByName('Discount_customer').AsFloat;
+  VatAmount:=AmountForVat *Dataset.FieldByName('vat_rate').AsFloat;
+  AmountCharged:= AmountForVat -Dataset.FieldByName('Discount_by_safe').AsFloat + VAtAmount;
+  Dataset.FieldByName('amount_vat').Value:=VatAmount;
+  Dataset.FieldByName('amount_with_vat').Value:=AmountCharged;
+//
+
+end;
+
 procedure TI_InvoiceSeminarFRM.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
   FillTable: TDataSet; modified: Boolean);
 begin
@@ -199,7 +240,14 @@ end;
 
 procedure TI_InvoiceSeminarFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL]);
+  if not InvoiceSQL.Connection.InTransaction then
+    InvoiceSQL.Connection.StartTransaction;
+
+  ksOpenTables([TableSQL]);
+
+//  if InvoiceSQL.Connection.InTransaction then
+//    showMessage('in trans');
+
 end;
 
 procedure TI_InvoiceSeminarFRM.FormCloseQuery(Sender: TObject;
@@ -268,7 +316,8 @@ begin
 
   VatRate:=19;
   ksExecSQLVar(cn,'delete from invoice where fk_seminar_serial= :SeminarSerial',[SeminarSerial]);
-//  invoiceSQL.Refresh;
+  invoiceSQL.Close;
+  invoiceSQL.Open;
 
   qr:= TksQuery.Create(cn,'select * from seminar where serial_number= :SeminarSerial');
   try
@@ -368,15 +417,22 @@ begin
 
   SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
- personSQL.Close;
- personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;
- personSQL.Open;
+  if  InvoiceSQL.Connection.InTransaction then
+    InvoiceSQL.Connection.Commit;
 
    if not InvoiceSQL.Connection.InTransaction then
     InvoiceSQL.Connection.StartTransaction;
 
+
+ personSQL.Close;
+ personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;
+ personSQL.Open;
+
+
   GenerateInvoices(seminarSerial);
-//  InvoiceSQL.Refresh;
+
+//   if  InvoiceSQL.Connection.InTransaction then
+//    InvoiceSQL.Connection.Commit;
 end;
 
 procedure TI_InvoiceSeminarFRM.Button1Click(Sender: TObject);
