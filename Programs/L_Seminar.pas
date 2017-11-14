@@ -65,6 +65,8 @@ type
     TableSQLIS_CERTIFICATED: TWideStringField;
     TableSQLDESCRIPTION: TWideStringField;
     TableSQLDESCRIPTION_GREEK: TWideStringField;
+    wwDBComboBox1: TwwDBComboBox;
+    TableSQLLAST_NAME: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

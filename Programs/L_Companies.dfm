@@ -574,6 +574,7 @@ object L_companiesFRM: TL_companiesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 0
@@ -590,6 +591,7 @@ object L_companiesFRM: TL_companiesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Prior'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -606,7 +608,6 @@ object L_companiesFRM: TL_companiesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Next'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 2
@@ -623,7 +624,6 @@ object L_companiesFRM: TL_companiesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button1'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 3
@@ -686,13 +686,13 @@ object L_companiesFRM: TL_companiesFRM
         Width = 810
         Height = 327
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'LAST_NAME'#9'23'#9#908#957#959#956#945
-          'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962
-          'COMPANY_OWNER'#9'24'#9#921#948#953#959#954#964#942#964#951#962
-          'COMPANY_CONTACT'#9'19'#9#917#960#953#954#959#953#957#969#957#943#945
-          'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972
-          'PHONE_MOBILE'#9'10'#9#932#951#955'. '#922#953#957#951#964#972)
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'LAST_NAME'#9'23'#9#908#957#959#956#945#9#9
+          'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962#9#9
+          'COMPANY_OWNER'#9'24'#9#921#948#953#959#954#964#942#964#951#962#9#9
+          'COMPANY_CONTACT'#9'19'#9#917#960#953#954#959#953#957#969#957#943#945#9#9
+          'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972#9#9
+          'PHONE_MOBILE'#9'10'#9#932#951#955'. '#922#953#957#951#964#972#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace

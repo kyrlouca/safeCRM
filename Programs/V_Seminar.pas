@@ -228,6 +228,9 @@ type
     MonoRGP: TwwRadioGroup;
     Companylbl: TLabel;
     CompanyFLD: TwwDBLookupCombo;
+    SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
+    Label6: TLabel;
+    wwDBEdit6: TwwDBEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

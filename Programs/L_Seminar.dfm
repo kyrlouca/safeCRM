@@ -389,7 +389,7 @@ object L_SeminarFRM: TL_SeminarFRM
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
-      Left = 720
+      Left = 721
       Top = 1
       Width = 224
       Height = 360
@@ -397,6 +397,7 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 720
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -555,9 +556,9 @@ object L_SeminarFRM: TL_SeminarFRM
       end
     end
     object RzPanel2: TRzPanel
-      Left = 96
+      Left = 57
       Top = 1
-      Width = 624
+      Width = 664
       Height = 360
       Align = alLeft
       BorderOuter = fsNone
@@ -565,11 +566,12 @@ object L_SeminarFRM: TL_SeminarFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 624
+        Width = 664
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 624
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -703,15 +705,18 @@ object L_SeminarFRM: TL_SeminarFRM
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 625
+        Width = 664
         Height = 327
+        ControlType.Strings = (
+          'SEMINAR_CORP_TYPE;CustomEdit;wwDBComboBox1;F')
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
           'SEMINAR_NAME'#9'20'#9#928#949#961#953#947#961#945#966#942
+          'SEMINAR_CORP_TYPE'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972
+          'LAST_NAME'#9'18'#9#917#964#945#953#961#949#943#945
           'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
           'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
-          'DURATION_HOURS'#9'10'#9#911#961#949#962
-          'DURATION_DAYS'#9'10'#9#924#941#961#949#962)
+          'DURATION_HOURS'#9'4'#9#911#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -740,12 +745,34 @@ object L_SeminarFRM: TL_SeminarFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
+        object wwDBComboBox1: TwwDBComboBox
+          Left = 92
+          Top = 144
+          Width = 76
+          Height = 22
+          ShowButton = False
+          Style = csDropDownList
+          MapList = True
+          AllowClearKey = False
+          AutoDropDown = True
+          DataField = 'SEMINAR_CORP_TYPE'
+          DataSource = TableSRC
+          DropDownCount = 8
+          ItemHeight = 0
+          Items.Strings = (
+            #924#972#957#959'-'#917#960#967'.'#9'M'
+            #928#972#955#965'-'#917#960#967'.'#9'P')
+          ItemIndex = 0
+          Sorted = False
+          TabOrder = 0
+          UnboundDataType = wwDefault
+        end
       end
     end
     object RzPanel4: TRzPanel
       Left = 1
       Top = 1
-      Width = 95
+      Width = 56
       Height = 360
       Align = alLeft
       Alignment = taLeftJustify
@@ -819,11 +846,15 @@ object L_SeminarFRM: TL_SeminarFRM
     UpdateTransaction = WriteTrans
     SQL.Strings = (
       'SELECT'
-      'sem.*,sa.description,sa.description_greek'
+      'sem.*,sa.description,sa.description_greek, per.last_name'
       'FROM'
       '    seminar sem left outer join'
+      
+        '    person per on sem.fk_company_person_serial= per.serial_numbe' +
+        'r left outer join'
       '    status_activity sa on sem.status=sa.status'
-      'order by date_started'
+      'order by date_started desc'
+      ''
       '')
     Active = True
     AfterInsert = TableSQLAfterInsert
@@ -840,6 +871,22 @@ object L_SeminarFRM: TL_SeminarFRM
       FieldName = 'SEMINAR_NAME'
       Size = 160
     end
+    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
+      DisplayLabel = #917#960#953#967#949#953#961#953#963#953#945#954#972
+      DisplayWidth = 13
+      FieldName = 'SEMINAR_CORP_TYPE'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#964#945#953#961#949#943#945
+      DisplayWidth = 18
+      FieldName = 'LAST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
     object TableSQLDATE_STARTED: TDateField
       DisplayLabel = #904#957#945#961#958#951
       DisplayWidth = 12
@@ -852,24 +899,18 @@ object L_SeminarFRM: TL_SeminarFRM
     end
     object TableSQLDURATION_HOURS: TIntegerField
       DisplayLabel = #911#961#949#962
-      DisplayWidth = 10
+      DisplayWidth = 4
       FieldName = 'DURATION_HOURS'
     end
     object TableSQLDURATION_DAYS: TIntegerField
       DisplayLabel = #924#941#961#949#962
-      DisplayWidth = 10
+      DisplayWidth = 7
       FieldName = 'DURATION_DAYS'
+      Visible = False
     end
     object TableSQLFK_SEMINAR: TIntegerField
       FieldName = 'FK_SEMINAR'
       Visible = False
-    end
-    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      Visible = False
-      FixedChar = True
-      Size = 1
     end
     object TableSQLFK_INSTRUCTOR: TIntegerField
       FieldName = 'FK_INSTRUCTOR'

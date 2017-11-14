@@ -387,12 +387,16 @@ end;
 
 procedure TI_InvoiceSeminarFRM.CanelBTNClick(Sender: TObject);
 begin
+
+
   InvoiceSQL.Cancel;
   if  InvoiceSQL.UpdatesPending then begin
+//    InvoiceSQL.CancelUpdates;
 
-    InvoiceSQL.CancelUpdates;
     if InvoiceSQL.Connection.InTransaction then
+//      InvoiceSQL.Connection.StartTransaction;
       INvoiceSQL.Connection.Rollback;
+
   end;
 
 end;
