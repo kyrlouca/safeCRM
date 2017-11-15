@@ -31,7 +31,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1026
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -53,7 +52,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 1026
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -62,7 +60,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 925
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -147,7 +144,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 1026
     object Nav1: TwwDBNavigator
       Left = 1
       Top = 7
@@ -253,7 +249,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Height = 423
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 1026
     object Panel5: TPanel
       Left = 329
       Top = 1
@@ -271,7 +266,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 640
         object wwDBNavigator2: TwwDBNavigator
           Left = 20
           Top = 15
@@ -432,7 +426,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
-        ExplicitWidth = 640
         object RzPanel6: TRzPanel
           Left = 570
           Top = 0
@@ -441,7 +434,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitLeft = 539
         end
         object SavePresBTN: TBitBtn
           Left = 6
@@ -602,7 +594,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           'FirstName'#9'15'#9'FirstName'
           'AMOUNT_GROSS'#9'9'#9'Charge'
           'IS_ANAD'#9'1'#9#913#925#913#916
-          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'#9'F'
+          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'
           'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'
           'AMOUNT_VAT'#9'10'#9'VAT'
           'AMOUNT_WITH_VAT'#9'10'#9'Total')
@@ -704,7 +696,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 2
-        ExplicitTop = 219
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158

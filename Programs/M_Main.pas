@@ -49,6 +49,7 @@ type
     N7: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
+    N10: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -66,6 +67,7 @@ type
     procedure N7Click(Sender: TObject);
     procedure N9Click(Sender: TObject);
     procedure SystemParameters1Click(Sender: TObject);
+    procedure N10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -82,7 +84,7 @@ implementation
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
-  L_Companies;
+  L_Companies, R_invoices;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -122,6 +124,11 @@ begin
 //TODO companies used as persons (type=company) for invoice reasons
 //TODO  system->allow delete an invoice!
 //Cannot delete seminar if approved --> system change status
+end;
+
+procedure TM_mainFRM.N10Click(Sender: TObject);
+begin
+gpShowModal(TR_InvoicesFRM);
 end;
 
 procedure TM_mainFRM.N1Click(Sender: TObject);

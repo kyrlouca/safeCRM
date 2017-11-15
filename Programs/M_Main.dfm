@@ -7409,18 +7409,22 @@ object M_mainFRM: TM_mainFRM
         OnClick = HelpFile1Click
       end
     end
-    object Reports1: TMenuItem
-      Caption = 'Reports'
-      object Reminders1: TMenuItem
-        Caption = #933#960#949#957#952#965#956#943#963#949#953#962
-        OnClick = Reminders1Click
-      end
-    end
     object N8: TMenuItem
       Caption = #917#961#947#945#963#943#949#962
       object N9: TMenuItem
         Caption = #916#953#945#967#949#943#961#953#963#951' '#917#961#947#945#963#953#974#957
         OnClick = N9Click
+      end
+    end
+    object Reports1: TMenuItem
+      Caption = 'Reports'
+      object Reminders1: TMenuItem
+        Caption = #917#961#947#945#963#943#949#962
+        OnClick = Reminders1Click
+      end
+      object N10: TMenuItem
+        Caption = #932#953#956#959#955#972#947#953#945
+        OnClick = N10Click
       end
     end
   end

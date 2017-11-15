@@ -253,35 +253,8 @@ procedure TI_InvoiceSeminarFRM.FormActivate(Sender: TObject);
 var
   params:G_generalProcs.TParameterRecord;
 begin
-//  if TableSQL.Connection.InTransaction then
-//    showMessage('in trans');
-  params:=G_generalProcs.GetGeneralParam(cn,'Ô00');
-  VatRate:=params.P_Float1;
-  VatFLD.Text:= formatfloat('#,##0', VatRate);
   ksOpenTables([TableSQL]);
 
-//  if not InvoiceSQL.Connection.InTransaction then
-//    InvoiceSQL.Connection.StartTransaction;
-
-//  TableSQL.Close;
-//  TableSQL.AddWhere('last_name <> ''1222'' ');
-//  TableSQL.Open;
-
-//  if InvoiceSQL.Connection.InTransaction then
-//    showMessage('in trans');
-
-//    showMessage('in trans');
-//    showMessage(InvoiceSQL.Connection.DefaultTransaction.Name);
-
-//  if TableSQL.Transaction.Active then begin
-//    showMessage(TableSQL.Transaction.Name);
-//  end;
-
-//  if TableSQL.Connection.InTransaction then begin
-//    showMessage('def'+TableSQL.Connection.DefaultTransaction.Name);
-//    showMessage('index:'+TableSQL.Connection.Transactions[1].Name);
-//    ShowMessage(inttostr(TableSQL.Connection.TransactionCount));
-//  end;
 
 
 end;
