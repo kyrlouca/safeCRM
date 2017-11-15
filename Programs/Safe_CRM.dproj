@@ -159,8 +159,8 @@
             <Form>L_SeminarFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_invoices.pas">
-            <Form>R_InvoicesFRM</Form>
+        <DCCReference Include="V_SeminarStages.pas">
+            <Form>V_SeminarStagesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

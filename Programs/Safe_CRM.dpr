@@ -20,7 +20,7 @@ uses
   M_Company in 'M_Company.pas' {M_CompanyFRM},
   L_Companies in 'L_Companies.pas' {L_companiesFRM},
   L_Seminar in 'L_Seminar.pas' {L_SeminarFRM},
-  R_invoices in 'R_invoices.pas' {R_InvoicesFRM};
+  V_SeminarStages in 'V_SeminarStages.pas' {V_SeminarStagesFRM};
 
 {$R *.res}
 
@@ -30,7 +30,7 @@ begin
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
   Application.CreateForm(TH_HelpFRM, H_HelpFRM);
-  Application.CreateForm(TR_InvoicesFRM, R_InvoicesFRM);
+  Application.CreateForm(TV_SeminarStagesFRM, V_SeminarStagesFRM);
   Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
   Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
   Application.CreateForm(TP_attendanceFRM, P_attendanceFRM);
@@ -39,6 +39,5 @@ begin
   Application.CreateForm(TL_companiesFRM, L_companiesFRM);
   Application.CreateForm(TL_companiesFRM, L_companiesFRM);
   Application.CreateForm(TL_SeminarFRM, L_SeminarFRM);
-
   Application.Run;
 end.
