@@ -10,8 +10,7 @@ type
 
   TU_databaseFRM = class(TDataModule)
     DataConnection: TIBCConnection;
-    ReadOnlyTrans: TIBCTransaction;
-    UpdateTrans: TIBCTransaction;
+    DatabaseUpdateTrans: TIBCTransaction;
     IBCSQLMonitor1: TIBCSQLMonitor;
     procedure DataModuleCreate(Sender: TObject);
   private

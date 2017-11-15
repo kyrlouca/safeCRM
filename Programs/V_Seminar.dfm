@@ -374,7 +374,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
         end
         object SecondGRP: TRzGroupBox
-          Left = 405
+          Left = 404
           Top = 23
           Width = 321
           Height = 298

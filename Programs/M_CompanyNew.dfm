@@ -472,9 +472,9 @@ object M_companyNewFRM: TM_companyNewFRM
       Width = 1078
       Height = 421
       Hint = ''
-      ActivePage = EmpolyeesTS
+      ActivePage = InfoTS
       Align = alClient
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 2
       ExplicitWidth = 999
       FixedDimension = 19

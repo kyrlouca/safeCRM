@@ -7396,14 +7396,9 @@ object M_mainFRM: TM_mainFRM
       end
       object Params1: TMenuItem
         Caption = 'Params'
-        object EmailSMSmessages1: TMenuItem
-          Caption = 'Email/SMS messages'
-        end
-        object XMLparameters2: TMenuItem
-          Caption = 'XML parameters'
-        end
         object SystemParameters1: TMenuItem
           Caption = 'System Parameters'
+          OnClick = SystemParameters1Click
         end
       end
     end

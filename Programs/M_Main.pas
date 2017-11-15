@@ -33,8 +33,6 @@ type
     BaseTables1: TMenuItem;
     Countries2: TMenuItem;
     Params1: TMenuItem;
-    EmailSMSmessages1: TMenuItem;
-    XMLparameters2: TMenuItem;
     SystemParameters1: TMenuItem;
     Help1: TMenuItem;
     N1: TMenuItem;
@@ -67,6 +65,7 @@ type
     procedure LoginBTNClick(Sender: TObject);
     procedure N7Click(Sender: TObject);
     procedure N9Click(Sender: TObject);
+    procedure SystemParameters1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -119,9 +118,10 @@ begin
 //TODO  only if student has more than %presence in ALL subjects (some students may attend a subject in another seminar)
 //TODO  seminar has Status (intial, planned, completed, etc,)
 //TODO   seminar-tabsheets save aux tables with ACCEPT button. Save on Close
-//TODO   DISCOUNTS
 //TODO Reports
 //TODO companies used as persons (type=company) for invoice reasons
+//TODO  system->allow delete an invoice!
+//Cannot delete seminar if approved --> system change status
 end;
 
 procedure TM_mainFRM.N1Click(Sender: TObject);
@@ -181,6 +181,11 @@ procedure TM_mainFRM.SpeedButton1Click(Sender: TObject);
 begin
   gpShowModal(TL_SeminarFRM);
 
+end;
+
+procedure TM_mainFRM.SystemParameters1Click(Sender: TObject);
+begin
+  gpShowModal(TM_paramsFRM);
 end;
 
 end.

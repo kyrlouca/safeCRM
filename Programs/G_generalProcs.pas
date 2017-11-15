@@ -40,6 +40,7 @@ Function SortGrid(TheTable:TIBCQUery;AFieldName:String;SortInfo:TSortInfo):Boole
 
 Function GetTheSystemParameter(cn:TIBCConnection; Const Key:String):TParameterREcord;
 Function GetOneSystemParameter(cn:TIBCConnection ;TheKey,TheDescription:String;var Int1,Int2:Integer;var Num1:Double; Var Str1,str2:String):Boolean;
+Function GetGeneralParam(cn:TIBCConnection ;Const Key:String):TParameterREcord;
 
 
 Function ConvertDate(Const TheString:String):Tdate;
@@ -212,6 +213,36 @@ Begin
 
 End;
 
+Function GetGeneralParam(cn:TIBCConnection ;Const Key:String):TParameterREcord;
+Var
+        x1:Double;
+        qr:TksQuery;
+Begin
+  try
+    qr:=TksQuery.Create(cn,' select *  from GENERAL_PARAMETER where CODE = :TheKey');
+    qr.ParambyName('TheKey').Value:= Key;
+    qr.Open;
+    If  qr.IsEmpty then begin
+      Result.P_ID:='';
+      exit;
+    end;
+    with qr do begin
+        Result.P_ID :=qr.FieldByName('code').assTRING;
+        Result.P_Integer1:=FieldByName('Int_1').asInteger;
+        Result.P_Integer2:=FieldByName('Int_2').asInteger;
+        Result.P_String1:=FieldByName('Str_1').asString;
+        Result.P_String2:=FieldByName('Str_2').asString;
+        Result.P_String3:=FieldByName('Str_3').asString;
+        Result.P_String4:=FieldByName('Str_4').asString;
+        Result.P_String5:=FieldByName('Str_5').asString;
+        Result.P_Float1:=FieldByName('FLOat_1').asFloat;
+        Result.P_Float2:=FieldByName('Float_2').asFloat;
+     end;
+  finally
+    qr.Free;
+  end;
+
+End;
 
 
 Function ConvertDate(Const TheString:String):Tdate;

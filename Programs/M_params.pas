@@ -50,18 +50,18 @@ type
     RzBitBtn1: TRzBitBtn;
     RzBitBtn2: TRzBitBtn;
     FindParamSRC: TIBCDataSource;
-    FindGeneralParameterSQLCODE: TStringField;
+    FindGeneralParameterSQLCODE: TWideStringField;
     FindGeneralParameterSQLINT_1: TIntegerField;
     FindGeneralParameterSQLINT_2: TIntegerField;
-    FindGeneralParameterSQLSTR_1: TStringField;
-    FindGeneralParameterSQLSTR_2: TStringField;
-    FindGeneralParameterSQLSTR_3: TStringField;
-    FindGeneralParameterSQLSTR_4: TStringField;
-    FindGeneralParameterSQLSTR_5: TStringField;
-    FindGeneralParameterSQLSTR_6: TStringField;
+    FindGeneralParameterSQLSTR_1: TWideStringField;
+    FindGeneralParameterSQLSTR_2: TWideStringField;
+    FindGeneralParameterSQLSTR_3: TWideStringField;
+    FindGeneralParameterSQLSTR_4: TWideStringField;
+    FindGeneralParameterSQLSTR_5: TWideStringField;
+    FindGeneralParameterSQLSTR_6: TWideStringField;
     FindGeneralParameterSQLFLOAT_1: TFloatField;
     FindGeneralParameterSQLFLOAT_2: TFloatField;
-    FindGeneralParameterSQLDESCRIPTION: TStringField;
+    FindGeneralParameterSQLDESCRIPTION: TWideStringField;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure OptionGRPClick(Sender: TObject);
@@ -193,11 +193,11 @@ procedure TM_paramsFRM.ShowOneRecord(RecordIndex:Integer);
 Const
 //        LabelValuesArray:Array[0..4,0..8] of String = (
         LabelValuesArray:Array[0..4] of TStringArray = (
-                ['T00','','','','','','','',''],
-                ['T01','Reports Title Main','','','Reports Title Second Line','Image File as Invoice logo','Report Footer 1','Report Footer 2',''],
-                ['T02','Unused','','','','','','',''],
-                ['T03','','VAT Rate','','','','','',''],
-                ['T04','','','','','','','','']
+                ['Ô00','Reports Title - First line ','VAT Rate','','','Image File as Invoice logo','','',''],
+                ['Ô01','','','','','','','',''],
+                ['Ô02','Unused','','','','','','',''],
+                ['T)3','','VAT Rate','','','','','',''],
+                ['Ô04','','','','','','','','']
                 );
 
 Var

@@ -33,8 +33,6 @@ object M_paramsFRM: TM_paramsFRM
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitTop = 374
-    ExplicitWidth = 753
     object Panel1: TPanel
       Left = 560
       Top = 2
@@ -43,7 +41,6 @@ object M_paramsFRM: TM_paramsFRM
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 616
       object BitBtn1: TRzBitBtn
         Left = 54
         Top = 1
@@ -134,7 +131,6 @@ object M_paramsFRM: TM_paramsFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 2
-    ExplicitWidth = 637
     object TitleLbl: TLabel
       Left = 1
       Top = 1
@@ -155,8 +151,6 @@ object M_paramsFRM: TM_paramsFRM
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
-    ExplicitWidth = 838
-    ExplicitHeight = 196
     object OptionGRP: TRzRadioGroup
       Left = 534
       Top = 26
@@ -165,10 +159,8 @@ object M_paramsFRM: TM_paramsFRM
       Caption = 'Selection'
       ItemIndex = 0
       Items.Strings = (
-        'Zero Param'
-        'First Param'
-        'Second Param'
-        '')
+        'General Params'
+        'Other Params')
       TabOrder = 0
       OnClick = OptionGRPClick
     end
@@ -822,11 +814,11 @@ object M_paramsFRM: TM_paramsFRM
         Name = 'Code'
         Value = nil
       end>
-    object FindGeneralParameterSQLCODE: TStringField
+    object FindGeneralParameterSQLCODE: TWideStringField
       FieldName = 'CODE'
       Required = True
       FixedChar = True
-      Size = 12
+      Size = 3
     end
     object FindGeneralParameterSQLINT_1: TIntegerField
       FieldName = 'INT_1'
@@ -834,29 +826,29 @@ object M_paramsFRM: TM_paramsFRM
     object FindGeneralParameterSQLINT_2: TIntegerField
       FieldName = 'INT_2'
     end
-    object FindGeneralParameterSQLSTR_1: TStringField
+    object FindGeneralParameterSQLSTR_1: TWideStringField
       FieldName = 'STR_1'
-      Size = 640
+      Size = 160
     end
-    object FindGeneralParameterSQLSTR_2: TStringField
+    object FindGeneralParameterSQLSTR_2: TWideStringField
       FieldName = 'STR_2'
-      Size = 640
+      Size = 160
     end
-    object FindGeneralParameterSQLSTR_3: TStringField
+    object FindGeneralParameterSQLSTR_3: TWideStringField
       FieldName = 'STR_3'
-      Size = 320
+      Size = 80
     end
-    object FindGeneralParameterSQLSTR_4: TStringField
+    object FindGeneralParameterSQLSTR_4: TWideStringField
       FieldName = 'STR_4'
-      Size = 320
+      Size = 80
     end
-    object FindGeneralParameterSQLSTR_5: TStringField
+    object FindGeneralParameterSQLSTR_5: TWideStringField
       FieldName = 'STR_5'
-      Size = 320
+      Size = 80
     end
-    object FindGeneralParameterSQLSTR_6: TStringField
+    object FindGeneralParameterSQLSTR_6: TWideStringField
       FieldName = 'STR_6'
-      Size = 320
+      Size = 80
     end
     object FindGeneralParameterSQLFLOAT_1: TFloatField
       FieldName = 'FLOAT_1'
@@ -864,9 +856,9 @@ object M_paramsFRM: TM_paramsFRM
     object FindGeneralParameterSQLFLOAT_2: TFloatField
       FieldName = 'FLOAT_2'
     end
-    object FindGeneralParameterSQLDESCRIPTION: TStringField
+    object FindGeneralParameterSQLDESCRIPTION: TWideStringField
       FieldName = 'DESCRIPTION'
-      Size = 320
+      Size = 80
     end
   end
   object FindParamSRC: TIBCDataSource
