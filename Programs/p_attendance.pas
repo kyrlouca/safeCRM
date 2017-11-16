@@ -54,22 +54,6 @@ type
     wwNavButton3: TwwNavButton;
     RzPanel4: TRzPanel;
     Grid1: TwwDBGrid;
-    TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLFK_SEMINAR: TIntegerField;
-    TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
-    TableSQLFK_INSTRUCTOR: TIntegerField;
-    TableSQLFK_VENUE: TIntegerField;
-    TableSQLDATE_STARTED: TDateField;
-    TableSQLDATE_COMPLETED: TDateField;
-    TableSQLDURATION_DAYS: TIntegerField;
-    TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLCOST_ACTUAL: TFloatField;
-    TableSQLAMOUNT_ANAD: TFloatField;
-    TableSQLCOMMENTS: TWideStringField;
-    TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLCOST_ESTIMATE: TFloatField;
-    TableSQLSTATUS: TWideStringField;
     RzDBLabel1: TRzDBLabel;
     RzDBLabel2: TRzDBLabel;
     Label9: TLabel;
@@ -96,6 +80,28 @@ type
     CanelBTN: TBitBtn;
     wwDBNavigator1Button: TwwNavButton;
     wwDBLookupCombo2: TwwDBLookupCombo;
+    TableSQLSERIAL_NUMBER: TIntegerField;
+    TableSQLFK_SEMINAR: TIntegerField;
+    TableSQLFK_INSTRUCTOR: TIntegerField;
+    TableSQLFK_VENUE: TIntegerField;
+    TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    TableSQLSEMINAR_NAME: TWideStringField;
+    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
+    TableSQLDATE_STARTED: TDateField;
+    TableSQLDATE_COMPLETED: TDateField;
+    TableSQLDURATION_DAYS: TIntegerField;
+    TableSQLDURATION_HOURS: TIntegerField;
+    TableSQLFEE_ACTUAL: TFloatField;
+    TableSQLAMOUNT_ANAD: TFloatField;
+    TableSQLCOMMENTS: TWideStringField;
+    TableSQLANAD_APPROVED: TWideStringField;
+    TableSQLFEE_ESTIMATE: TFloatField;
+    TableSQLSTATUS: TWideStringField;
+    TableSQLIS_INVOICED: TWideStringField;
+    TableSQLIS_CERTIFICATED: TWideStringField;
+    TableSQLMAX_CAPACITY: TIntegerField;
+    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
+    VPresenceSQLHours_Present: TStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -113,6 +119,7 @@ type
     procedure wwDBLookupCombo1Change(Sender: TObject);
     procedure DaySQLAfterScroll(DataSet: TDataSet);
     procedure SavePresBTNClick(Sender: TObject);
+    procedure VPresenceSQLNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -204,7 +211,12 @@ begin
   VpresenceSQL.Open;
   SeminarSerial:=DaySQL.FieldByName('SeminarSerial').AsInteger;
   daySerial:=DaySQL.FieldByName('Dayserial').AsInteger;
-   UpdatePresenceTable(seminarSerial,daySerial);
+  if Dayserial=0 then begin
+    VpresenceSQL.Close;
+    VpresenceSQL.OPen;
+    exit;
+  end;
+  UpdatePresenceTable(seminarSerial,daySerial);
 end;
 
 procedure TP_attendanceFRM.TableSQLAfterScroll(DataSet: TDataSet);
@@ -237,12 +249,29 @@ procedure TP_attendanceFRM.UpdatePresenceTable(const seminarSerial, DaySerial:in
 var
   qr:TksQuery;
   str:string;
+  hours:integer;
+  DayDuration:Integer;
+  IsPresent:String;
 begin
+
+//populate memory table from database tables
+
 // Get all the persons in the seminar (from seminar_person)
 //and attach to them a person_presence for that day (if there is one)
 // person presence is attached to a person and a day
 //complicate but neccessary. Cannot just use the seminar outer with presence because
 // it will get presence from different days
+
+
+qr:= TksQuery.Create(cn,'select * from  seminar_subject_day where serial_number= :daySerial');
+  try
+    qr.ParamByName('daySerial').AsInteger:=DaySerial;
+    qr.Open;
+    dayDuration:=qr.FieldByName('duration_hours').AsInteger;
+    qr.Close;
+  finally
+    qr.Free;
+  end;
 
 str:=
   ' select * from ('
@@ -257,17 +286,17 @@ str:=
   +'  ) as xOut'
   +'  left outer join'
   +'  ('
-  +'        select'
-  +''
-  +'          inPP.fk_person_serial as PersonSerial, inPP.is_present,inPP.percentage_present'
-  +'        from'
-  +'        seminar_person inSP inner join'
-  +'        person_presence inPP on inPP.fk_person_serial= inSP.fk_person_serial'
-  +'        where'
-  +'        inSP.fk_seminar_serial= :SeminarSerial and inPP.fk_day_serial = :DaySerial'
+  +'    select'
+  +'      inPP.fk_person_serial as PersonSerial, inPP.is_present,inPP.percentage_present,inPP.hours_present '
+  +'    from'
+  +'            seminar_person inSP inner join'
+  +'            person_presence inPP on inPP.fk_person_serial= inSP.fk_person_serial'
+  +'    where'
+  +'            inSP.fk_seminar_serial= :SeminarSerial and inPP.fk_day_serial = :DaySerial'
   +'  )as yIn'
   +'  on  xOUt.PersonSerial = yIN.PersonSerial'
   +'  order by last_name desc, first_name desc';
+
 
 
   if not VPresenceSQL.Active then
@@ -285,8 +314,15 @@ str:=
 
       VPresenceSQL.FieldByName('PersonSerial').Value:=qr.FieldByName('PersonSerial').AsInteger;
       VPresenceSQL.FieldByName('DaySerial').Value:= DaySerial; //may be null if no person_presence
-
+//  seminar_subject_day
       VPresenceSQL.FieldByName('Percentage_present').Value:=qr.FieldByName('percentage_present').AsInteger;
+      hours :=qr.FieldByName('Hours_present').AsInteger;
+      if Hours=0 then begin
+        VPresenceSQL.FieldByName('Hours_present').Value:=DayDuration;
+      end else begin
+        VPresenceSQL.FieldByName('Hours_present').Value:=qr.FieldByName('Hours_present').AsInteger;
+      end;
+
       VPresenceSQL.FieldByName('is_present').Value:=qr.FieldByName('is_present').AsString;
       vPresenceSQL.Post;
 
@@ -295,6 +331,11 @@ str:=
   finally
     qr.Free;
   end;
+end;
+
+procedure TP_attendanceFRM.VPresenceSQLNewRecord(DataSet: TDataSet);
+begin
+Dataset.FieldByName('hours_present').AsInteger:=99;
 end;
 
 procedure TP_attendanceFRM.SavePresBTNClick(Sender: TObject);
@@ -311,11 +352,12 @@ var
   PersonSerial,DaySerial :Integer;
   IsPresent :String;
   Percentage: Integer;
+  Hours:Integer;
 begin
 str:=
   ' Insert Into person_presence'
-  +'  (serial_number, fk_person_serial, fk_day_serial,is_present,percentage_present)'
-  +'  values( :serial, :personSerial, :DaySerial, :isPresent,:percentage)' ;
+  +'  (serial_number, fk_person_serial, fk_day_serial,is_present,percentage_present,hours_present)'
+  +'  values( :serial, :personSerial, :DaySerial, :isPresent,:percentage,:hours)' ;
 
   VPresenceSQL.First;
   while not  VPresenceSQL.Eof do begin
@@ -323,12 +365,13 @@ str:=
     personSerial:=VPresenceSQL.FieldByName('PersonSerial').AsInteger;
     DaySerial:=VPresenceSQL.FieldByName('DaySerial').AsInteger;
     Percentage:=VPresenceSQL.FieldByName('Percentage_Present').AsInteger;
+    Hours:=VPresenceSQL.FieldByName('Hours_Present').AsInteger;
     IsPresent:=VPresenceSQL.FieldByName('Is_present').AsString;
     if IsPresent='' then IsPresent:='N';
     if Percentage>0 then  IsPresent:='Y';
 
     ksExecSQLVar(cn,'delete from person_presence where fk_person_serial= :Ps and fk_day_serial= :ds',[PersonSerial,DaySerial]);
-    ksExecSQLVar(cn,str,[serial,PersonSerial,DaySerial,IsPresent,Percentage]);
+    ksExecSQLVar(cn,str,[serial,PersonSerial,DaySerial,IsPresent,Percentage,Hours]);
 
     VPresenceSQL.Next;
   end;

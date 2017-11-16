@@ -271,7 +271,8 @@ object P_attendanceFRM: TP_attendanceFRM
           'Last_name'#9'16'#9#917#960#943#952#949#964#959
           'First_Name'#9'10'#9#908#957#959#956#945
           'Is_Present'#9'7'#9#928#945#961#974#957
-          'percentage_present'#9'9'#9'% '#911#961#945#962)
+          'percentage_present'#9'9'#9'% '#911#961#945#962
+          'Hours_Present'#9'6'#9'Hours')
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -578,7 +579,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object wwDBLookupCombo1: TwwDBLookupCombo
         Left = 91
-        Top = 13
+        Top = 15
         Width = 121
         Height = 21
         DropDownAlignment = taLeftJustify
@@ -813,7 +814,7 @@ object P_attendanceFRM: TP_attendanceFRM
         Items.Strings = (
           #924#972#957#959'-'#917#960#967'.'#9'M'
           #928#972#955#965'-'#917#960#967'.'#9'P')
-        ItemIndex = 1
+        ItemIndex = 0
         Sorted = False
         TabOrder = 1
         UnboundDataType = wwDefault
@@ -826,16 +827,19 @@ object P_attendanceFRM: TP_attendanceFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYPE, F' +
-        'K_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATION_D' +
-        'AYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_AP' +
-        'PROVED, COST_ESTIMATE, STATUS_ACTIVITY)'
+        '  (SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_COMPAN' +
+        'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
+        'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
+        'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
+        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :SEMINAR_NAME, :SEMINAR_CORP_TYP' +
-        'E, :FK_INSTRUCTOR, :FK_VENUE, :DATE_STARTED, :DATE_COMPLETED, :D' +
-        'URATION_DAYS, :DURATION_HOURS, :COST_ACTUAL, :AMOUNT_ANAD, :COMM' +
-        'ENTS, :ANAD_APPROVED, :COST_ESTIMATE, :STATUS_ACTIVITY)')
+        '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
+        'OMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP_TYPE, :DATE_S' +
+        'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
+        'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
+        'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH' +
+        '_ANAD_SUB)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -844,22 +848,27 @@ object P_attendanceFRM: TP_attendanceFRM
       'UPDATE SEMINAR'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, SEMI' +
-        'NAR_NAME = :SEMINAR_NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE' +
-        ', FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, DATE_STA' +
-        'RTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION' +
-        '_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, COST_A' +
-        'CTUAL = :COST_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :CO' +
-        'MMENTS, ANAD_APPROVED = :ANAD_APPROVED, COST_ESTIMATE = :COST_ES' +
-        'TIMATE, STATUS_ACTIVITY = :STATUS_ACTIVITY'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, FK_I' +
+        'NSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, FK_COMPANY_PER' +
+        'SON_SERIAL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_' +
+        'NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE, DATE_STARTED = :DA' +
+        'TE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :D' +
+        'URATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FE' +
+        'E_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD' +
+        '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
+        ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
+        'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :F' +
+        'EE_WITH_ANAD_SUB'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, SEMINAR_NAME, SEMINAR_CORP_TYP' +
-        'E, FK_INSTRUCTOR, FK_VENUE, DATE_STARTED, DATE_COMPLETED, DURATI' +
-        'ON_DAYS, DURATION_HOURS, COST_ACTUAL, AMOUNT_ANAD, COMMENTS, ANA' +
-        'D_APPROVED, COST_ESTIMATE, STATUS_ACTIVITY FROM SEMINAR'
+        'SELECT SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_CO' +
+        'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
+        'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
+        'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
+        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB FROM SE' +
+        'MINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -893,6 +902,15 @@ object P_attendanceFRM: TP_attendanceFRM
     object TableSQLFK_SEMINAR: TIntegerField
       FieldName = 'FK_SEMINAR'
     end
+    object TableSQLFK_INSTRUCTOR: TIntegerField
+      FieldName = 'FK_INSTRUCTOR'
+    end
+    object TableSQLFK_VENUE: TIntegerField
+      FieldName = 'FK_VENUE'
+    end
+    object TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_COMPANY_PERSON_SERIAL'
+    end
     object TableSQLSEMINAR_NAME: TWideStringField
       FieldName = 'SEMINAR_NAME'
       Size = 160
@@ -903,19 +921,11 @@ object P_attendanceFRM: TP_attendanceFRM
       FixedChar = True
       Size = 1
     end
-    object TableSQLFK_INSTRUCTOR: TIntegerField
-      FieldName = 'FK_INSTRUCTOR'
-    end
-    object TableSQLFK_VENUE: TIntegerField
-      FieldName = 'FK_VENUE'
-    end
     object TableSQLDATE_STARTED: TDateField
       FieldName = 'DATE_STARTED'
-      DisplayFormat = 'dd/mm/yyyy'
     end
     object TableSQLDATE_COMPLETED: TDateField
       FieldName = 'DATE_COMPLETED'
-      DisplayFormat = 'dd/mm/yyyy'
     end
     object TableSQLDURATION_DAYS: TIntegerField
       FieldName = 'DURATION_DAYS'
@@ -923,8 +933,8 @@ object P_attendanceFRM: TP_attendanceFRM
     object TableSQLDURATION_HOURS: TIntegerField
       FieldName = 'DURATION_HOURS'
     end
-    object TableSQLCOST_ACTUAL: TFloatField
-      FieldName = 'COST_ACTUAL'
+    object TableSQLFEE_ACTUAL: TFloatField
+      FieldName = 'FEE_ACTUAL'
     end
     object TableSQLAMOUNT_ANAD: TFloatField
       FieldName = 'AMOUNT_ANAD'
@@ -939,13 +949,32 @@ object P_attendanceFRM: TP_attendanceFRM
       FixedChar = True
       Size = 1
     end
-    object TableSQLCOST_ESTIMATE: TFloatField
-      FieldName = 'COST_ESTIMATE'
+    object TableSQLFEE_ESTIMATE: TFloatField
+      FieldName = 'FEE_ESTIMATE'
     end
     object TableSQLSTATUS: TWideStringField
       FieldName = 'STATUS'
       FixedChar = True
       Size = 1
+    end
+    object TableSQLIS_INVOICED: TWideStringField
+      FieldName = 'IS_INVOICED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLIS_CERTIFICATED: TWideStringField
+      FieldName = 'IS_CERTIFICATED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLMAX_CAPACITY: TIntegerField
+      FieldName = 'MAX_CAPACITY'
+      Required = True
+    end
+    object TableSQLFEE_WITH_ANAD_SUB: TFloatField
+      FieldName = 'FEE_WITH_ANAD_SUB'
     end
   end
   object WriteTrans: TIBCTransaction
@@ -1022,7 +1051,7 @@ object P_attendanceFRM: TP_attendanceFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     Active = True
     AfterScroll = DaySQLAfterScroll
-    Left = 305
+    Left = 273
     Top = 101
     ParamData = <
       item
@@ -1136,7 +1165,13 @@ object P_attendanceFRM: TP_attendanceFRM
       item
         Name = 'DaySerial'
         DataType = ftInteger
+      end
+      item
+        Name = 'Hours_Present'
+        DataType = ftString
+        Size = 20
       end>
+    OnNewRecord = VPresenceSQLNewRecord
     Left = 448
     Top = 372
     object VPresenceSQLPersonSerial: TIntegerField
@@ -1172,6 +1207,11 @@ object P_attendanceFRM: TP_attendanceFRM
       DisplayWidth = 9
       FieldName = 'percentage_present'
       DisplayFormat = '0%'
+    end
+    object VPresenceSQLHours_Present: TStringField
+      DisplayLabel = 'Hours'
+      DisplayWidth = 6
+      FieldName = 'Hours_Present'
     end
   end
 end
