@@ -34,12 +34,6 @@ type
     FirstFLD: TwwDBEdit;
     wwCheckBox1: TwwCheckBox;
     wwDBComboBox1: TwwDBComboBox;
-    Nav1: TwwDBNavigator;
-    Nav1Prior: TwwNavButton;
-    Nav1Next: TwwNavButton;
-    Nav1Button1: TwwNavButton;
-    Nav1First: TwwNavButton;
-    Nav1SearchDialog: TwwNavButton;
     Label1: TLabel;
     wwDBLookupCombo1: TwwDBLookupCombo;
     vPresenceSRC: TIBCDataSource;
@@ -79,7 +73,6 @@ type
     SavePresBTN: TBitBtn;
     CanelBTN: TBitBtn;
     wwDBNavigator1Button: TwwNavButton;
-    wwDBLookupCombo2: TwwDBLookupCombo;
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLFK_SEMINAR: TIntegerField;
     TableSQLFK_INSTRUCTOR: TIntegerField;
@@ -102,6 +95,9 @@ type
     TableSQLMAX_CAPACITY: TIntegerField;
     TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     VPresenceSQLHours_Present: TStringField;
+    PresentFLD: TwwCheckBox;
+    wwDBNavigator1Button1: TwwNavButton;
+    wwDBNavigator1Button2: TwwNavButton;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -120,6 +116,8 @@ type
     procedure DaySQLAfterScroll(DataSet: TDataSet);
     procedure SavePresBTNClick(Sender: TObject);
     procedure VPresenceSQLNewRecord(DataSet: TDataSet);
+    procedure PresentFLDClick(Sender: TObject);
+    procedure VPresenceSQLBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -245,6 +243,32 @@ begin
 end;
 
 
+
+procedure TP_attendanceFRM.PresentFLDClick(Sender: TObject);
+var
+  IsPresent:Boolean;
+  hours:Integer;
+begin
+  if not PresentFLD.Modified then
+    exit;
+
+  if VPresenceSQL.State in [dsInactive] then
+    exit;
+
+  isPresent:=VPresenceSQL.FieldByName('is_present').AsString='Y';
+
+  if VPresenceSQL.State in [dsBrowse] then VPresenceSQL.Edit;
+
+
+  hours:=daySQL.FieldByName('DURATION_HOURS').AsInteger;
+
+  if PresentFLD.Checked then
+    VPresenceSQL.FieldByName('hours_present').Value:=hours
+  else
+    VPresenceSQL.FieldByName('Hours_present').Value:=0;
+
+end;
+
 procedure TP_attendanceFRM.UpdatePresenceTable(const seminarSerial, DaySerial:integer);
 var
   qr:TksQuery;
@@ -331,6 +355,26 @@ str:=
   finally
     qr.Free;
   end;
+end;
+
+procedure TP_attendanceFRM.VPresenceSQLBeforePost(DataSet: TDataSet);
+var
+   maxHours:Integer;
+begin
+
+  if Dataset.FieldByName('is_present').AsString<>'Y' then begin
+    Dataset.FieldByName('hours_present').AsInteger:=0;
+  end else begin
+    maxHours:=daySQL.FieldByName('DURATION_HOURS').AsInteger;
+    if Dataset.FieldByName('hours_Present').AsInteger < 0 then
+      Dataset.FieldByName('hours_present').AsInteger:=0;
+
+    if Dataset.FieldByName('hours_Present').AsInteger > maxHours then
+      Dataset.FieldByName('hours_present').AsInteger:=maxHours;
+
+
+  end;
+
 end;
 
 procedure TP_attendanceFRM.VPresenceSQLNewRecord(DataSet: TDataSet);
