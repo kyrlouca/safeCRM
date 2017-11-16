@@ -1,4 +1,4 @@
-object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
+object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
@@ -39,9 +39,9 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Height = 45
       Align = alClient
       Alignment = taCenter
-      Caption = #932#953#956#959#955#972#947#951#963#951' '#931#949#956#953#957#945#961#943#959#965
+      Caption = #904#954#948#959#963#951' '#916#953#960#955#969#956#940#964#969#957
       Layout = tlCenter
-      ExplicitWidth = 309
+      ExplicitWidth = 281
       ExplicitHeight = 32
     end
   end
@@ -144,103 +144,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    object Nav1: TwwDBNavigator
-      Left = 1
-      Top = 7
-      Width = 112
-      Height = 26
-      AutosizeStyle = asSizeNavButtons
-      DataSource = TableSRC
-      RepeatInterval.InitialDelay = 500
-      RepeatInterval.Interval = 100
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial'
-      Font.Style = []
-      object Nav1First: TwwNavButton
-        Left = 0
-        Top = 0
-        Width = 23
-        Height = 26
-        Hint = 'Insert new record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1First'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 0
-        Style = nbsFirst
-      end
-      object Nav1Prior: TwwNavButton
-        Left = 23
-        Top = 0
-        Width = 23
-        Height = 26
-        Hint = 'Move to prior record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Prior'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 1
-        Style = nbsPrior
-      end
-      object Nav1Next: TwwNavButton
-        Left = 46
-        Top = 0
-        Width = 22
-        Height = 26
-        Hint = 'Move to next record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Next'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 2
-        Style = nbsNext
-      end
-      object Nav1Button1: TwwNavButton
-        Left = 68
-        Top = 0
-        Width = 22
-        Height = 26
-        Hint = 'Move to last record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Button1'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 3
-        Style = nbsLast
-      end
-      object Nav1SearchDialog: TwwNavButton
-        Left = 90
-        Top = 0
-        Width = 22
-        Height = 26
-        Hint = 'Search the dataset'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1SearchDialog'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 4
-        Style = nbsSearchDialog
-      end
-    end
   end
   object Panel3: TPanel
     Left = 0
@@ -267,7 +170,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsNone
         TabOrder = 0
         object wwDBNavigator2: TwwDBNavigator
-          Left = 20
+          Left = 6
           Top = 15
           Width = 184
           Height = 26
@@ -359,6 +262,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Insert'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 4
@@ -580,28 +484,26 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           OnClick = CanelBTNClick
         end
       end
-      object InvoiceGRD: TwwDBGrid
+      object wwDBGrid1: TwwDBGrid
         Left = 6
         Top = 47
-        Width = 635
-        Height = 313
-        ControlType.Strings = (
-          'IS_ANAD;CustomEdit;AnadCheckFLD;F')
+        Width = 547
+        Height = 329
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
-          'FK_PERSON_SERIAL'#9'6'#9'P/P'
+          'FK_PERSON_SERIAL'#9'4'#9'PS/N'
           'LastName'#9'15'#9'LastName'
-          'FirstName'#9'15'#9'FirstName'
-          'AMOUNT_GROSS'#9'9'#9'Charge'
-          'IS_ANAD'#9'1'#9#913#925#913#916
-          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'
-          'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'
-          'AMOUNT_VAT'#9'10'#9'VAT'
-          'AMOUNT_WITH_VAT'#9'10'#9'Total')
+          'FirstName'#9'12'#9'FirstName'
+          'LAST_NAME'#9'12'#9'LAST_NAME'
+          'DATE_ISSUED'#9'12'#9'Date'
+          'HOURS_COMPLETED'#9'6'#9'Hours'
+          'PERCENTAGE_COMPLETED'#9'9'#9'% Complete'
+          'IS_VALID'#9'7'#9'Valid'
+          'FIRST_NAME'#9'30'#9'FIRST_NAME')
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
-        FixedCols = 5
+        FixedCols = 0
         ShowHorzScrollBar = True
         DataSource = InvoiceSRC
         TabOrder = 2
@@ -613,26 +515,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
-        OnCalcCellColors = InvoiceGRDCalcCellColors
-        OnColEnter = InvoiceGRDColEnter
-        object AnadCheckFLD: TwwCheckBox
-          Left = 72
-          Top = 128
-          Width = 32
-          Height = 16
-          DisableThemes = False
-          AlwaysTransparent = False
-          ValueChecked = 'Y'
-          ValueUnchecked = 'N'
-          DisplayValueChecked = 'Y'
-          DisplayValueUnchecked = 'N'
-          NullAndBlankState = cbUnchecked
-          DataField = 'IS_ANAD'
-          DataSource = InvoiceSRC
-          ShowText = False
-          TabOrder = 0
-          OnClick = AnadCheckFLDClick
-        end
       end
     end
     object PanelX: TRzPanel
@@ -643,19 +525,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      object Label9: TLabel
-        Left = 43
-        Top = 15
-        Width = 42
-        Height = 14
-        Caption = #917#960#953#955#959#947#942
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -665,29 +534,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsNone
         TabOrder = 0
       end
-      object wwDBLookupCombo1: TwwDBLookupCombo
-        Left = 91
-        Top = 15
-        Width = 182
-        Height = 21
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'SEMINAR_NAME'#9'25'#9#928#949#961#953#947#961#945#966#942#9'F'
-          'DATE_STARTED'#9'10'#9#904#957#945#961#958#951#9'F'
-          'SERIAL_NUMBER'#9'10'#9#913'/'#913#9'F')
-        LookupTable = TableSQL
-        LookupField = 'SEMINAR_NAME'
-        Options = [loColLines, loRowLines]
-        Navigator = True
-        TabOrder = 1
-        AutoDropDown = True
-        ShowButton = True
-        OrderByDisplay = False
-        PreciseEditRegion = False
-        AllowClearKey = False
-        ShowMatchText = True
-        OnCloseUp = wwDBLookupCombo1CloseUp
-      end
       object RzPanel4: TRzPanel
         Left = 0
         Top = 224
@@ -695,13 +541,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
-        TabOrder = 2
+        TabOrder = 1
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
           Width = 164
           Height = 34
-          Caption = 'Generate Invoices'
+          Caption = 'Generate Certificates'
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -812,7 +658,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
     end
     object FirstGRP: TGroupBox
-      Left = 44
+      Left = 50
       Top = 43
       Width = 273
       Height = 262
@@ -936,7 +782,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       object FirstFLD: TRzDBLabel
         Left = 79
         Top = 46
-        Width = 91
+        Width = 6
         Height = 16
         AutoSize = True
         ParentColor = False
@@ -1006,7 +852,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Items.Strings = (
           #924#972#957#959'-'#917#960#967'.'#9'M'
           #928#972#955#965'-'#917#960#967'.'#9'P')
-        ItemIndex = 0
         Sorted = False
         TabOrder = 0
         UnboundDataType = wwDefault
@@ -1080,14 +925,18 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       'FROM'
       '    Seminar se left outer join'
       '    person per on se.fk_company_person_serial =per.serial_number'
-      'where status='#39'A'#39
-      'order by '
-      'date_started desc')
+      'where '
+      'se.serial_number= :SeminarSerial')
     ReadOnly = True
     Active = True
-    AfterScroll = TableSQLAfterScroll
     Left = 49
     Top = 5
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'SeminarSerial'
+        Value = nil
+      end>
     object TableSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = #913'/'#913
       DisplayWidth = 10
@@ -1203,51 +1052,43 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   end
   object InvoiceSQL: TIBCQuery
     SQLInsert.Strings = (
-      'INSERT INTO INVOICE'
+      'INSERT INTO SEMINAR_CERTIFICATE'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, INVOICE_S' +
-        'TATUS, DATE_INVOICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTO' +
-        'MER, AMOUNT_GROSS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_A' +
-        'NAD)'
+        '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, DATE_ISSU' +
+        'ED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :INVOI' +
-        'CE_STATUS, :DATE_INVOICED, :VAT_RATE, :DISCOUNT_BY_SAFE, :DISCOU' +
-        'NT_CUSTOMER, :AMOUNT_GROSS, :AMOUNT_NET, :AMOUNT_VAT, :AMOUNT_WI' +
-        'TH_VAT, :IS_ANAD)')
+        '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :DATE_' +
+        'ISSUED, :HOURS_COMPLETED, :PERCENTAGE_COMPLETED, :IS_VALID)')
     SQLDelete.Strings = (
-      'DELETE FROM INVOICE'
+      'DELETE FROM SEMINAR_CERTIFICATE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLUpdate.Strings = (
-      'UPDATE INVOICE'
+      'UPDATE SEMINAR_CERTIFICATE'
       'SET'
       
         '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR_SERIAL = :FK_SEMINA' +
-        'R_SERIAL, FK_PERSON_SERIAL = :FK_PERSON_SERIAL, INVOICE_STATUS =' +
-        ' :INVOICE_STATUS, DATE_INVOICED = :DATE_INVOICED, VAT_RATE = :VA' +
-        'T_RATE, DISCOUNT_BY_SAFE = :DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER ' +
-        '= :DISCOUNT_CUSTOMER, AMOUNT_GROSS = :AMOUNT_GROSS, AMOUNT_NET =' +
-        ' :AMOUNT_NET, AMOUNT_VAT = :AMOUNT_VAT, AMOUNT_WITH_VAT = :AMOUN' +
-        'T_WITH_VAT, IS_ANAD = :IS_ANAD'
+        'R_SERIAL, FK_PERSON_SERIAL = :FK_PERSON_SERIAL, DATE_ISSUED = :D' +
+        'ATE_ISSUED, HOURS_COMPLETED = :HOURS_COMPLETED, PERCENTAGE_COMPL' +
+        'ETED = :PERCENTAGE_COMPLETED, IS_VALID = :IS_VALID'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, INVOI' +
-        'CE_STATUS, DATE_INVOICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_C' +
-        'USTOMER, AMOUNT_GROSS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, ' +
-        'IS_ANAD FROM INVOICE'
+        'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, DATE_' +
+        'ISSUED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID FROM SEM' +
+        'INAR_CERTIFICATE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
-      'SELECT NULL FROM INVOICE'
+      'SELECT NULL FROM SEMINAR_CERTIFICATE'
       'WHERE'
       'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
       'FOR UPDATE WITH LOCK')
     SQLRecCount.Strings = (
       'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM INVOICE'
+      'SELECT 1 AS C  FROM SEMINAR_CERTIFICATE'
       ''
       ') q')
     Connection = U_databaseFRM.DataConnection
@@ -1255,18 +1096,22 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     UpdateTransaction = write1
     SQL.Strings = (
       'select'
-      'inv.*'
+      '    sc.*,per.first_name, per.last_name'
       'from'
-      'invoice  inv '
-      'where fk_seminar_serial = :seminarSerial')
+      'seminar_certificate sc left outer join'
+      'person per on sc.fk_person_serial= per.serial_number'
+      'where'
+      'fk_seminar_serial = :seminarSerial'
+      'order by'
+      'per.last_name'
+      '')
     CachedUpdates = True
     AutoCommit = False
     Options.LongStrings = False
     Options.LocalMasterDetail = True
-    Active = True
     BeforePost = InvoiceSQLBeforePost
-    Left = 25
-    Top = 365
+    Left = 41
+    Top = 325
     ParamData = <
       item
         DataType = ftUnknown
@@ -1280,8 +1125,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Required = True
     end
     object InvoiceSQLFK_PERSON_SERIAL: TIntegerField
-      DisplayLabel = 'P/P'
-      DisplayWidth = 6
+      DisplayLabel = 'PS/N'
+      DisplayWidth = 4
       FieldName = 'FK_PERSON_SERIAL'
       Required = True
     end
@@ -1293,10 +1138,11 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       LookupKeyFields = 'SERIAL_NUMBER'
       LookupResultField = 'LAST_NAME'
       KeyFields = 'FK_PERSON_SERIAL'
+      LookupCache = True
       Lookup = True
     end
     object InvoiceSQLFirstName: TStringField
-      DisplayWidth = 15
+      DisplayWidth = 12
       FieldKind = fkLookup
       FieldName = 'FirstName'
       LookupDataSet = personSQL
@@ -1306,71 +1152,54 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Size = 60
       Lookup = True
     end
-    object InvoiceSQLAMOUNT_GROSS: TFloatField
-      DisplayLabel = 'Charge'
-      DisplayWidth = 9
-      FieldName = 'AMOUNT_GROSS'
+    object InvoiceSQLLAST_NAME: TWideStringField
+      DisplayWidth = 12
+      FieldName = 'LAST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
     end
-    object InvoiceSQLIS_ANAD: TWideStringField
-      DisplayLabel = #913#925#913#916
-      DisplayWidth = 1
-      FieldName = 'IS_ANAD'
+    object InvoiceSQLDATE_ISSUED: TDateField
+      DisplayLabel = 'Date'
+      DisplayWidth = 12
+      FieldName = 'DATE_ISSUED'
+    end
+    object InvoiceSQLHOURS_COMPLETED: TIntegerField
+      DisplayLabel = 'Hours'
+      DisplayWidth = 6
+      FieldName = 'HOURS_COMPLETED'
+    end
+    object InvoiceSQLPERCENTAGE_COMPLETED: TIntegerField
+      DisplayLabel = '% Complete'
+      DisplayWidth = 9
+      FieldName = 'PERCENTAGE_COMPLETED'
+    end
+    object InvoiceSQLIS_VALID: TWideStringField
+      DisplayLabel = 'Valid'
+      DisplayWidth = 7
+      FieldName = 'IS_VALID'
       Required = True
       FixedChar = True
       Size = 1
     end
-    object InvoiceSQLDISCOUNT_CUSTOMER: TFloatField
-      DisplayLabel = 'Discount'
-      DisplayWidth = 8
-      FieldName = 'DISCOUNT_CUSTOMER'
-    end
-    object InvoiceSQLDISCOUNT_BY_SAFE: TFloatField
-      DisplayLabel = 'Discount X'
-      DisplayWidth = 8
-      FieldName = 'DISCOUNT_BY_SAFE'
-    end
-    object InvoiceSQLAMOUNT_VAT: TFloatField
-      DisplayLabel = 'VAT'
-      DisplayWidth = 10
-      FieldName = 'AMOUNT_VAT'
-      DisplayFormat = '0.00'
-    end
-    object InvoiceSQLAMOUNT_WITH_VAT: TFloatField
-      DisplayLabel = 'Total'
-      DisplayWidth = 10
-      FieldName = 'AMOUNT_WITH_VAT'
-      DisplayFormat = '0.00'
-    end
-    object InvoiceSQLAMOUNT_NET: TFloatField
-      DisplayLabel = 'Net AMount'
-      DisplayWidth = 12
-      FieldName = 'AMOUNT_NET'
-      Visible = False
+    object InvoiceSQLFIRST_NAME: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'FIRST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
     end
     object InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField
+      DisplayWidth = 18
       FieldName = 'FK_SEMINAR_SERIAL'
       Required = True
-      Visible = False
-    end
-    object InvoiceSQLINVOICE_STATUS: TWideStringField
-      FieldName = 'INVOICE_STATUS'
-      Visible = False
-      FixedChar = True
-      Size = 1
-    end
-    object InvoiceSQLDATE_INVOICED: TDateField
-      FieldName = 'DATE_INVOICED'
-      Visible = False
-    end
-    object InvoiceSQLVAT_RATE: TFloatField
-      FieldName = 'VAT_RATE'
       Visible = False
     end
   end
   object InvoiceSRC: TIBCDataSource
     DataSet = InvoiceSQL
-    Left = 64
-    Top = 369
+    Left = 24
+    Top = 281
   end
   object personSQL: TIBCQuery
     SQLInsert.Strings = (

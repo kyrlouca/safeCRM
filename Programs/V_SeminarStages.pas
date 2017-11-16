@@ -10,7 +10,7 @@ uses
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
   RzPanel, Vcl.Imaging.pngimage, VirtualTable, vcl.Wwdotdot, vcl.Wwdbcomb,
-  RzLabel, RzDBLbl, vcl.wwdblook;
+  RzLabel, RzDBLbl, vcl.wwdblook, vcl.wwclearpanel, RzStatus;
 
 type
   TReminderResult= Record
@@ -19,10 +19,8 @@ type
   End;
 
   TV_SeminarStagesFRM = class(TForm)
-    Panel1: TPanel;
-    Panel3: TPanel;
-    Panel4: TPanel;
-    PrintRBtn: TBitBtn;
+    Panel3: TRzPanel;
+    Panel4: TRzPanel;
     Panel11: TRzPanel;
     BitBtn1: TBitBtn;
     TableSQL: TIBCQuery;
@@ -49,8 +47,6 @@ type
     TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     TableSQLLAST_NAME: TWideStringField;
     TableSRC: TIBCDataSource;
-    Label1: TLabel;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     FirstGRP: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
@@ -91,10 +87,32 @@ type
     SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
     SeminarSRC: TDataSource;
     GroupBox1: TGroupBox;
-    InvoiceBTN: TRzBitBtn;
-    RzBitBtn1: TRzBitBtn;
-    RzBitBtn2: TRzBitBtn;
-    RzBitBtn3: TRzBitBtn;
+    ApprovedBTN: TRzBitBtn;
+    CompletedBTN: TRzBitBtn;
+    InvoicedBTN: TRzBitBtn;
+    CertifiedBTN: TRzBitBtn;
+    RzPanel1: TRzPanel;
+    Nav1: TwwDBNavigator;
+    Nav1Button: TwwNavButton;
+    Nav1Prior: TwwNavButton;
+    Nav1Next: TwwNavButton;
+    Nav1Button1: TwwNavButton;
+    Panel2: TRzPanel;
+    RzGroupBox1: TRzGroupBox;
+    Label8: TLabel;
+    FilterBox: TwwDBComboBox;
+    Label1: TLabel;
+    wwDBLookupCombo1: TwwDBLookupCombo;
+    Panel1: TRzPanel;
+    ApprovedST: TRzGlyphStatus;
+    InvoicedST: TRzGlyphStatus;
+    CertifiedST: TRzGlyphStatus;
+    CompletedST: TRzGlyphStatus;
+    RzGlyphStatus2: TRzGlyphStatus;
+    CreatedBTN: TRzBitBtn;
+    PlannedBTN: TRzBitBtn;
+    CreatedST: TRzGlyphStatus;
+    PlannedST: TRzGlyphStatus;
     procedure BitBtn2Click(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -102,6 +120,7 @@ type
     procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
     procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure FormActivate(Sender: TObject);
+    procedure TableSQLAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -151,6 +170,49 @@ end;
 
 
 
+
+procedure TV_SeminarStagesFRM.TableSQLAfterScroll(DataSet: TDataSet);
+type
+
+  StatusType = (iCreated,iPlanned,iApproved,iCertified,iInvoiced,iCompleted);
+Var
+  isCreated:Boolean;
+  isPlanned:Boolean;
+  isApproved:Boolean;
+  isCertified:Boolean;
+  isInvoiced:Boolean;
+  isCompleted:Boolean;
+  SeminarSerial:integer;
+  Status:String;
+
+  BtnArray : Array of TrzBitBTN;
+  StArray : Array of TrzGlyphStatus;
+  BoolArray : Array[0..5] of Boolean;
+  i:integer;
+
+begin
+  BtnArray :=[CreatedBTn,PlannedBTN,ApprovedBTN,CertifiedBTN,InvoicedBTN,CompletedBTN];
+  StArray := [CreatedST,PlannedST,ApprovedST,CertifiedST,InvoicedST,CompletedST];
+
+  Status:= Dataset.FieldByName('Status').AsString;
+  SeminarSerial:= Dataset.FieldByName('Serial_number').AsInteger;
+
+  BoolArray[Ord(iCreated)]:= True;
+  BoolArray[Ord(iApproved)]:= (status='A') or (status='F') ;
+  BoolArray[Ord(iPlanned)]:= (status='P');
+  BoolArray[Ord(iCertified)]:= Dataset.FieldByName('IS_CERTIFICATED').AsString='Y';
+  BoolArray[Ord(iInvoiced)]:= ksCountRecVarSQL(cn,'select serial_number from invoice inv where inv.fk_seminar_serial = :seminarSerial',[SeminarSerial])>0;
+  BoolArray[Ord(iCompleted)]:= (status='F');
+
+
+  For i:=0 to Length(BtnArray)-1 do begin
+//    BtnArray[i].Enabled:=false;
+    StArray[i].ShowGlyph:= BoolArray[i];
+  end;
+
+
+
+end;
 
 procedure TV_SeminarStagesFRM.VtFilterRecord(DataSet: TDataSet;
   var Accept: Boolean);

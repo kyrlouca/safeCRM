@@ -135,10 +135,6 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="G_SFCommonProcs.pas"/>
-        <DCCReference Include="I_invoiceSeminar.pas">
-            <Form>I_InvoiceSeminarFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="p_attendance.pas">
             <Form>P_attendanceFRM</Form>
             <FormType>dfm</FormType>
@@ -161,6 +157,14 @@
         </DCCReference>
         <DCCReference Include="V_SeminarStages.pas">
             <Form>V_SeminarStagesFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="I_certificates.pas">
+            <Form>I_CertificatesFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="I_invoiceSeminar.pas">
+            <Form>I_InvoiceSeminarFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

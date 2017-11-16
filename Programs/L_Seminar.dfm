@@ -397,7 +397,6 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 720
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -554,6 +553,45 @@ object L_SeminarFRM: TL_SeminarFRM
         Margin = -1
         Spacing = 8
       end
+      object CertificatesBTN: TRzBitBtn
+        Left = 6
+        Top = 193
+        Width = 135
+        Height = 37
+        Alignment = taLeftJustify
+        Caption = #904#954#948#969#963#951' '#916#953#960#955#969#956#940#964#969#957
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        LightTextStyle = True
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 3
+        OnClick = CertificatesBTNClick
+        Glyph.Data = {
+          DE010000424DDE01000000000000760000002800000024000000120000000100
+          0400000000006801000000000000000000001000000000000000000000000000
+          80000080000000808000800000008000800080800000C0C0C000808080000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+          3333333333333333333333330000333333333333333333333333333333333333
+          0000333333333333333333333333333333333333000033333333333333333333
+          3333333333333333000033333333333333333333333333333333333300003333
+          3333333333333333333333333333333300003333333333333333333333333333
+          3333333300003388888888888888333333333333333333330000391111111111
+          111193337FFFFFFFFFFFFFF30000391111111111111193387333333333333378
+          0000339999999999999933387777777777777778000033333333333333333333
+          8888888888888883000033333333333333333333333333333333333300003333
+          3333333333333333333333333333333300003333333333333333333333333333
+          3333333300003333333333333333333333333333333333330000333333333333
+          3333333333333333333333330000333333333333333333333333333333333333
+          0000}
+        Margin = -1
+        NumGlyphs = 2
+        Spacing = 12
+      end
     end
     object RzPanel2: TRzPanel
       Left = 57
@@ -571,7 +609,6 @@ object L_SeminarFRM: TL_SeminarFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 624
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
