@@ -68,6 +68,7 @@ type
     wwDBComboBox1: TwwDBComboBox;
     TableSQLLAST_NAME: TWideStringField;
     CertificatesBTN: TRzBitBtn;
+    RzBitBtn3: TRzBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -83,6 +84,7 @@ type
     procedure DeletehawbBTNClick(Sender: TObject);
     procedure Nav1InsertClick(Sender: TObject);
     procedure CertificatesBTNClick(Sender: TObject);
+    procedure RzBitBtn3Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -101,7 +103,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, V_Seminar, I_certificates;
+uses   U_Database, G_generalProcs, V_Seminar, I_certificates, p_attendance;
 
 
 {$R *.DFM}
@@ -135,6 +137,23 @@ end;
 procedure TL_SeminarFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure TL_SeminarFRM.RzBitBtn3Click(Sender: TObject);
+vAR
+  Frm:TP_attendanceFRM;
+seminarSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TP_attendanceFRM.Create(nil);
+  frm.IN_ACTION :='INSERT';
+  frm.IN_seminar_serial :=seminarSerial;
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TL_SeminarFRM.TableSQLAfterInsert(DataSet: TDataSet);

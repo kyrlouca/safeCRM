@@ -23,8 +23,6 @@ type
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    PanelX: TRzPanel;
-    RzPanel3: TRzPanel;
     DaySQL: TIBCQuery;
     FirstGRP: TGroupBox;
     Label2: TLabel;
@@ -35,7 +33,6 @@ type
     wwCheckBox1: TwwCheckBox;
     wwDBComboBox1: TwwDBComboBox;
     Label1: TLabel;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     vPresenceSRC: TIBCDataSource;
     TableSRC: TIBCDataSource;
     DaySRC: TIBCDataSource;
@@ -46,11 +43,8 @@ type
     wwNavButton1: TwwNavButton;
     wwNavButton2: TwwNavButton;
     wwNavButton3: TwwNavButton;
-    RzPanel4: TRzPanel;
-    Grid1: TwwDBGrid;
     RzDBLabel1: TRzDBLabel;
     RzDBLabel2: TRzDBLabel;
-    Label9: TLabel;
     VPresenceSQLFirst_Name: TStringField;
     VPresenceSQLpercentage_present: TIntegerField;
     VPresenceSQLPersonSerial: TIntegerField;
@@ -98,6 +92,28 @@ type
     PresentFLD: TwwCheckBox;
     wwDBNavigator1Button1: TwwNavButton;
     wwDBNavigator1Button2: TwwNavButton;
+    PanelX: TRzPanel;
+    RzPanel3: TRzPanel;
+    RzPanel4: TRzPanel;
+    Grid1: TwwDBGrid;
+    GroupBox1: TGroupBox;
+    Label6: TLabel;
+    Label7: TLabel;
+    RzDBLabel3: TRzDBLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    RzDBLabel4: TRzDBLabel;
+    RzDBLabel5: TRzDBLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    RzDBLabel6: TRzDBLabel;
+    Companylbl: TLabel;
+    RzDBLabel7: TRzDBLabel;
+    wwDBEdit1: TRzDBLabel;
+    wwDBEdit2: TRzDBLabel;
+    wwDBComboBox2: TwwDBComboBox;
+    TableSQLLAST_NAME: TWideStringField;
+    RzBitBtn2: TRzBitBtn;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -112,12 +128,13 @@ type
       FillTable: TDataSet; modified: Boolean);
     procedure Button1Click(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
-    procedure wwDBLookupCombo1Change(Sender: TObject);
     procedure DaySQLAfterScroll(DataSet: TDataSet);
     procedure SavePresBTNClick(Sender: TObject);
     procedure VPresenceSQLNewRecord(DataSet: TDataSet);
     procedure PresentFLDClick(Sender: TObject);
     procedure VPresenceSQLBeforePost(DataSet: TDataSet);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure RzBitBtn2Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -126,6 +143,7 @@ type
   public
     { Public declarations }
     IN_ACTION:String;
+    IN_Seminar_serial:Integer;
 
   end;
 
@@ -134,7 +152,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, R_Presence;
 
 
 {$R *.DFM}
@@ -160,14 +178,6 @@ begin
 
 end;
 
-procedure TP_attendanceFRM.wwDBLookupCombo1Change(Sender: TObject);
-begin
-     daySQL.Close;
-  daySQL.ParamByName('SeminarSerial').Value:=TableSQL.FieldByName('serial_number').AsInteger;
-  daySQL.Open;
-
-end;
-
 procedure TP_attendanceFRM.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
   FillTable: TDataSet; modified: Boolean);
 var
@@ -183,6 +193,22 @@ end;
 procedure TP_attendanceFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure TP_attendanceFRM.RzBitBtn2Click(Sender: TObject);
+vAR
+  Frm:TR_presenceFRM;
+  seminarSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_presenceFRM.Create(nil);
+  frm.IN_seminar_serial :=seminarSerial;
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TP_attendanceFRM.Sd1SyncDataSets(Sender: TObject; MoveDataSet,
@@ -227,7 +253,26 @@ end;
 
 procedure TP_attendanceFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL]);
+// personSQL.Close;
+// personSQL.ParamByName('seminarSerial').Value:=IN_seminar_serial;
+// personSQL.Open;
+
+
+  TableSQL.Close;
+  TableSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+  TableSQL.open;
+
+  daySQL.Close;
+  daySQL.ParamByName('SeminarSerial').Value:=TableSQL.FieldByName('serial_number').AsInteger;
+  daySQL.Open;
+
+
+//  InvoiceSQL.Close;
+//  InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+//  InvoiceSQL.open;
+
+
+
 end;
 
 procedure TP_attendanceFRM.FormClose(Sender: TObject;
@@ -235,6 +280,15 @@ procedure TP_attendanceFRM.FormClose(Sender: TObject;
 begin
 if TableSQL.State in [dsInsert, dsEdit] then
    TableSQL.Post;
+end;
+
+procedure TP_attendanceFRM.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+
+  Canclose:= not VPresenceSQL.UpdatesPending;
+  if not CanClose then
+    showMessage('Save Or Cancel before Exit');
 end;
 
 procedure TP_attendanceFRM.FormCreate(Sender: TObject);
