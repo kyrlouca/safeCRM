@@ -9,7 +9,7 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   RzPopups, vcl.wwcheckbox, vcl.wwDialog, vcl.wwIDlg, vcl.wwmonthcalendar,
-  vcl.wwlocate, VirtualTable;
+  vcl.wwlocate, VirtualTable, Vcl.Menus;
 type
   TP_attendanceFRM = class(TForm)
     Panel1: TPanel;
@@ -113,7 +113,11 @@ type
     wwDBEdit2: TRzDBLabel;
     wwDBComboBox2: TwwDBComboBox;
     TableSQLLAST_NAME: TWideStringField;
-    RzBitBtn2: TRzBitBtn;
+    MainMenu1: TMainMenu;
+    Reports1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -134,7 +138,10 @@ type
     procedure PresentFLDClick(Sender: TObject);
     procedure VPresenceSQLBeforePost(DataSet: TDataSet);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure RzBitBtn2Click(Sender: TObject);
+    procedure DaySQLBeforeScroll(DataSet: TDataSet);
+    procedure N1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -152,7 +159,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, R_Presence;
+uses   U_Database, G_generalProcs, R_Presence, R_PresenceTotal;
 
 
 {$R *.DFM}
@@ -195,22 +202,6 @@ begin
 close;
 end;
 
-procedure TP_attendanceFRM.RzBitBtn2Click(Sender: TObject);
-vAR
-  Frm:TR_presenceFRM;
-  seminarSerial:Integer;
-begin
-  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
-
-  frm :=  TR_presenceFRM.Create(nil);
-  frm.IN_seminar_serial :=seminarSerial;
-  try
-    frm.ShowModal;
-  finally
-    frm.Free;
-  end;
-end;
-
 procedure TP_attendanceFRM.Sd1SyncDataSets(Sender: TObject; MoveDataSet,
   BaseDataSet: TDataSet);
 begin
@@ -241,6 +232,12 @@ begin
     exit;
   end;
   UpdatePresenceTable(seminarSerial,daySerial);
+end;
+
+procedure TP_attendanceFRM.DaySQLBeforeScroll(DataSet: TDataSet);
+begin
+  SavePresenceTable();
+
 end;
 
 procedure TP_attendanceFRM.TableSQLAfterScroll(DataSet: TDataSet);
@@ -285,10 +282,8 @@ end;
 procedure TP_attendanceFRM.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
+  SavePresenceTable();
 
-  Canclose:= not VPresenceSQL.UpdatesPending;
-  if not CanClose then
-    showMessage('Save Or Cancel before Exit');
 end;
 
 procedure TP_attendanceFRM.FormCreate(Sender: TObject);
@@ -297,6 +292,58 @@ begin
 end;
 
 
+
+procedure TP_attendanceFRM.N1Click(Sender: TObject);
+vAR
+  Frm:TR_presenceFRM;
+  seminarSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_presenceFRM.Create(nil);
+  frm.IN_seminar_serial :=seminarSerial;
+  frm.IN_Day_Serial :=0;
+  try
+    frm.PrintTheSeminar();
+  finally
+    frm.Free;
+  end;
+end;
+
+procedure TP_attendanceFRM.N2Click(Sender: TObject);
+vAR
+  Frm:TR_presenceTotalFRM;
+  seminarSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_presenceTotalFRM.Create(nil);
+  frm.IN_seminar_serial :=seminarSerial;
+  try
+     frm.PrintTheSeminar();
+  finally
+    frm.Free;
+  end;
+end;
+
+procedure TP_attendanceFRM.N3Click(Sender: TObject);
+vAR
+  Frm:TR_presenceFRM;
+  seminarSerial:Integer;
+  DaySerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  DaySerial:=DaySQL.FieldByName('DaySerial').AsInteger;
+
+  frm :=  TR_presenceFRM.Create(nil);
+  frm.IN_seminar_serial :=seminarSerial;
+  frm.IN_Day_Serial:=DaySerial;
+  try
+    frm.PrintTheSeminar();
+  finally
+    frm.Free;
+  end;
+end;
 
 procedure TP_attendanceFRM.PresentFLDClick(Sender: TObject);
 var

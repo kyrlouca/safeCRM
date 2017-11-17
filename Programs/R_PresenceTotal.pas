@@ -1,4 +1,4 @@
-unit R_Presence;
+unit R_PresenceTotal;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   Mask, wwdbedit,  DBGrids, wwdbdatetimepicker, ppDB, ppCtrls,
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
-  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox;
+  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox,G_generalProcs;
 
 type
   TReminderResult= Record
@@ -17,7 +17,7 @@ type
     DateFinal:Tdate;
   End;
 
-  TR_presenceFRM = class(TForm)
+  TR_presenceTotalFRM = class(TForm)
     Panel1: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -47,37 +47,39 @@ type
     ppDesignLayers3: TppDesignLayers;
     ppDesignLayer3: TppDesignLayer;
     ppDBText1: TppDBText;
-    ppDBText3: TppDBText;
     ppDBText5: TppDBText;
     ppLabel1: TppLabel;
     ppLabel3: TppLabel;
-    ppLabel6: TppLabel;
     ppLabel8: TppLabel;
     ppShape1: TppShape;
     ppLabel10: TppLabel;
-    SeminarPresenceSQLPERSON_SERIAL: TIntegerField;
-    SeminarPresenceSQLLAST_FIRST_NAME: TWideStringField;
-    SeminarPresenceSQLIS_PRESENT: TWideStringField;
-    SeminarPresenceSQLHOURS_PRESENT: TIntegerField;
-    SeminarPresenceSQLDAYSERIAL: TIntegerField;
-    SeminarPresenceSQLSEMINAR_DAY: TDateField;
     ppDBText2: TppDBText;
-    SeminarPresenceSQLNATIONAL_ID: TWideStringField;
     ppLabel2: TppLabel;
     myDBCheckBox1: TmyDBCheckBox;
-    ppGroup1: TppGroup;
-    ppGroupHeaderBand1: TppGroupHeaderBand;
-    ppGroupFooterBand1: TppGroupFooterBand;
-    ppLine1: TppLine;
     SeminarSQL: TIBCQuery;
-    SeminarSQLSERIAL_NUMBER: TIntegerField;
-    SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLDATE_STARTED: TDateField;
     SeminarSRC: TDataSource;
     SeminarPIP: TppDBPipeline;
     ppDBText6: TppDBText;
-    ppDBText7: TppDBText;
+    SeminarPresenceSQLPERSON_SERIAL: TIntegerField;
+    SeminarPresenceSQLLAST_FIRST_NAME: TWideStringField;
+    SeminarPresenceSQLHOURS: TLargeintField;
+    SeminarPresenceSQLNATIONAL_ID: TWideStringField;
     ppLabel7: TppLabel;
+    ppDBText7: TppDBText;
+    SeminarPresenceSQLALWAYS_PRESENT: TWideStringField;
+    SeminarPresenceSQLIS_GUEST: TWideStringField;
+    ppLabel9: TppLabel;
+    myDBCheckBox2: TmyDBCheckBox;
+    SeminarSQLSEMINARSERIAL: TIntegerField;
+    SeminarSQLSEMINARNAME: TWideStringField;
+    SeminarSQLDATESTARTED: TDateField;
+    SeminarSQLTOTALHOURS: TLargeintField;
+    ppLabel6: TppLabel;
+    ppDBText3: TppDBText;
+    ppVariable1: TppVariable;
+    ppLabel11: TppLabel;
+    ppLabel12: TppLabel;
+    PassFLD: TmyCheckBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -88,11 +90,12 @@ type
     procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
     procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure PrintRBtnClick(Sender: TObject);
+    procedure ppVariable1Calc(Sender: TObject; var Value: Variant);
+    procedure CertFLDPrint(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
     procedure PrintSeminar(Const SeminarSerial,DaySerial:integer);
-//    procedure PrintDayPresence(Const SeminarSerial,DaySerial:integer);
 
   public
     { Public declarations }
@@ -102,7 +105,7 @@ type
   end;
 
 var
-  R_presenceFRM: TR_presenceFRM;
+  R_presenceTotalFRM: TR_presenceTotalFRM;
 
 implementation
 
@@ -115,12 +118,12 @@ uses U_Database, G_SFCommonProcs, G_KyrSQL;
 
 
 
-procedure TR_presenceFRM.BitBtn1Click(Sender: TObject);
+procedure TR_presenceTotalFRM.BitBtn1Click(Sender: TObject);
 begin
 close;
 end;
 
-procedure TR_presenceFRM.BitBtn2Click(Sender: TObject);
+procedure TR_presenceTotalFRM.BitBtn2Click(Sender: TObject);
 begin
 close;
 
@@ -129,7 +132,41 @@ end;
 
 
 
-procedure TR_presenceFRM.ppReport1PreviewFormCreate(
+procedure TR_presenceTotalFRM.CertFLDPrint(Sender: TObject);
+var
+  TotalHours:Integer;
+  Hours:Integer;
+  PercentActual:Double;
+  PercentPass:Integer;
+  isPresent:Boolean;
+  isGuest:boolean;
+
+begin
+  TotalHours:= SeminarSQL.FieldByName('TOTALHours').AsInteger;
+  Hours:= SeminarPresenceSQL.FieldByName('Hours').AsInteger;
+  isPresent:= SeminarPresenceSQL.FieldByName('always_present').AsString='Y';
+  isGuest:= SeminarPresenceSQL.FieldByName('is_guest').AsString='Y';
+
+  if TotalHours=0 then begin
+    PercentActual:=0;
+  end else begin
+    PercentActual:= Hours/ TotalHours * 100.0;
+  end;
+
+  percentPass:=gpGetGeneralParam(cn,'Ô00').P_Integer1;
+
+  PassFLD.Checked:= (percentActual>= PercentPass) and isPresent and (not IsGuest);
+
+
+  {
+//  PercentPass
+  if TotalHours=0 then
+    value:=0
+  else
+  }
+end;
+
+procedure TR_presenceTotalFRM.ppReport1PreviewFormCreate(
   Sender: TObject);
 begin
   (sender as TppReport).PreviewForm.WindowState := wsMaximized;
@@ -138,12 +175,26 @@ begin
 end;
 
 
-procedure TR_presenceFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
+procedure TR_presenceTotalFRM.ppVariable1Calc(Sender: TObject;
+  var Value: Variant);
+var
+  TotalHours:Integer;
+  Hours:Integer;
+begin
+  TotalHours:= SeminarSQL.FieldByName('TOTALHours').AsInteger;
+  Hours:= SeminarPresenceSQL.FieldByName('Hours').AsInteger;
+  if TotalHours=0 then
+    value:=0
+  else
+    value:= Hours/TotalHours *100.00;
+end;
+
+procedure TR_presenceTotalFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
 begin
    value:=FromDateFLD.Date;
 end;
 
-procedure TR_presenceFRM.RzBitBtn1Click(Sender: TObject);
+procedure TR_presenceTotalFRM.RzBitBtn1Click(Sender: TObject);
 begin
   close;
 end;
@@ -151,14 +202,14 @@ end;
 
 
 
-procedure TR_presenceFRM.VtFilterRecord(DataSet: TDataSet;
+procedure TR_presenceTotalFRM.VtFilterRecord(DataSet: TDataSet;
   var Accept: Boolean);
 begin
   accept := Dataset.FieldByName('DaysCalc').asInteger >= 0;
 end;
 
 
-procedure TR_presenceFRM.ppLabel10GetText(Sender: TObject;
+procedure TR_presenceTotalFRM.ppLabel10GetText(Sender: TObject;
   var Text: String);
 begin
   Text:= 'Reference Date :'+ FromDateFLD.Text;
@@ -168,18 +219,18 @@ end;
 
 
 
-procedure TR_presenceFRM.PrintRBtnClick(Sender: TObject);
+procedure TR_presenceTotalFRM.PrintRBtnClick(Sender: TObject);
 begin
   PrintTheSeminar();
 end;
 
 
-procedure TR_presenceFRM.PrintTheSeminar();
+procedure TR_presenceTotalFRM.PrintTheSeminar();
 begin
   PrintSeminar(IN_Seminar_Serial,IN_Day_Serial);
 end;
 
-procedure TR_presenceFRM.PrintSeminar(Const SeminarSerial,DaySerial:integer);
+procedure TR_presenceTotalFRM.PrintSeminar(Const SeminarSerial,DaySerial:integer);
 Var
    FromDate:TDateTime;
    DaysLeft:integer;
@@ -190,24 +241,17 @@ begin
      Open ;
   end;
 
-  SeminarPresenceSQL.RestoreSQL;
-  if DaySerial>0 then begin
-      SeminarPresenceSQL.AddWhere('ssd.serial_number = :daySerial');
-  end;
 
   with SeminarPresenceSQL do begin
      Close;
      SeminarPresenceSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
-     if DaySerial>0 then
-       SeminarPresenceSQL.ParamByName('daySerial').Value:=DaySerial;
      Open ;
   end;
-
-  PpReport1.Print;
+     PpReport1.Print;
 
 end;
 
-procedure TR_presenceFRM.FormActivate(Sender: TObject);
+procedure TR_presenceTotalFRM.FormActivate(Sender: TObject);
 begin
 
 if (Trim(FromDateFLD.text)='') then
@@ -216,7 +260,7 @@ if (Trim(FromDateFLD.text)='') then
 end;
 
 
-procedure TR_presenceFRM.FormCreate(Sender: TObject);
+procedure TR_presenceTotalFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
 end;

@@ -2,7 +2,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 616
+  ClientHeight = 686
   ClientWidth = 913
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
@@ -32,7 +33,6 @@ object P_attendanceFRM: TP_attendanceFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 915
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -49,13 +49,12 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 573
+    Top = 643
     Width = 913
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 515
-    ExplicitWidth = 915
+    ExplicitTop = 573
     object RzPanel1: TRzPanel
       Left = 812
       Top = 1
@@ -64,7 +63,6 @@ object P_attendanceFRM: TP_attendanceFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 814
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -149,32 +147,30 @@ object P_attendanceFRM: TP_attendanceFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 915
   end
   object Panel3: TPanel
     Left = 0
     Top = 92
     Width = 913
-    Height = 481
+    Height = 551
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 915
-    ExplicitHeight = 423
+    ExplicitHeight = 481
     object Panel5: TPanel
       Left = 457
       Top = 1
       Width = 416
-      Height = 479
+      Height = 549
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 0
-      ExplicitHeight = 421
+      ExplicitHeight = 479
       object wwDBGrid1: TwwDBGrid
         Left = 0
         Top = 36
         Width = 416
-        Height = 400
+        Height = 470
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
@@ -200,11 +196,10 @@ object P_attendanceFRM: TP_attendanceFRM
         TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
-        ExplicitLeft = 6
-        ExplicitHeight = 342
+        ExplicitHeight = 400
         object PresentFLD: TwwCheckBox
           Left = 72
-          Top = 120
+          Top = 62
           Width = 32
           Height = 16
           DisableThemes = False
@@ -350,14 +345,14 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 436
+        Top = 506
         Width = 416
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 2
-        ExplicitTop = 378
+        ExplicitTop = 436
         object RzPanel6: TRzPanel
           Left = 315
           Top = 0
@@ -672,12 +667,11 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 456
-      Height = 479
+      Height = 549
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitLeft = 2
-      ExplicitTop = -4
+      ExplicitHeight = 479
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -689,13 +683,13 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 282
+        Top = 352
         Width = 456
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 224
+        ExplicitTop = 282
         object Grid1: TwwDBGrid
           Left = 0
           Top = 0
@@ -732,7 +726,6 @@ object P_attendanceFRM: TP_attendanceFRM
           TitleFont.Style = []
           TitleLines = 1
           TitleButtons = True
-          ExplicitTop = 3
         end
       end
       object GroupBox1: TGroupBox
@@ -932,81 +925,6 @@ object P_attendanceFRM: TP_attendanceFRM
           TabOrder = 0
           UnboundDataType = wwDefault
         end
-      end
-      object RzBitBtn2: TRzBitBtn
-        Left = 342
-        Top = 159
-        Width = 73
-        Height = 34
-        Caption = 'Close'
-        DoubleBuffered = True
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentDoubleBuffered = False
-        ParentFont = False
-        TabOrder = 3
-        OnClick = RzBitBtn2Click
-        Glyph.Data = {
-          F6060000424DF606000000000000360000002800000018000000180000000100
-          180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-          FFFFFF0004450004450004450004450004450004450004450004450004450004
-          45000445000445000445000445000445000445000445000445FFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF000A4D3461A53F70B44B7DC15789CE5F91D66396DB
-          6396DB6396DB6598DD6295DA6295DA5D90D55688CD4C7EC24374B83765A9000A
-          4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0011563B6DB14174B84B7EC256
-          89CE5E91D66396DB6396DB6396DB6598DD6295DA6295DA5D90D55689CE4D80C4
-          4477BB3E70B4001156FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0018613869
-          AE3366A72B5EA22B5EA22B5EA22B5EA22B5EA2497CCE6396DB3164A52B5EA22B
-          5EA22B5EA22B5EA22D60A43869AE001861FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFF001F6A3A6CB02C5FA32B5EA22B5EA22B5EA22B5EA22B5EA24779CA6093
-          D8295CA02B5EA22B5EA22B5EA22B5EA22E61A53A6CB0001F6AFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF00226D3B6DB128579B2B5EA22B5EA22B5EA22B5EA2
-          2B5EA24274C45B8ED42554982B5EA22B5EA22B5EA22B5EA22E61A53B6DB10022
-          6DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0024703D6FB42451952B5EA22B
-          5EA22B5EA22B5EA22B5EA23F70BE578ACF214E922B5EA22B5EA22B5EA22B5EA2
-          2E61A53D6FB4002470FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0026723E70
-          B51E498E2A5CA02B5EA22B5EA22B5EA22B5EA23B6BB95285CB1D478C2A5CA02B
-          5EA22B5EA22B5EA22D60A43E70B5002672FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFF0028754072B7183F842451962B5EA22B5EA22B5EA22B5EA23766B44E81
-          C7173D812451962B5EA22B5EA22B5EA22D60A44072B7002875FFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF002A784274B9133479193F84224F9328599D2B5EA2
-          2B5EA23463AF4A7DC2113176193F84224F9328599D2B5EA22E61A54274B9002A
-          78FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF002C7A4376BB0C296F0F307415
-          3A7E1A43871D488C214F933261AD487BC00B276B0F3074153A7E1A43871D488C
-          2451964376BB002C7AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF002E7D4578
-          BD477ABF477ABF477ABF477ABF477ABF477ABF477ABF477ABF477ABF477ABF47
-          7ABF477ABF477ABF142669142669002E7DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFF002F7F477ABF3260AC3260AC3160AC325FAB325FAC3160AB3463AE477A
-          BF3260AC3260AC3160AB325FAC3160AB3166B45287D1002F7FFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF003182497CC13265A6285B9F285B9F285B9F285B9F
-          285B9F3462AF4A7DC22E61A2285B9F285B9F285B9F285B9F70A3EB84B7FC0031
-          82FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0033844B7EC3295CA0275A9E27
-          5A9E275A9E275A9E275A9E3A6AB85184CA26589C275A9E275A9E275A9E275A9E
-          2B5EA24B7EC3003384FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0035864D80
-          C525549826599D26599D26599D26599D26599D4172C2598CD2214F9326599D26
-          599D26599D26599D2B5EA24D80C5003586FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFF0036894E81C7204D9125589C25589C25589C25589C25589C497BCE6295
-          DB1D488C25589C25589C25589C25589C2A5DA14E81C7003689FFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF00388B5083C91C458A23559924579B24579B24579B
-          24579B5286DC6C9FE518418423559924579B24579B24579B295CA05083C90038
-          8BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00398C5084CA163C7F1D4A8D23
-          569A23569A23569A23569A5B90E675A8ED1337791D4A8D23569A23569A23569A
-          295CA05084CA00398CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF003B8E5286
-          CC0F2F7213397A1A478A1F5094225599225599629AF17DB0F50C2A6B13397A1A
-          478A1F5094225599285B9F5286CC003B8EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFF003C905387CD0A266A0C2869123576153D7F1942851C488B67A0F882B5
-          FA0722620C2A6B123576153D7F174083214E925387CD003C90FFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF003D91598DD25F92D7699CE174A7EC7DB0F584B7FC
-          84B7FC84B7FC82B5FA82B5FA82B5FA7CAFF473A6EB6A9DE26194D95B8FD4003D
-          91FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF003E935085CC5D91D7689CE173
-          A6EC7EB1F684B7FC84B7FC84B7FC82B5FA82B5FA82B5FA7BAEF373A6EC699DE2
-          6093D95388CF003E93FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF003F94003F
-          94003F94003F94003F94003F94003F94003F94003F94003F94003F94003F9400
-          3F94003F94003F94003F94003F94003F94FFFFFFFFFFFFFFFFFF}
-        Margin = -1
       end
     end
   end
@@ -1251,6 +1169,7 @@ object P_attendanceFRM: TP_attendanceFRM
       'se.serial_number= :SeminarSerial')
     DetailFields = 'FK_SEMINAR_SERIAL'
     Active = True
+    BeforeScroll = DaySQLBeforeScroll
     AfterScroll = DaySQLAfterScroll
     Left = 273
     Top = 101
@@ -1415,6 +1334,24 @@ object P_attendanceFRM: TP_attendanceFRM
       FieldName = 'percentage_present'
       Visible = False
       DisplayFormat = '0%'
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 224
+    object Reports1: TMenuItem
+      Caption = 'Reports'
+      object N3: TMenuItem
+        Caption = #928#945#961#959#965#963#943#949#962' '#919#956#941#961#945#962
+        OnClick = N3Click
+      end
+      object N1: TMenuItem
+        Caption = #928#945#961#959#965#963#943#949#962' '#908#955#949#962' '#964#953#962' '#919#956#941#961#949#962
+        OnClick = N1Click
+      end
+      object N2: TMenuItem
+        Caption = #928#959#963#959#963#964#940' '#931#965#956#956#949#964#959#967#942#962
+        OnClick = N2Click
+      end
     end
   end
 end

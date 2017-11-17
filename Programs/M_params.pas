@@ -47,8 +47,6 @@ type
     VS5FLD: TwwDBEdit;
     VS6FLD: TwwDBEdit;
     File1FLD: TEdit;
-    RzBitBtn1: TRzBitBtn;
-    RzBitBtn2: TRzBitBtn;
     FindParamSRC: TIBCDataSource;
     FindGeneralParameterSQLCODE: TWideStringField;
     FindGeneralParameterSQLINT_1: TIntegerField;
@@ -62,6 +60,8 @@ type
     FindGeneralParameterSQLFLOAT_1: TFloatField;
     FindGeneralParameterSQLFLOAT_2: TFloatField;
     FindGeneralParameterSQLDESCRIPTION: TWideStringField;
+    RzBitBtn2: TRzBitBtn;
+    RzBitBtn1: TRzBitBtn;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure OptionGRPClick(Sender: TObject);
@@ -69,6 +69,7 @@ type
     procedure RzBitBtn2Click(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -112,6 +113,14 @@ end;
 procedure TM_paramsFRM.FormActivate(Sender: TObject);
 begin
 ShowOneRecord(0);
+end;
+
+procedure TM_paramsFRM.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+        if self.FindGeneralParameterSQL.State in [dsEdit,dsInsert] then begin
+              self.FindGeneralParameterSQL.Post ;
+        end;
+
 end;
 
 procedure TM_paramsFRM.FormCreate(Sender: TObject);
@@ -193,7 +202,7 @@ procedure TM_paramsFRM.ShowOneRecord(RecordIndex:Integer);
 Const
 //        LabelValuesArray:Array[0..4,0..8] of String = (
         LabelValuesArray:Array[0..4] of TStringArray = (
-                ['Τ00','Reports Title - First line ','VAT Rate','','','Image File as Invoice logo','','',''],
+                ['Τ00','Reports Title - First line ','Φ.Π.Α.','% Ελάχιστης Παρακολούθησης','','Image File as Invoice logo','','',''],
                 ['Τ01','','','','','','','',''],
                 ['Τ02','Unused','','','','','','',''],
                 ['T)3','','VAT Rate','','','','','',''],

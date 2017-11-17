@@ -40,7 +40,7 @@ Function SortGrid(TheTable:TIBCQUery;AFieldName:String;SortInfo:TSortInfo):Boole
 
 Function GetTheSystemParameter(cn:TIBCConnection; Const Key:String):TParameterREcord;
 Function GetOneSystemParameter(cn:TIBCConnection ;TheKey,TheDescription:String;var Int1,Int2:Integer;var Num1:Double; Var Str1,str2:String):Boolean;
-Function GetGeneralParam(cn:TIBCConnection ;Const Key:String):TParameterREcord;
+Function gpGetGeneralParam(cn:TIBCConnection ;Const Key:String):TParameterREcord;
 
 
 Function ConvertDate(Const TheString:String):Tdate;
@@ -213,7 +213,7 @@ Begin
 
 End;
 
-Function GetGeneralParam(cn:TIBCConnection ;Const Key:String):TParameterREcord;
+Function GpGetGeneralParam(cn:TIBCConnection ;Const Key:String):TParameterREcord;
 Var
         x1:Double;
         qr:TksQuery;

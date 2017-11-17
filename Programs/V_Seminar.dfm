@@ -79,7 +79,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 865
       Height = 619
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = ReminderTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -88,7 +88,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 4
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -1954,8 +1954,8 @@ object V_SeminarFRM: TV_SeminarFRM
           end
         end
         object GroupBox5: TGroupBox
-          Left = 533
-          Top = 53
+          Left = 527
+          Top = 45
           Width = 338
           Height = 482
           Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -2029,11 +2029,11 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label18: TLabel
-            Left = 26
-            Top = 212
-            Width = 73
+            Left = 23
+            Top = 234
+            Width = 72
             Height = 14
-            Caption = #925#945' '#945#960#959#963#964#945#955#949#943
+            Caption = #925#945' '#949#954#964#949#955#949#963#964#949#943
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2044,7 +2044,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label19: TLabel
             Left = 61
-            Top = 149
+            Top = 171
             Width = 38
             Height = 14
             Caption = #913#966#959#961#940
@@ -2056,12 +2056,13 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label20: TLabel
-            Left = 31
-            Top = 279
-            Width = 68
+            Left = 3
+            Top = 301
+            Width = 96
             Height = 28
             Alignment = taRightJustify
-            Caption = #919#956#949#961#959#956#951#956#943#945' '#913#957#945#966#959#961#940#962
+            AutoSize = False
+            Caption = #931#949' '#963#967#941#963#951' '#956#949' '#964#951#957
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2071,12 +2072,12 @@ object V_SeminarFRM: TV_SeminarFRM
             WordWrap = True
           end
           object Label21: TLabel
-            Left = 5
-            Top = 345
-            Width = 94
-            Height = 22
+            Left = 34
+            Top = 361
+            Width = 65
+            Height = 40
             AutoSize = False
-            Caption = #924#941#964#961#951#963#951' '#935#961#972#957#959#965
+            Caption = #924#941#964#961#951#963#951' '#935#961#972#957#959#965' '#963#949' '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2137,7 +2138,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Values.Strings = (
               'A'
               'B')
-            Caption = #913#960#959#963#964#959#955#942
+            Caption = #917#954#964#941#955#949#963#951
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -2679,7 +2680,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800500210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800580210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

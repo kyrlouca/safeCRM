@@ -171,8 +171,8 @@
             <Form>R_InvoicesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_Presence.pas">
-            <Form>R_presenceFRM</Form>
+        <DCCReference Include="R_PresenceTotal.pas">
+            <Form>R_presenceTotalFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
