@@ -639,7 +639,7 @@ end;
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
 begin
   ksfillComboF1(cn,SeminarTYpeFLD,'SEMINAR_TYPE','SERIAL_NUMBER','SEMINAR_NAME','SEMINAR_NAME');
-  ksfillComboF1(cn,InstructorFLD,'INSTRUCTOR','SERIAL_NUMBER','FULL_NAME','FULL_NAME');
+  ksfillComboF1(cn,InstructorFLD,'INSTRUCTOR','SERIAL_NUMBER','Last_NAME','last_NAME');
   ksfillComboF1(cn,VenueFLD,'VENUE','SERIAL_NUMBER','VENUE_NAME','VENUE_NAME');
   ksOpenTables([SeminarSQL]);
   if IN_ACTION='INSERT' then begin
