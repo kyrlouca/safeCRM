@@ -3,7 +3,7 @@ object M_InstructorFRM: TM_InstructorFRM
   Top = 153
   Caption = '--'
   ClientHeight = 558
-  ClientWidth = 897
+  ClientWidth = 981
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object M_InstructorFRM: TM_InstructorFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 897
+    Width = 981
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -31,11 +31,12 @@ object M_InstructorFRM: TM_InstructorFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 897
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 889
+      Width = 973
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -48,18 +49,20 @@ object M_InstructorFRM: TM_InstructorFRM
   object Panel4: TPanel
     Left = 0
     Top = 515
-    Width = 897
+    Width = 981
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitWidth = 897
     object RzPanel1: TRzPanel
-      Left = 796
+      Left = 880
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 796
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -284,10 +287,11 @@ object M_InstructorFRM: TM_InstructorFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 897
+    Width = 981
     Height = 39
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 897
     object Nav1: TwwDBNavigator
       Left = 1
       Top = 7
@@ -442,7 +446,7 @@ object M_InstructorFRM: TM_InstructorFRM
       Width = 128
       Height = 22
       DataSource = TableSRC
-      SearchField = 'First_name'
+      SearchField = 'Last_name'
       ShowMatchText = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -456,23 +460,24 @@ object M_InstructorFRM: TM_InstructorFRM
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 897
+    Width = 981
     Height = 423
-    Align = alClient
+    Align = alLeft
     TabOrder = 2
+    ExplicitWidth = 897
     object Panel5: TPanel
-      Left = 672
+      Left = 666
       Top = 1
-      Width = 224
+      Width = 279
       Height = 421
-      Align = alRight
+      Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
       object GroupBox2: TGroupBox
-        Left = -11
+        Left = 16
         Top = 5
-        Width = 274
+        Width = 249
         Height = 331
         Caption = #917#960#953#954#959#953#957#969#957#943#945
         Font.Charset = DEFAULT_CHARSET
@@ -709,184 +714,6 @@ object M_InstructorFRM: TM_InstructorFRM
         end
       end
     end
-    object GroupBox1: TGroupBox
-      Left = 387
-      Top = 16
-      Width = 274
-      Height = 331
-      Caption = #928#955#951#961#959#966#959#961#943#949#962
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 2
-      object Label2: TLabel
-        Left = 58
-        Top = 46
-        Width = 37
-        Height = 14
-        Caption = #908#957#959#956#945
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label3: TLabel
-        Left = 74
-        Top = 21
-        Width = 21
-        Height = 14
-        Caption = #913'/'#913
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label5: TLabel
-        Left = 54
-        Top = 73
-        Width = 41
-        Height = 14
-        Caption = #917#960#943#952#949#964#959
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object SerialFLD: TRzDBLabel
-        Left = 101
-        Top = 18
-        Width = 115
-        Height = 20
-        Alignment = taRightJustify
-        BorderOuter = fsFlat
-        BorderWidth = 1
-        DataField = 'SERIAL_NUMBER'
-        DataSource = TableSRC
-      end
-      object Label17: TLabel
-        Left = 43
-        Top = 95
-        Width = 52
-        Height = 14
-        Caption = 'Nickname'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label15: TLabel
-        Left = 34
-        Top = 120
-        Width = 61
-        Height = 14
-        Caption = #932#945#965#964#972#964#951#964#945
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object FirstFLD: TwwDBEdit
-        Left = 102
-        Top = 44
-        Width = 161
-        Height = 22
-        DataField = 'FIRST_NAME'
-        DataSource = TableSRC
-        TabOrder = 0
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwCheckBox1: TwwCheckBox
-        Left = 49
-        Top = 207
-        Width = 67
-        Height = 17
-        DisableThemes = False
-        AlwaysTransparent = False
-        ValueChecked = 'Y'
-        ValueUnchecked = 'N'
-        DisplayValueChecked = 'Y'
-        DisplayValueUnchecked = 'N'
-        NullAndBlankState = cbUnchecked
-        Alignment = taLeftJustify
-        Caption = #917#957#949#961#947#972#962
-        Checked = True
-        DataField = 'STATUS_ACTIVE'
-        DataSource = TableSRC
-        State = cbChecked
-        TabOrder = 1
-      end
-      object wwDBEdit1: TwwDBEdit
-        Left = 102
-        Top = 69
-        Width = 161
-        Height = 22
-        DataField = 'LAST_NAME'
-        DataSource = TableSRC
-        TabOrder = 2
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit2: TwwDBEdit
-        Left = 101
-        Top = 95
-        Width = 161
-        Height = 22
-        DataField = 'NICKNAME'
-        DataSource = TableSRC
-        TabOrder = 3
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit12: TwwDBEdit
-        Left = 102
-        Top = 120
-        Width = 115
-        Height = 22
-        DataField = 'FULL_NAME'
-        DataSource = TableSRC
-        TabOrder = 4
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwCheckBox2: TwwCheckBox
-        Left = 63
-        Top = 148
-        Width = 54
-        Height = 17
-        DisableThemes = False
-        AlwaysTransparent = False
-        ValueChecked = 'Y'
-        ValueUnchecked = 'N'
-        DisplayValueChecked = 'Y'
-        DisplayValueUnchecked = 'N'
-        NullAndBlankState = cbUnchecked
-        Alignment = taLeftJustify
-        Caption = #913#925#913#916
-        Checked = True
-        DataField = 'CERTIFIED_ANAD'
-        DataSource = TableSRC
-        State = cbChecked
-        TabOrder = 5
-      end
-    end
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
@@ -942,6 +769,193 @@ object M_InstructorFRM: TM_InstructorFRM
         OnTitleButtonClick = Grid1TitleButtonClick
       end
     end
+    object RzPanel5: TRzPanel
+      Left = 386
+      Top = 1
+      Width = 280
+      Height = 421
+      Align = alLeft
+      BorderOuter = fsNone
+      TabOrder = 2
+      ExplicitLeft = 207
+      ExplicitTop = 6
+      object GroupBox1: TGroupBox
+        Left = 0
+        Top = 5
+        Width = 274
+        Height = 331
+        Caption = #928#955#951#961#959#966#959#961#943#949#962
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        object Label2: TLabel
+          Left = 34
+          Top = 46
+          Width = 37
+          Height = 14
+          Caption = #908#957#959#956#945
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 50
+          Top = 21
+          Width = 21
+          Height = 14
+          Caption = #913'/'#913
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 30
+          Top = 73
+          Width = 41
+          Height = 14
+          Caption = #917#960#943#952#949#964#959
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object SerialFLD: TRzDBLabel
+          Left = 77
+          Top = 18
+          Width = 115
+          Height = 20
+          Alignment = taRightJustify
+          BorderOuter = fsFlat
+          BorderWidth = 1
+          DataField = 'SERIAL_NUMBER'
+          DataSource = TableSRC
+        end
+        object Label14: TLabel
+          Left = 11
+          Top = 98
+          Width = 55
+          Height = 14
+          Caption = #917#948#953#954#972#964#951#964#945
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label15: TLabel
+          Left = 10
+          Top = 120
+          Width = 61
+          Height = 14
+          Caption = #932#945#965#964#972#964#951#964#945
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object FirstFLD: TwwDBEdit
+          Left = 78
+          Top = 44
+          Width = 161
+          Height = 22
+          DataField = 'FIRST_NAME'
+          DataSource = TableSRC
+          TabOrder = 0
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+        end
+        object wwCheckBox1: TwwCheckBox
+          Left = 25
+          Top = 207
+          Width = 67
+          Height = 17
+          DisableThemes = False
+          AlwaysTransparent = False
+          ValueChecked = 'Y'
+          ValueUnchecked = 'N'
+          DisplayValueChecked = 'Y'
+          DisplayValueUnchecked = 'N'
+          NullAndBlankState = cbUnchecked
+          Alignment = taLeftJustify
+          Caption = #917#957#949#961#947#972#962
+          DataField = 'STATUS_ACTIVE'
+          DataSource = TableSRC
+          TabOrder = 1
+        end
+        object wwDBEdit1: TwwDBEdit
+          Left = 78
+          Top = 69
+          Width = 161
+          Height = 22
+          DataField = 'LAST_NAME'
+          DataSource = TableSRC
+          TabOrder = 2
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+        end
+        object wwDBEdit2: TwwDBEdit
+          Left = 77
+          Top = 95
+          Width = 161
+          Height = 22
+          DataField = 'JOB_TITLE'
+          DataSource = TableSRC
+          TabOrder = 3
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+        end
+        object wwDBEdit12: TwwDBEdit
+          Left = 77
+          Top = 120
+          Width = 115
+          Height = 22
+          DataField = 'NATIONAL_ID'
+          DataSource = TableSRC
+          TabOrder = 4
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+        end
+        object wwCheckBox2: TwwCheckBox
+          Left = 39
+          Top = 148
+          Width = 54
+          Height = 17
+          DisableThemes = False
+          AlwaysTransparent = False
+          ValueChecked = 'Y'
+          ValueUnchecked = 'N'
+          DisplayValueChecked = 'Y'
+          DisplayValueUnchecked = 'N'
+          NullAndBlankState = cbUnchecked
+          Alignment = taLeftJustify
+          Caption = #913#925#913#916
+          Checked = True
+          DataField = 'CERTIFIED_ANAD'
+          DataSource = TableSRC
+          State = cbChecked
+          TabOrder = 5
+        end
+      end
+    end
   end
   object TableSRC: TDataSource
     DataSet = TableSQL
@@ -971,7 +985,7 @@ object M_InstructorFRM: TM_InstructorFRM
         ', PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET,' +
         ' ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED' +
         ', DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER' +
-        ', STATUS_ACTIVE, FULL_NAME, CERTIFIED_ANAD)'
+        ', STATUS_ACTIVE, CERTIFIED_ANAD, JOB_TITLE)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :NATIONAL_ID, :FK_COMPANY_SERIAL, :FIRST_NAME' +
@@ -979,8 +993,8 @@ object M_InstructorFRM: TM_InstructorFRM
         'HONE_FIXED, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRESS, ' +
         ':ADDRESS_STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_DIS' +
         'TRICT, :DATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, :FA' +
-        'CEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE, :FULL_NAME, :CERTIFI' +
-        'ED_ANAD)')
+        'CEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE, :CERTIFIED_ANAD, :JO' +
+        'B_TITLE)')
     SQLDelete.Strings = (
       'DELETE FROM INSTRUCTOR'
       'WHERE'
@@ -1000,8 +1014,8 @@ object M_InstructorFRM: TM_InstructorFRM
         'DISTRICT, DATE_STARTED = :DATE_STARTED, DATE_BIRTH = :DATE_BIRTH' +
         ', DATE_USER = :DATE_USER, LIST_SOURCE = :LIST_SOURCE, FACEBOOK =' +
         ' :FACEBOOK, WEBSITE = :WEBSITE, TWITTER = :TWITTER, STATUS_ACTIV' +
-        'E = :STATUS_ACTIVE, FULL_NAME = :FULL_NAME, CERTIFIED_ANAD = :CE' +
-        'RTIFIED_ANAD'
+        'E = :STATUS_ACTIVE, CERTIFIED_ANAD = :CERTIFIED_ANAD, JOB_TITLE ' +
+        '= :JOB_TITLE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1011,7 +1025,7 @@ object M_InstructorFRM: TM_InstructorFRM
         'IXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STR' +
         'EET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STA' +
         'RTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWI' +
-        'TTER, STATUS_ACTIVE, FULL_NAME, CERTIFIED_ANAD FROM INSTRUCTOR'
+        'TTER, STATUS_ACTIVE, CERTIFIED_ANAD, JOB_TITLE FROM INSTRUCTOR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1056,25 +1070,18 @@ object M_InstructorFRM: TM_InstructorFRM
       FixedChar = True
       Size = 15
     end
-    object TableSQLNATIONAL_ID: TWideStringField
-      DisplayLabel = #932#945#965#964#972#964#951#964#945
-      DisplayWidth = 9
-      FieldName = 'NATIONAL_ID'
-      Visible = False
-      FixedChar = True
-    end
     object TableSQLSERIAL_NUMBER: TIntegerField
       FieldName = 'SERIAL_NUMBER'
       Visible = False
     end
+    object TableSQLNATIONAL_ID: TWideStringField
+      FieldName = 'NATIONAL_ID'
+      Visible = False
+      FixedChar = True
+    end
     object TableSQLFK_COMPANY_SERIAL: TIntegerField
       FieldName = 'FK_COMPANY_SERIAL'
       Visible = False
-    end
-    object TableSQLFULL_NAME: TWideStringField
-      FieldName = 'FULL_NAME'
-      Visible = False
-      Size = 61
     end
     object TableSQLNICKNAME: TWideStringField
       FieldName = 'NICKNAME'
@@ -1193,6 +1200,11 @@ object M_InstructorFRM: TM_InstructorFRM
       Visible = False
       FixedChar = True
       Size = 1
+    end
+    object TableSQLJOB_TITLE: TWideStringField
+      FieldName = 'JOB_TITLE'
+      Visible = False
+      Size = 160
     end
   end
 end

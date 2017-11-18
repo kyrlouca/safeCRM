@@ -262,7 +262,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Insert'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 4
@@ -487,19 +486,17 @@ object I_CertificatesFRM: TI_CertificatesFRM
       object wwDBGrid1: TwwDBGrid
         Left = 6
         Top = 47
-        Width = 547
+        Width = 571
         Height = 329
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'FK_PERSON_SERIAL'#9'4'#9'PS/N'
-          'LastName'#9'15'#9'LastName'
-          'FirstName'#9'12'#9'FirstName'
-          'LAST_NAME'#9'12'#9'LAST_NAME'
-          'DATE_ISSUED'#9'12'#9'Date'
-          'HOURS_COMPLETED'#9'6'#9'Hours'
-          'PERCENTAGE_COMPLETED'#9'9'#9'% Complete'
-          'IS_VALID'#9'7'#9'Valid'
-          'FIRST_NAME'#9'30'#9'FIRST_NAME')
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'FK_PERSON_SERIAL'#9'4'#9'PS/N'#9#9
+          'LastName'#9'15'#9'LastName'#9#9
+          'FirstName'#9'12'#9'FirstName'#9#9
+          'DATE_ISSUED'#9'12'#9'Date'#9#9
+          'HOURS_COMPLETED'#9'6'#9'Hours'#9#9
+          'PERCENTAGE_COMPLETED'#9'9'#9'% Complete'#9#9
+          'IS_VALID'#9'7'#9'Valid'#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -1017,11 +1014,15 @@ object I_CertificatesFRM: TI_CertificatesFRM
       'INSERT INTO SEMINAR_CERTIFICATE'
       
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, DATE_ISSU' +
-        'ED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID)'
+        'ED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NAME, ' +
+        'FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, INST' +
+        'RUCTOR_NAME, INSTRUCTOR_JOB_TITLE)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :DATE_' +
-        'ISSUED, :HOURS_COMPLETED, :PERCENTAGE_COMPLETED, :IS_VALID)')
+        'ISSUED, :HOURS_COMPLETED, :PERCENTAGE_COMPLETED, :IS_VALID, :LAS' +
+        'T_NAME, :FIRST_NAME, :NATIONAL_ID, :SEMINAR_SUBJECT, :SEMINAR_DU' +
+        'RATION, :INSTRUCTOR_NAME, :INSTRUCTOR_JOB_TITLE)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_CERTIFICATE'
       'WHERE'
@@ -1033,14 +1034,19 @@ object I_CertificatesFRM: TI_CertificatesFRM
         '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR_SERIAL = :FK_SEMINA' +
         'R_SERIAL, FK_PERSON_SERIAL = :FK_PERSON_SERIAL, DATE_ISSUED = :D' +
         'ATE_ISSUED, HOURS_COMPLETED = :HOURS_COMPLETED, PERCENTAGE_COMPL' +
-        'ETED = :PERCENTAGE_COMPLETED, IS_VALID = :IS_VALID'
+        'ETED = :PERCENTAGE_COMPLETED, IS_VALID = :IS_VALID, LAST_NAME = ' +
+        ':LAST_NAME, FIRST_NAME = :FIRST_NAME, NATIONAL_ID = :NATIONAL_ID' +
+        ', SEMINAR_SUBJECT = :SEMINAR_SUBJECT, SEMINAR_DURATION = :SEMINA' +
+        'R_DURATION, INSTRUCTOR_NAME = :INSTRUCTOR_NAME, INSTRUCTOR_JOB_T' +
+        'ITLE = :INSTRUCTOR_JOB_TITLE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, DATE_' +
-        'ISSUED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID FROM SEM' +
-        'INAR_CERTIFICATE'
+        'ISSUED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NA' +
+        'ME, FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, ' +
+        'INSTRUCTOR_NAME, INSTRUCTOR_JOB_TITLE FROM SEMINAR_CERTIFICATE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1058,19 +1064,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
     UpdateTransaction = write1
     SQL.Strings = (
       'select'
-      '    sc.*,per.first_name, per.last_name'
+      '    sc.*,per.first_name, per.last_name,per.last_first_name'
       'from'
       'seminar_certificate sc left outer join'
-      'person per on sc.fk_person_serial= per.serial_number'
+      'person_view per on sc.fk_person_serial= per.serial_number'
       'where'
       'fk_seminar_serial = :seminarSerial'
       'order by'
-      'per.last_name'
+      'per.last_first_name'
       '')
     CachedUpdates = True
     AutoCommit = False
     Options.LongStrings = False
     Options.LocalMasterDetail = True
+    Active = True
     BeforePost = InvoiceSQLBeforePost
     Left = 41
     Top = 325
@@ -1114,13 +1121,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Size = 60
       Lookup = True
     end
-    object InvoiceSQLLAST_NAME: TWideStringField
-      DisplayWidth = 12
-      FieldName = 'LAST_NAME'
-      ReadOnly = True
-      FixedChar = True
-      Size = 30
-    end
     object InvoiceSQLDATE_ISSUED: TDateField
       DisplayLabel = 'Date'
       DisplayWidth = 12
@@ -1144,10 +1144,19 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FixedChar = True
       Size = 1
     end
+    object InvoiceSQLLAST_NAME: TWideStringField
+      DisplayWidth = 12
+      FieldName = 'LAST_NAME'
+      ReadOnly = True
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
     object InvoiceSQLFIRST_NAME: TWideStringField
       DisplayWidth = 30
       FieldName = 'FIRST_NAME'
       ReadOnly = True
+      Visible = False
       FixedChar = True
       Size = 30
     end
@@ -1156,6 +1165,31 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FieldName = 'FK_SEMINAR_SERIAL'
       Required = True
       Visible = False
+    end
+    object InvoiceSQLLAST_FIRST_NAME: TWideStringField
+      FieldName = 'LAST_FIRST_NAME'
+      ReadOnly = True
+      Visible = False
+      Size = 61
+    end
+    object InvoiceSQLSEMINAR_SUBJECT: TWideMemoField
+      FieldName = 'SEMINAR_SUBJECT'
+      Visible = False
+      BlobType = ftWideMemo
+    end
+    object InvoiceSQLSEMINAR_DURATION: TIntegerField
+      FieldName = 'SEMINAR_DURATION'
+      Visible = False
+    end
+    object InvoiceSQLINSTRUCTOR_NAME: TWideMemoField
+      FieldName = 'INSTRUCTOR_NAME'
+      Visible = False
+      BlobType = ftWideMemo
+    end
+    object InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideMemoField
+      FieldName = 'INSTRUCTOR_JOB_TITLE'
+      Visible = False
+      BlobType = ftWideMemo
     end
   end
   object InvoiceSRC: TIBCDataSource

@@ -100,6 +100,11 @@ type
     wwDBGrid1: TwwDBGrid;
     InvoiceSQLFIRST_NAME: TWideStringField;
     InvoiceSQLLAST_NAME: TWideStringField;
+    InvoiceSQLLAST_FIRST_NAME: TWideStringField;
+    InvoiceSQLSEMINAR_SUBJECT: TWideMemoField;
+    InvoiceSQLSEMINAR_DURATION: TIntegerField;
+    InvoiceSQLINSTRUCTOR_NAME: TWideMemoField;
+    InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideMemoField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -282,10 +287,19 @@ end;
 
 
 procedure TI_CertificatesFRM.GenerateInvoices(Const SeminarSerial:integer);
+type
+  Tperson=record
+    FirstName:String;
+    LastName:String;
+    NationalId:string;
+  end;
+
 var
   qr:TksQuery;
+  PersonQr:TksQuery;
   str:String;
   SerialNumber:integer;
+//  SeminarName:String;
   isMono:Boolean;
   PriceNormal,PriceAnad,PriceUsed:Double;
 
@@ -298,16 +312,40 @@ var
   isGuest,isPresent:boolean;
   isPass:Boolean;
   SeminarHours:Integer;
+  SeminarSubject:String;
   PercentPass:Integer;
   percentActual:Double;
 
   vatRate:Double;
+  person:  TPerson;
+  InstructorName:String;
+  InstructorJob:String;
 begin
 
   percentPass:=gpGetGeneralParam(cn,'Ô00').P_Integer1;
 
   invoiceSQL.Close;
   invoiceSQL.Open;
+
+  str:= 'select'
+    +' sem.seminar_name,'
+    +'  ins.first_name, ins.last_name, ins.job_title'
+    + 'from'
+    +'  seminar sem left outer join'
+    +'  instructor ins on ins.serial_number=sem.fk_instructor'
+    +'  where sem.serial_number= :seminarSerial';
+  qr:= TksQuery.Create(cn,str);
+  try
+    qr.ParamByName('seminarSerial').value:=SeminarSerial;
+    qr.open;
+    SeminarSubject:=qr.FieldByName('SEMINAR_Name').AsString;
+    InstructorName:=trim(qr.FieldByName('first_Name').AsString)+' '+trim(qr.FieldByName('first_Name').AsString);
+    InstructorJob:=qr.FieldByName('job_title').AsString;
+    close;
+  finally
+    qr.Free;
+  end;
+
 
   str:= 'Select sum(sday.duration_hours) as Seminar_hours from seminar_day_view sday where sday.seminar_serial= :SeminarSerial ';
   qr:= TksQuery.Create(cn,str);
@@ -321,15 +359,16 @@ begin
   end;
 
 
-str:='   Select'
-  +'  max(ppv.is_guest) as is_guest, min(ppv.present_ispresent)as is_present, sum(ppv.present_hours) as hours, ppv.person_serial'
-  +'  from'
-  +'      person_presence_view ppv'
-  +'  where'
-  +'      ppv.seminar_serial= :seminarSerial'
-  +'  group by ppv.person_serial';
+  str:='Select'
+    +'  max(ppv.is_guest) as is_guest, min(ppv.present_ispresent)as is_present, sum(ppv.present_hours) as hours, ppv.person_serial'
+    +'  from'
+    +'      person_presence_view ppv'
+    +'  where'
+    +'      ppv.seminar_serial= :seminarSerial'
+    +'  group by ppv.person_serial';
 
-//   str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
+  //   str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
+  // instead I have used presence which is ok because if no presence then no certificate
    qr:= TksQuery.Create(cn,str);
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
@@ -344,13 +383,30 @@ str:='   Select'
         isFound:=ksCountRecVarSQL(cn,'select * from seminar_certificate where fk_seminar_serial=:Seminar and fk_person_serial= :person',[SeminarSerial,PersonSerial])>0;
         isGuest:=qr.FieldByName('is_guest').AsString='Y';
         isPresent:=qr.FieldByName('is_Present').AsString='Y';
-        isPass:=qr.FieldByName('hours').AsInteger /SeminarHours *100.0 > PercentPass;
+        isPass:=qr.FieldByName('hours').AsInteger /SeminarHours *100.0 >= PercentPass;
 
 
         if isFound or isGuest or (not isPresent) or (not isPass)  then begin
           qr.Next;
           continue;
         end;
+
+      str:=' Select'
+      +'  per.last_name,per.first_name, per.last_first_name, per.national_id'
+      +'  from person_view per'
+      +'  where  per.serial_number= :PersonSerial';
+      PersonQr := TksQuery.Create(cn,str);
+      try
+         PersonQR.Open;
+         PersonQR.ParamByName('PersonSerial').Value:=PersonSerial;
+         PersonQR.Open;
+         person.FirstName:=qr.FieldByName('first_name').AsString;
+         person.LastName:=qr.FieldByName('Last_name').AsString;
+         person.NationalId:=qr.FieldByName('National_id').AsString;
+      finally
+        personQr.Free;
+      end;
+
 
 
         SerialNumber:=ksGenerateSerial(cn,'GEN_SEMINAR_CERTIFICATE');
@@ -359,6 +415,16 @@ str:='   Select'
         InvoiceSQL.FieldByName('serial_number').Value:=SerialNumber;
         InvoiceSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
         InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
+
+        InvoiceSQL.FieldByName('first_name').Value:=person.FirstName;
+        InvoiceSQL.FieldByName('Last_name').Value:=Person.LastName;
+        InvoiceSQL.FieldByName('National_id').Value:=Person.NationalId;
+        InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
+        InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
+
+        InvoiceSQL.FieldByName('instructor_name').Value:=InstructorName;
+        InvoiceSQL.FieldByName('instructor_job_title').Value:=InstructorJob;
+
 
 
 //        InvoiceSQL.FieldByName('AMOUNT_With_vat').AsFloat:=AmountTotal;

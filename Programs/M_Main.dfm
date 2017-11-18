@@ -7356,23 +7356,11 @@ object M_mainFRM: TM_mainFRM
         OnClick = N1Click
       end
     end
-    object BaseTables1: TMenuItem
-      Caption = #928#943#957#945#954#949#962
-      object N2: TMenuItem
-        Caption = #935#974#961#959#953' '#917#954#960#945#943#948#949#965#963#951#962
-        OnClick = N2Click
-      end
-      object N3: TMenuItem
-        Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
-        OnClick = N3Click
-      end
-      object N5: TMenuItem
-        Caption = #917#954#960#945#953#948#949#965#964#941#962
-        OnClick = N5Click
-      end
-      object N4: TMenuItem
-        Caption = #917#943#948#951' '#922#972#963#964#959#965#962
-        OnClick = N4Click
+    object N8: TMenuItem
+      Caption = #917#961#947#945#963#943#949#962
+      object N9: TMenuItem
+        Caption = #916#953#945#967#949#943#961#953#963#951' '#917#961#947#945#963#953#974#957
+        OnClick = N9Click
       end
     end
     object ab1: TMenuItem
@@ -7384,14 +7372,51 @@ object M_mainFRM: TM_mainFRM
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962
       end
     end
+    object Reports1: TMenuItem
+      Caption = 'Reports'
+      object Reminders1: TMenuItem
+        Caption = #917#961#947#945#963#943#949#962
+        OnClick = Reminders1Click
+      end
+      object N10: TMenuItem
+        Caption = #932#953#956#959#955#972#947#953#945
+        OnClick = N10Click
+      end
+    end
     object User1: TMenuItem
       Caption = 'User'
       object ChangePassword1: TMenuItem
         Caption = 'Change Password'
       end
     end
+    object Help1: TMenuItem
+      Caption = 'Help'
+      object HelpFile1: TMenuItem
+        Caption = 'Help File'
+        OnClick = HelpFile1Click
+      end
+    end
     object System1: TMenuItem
       Caption = 'System'
+      object BaseTables1: TMenuItem
+        Caption = #928#943#957#945#954#949#962
+        object N2: TMenuItem
+          Caption = #935#974#961#959#953' '#917#954#960#945#943#948#949#965#963#951#962
+          OnClick = N2Click
+        end
+        object N3: TMenuItem
+          Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
+          OnClick = N3Click
+        end
+        object N5: TMenuItem
+          Caption = #917#954#960#945#953#948#949#965#964#941#962
+          OnClick = N5Click
+        end
+        object N4: TMenuItem
+          Caption = #917#943#948#951' '#922#972#963#964#959#965#962
+          OnClick = N4Click
+        end
+      end
       object Security1: TMenuItem
         Caption = 'Security'
         object UserSecurity1: TMenuItem
@@ -7404,31 +7429,6 @@ object M_mainFRM: TM_mainFRM
           Caption = 'System Parameters'
           OnClick = SystemParameters1Click
         end
-      end
-    end
-    object Help1: TMenuItem
-      Caption = 'Help'
-      object HelpFile1: TMenuItem
-        Caption = 'Help File'
-        OnClick = HelpFile1Click
-      end
-    end
-    object N8: TMenuItem
-      Caption = #917#961#947#945#963#943#949#962
-      object N9: TMenuItem
-        Caption = #916#953#945#967#949#943#961#953#963#951' '#917#961#947#945#963#953#974#957
-        OnClick = N9Click
-      end
-    end
-    object Reports1: TMenuItem
-      Caption = 'Reports'
-      object Reminders1: TMenuItem
-        Caption = #917#961#947#945#963#943#949#962
-        OnClick = Reminders1Click
-      end
-      object N10: TMenuItem
-        Caption = #932#953#956#959#955#972#947#953#945
-        OnClick = N10Click
       end
     end
   end

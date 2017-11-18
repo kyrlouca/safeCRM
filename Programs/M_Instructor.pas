@@ -31,21 +31,12 @@ type
     RzBitBtn1: TRzBitBtn;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
-    GroupBox1: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label5: TLabel;
-    SerialFLD: TRzDBLabel;
-    FirstFLD: TwwDBEdit;
     wwIncrementalSearch1: TwwIncrementalSearch;
     RzPanel2: TRzPanel;
     RzPanel3: TRzPanel;
     Grid1: TwwDBGrid;
-    Label17: TLabel;
-    Label15: TLabel;
     Nav1Button: TwwNavButton;
     Nav1Button1: TwwNavButton;
-    wwCheckBox1: TwwCheckBox;
     GroupBox2: TGroupBox;
     Label1: TLabel;
     Label10: TLabel;
@@ -65,16 +56,26 @@ type
     wwDBEdit4: TwwDBEdit;
     wwDBEdit5: TwwDBEdit;
     wwDBEdit6: TwwDBEdit;
+    TableSQL: TIBCQuery;
+    RzPanel5: TRzPanel;
+    GroupBox1: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    SerialFLD: TRzDBLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    FirstFLD: TwwDBEdit;
+    wwCheckBox1: TwwCheckBox;
     wwDBEdit1: TwwDBEdit;
     wwDBEdit2: TwwDBEdit;
     wwDBEdit12: TwwDBEdit;
-    TableSQL: TIBCQuery;
+    wwCheckBox2: TwwCheckBox;
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLNATIONAL_ID: TWideStringField;
     TableSQLFK_COMPANY_SERIAL: TIntegerField;
     TableSQLFIRST_NAME: TWideStringField;
     TableSQLLAST_NAME: TWideStringField;
-    TableSQLFULL_NAME: TWideStringField;
     TableSQLNICKNAME: TWideStringField;
     TableSQLSTATUS: TWideStringField;
     TableSQLOCCUPATION: TWideStringField;
@@ -97,8 +98,8 @@ type
     TableSQLWEBSITE: TWideStringField;
     TableSQLTWITTER: TWideStringField;
     TableSQLSTATUS_ACTIVE: TWideStringField;
-    wwCheckBox2: TwwCheckBox;
     TableSQLCERTIFIED_ANAD: TWideStringField;
+    TableSQLJOB_TITLE: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -174,14 +175,19 @@ if IN_ACTION='INSERT' then begin
    TableSQL.Insert;
 end else if IN_ACTION='EDIT' then begin
    TableSQL.Close;
+   TableSQL.RestoreSQL;
    tABLESQL.AddWhere('serial_number = :serial');
    TableSQL.ParamByName('serial').Value:=in_INSTRUCTOR_SERIAL;
    TableSQL.Open;
 end else if IN_ACTION='DISPLAY' then begin
    TableSQL.Close;
-   tABLESQL.AddWhere('serial_number = :serial');
-   TableSQL.ParamByName('serial').Value:=in_INSTRUCTOR_SERIAL;
+   TableSQL.RestoreSQL;
    TableSQL.ReadOnly:=true;
+   TableSQL.Open;
+end else begin
+   TableSQL.Close;
+   TableSQL.RestoreSQL;
+   TableSQL.ReadOnly:=False;
    TableSQL.Open;
 end;
 
