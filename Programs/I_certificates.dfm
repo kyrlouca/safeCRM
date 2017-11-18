@@ -617,44 +617,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
             FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
           Margin = -1
         end
-        object SecondGRP: TRzGroupBox
-          Left = 29
-          Top = 86
-          Width = 271
-          Height = 46
-          Caption = #934#928#913
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-          object Label8: TLabel
-            Left = 21
-            Top = 18
-            Width = 65
-            Height = 14
-            Caption = #932#941#955#959#962' '#934#928#913' '
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object VatFLD: TwwDBEdit
-            Left = 92
-            Top = 15
-            Width = 90
-            Height = 22
-            DataField = 'MAX_CAPACITY'
-            TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-        end
       end
     end
     object FirstGRP: TGroupBox

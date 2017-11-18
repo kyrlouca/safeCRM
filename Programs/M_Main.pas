@@ -125,7 +125,8 @@ begin
 //TODO Reports
 //TODO companies used as persons (type=company) for invoice reasons
 //TODO  system->allow delete an invoice!
-//Cannot delete seminar if approved --> system change status
+//TODO Cannot delete seminar if approved --> system change status
+//TODO sort customer by last name in certificates, invoices, reports, list
 end;
 
 procedure TM_mainFRM.N10Click(Sender: TObject);

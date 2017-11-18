@@ -91,9 +91,6 @@ type
     wwDBEdit2: TRzDBLabel;
     Read1: TIBCTransaction;
     write1: TIBCTransaction;
-    SecondGRP: TRzGroupBox;
-    Label8: TLabel;
-    VatFLD: TwwDBEdit;
     InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField;
     InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
     InvoiceSQLDATE_ISSUED: TDateField;
@@ -298,26 +295,41 @@ var
   DiscountNormal:Double;
   DiscountSafe:Double;
   isFOund:Boolean;
+  isGuest,isPresent:boolean;
+  isPass:Boolean;
+  SeminarHours:Integer;
+  PercentPass:Integer;
+  percentActual:Double;
 
   vatRate:Double;
 begin
 
-  VatRate:=StrToFloatDef(VatFLD.Text,0);
+  percentPass:=gpGetGeneralParam(cn,'Ô00').P_Integer1;
 
-//  ksExecSQLVar(cn,'delete from invoice where fk_seminar_serial= :SeminarSerial',[SeminarSerial]);
   invoiceSQL.Close;
   invoiceSQL.Open;
 
-  qr:= TksQuery.Create(cn,'select * from seminar where serial_number= :SeminarSerial');
+  str:= 'Select sum(sday.duration_hours) as Seminar_hours from seminar_day_view sday where sday.seminar_serial= :SeminarSerial ';
+  qr:= TksQuery.Create(cn,str);
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
-    isMono:=qr.FieldByName('SEMINAR_CORP_TYPE').Value='M';
+    SeminarHours:=qr.FieldByName('SEMINAR_HOURS').AsInteger;
+    close;
   finally
     qr.Free;
   end;
 
-   str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
+
+str:='   Select'
+  +'  max(ppv.is_guest) as is_guest, min(ppv.present_ispresent)as is_present, sum(ppv.present_hours) as hours, ppv.person_serial'
+  +'  from'
+  +'      person_presence_view ppv'
+  +'  where'
+  +'      ppv.seminar_serial= :seminarSerial'
+  +'  group by ppv.person_serial';
+
+//   str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
    qr:= TksQuery.Create(cn,str);
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
@@ -327,13 +339,19 @@ begin
       InvoiceSql.Open;
 
     while not qr.Eof do begin
-        PersonSerial:=qr.FieldByName('fk_person_serial').AsInteger;
+        PersonSerial:=qr.FieldByName('person_serial').AsInteger;
 
         isFound:=ksCountRecVarSQL(cn,'select * from seminar_certificate where fk_seminar_serial=:Seminar and fk_person_serial= :person',[SeminarSerial,PersonSerial])>0;
-        if isFound then begin
+        isGuest:=qr.FieldByName('is_guest').AsString='Y';
+        isPresent:=qr.FieldByName('is_Present').AsString='Y';
+        isPass:=qr.FieldByName('hours').AsInteger /SeminarHours *100.0 > PercentPass;
+
+
+        if isFound or isGuest or (not isPresent) or (not isPass)  then begin
           qr.Next;
           continue;
         end;
+
 
         SerialNumber:=ksGenerateSerial(cn,'GEN_SEMINAR_CERTIFICATE');
 
