@@ -89,7 +89,6 @@ type
     write1: TIBCTransaction;
     SecondGRP: TRzGroupBox;
     Label8: TLabel;
-    VatFLD: TwwDBEdit;
     wwDBGrid1: TwwDBGrid;
     InvoiceSQL: TIBCQuery;
     InvoiceSQLSERIAL_NUMBER: TIntegerField;
@@ -106,6 +105,7 @@ type
     InvoiceSQLSEMINAR_DURATION: TIntegerField;
     InvoiceSQLINSTRUCTOR_NAME: TWideStringField;
     InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
+    DateFLD: TwwDBDateTimePicker;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -222,6 +222,7 @@ var
 begin
 //  ksOpenTables([TableSQL]);
 
+  DateFLD.Date :=Date;
  personSQL.Close;
  personSQL.ParamByName('seminarSerial').Value:=IN_seminar_serial;
  personSQL.Open;
@@ -310,8 +311,10 @@ var
   SerialNumber:integer;
   isMono:Boolean;
   PriceNormal,PriceAnad,PriceUsed:Double;
+  SeminarDate:TDate;
 
   PersonSerial:Integer;
+
   amountVat:Double;
   AmountTotal:Double;
   DiscountNormal:Double;
@@ -322,30 +325,42 @@ var
 
 
   SeminarHours:Integer;
+
   SeminarSubject:String;
   PercentPass:Integer;
+  HoursActual:Integer;
   percentActual:Double;
   person:  TPerson;
 
-//  vatRate:Double;
 begin
 
 
-  VatRate:=StrToFloatDef(VatFLD.Text,0);
-
-//  ksExecSQLVar(cn,'delete from invoice where fk_seminar_serial= :SeminarSerial',[SeminarSerial]);
-
-//  invoiceSQL.Close;
-//  invoiceSQL.Open;
+  percentPass:=gpGetGeneralParam(cn,'T00' ).P_Integer1;
+  SeminarDate:=DateFLD.Date;
 
   qr:= TksQuery.Create(cn,'select * from seminar where serial_number= :SeminarSerial');
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
     isMono:=qr.FieldByName('SEMINAR_CORP_TYPE').Value='M';
+    SeminarSubject:=qr.FieldByName('seminar_name').asString;
   finally
     qr.Free;
   end;
+
+
+  str:= ' Select sum(sday.duration_hours) as Seminar_hours'
+  +'  from seminar_day_view sday where'
+  +'  sday.seminar_serial= :SeminarSerial';
+   qr:= TksQuery.Create(cn,str);
+  try
+    qr.ParamByName('seminarSerial').value:=SeminarSerial;
+    qr.open;
+    SeminarHours:=qr.FieldByName('SEMINAR_Hours').asInteger;
+  finally
+    qr.Free;
+  end;
+
 
     str:='Select'
     +'  max(ppv.is_guest) as is_guest, min(ppv.present_ispresent)as is_present, sum(ppv.present_hours) as hours, ppv.person_serial'
@@ -369,7 +384,9 @@ begin
         isFound:=ksCountRecVarSQL(cn,'select * from seminar_certificate where fk_seminar_serial=:Seminar and fk_person_serial= :person',[SeminarSerial,PersonSerial])>0;
         isGuest:=qr.FieldByName('is_guest').AsString='Y';
         isPresent:=qr.FieldByName('is_Present').AsString='Y';
-        isPass:=qr.FieldByName('hours').AsInteger /SeminarHours *100.0 >= PercentPass;
+        HoursActual:=qr.FieldByName('hours').AsInteger;
+        PercentActual:=HoursActual/SeminarHours * 100.0;
+        isPass:= PercentActual >= PercentPass;
 
 
         if isFound or isGuest or (not isPresent) or (not isPass)  then begin
@@ -401,11 +418,11 @@ begin
         InvoiceSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
         InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
 
-//        InvoiceSQL.FieldByName('first_name').Value:=person.FirstName;
-//        InvoiceSQL.FieldByName('Last_name').Value:=Person.LastName;
-//        InvoiceSQL.FieldByName('National_id').Value:=Person.NationalId;
-//        InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
-//        InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
+        InvoiceSQL.FieldByName('first_name').Value:=person.FirstName;
+        InvoiceSQL.FieldByName('Last_name').Value:=Person.LastName;
+        InvoiceSQL.FieldByName('National_id').Value:=Person.NationalId;
+        InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
+        InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
 
 //        InvoiceSQL.FieldByName('instructor_name').Value:='ab';
 //        InvoiceSQL.FieldByName('instructor_job_title').Value:='cc';
@@ -414,11 +431,11 @@ begin
 
 //        InvoiceSQL.FieldByName('AMOUNT_With_vat').AsFloat:=AmountTotal;
         InvoiceSQL.FieldByName('is_valid').Value:='Y';
-        InvoiceSQL.FieldByName('hours_completed').Value:=12;
-        InvoiceSQL.FieldByName('percentage_completed').Value:=13;
-        InvoiceSQL.FieldByName('DATE_Issued').Value:=NOW;
+        InvoiceSQL.FieldByName('hours_completed').Value:=HoursActual;
+        InvoiceSQL.FieldByName('percentage_completed').Value:=percentActual;
+        InvoiceSQL.FieldByName('DATE_Issued').AsDateTime:=SeminarDate;
         InvoiceSQL.Post;
-              qr.Next;
+        qr.Next;
     end;
   finally
     qr.Free;

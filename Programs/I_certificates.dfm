@@ -618,7 +618,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
           Top = 86
           Width = 271
           Height = 46
-          Caption = #934#928#913
+          Caption = #919#956#949#961#959#956#951#957#943#945' '#916#953#960#955#974#956#945#964#959#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -629,9 +629,9 @@ object I_CertificatesFRM: TI_CertificatesFRM
           object Label8: TLabel
             Left = 21
             Top = 18
-            Width = 65
+            Width = 63
             Height = 14
-            Caption = #932#941#955#959#962' '#934#928#913' '
+            Caption = #919#956#949#961#959#956#951#957#943#945
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -639,16 +639,22 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Font.Style = []
             ParentFont = False
           end
-          object VatFLD: TwwDBEdit
-            Left = 92
-            Top = 15
-            Width = 90
-            Height = 22
-            DataField = 'MAX_CAPACITY'
+          object DateFLD: TwwDBDateTimePicker
+            Left = 90
+            Top = 17
+            Width = 121
+            Height = 21
+            AutoSize = False
+            CalendarAttributes.Font.Charset = DEFAULT_CHARSET
+            CalendarAttributes.Font.Color = clWindowText
+            CalendarAttributes.Font.Height = -11
+            CalendarAttributes.Font.Name = 'Tahoma'
+            CalendarAttributes.Font.Style = []
+            CalendarAttributes.PopupYearOptions.StartYear = 2010
+            Epoch = 1950
+            ShowButton = True
             TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
+            DisplayFormat = 'dd/mm/yyyy'
           end
         end
       end
