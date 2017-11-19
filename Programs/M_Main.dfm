@@ -26,7 +26,7 @@ object M_mainFRM: TM_mainFRM
     Margins.Bottom = 0
     Align = alTop
     BorderOuter = fsGroove
-    Caption = 'Safe CRM - V0.05'
+    Caption = 'Safe CRM - V0.80'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlue
     Font.Height = -48
@@ -7389,13 +7389,6 @@ object M_mainFRM: TM_mainFRM
         Caption = 'Change Password'
       end
     end
-    object Help1: TMenuItem
-      Caption = 'Help'
-      object HelpFile1: TMenuItem
-        Caption = 'Help File'
-        OnClick = HelpFile1Click
-      end
-    end
     object System1: TMenuItem
       Caption = 'System'
       object BaseTables1: TMenuItem
@@ -7429,6 +7422,13 @@ object M_mainFRM: TM_mainFRM
           Caption = 'System Parameters'
           OnClick = SystemParameters1Click
         end
+      end
+    end
+    object Help1: TMenuItem
+      Caption = 'Help'
+      object HelpFile1: TMenuItem
+        Caption = 'Help File'
+        OnClick = HelpFile1Click
       end
     end
   end

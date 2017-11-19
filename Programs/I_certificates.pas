@@ -11,6 +11,7 @@ uses
   RzPopups, vcl.wwcheckbox, vcl.wwDialog, vcl.wwIDlg, vcl.wwmonthcalendar,
   vcl.wwlocate, VirtualTable;
 type
+
   TI_CertificatesFRM = class(TForm)
     Panel1: TPanel;
     Panel4: TPanel;
@@ -106,6 +107,7 @@ type
     InvoiceSQLINSTRUCTOR_NAME: TWideStringField;
     InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
     DateFLD: TwwDBDateTimePicker;
+    Button1: TButton;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -127,6 +129,7 @@ type
     cn:TIBCConnection;
     procedure GenerateInvoices(Const SeminarSerial:integer);
     procedure GetInvoices();
+    Function FindGuestHours(Const SeminarSerial, PersonSerial:Integer):integer;
   public
     { Public declarations }
     IN_ACTION:String;
@@ -312,6 +315,9 @@ var
   isMono:Boolean;
   PriceNormal,PriceAnad,PriceUsed:Double;
   SeminarDate:TDate;
+  SeminarSubject:String;
+  SeminarHours:Integer;
+  SeminarType:Integer;
 
   PersonSerial:Integer;
 
@@ -324,9 +330,8 @@ var
   isPass:Boolean;
 
 
-  SeminarHours:Integer;
+  AdditionalHours:integer;
 
-  SeminarSubject:String;
   PercentPass:Integer;
   HoursActual:Integer;
   percentActual:Double;
@@ -342,7 +347,7 @@ begin
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
-    isMono:=qr.FieldByName('SEMINAR_CORP_TYPE').Value='M';
+    seminarType:=qr.FieldByName('fk_seminar').AsInteger;
     SeminarSubject:=qr.FieldByName('seminar_name').asString;
   finally
     qr.Free;
@@ -369,6 +374,7 @@ begin
     +'  where'
     +'      ppv.seminar_serial= :seminarSerial'
     +'  group by ppv.person_serial';
+    //person_presence is created for all seminar Persons!!
 //   str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
    qr:= TksQuery.Create(cn,str);
   try
@@ -384,10 +390,17 @@ begin
         isFound:=ksCountRecVarSQL(cn,'select * from seminar_certificate where fk_seminar_serial=:Seminar and fk_person_serial= :person',[SeminarSerial,PersonSerial])>0;
         isGuest:=qr.FieldByName('is_guest').AsString='Y';
         isPresent:=qr.FieldByName('is_Present').AsString='Y';
-        HoursActual:=qr.FieldByName('hours').AsInteger;
+
+        AdditionalHours:=0;
+        if Not isPresent then begin
+          //check if the person attended a similar seminar (subject) as a guest
+          AdditionalHours:=FindGuestHours(SeminarSerial,PersonSerial);
+          isPresent:= AdditionalHours>0;
+        end;
+
+        HoursActual:=qr.FieldByName('hours').AsInteger + AdditionalHours;
         PercentActual:=HoursActual/SeminarHours * 100.0;
         isPass:= PercentActual >= PercentPass;
-
 
         if isFound or isGuest or (not isPresent) or (not isPass)  then begin
           qr.Next;
@@ -413,7 +426,7 @@ begin
 
         SerialNumber:=ksGenerateSerial(cn,'GEN_SEMINAR_CERTIFICATE');
 
-          InvoiceSQL.Insert;
+        InvoiceSQL.Insert;
         InvoiceSQL.FieldByName('serial_number').Value:=SerialNumber;
         InvoiceSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
         InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
@@ -434,6 +447,8 @@ begin
         InvoiceSQL.FieldByName('hours_completed').Value:=HoursActual;
         InvoiceSQL.FieldByName('percentage_completed').Value:=percentActual;
         InvoiceSQL.FieldByName('DATE_Issued').AsDateTime:=SeminarDate;
+        InvoiceSQL.FieldByName('HAS_ANOTHER_DATE').AsString:= AdditionalHours>0;
+
         InvoiceSQL.Post;
         qr.Next;
     end;
@@ -481,6 +496,7 @@ procedure TI_CertificatesFRM.Button1Click(Sender: TObject);
 var
   seminarSerial:Integer;
 begin
+  FindGuestHours(42,3);
 end;
 
 procedure TI_CertificatesFRM.CanelBTNClick(Sender: TObject);
@@ -496,5 +512,85 @@ begin
   end;
 
 end;
+
+Function TI_CertificatesFRM.FindGuestHours(Const SeminarSerial, PersonSerial:Integer):integer;
+var
+  al:Integer;
+  ProblemSubjectStr:string;
+  GuestSubjectStr:string;
+  ProblemQr, GuestQr:TksQuery;
+  SeminarTypeSerial,SubjectTypeSerial:Integer;
+  Present:String;
+  PresenceSerial:Integer;
+  IsFound:Boolean;
+  SumHours:Integer;
+  ProblemDate:TDate;
+begin
+//check if the person has attended a similar subject (same seminar_type) in another seminar which is one month before or after
+
+  ProblemSubjectstr:=
+    ' select'
+    +'  ppv.seminar_type_serial, ppv.subject_type_serial, ppv.present_ispresent,ppv.day_date'
+    +'  from person_presence_view ppv where'
+    +'  ppv.present_ispresent=''N'' '
+    +'  and ppv.seminar_serial= :SeminarSerial and ppv.person_serial= :personSerial';
+
+GuestSubjectStr:=
+  ' select'
+  +'  ppv.presence_serial, ppv.seminar_serial, ppv.is_guest, ppv.present_ispresent,ppv.day_date,ppv.present_hours'
+  +'  from person_presence_view ppv where'
+  +'  ppv.person_serial= :personSerial'
+  +'  and ppv.present_ispresent= ''Y'' '
+  +'  and ppv.seminar_type_serial= :SeminartypeSerial and ppv.subject_type_serial = :SubjectTypeSerial'
+  +' and ppv.day_date between :StartDate and :EndDate';
+
+
+  try
+      sumHours:=0;
+      isFound:=False;
+
+      GUestQR:=TksQuery.Create(cn,GuestSubjectStr);
+
+      ProblemQr:=TksQuery.Create(cn,ProblemSubjectStr);
+      ProblemQr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+      ProblemQr.ParamByName('PersonSerial').Value:=PersonSerial;
+      ProblemQR.Open;
+      while (not ProblemQr.Eof) do begin
+          SeminarTypeSerial:=ProblemQr.FieldByName('seminar_type_serial').AsInteger;
+          SubjectTypeSerial:=ProblemQr.FieldByName('subject_type_serial').AsInteger;
+          present:=ProblemQr.FieldByName('present_isPresent').AsString;
+          ProblemDate:=ProblemQr.FieldByName('day_date').AsDateTime;
+          showMessage(IntToStr(SeminarTypeSerial)+'   Sub:'+IntToStr(subjectTypeSerial) +' '+Present);
+
+          guestqr.Close;
+          guestQR.ParamByName('PErsonSerial').Value:= PersonSerial;
+          guestQR.ParamByName('SeminarTypeSerial').Value:= SeminarTypeSerial;
+          guestQR.ParamByName('SubjectTypeSerial').Value:= SubjectTypeSerial;
+          guestQR.ParamByName('StartDate').Value:= IncMonth(ProblemDate,-1);
+          guestQR.ParamByName('EndDate').Value:= IncMonth(ProblemDate,1);
+          guestQR.Open;
+          if GuestQR.IsEmpty then begin
+            isFound:=false;
+            Result:=0;
+            break;
+          end else begin
+            PresenceSErial:=guestQR.FieldByName('presence_Serial').AsInteger;
+            ShowMessage(IntToStr(PresenceSerial));
+            sumHours:=SumHours+guestQr.FieldByName('present_hours').AsInteger;
+          end;
+          ProblemQr.Next;
+
+      end;
+
+  finally
+          ProblemQr.free;
+          GuestQR.Free;
+  end;
+
+  result:=SumHours;
+  ShowMessage(IntToStr(sumHours));
+
+end;
+
 
 End.

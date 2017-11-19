@@ -262,7 +262,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Insert'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 4
@@ -489,17 +488,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
         Top = 47
         Width = 547
         Height = 329
+        ControlType.Strings = (
+          'IS_VALID;CheckBox;Y;N')
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
           'FK_PERSON_SERIAL'#9'4'#9'PS/N'
-          'DATE_ISSUED'#9'12'#9'Date'
-          'HOURS_COMPLETED'#9'6'#9'Hours'
-          'PERCENTAGE_COMPLETED'#9'9'#9'% Complete'
-          'IS_VALID'#9'7'#9'Valid')
+          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945
+          'HOURS_COMPLETED'#9'6'#9#937#961#949#962
+          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
+          'IS_VALID'#9'7'#9#904#947#954#965#961#959)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
-        FixedCols = 0
+        FixedCols = 5
         ShowHorzScrollBar = True
         DataSource = InvoiceSRC
         TabOrder = 2
@@ -657,6 +659,15 @@ object I_CertificatesFRM: TI_CertificatesFRM
             DisplayFormat = 'dd/mm/yyyy'
           end
         end
+      end
+      object Button1: TButton
+        Left = 176
+        Top = 16
+        Width = 75
+        Height = 25
+        Caption = 'Button1'
+        TabOrder = 2
+        OnClick = Button1Click
       end
     end
     object FirstGRP: TGroupBox
@@ -1189,9 +1200,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
     SQL.Strings = (
       
         'Select * from seminar_certificate where fk_seminar_serial= :Semi' +
-        'narSerial')
+        'narSerial'
+      'order by last_name, first_name')
     CachedUpdates = True
     AutoCommit = False
+    Active = True
     AutoCalcFields = False
     Left = 17
     Top = 333
@@ -1213,45 +1226,48 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FieldName = 'FK_PERSON_SERIAL'
       Required = True
     end
-    object InvoiceSQLDATE_ISSUED: TDateField
-      DisplayLabel = 'Date'
-      DisplayWidth = 12
-      FieldName = 'DATE_ISSUED'
+    object InvoiceSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 18
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object InvoiceSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 16
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 30
     end
     object InvoiceSQLHOURS_COMPLETED: TIntegerField
-      DisplayLabel = 'Hours'
+      DisplayLabel = #937#961#949#962
       DisplayWidth = 6
       FieldName = 'HOURS_COMPLETED'
     end
     object InvoiceSQLPERCENTAGE_COMPLETED: TIntegerField
-      DisplayLabel = '% Complete'
+      DisplayLabel = '% '#937#961#974#957
       DisplayWidth = 9
       FieldName = 'PERCENTAGE_COMPLETED'
     end
     object InvoiceSQLIS_VALID: TWideStringField
-      DisplayLabel = 'Valid'
+      DisplayLabel = #904#947#954#965#961#959
       DisplayWidth = 7
       FieldName = 'IS_VALID'
       Required = True
       FixedChar = True
       Size = 1
     end
+    object InvoiceSQLDATE_ISSUED: TDateField
+      DisplayLabel = 'Date'
+      DisplayWidth = 12
+      FieldName = 'DATE_ISSUED'
+      Visible = False
+    end
     object InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SERIAL'
       Required = True
       Visible = False
-    end
-    object InvoiceSQLLAST_NAME: TWideStringField
-      FieldName = 'LAST_NAME'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object InvoiceSQLFIRST_NAME: TWideStringField
-      FieldName = 'FIRST_NAME'
-      Visible = False
-      FixedChar = True
-      Size = 30
     end
     object InvoiceSQLNATIONAL_ID: TWideStringField
       FieldName = 'NATIONAL_ID'

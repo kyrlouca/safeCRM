@@ -386,13 +386,14 @@ begin
    FirstFLD.Text:=seminarTypeFLD.Text;
    SeminarSQL.Post;
  end;
-// ReminderSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+
  SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
  TYpeserial:=SeminarSQL.FieldByName('FK_Seminar').AsInteger;
  if (not select) or (Seminarserial<1) or (TypeSerial<1) then exit;
  UseSeminarTEmplate(SeminarSerial,TypeSerial);
  GetReminderFromTemplate(SEminarSerial,TYpeSerial);
-// ksOpenTables([SeminarSQL])
+
+
   SeminarSQL.close;
   seminarSQL.ParamByName('serialNumber').Value:=seminarSerial;
   seminarSQL.Open;
@@ -403,6 +404,7 @@ end;
 procedure TV_SeminarFRM.UseSeminarTemplate(Const SeminarSerial, TypeSerial:Integer);
 var
   serial:Integer;
+  subjectSerial:Integer;
   qr:TksQuery;
    fhours, fdays:integer;
    fName,fAnad:String;
@@ -439,8 +441,9 @@ begin
    while not qr.Eof do begin
     serial:=ksGenerateSerial(cn,'GEN_SEMINAR_SUBJECT');
     fname:=qr.FieldByName('SUBJECT').AsString;
-    ksExecSQLVar(cn,'INSERT INTO SEMINAR_SUBJECT (SERIAL_NUMBER, FK_SEMINAR_SERIAL,SUBJECT) VALUES (:serial,:semSerial, :subject)',
-    [serial,seminarSerial,fname] );
+    subjectSerial:=qr.FieldByName('serial_number').AsInteger;
+    ksExecSQLVar(cn,'INSERT INTO SEMINAR_SUBJECT (SERIAL_NUMBER, FK_SEMINAR_SERIAL,fk_subject_type_serial,SUBJECT) VALUES (:serial,:semSerial,:subjectSerial, :subject)',
+    [serial,seminarSerial,subjectSerial,fname] );
     qr.Next;
    end;
 

@@ -23,8 +23,6 @@ type
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    BitBtn1: TBitBtn;
-    CanelBTN: TBitBtn;
     RzPanel2: TRzPanel;
     RzPanel3: TRzPanel;
     Grid1: TwwDBGrid;
