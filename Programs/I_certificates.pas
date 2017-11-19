@@ -143,19 +143,21 @@ var
   SEminarSerial:Integer;
 begin
 
+{
   SEminarSerial := TableSQL.FieldByName('serial_number').AsInteger;
   if personSQL.Active then
     personSQL.Close;
   personSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
   personSQL.Open;
 
+
   if invoiceSQL.Active then
     InvoiceSQL.Close;
-  InvoiceSQL.UpdateTransaction.StartTransaction;
+//  InvoiceSQL.UpdateTransaction.StartTransaction;
   InvoiceSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
   InvoiceSQL.Open;
 
-
+}
 end;
 
 procedure TI_CertificatesFRM.TableSQLBeforeEdit(
@@ -221,6 +223,10 @@ TableSQL.Close;
 TableSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
 TableSQL.open;
 
+
+if not InvoiceSQL.UpdateTransaction.Active then
+    InvoiceSQL.UpdateTransaction.StartTransaction;
+
 InvoiceSQL.Close;
 InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
 InvoiceSQL.open;
@@ -259,8 +265,8 @@ begin
       exit;
     end;
 
-  if not InvoiceSQL.UpdateTransaction.Active then
-    InvoiceSQL.UpdateTransaction.StartTransaction;
+//  if not InvoiceSQL.UpdateTransaction.Active then
+//    InvoiceSQL.UpdateTransaction.StartTransaction;
 
   try
     if  InvoiceSQL.UpdatesPending then begin
@@ -318,8 +324,8 @@ begin
 
   percentPass:=gpGetGeneralParam(cn,'Ô00').P_Integer1;
 
-  invoiceSQL.Close;
-  invoiceSQL.Open;
+//  invoiceSQL.Close;
+//  invoiceSQL.Open;
 
       str:= 'select'
     +' sem.seminar_name,'
@@ -368,8 +374,8 @@ begin
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
 
-    if not INvoiceSQL.Active then
-      InvoiceSql.Open;
+//    if not INvoiceSQL.Active then
+//      InvoiceSql.Open;
 
     while not qr.Eof do begin
         PersonSerial:=qr.FieldByName('person_serial').AsInteger;
@@ -447,13 +453,13 @@ begin
 
   SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
-    if  InvoiceSQL.UpdateTransaction.Active then begin
-      ShowMessage('save or Cancel First');
-      exit;
-    end;
+//    if  InvoiceSQL.UpdateTransaction.Active then begin
+//      ShowMessage('save or Cancel First');
+//      exit;
+//    end;
 
-    if not InvoiceSQL.UpdateTransaction.Active then
-      InvoiceSQL.UpdateTransaction.StartTransaction;
+//    if not InvoiceSQL.UpdateTransaction.Active then
+//      InvoiceSQL.UpdateTransaction.StartTransaction; //already started on activate form
 
     personSQL.Close;
     personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;
