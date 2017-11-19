@@ -9,7 +9,7 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   RzPopups, vcl.wwcheckbox, vcl.wwDialog, vcl.wwIDlg, vcl.wwmonthcalendar,
-  vcl.wwlocate, VirtualTable;
+  vcl.wwlocate, VirtualTable, Vcl.Menus;
 type
 
   TI_CertificatesFRM = class(TForm)
@@ -107,7 +107,11 @@ type
     InvoiceSQLINSTRUCTOR_NAME: TWideStringField;
     InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
     DateFLD: TwwDBDateTimePicker;
-    Button1: TButton;
+    InvoiceSQLHAS_ANOTHER_DATE: TWideStringField;
+    MainMenu1: TMainMenu;
+    Reports1: TMenuItem;
+    N3: TMenuItem;
+    N1: TMenuItem;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -123,6 +127,7 @@ type
     procedure InvoiceSQLBeforePost(DataSet: TDataSet);
     procedure InvoiceGRDCalcCellColors(Sender: TObject; Field: TField;
       State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
+    procedure N3Click(Sender: TObject);
   private
     { Private declarations }
     VatRate:Double;
@@ -142,7 +147,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, R_Certificate;
 
 
 {$R *.DFM}
@@ -199,6 +204,23 @@ begin
   Dataset.FieldByName('hours_completed').Value:=444;
 //
 
+end;
+
+procedure TI_CertificatesFRM.N3Click(Sender: TObject);
+vAR
+  Frm:TR_certificateFRM;
+  seminarSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_certificateFRM.Create(nil);
+  frm.IN_seminar_serial :=seminarSerial;
+//  frm.IN_Day_Serial :=0;
+  try
+    frm.PrintTheSeminar();
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TI_CertificatesFRM.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
@@ -321,16 +343,17 @@ var
 
   PersonSerial:Integer;
 
-  amountVat:Double;
-  AmountTotal:Double;
-  DiscountNormal:Double;
-  DiscountSafe:Double;
+  InstName:String;
+  InstJob:String;
+
   isFOund:Boolean;
   isGuest,isPresent:boolean;
   isPass:Boolean;
 
 
+
   AdditionalHours:integer;
+  HasAnotherDate:String;
 
   PercentPass:Integer;
   HoursActual:Integer;
@@ -343,12 +366,20 @@ begin
   percentPass:=gpGetGeneralParam(cn,'T00' ).P_Integer1;
   SeminarDate:=DateFLD.Date;
 
-  qr:= TksQuery.Create(cn,'select * from seminar where serial_number= :SeminarSerial');
+  str:= ' select'
+  +' sem.*, inst.first_name,inst.last_name, inst.job_title'
+  +'  from'
+  +'  seminar sem left outer join'
+  +'  instructor inst on inst.serial_number=sem.fk_instructor'
+  +'  where sem.serial_number= :SeminarSerial';
+  qr:= TksQuery.Create(cn,str);
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
     seminarType:=qr.FieldByName('fk_seminar').AsInteger;
     SeminarSubject:=qr.FieldByName('seminar_name').asString;
+    InstName:=trim(qr.FieldByName('first_name').asString)+' '+trim(qr.FieldByName('Last_name').asString);
+    InstJob:=qr.FieldByName('job_title').asString;
   finally
     qr.Free;
   end;
@@ -397,6 +428,10 @@ begin
           AdditionalHours:=FindGuestHours(SeminarSerial,PersonSerial);
           isPresent:= AdditionalHours>0;
         end;
+        if AdditionalHours>0 then
+          HasAnotherDate:='Y'
+        else
+          HasAnotherDate:='N';
 
         HoursActual:=qr.FieldByName('hours').AsInteger + AdditionalHours;
         PercentActual:=HoursActual/SeminarHours * 100.0;
@@ -437,17 +472,16 @@ begin
         InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
         InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
 
-//        InvoiceSQL.FieldByName('instructor_name').Value:='ab';
-//        InvoiceSQL.FieldByName('instructor_job_title').Value:='cc';
+        InvoiceSQL.FieldByName('instructor_name').Value:=InstName;
+        InvoiceSQL.FieldByName('instructor_job_title').Value:=InstJob;
 
 
-
-//        InvoiceSQL.FieldByName('AMOUNT_With_vat').AsFloat:=AmountTotal;
         InvoiceSQL.FieldByName('is_valid').Value:='Y';
         InvoiceSQL.FieldByName('hours_completed').Value:=HoursActual;
         InvoiceSQL.FieldByName('percentage_completed').Value:=percentActual;
         InvoiceSQL.FieldByName('DATE_Issued').AsDateTime:=SeminarDate;
-        InvoiceSQL.FieldByName('HAS_ANOTHER_DATE').AsString:= AdditionalHours>0;
+
+        InvoiceSQL.FieldByName('HAS_ANOTHER_DATE').AsString:= HasAnotherDate;
 
         InvoiceSQL.Post;
         qr.Next;
@@ -560,7 +594,7 @@ GuestSubjectStr:=
           SubjectTypeSerial:=ProblemQr.FieldByName('subject_type_serial').AsInteger;
           present:=ProblemQr.FieldByName('present_isPresent').AsString;
           ProblemDate:=ProblemQr.FieldByName('day_date').AsDateTime;
-          showMessage(IntToStr(SeminarTypeSerial)+'   Sub:'+IntToStr(subjectTypeSerial) +' '+Present);
+//          showMessage(IntToStr(SeminarTypeSerial)+'   Sub:'+IntToStr(subjectTypeSerial) +' '+Present);
 
           guestqr.Close;
           guestQR.ParamByName('PErsonSerial').Value:= PersonSerial;
@@ -575,7 +609,7 @@ GuestSubjectStr:=
             break;
           end else begin
             PresenceSErial:=guestQR.FieldByName('presence_Serial').AsInteger;
-            ShowMessage(IntToStr(PresenceSerial));
+//            ShowMessage(IntToStr(PresenceSerial));
             sumHours:=SumHours+guestQr.FieldByName('present_hours').AsInteger;
           end;
           ProblemQr.Next;
@@ -588,7 +622,7 @@ GuestSubjectStr:=
   end;
 
   result:=SumHours;
-  ShowMessage(IntToStr(sumHours));
+//  ShowMessage(IntToStr(sumHours));
 
 end;
 

@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 558
+  ClientHeight = 538
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
@@ -47,11 +48,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 515
+    Top = 495
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -149,18 +151,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 423
+    Height = 403
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 423
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 421
+      Height = 401
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 421
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -322,13 +326,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 378
+        Top = 358
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
+        ExplicitTop = 378
         object RzPanel6: TRzPanel
           Left = 570
           Top = 0
@@ -489,13 +494,15 @@ object I_CertificatesFRM: TI_CertificatesFRM
         Width = 547
         Height = 329
         ControlType.Strings = (
-          'IS_VALID;CheckBox;Y;N')
+          'IS_VALID;CheckBox;Y;N'
+          'HAS_ANOTHER_DATE;CheckBox;Y;N')
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
           'FK_PERSON_SERIAL'#9'4'#9'PS/N'
           'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
           'FIRST_NAME'#9'16'#9#908#957#959#956#945
           'HOURS_COMPLETED'#9'6'#9#937#961#949#962
+          'HAS_ANOTHER_DATE'#9'1'#9'*Date*'
           'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
           'IS_VALID'#9'7'#9#904#947#954#965#961#959)
         IniAttributes.Delimiter = ';;'
@@ -519,10 +526,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 421
+      Height = 401
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 421
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -534,12 +542,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 224
+        Top = 204
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 224
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -659,15 +668,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
             DisplayFormat = 'dd/mm/yyyy'
           end
         end
-      end
-      object Button1: TButton
-        Left = 176
-        Top = 16
-        Width = 75
-        Height = 25
-        Caption = 'Button1'
-        TabOrder = 2
-        OnClick = Button1Click
       end
     end
     object FirstGRP: TGroupBox
@@ -1151,13 +1151,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, DATE_ISSU' +
         'ED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NAME, ' +
         'FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, INST' +
-        'RUCTOR_NAME, INSTRUCTOR_JOB_TITLE)'
+        'RUCTOR_NAME, INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :DATE_' +
         'ISSUED, :HOURS_COMPLETED, :PERCENTAGE_COMPLETED, :IS_VALID, :LAS' +
         'T_NAME, :FIRST_NAME, :NATIONAL_ID, :SEMINAR_SUBJECT, :SEMINAR_DU' +
-        'RATION, :INSTRUCTOR_NAME, :INSTRUCTOR_JOB_TITLE)')
+        'RATION, :INSTRUCTOR_NAME, :INSTRUCTOR_JOB_TITLE, :HAS_ANOTHER_DA' +
+        'TE)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_CERTIFICATE'
       'WHERE'
@@ -1173,7 +1174,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         ':LAST_NAME, FIRST_NAME = :FIRST_NAME, NATIONAL_ID = :NATIONAL_ID' +
         ', SEMINAR_SUBJECT = :SEMINAR_SUBJECT, SEMINAR_DURATION = :SEMINA' +
         'R_DURATION, INSTRUCTOR_NAME = :INSTRUCTOR_NAME, INSTRUCTOR_JOB_T' +
-        'ITLE = :INSTRUCTOR_JOB_TITLE'
+        'ITLE = :INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE = :HAS_ANOTHER_DA' +
+        'TE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1181,7 +1183,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, DATE_' +
         'ISSUED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NA' +
         'ME, FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, ' +
-        'INSTRUCTOR_NAME, INSTRUCTOR_JOB_TITLE FROM SEMINAR_CERTIFICATE'
+        'INSTRUCTOR_NAME, INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE FROM SEM' +
+        'INAR_CERTIFICATE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1245,6 +1248,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
       DisplayWidth = 6
       FieldName = 'HOURS_COMPLETED'
     end
+    object InvoiceSQLHAS_ANOTHER_DATE: TWideStringField
+      DisplayLabel = '*Date*'
+      DisplayWidth = 1
+      FieldName = 'HAS_ANOTHER_DATE'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
     object InvoiceSQLPERCENTAGE_COMPLETED: TIntegerField
       DisplayLabel = '% '#937#961#974#957
       DisplayWidth = 9
@@ -1292,6 +1303,19 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FieldName = 'INSTRUCTOR_JOB_TITLE'
       Visible = False
       Size = 160
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 224
+    object Reports1: TMenuItem
+      Caption = 'Reports'
+      object N3: TMenuItem
+        Caption = #917#954#964#973#960#969#963#951' '#908#955#969#957' '
+        OnClick = N3Click
+      end
+      object N1: TMenuItem
+        Caption = #917#954#964#973#960#969#963#951' '#917#957#972#962
+      end
     end
   end
 end
