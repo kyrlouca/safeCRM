@@ -34,13 +34,13 @@ type
     Label1: TLabel;
     TableSRC: TIBCDataSource;
     RzPanel2: TRzPanel;
+    RzPanel4: TRzPanel;
     RzDBLabel1: TRzDBLabel;
     RzDBLabel2: TRzDBLabel;
     RzPanel5: TRzPanel;
     RzPanel6: TRzPanel;
     SavePresBTN: TBitBtn;
     CanelBTN: TBitBtn;
-    InvoiceSQL: TIBCQuery;
     InvoiceSRC: TIBCDataSource;
     wwDBNavigator2: TwwDBNavigator;
     Nav1Button: TwwNavButton;
@@ -51,6 +51,7 @@ type
     Nav1Delete: TwwNavButton;
     Nav1Post: TwwNavButton;
     Nav1Cancel: TwwNavButton;
+    InvoiceBTN: TRzBitBtn;
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLFK_SEMINAR: TIntegerField;
     TableSQLSEMINAR_NAME: TWideStringField;
@@ -86,9 +87,11 @@ type
     wwDBEdit2: TRzDBLabel;
     Read1: TIBCTransaction;
     write1: TIBCTransaction;
+    SecondGRP: TRzGroupBox;
+    Label8: TLabel;
+    VatFLD: TwwDBEdit;
     wwDBGrid1: TwwDBGrid;
-    RzPanel4: TRzPanel;
-    GenerateBTN: TRzBitBtn;
+    InvoiceSQL: TIBCQuery;
     InvoiceSQLSERIAL_NUMBER: TIntegerField;
     InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField;
     InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
@@ -99,22 +102,25 @@ type
     InvoiceSQLLAST_NAME: TWideStringField;
     InvoiceSQLFIRST_NAME: TWideStringField;
     InvoiceSQLNATIONAL_ID: TWideStringField;
-    InvoiceSQLSEMINAR_SUBJECT: TWideMemoField;
+    InvoiceSQLSEMINAR_SUBJECT: TWideStringField;
     InvoiceSQLSEMINAR_DURATION: TIntegerField;
-    InvoiceSQLINSTRUCTOR_NAME: TWideMemoField;
-    InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideMemoField;
+    InvoiceSQLINSTRUCTOR_NAME: TWideStringField;
+    InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure DateFLDClick(Sender: TObject);
+    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
+      FillTable: TDataSet; modified: Boolean);
+    procedure Button1Click(Sender: TObject);
     procedure SavePresBTNClick(Sender: TObject);
+    procedure InvoiceBTNClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure CanelBTNClick(Sender: TObject);
     procedure InvoiceSQLBeforePost(DataSet: TDataSet);
     procedure InvoiceGRDCalcCellColors(Sender: TObject; Field: TField;
       State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
-    procedure GenerateBTNClick(Sender: TObject);
   private
     { Private declarations }
     VatRate:Double;
@@ -143,21 +149,18 @@ var
   SEminarSerial:Integer;
 begin
 
-{
   SEminarSerial := TableSQL.FieldByName('serial_number').AsInteger;
   if personSQL.Active then
     personSQL.Close;
   personSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
   personSQL.Open;
 
-
   if invoiceSQL.Active then
     InvoiceSQL.Close;
-//  InvoiceSQL.UpdateTransaction.StartTransaction;
   InvoiceSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
   InvoiceSQL.Open;
 
-}
+
 end;
 
 procedure TI_CertificatesFRM.TableSQLBeforeEdit(
@@ -165,7 +168,6 @@ procedure TI_CertificatesFRM.TableSQLBeforeEdit(
 begin
 //   Dataset.FieldByName('Serial_number').ReadOnly:=true;
 end;
-
 
 
 procedure TI_CertificatesFRM.InvoiceGRDCalcCellColors(Sender: TObject;
@@ -191,9 +193,15 @@ begin
 //  VatAmount:=Max(0,VatAmount);
 //  AmountCharged:=Max(0,AmountCharged);
 //  Dataset.FieldByName('amount_vat').Value:=VatAmount;
-//  Dataset.FieldByName('hours_completed').Value:=444;
+  Dataset.FieldByName('hours_completed').Value:=444;
 //
 
+end;
+
+procedure TI_CertificatesFRM.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
+  FillTable: TDataSet; modified: Boolean);
+begin
+getInvoices();
 end;
 
 procedure TI_CertificatesFRM.RzBitBtn1Click(Sender: TObject);
@@ -223,9 +231,14 @@ TableSQL.Close;
 TableSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
 TableSQL.open;
 
+    if not InvoiceSQL.UpdateTransaction.Active then
+      InvoiceSQL.UpdateTransaction.StartTransaction;
 
-if not InvoiceSQL.UpdateTransaction.Active then
-    InvoiceSQL.UpdateTransaction.StartTransaction;
+InvoiceSQL.Close;
+InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+InvoiceSQL.open;
+    if not InvoiceSQL.UpdateTransaction.Active then
+      InvoiceSQL.UpdateTransaction.StartTransaction;
 
 InvoiceSQL.Close;
 InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
@@ -260,16 +273,15 @@ begin
     InvoiceSQL.Post;
   end;
 
-    if not InvoiceSQL.UpdatesPending then begin
-      showMessage('no updates');
-      exit;
-    end;
+  if not InvoiceSQL.UpdatesPending then begin
+   showMessage('no updates');
+   exit;
+  end;
 
   if not InvoiceSQL.UpdateTransaction.Active then
     InvoiceSQL.UpdateTransaction.StartTransaction;
 
-
- try
+  try
     InvoiceSQL.ApplyUpdates;
     InvoiceSQL.UpdateTransaction.commit;
   except
@@ -278,20 +290,7 @@ begin
     raise;
   end;
 
-{
-  try
-    if  InvoiceSQL.UpdatesPending then begin
-      InvoiceSQL.ApplyUpdates;
-      InvoiceSQL.UpdateTransaction.commit;
-      InvoiceSQL.CommitUpdates;
-    end;
-  except
-    InvoiceSQL.UpdateTransaction.Rollback;
-    InvoiceSQL.RestoreUpdates;
-    raise;
-  end;
 
-}
 
 end;
 
@@ -306,11 +305,9 @@ type
   end;
 
 var
-  qr:TksQuery;
-  PersonQr:TksQuery;
+  qr,PersonQr:TksQuery;
   str:String;
   SerialNumber:integer;
-//  SeminarName:String;
   isMono:Boolean;
   PriceNormal,PriceAnad,PriceUsed:Double;
 
@@ -322,71 +319,49 @@ var
   isFOund:Boolean;
   isGuest,isPresent:boolean;
   isPass:Boolean;
+
+
   SeminarHours:Integer;
   SeminarSubject:String;
   PercentPass:Integer;
   percentActual:Double;
-
-  vatRate:Double;
   person:  TPerson;
-  InstructorName:String;
-  InstructorJob:String;
+
+//  vatRate:Double;
 begin
 
-  percentPass:=gpGetGeneralParam(cn,'Ô00').P_Integer1;
+
+  VatRate:=StrToFloatDef(VatFLD.Text,0);
+
+//  ksExecSQLVar(cn,'delete from invoice where fk_seminar_serial= :SeminarSerial',[SeminarSerial]);
 
 //  invoiceSQL.Close;
 //  invoiceSQL.Open;
 
-      str:= 'select'
-    +' sem.seminar_name,'
-    +'  ins.first_name, ins.last_name, ins.job_title'
-    +' from'
-    +'  seminar sem left outer join'
-    +'  instructor ins on ins.serial_number=sem.fk_instructor'
-    +'  where sem.serial_number= :seminarSerial';
-  qr:= TksQuery.Create(cn,str);
+  qr:= TksQuery.Create(cn,'select * from seminar where serial_number= :SeminarSerial');
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
-    SeminarSubject:=qr.FieldByName('SEMINAR_Name').AsString;
-    InstructorName:=trim(qr.FieldByName('first_Name').AsString)+' '+trim(qr.FieldByName('first_Name').AsString);
-    InstructorJob:=qr.FieldByName('job_title').AsString;
-    qr.close;
+    isMono:=qr.FieldByName('SEMINAR_CORP_TYPE').Value='M';
   finally
     qr.Free;
   end;
 
-
-  str:= 'Select sum(sday.duration_hours) as Seminar_hours from seminar_day_view sday where sday.seminar_serial= :SeminarSerial ';
-  qr:= TksQuery.Create(cn,str);
-  try
-    qr.ParamByName('seminarSerial').value:=SeminarSerial;
-    qr.open;
-    SeminarHours:=qr.FieldByName('SEMINAR_HOURS').AsInteger;
-    qr.close;
-  finally
-    qr.Free;
-  end;
-
-
-  str:='Select'
+    str:='Select'
     +'  max(ppv.is_guest) as is_guest, min(ppv.present_ispresent)as is_present, sum(ppv.present_hours) as hours, ppv.person_serial'
     +'  from'
     +'      person_presence_view ppv'
     +'  where'
     +'      ppv.seminar_serial= :seminarSerial'
     +'  group by ppv.person_serial';
-
-  //   str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
-  // instead I have used presence which is ok because if no presence then no certificate
+//   str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
    qr:= TksQuery.Create(cn,str);
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
 
-//    if not INvoiceSQL.Active then
-//      InvoiceSql.Open;
+    if not INvoiceSQL.Active then
+      InvoiceSql.Open;
 
     while not qr.Eof do begin
         PersonSerial:=qr.FieldByName('person_serial').AsInteger;
@@ -419,22 +394,21 @@ begin
       end;
 
 
-
         SerialNumber:=ksGenerateSerial(cn,'GEN_SEMINAR_CERTIFICATE');
 
-        InvoiceSQL.Insert;
+          InvoiceSQL.Insert;
         InvoiceSQL.FieldByName('serial_number').Value:=SerialNumber;
         InvoiceSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
         InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
 
-        InvoiceSQL.FieldByName('first_name').Value:=person.FirstName;
-        InvoiceSQL.FieldByName('Last_name').Value:=Person.LastName;
-        InvoiceSQL.FieldByName('National_id').Value:=Person.NationalId;
-        InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
-        InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
+//        InvoiceSQL.FieldByName('first_name').Value:=person.FirstName;
+//        InvoiceSQL.FieldByName('Last_name').Value:=Person.LastName;
+//        InvoiceSQL.FieldByName('National_id').Value:=Person.NationalId;
+//        InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
+//        InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
 
-        InvoiceSQL.FieldByName('instructor_name').Value:=InstructorName;
-        InvoiceSQL.FieldByName('instructor_job_title').Value:=InstructorJob;
+//        InvoiceSQL.FieldByName('instructor_name').Value:='ab';
+//        InvoiceSQL.FieldByName('instructor_job_title').Value:='cc';
 
 
 
@@ -444,7 +418,7 @@ begin
         InvoiceSQL.FieldByName('percentage_completed').Value:=13;
         InvoiceSQL.FieldByName('DATE_Issued').Value:=NOW;
         InvoiceSQL.Post;
-        qr.Next;
+              qr.Next;
     end;
   finally
     qr.Free;
@@ -456,8 +430,8 @@ begin
 
 end;
 
-procedure TI_CertificatesFRM.GenerateBTNClick(Sender: TObject);
 
+procedure TI_CertificatesFRM.InvoiceBTNClick(Sender: TObject);
 var
   SeminarSerial:Integer;
 begin
@@ -470,7 +444,9 @@ begin
 //    end;
 
 //    if not InvoiceSQL.UpdateTransaction.Active then
-//      InvoiceSQL.UpdateTransaction.StartTransaction; //already started on activate form
+//      InvoiceSQL.UpdateTransaction.StartTransaction;
+
+//    invoiceSQL.Close;
 
     personSQL.Close;
     personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;
@@ -482,6 +458,12 @@ begin
 //  if InvoiceSQL.UpdateTransaction.Active then
 //      InvoiceSQL.UpdateTransaction.commit;
 
+end;
+
+procedure TI_CertificatesFRM.Button1Click(Sender: TObject);
+var
+  seminarSerial:Integer;
+begin
 end;
 
 procedure TI_CertificatesFRM.CanelBTNClick(Sender: TObject);
