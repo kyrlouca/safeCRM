@@ -265,9 +265,20 @@ begin
       exit;
     end;
 
-//  if not InvoiceSQL.UpdateTransaction.Active then
-//    InvoiceSQL.UpdateTransaction.StartTransaction;
+  if not InvoiceSQL.UpdateTransaction.Active then
+    InvoiceSQL.UpdateTransaction.StartTransaction;
 
+
+ try
+    InvoiceSQL.ApplyUpdates;
+    InvoiceSQL.UpdateTransaction.commit;
+  except
+    InvoiceSQL.UpdateTransaction.Rollback;
+    InvoiceSQL.RestoreUpdates;
+    raise;
+  end;
+
+{
   try
     if  InvoiceSQL.UpdatesPending then begin
       InvoiceSQL.ApplyUpdates;
@@ -280,7 +291,7 @@ begin
     raise;
   end;
 
-
+}
 
 end;
 
