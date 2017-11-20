@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 518
+  ClientHeight = 611
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 475
+    Top = 568
     Width = 1004
     Height = 43
     Align = alBottom
@@ -150,14 +150,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 383
+    Height = 476
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 381
+      Height = 474
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -323,7 +323,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 338
+        Top = 431
         Width = 671
         Height = 43
         Align = alBottom
@@ -507,6 +507,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
         FixedCols = 5
         ShowHorzScrollBar = True
         DataSource = InvoiceSRC
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         TabOrder = 2
         TitleAlignment = taLeftJustify
         TitleFont.Charset = DEFAULT_CHARSET
@@ -522,7 +523,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 381
+      Height = 474
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -537,7 +538,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 184
+        Top = 277
         Width = 328
         Height = 197
         Align = alBottom
