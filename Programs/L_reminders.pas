@@ -57,6 +57,33 @@ type
     wwDBNavigator1Delete: TwwNavButton;
     wwDBNavigator1Post: TwwNavButton;
     wwDBNavigator1Cancel: TwwNavButton;
+    TableSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQL: TIBCQuery;
+    SeminarSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSQLFK_SEMINAR: TIntegerField;
+    SeminarSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSQLFK_VENUE: TIntegerField;
+    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    SeminarSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
+    SeminarSQLDATE_STARTED: TDateField;
+    SeminarSQLDATE_COMPLETED: TDateField;
+    SeminarSQLDURATION_DAYS: TIntegerField;
+    SeminarSQLDURATION_HOURS: TIntegerField;
+    SeminarSQLFEE_ACTUAL: TFloatField;
+    SeminarSQLAMOUNT_ANAD: TFloatField;
+    SeminarSQLCOMMENTS: TWideStringField;
+    SeminarSQLANAD_APPROVED: TWideStringField;
+    SeminarSQLFEE_ESTIMATE: TFloatField;
+    SeminarSQLSTATUS: TWideStringField;
+    SeminarSQLIS_INVOICED: TWideStringField;
+    SeminarSQLIS_CERTIFICATED: TWideStringField;
+    SeminarSQLMAX_CAPACITY: TIntegerField;
+    SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
+    SeminarSRC: TDataSource;
+    wwDBLookupCombo1: TwwDBLookupCombo;
+    Label1: TLabel;
+    TableSQLSEMINAR_SERIAL: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -72,6 +99,9 @@ type
     procedure Nav1InsertClick(Sender: TObject);
     procedure CompletedFLDClick(Sender: TObject);
     procedure TableSQLNewRecord(DataSet: TDataSet);
+    procedure FilterBoxCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
+      FillTable: TDataSet; modified: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -129,6 +159,23 @@ begin
 
 end;
 
+procedure TL_RemindersFRM.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
+  FillTable: TDataSet; modified: Boolean);
+var
+  SEminarSerial:Integer;
+begin
+  if not modified then
+    exit;
+  seminarSerial:=lookupTable.FieldByName('serial_number').AsInteger;
+  if seminarSerial<1 then exit;
+  TableSQL.Close;
+  TableSQL.RestoreSQL;
+  TableSQL.AddWhere('fk_seminar_serial = :seminarSerial');
+  TableSQL.ParamByName('seminarSerial').Value:=SeminarSerial;
+  TableSQL.Open;
+
+end;
+
 procedure TL_RemindersFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
@@ -141,10 +188,31 @@ begin
 end;
 
 
+procedure TL_RemindersFRM.FilterBoxCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+  var
+Selection:String;
+begin
+
+TableSQL.Close;
+TableSQL.RestoreSQL;
+//index:=sender.ItemIndex;
+  if Sender.ItemIndex=0 then begin
+      TableSQL.AddWhere('is_completed = ''N'' ');
+  end else if Sender.ItemIndex=1 then begin
+      TableSQL.AddWhere('is_completed = ''Y'' ');
+  end else if Sender.ItemIndex=2 then begin
+  end;
+  TableSQL.Open;
+
+end;
+
 procedure TL_RemindersFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL]);
-
+  ksOpenTables([SeminarSQL]);
+  TableSQL.Close;
+  TableSQL.AddWhere('is_completed = ''N'' ');
+   TableSQL.Open;
 end;
 
 procedure TL_RemindersFRM.FormCreate(Sender: TObject);
