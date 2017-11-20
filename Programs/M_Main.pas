@@ -94,9 +94,26 @@ close;
 end;
 
 procedure TM_mainFRM.Button1Click(Sender: TObject);
+var
+  ch1,ch2:Char;
+  str1,str2:String;
+  alpha:Char;
+  i:integer;
+  j:integer;
+
 begin
-//gpShowModal(TM_paramsFRM);
-gpShowModal(TP_attendanceFRM);
+  alpha:='Á';
+//  ch:=chr(Ord(char('Á')));
+
+  ch1:=chr(Ord(char('å')));
+  ch2:=chr(Ord(char('Ý')));
+
+  i:=Ord(ch1);
+  j:=Ord(ch2);
+  str1:=IntToStr(i);
+  str2:=intTOStr(j);
+//  Str:=ch+'Â';
+  showMessage(str1+'-'+str2);
 end;
 
 procedure TM_mainFRM.Countries2Click(Sender: TObject);

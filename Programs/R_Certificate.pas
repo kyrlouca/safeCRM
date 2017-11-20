@@ -52,9 +52,6 @@ type
     CertificateSQLINSTRUCTOR_NAME: TWideStringField;
     CertificateSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
     CertificateSQLHAS_ANOTHER_DATE: TWideStringField;
-    ppDBText3: TppDBText;
-    ppDBText4: TppDBText;
-    NameFLD: TppVariable;
     ppLabel1: TppLabel;
     IdFLD: TppVariable;
     ppLabel2: TppLabel;
@@ -67,6 +64,11 @@ type
     ppLabel9: TppLabel;
     ppLine1: TppLine;
     DurationFLD: TppVariable;
+    ppFooterBand1: TppFooterBand;
+    SerialLbl: TppVariable;
+    ppDBText6: TppDBText;
+    NameLbl: TppVariable;
+    SubjectLbl: TppVariable;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -80,15 +82,17 @@ type
     procedure NameFLDCalc(Sender: TObject; var Value: Variant);
     procedure IdFLDCalc(Sender: TObject; var Value: Variant);
     procedure DurationFLDCalc(Sender: TObject; var Value: Variant);
+    procedure SerialLblCalc(Sender: TObject; var Value: Variant);
+    procedure SubjectLblCalc(Sender: TObject; var Value: Variant);
   private
     { Private declarations }
     cn:TIBCConnection;
-    procedure PrintSeminar(Const SeminarSerial:integer);
-//    procedure PrintDayPresence(Const SeminarSerial,DaySerial:integer);
+  procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer);
 
   public
     { Public declarations }
     IN_Seminar_Serial:Integer;
+    IN_certificate_serial:Integer;
     procedure PrintTheSeminar();
   end;
 
@@ -123,7 +127,7 @@ end;
 procedure TR_certificateFRM.DurationFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
-            value:='Διάρκειας:'+CertificateSQL.FieldByName('seminar_duration').AsString + 'ωρών';
+            value:='Διάρκειας: '+CertificateSQL.FieldByName('seminar_duration').AsString + ' ωρών';
 
 end;
 
@@ -139,8 +143,8 @@ end;
 procedure TR_certificateFRM.NameFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
-            value:=Trim(CertificateSQL.FieldByName('First_name').AsString+'     ')+
-            Trim(CertificateSQL.FieldByName('First_name').AsString);
+            value:=AnsiUpperCase(Trim(CertificateSQL.FieldByName('First_name').AsString))+'  '+
+            AnsiUpperCase(Trim(CertificateSQL.FieldByName('First_name').AsString));
 
 end;
 
@@ -155,6 +159,25 @@ begin
 end;
 
 
+
+
+procedure TR_certificateFRM.SerialLblCalc(Sender: TObject; var Value: Variant);
+begin
+  value:='SPCN '+CertificateSQL.FieldByName('serial_number').AsString;
+end;
+
+procedure TR_certificateFRM.SubjectLblCalc(Sender: TObject; var Value: Variant);
+const
+    right = $201D;
+   left = $201C;
+var
+  strLeft:string;
+  strRight:String;
+begin
+    strLeft:=char(left);
+    strright:=char(right);
+  value:= strLeft +CertificateSQL.FieldByName('Seminar_subject').AsString+StrRight;
+end;
 
 
 procedure TR_certificateFRM.VtFilterRecord(DataSet: TDataSet;
@@ -182,20 +205,27 @@ end;
 
 procedure TR_certificateFRM.PrintTheSeminar();
 begin
-  PrintSeminar(IN_Seminar_Serial);
+  PrintSeminar(IN_Seminar_Serial,IN_certificate_serial);
 end;
 
-procedure TR_certificateFRM.PrintSeminar(Const SeminarSerial:Integer);
+procedure TR_certificateFRM.PrintSeminar(Const SeminarSerial,CertificateSerial:Integer);
 Var
    FromDate:TDateTime;
    DaysLeft:integer;
 begin
-  with CertificateSQL do begin
-     Close;
-     ParamByName('SeminarSerial').Value:=SeminarSerial;
-     Open ;
-  end;
 
+
+  CertificateSQL.Close;
+  CertificateSQL.RestoreSQL;
+
+  with CertificateSQL do begin
+    if CertificateSerial>0 then begin
+        CertificateSQL.AddWhere('serial_number = :CertificateSerial');
+        CertificateSQL.ParamByName('CertificateSerial').Value:=CertificateSerial;
+    end;
+    CertificateSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
+    Open ;
+  end;
 
  PpReport1.Print;
 
@@ -218,7 +248,7 @@ end;
 
 procedure TR_certificateFRM.IdFLDCalc(Sender: TObject; var Value: Variant);
 begin
-    value:='(Αρ. Ταυτότητας:'+Trim(CertificateSQL.FieldByName('National_id').AsString)+ ')' ;
+    value:='(Αρ. Ταυτότητας: '+Trim(CertificateSQL.FieldByName('National_id').AsString)+ ')' ;
 
 end;
 

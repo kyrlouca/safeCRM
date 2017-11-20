@@ -128,6 +128,7 @@ type
     procedure InvoiceGRDCalcCellColors(Sender: TObject; Field: TField;
       State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
     procedure N3Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
   private
     { Private declarations }
     VatRate:Double;
@@ -206,6 +207,28 @@ begin
 
 end;
 
+procedure TI_CertificatesFRM.N1Click(Sender: TObject);
+vAR
+  Frm:TR_certificateFRM;
+  seminarSerial:Integer;
+  certSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  certSerial:=InvoiceSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_certificateFRM.Create(nil);
+  frm.IN_seminar_serial :=seminarSerial;
+  frm.IN_certificate_serial:=certSerial;
+  if CertSerial<1 then
+    exit;
+//  frm.IN_Day_Serial :=0;
+  try
+    frm.PrintTheSeminar();
+  finally
+    frm.Free;
+  end;
+end;
+
 procedure TI_CertificatesFRM.N3Click(Sender: TObject);
 vAR
   Frm:TR_certificateFRM;
@@ -215,6 +238,7 @@ begin
 
   frm :=  TR_certificateFRM.Create(nil);
   frm.IN_seminar_serial :=seminarSerial;
+  frm.IN_certificate_serial:=0;
 //  frm.IN_Day_Serial :=0;
   try
     frm.PrintTheSeminar();

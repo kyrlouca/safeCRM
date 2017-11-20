@@ -24,7 +24,8 @@ uses
   I_invoiceSeminar in 'I_invoiceSeminar.pas' {I_InvoiceSeminarFRM},
   R_invoices in 'R_invoices.pas' {R_InvoicesFRM},
   R_PresenceTotal in 'R_PresenceTotal.pas' {R_presenceTotalFRM},
-  R_Certificate in 'R_Certificate.pas' {R_certificateFRM};
+  R_Certificate in 'R_Certificate.pas' {R_certificateFRM},
+  R_Presence in 'R_Presence.pas' {R_presenceFRM};
 
 {$R *.res}
 
@@ -48,6 +49,7 @@ begin
   Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
   Application.CreateForm(TR_certificateFRM, R_certificateFRM);
   Application.CreateForm(TR_certificateFRM, R_certificateFRM);
+  Application.CreateForm(TR_presenceFRM, R_presenceFRM);
   //  Application.CreateForm(TR_presenceFRM1, R_presenceFRM1);
   Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
   Application.Run;

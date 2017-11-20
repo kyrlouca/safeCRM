@@ -179,6 +179,10 @@
             <Form>R_certificateFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="R_Presence.pas">
+            <Form>R_presenceFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
