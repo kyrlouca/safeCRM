@@ -86,7 +86,7 @@ implementation
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
-  L_Companies, R_invoices, V_SeminarStages;
+  L_Companies, R_invoices, V_SeminarStages, L_reminders;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -201,7 +201,8 @@ end;
 
 procedure TM_mainFRM.N9Click(Sender: TObject);
 begin
-//
+  gpShowModal(TL_RemindersFRM);
+
 end;
 
 procedure TM_mainFRM.Reminders1Click(Sender: TObject);

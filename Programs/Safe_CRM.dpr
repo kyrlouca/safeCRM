@@ -2,6 +2,7 @@ program Safe_CRM;
 
 uses
   Vcl.Forms,
+  CodeSiteLogging,
   M_params in 'M_params.pas' {M_paramsFRM},
   U_Database in 'U_Database.pas' {U_databaseFRM: TDataModule},
   G_generalProcs in 'G_generalProcs.pas',
@@ -17,7 +18,6 @@ uses
   p_attendance in 'p_attendance.pas' {P_attendanceFRM},
   M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM},
   M_Company in 'M_Company.pas' {M_CompanyFRM},
-  L_Companies in 'L_Companies.pas' {L_companiesFRM},
   L_Seminar in 'L_Seminar.pas' {L_SeminarFRM},
   V_SeminarStages in 'V_SeminarStages.pas' {V_SeminarStagesFRM},
   I_certificates in 'I_certificates.pas' {I_CertificatesFRM},
@@ -25,12 +25,22 @@ uses
   R_invoices in 'R_invoices.pas' {R_InvoicesFRM},
   R_PresenceTotal in 'R_PresenceTotal.pas' {R_presenceTotalFRM},
   R_Certificate in 'R_Certificate.pas' {R_certificateFRM},
-  R_Presence in 'R_Presence.pas' {R_presenceFRM};
+  R_Presence in 'R_Presence.pas' {R_presenceFRM},
+  R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
+  G_DebugUnit in 'G_DebugUnit.pas',
+  L_reminders in 'L_reminders.pas' {L_RemindersFRM};
 
 {$R *.res}
 
 begin
   Application.Initialize;
+     {$IFDEF DEBUG}
+    CodeSite.Enabled := True;
+    CodeSite.Clear;
+ {$ELSE}
+    CodeSite.Enabled := False;
+ {$ENDIF}
+
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
@@ -41,8 +51,7 @@ begin
   Application.CreateForm(TP_attendanceFRM, P_attendanceFRM);
   Application.CreateForm(TM_companyNewFRM, M_companyNewFRM);
   Application.CreateForm(TM_CompanyFRM, M_CompanyFRM);
-  Application.CreateForm(TL_companiesFRM, L_companiesFRM);
-  Application.CreateForm(TL_companiesFRM, L_companiesFRM);
+  Application.CreateForm(TL_RemindersFRM, L_RemindersFRM);
   Application.CreateForm(TL_SeminarFRM, L_SeminarFRM);
   Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
   Application.CreateForm(TR_InvoicesFRM, R_InvoicesFRM);
@@ -50,6 +59,8 @@ begin
   Application.CreateForm(TR_certificateFRM, R_certificateFRM);
   Application.CreateForm(TR_certificateFRM, R_certificateFRM);
   Application.CreateForm(TR_presenceFRM, R_presenceFRM);
+  Application.CreateForm(TR_remindersFRM, R_remindersFRM);
+  Application.CreateForm(TL_RemindersFRM, L_RemindersFRM);
   //  Application.CreateForm(TR_presenceFRM1, R_presenceFRM1);
   Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
   Application.Run;

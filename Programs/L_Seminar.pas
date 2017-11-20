@@ -70,7 +70,6 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
-    procedure TableSQLAfterInsert(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
@@ -83,6 +82,7 @@ type
     procedure Nav1InsertClick(Sender: TObject);
     procedure CertificatesBTNClick(Sender: TObject);
     procedure RzBitBtn3Click(Sender: TObject);
+    procedure TableSQLNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -117,6 +117,14 @@ begin
 //   Dataset.FieldByName('Serial_number').ReadOnly:=true;
 end;
 
+
+procedure TL_SeminarFRM.TableSQLNewRecord(DataSet: TDataSet);
+begin
+  Dataset.FieldByName('reminder_type').Value:='S';
+  Dataset.FieldByName('PERSON_OR_SEMINAR').Value:='S';
+  Dataset.FieldByName('is_completed').Value:='N';
+
+end;
 
 procedure TL_SeminarFRM.TableSRCStateChange(Sender: TObject);
 begin
@@ -153,13 +161,6 @@ begin
     frm.Free;
   end;
 end;
-
-procedure TL_SeminarFRM.TableSQLAfterInsert(DataSet: TDataSet);
-begin
-//      StationIDFLD.SetFocus;
-
-end;
-
 
 procedure TL_SeminarFRM.FormActivate(Sender: TObject);
 begin

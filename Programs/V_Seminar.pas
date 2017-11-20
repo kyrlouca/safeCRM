@@ -10,8 +10,18 @@ uses
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   System.ImageList,System.DateUtils, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
   Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
-  vcl.wwradiogroup;
+  vcl.wwradiogroup, RzRadChk, RzDBChk,G_debugUnit,codeSiteLogging,CodeSiteMessage;
 type
+//Function TV_SeminarFRM.FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
+  TactionDateRec= record
+    StartDate:Tdate;
+    EndDate:Tdate;
+    UseStartDate:boolean;
+    isAfter:boolean;
+    isDayUnit:Boolean;
+    NumberOfUnits:Integer;
+  end;
+
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
@@ -28,21 +38,14 @@ type
     FirstGRP: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
-    Label1: TLabel;
     SerialFLD: TRzDBLabel;
     FirstFLD: TwwDBEdit;
-    wwCheckBox1: TwwCheckBox;
     wwDBComboBox1: TwwDBComboBox;
     SeminarTypeFLD: TwwDBComboBox;
-    wwDBEdit4: TwwDBEdit;
     SecondGRP: TRzGroupBox;
     Label5: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
     Label9: TLabel;
     Label10: TLabel;
-    DatePassedFLD: TwwDBDateTimePicker;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
     wwDBEdit1: TwwDBEdit;
     wwDBEdit2: TwwDBEdit;
     InstructorFLD: TwwDBComboBox;
@@ -150,50 +153,18 @@ type
     SeminarReminderSQL: TIBCQuery;
     GroupBox4: TGroupBox;
     RzPanel12: TRzPanel;
-    RzPanel13: TRzPanel;
-    wwDBNavigator4: TwwDBNavigator;
-    wwNavButton15: TwwNavButton;
-    wwNavButton16: TwwNavButton;
-    wwNavButton17: TwwNavButton;
-    wwNavButton18: TwwNavButton;
-    wwNavButton19: TwwNavButton;
-    wwNavButton20: TwwNavButton;
-    wwNavButton21: TwwNavButton;
-    wwNavButton22: TwwNavButton;
-    wwIncrementalSearch1: TwwIncrementalSearch;
-    SeminarReminderSQLSERIAL_NUMBER: TIntegerField;
-    SeminarReminderSQLFK_SEMINAR_SERIAL: TIntegerField;
-    SeminarReminderSQLDESCRIPTION: TWideStringField;
-    SeminarReminderSQLREMINDER_MESSAGE: TWideStringField;
-    SeminarReminderSQLAFTER_OR_BEFORE: TWideStringField;
-    SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField;
-    SeminarReminderSQLSTART_OR_END: TWideStringField;
-    SeminarReminderSQLDAYS_OR_MONTHS: TWideStringField;
-    SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField;
     GroupBox5: TGroupBox;
     Label14: TLabel;
     Label15: TLabel;
     RzDBLabel1: TRzDBLabel;
-    Label16: TLabel;
     Label17: TLabel;
-    Label18: TLabel;
-    Label19: TLabel;
-    Label20: TLabel;
-    Label21: TLabel;
     REminderDescFLD: TwwDBEdit;
-    wwDBEdit3: TwwDBEdit;
     RzDBRichEdit2: TRzDBRichEdit;
-    RzDBRadioGroup2: TRzDBRadioGroup;
-    RzDBRadioGroup3: TRzDBRadioGroup;
-    RzDBRadioGroup4: TRzDBRadioGroup;
-    RzDBRadioGroup1: TRzDBRadioGroup;
     wwDBGrid3: TwwDBGrid;
     AfterFLD: TwwDBComboBox;
     NamePersonFLD: TwwDBComboBox;
     StartEndLD: TwwDBComboBox;
     Button1: TButton;
-    Date1FLD: TwwDBDateTimePicker;
-    DateTimePicker1: TDateTimePicker;
     Label4: TRzPanel;
     RzPanel9: TRzPanel;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
@@ -229,8 +200,45 @@ type
     Companylbl: TLabel;
     CompanyFLD: TwwDBLookupCombo;
     SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
+    Date1FLD: TwwDBDateTimePicker;
+    Label16: TLabel;
+    RzDBCheckBox1: TRzDBCheckBox;
+    Label18: TLabel;
+    RzGroupBox3: TRzGroupBox;
+    Label1: TLabel;
     Label6: TLabel;
-    wwDBEdit6: TwwDBEdit;
+    wwCheckBox1: TwwCheckBox;
+    wwDBEdit3: TwwDBEdit;
+    wwDBEdit4: TwwDBEdit;
+    Label19: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    DatePassedFLD: TwwDBDateTimePicker;
+    wwDBDateTimePicker1: TwwDBDateTimePicker;
+    SeminarReminderSQLSERIAL_NUMBER: TIntegerField;
+    SeminarReminderSQLFK_SEMINAR_SERIAL: TIntegerField;
+    SeminarReminderSQLDESCRIPTION: TWideStringField;
+    SeminarReminderSQLREMINDER_MESSAGE: TWideStringField;
+    SeminarReminderSQLAFTER_OR_BEFORE: TWideStringField;
+    SeminarReminderSQLPERSON_OR_SEMINAR: TWideStringField;
+    SeminarReminderSQLSTART_OR_END: TWideStringField;
+    SeminarReminderSQLDAYS_OR_MONTHS: TWideStringField;
+    SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField;
+    SeminarReminderSQLREMINDER_TYPE: TWideStringField;
+    SeminarReminderSQLIS_COMPLETED: TWideStringField;
+    SeminarReminderSQLDATE_TARGETED: TDateField;
+    SeminarReminderSQLDATE_COMPLETED: TDateField;
+    RzPanel13: TRzPanel;
+    wwDBNavigator4: TwwDBNavigator;
+    wwNavButton15: TwwNavButton;
+    wwNavButton16: TwwNavButton;
+    wwNavButton17: TwwNavButton;
+    wwNavButton18: TwwNavButton;
+    wwNavButton19: TwwNavButton;
+    wwNavButton20: TwwNavButton;
+    wwNavButton21: TwwNavButton;
+    wwNavButton22: TwwNavButton;
+    wwIncrementalSearch1: TwwIncrementalSearch;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -267,9 +275,14 @@ type
     procedure ReminderTSShow(Sender: TObject);
     procedure wwNavButton19Click(Sender: TObject);
     procedure MonoRGPChange(Sender: TObject);
+    procedure SeminarReminderSQLNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
+//  Function FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
+  Function FindActionDate(ActionDateRec:TActionDateRec):Tdate;
+
+
   Procedure StartSeminar(Const SeminarSerial:integer);
   Procedure EditSeminar(Const SeminarSerial:integer);
   procedure RemovePerson();
@@ -341,6 +354,14 @@ procedure TV_SeminarFRM.SeminarCostItemSQLCalcFields(DataSet: TDataSet);
 begin
 dataset.FieldByName('totalAmnt').Value:=Dataset.FieldByName('AMOUNT_PER_ITEM').AsFloat
 * Dataset.FieldByName('NUMBER_OF_ITEMS').AsInteger;
+end;
+
+procedure TV_SeminarFRM.SeminarReminderSQLNewRecord(DataSet: TDataSet);
+begin
+
+  Dataset.FieldByName('reminder_type').Value:='S';
+  Dataset.FieldByName('PERSON_OR_SEMINAR').Value:='S';
+  Dataset.FieldByName('is_completed').Value:='N';
 end;
 
 procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
@@ -460,14 +481,27 @@ var
   str:String;
    fdesc,fmessage,fafter,fperson,fstart,fDays:string;
    fnumber_of_days:Integer;
+   ActionDate:TDate;
+   ActionDateRec:TActionDateRec;
 begin
+
+ qr:=TksQuery.Create(cn,'select Date_Started, date_completed from seminar where serial_number= :SeminarSerial');
+ try
+   qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+   qr.Open;
+   ActionDateRec.StartDate:=qr.FieldByName('date_started').AsDateTime;
+   ActionDateRec.EndDate:=qr.FieldByName('date_completed').AsDateTime;
+ finally
+   qr.Free;
+ end;
+
 
  ksExecSQLVar(cn,'delete from SEMINAR_REMINDER where fk_seminar_serial=:serial',[SeminarSerial]);
 
   str:=
   ' INSERT INTO SEMINAR_REMINDER'
-  +'  (SERIAL_NUMBER,fk_seminar_serial, description,reminder_message,after_or_before,person_or_seminar,number_of_days_months,start_or_end,days_or_months)'
-  +'  VALUES (:serial,:seminarSerial, :a3,:A4, :a5, :A6,:A7,:a8,:A9)';
+  +'  (SERIAL_NUMBER,fk_seminar_serial, description,reminder_message,after_or_before,person_or_seminar,number_of_days_months,start_or_end,days_or_months,reminder_type,is_completed,date_targeted)'
+  +'  VALUES (:serial,:seminarSerial, :a3,:A4, :a5, :A6,:A7,:a8,:A9,:a10,:a11,:a12)';
 
 
  qr:=TksQuery.Create(cn,'select * from seminar_type_reminder where fk_seminar_type_serial= :Typeserial');
@@ -484,7 +518,17 @@ begin
     fstart:=qr.FieldByName('START_OR_END').AsString;
     fnumber_of_days:=qr.FieldByName('NUMBER_OF_DAYS_MONTHS').AsInteger;;
     fDays:=   qr.FieldByName('DAYS_OR_MONTHS').AsString;
-    ksExecSQLVar(cn,str,[serial,SeminarSerial,fdesc,fmessage,fafter,fperson,fnumber_of_days,fstart, fdays ] );
+
+    ActionDateRec.UseStartDate:= (fstart='S');
+    ActionDateRec.isAfter:= (fafter='A');
+    ActionDateRec.isAfter:= (fafter='A');
+    ActionDateRec.isDayUnit:= (fdays='D');
+    ActionDateRec.NumberOfUnits:= fnumber_of_days;
+
+
+    G_DebugUnit.TRecViewer<TActionDateREc>.GetFields(ActionDateRec);
+    ActionDate:=FindActionDate(ActionDateRec);
+    ksExecSQLVar(cn,str,[serial,SeminarSerial,fdesc,fmessage,fafter,fperson,fnumber_of_days,fstart, fdays,'S','N',ActionDate ] );
     qr.Next;
 
    end;
@@ -540,8 +584,8 @@ end;
 
 procedure TV_SeminarFRM.MonoRGPChange(Sender: TObject);
 begin
-CompanyFLD.Visible := MonoRGP.Value='P';
-Companylbl.Visible := MonoRGP.Value='P';
+CompanyFLD.Visible := MonoRGP.Value='M';
+Companylbl.Visible := MonoRGP.Value='M';
 end;
 
 procedure TV_SeminarFRM.VenueBTNClick(Sender: TObject);
@@ -802,6 +846,42 @@ begin
    qr.Free;
   end;
 end;
+
+
+
+Function TV_SeminarFRM.FindActionDate(ActionDateRec:TActionDateRec):Tdate;
+var
+  mySign:Integer;
+  DateReminder:TDate;
+  RefDate:TDate;
+  dt:TactionDateRec;
+begin
+  dt := ActionDateRec;
+  if dt.UseStartDate then
+    RefDate:=dt.StartDate
+  else
+    RefDate:=dt.EndDate;
+
+  if dt.isAfter then
+    mySign:=1
+  else
+    mySign:=-1;
+
+
+  try
+    if dt.IsDayUnit then
+      DateReminder:= IncDay( RefDate, mySign * dt.NumberOfUnits)
+    else
+      DateReminder:= IncMonth( RefDate, mySign * dt.NumberOFUnits);
+
+    Result:=Trunc( DateREminder);
+  except
+    result:=EncodeDate(1900,01,01);
+  end;
+
+
+end;
+
 
 
 End.
