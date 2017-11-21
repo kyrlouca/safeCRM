@@ -9,7 +9,7 @@ uses
   Mask, wwdbedit,  DBGrids, wwdbdatetimepicker, ppDB, ppCtrls,
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
-  RzPanel, Vcl.Imaging.pngimage, VirtualTable;
+  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox;
 
 type
   TReminderResult= Record
@@ -47,6 +47,26 @@ type
     ppDesignLayers3: TppDesignLayers;
     ppDesignLayer3: TppDesignLayer;
     ppDBText1: TppDBText;
+    ppDBText5: TppDBText;
+    ppLabel1: TppLabel;
+    ppLabel6: TppLabel;
+    ppLabel7: TppLabel;
+    ppLabel8: TppLabel;
+    ppLabel9: TppLabel;
+    ppShape1: TppShape;
+    ppVariable3: TppVariable;
+    ppLabel10: TppLabel;
+    ppLabel11: TppLabel;
+    ppLabel12: TppLabel;
+    ppDBText7: TppDBText;
+    ppDBText8: TppDBText;
+    ppDBText3: TppDBText;
+    ppLabel13: TppLabel;
+    myDBCheckBox1: TmyDBCheckBox;
+    ppLabel2: TppLabel;
+    ppLabel3: TppLabel;
+    SeminarReminderSQLDaysLeft: TIntegerField;
+    DaysLeftLBL: TppDBText;
     SeminarReminderSQLSERIAL_NUMBER: TIntegerField;
     SeminarReminderSQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarReminderSQLDESCRIPTION: TWideStringField;
@@ -56,41 +76,25 @@ type
     SeminarReminderSQLSTART_OR_END: TWideStringField;
     SeminarReminderSQLDAYS_OR_MONTHS: TWideStringField;
     SeminarReminderSQLNUMBER_OF_DAYS_MONTHS: TIntegerField;
-    SeminarReminderSQLSEMINAR_NAME: TWideStringField;
-    SeminarReminderSQLDATE_STARTED: TDateField;
+    SeminarReminderSQLREMINDER_TYPE: TWideStringField;
+    SeminarReminderSQLIS_COMPLETED: TWideStringField;
+    SeminarReminderSQLDATE_TARGETED: TDateField;
     SeminarReminderSQLDATE_COMPLETED: TDateField;
-    SeminarReminderSQLSTATUS: TWideStringField;
-    ppDBText2: TppDBText;
-    ppDBText3: TppDBText;
-    Vt: TVirtualTable;
-    ppVariable1: TppVariable;
-    ppDBText5: TppDBText;
-    ppLabel1: TppLabel;
-    ppLabel2: TppLabel;
-    ppLabel3: TppLabel;
-    ppLabel6: TppLabel;
-    ppLabel7: TppLabel;
-    ppLabel8: TppLabel;
-    ppLabel9: TppLabel;
-    ppVariable2: TppVariable;
-    ppDBText6: TppDBText;
-    ppShape1: TppShape;
-    ppVariable3: TppVariable;
-    ppLabel10: TppLabel;
-    ppLabel11: TppLabel;
-    ppLabel12: TppLabel;
+    SeminarReminderSQLSEMINAR_NAME: TWideStringField;
+    SeminarReminderSQLSEMINAR_SERIAL: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
     procedure FormActivate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
-    procedure PrintRBtnClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure ppVariable1Calc(Sender: TObject; var Value: Variant);
     procedure FormCreate(Sender: TObject);
     procedure ppVariable2Calc(Sender: TObject; var Value: Variant);
     procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
     procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
+    procedure SeminarReminderSQLCalcFields(DataSet: TDataSet);
+    procedure DaysLeftLBLPrint(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -98,6 +102,12 @@ type
   Function CalcDaysLeft():TReminderResult;
   public
     { Public declarations }
+    IN_SeminarSerial:Integer;
+    IN_isCompleted:String;
+    IN_HasDate:String;
+    IN_DateRef:TDate;
+    Procedure PrintTheSeminar();
+
   end;
 
 var
@@ -139,18 +149,18 @@ end;
 
 procedure TR_remindersFRM.ppVariable1Calc(Sender: TObject; var Value: Variant);
 begin
- value:=vt.FieldByName('DaysCalc').AsInteger;
+// value:=vt.FieldByName('DaysCalc').AsInteger;
 end;
 
 procedure TR_remindersFRM.ppVariable2Calc(Sender: TObject; var Value: Variant);
 begin
- value:=vt.FieldByName('ActionDate').AsDateTime;
+// value:=vt.FieldByName('ActionDate').AsDateTime;
 
 end;
 
 procedure TR_remindersFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
 begin
-   value:=FromDateFLD.Date;
+   value:=IN_DateRef;
 end;
 
 procedure TR_remindersFRM.RzBitBtn1Click(Sender: TObject);
@@ -161,6 +171,14 @@ end;
 
 
 
+procedure TR_remindersFRM.SeminarReminderSQLCalcFields(DataSet: TDataSet);
+var
+  days:integer;
+begin
+  Days:= Trunc(Dataset.FieldByName('date_targeted').AsDateTime - IN_DateRef);
+  Dataset.FieldByName('daysLeft').AsInteger:=days;
+end;
+
 procedure TR_remindersFRM.VtFilterRecord(DataSet: TDataSet;
   var Accept: Boolean);
 begin
@@ -168,35 +186,8 @@ begin
 end;
 
 Function TR_remindersFRM.CalcDaysLeft():TReminderResult;
-
-var
-  DateSeminar,DateReference:TDate;
-  isAfter,IsStartDate:Boolean;
-  DaysNumber:integer;
-  isDayUnit:Boolean;
-  Serial:integer;
 begin
 
-
-  isAfter:=vt.FieldByName('AFTER_OR_BEFORE').AsString='A';
-  IsStartDate:=Vt.FieldByName('Start_or_end').AsString='S';
-  IsDayUnit:=Vt.FieldByName('DAYS_OR_MONTHS').AsString='D';
-  DaysNumber:=Vt.FieldByName('number_of_days_months').AsInteger;
-
-  try
-    DateReference:=FromDateFLD.Date;
-  except
-    DateReference:=Date;
-  end;
-
-
-  if isStartDate then
-      DateSeminar:=Vt.FieldByName('date_started').AsDateTime
-  else
-      DateSeminar:=Vt.FieldByName('date_Completed').AsDateTime;
-
-    result.DateFinal:= FindActionDate(DateSeminar,isAfter,isDayUnit,DaysNumber);
-    Result.daysLeft:=Floor(result.DateFinal) -  Floor(DateReference);
 end;
 
 
@@ -226,6 +217,20 @@ begin
 end;
 
 
+procedure TR_remindersFRM.DaysLeftLBLPrint(Sender: TObject);
+begin
+  if (SeminarReminderSQL.FieldByName('DaysLeft').AsInteger<8)
+  and (SeminarReminderSQL.FieldByName('is_completed').AsString<>'Y') then
+  begin
+    DaysLeftLBL.Font.Color:=clRed;
+    DaysLeftLBL.Font.Size:=12;
+  end else begin
+    DaysLeftLBL.Font.Color:=clBlack;
+    DaysLeftLBL.Font.Size:=9;
+
+  end;
+end;
+
 procedure TR_remindersFRM.ppLabel10GetText(Sender: TObject;
   var Text: String);
 begin
@@ -233,8 +238,7 @@ Text:= 'Reference Date :'+ FromDateFLD.Text;
 
 end;
 
-
-procedure TR_remindersFRM.PrintRBtnClick(Sender: TObject);
+Procedure TR_remindersFRM.PrintTheSeminar();
 
 Var
    FromDate:TDateTime;
@@ -243,49 +247,38 @@ begin
 
 fromDate:=FromDateFLD.Date;
 
-with SeminarReminderSQL do
-begin
-     Close;
-     Open ;
-     vt.Close;
-      vt.DeleteFields;
-      Vt.IndexFieldNames := '';
-      vt.OnFilterRecord:=nil;
-      vt.Assign(SeminarReminderSQL);
-//      vt.FieldDefs[0].Attributes := vt.FieldDefs[0].Attributes - [faReadOnly];
-      vt.AddField('DaysCalc',ftInteger,0);
-      vt.AddField('ActionDate',ftDate,0);
-//      Vt.IndexFieldNames := 'DaysCalc Asc'; //need to populate table and then create index
-      vt.Open;
-      VT.First;
-      while not vt.Eof do begin
-        vt.Edit;
-        DaysLeft:=CalcDaysLeft().daysLeft;
-//        if DaysLeft>=0  then begin
-          vt.FieldByName('DaysCalc').AsInteger:=daysLeft;
-          vt.FieldByName('ActionDate').AsDateTime:=CalcDaysLeft().DateFinal;
-          vt.Post;
-//        end;
-        vt.Next;
-      end;
-      vt.Close;
-      Vt.IndexFieldNames := 'ActionDate Asc';
-      vt.OnFilterRecord:=VtFilterRecord;
-      vt.Open;
+  if IN_isCompleted='C' then begin
+     SeminarReminderSQL.AddWhere('is_completed = ''Y'' ');
+  end else if IN_isCompleted='P' then begin
+    SeminarReminderSQL.AddWhere('is_completed = ''N'' ');
+  end;
 
+  if IN_SeminarSerial >0  then begin
+    SeminarReminderSQL.AddWhere('fk_seminar_serial = :seminarSerial');
+  end;
 
-     SeminarReminderSRC.DataSet:=vt;
+  if IN_HasDate ='D' then begin
+      SeminarReminderSQL.AddWhere('Date_targeted is not null');
+  end else if IN_HasDate ='N' then begin
+      SeminarReminderSQL.AddWhere('Date_targeted is null');
+  end;
+
+  if SeminarReminderSQL.FindParam('SeminarSerial')<>nil then begin
+    SeminarReminderSQL.ParamByName('seminarSerial').Value:=IN_SeminarSerial;
+  end;
+ SeminarReminderSQL.ParamByName('DateRef').AsDate:= IN_DateRef;
+
+  SeminarReminderSQL.Open;
      PpReport1.Print;
 
 end;
 
-end;
 
 procedure TR_remindersFRM.FormActivate(Sender: TObject);
 begin
 
 if (Trim(FromDateFLD.text)='') then
-   FromDateFLD.Date:=now;
+   FromDateFLD.Date:=date;
 
 end;
 

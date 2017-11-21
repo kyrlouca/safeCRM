@@ -3,8 +3,8 @@ object L_RemindersFRM: TL_RemindersFRM
   Top = 153
   Align = alClient
   Caption = '--'
-  ClientHeight = 558
-  ClientWidth = 918
+  ClientHeight = 538
+  ClientWidth = 1059
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,6 +12,7 @@ object L_RemindersFRM: TL_RemindersFRM
   Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
@@ -22,7 +23,7 @@ object L_RemindersFRM: TL_RemindersFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 918
+    Width = 1059
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -32,11 +33,12 @@ object L_RemindersFRM: TL_RemindersFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 918
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 910
+      Width = 1051
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -48,19 +50,21 @@ object L_RemindersFRM: TL_RemindersFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 515
-    Width = 918
+    Top = 495
+    Width = 1059
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitWidth = 918
     object RzPanel1: TRzPanel
-      Left = 817
+      Left = 958
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 817
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -141,15 +145,16 @@ object L_RemindersFRM: TL_RemindersFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 918
-    Height = 100
+    Width = 1059
+    Height = 173
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 918
     object RzGroupBox1: TRzGroupBox
       Left = 4
-      Top = -2
-      Width = 396
-      Height = 97
+      Top = 6
+      Width = 525
+      Height = 147
       Caption = 'Filter Reminders'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -161,11 +166,11 @@ object L_RemindersFRM: TL_RemindersFRM
       ParentFont = False
       TabOrder = 0
       object Label2: TLabel
-        Left = 11
-        Top = 29
-        Width = 69
+        Left = 33
+        Top = 37
+        Width = 60
         Height = 15
-        Caption = 'Active Status'
+        Caption = #917#954#954#961#949#956#959#973#957
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -174,8 +179,8 @@ object L_RemindersFRM: TL_RemindersFRM
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 30
-        Top = 56
+        Left = 43
+        Top = 64
         Width = 50
         Height = 14
         Caption = #931#949#956#953#957#940#961#953#959
@@ -186,9 +191,35 @@ object L_RemindersFRM: TL_RemindersFRM
         Font.Style = []
         ParentFont = False
       end
-      object FilterBox: TwwDBComboBox
-        Left = 86
-        Top = 21
+      object Label3: TLabel
+        Left = 27
+        Top = 87
+        Width = 66
+        Height = 15
+        Caption = #935#969#961#943#962' '#931#964#972#967#959
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 4
+        Top = 119
+        Width = 89
+        Height = 15
+        Caption = #919#956#951#961'. '#913#957#945#966#959#961#940#962
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object ActiveSFLD: TwwDBComboBox
+        Left = 100
+        Top = 29
         Width = 198
         Height = 23
         ParentCustomHint = False
@@ -219,15 +250,15 @@ object L_RemindersFRM: TL_RemindersFRM
         Sorted = False
         TabOrder = 0
         UnboundDataType = wwDefault
-        OnCloseUp = FilterBoxCloseUp
+        OnCloseUp = ActiveSFLDCloseUp
         DoubleBuffered = False
         ParentDoubleBuffered = False
       end
-      object wwDBLookupCombo1: TwwDBLookupCombo
-        Left = 86
-        Top = 50
+      object SeminarSFLD: TwwDBLookupCombo
+        Left = 100
+        Top = 58
         Width = 198
-        Height = 24
+        Height = 23
         DropDownAlignment = taLeftJustify
         Selected.Strings = (
           'SEMINAR_NAME'#9'25'#9#928#949#961#953#947#961#945#966#942#9'F'
@@ -242,35 +273,164 @@ object L_RemindersFRM: TL_RemindersFRM
         ShowButton = True
         OrderByDisplay = False
         PreciseEditRegion = False
-        AllowClearKey = False
+        AllowClearKey = True
         ShowMatchText = True
-        OnCloseUp = wwDBLookupCombo1CloseUp
+        OnCloseUp = SeminarSFLDCloseUp
+      end
+      object DateSFld: TwwDBComboBox
+        Left = 100
+        Top = 88
+        Width = 198
+        Height = 23
+        ParentCustomHint = False
+        BiDiMode = bdLeftToRight
+        ParentBiDiMode = False
+        ShowButton = True
+        Style = csDropDownList
+        MapList = True
+        AllowClearKey = True
+        Color = clWhite
+        Ctl3D = True
+        DropDownCount = 8
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'With Date'#9'D'
+          'No Date'#9'N'
+          'All'#9'A')
+        ItemIndex = 0
+        ParentCtl3D = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Sorted = False
+        TabOrder = 2
+        UnboundDataType = wwDefault
+        OnCloseUp = DateSFldCloseUp
+        DoubleBuffered = False
+        ParentDoubleBuffered = False
+      end
+      object RzBitBtn3: TRzBitBtn
+        Left = 357
+        Top = 24
+        Width = 87
+        Height = 41
+        Caption = 'Display '
+        TabOrder = 3
+        OnClick = RzBitBtn3Click
+        Glyph.Data = {
+          F6060000424DF606000000000000360000002800000018000000180000000100
+          180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2C538D254D87876664F2
+          EEEDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF254F8C0170
+          D2045FB521518C714744FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          245C9E057AD8009DF200A6F50079CE1E508AFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFE3EBF4094C991D92E71CA8F205ACF300A9F30480DB2E66A6FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFE3ECF50754A23AA3EB47B6F53EB9F521ADF30784DA4D81B7FF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFE3EDF6055BAD5EB9F074C8F76AC6F647B9F6177C
+          CD5E91C7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE3EDF70560B77AC9F299D9FA93D6F9
+          6FC7F72084D05D98CEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFDBD2D2DDD4D4E8E2E2FFFFFFFFFFFFFFFFFF0060C492D7F5B2
+          E5FCACE0FB93D6FA2990D95C9BD4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFC5B5B56842445D3032876058875E586F4440592D319A7F81C6AF
+          B0708DB10075CFA2DEF8B1E5FD339DDE5AA1DAFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFECE7E7684141845D5AE3D9CAFFFFEFFFFEE6FFFBDFFFF7D8
+          F5E5C3AE8673653739A57E7C81A5C40081DB35A4E257A6E1FFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFF9F8F8532829D2C2BAFFFFFFFFFCF1FCF6E7F9
+          F3DFF8EFD7F5EDCFF5E7C9F8E9CAECCEAD7A4C49966B6B638AB27DC0EFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6E4547C7B3AFFFFFFFFFFE
+          FAFDFAF3FBF7E9FAF4E2F9F1D9F7EED2F2E0C1ECD8B9F0DEC0E9C7A27B5152DD
+          CDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCEC0C18D6666
+          FFFFFFFFFFFEFFFFFBFEFBF4FBF8EAFAF5E2F9F1D9F7EED2F2E1C3E9D2B0EAD4
+          B3EDD6B5CEA0827F5961FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFF825D60DCCFC5FFFFF6FEFCF6FEFBF6FDFAEFFBF7E8FAF4E1F8F1D8F4EDCF
+          F1DFBFE8CEAFE4C1A0EAD1B0E9C7A1906463DCD1D2FFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFF653A3DFFFFF4FCF9EBFCF9EDFCF8EEFBF7E9FAF5E3F9
+          F1DAFCF6E5FAF3DFF6EFD8F6ECCEE8CEAFE7C9A8E9C8A6B2836FC4B2B5FFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6A4045FFFFECFAF5E3FBF5E5FAF5
+          E5FAF4E2F8F2DBFDFAF1F8EFDAF2E1C1EBD2AEE3C3A1EEDBBDE9CFAFE6C4A0BD
+          947FB7A0A4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F464CFFFFE4
+          F9F2DAF9F2DCF9F2DBF9F1D9F9F3DEFAF3DDF3E4C4F4E7D2FBF6E9FBF5DEEDDA
+          BBE8CEAEE5C29EB78B7AB9A5A9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFF754D54F9F2D4F9EFD5F9EED4F9EFD5F7EDD0F9F3DBF4E6CDF2E2C6FFFFFF
+          FEFCF2F9F4DDF4E7CAE6CCAAE5BF9BB68473CCBCBFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFAB9196D2B8A2F9F2D3F3E5C7F3E6C7F2E2C5F6E8CEF0
+          E0C1F1E2C9FCF9ECFAF6E5F9F0D7F2E0C2E5C8A5E0B48DA5807DF3F0F0FFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD8CCCD987674F6E5C3F2E2C3ECD4
+          B5E9D2B2EBD5B4F5E9CCEDD8B8F8F0D6F8EFD2F4E4C7EAD2B2E3BE9DC99171AA
+          9093FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA2868C
+          BF9B8AF3DEBAEFDCBEE8CCAAE1BC9AE8CEAFEEDABDEDD9BAEED8B8E8CFAEE4C1
+          9ED9A179A88B8FEFEAEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFA0818ABF9A89EBCBA6ECD5B4EAD1B1E8CBACE6C9A9E6C6A4
+          E4C19FE2B693D19D7CB0908CE4DBDCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAE959BAA8784CA9F89DEB28AE3
+          B992E2B591DDAE87D19F7FBD9080AF9B9FE5DDDEFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0EB
+          ECC5B3B7A99196AC9298B69592AF999EBCA8ACDDD3D4FFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      end
+      object DateRefFLD: TwwDBDateTimePicker
+        Left = 100
+        Top = 117
+        Width = 124
+        Height = 23
+        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
+        CalendarAttributes.Font.Color = clWindowText
+        CalendarAttributes.Font.Height = -11
+        CalendarAttributes.Font.Name = 'Arial'
+        CalendarAttributes.Font.Style = []
+        Epoch = 1950
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        ShowButton = True
+        TabOrder = 4
+        UnboundDataType = wwDTEdtDate
+        DisplayFormat = 'dd/mm/yyyy'
+        OnCloseUp = DateRefFLDCloseUp
       end
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 153
-    Width = 918
-    Height = 362
+    Top = 226
+    Width = 1059
+    Height = 269
     Align = alClient
     TabOrder = 2
+    ExplicitWidth = 918
     object Panel5: TPanel
-      Left = 825
+      Left = 833
       Top = 1
       Width = 202
-      Height = 360
+      Height = 267
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 881
+      ExplicitTop = 6
       object InsertHawbBTN: TRzBitBtn
-        Left = 6
-        Top = 35
+        Left = 2
+        Top = 32
         Width = 135
         Height = 37
         Alignment = taLeftJustify
-        Caption = 'Add Company'
+        Caption = 'Add Task'
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -281,7 +441,6 @@ object L_RemindersFRM: TL_RemindersFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 0
-        Visible = False
         OnClick = InsertHawbBTNClick
         Glyph.Data = {
           DE010000424DDE01000000000000760000002800000024000000120000000100
@@ -305,12 +464,12 @@ object L_RemindersFRM: TL_RemindersFRM
         Spacing = 14
       end
       object DeletehawbBTN: TRzBitBtn
-        Left = 6
-        Top = 121
+        Left = 2
+        Top = 118
         Width = 135
         Height = 37
         Alignment = taLeftJustify
-        Caption = 'Delete Company'
+        Caption = 'Delete Task'
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -344,13 +503,13 @@ object L_RemindersFRM: TL_RemindersFRM
         NumGlyphs = 2
         Spacing = 12
       end
-      object RzBitBtn2: TRzBitBtn
-        Left = 6
-        Top = 78
+      object EditBTN: TRzBitBtn
+        Left = 2
+        Top = 75
         Width = 135
         Height = 37
         Alignment = taLeftJustify
-        Caption = 'Edit Company'
+        Caption = 'Edit Task'
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -361,7 +520,7 @@ object L_RemindersFRM: TL_RemindersFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 2
-        Visible = False
+        OnClick = EditBTNClick
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
           180000000000C006000000000000000000000000000000000000FFFFFFF8F8F8
@@ -426,22 +585,23 @@ object L_RemindersFRM: TL_RemindersFRM
     object RzPanel2: TRzPanel
       Left = 41
       Top = 1
-      Width = 784
-      Height = 360
+      Width = 792
+      Height = 267
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 784
+        Width = 792
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 784
         object wwIncrementalSearch1: TwwIncrementalSearch
-          Left = 231
-          Top = 5
+          Left = 119
+          Top = 4
           Width = 128
           Height = 22
           DataSource = TableSRC
@@ -458,7 +618,7 @@ object L_RemindersFRM: TL_RemindersFRM
         object wwDBNavigator1: TwwDBNavigator
           Left = 0
           Top = 0
-          Width = 200
+          Width = 100
           Height = 33
           DataSource = TableSRC
           RepeatInterval.InitialDelay = 500
@@ -510,6 +670,7 @@ object L_RemindersFRM: TL_RemindersFRM
             Spacing = 4
             Transparent = False
             Caption = 'wwDBNavigator1Next'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 2
@@ -526,95 +687,31 @@ object L_RemindersFRM: TL_RemindersFRM
             Spacing = 4
             Transparent = False
             Caption = 'wwDBNavigator1Last'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 3
             Style = nbsLast
-          end
-          object wwDBNavigator1Insert: TwwNavButton
-            Left = 100
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Insert new record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Insert'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 4
-            Style = nbsInsert
-          end
-          object wwDBNavigator1Delete: TwwNavButton
-            Left = 125
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Delete current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Delete'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 5
-            Style = nbsDelete
-          end
-          object wwDBNavigator1Post: TwwNavButton
-            Left = 150
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Post changes of current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Post'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 6
-            Style = nbsPost
-          end
-          object wwDBNavigator1Cancel: TwwNavButton
-            Left = 175
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Cancel changes made to current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Cancel'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 7
-            Style = nbsCancel
           end
         end
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 705
-        Height = 327
+        Width = 778
+        Height = 234
         ControlType.Strings = (
           'IS_COMPLETED;CustomEdit;CompletedFLD;F')
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
           'DESCRIPTION'#9'23'#9#928#949#961#953#947#961#945#966#942
-          'REMINDER_MESSAGE'#9'16'#9#924#942#957#965#956#945
+          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945
           'SEMINAR_SERIAL'#9'6'#9'S/S'
           'SEMINAR_NAME'#9'17'#9#931#949#956#953#957#940#961#953#959
+          'DATE_TARGETED'#9'11'#9#916#961#940#963#951
+          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951
           'IS_COMPLETED'#9'4'#9#932#941#955#959#962
-          'DATE_TARGETED'#9'11'#9#923#942#958#951
-          'DATE_COMPLETED'#9'12'#9#928#961#945#947#956#945#964#953#954#942)
+          'DaysLeft'#9'5'#9#924#941#961#949#962#9'F')
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -628,9 +725,10 @@ object L_RemindersFRM: TL_RemindersFRM
         Font.Height = -12
         Font.Name = 'Arial'
         Font.Style = []
-        KeyOptions = [dgEnterToTab, dgAllowDelete, dgAllowInsert]
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+        KeyOptions = [dgEnterToTab]
+        Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         ParentFont = False
+        ReadOnly = True
         TabOrder = 1
         TitleAlignment = taLeftJustify
         TitleFont.Charset = GREEK_CHARSET
@@ -641,8 +739,9 @@ object L_RemindersFRM: TL_RemindersFRM
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
+        OnDblClick = Grid1DblClick
         object CompletedFLD: TwwCheckBox
-          Left = 72
+          Left = 656
           Top = 128
           Width = 37
           Height = 18
@@ -658,7 +757,6 @@ object L_RemindersFRM: TL_RemindersFRM
           DataSource = TableSRC
           ShowText = False
           TabOrder = 0
-          OnClick = CompletedFLDClick
         end
       end
     end
@@ -666,7 +764,7 @@ object L_RemindersFRM: TL_RemindersFRM
       Left = 1
       Top = 1
       Width = 40
-      Height = 360
+      Height = 267
       Align = alLeft
       Alignment = taLeftJustify
       BorderOuter = fsNone
@@ -754,11 +852,20 @@ object L_RemindersFRM: TL_RemindersFRM
       
         'left outer join seminar sem on sr.fk_seminar_serial=sem.serial_n' +
         'umber'
+      'where'
+      'sr.is_completed ='#39'N'#39
+      'or (sr.is_completed='#39'Y'#39' and sr.date_targeted >= :DateRef)'
       'order by sr.date_targeted')
-    Active = True
+    OnCalcFields = TableSQLCalcFields
     OnNewRecord = TableSQLNewRecord
     Left = 32
     Top = 65528
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DateRef'
+        Value = nil
+      end>
     object TableSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
       DisplayWidth = 6
@@ -773,7 +880,7 @@ object L_RemindersFRM: TL_RemindersFRM
     end
     object TableSQLREMINDER_MESSAGE: TWideStringField
       DisplayLabel = #924#942#957#965#956#945
-      DisplayWidth = 16
+      DisplayWidth = 12
       FieldName = 'REMINDER_MESSAGE'
       Required = True
       Size = 160
@@ -791,6 +898,18 @@ object L_RemindersFRM: TL_RemindersFRM
       ReadOnly = True
       Size = 160
     end
+    object TableSQLDATE_TARGETED: TDateField
+      DisplayLabel = #916#961#940#963#951
+      DisplayWidth = 11
+      FieldName = 'DATE_TARGETED'
+      DisplayFormat = 'dd/mm/yyyy'
+    end
+    object TableSQLDATE_COMPLETED: TDateField
+      DisplayLabel = #917#954#964#941#955#949#963#951
+      DisplayWidth = 12
+      FieldName = 'DATE_COMPLETED'
+      DisplayFormat = 'dd/mm/yyyy'
+    end
     object TableSQLIS_COMPLETED: TWideStringField
       DisplayLabel = #932#941#955#959#962
       DisplayWidth = 4
@@ -798,17 +917,12 @@ object L_RemindersFRM: TL_RemindersFRM
       FixedChar = True
       Size = 1
     end
-    object TableSQLDATE_TARGETED: TDateField
-      DisplayLabel = #923#942#958#951
-      DisplayWidth = 11
-      FieldName = 'DATE_TARGETED'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object TableSQLDATE_COMPLETED: TDateField
-      DisplayLabel = #928#961#945#947#956#945#964#953#954#942
-      DisplayWidth = 12
-      FieldName = 'DATE_COMPLETED'
-      DisplayFormat = 'dd/mm/yyyy'
+    object TableSQLDaysLeft: TIntegerField
+      DisplayLabel = #924#941#961#949#962
+      DisplayWidth = 5
+      FieldKind = fkCalculated
+      FieldName = 'DaysLeft'
+      Calculated = True
     end
     object TableSQLFK_SEMINAR_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SERIAL'
@@ -912,8 +1026,8 @@ object L_RemindersFRM: TL_RemindersFRM
     SQL.Strings = (
       'SELECT * from seminar ')
     ReadOnly = True
-    Left = 385
-    Top = 61
+    Left = 649
+    Top = 53
     object SeminarSQLSERIAL_NUMBER: TIntegerField
       FieldName = 'SERIAL_NUMBER'
       Required = True
@@ -999,7 +1113,18 @@ object L_RemindersFRM: TL_RemindersFRM
   end
   object SeminarSRC: TDataSource
     DataSet = SeminarSQL
-    Left = 432
-    Top = 69
+    Left = 656
+    Top = 61
+  end
+  object MainMenu1: TMainMenu
+    Left = 280
+    Top = 40
+    object Reports1: TMenuItem
+      Caption = #917#954#964#973#960#969#963#951
+      object N3: TMenuItem
+        Caption = #917#954#964#973#960#969#963#951'  '
+        OnClick = N3Click
+      end
+    end
   end
 end

@@ -139,10 +139,6 @@
             <Form>P_attendanceFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="M_CompanyNew.pas">
-            <Form>M_companyNewFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="M_Company.pas">
             <Form>M_CompanyFRM</Form>
             <FormType>dfm</FormType>
@@ -186,6 +182,14 @@
         <DCCReference Include="G_DebugUnit.pas"/>
         <DCCReference Include="L_reminders.pas">
             <Form>L_RemindersFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_reminder.pas">
+            <Form>M_reminderFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_CompanyNew.pas">
+            <Form>M_companyNewFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

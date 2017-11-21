@@ -16,7 +16,6 @@ uses
   H_Help in 'H_Help.pas' {H_HelpFRM},
   G_SFCommonProcs in 'G_SFCommonProcs.pas',
   p_attendance in 'p_attendance.pas' {P_attendanceFRM},
-  M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM},
   M_Company in 'M_Company.pas' {M_CompanyFRM},
   L_Seminar in 'L_Seminar.pas' {L_SeminarFRM},
   V_SeminarStages in 'V_SeminarStages.pas' {V_SeminarStagesFRM},
@@ -28,7 +27,9 @@ uses
   R_Presence in 'R_Presence.pas' {R_presenceFRM},
   R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
   G_DebugUnit in 'G_DebugUnit.pas',
-  L_reminders in 'L_reminders.pas' {L_RemindersFRM};
+  L_reminders in 'L_reminders.pas' {L_RemindersFRM},
+  M_reminder in 'M_reminder.pas' {M_reminderFRM},
+  M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM};
 
 {$R *.res}
 
@@ -49,7 +50,7 @@ begin
   Application.CreateForm(TI_CertificatesFRM, I_CertificatesFRM);
   Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
   Application.CreateForm(TP_attendanceFRM, P_attendanceFRM);
-  Application.CreateForm(TM_companyNewFRM, M_companyNewFRM);
+  Application.CreateForm(TM_reminderFRM, M_reminderFRM);
   Application.CreateForm(TM_CompanyFRM, M_CompanyFRM);
   Application.CreateForm(TL_RemindersFRM, L_RemindersFRM);
   Application.CreateForm(TL_SeminarFRM, L_SeminarFRM);
@@ -61,6 +62,8 @@ begin
   Application.CreateForm(TR_presenceFRM, R_presenceFRM);
   Application.CreateForm(TR_remindersFRM, R_remindersFRM);
   Application.CreateForm(TL_RemindersFRM, L_RemindersFRM);
+  Application.CreateForm(TM_reminderFRM, M_reminderFRM);
+  Application.CreateForm(TM_companyNewFRM, M_companyNewFRM);
   //  Application.CreateForm(TR_presenceFRM1, R_presenceFRM1);
   Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
   Application.Run;

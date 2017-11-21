@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  Vcl.WinXCtrls, vcl.wwcheckbox;
+  Vcl.WinXCtrls, vcl.wwcheckbox, Vcl.Menus;
 type
   TL_RemindersFRM = class(TForm)
     Panel1: TPanel;
@@ -29,8 +29,8 @@ type
     DeletehawbBTN: TRzBitBtn;
     RzGroupBox1: TRzGroupBox;
     Label2: TLabel;
-    FilterBox: TwwDBComboBox;
-    RzBitBtn2: TRzBitBtn;
+    ActiveSFLD: TwwDBComboBox;
+    EditBTN: TRzBitBtn;
     wwIncrementalSearch1: TwwIncrementalSearch;
     TableSQL: TIBCQuery;
     TableSQLSERIAL_NUMBER: TIntegerField;
@@ -53,10 +53,6 @@ type
     wwDBNavigator1Prior: TwwNavButton;
     wwDBNavigator1Next: TwwNavButton;
     wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
     TableSQLSEMINAR_NAME: TWideStringField;
     SeminarSQL: TIBCQuery;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
@@ -81,9 +77,18 @@ type
     SeminarSQLMAX_CAPACITY: TIntegerField;
     SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
     SeminarSRC: TDataSource;
-    wwDBLookupCombo1: TwwDBLookupCombo;
+    SeminarSFLD: TwwDBLookupCombo;
     Label1: TLabel;
     TableSQLSEMINAR_SERIAL: TIntegerField;
+    Label3: TLabel;
+    DateSFld: TwwDBComboBox;
+    RzBitBtn3: TRzBitBtn;
+    MainMenu1: TMainMenu;
+    Reports1: TMenuItem;
+    N3: TMenuItem;
+    TableSQLDaysLeft: TIntegerField;
+    DateRefFLD: TwwDBDateTimePicker;
+    Label5: TLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -97,14 +102,20 @@ type
     procedure Grid1DblClick(Sender: TObject);
     procedure DeletehawbBTNClick(Sender: TObject);
     procedure Nav1InsertClick(Sender: TObject);
-    procedure CompletedFLDClick(Sender: TObject);
     procedure TableSQLNewRecord(DataSet: TDataSet);
-    procedure FilterBoxCloseUp(Sender: TwwDBComboBox; Select: Boolean);
-    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
+    procedure RzBitBtn3Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure ActiveSFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure SeminarSFLDCloseUp(Sender: TObject; LookupTable,
       FillTable: TDataSet; modified: Boolean);
+    procedure DateSFldCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure EditBTNClick(Sender: TObject);
+    procedure TableSQLCalcFields(DataSet: TDataSet);
+    procedure DateRefFLDCloseUp(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
+    procedure DisplayFilter;
     procedure EditCompany();
     procedure DeleteCompany();
   procedure  InsertCompany();
@@ -120,10 +131,17 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, R_Reminders, M_reminder;
 
 
 {$R *.DFM}
+
+procedure TL_RemindersFRM.ActiveSFLDCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+begin
+DisplayFIlter();
+
+end;
 
 procedure TL_RemindersFRM.BitBtn2Click(Sender: TObject);
 begin
@@ -136,6 +154,14 @@ begin
 //   Dataset.FieldByName('Serial_number').ReadOnly:=true;
 end;
 
+
+procedure TL_RemindersFRM.TableSQLCalcFields(DataSet: TDataSet);
+var
+  days:integer;
+begin
+  Days:= Trunc(Dataset.FieldByName('date_targeted').AsDateTime - DateRefFLD.Date);
+  Dataset.FieldByName('daysLeft').AsInteger:=days;
+end;
 
 procedure TL_RemindersFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
@@ -159,26 +185,61 @@ begin
 
 end;
 
-procedure TL_RemindersFRM.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
-  FillTable: TDataSet; modified: Boolean);
-var
-  SEminarSerial:Integer;
-begin
-  if not modified then
-    exit;
-  seminarSerial:=lookupTable.FieldByName('serial_number').AsInteger;
-  if seminarSerial<1 then exit;
-  TableSQL.Close;
-  TableSQL.RestoreSQL;
-  TableSQL.AddWhere('fk_seminar_serial = :seminarSerial');
-  TableSQL.ParamByName('seminarSerial').Value:=SeminarSerial;
-  TableSQL.Open;
-
-end;
-
 procedure TL_RemindersFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure TL_RemindersFRM.EditBTNClick(Sender: TObject);
+begin
+  EditCompany();
+  DisplayFilter();
+end;
+
+procedure TL_RemindersFRM.RzBitBtn3Click(Sender: TObject);
+begin
+DisplayFilter();
+
+end;
+
+procedure TL_RemindersFRM.SeminarSFLDCloseUp(Sender: TObject; LookupTable,
+  FillTable: TDataSet; modified: Boolean);
+begin
+DisplayFIlter();
+end;
+
+procedure TL_RemindersFRM.DisplayFilter;
+var
+  SeminarSerial:Integer;
+begin
+TableSQL.Close;
+TableSQL.RestoreSQL;
+//index:=sender.ItemIndex;
+  if ActiveSFld.ItemIndex=0 then begin
+      TableSQL.AddWhere('is_completed = ''N'' ');
+  end else if ActiveSFLD.ItemIndex=1 then begin
+      TableSQL.AddWhere('is_completed = ''Y'' ');
+  end;
+
+  seminarSerial:= SeminarSFLD.lookupTable.FieldByName('serial_number').AsInteger;
+  if (Trim(SeminarSFLD.text)>'') and  (SeminarSerial >0)  then begin
+    TableSQL.AddWhere('fk_seminar_serial = :seminarSerial');
+  end;
+
+  if DateSFld.ItemIndex=0 then begin
+      TableSQL.AddWhere('Date_targeted is not null');
+  end else if DateSFld.ItemIndex=1 then begin
+      TableSQL.AddWhere('Date_targeted is  null');
+  end;
+
+  if TableSQL.FindParam('SeminarSerial')<>nil then begin
+    TableSQL.ParamByName('seminarSerial').Value:=SeminarSerial;
+  end;
+ TableSQL.ParamByName('DateRef').AsDate:= DateRefFLD.Date;
+
+  TableSQL.Open;
+
+
 end;
 
 procedure TL_RemindersFRM.TableSQLAfterInsert(DataSet: TDataSet);
@@ -188,31 +249,12 @@ begin
 end;
 
 
-procedure TL_RemindersFRM.FilterBoxCloseUp(Sender: TwwDBComboBox;
-  Select: Boolean);
-  var
-Selection:String;
-begin
-
-TableSQL.Close;
-TableSQL.RestoreSQL;
-//index:=sender.ItemIndex;
-  if Sender.ItemIndex=0 then begin
-      TableSQL.AddWhere('is_completed = ''N'' ');
-  end else if Sender.ItemIndex=1 then begin
-      TableSQL.AddWhere('is_completed = ''Y'' ');
-  end else if Sender.ItemIndex=2 then begin
-  end;
-  TableSQL.Open;
-
-end;
-
 procedure TL_RemindersFRM.FormActivate(Sender: TObject);
 begin
   ksOpenTables([SeminarSQL]);
-  TableSQL.Close;
-  TableSQL.AddWhere('is_completed = ''N'' ');
-   TableSQL.Open;
+  SeminarSFld.Text:='';
+  DateRefFLD.Date:=Date;
+  DisplayFilter;
 end;
 
 procedure TL_RemindersFRM.FormCreate(Sender: TObject);
@@ -228,36 +270,49 @@ end;
 procedure TL_RemindersFRM.EditCompany();
 vAR
   serial:Integer;
-//  Frm:TM_companyNewFRM;
+  Frm:TM_reminderFRM;
 begin
-{
+
   SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
   if serial<1 then exit;
 
-  frm := TM_companyNewFRM.Create(nil);
+  frm :=  TM_reminderFRM.Create(nil);
   frm.IN_ACTION :='EDIT';
-  frm.IN_person_sERIAL:=serial;
+  frm.IN_PERSON_Serial:=Serial;
   try
     frm.ShowModal;
     ksOpenTables([TableSQL]);
   finally
     frm.Free;
   end;
-}
+
+
+end;
+
+procedure TL_RemindersFRM.DateRefFLDCloseUp(Sender: TObject);
+begin
+DisplayFIlter();
+
+end;
+
+procedure TL_RemindersFRM.DateSFldCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+begin
+DisplayFIlter();
 
 end;
 
 procedure TL_RemindersFRM.DeleteCompany();
 vAR
   serial:Integer;
-//  Frm:TV_SeminarFRM;
+
 begin
- {
+
   SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
   if serial<1 then exit;
   ksExecSQLVar(cn,'delete from person where serial_number= :serial',[serial]);
   ksOpenTables([TableSQL])
-}
+
 
 end;
 
@@ -285,21 +340,45 @@ end;
 
 
 procedure TL_RemindersFRM.InsertCompany();
-//vAR
+vAR
 
-//Frm:TM_companyNewFRM;
+  Frm:TM_reminderFRM;
 begin
-{
-  frm := TM_companyNewFRM.Create(nil);
+
+  frm := TM_reminderFRM.Create(nil);
   frm.IN_ACTION :='INSERT';
   try
     frm.ShowModal;
   finally
     frm.Free;
   end;
-  }
+
 end;
 
+
+procedure TL_RemindersFRM.N3Click(Sender: TObject);
+vAR
+  Frm:TR_remindersFRM;
+  seminarSerial:Integer;
+
+
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  if Trim(SeminarSFLD.Text)='' then
+    SeminarSerial:=0;
+
+  frm :=  TR_remindersFRM.Create(nil);
+  frm.IN_seminarSerial :=seminarSerial;
+  frm.IN_isCompleted:= ActiveSFLD.Value;
+  frm.IN_HasDate:= DateSFld.Value;
+  frm.IN_DateRef:= DateRefFLD.Date;
+
+  try
+    frm.PrintTheSeminar();
+  finally
+    frm.Free;
+  end;
+end;
 
 procedure TL_RemindersFRM.Nav1InsertClick(Sender: TObject);
 begin
@@ -313,23 +392,6 @@ procedure TL_RemindersFRM.CanelBTNClick(Sender: TObject);
 begin
 TableSQL.Cancel;
 close;
-end;
-
-procedure TL_RemindersFRM.CompletedFLDClick(Sender: TObject);
-begin
-//ShowMessage(InvoiceSQL.FieldByName('is_anad').AsString);
-  if TableSQL.State in [dsInactive] then
-    exit;
-
-//amountActual:=TableSQL.FieldByName('fee_actual').AsFloat;
-//amountAnad:=TableSQL.FieldByName('fee_with_anad_sub').AsFloat;
-  if TableSQL.State in [dsBrowse] then TableSQL.Edit;
-
-  if Completedfld.Checked then
-    TableSQL.FieldByName('date_completed').AsDateTime:=Date
-  else
-    TableSQL.FieldByName('date_completed').Clear;
-
 end;
 
 procedure TL_RemindersFRM.DeletehawbBTNClick(Sender: TObject);
