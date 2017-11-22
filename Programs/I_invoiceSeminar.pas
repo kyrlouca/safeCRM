@@ -30,12 +30,6 @@ type
     SerialFLD: TRzDBLabel;
     Label5: TLabel;
     wwDBComboBox1: TwwDBComboBox;
-    Nav1: TwwDBNavigator;
-    Nav1Prior: TwwNavButton;
-    Nav1Next: TwwNavButton;
-    Nav1Button1: TwwNavButton;
-    Nav1First: TwwNavButton;
-    Nav1SearchDialog: TwwNavButton;
     Label1: TLabel;
     RzPanel2: TRzPanel;
     RzPanel4: TRzPanel;
@@ -90,6 +84,31 @@ type
     SecondGRP: TRzGroupBox;
     Label8: TLabel;
     VatFLD: TwwDBEdit;
+    TableSQL: TIBCQuery;
+    TableSRC: TIBCDataSource;
+    TableSQLSERIAL_NUMBER: TIntegerField;
+    TableSQLFK_SEMINAR: TIntegerField;
+    TableSQLFK_INSTRUCTOR: TIntegerField;
+    TableSQLFK_VENUE: TIntegerField;
+    TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    TableSQLSEMINAR_NAME: TWideStringField;
+    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
+    TableSQLDATE_STARTED: TDateField;
+    TableSQLDATE_COMPLETED: TDateField;
+    TableSQLDURATION_DAYS: TIntegerField;
+    TableSQLDURATION_HOURS: TIntegerField;
+    TableSQLFEE_ACTUAL: TFloatField;
+    TableSQLAMOUNT_ANAD: TFloatField;
+    TableSQLCOMMENTS: TWideStringField;
+    TableSQLANAD_APPROVED: TWideStringField;
+    TableSQLFEE_ESTIMATE: TFloatField;
+    TableSQLSTATUS: TWideStringField;
+    TableSQLIS_INVOICED: TWideStringField;
+    TableSQLIS_CERTIFICATED: TWideStringField;
+    TableSQLMAX_CAPACITY: TIntegerField;
+    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
+    TableSQLHAS_EXPIRY: TWideStringField;
+    TableSQLEXPIRY_PERIOD: TIntegerField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -235,6 +254,10 @@ begin
 
   if not InvoiceSQL.UpdateTransaction.Active then
      InvoiceSQL.UpdateTransaction.StartTransaction;
+
+  TableSQL.Close;
+  TableSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+  TableSQL.open;
 
   InvoiceSQL.Close;
   InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;

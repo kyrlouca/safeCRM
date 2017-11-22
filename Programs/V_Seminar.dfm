@@ -79,7 +79,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1032
       Height = 619
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = SubjectTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -88,7 +88,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -781,7 +781,7 @@ object V_SeminarFRM: TV_SeminarFRM
       end
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
-        Caption = #920#941#956#945#964#945
+        Caption = #920#941#956#945#964#945'/'#919#956#941#961#949#962
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -2602,7 +2602,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800700210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800740210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

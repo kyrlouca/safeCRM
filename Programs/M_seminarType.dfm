@@ -33,7 +33,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     ParentFont = False
     TabOrder = 0
     VisualStyle = vsClassic
-    ExplicitTop = -1
     object SeminarPC: TRzPageControl
       Left = 0
       Top = 57
@@ -52,13 +51,9 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       TabIndex = 0
       TabOrder = 0
       OnChanging = SeminarPCChanging
-      ExplicitTop = 88
-      ExplicitHeight = 510
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
-        ExplicitLeft = 2
-        ExplicitHeight = 528
         object RzPanel2: TRzPanel
           Left = 0
           Top = 39
@@ -67,7 +62,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 1
-          ExplicitHeight = 429
           object RzPanel3: TRzPanel
             Left = 0
             Top = 0
@@ -114,7 +108,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             TitleLines = 1
             TitleButtons = True
             OnTitleButtonClick = Grid1TitleButtonClick
-            ExplicitTop = 19
           end
         end
         object GroupBox1: TGroupBox
@@ -433,7 +426,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             ParentFont = False
           end
           object Label24: TLabel
-            Left = 4
+            Left = 5
             Top = 54
             Width = 97
             Height = 14
@@ -446,7 +439,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             ParentFont = False
           end
           object Label1: TLabel
-            Left = 24
+            Left = 29
             Top = 87
             Width = 73
             Height = 14
@@ -459,11 +452,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             ParentFont = False
           end
           object Label8: TLabel
-            Left = 53
+            Left = 23
             Top = 115
-            Width = 48
+            Width = 79
             Height = 14
-            Caption = #931#949' '#924#942#957#949#962
+            Caption = #923#942#958#951' '#963#949' '#924#942#957#949#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -628,7 +621,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
         Caption = #920#941#956#945#964#945
-        ExplicitHeight = 468
         object GroupBox2: TGroupBox
           Left = 20
           Top = 15
@@ -808,7 +800,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        ExplicitHeight = 468
         object GroupBox4: TGroupBox
           Left = 485
           Top = 53

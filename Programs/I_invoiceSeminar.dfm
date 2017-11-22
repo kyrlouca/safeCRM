@@ -144,105 +144,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    object Nav1: TwwDBNavigator
-      Left = 1
-      Top = 7
-      Width = 112
-      Height = 26
-      AutosizeStyle = asSizeNavButtons
-      RepeatInterval.InitialDelay = 500
-      RepeatInterval.Interval = 100
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial'
-      Font.Style = []
-      object Nav1First: TwwNavButton
-        Left = 0
-        Top = 0
-        Width = 23
-        Height = 26
-        Hint = 'Insert new record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1First'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 0
-        Style = nbsFirst
-      end
-      object Nav1Prior: TwwNavButton
-        Left = 23
-        Top = 0
-        Width = 23
-        Height = 26
-        Hint = 'Move to prior record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Prior'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 1
-        Style = nbsPrior
-      end
-      object Nav1Next: TwwNavButton
-        Left = 46
-        Top = 0
-        Width = 22
-        Height = 26
-        Hint = 'Move to next record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Next'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 2
-        Style = nbsNext
-      end
-      object Nav1Button1: TwwNavButton
-        Left = 68
-        Top = 0
-        Width = 22
-        Height = 26
-        Hint = 'Move to last record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Button1'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 3
-        Style = nbsLast
-      end
-      object Nav1SearchDialog: TwwNavButton
-        Left = 90
-        Top = 0
-        Width = 22
-        Height = 26
-        Hint = 'Search the dataset'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1SearchDialog'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 4
-        Style = nbsSearchDialog
-      end
-    end
   end
   object Panel3: TPanel
     Left = 0
@@ -269,7 +170,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsNone
         TabOrder = 0
         object wwDBNavigator2: TwwDBNavigator
-          Left = 20
+          Left = 6
           Top = 15
           Width = 184
           Height = 26
@@ -645,8 +546,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 75
-      ExplicitTop = -131
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -771,6 +670,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Width = 90
             Height = 22
             DataField = 'MAX_CAPACITY'
+            DataSource = TableSRC
             TabOrder = 0
             UnboundDataType = wwDefault
             WantReturns = False
@@ -827,6 +727,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'SERIAL_NUMBER'
+        DataSource = TableSRC
       end
       object Label5: TLabel
         Left = 6
@@ -862,6 +763,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'DATE_STARTED'
+        DataSource = TableSRC
       end
       object RzDBLabel2: TRzDBLabel
         Left = 176
@@ -871,6 +773,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'DATE_COMPLETED'
+        DataSource = TableSRC
       end
       object Label6: TLabel
         Left = 41
@@ -907,6 +810,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ParentColor = False
         BorderOuter = fsFlat
         DataField = 'SEMINAR_NAME'
+        DataSource = TableSRC
       end
       object Companylbl: TLabel
         Left = 30
@@ -928,7 +832,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Height = 20
         ParentColor = False
         BorderOuter = fsFlat
-        DataField = 'LAST_NAME'
+        DataSource = TableSRC
       end
       object wwDBEdit1: TRzDBLabel
         Left = 176
@@ -939,6 +843,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ParentColor = False
         BorderOuter = fsFlat
         DataField = 'FEE_WITH_ANAD_SUB'
+        DataSource = TableSRC
       end
       object wwDBEdit2: TRzDBLabel
         Left = 176
@@ -949,6 +854,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ParentColor = False
         BorderOuter = fsFlat
         DataField = 'FEE_ACTUAL'
+        DataSource = TableSRC
       end
       object wwDBComboBox1: TwwDBComboBox
         Left = 79
@@ -961,6 +867,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         AllowClearKey = False
         AutoDropDown = True
         DataField = 'SEMINAR_CORP_TYPE'
+        DataSource = TableSRC
         DropDownCount = 8
         ItemHeight = 0
         Items.Strings = (
@@ -1228,5 +1135,180 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     DefaultConnection = U_databaseFRM.DataConnection
     Left = 281
     Top = 13
+  end
+  object TableSQL: TIBCQuery
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR'
+      
+        '  (SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_COMPAN' +
+        'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
+        'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
+        'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
+        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY' +
+        ', EXPIRY_PERIOD)'
+      'VALUES'
+      
+        '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
+        'OMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP_TYPE, :DATE_S' +
+        'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
+        'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
+        'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH' +
+        '_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, FK_I' +
+        'NSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, FK_COMPANY_PER' +
+        'SON_SERIAL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_' +
+        'NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE, DATE_STARTED = :DA' +
+        'TE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :D' +
+        'URATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FE' +
+        'E_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD' +
+        '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
+        ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
+        'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :F' +
+        'EE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXP' +
+        'IRY_PERIOD'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_CO' +
+        'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
+        'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
+        'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
+        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EX' +
+        'PIRY, EXPIRY_PERIOD FROM SEMINAR'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'SELECT'
+      ' se.*'
+      'FROM'
+      '    Seminar se'
+      'where '
+      'se.serial_number= :SeminarSerial')
+    ReadOnly = True
+    Left = 49
+    Top = 5
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'SeminarSerial'
+        Value = nil
+      end>
+    object TableSQLSERIAL_NUMBER: TIntegerField
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+    end
+    object TableSQLFK_SEMINAR: TIntegerField
+      FieldName = 'FK_SEMINAR'
+    end
+    object TableSQLFK_INSTRUCTOR: TIntegerField
+      FieldName = 'FK_INSTRUCTOR'
+    end
+    object TableSQLFK_VENUE: TIntegerField
+      FieldName = 'FK_VENUE'
+    end
+    object TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_COMPANY_PERSON_SERIAL'
+    end
+    object TableSQLSEMINAR_NAME: TWideStringField
+      FieldName = 'SEMINAR_NAME'
+      Size = 160
+    end
+    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
+      FieldName = 'SEMINAR_CORP_TYPE'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLDATE_STARTED: TDateField
+      FieldName = 'DATE_STARTED'
+    end
+    object TableSQLDATE_COMPLETED: TDateField
+      FieldName = 'DATE_COMPLETED'
+    end
+    object TableSQLDURATION_DAYS: TIntegerField
+      FieldName = 'DURATION_DAYS'
+    end
+    object TableSQLDURATION_HOURS: TIntegerField
+      FieldName = 'DURATION_HOURS'
+    end
+    object TableSQLFEE_ACTUAL: TFloatField
+      FieldName = 'FEE_ACTUAL'
+    end
+    object TableSQLAMOUNT_ANAD: TFloatField
+      FieldName = 'AMOUNT_ANAD'
+    end
+    object TableSQLCOMMENTS: TWideStringField
+      FieldName = 'COMMENTS'
+      Size = 160
+    end
+    object TableSQLANAD_APPROVED: TWideStringField
+      FieldName = 'ANAD_APPROVED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLFEE_ESTIMATE: TFloatField
+      FieldName = 'FEE_ESTIMATE'
+    end
+    object TableSQLSTATUS: TWideStringField
+      FieldName = 'STATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLIS_INVOICED: TWideStringField
+      FieldName = 'IS_INVOICED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLIS_CERTIFICATED: TWideStringField
+      FieldName = 'IS_CERTIFICATED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLMAX_CAPACITY: TIntegerField
+      FieldName = 'MAX_CAPACITY'
+      Required = True
+    end
+    object TableSQLFEE_WITH_ANAD_SUB: TFloatField
+      FieldName = 'FEE_WITH_ANAD_SUB'
+    end
+    object TableSQLHAS_EXPIRY: TWideStringField
+      FieldName = 'HAS_EXPIRY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLEXPIRY_PERIOD: TIntegerField
+      FieldName = 'EXPIRY_PERIOD'
+    end
+  end
+  object TableSRC: TIBCDataSource
+    DataSet = TableSQL
+    Left = 112
+    Top = 9
   end
 end

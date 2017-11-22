@@ -75,9 +75,9 @@ type
     DaysLeftVrb: TppVariable;
     CompanySQL: TIBCQuery;
     Label1: TLabel;
-    SeminarSFLD: TwwDBLookupCombo;
-    Label2: TLabel;
     CompanySFLD: TwwDBLookupCombo;
+    Label2: TLabel;
+    SeminarSFLD: TwwDBLookupCombo;
     Label3: TLabel;
     FromDateFLD: TwwDBDateTimePicker;
     ppLabel2: TppLabel;
