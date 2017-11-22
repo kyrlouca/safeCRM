@@ -17,6 +17,8 @@ object L_companiesFRM: TL_companiesFRM
   WindowState = wsMaximized
   OnActivate = FormActivate
   OnCreate = FormCreate
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -36,14 +38,12 @@ object L_companiesFRM: TL_companiesFRM
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 910
-      Height = 45
+      Width = 119
+      Height = 32
       Align = alClient
       Alignment = taCenter
       Caption = #917#964#945#953#961#949#943#949#962
       Layout = tlCenter
-      ExplicitWidth = 119
-      ExplicitHeight = 32
     end
   end
   object Panel4: TPanel
@@ -375,7 +375,6 @@ object L_companiesFRM: TL_companiesFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 720
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -548,7 +547,6 @@ object L_companiesFRM: TL_companiesFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 624
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -686,13 +684,13 @@ object L_companiesFRM: TL_companiesFRM
         Width = 810
         Height = 327
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'LAST_NAME'#9'23'#9#908#957#959#956#945#9#9
-          'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962#9#9
-          'COMPANY_OWNER'#9'24'#9#921#948#953#959#954#964#942#964#951#962#9#9
-          'COMPANY_CONTACT'#9'19'#9#917#960#953#954#959#953#957#969#957#943#945#9#9
-          'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972#9#9
-          'PHONE_MOBILE'#9'10'#9#932#951#955'. '#922#953#957#951#964#972#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'LAST_NAME'#9'23'#9#908#957#959#956#945
+          'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962
+          'COMPANY_OWNER'#9'24'#9#921#948#953#959#954#964#942#964#951#962
+          'COMPANY_CONTACT'#9'19'#9#917#960#953#954#959#953#957#969#957#943#945
+          'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972
+          'PHONE_MOBILE'#9'10'#9#932#951#955'. '#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace

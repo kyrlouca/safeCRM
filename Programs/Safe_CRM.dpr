@@ -30,7 +30,8 @@ uses
   M_reminder in 'M_reminder.pas' {M_reminderFRM},
   M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM},
   M_Student in 'M_Student.pas' {M_StudentFRM},
-  R_expiry in 'R_expiry.pas' {R_ExpiryFRM};
+  R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
+  L_Companies in 'L_Companies.pas' {L_companiesFRM};
 
 {$R *.res}
 
@@ -67,5 +68,6 @@ begin
   Application.CreateForm(TM_companyNewFRM, M_companyNewFRM);
   Application.CreateForm(TM_StudentFRM, M_StudentFRM);
   Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
+  Application.CreateForm(TL_companiesFRM, L_companiesFRM);
   Application.Run;
 end.

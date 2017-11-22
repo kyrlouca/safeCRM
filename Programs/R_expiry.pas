@@ -9,7 +9,7 @@ uses
   Mask, wwdbedit,  DBGrids, wwdbdatetimepicker, ppDB, ppCtrls,
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
-  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox;
+  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox, vcl.wwdblook;
 
 type
   TReminderResult= Record
@@ -21,12 +21,10 @@ type
     Panel1: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
-    SeminarReminderSQL: TIBCQuery;
-    SeminarReminderSRC: TDataSource;
-    SeminarReminderPIP: TppDBPipeline;
+    TableSQL: TIBCQuery;
+    TableSRC: TDataSource;
+    TablePIP: TppDBPipeline;
     GroupBox1: TGroupBox;
-    Label6: TLabel;
-    FromDateFLD: TwwDBDateTimePicker;
     PrintRBtn: TBitBtn;
     Panel11: TRzPanel;
     BitBtn1: TBitBtn;
@@ -63,21 +61,63 @@ type
     ppLabel13: TppLabel;
     ppLabel3: TppLabel;
     DaysLeftLBL: TppDBText;
-    SeminarReminderSQLPERSON_SERIAL: TIntegerField;
-    SeminarReminderSQLSEMINAR_SERIAL: TIntegerField;
-    SeminarReminderSQLTYPE_SERIAL: TIntegerField;
-    SeminarReminderSQLHAS_EXPIRY: TWideStringField;
-    SeminarReminderSQLEXPIRY_PERIOD: TIntegerField;
-    SeminarReminderSQLDATE_COMPLETED: TDateField;
-    SeminarReminderSQLFINDATE: TDateField;
+    TableSQLPERSON_SERIAL: TIntegerField;
+    TableSQLSEMINAR_SERIAL: TIntegerField;
+    TableSQLTYPE_SERIAL: TIntegerField;
+    TableSQLHAS_EXPIRY: TWideStringField;
+    TableSQLEXPIRY_PERIOD: TIntegerField;
+    TableSQLDATE_COMPLETED: TDateField;
+    TableSQLFINDATE: TDateField;
     PersonSQL: TIBCQuery;
     PersonSRC: TDataSource;
+    PersonPIP: TppDBPipeline;
+    TableSQLdaysLeft: TIntegerField;
+    DaysLeftVrb: TppVariable;
+    CompanySQL: TIBCQuery;
+    Label1: TLabel;
+    SeminarSFLD: TwwDBLookupCombo;
+    Label2: TLabel;
+    CompanySFLD: TwwDBLookupCombo;
+    Label3: TLabel;
+    FromDateFLD: TwwDBDateTimePicker;
+    ppLabel2: TppLabel;
+    ppDBText2: TppDBText;
+    SeminarSQL: TIBCQuery;
+    SeminarSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSQLFK_SEMINAR: TIntegerField;
+    SeminarSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSQLFK_VENUE: TIntegerField;
+    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    SeminarSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
+    SeminarSQLDATE_STARTED: TDateField;
+    SeminarSQLDATE_COMPLETED: TDateField;
+    SeminarSQLDURATION_DAYS: TIntegerField;
+    SeminarSQLDURATION_HOURS: TIntegerField;
+    SeminarSQLFEE_ACTUAL: TFloatField;
+    SeminarSQLAMOUNT_ANAD: TFloatField;
+    SeminarSQLCOMMENTS: TWideStringField;
+    SeminarSQLANAD_APPROVED: TWideStringField;
+    SeminarSQLFEE_ESTIMATE: TFloatField;
+    SeminarSQLSTATUS: TWideStringField;
+    SeminarSQLIS_INVOICED: TWideStringField;
+    SeminarSQLIS_CERTIFICATED: TWideStringField;
+    SeminarSQLMAX_CAPACITY: TIntegerField;
+    SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
+    SeminarSQLHAS_EXPIRY: TWideStringField;
+    SeminarSQLEXPIRY_PERIOD: TIntegerField;
+    CompanySQLSERIAL_NUMBER: TIntegerField;
+    CompanySQLLAST_NAME: TWideStringField;
+    PersonSQLPERSON_SERIAL: TIntegerField;
+    PersonSQLLAST_NAME: TWideStringField;
+    PersonSQLCOMP_NAME: TWideStringField;
+    PersonSQLCOMP_SERIAL: TIntegerField;
     PersonSQLFK_SEMINAR_SERIAL: TIntegerField;
     PersonSQLATTENDANCE_STATUS: TWideStringField;
     PersonSQLIS_GUEST: TWideStringField;
-    PersonSQLPERSON_SERIAL: TIntegerField;
+    PersonSQLPERSON_SERIAL_1: TIntegerField;
     PersonSQLFK_COMPANY_SERIAL: TIntegerField;
-    PersonSQLLAST_NAME: TWideStringField;
+    PersonSQLLAST_NAME_1: TWideStringField;
     PersonSQLFIRST_NAME: TWideStringField;
     PersonSQLFIRST_LAST_NAME: TWideStringField;
     PersonSQLLAST_FIRST_NAME: TWideStringField;
@@ -114,8 +154,8 @@ type
     PersonSQLSEMINAR_DATE_STARTED: TDateField;
     PersonSQLSEMINAR_HAS_EXPIRY: TWideStringField;
     PersonSQLSEMINAR_EXPIRY_PERIOD: TIntegerField;
-    PersonPIP: TppDBPipeline;
-    SeminarReminderSQLdaysLeft: TIntegerField;
+    TableSQLCOMPANY_SERIAL: TIntegerField;
+    CompanySQLNATIONAL_ID: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -126,14 +166,17 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ppVariable2Calc(Sender: TObject; var Value: Variant);
     procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
-    procedure SeminarReminderSQLCalcFields(DataSet: TDataSet);
+    procedure TableSQLCalcFields(DataSet: TDataSet);
     procedure DaysLeftLBLPrint(Sender: TObject);
     procedure PrintRBtnClick(Sender: TObject);
+    procedure DaysLeftVrbCalc(Sender: TObject; var Value: Variant);
   private
     { Private declarations }
     cn:TIBCConnection;
   Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   Function CalcDaysLeft():TReminderResult;
+  procedure DisplayFilter;
+
   public
     { Public declarations }
     IN_SeminarSerial:Integer;
@@ -194,7 +237,7 @@ end;
 
 procedure TR_ExpiryFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
 begin
-   value:=IN_DateRef;
+   value:=FromDateFLD.Date
 end;
 
 procedure TR_ExpiryFRM.RzBitBtn1Click(Sender: TObject);
@@ -205,7 +248,7 @@ end;
 
 
 
-procedure TR_ExpiryFRM.SeminarReminderSQLCalcFields(DataSet: TDataSet);
+procedure TR_ExpiryFRM.TableSQLCalcFields(DataSet: TDataSet);
 var
   days:integer;
 begin
@@ -248,8 +291,8 @@ end;
 procedure TR_ExpiryFRM.DaysLeftLBLPrint(Sender: TObject);
 begin
 {
-  if (SeminarReminderSQL.FieldByName('DaysLeft').AsInteger<8)
-  and (SeminarReminderSQL.FieldByName('is_completed').AsString<>'Y') then
+  if (TableSQL.FieldByName('DaysLeft').AsInteger<8)
+  and (TableSQL.FieldByName('is_completed').AsString<>'Y') then
   begin
     DaysLeftLBL.Font.Color:=clRed;
     DaysLeftLBL.Font.Size:=12;
@@ -259,6 +302,15 @@ begin
 
   end;
   }
+end;
+
+procedure TR_ExpiryFRM.DaysLeftVrbCalc(Sender: TObject; var Value: Variant);
+var
+  days:integer;
+begin
+  Days:= Trunc( TableSQL.FieldByName('finDate').AsDateTime - FromDateFLD.Date );
+  value:=Days;
+
 end;
 
 procedure TR_ExpiryFRM.ppLabel10GetText(Sender: TObject;
@@ -283,9 +335,7 @@ Var
 begin
 
 //fromDate:=FromDateFLD.Date;
-
-  SeminarReminderSQL.Open;
-  PErsonSQL.Open;
+    DisplayFilter;
      PpReport1.Print;
 
 end;
@@ -293,7 +343,10 @@ end;
 
 procedure TR_ExpiryFRM.FormActivate(Sender: TObject);
 begin
-
+ksOpenTables([CompanySQL,SeminarSQL]);
+SeminarSFLD.Clear;
+CompanySFLD.Clear;
+//DisplayFilter;
 if (Trim(FromDateFLD.text)='') then
    FromDateFLD.Date:=date;
 
@@ -303,6 +356,41 @@ end;
 procedure TR_ExpiryFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
+end;
+
+procedure TR_ExpiryFRM.DisplayFilter;
+var
+  SeminarSerial:Integer;
+  CompanySerial:Integer;
+begin
+TableSQL.Close;
+TableSQL.RestoreSQL;
+//index:=sender.ItemIndex;
+
+  seminarSerial:= SeminarSFLD.lookupTable.FieldByName('serial_number').AsInteger;
+  if (Trim(SeminarSFLD.text)>'') and  (SeminarSerial >0)  then begin
+    TableSQL.AddWhere('seminar_serial = :seminarSerial');
+  end;
+
+  CompanySerial:= CompanySFLD.lookupTable.FieldByName('serial_number').AsInteger;
+  if (Trim(CompanySFLD.text)>'') and  (CompanySerial >0)  then begin
+    TableSQL.AddWhere('company_serial = :CompanySerial');
+  end;
+
+  if TableSQL.FindParam('SeminarSerial')<>nil then begin
+    TableSQL.ParamByName('seminarSerial').Value:=SeminarSerial;
+  end;
+
+  if TableSQL.FindParam('CompanySerial')<>nil then begin
+    TableSQL.ParamByName('CompanySerial').Value:=CompanySerial;
+  end;
+
+
+  TableSQL.Open;
+  if not PersonSQL.Active then
+    PersonSQL.Open;
+
+
 end;
 
 

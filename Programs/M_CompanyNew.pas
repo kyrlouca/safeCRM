@@ -118,19 +118,20 @@ type
     RzPanel2: TRzPanel;
     ToLeftBTN: TBitBtn;
     ToRightBTN: TBitBtn;
-    IncludedPersonsSQLSERIAL_NUMBER: TIntegerField;
-    IncludedPersonsSQLFIRST_NAME: TWideStringField;
-    IncludedPersonsSQLLAST_NAME: TWideStringField;
-    IncludedPersonsSQLFK_COMPANY_SERIAL: TIntegerField;
-    IncludedPersonsSQLFK_PERSON_SERIAL: TIntegerField;
-    IncludedPersonsSQLNATIONAL_ID: TWideStringField;
-    IncludedPersonsSQLCOMPANY_OWNER: TWideStringField;
     PersonSearchFLD: TwwIncrementalSearch;
     RzPanel3: TRzPanel;
     RzGroupBox1: TRzGroupBox;
     RzSizePanel1: TRzSizePanel;
     Grid1: TwwDBGrid;
     ExcludedPersonsSQLPHONE_MOBILE: TWideStringField;
+    IncludedPersonsSQLSERIAL_NUMBER: TIntegerField;
+    IncludedPersonsSQLFIRST_NAME: TWideStringField;
+    IncludedPersonsSQLLAST_NAME: TWideStringField;
+    IncludedPersonsSQLNATIONAL_ID: TWideStringField;
+    IncludedPersonsSQLCOMP_NAME: TWideStringField;
+    IncludedPersonsSQLCOMP_SERIAL: TIntegerField;
+    IncludedPersonsSQLCOMP_REG: TWideStringField;
+    IncludedPersonsSQLPHONE_MOBILE: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure CompanySRCStateChange(Sender: TObject);
@@ -156,7 +157,7 @@ type
     { Public declarations }
     MyInsertState:Boolean;
     IN_ACTION:String;
-    IN_PERSON_Serial:Integer;
+    IN_company_Serial:Integer;
     Procedure EditCompany(Const CompanySerial:integer);
   procedure RemovePerson();
   procedure InsertPerson();
@@ -234,7 +235,7 @@ ksOpenTables([CompanySQL]);
   if IN_ACTION='INSERT' then begin
     CompanySQL.Insert;
   end else if IN_ACTION='EDIT' then begin
-     EditCompany(IN_PERSON_Serial);
+     EditCompany(IN_Company_Serial);
   end;
 
 PageControlPC.ActivePageIndex:=0;
@@ -250,7 +251,7 @@ Begin
   Dataset:=CompanySQL;
   with Dataset do begin
     close;
-    ParamByName('SerialNumber').value:=CompanySerial;
+    ParamByName('CompanySerial').value:=CompanySerial;
     Open;
   end;
 
@@ -268,7 +269,7 @@ begin
   IncludedPersonsSQL.Open;
 
   ExcludedPersonsSQL.Close;
-  ExcludedPersonsSQL.ParamByName('CompanySerial').Value:=CompanySQL.FieldByName('serial_number').AsInteger;
+//  ExcludedPersonsSQL.ParamByName('CompanySerial').Value:=CompanySQL.FieldByName('serial_number').AsInteger;
   ExcludedPersonsSQL.Open;
 
 
@@ -329,11 +330,10 @@ var
   CompanySerial:Integer;
   str:string;
 begin
-  PersonSerial:=IncludedPersonsSQL.FieldByName('fk_person_serial').AsInteger;
-  CompanySerial:=IncludedPersonsSQL.FieldByName('fk_company_serial').AsInteger;
-  if (Personserial<1) or (CompanySerial<1) then exit;
-  str:=' delete from company_person where fk_person_serial= :personSerial and fk_company_serial= :CompanySerial';
-  ksExecSQLVar(cn,str,[Personserial,CompanySerial]);
+  PersonSerial:=IncludedPersonsSQL.FieldByName('serial_number').AsInteger;
+  if (Personserial<1) then exit;
+  str:='update person set fk_company_serial = null where serial_number PersonSerial';
+  ksExecSQLVar(cn,str,[Personserial]);
 
   IncludedPersonsSQL.Refresh;
   excludedPersonsSQL.Refresh;
@@ -349,14 +349,12 @@ begin
   PersonSerial:=ExcludedPersonsSQL.FieldByName('serial_number').AsInteger;
   CompanySerial:=companySQL.FieldByName('serial_number').AsInteger;
   if Personserial<1 then exit;
-  str:=' insert into company_person  (fk_company_serial,fk_person_serial) '
-    +' values(:company,:person)';
+  str:='update person set fk_company_serial = :company_serial where serial_number= :PersonSerial';
   ksExecSQLVar(cn,str,[CompanySerial,Personserial]);
 
   IncludedPersonsSQL.Refresh;
   excludedPersonsSQL.Refresh;
   PersonSearchFLD.Clear;
-
 
 
 end;

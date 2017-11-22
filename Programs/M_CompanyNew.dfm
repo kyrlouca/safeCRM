@@ -31,7 +31,6 @@ object M_companyNewFRM: TM_companyNewFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1001
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -53,7 +52,6 @@ object M_companyNewFRM: TM_companyNewFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 1001
     object RzPanel1: TRzPanel
       Left = 979
       Top = 1
@@ -62,7 +60,6 @@ object M_companyNewFRM: TM_companyNewFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 900
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -290,7 +287,6 @@ object M_companyNewFRM: TM_companyNewFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 1001
   end
   object Panel3: TPanel
     Left = 0
@@ -299,8 +295,6 @@ object M_companyNewFRM: TM_companyNewFRM
     Height = 423
     Align = alClient
     TabOrder = 2
-    ExplicitTop = 87
-    ExplicitWidth = 1001
     object CompanyGRP: TGroupBox
       Left = 48
       Top = 260
@@ -472,15 +466,13 @@ object M_companyNewFRM: TM_companyNewFRM
       Width = 1078
       Height = 421
       Hint = ''
-      ActivePage = InfoTS
+      ActivePage = EmpolyeesTS
       Align = alClient
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 2
-      ExplicitWidth = 999
       FixedDimension = 19
       object InfoTS: TRzTabSheet
         Caption = #928#955#951#961#959#966#959#961#943#949#962
-        ExplicitWidth = 995
         object GroupBox2: TGroupBox
           Left = 361
           Top = 8
@@ -923,9 +915,6 @@ object M_companyNewFRM: TM_companyNewFRM
       object EmpolyeesTS: TRzTabSheet
         OnShow = EmpolyeesTSShow
         Caption = #933#960#940#955#955#951#955#959#953
-        ExplicitLeft = 2
-        ExplicitTop = 19
-        ExplicitWidth = 995
         object RzGroupBox2: TRzGroupBox
           Left = 634
           Top = 17
@@ -940,9 +929,6 @@ object M_companyNewFRM: TM_companyNewFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          ExplicitLeft = 524
-          ExplicitTop = 0
-          ExplicitHeight = 398
           object AllPersonsGRD: TwwDBGrid
             Left = 1
             Top = 57
@@ -982,7 +968,6 @@ object M_companyNewFRM: TM_companyNewFRM
             TitleLines = 1
             TitleButtons = True
             OnKeyDown = AllPersonsGRDKeyDown
-            ExplicitHeight = 340
           end
           object RzSizePanel2: TRzSizePanel
             Left = 1
@@ -1012,7 +997,6 @@ object M_companyNewFRM: TM_companyNewFRM
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 1
-          ExplicitLeft = 438
           object ToLeftBTN: TBitBtn
             Left = 41
             Top = 214
@@ -1166,7 +1150,6 @@ object M_companyNewFRM: TM_companyNewFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitWidth = 995
         end
         object RzGroupBox1: TRzGroupBox
           Left = 0
@@ -1189,7 +1172,6 @@ object M_companyNewFRM: TM_companyNewFRM
             Height = 29
             Align = alTop
             TabOrder = 0
-            ExplicitWidth = 418
           end
           object Grid1: TwwDBGrid
             Left = 1
@@ -1197,13 +1179,11 @@ object M_companyNewFRM: TM_companyNewFRM
             Width = 512
             Height = 336
             Selected.Strings = (
-              'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-              'LAST_NAME'#9'23'#9#908#957#959#956#945#9#9
-              'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962#9#9
-              'COMPANY_OWNER'#9'24'#9#921#948#953#959#954#964#942#964#951#962#9#9
-              'COMPANY_CONTACT'#9'19'#9#917#960#953#954#959#953#957#969#957#943#945#9#9
-              'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972#9#9
-              'PHONE_MOBILE'#9'10'#9#932#951#955'. '#922#953#957#951#964#972#9#9)
+              'SERIAL_NUMBER'#9'6'#9'A/A'
+              'LAST_NAME'#9'23'#9#917#960#943#952#949#964#959
+              'FIRST_NAME'#9'20'#9#168#927#957#959#956#945
+              'NATIONAL_ID'#9'17'#9#932#945#965#964#972#964#951#964#945
+              'PHONE_MOBILE'#9'15'#9#954#953#957#951#964#972)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -1319,7 +1299,7 @@ object M_companyNewFRM: TM_companyNewFRM
       'FROM'
       'Person '
       'WHERE '
-      'SERIAL_NUMBER= :SerialNumber')
+      'SERIAL_NUMBER= :CompanySerial')
     Options.AutoClose = True
     Active = True
     OnNewRecord = CompanySQLNewRecord
@@ -1328,7 +1308,7 @@ object M_companyNewFRM: TM_companyNewFRM
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'SerialNumber'
+        Name = 'CompanySerial'
         Value = nil
       end>
     object CompanySQLSERIAL_NUMBER: TIntegerField
@@ -1476,38 +1456,34 @@ object M_companyNewFRM: TM_companyNewFRM
     Top = 9
   end
   object IncludedPersonsSQL: TIBCQuery
-    UpdatingTable = 'cOMPANY_PERSON'
+    UpdatingTable = 'PERSON'
     SQLInsert.Strings = (
-      'INSERT INTO COMPANY_PERSON'
-      '  (SERIAL_NUMBER, FK_COMPANY_SERIAL, FK_PERSON_SERIAL)'
+      'INSERT INTO PERSON'
+      '  (SERIAL_NUMBER, LAST_NAME)'
       'VALUES'
-      '  (:SERIAL_NUMBER, :FK_COMPANY_SERIAL, :FK_PERSON_SERIAL)')
+      '  (:SERIAL_NUMBER, :LAST_NAME)')
     SQLDelete.Strings = (
-      'DELETE FROM COMPANY_PERSON'
+      'DELETE FROM PERSON'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLUpdate.Strings = (
-      'UPDATE COMPANY_PERSON'
+      'UPDATE PERSON'
       'SET'
-      
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_COMPANY_SERIAL = :FK_COMPAN' +
-        'Y_SERIAL, FK_PERSON_SERIAL = :FK_PERSON_SERIAL'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER, LAST_NAME = :LAST_NAME'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
-      
-        'SELECT SERIAL_NUMBER, FK_COMPANY_SERIAL, FK_PERSON_SERIAL FROM C' +
-        'OMPANY_PERSON'
+      'SELECT SERIAL_NUMBER, LAST_NAME FROM PERSON'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
-      'SELECT NULL FROM COMPANY_PERSON'
+      'SELECT NULL FROM PERSON'
       'WHERE'
       'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
       'FOR UPDATE WITH LOCK')
     SQLRecCount.Strings = (
       'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM cOMPANY_PERSON'
+      'SELECT 1 AS C  FROM PERSON'
       ''
       ') q')
     Connection = U_databaseFRM.DataConnection
@@ -1516,17 +1492,17 @@ object M_companyNewFRM: TM_companyNewFRM
     SQL.Strings = (
       'select'
       
-        ' pe.serial_number, pe.first_name,pe.last_name , cp.fk_company_se' +
-        'rial, cp.fk_person_serial,'
-      '     pe.national_id,pe.company_owner'
+        ' pe.serial_number, pe.first_name,pe.last_name ,pe.national_id,pe' +
+        '.phone_mobile,'
+      
+        ' comp.last_name as Comp_name, comp.serial_number as Comp_serial,' +
+        ' comp.national_id as Comp_reg'
       'from'
-      'company_person  cp'
-      'left outer join'
-      'person pe on pe.serial_number=cp.fk_person_serial'
-      'where'
-      'cp.fk_company_serial= :companySerial'
-      'order by pe.last_name')
-    DetailFields = 'SERIAL_NUMBER'
+      '    person pe left outer join'
+      '    person comp on pe.fk_company_serial =comp.serial_number'
+      'where comp.seriaL_number = :CompanySerial'
+      'order by '
+      'pe.Last_name, pe.first_name')
     Active = True
     Left = 146
     Top = 193
@@ -1541,47 +1517,53 @@ object M_companyNewFRM: TM_companyNewFRM
       DisplayWidth = 6
       FieldName = 'SERIAL_NUMBER'
       ReadOnly = True
+      Required = True
     end
     object IncludedPersonsSQLLAST_NAME: TWideStringField
-      DisplayLabel = #908#957#959#956#945
+      DisplayLabel = #917#960#943#952#949#964#959
       DisplayWidth = 23
       FieldName = 'LAST_NAME'
       ReadOnly = True
       FixedChar = True
       Size = 30
     end
+    object IncludedPersonsSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #168#927#957#959#956#945
+      DisplayWidth = 20
+      FieldName = 'FIRST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
+    end
     object IncludedPersonsSQLNATIONAL_ID: TWideStringField
-      DisplayLabel = #913#961'. '#917#947#947#961#945#966#942#962
+      DisplayLabel = #932#945#965#964#972#964#951#964#945
       DisplayWidth = 17
       FieldName = 'NATIONAL_ID'
       ReadOnly = True
       FixedChar = True
     end
-    object IncludedPersonsSQLCOMPANY_OWNER: TWideStringField
-      DisplayLabel = #921#948#953#959#954#964#942#964#951#962
-      DisplayWidth = 24
-      FieldName = 'COMPANY_OWNER'
-      ReadOnly = True
-      Size = 160
-    end
-    object IncludedPersonsSQLFIRST_NAME: TWideStringField
-      DisplayLabel = #908#957#959#956#945
+    object IncludedPersonsSQLPHONE_MOBILE: TWideStringField
+      DisplayLabel = #954#953#957#951#964#972
       DisplayWidth = 15
-      FieldName = 'FIRST_NAME'
+      FieldName = 'PHONE_MOBILE'
       ReadOnly = True
+      FixedChar = True
+      Size = 15
+    end
+    object IncludedPersonsSQLCOMP_NAME: TWideStringField
+      FieldName = 'COMP_NAME'
       Visible = False
       FixedChar = True
       Size = 30
     end
-    object IncludedPersonsSQLFK_COMPANY_SERIAL: TIntegerField
-      FieldName = 'FK_COMPANY_SERIAL'
-      Required = True
+    object IncludedPersonsSQLCOMP_SERIAL: TIntegerField
+      FieldName = 'COMP_SERIAL'
       Visible = False
     end
-    object IncludedPersonsSQLFK_PERSON_SERIAL: TIntegerField
-      FieldName = 'FK_PERSON_SERIAL'
-      Required = True
+    object IncludedPersonsSQLCOMP_REG: TWideStringField
+      FieldName = 'COMP_REG'
       Visible = False
+      FixedChar = True
     end
   end
   object IncludedPersonsSRC: TDataSource
@@ -1638,30 +1620,15 @@ object M_companyNewFRM: TM_companyNewFRM
         '     pout.serial_number,pout.last_name,pout.first_name, pout.nat' +
         'ional_id,pout.phone_mobile'
       ' from'
-      ' person pout left outer join'
-      '('
-      'select'
-      '    pe.serial_number, sp.fk_person_serial'
-      'from'
-      '    person pe inner join'
-      '    company_person sp on pe.serial_number=sp.fk_person_serial'
-      '    where sp.fk_company_serial= :companySerial'
-      ') as PeFound'
-      'on pout.serial_number= peFound.serial_number'
-      'where '
-      'pefound.serial_number is null'
-      'and pout.is_company='#39'N'#39
-      'order by pout.last_name')
+      ' person pout'
+      ' where'
+      ' pout.fk_company_serial is null'
+      ' and pout.is_company ='#39'N'#39
+      'Order by pout.last_name, pout.first_name')
     ReadOnly = True
     Active = True
     Left = 170
     Top = 369
-    ParamData = <
-      item
-        DataType = ftUnknown
-        Name = 'companySerial'
-        Value = nil
-      end>
     object ExcludedPersonsSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
       DisplayWidth = 6

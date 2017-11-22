@@ -547,10 +547,8 @@ object M_StudentFRM: TM_StudentFRM
         NullAndBlankState = cbUnchecked
         Alignment = taLeftJustify
         Caption = #917#964#945#953#961#949#943#945
-        Checked = True
         DataField = 'IS_COMPANY'
         DataSource = TableSRC
-        State = cbChecked
         TabOrder = 6
         OnClick = CompanyFLDClick
       end
@@ -1093,7 +1091,9 @@ object M_StudentFRM: TM_StudentFRM
       'SELECT'
       '*'
       'FROM'
-      'Person order by Last_name')
+      'Person '
+      'where is_company='#39'N'#39
+      'order by Last_name')
     Active = True
     OnNewRecord = TableSQLNewRecord
     Left = 49

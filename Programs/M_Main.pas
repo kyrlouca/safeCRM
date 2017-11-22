@@ -138,14 +138,12 @@ end;
 procedure TM_mainFRM.LoginBTNClick(Sender: TObject);
 begin
 //TODO  Certificates
-//TODO  only if student has more than %presence in ALL subjects (some students may attend a subject in another seminar)
-//TODO  seminar has Status (intial, planned, completed, etc,)
+//TODO  seminar has Status (intial, planned,ARCHIVED (for expiry) ,completed, etc,)
 //TODO   seminar-tabsheets save aux tables with ACCEPT button. Save on Close
-//TODO Reports
-//TODO companies used as persons (type=company) for invoice reasons
 //TODO  system->allow delete an invoice!
 //TODO Cannot delete seminar if approved --> system change status
 //TODO sort customer by last name in certificates, invoices, reports, list
+//TODO select customer ONLY when is_company='Y'
 end;
 
 procedure TM_mainFRM.N10Click(Sender: TObject);

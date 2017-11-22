@@ -33,7 +33,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 918
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -55,7 +54,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 918
     object RzPanel1: TRzPanel
       Left = 958
       Top = 1
@@ -64,7 +62,6 @@ object L_RemindersFRM: TL_RemindersFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 817
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -149,7 +146,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Height = 173
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 918
     object RzGroupBox1: TRzGroupBox
       Left = 4
       Top = 6
@@ -264,7 +260,7 @@ object L_RemindersFRM: TL_RemindersFRM
           'SEMINAR_NAME'#9'25'#9#928#949#961#953#947#961#945#966#942#9'F'
           'DATE_STARTED'#9'10'#9#904#957#945#961#958#951#9'F'
           'SERIAL_NUMBER'#9'10'#9#913'/'#913#9'F')
-        LookupTable = SeminarSQL
+        LookupTable = TableSQL
         LookupField = 'SEMINAR_NAME'
         Options = [loColLines, loRowLines, loTitles]
         Navigator = True
@@ -412,7 +408,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Height = 269
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 918
     object Panel5: TPanel
       Left = 833
       Top = 1
@@ -422,8 +417,6 @@ object L_RemindersFRM: TL_RemindersFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 881
-      ExplicitTop = 6
       object InsertHawbBTN: TRzBitBtn
         Left = 2
         Top = 32
@@ -598,7 +591,6 @@ object L_RemindersFRM: TL_RemindersFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 784
         object wwIncrementalSearch1: TwwIncrementalSearch
           Left = 119
           Top = 4
@@ -624,7 +616,6 @@ object L_RemindersFRM: TL_RemindersFRM
           RepeatInterval.InitialDelay = 500
           RepeatInterval.Interval = 100
           Align = alLeft
-          ExplicitHeight = 25
           object wwDBNavigator1First: TwwNavButton
             Left = 0
             Top = 0

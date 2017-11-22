@@ -196,6 +196,10 @@
             <Form>R_ExpiryFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="L_Companies.pas">
+            <Form>L_companiesFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

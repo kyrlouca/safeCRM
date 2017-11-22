@@ -175,7 +175,7 @@ begin
 
   frm := TM_companyNewFRM.Create(nil);
   frm.IN_ACTION :='EDIT';
-  frm.IN_person_sERIAL:=serial;
+  frm.IN_company_Serial:=serial;
   try
     frm.ShowModal;
     ksOpenTables([TableSQL]);
