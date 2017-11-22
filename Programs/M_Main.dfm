@@ -26,7 +26,7 @@ object M_mainFRM: TM_mainFRM
     Margins.Bottom = 0
     Align = alTop
     BorderOuter = fsGroove
-    Caption = 'Safe CRM - V0.80'
+    Caption = 'Safe CRM - V0.85'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlue
     Font.Height = -48
@@ -7230,10 +7230,7 @@ object M_mainFRM: TM_mainFRM
         BB01D75E82B64FFBF11FB4AA436D1FE5BA540000000049454E44AE426082}
       Proportional = True
       Stretch = True
-      ExplicitLeft = 392
-      ExplicitTop = 120
-      ExplicitWidth = 105
-      ExplicitHeight = 105
+      ExplicitTop = 2
     end
     object LoginBTN: TRzBitBtn
       Left = 14
@@ -7319,6 +7316,7 @@ object M_mainFRM: TM_mainFRM
       Height = 25
       Caption = 'Button1'
       TabOrder = 1
+      Visible = False
       OnClick = Button1Click
     end
   end
@@ -7332,14 +7330,6 @@ object M_mainFRM: TM_mainFRM
         Caption = #916#953#945#967#949#943#961#953#963#951' '#931#949#956#953#957#945#961#943#969#957
         OnClick = ExchangeRates1Click
       end
-      object N6: TMenuItem
-        Caption = #928#945#961#959#965#963#943#949#962
-        OnClick = N6Click
-      end
-      object N7: TMenuItem
-        Caption = #932#953#956#959#955#972#947#951#963#951
-        OnClick = N7Click
-      end
       object N11: TMenuItem
         Caption = #917#960#949#958#949#961#947#945#963#943#945
         OnClick = N11Click
@@ -7352,7 +7342,7 @@ object M_mainFRM: TM_mainFRM
         OnClick = Countries2Click
       end
       object N1: TMenuItem
-        Caption = #902#964#959#956#945
+        Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
         OnClick = N1Click
       end
     end
@@ -7383,7 +7373,7 @@ object M_mainFRM: TM_mainFRM
         OnClick = N10Click
       end
       object N12: TMenuItem
-        Caption = #933#960#949#957#952#973#956#953#963#951' '#923#942#958#951#962
+        Caption = #923#942#958#949#953#962
         OnClick = N12Click
       end
     end
@@ -7435,5 +7425,10 @@ object M_mainFRM: TM_mainFRM
         OnClick = HelpFile1Click
       end
     end
+  end
+  object vt: TVirtualTable
+    Left = 144
+    Top = 187
+    Data = {04000000000000000000}
   end
 end

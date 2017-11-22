@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RzButton, Vcl.Buttons, Vcl.ExtCtrls,
-  RzPanel, RzSplit, Vcl.StdCtrls, Vcl.Menus, Vcl.Imaging.pngimage, RzForms;
+  RzPanel, RzSplit, Vcl.StdCtrls, Vcl.Menus, Vcl.Imaging.pngimage, RzForms,
+  Data.DB, MemDS, VirtualTable;
 
 type
   TM_mainFRM = class(TForm)
@@ -42,16 +43,15 @@ type
     N5: TMenuItem;
     ables2: TMenuItem;
     Image1: TImage;
-    N6: TMenuItem;
     HelpFile1: TMenuItem;
     Reports1: TMenuItem;
     Reminders1: TMenuItem;
-    N7: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
     N10: TMenuItem;
     N11: TMenuItem;
     N12: TMenuItem;
+    vt: TVirtualTable;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -104,6 +104,7 @@ var
   j:integer;
 
 begin
+
   alpha:='Á';
 //  ch:=chr(Ord(char('Á')));
 

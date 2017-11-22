@@ -1710,10 +1710,11 @@ object V_SeminarFRM: TV_SeminarFRM
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
         object GroupBox4: TGroupBox
-          Left = 43
-          Top = 53
-          Width = 558
-          Height = 322
+          Left = 0
+          Top = 25
+          Width = 1028
+          Height = 568
+          Align = alClient
           Caption = #933#960#949#957#952#965#956#943#963#949#953#962
           Ctl3D = False
           Font.Charset = DEFAULT_CHARSET
@@ -1727,7 +1728,7 @@ object V_SeminarFRM: TV_SeminarFRM
           object RzPanel12: TRzPanel
             Left = 1
             Top = 15
-            Width = 556
+            Width = 1026
             Height = 10
             Align = alTop
             BorderOuter = fsNone
@@ -1736,8 +1737,8 @@ object V_SeminarFRM: TV_SeminarFRM
           object wwDBGrid3: TwwDBGrid
             Left = 1
             Top = 25
-            Width = 556
-            Height = 296
+            Width = 592
+            Height = 542
             ControlType.Strings = (
               'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
               'DAYS_OR_MONTHS;CustomEdit;NamePersonFLD;F'
@@ -1755,7 +1756,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleColor = clBtnFace
             FixedCols = 1
             ShowHorzScrollBar = True
-            Align = alClient
+            Align = alLeft
             Color = 12713983
             DataSource = SeminarReminderSRC
             Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
@@ -1836,7 +1837,7 @@ object V_SeminarFRM: TV_SeminarFRM
         end
         object GroupBox5: TGroupBox
           Left = 607
-          Top = 53
+          Top = 40
           Width = 338
           Height = 482
           Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -2167,6 +2168,15 @@ object V_SeminarFRM: TV_SeminarFRM
           Caption = 'Button1'
           TabOrder = 2
           Visible = False
+        end
+        object RzPanel14: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 1028
+          Height = 25
+          Align = alTop
+          BorderOuter = fsNone
+          TabOrder = 3
         end
       end
     end
@@ -2602,7 +2612,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800740210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800780210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

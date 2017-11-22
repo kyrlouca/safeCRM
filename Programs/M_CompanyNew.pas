@@ -150,6 +150,8 @@ type
       Shift: TShiftState);
     procedure PersonSearchFLDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure PageControlPCChanging(Sender: TObject; NewIndex: Integer;
+      var AllowChange: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -264,6 +266,7 @@ End;
 
 procedure TM_companyNewFRM.EmpolyeesTSShow(Sender: TObject);
 begin
+
   IncludedPersonsSQL.Close;
   IncludedPersonsSQL.ParamByName('CompanySerial').Value:=CompanySQL.FieldByName('serial_number').AsInteger;
   IncludedPersonsSQL.Open;
@@ -304,6 +307,20 @@ end;
 procedure TM_companyNewFRM.Nav1InsertClick(Sender: TObject);
 begin
   FirstFLD.SetFocus;
+end;
+
+procedure TM_companyNewFRM.PageControlPCChanging(Sender: TObject;
+  NewIndex: Integer; var AllowChange: Boolean);
+begin
+  try
+    if CompanySQL.State in [dsInsert,dsEdit] then
+      CompanySQL.Post;
+  except
+    allowChange:= false;
+    exit;
+  end;
+  allowChange:=  (CompanySQL.FieldByName('serial_number').AsInteger >0);
+
 end;
 
 procedure TM_companyNewFRM.PersonSearchFLDKeyDown(Sender: TObject;

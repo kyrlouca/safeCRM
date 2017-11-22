@@ -386,7 +386,7 @@ object L_SeminarFRM: TL_SeminarFRM
       end
       object CertificatesBTN: TRzBitBtn
         Left = 6
-        Top = 193
+        Top = 236
         Width = 135
         Height = 37
         Alignment = taLeftJustify
@@ -464,7 +464,7 @@ object L_SeminarFRM: TL_SeminarFRM
       end
       object RzBitBtn3: TRzBitBtn
         Left = 6
-        Top = 236
+        Top = 193
         Width = 135
         Height = 37
         Alignment = taLeftJustify
@@ -774,13 +774,13 @@ object L_SeminarFRM: TL_SeminarFRM
         ControlType.Strings = (
           'SEMINAR_CORP_TYPE;CustomEdit;wwDBComboBox1;F')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'SEMINAR_NAME'#9'20'#9#928#949#961#953#947#961#945#966#942#9#9
-          'SEMINAR_CORP_TYPE'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972#9#9
-          'LAST_NAME'#9'18'#9#917#964#945#953#961#949#943#945#9#9
-          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951#9#9
-          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962#9#9
-          'DURATION_HOURS'#9'6'#9#911#961#949#962#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'SEMINAR_NAME'#9'20'#9#928#949#961#953#947#961#945#966#942
+          'SEMINAR_CORP_TYPE'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972
+          'LAST_NAME'#9'18'#9#917#964#945#953#961#949#943#945
+          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
+          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
+          'DURATION_HOURS'#9'6'#9#911#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -795,7 +795,7 @@ object L_SeminarFRM: TL_SeminarFRM
         Font.Name = 'Arial'
         Font.Style = []
         KeyOptions = []
-        Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+        Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         ParentFont = False
         ReadOnly = True
         TabOrder = 1

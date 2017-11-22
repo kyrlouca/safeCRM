@@ -17,8 +17,6 @@ object L_companiesFRM: TL_companiesFRM
   WindowState = wsMaximized
   OnActivate = FormActivate
   OnCreate = FormCreate
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -38,12 +36,14 @@ object L_companiesFRM: TL_companiesFRM
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 119
-      Height = 32
+      Width = 910
+      Height = 45
       Align = alClient
       Alignment = taCenter
       Caption = #917#964#945#953#961#949#943#949#962
       Layout = tlCenter
+      ExplicitWidth = 119
+      ExplicitHeight = 32
     end
   end
   object Panel4: TPanel
@@ -547,6 +547,7 @@ object L_companiesFRM: TL_companiesFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitTop = -4
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7

@@ -243,6 +243,7 @@ type
     wwDBEdit6: TwwDBEdit;
     SeminarSQLHAS_EXPIRY: TWideStringField;
     SeminarSQLEXPIRY_PERIOD: TIntegerField;
+    RzPanel14: TRzPanel;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

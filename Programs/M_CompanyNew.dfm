@@ -3,7 +3,7 @@ object M_companyNewFRM: TM_companyNewFRM
   Top = 153
   Caption = '--'
   ClientHeight = 558
-  ClientWidth = 1080
+  ClientWidth = 1096
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1080
+    Width = 1096
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -35,7 +35,7 @@ object M_companyNewFRM: TM_companyNewFRM
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 1072
+      Width = 1088
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -48,12 +48,12 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel4: TPanel
     Left = 0
     Top = 515
-    Width = 1080
+    Width = 1096
     Height = 43
     Align = alBottom
     TabOrder = 3
     object RzPanel1: TRzPanel
-      Left = 979
+      Left = 995
       Top = 1
       Width = 100
       Height = 41
@@ -283,7 +283,7 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 1080
+    Width = 1096
     Height = 39
     Align = alTop
     TabOrder = 1
@@ -291,7 +291,7 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 1080
+    Width = 1096
     Height = 423
     Align = alClient
     TabOrder = 2
@@ -463,16 +463,23 @@ object M_companyNewFRM: TM_companyNewFRM
     object PageControlPC: TRzPageControl
       Left = 1
       Top = 1
-      Width = 1078
+      Width = 1094
       Height = 421
       Hint = ''
-      ActivePage = EmpolyeesTS
+      ActivePage = InfoTS
       Align = alClient
-      TabIndex = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabIndex = 0
       TabOrder = 2
-      FixedDimension = 19
+      OnChanging = PageControlPCChanging
+      FixedDimension = 22
       object InfoTS: TRzTabSheet
-        Caption = #928#955#951#961#959#966#959#961#943#949#962
+        Caption = #917#964#945#953#961#949#943#945
         object GroupBox2: TGroupBox
           Left = 361
           Top = 8
@@ -915,11 +922,17 @@ object M_companyNewFRM: TM_companyNewFRM
       object EmpolyeesTS: TRzTabSheet
         OnShow = EmpolyeesTSShow
         Caption = #933#960#940#955#955#951#955#959#953
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
         object RzGroupBox2: TRzGroupBox
-          Left = 634
+          Left = 679
           Top = 17
           Width = 578
-          Height = 381
+          Height = 378
           Align = alLeft
           Caption = #922#945#964#940#955#959#947#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -933,13 +946,13 @@ object M_companyNewFRM: TM_companyNewFRM
             Left = 1
             Top = 57
             Width = 576
-            Height = 323
+            Height = 320
             Selected.Strings = (
               'SERIAL_NUMBER'#9'6'#9'A/A'
               'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
               'FIRST_NAME'#9'10'#9#908#957#959#956#945
               'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945
-              'PHONE_MOBILE'#9'12'#9#922#953#957#951#964#972)
+              'PHONE_MOBILE'#9'13'#9#922#953#957#951#964#972)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -990,16 +1003,16 @@ object M_companyNewFRM: TM_companyNewFRM
           end
         end
         object RzPanel2: TRzPanel
-          Left = 548
+          Left = 593
           Top = 17
           Width = 86
-          Height = 381
+          Height = 378
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 1
           object ToLeftBTN: TBitBtn
-            Left = 41
-            Top = 214
+            Left = 42
+            Top = 219
             Width = 39
             Height = 37
             Cancel = True
@@ -1070,7 +1083,7 @@ object M_companyNewFRM: TM_companyNewFRM
             OnClick = ToLeftBTNClick
           end
           object ToRightBTN: TBitBtn
-            Left = 21
+            Left = 6
             Top = 101
             Width = 37
             Height = 37
@@ -1145,7 +1158,7 @@ object M_companyNewFRM: TM_companyNewFRM
         object RzPanel3: TRzPanel
           Left = 0
           Top = 0
-          Width = 1074
+          Width = 1090
           Height = 17
           Align = alTop
           BorderOuter = fsNone
@@ -1154,8 +1167,8 @@ object M_companyNewFRM: TM_companyNewFRM
         object RzGroupBox1: TRzGroupBox
           Left = 0
           Top = 17
-          Width = 548
-          Height = 381
+          Width = 593
+          Height = 378
           Align = alLeft
           Caption = #933#960#940#955#955#951#955#959#953
           Font.Charset = DEFAULT_CHARSET
@@ -1168,7 +1181,7 @@ object M_companyNewFRM: TM_companyNewFRM
           object RzSizePanel1: TRzSizePanel
             Left = 1
             Top = 15
-            Width = 546
+            Width = 591
             Height = 29
             Align = alTop
             TabOrder = 0
@@ -1176,8 +1189,8 @@ object M_companyNewFRM: TM_companyNewFRM
           object Grid1: TwwDBGrid
             Left = 1
             Top = 44
-            Width = 512
-            Height = 336
+            Width = 568
+            Height = 333
             Selected.Strings = (
               'SERIAL_NUMBER'#9'6'#9'A/A'
               'LAST_NAME'#9'23'#9#917#960#943#952#949#964#959
@@ -1657,7 +1670,7 @@ object M_companyNewFRM: TM_companyNewFRM
     end
     object ExcludedPersonsSQLPHONE_MOBILE: TWideStringField
       DisplayLabel = #922#953#957#951#964#972
-      DisplayWidth = 12
+      DisplayWidth = 13
       FieldName = 'PHONE_MOBILE'
       FixedChar = True
       Size = 15
