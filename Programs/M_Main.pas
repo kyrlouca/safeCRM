@@ -161,7 +161,7 @@ end;
 
 procedure TM_mainFRM.N12Click(Sender: TObject);
 begin
-gpShowModal(TR_ExpiryFRM);
+  gpShowModal(TR_ExpiryFRM);
 
 end;
 

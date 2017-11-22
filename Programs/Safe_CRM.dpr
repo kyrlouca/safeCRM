@@ -66,8 +66,6 @@ begin
   Application.CreateForm(TM_reminderFRM, M_reminderFRM);
   Application.CreateForm(TM_companyNewFRM, M_companyNewFRM);
   Application.CreateForm(TM_StudentFRM, M_StudentFRM);
-  Application.CreateForm(TR_remindersFRM1, R_remindersFRM1);
-  //  Application.CreateForm(TR_presenceFRM1, R_presenceFRM1);
   Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
   Application.Run;
 end.
