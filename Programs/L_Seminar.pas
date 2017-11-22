@@ -67,6 +67,7 @@ type
     TableSQLLAST_NAME: TWideStringField;
     CertificatesBTN: TRzBitBtn;
     RzBitBtn3: TRzBitBtn;
+    InvoiceBTN: TRzBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -83,6 +84,7 @@ type
     procedure CertificatesBTNClick(Sender: TObject);
     procedure RzBitBtn3Click(Sender: TObject);
     procedure TableSQLNewRecord(DataSet: TDataSet);
+    procedure InvoiceBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -101,7 +103,8 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, V_Seminar, I_certificates, p_attendance;
+uses   U_Database, G_generalProcs, V_Seminar, I_certificates, p_attendance,
+  I_invoiceSeminar;
 
 
 {$R *.DFM}
@@ -258,6 +261,24 @@ begin
   end;
 end;
 
+
+procedure TL_SeminarFRM.InvoiceBTNClick(Sender: TObject);
+vAR
+  Frm:TI_InvoiceSeminarFRM;
+seminarSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TI_InvoiceSeminarFRM.Create(nil);
+  frm.IN_ACTION :='INSERT';
+  frm.IN_seminar_serial :=seminarSerial;
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+
+end;
 
 procedure TL_SeminarFRM.Nav1InsertClick(Sender: TObject);
 begin

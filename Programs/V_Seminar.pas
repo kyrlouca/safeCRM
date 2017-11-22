@@ -44,10 +44,8 @@ type
     SeminarTypeFLD: TwwDBComboBox;
     SecondGRP: TRzGroupBox;
     Label5: TLabel;
-    Label9: TLabel;
     Label10: TLabel;
     wwDBEdit1: TwwDBEdit;
-    wwDBEdit2: TwwDBEdit;
     InstructorFLD: TwwDBComboBox;
     VenueFLD: TwwDBComboBox;
     Label11: TLabel;
@@ -213,7 +211,7 @@ type
     Label19: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    DatePassedFLD: TwwDBDateTimePicker;
+    StartDateFLD: TwwDBDateTimePicker;
     wwDBDateTimePicker1: TwwDBDateTimePicker;
     SeminarReminderSQLSERIAL_NUMBER: TIntegerField;
     SeminarReminderSQLFK_SEMINAR_SERIAL: TIntegerField;
@@ -239,6 +237,12 @@ type
     wwNavButton21: TwwNavButton;
     wwNavButton22: TwwNavButton;
     wwIncrementalSearch1: TwwIncrementalSearch;
+    Label20: TLabel;
+    CompletedFLD: TwwCheckBox;
+    Label21: TLabel;
+    wwDBEdit6: TwwDBEdit;
+    SeminarSQLHAS_EXPIRY: TWideStringField;
+    SeminarSQLEXPIRY_PERIOD: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -372,6 +376,7 @@ Dataset.FieldByName('SEMINAR_CORP_TYPE').Value:='P';
 Dataset.FieldByName('is_invoiced').Value:='N';
 Dataset.FieldByName('is_certificated').Value:='N';
 Dataset.FieldByName('Max_capacity').Value:=0;
+Dataset.FieldByName('hAS_EXPIRY').Value:='N';
 
 end;
 
@@ -392,7 +397,7 @@ end;
 procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
 begin
   ksOpenTables([CompanySQL]);
-  SeminarTypeFLD.SetFocus;
+  StartDateFLD.SetFocus;
 end;
 
 
@@ -418,7 +423,7 @@ begin
   SeminarSQL.close;
   seminarSQL.ParamByName('serialNumber').Value:=seminarSerial;
   seminarSQL.Open;
-  firstFLD.SetFocus;
+  StartDateFLD.SetFocus;
 
 end;
 
@@ -430,8 +435,12 @@ var
    fhours, fdays:integer;
    fName,fAnad:String;
    fcost:double;
-   FFee:Double;
+   FFeeActual:Double;
+   fFeeANad:double;
    fMaxCapacity:Integer;
+   fexpiry:String;
+   fexpiryMonths:Integer;
+   str:String;
 begin
 
 
@@ -439,15 +448,28 @@ begin
  try
    qr.ParamByName('serial').Value:=TYpeSerial;
    qr.Open;
+
    fname:=qr.FieldByName('seminar_name').AsString;
-   fhours:=qr.FieldByName('DURATION_HOURS').AsInteger;;
-   fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
    fAnad:=   qr.FieldByName('ANAD_APPROVED').AsString;
-   fCost:=  qr.FieldByName('SEMINAR_COST').AsFloat;
-   fFee:=  qr.FieldByName('FEE_estimate').AsFloat;
+   fhours:=qr.FieldByName('DURATION_HOURS').AsInteger;;
    fMaxCapacity:=  qr.FieldByName('Max_capacity').AsInteger;
-   ksExecSQLVar(cn,'update seminar set seminar_Name= :fname, Duration_hours = :fhours, Duration_days= :fdays, anad_approved= :fAnad, fee_actual= :fFee, max_capacity= :FMaxCapacity where serial_number= :fSerial',
-   [fname,fhours,fdays,fAnad,fFee,fMaxCapacity,seminarSerial] );
+//   fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
+   fCost:=  qr.FieldByName('SEMINAR_COST').AsFloat;
+
+   fFeeactual:=  qr.FieldByName('FEE_actual').AsFloat;
+   fFeeAnad:=  qr.FieldByName('FEE_with_anad_sub').AsFloat;
+   fExpiry:=qr.FieldByName('has_expiry').AsString;
+   fExpiryMOnths:=qr.FieldByName('expiry_period').AsInteger;
+
+
+    str:=
+   ' update seminar sem set'
+  +'    seminar_Name= :fname, anad_approved= :fAnad,Duration_hours = :fhours, max_capacity= :FMaxCapacity,   fee_actual= :fFeeActual,'
+  +'    sem.fee_with_anad_sub = :fFeeAnad,sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths'
+  +'  where  sem.serial_number= :fSerial';
+
+   ksExecSQLVar(cn,str,
+   [fname,fAnad,fhours,fMaxCapacity,fFeeActual,fFeeAnad,fExpiry,fExpiryMonths,seminarSerial] );
 
  finally
    qr.Free;

@@ -150,7 +150,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Width = 112
       Height = 26
       AutosizeStyle = asSizeNavButtons
-      DataSource = TableSRC
       RepeatInterval.InitialDelay = 500
       RepeatInterval.Interval = 100
       Font.Charset = DEFAULT_CHARSET
@@ -203,6 +202,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Next'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 2
@@ -219,6 +219,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Button1'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 3
@@ -235,6 +236,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1SearchDialog'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 4
@@ -643,19 +645,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      object Label9: TLabel
-        Left = 43
-        Top = 15
-        Width = 42
-        Height = 14
-        Caption = #917#960#953#955#959#947#942
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
+      ExplicitLeft = 75
+      ExplicitTop = -131
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -665,29 +656,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsNone
         TabOrder = 0
       end
-      object wwDBLookupCombo1: TwwDBLookupCombo
-        Left = 91
-        Top = 15
-        Width = 182
-        Height = 21
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'SEMINAR_NAME'#9'25'#9#928#949#961#953#947#961#945#966#942#9'F'
-          'DATE_STARTED'#9'10'#9#904#957#945#961#958#951#9'F'
-          'SERIAL_NUMBER'#9'10'#9#913'/'#913#9'F')
-        LookupTable = TableSQL
-        LookupField = 'SEMINAR_NAME'
-        Options = [loColLines, loRowLines]
-        Navigator = True
-        TabOrder = 1
-        AutoDropDown = True
-        ShowButton = True
-        OrderByDisplay = False
-        PreciseEditRegion = False
-        AllowClearKey = False
-        ShowMatchText = True
-        OnCloseUp = wwDBLookupCombo1CloseUp
-      end
       object RzPanel4: TRzPanel
         Left = 0
         Top = 224
@@ -695,7 +663,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
-        TabOrder = 2
+        TabOrder = 1
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -859,7 +827,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'SERIAL_NUMBER'
-        DataSource = TableSRC
       end
       object Label5: TLabel
         Left = 6
@@ -895,7 +862,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'DATE_STARTED'
-        DataSource = TableSRC
       end
       object RzDBLabel2: TRzDBLabel
         Left = 176
@@ -905,7 +871,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'DATE_COMPLETED'
-        DataSource = TableSRC
       end
       object Label6: TLabel
         Left = 41
@@ -936,13 +901,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       object FirstFLD: TRzDBLabel
         Left = 79
         Top = 46
-        Width = 91
+        Width = 44
         Height = 16
         AutoSize = True
         ParentColor = False
         BorderOuter = fsFlat
         DataField = 'SEMINAR_NAME'
-        DataSource = TableSRC
       end
       object Companylbl: TLabel
         Left = 30
@@ -965,7 +929,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ParentColor = False
         BorderOuter = fsFlat
         DataField = 'LAST_NAME'
-        DataSource = TableSRC
       end
       object wwDBEdit1: TRzDBLabel
         Left = 176
@@ -976,7 +939,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ParentColor = False
         BorderOuter = fsFlat
         DataField = 'FEE_WITH_ANAD_SUB'
-        DataSource = TableSRC
       end
       object wwDBEdit2: TRzDBLabel
         Left = 176
@@ -987,7 +949,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ParentColor = False
         BorderOuter = fsFlat
         DataField = 'FEE_ACTUAL'
-        DataSource = TableSRC
       end
       object wwDBComboBox1: TwwDBComboBox
         Left = 79
@@ -1000,189 +961,15 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         AllowClearKey = False
         AutoDropDown = True
         DataField = 'SEMINAR_CORP_TYPE'
-        DataSource = TableSRC
         DropDownCount = 8
         ItemHeight = 0
         Items.Strings = (
           #924#972#957#959'-'#917#960#967'.'#9'M'
           #928#972#955#965'-'#917#960#967'.'#9'P')
-        ItemIndex = 0
         Sorted = False
         TabOrder = 0
         UnboundDataType = wwDefault
       end
-    end
-  end
-  object TableSQL: TIBCQuery
-    SQLInsert.Strings = (
-      'INSERT INTO SEMINAR'
-      
-        '  (SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_COMPAN' +
-        'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
-        'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
-        'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
-        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB)'
-      'VALUES'
-      
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
-        'OMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP_TYPE, :DATE_S' +
-        'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
-        'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
-        'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH' +
-        '_ANAD_SUB)')
-    SQLDelete.Strings = (
-      'DELETE FROM SEMINAR'
-      'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
-    SQLUpdate.Strings = (
-      'UPDATE SEMINAR'
-      'SET'
-      
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, FK_I' +
-        'NSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, FK_COMPANY_PER' +
-        'SON_SERIAL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_' +
-        'NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE, DATE_STARTED = :DA' +
-        'TE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :D' +
-        'URATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FE' +
-        'E_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD' +
-        '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
-        ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
-        'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :F' +
-        'EE_WITH_ANAD_SUB'
-      'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
-    SQLRefresh.Strings = (
-      
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_CO' +
-        'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
-        'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
-        'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
-        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB FROM SE' +
-        'MINAR'
-      'WHERE'
-      '  SERIAL_NUMBER = :SERIAL_NUMBER')
-    SQLLock.Strings = (
-      'SELECT NULL FROM SEMINAR'
-      'WHERE'
-      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
-      'FOR UPDATE WITH LOCK')
-    SQLRecCount.Strings = (
-      'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM SEMINAR'
-      ''
-      ') q')
-    Connection = U_databaseFRM.DataConnection
-    Transaction = ReadTrans
-    UpdateTransaction = WriteTrans
-    SQL.Strings = (
-      'SELECT'
-      ' se.*, per.last_name'
-      'FROM'
-      '    Seminar se left outer join'
-      '    person per on se.fk_company_person_serial =per.serial_number'
-      'where status='#39'A'#39
-      'order by '
-      'date_started desc')
-    ReadOnly = True
-    Active = True
-    AfterScroll = TableSQLAfterScroll
-    Left = 49
-    Top = 5
-    object TableSQLSERIAL_NUMBER: TIntegerField
-      DisplayLabel = #913'/'#913
-      DisplayWidth = 10
-      FieldName = 'SERIAL_NUMBER'
-    end
-    object TableSQLFK_SEMINAR: TIntegerField
-      FieldName = 'FK_SEMINAR'
-    end
-    object TableSQLSEMINAR_NAME: TWideStringField
-      DisplayLabel = #928#949#961#953#947#961#945#966#942
-      DisplayWidth = 25
-      FieldName = 'SEMINAR_NAME'
-      Size = 160
-    end
-    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLFK_INSTRUCTOR: TIntegerField
-      FieldName = 'FK_INSTRUCTOR'
-    end
-    object TableSQLFK_VENUE: TIntegerField
-      FieldName = 'FK_VENUE'
-    end
-    object TableSQLDATE_STARTED: TDateField
-      DisplayLabel = #904#957#945#961#958#951
-      DisplayWidth = 10
-      FieldName = 'DATE_STARTED'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object TableSQLDATE_COMPLETED: TDateField
-      FieldName = 'DATE_COMPLETED'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object TableSQLDURATION_DAYS: TIntegerField
-      FieldName = 'DURATION_DAYS'
-    end
-    object TableSQLDURATION_HOURS: TIntegerField
-      FieldName = 'DURATION_HOURS'
-    end
-    object TableSQLFEE_ACTUAL: TFloatField
-      FieldName = 'FEE_ACTUAL'
-      DisplayFormat = '0.00'
-    end
-    object TableSQLAMOUNT_ANAD: TFloatField
-      FieldName = 'AMOUNT_ANAD'
-    end
-    object TableSQLCOMMENTS: TWideStringField
-      FieldName = 'COMMENTS'
-      Size = 160
-    end
-    object TableSQLANAD_APPROVED: TWideStringField
-      FieldName = 'ANAD_APPROVED'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLFEE_ESTIMATE: TFloatField
-      FieldName = 'FEE_ESTIMATE'
-    end
-    object TableSQLSTATUS: TWideStringField
-      FieldName = 'STATUS'
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLIS_INVOICED: TWideStringField
-      FieldName = 'IS_INVOICED'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLIS_CERTIFICATED: TWideStringField
-      FieldName = 'IS_CERTIFICATED'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLMAX_CAPACITY: TIntegerField
-      FieldName = 'MAX_CAPACITY'
-      Required = True
-    end
-    object TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
-      FieldName = 'FK_COMPANY_PERSON_SERIAL'
-    end
-    object TableSQLFEE_WITH_ANAD_SUB: TFloatField
-      FieldName = 'FEE_WITH_ANAD_SUB'
-      DisplayFormat = '0.00'
-    end
-    object TableSQLLAST_NAME: TWideStringField
-      FieldName = 'LAST_NAME'
-      ReadOnly = True
-      FixedChar = True
-      Size = 30
     end
   end
   object WriteTrans: TIBCTransaction
@@ -1195,11 +982,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     IsolationLevel = iblReadOnlyReadCommitted
     Left = 56
     Top = 513
-  end
-  object TableSRC: TIBCDataSource
-    DataSet = TableSQL
-    Left = 112
-    Top = 9
   end
   object InvoiceSQL: TIBCQuery
     SQLInsert.Strings = (
@@ -1265,8 +1047,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Options.LocalMasterDetail = True
     Active = True
     BeforePost = InvoiceSQLBeforePost
-    Left = 25
-    Top = 365
+    Left = 153
+    Top = 77
     ParamData = <
       item
         DataType = ftUnknown
@@ -1369,8 +1151,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   end
   object InvoiceSRC: TIBCDataSource
     DataSet = InvoiceSQL
-    Left = 64
-    Top = 369
+    Left = 200
+    Top = 73
   end
   object personSQL: TIBCQuery
     SQLInsert.Strings = (

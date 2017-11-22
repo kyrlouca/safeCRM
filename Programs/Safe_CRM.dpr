@@ -25,11 +25,12 @@ uses
   R_PresenceTotal in 'R_PresenceTotal.pas' {R_presenceTotalFRM},
   R_Certificate in 'R_Certificate.pas' {R_certificateFRM},
   R_Presence in 'R_Presence.pas' {R_presenceFRM},
-  R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
   G_DebugUnit in 'G_DebugUnit.pas',
   L_reminders in 'L_reminders.pas' {L_RemindersFRM},
   M_reminder in 'M_reminder.pas' {M_reminderFRM},
-  M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM};
+  M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM},
+  M_Student in 'M_Student.pas' {M_StudentFRM},
+  R_expiry in 'R_expiry.pas' {R_ExpiryFRM};
 
 {$R *.res}
 
@@ -60,10 +61,12 @@ begin
   Application.CreateForm(TR_certificateFRM, R_certificateFRM);
   Application.CreateForm(TR_certificateFRM, R_certificateFRM);
   Application.CreateForm(TR_presenceFRM, R_presenceFRM);
-  Application.CreateForm(TR_remindersFRM, R_remindersFRM);
+  Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
   Application.CreateForm(TL_RemindersFRM, L_RemindersFRM);
   Application.CreateForm(TM_reminderFRM, M_reminderFRM);
   Application.CreateForm(TM_companyNewFRM, M_companyNewFRM);
+  Application.CreateForm(TM_StudentFRM, M_StudentFRM);
+  Application.CreateForm(TR_remindersFRM1, R_remindersFRM1);
   //  Application.CreateForm(TR_presenceFRM1, R_presenceFRM1);
   Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
   Application.Run;

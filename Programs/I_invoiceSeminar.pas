@@ -17,7 +17,6 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Panel5: TPanel;
-    TableSQL: TIBCQuery;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     Label4: TLabel;
@@ -38,13 +37,10 @@ type
     Nav1First: TwwNavButton;
     Nav1SearchDialog: TwwNavButton;
     Label1: TLabel;
-    wwDBLookupCombo1: TwwDBLookupCombo;
-    TableSRC: TIBCDataSource;
     RzPanel2: TRzPanel;
     RzPanel4: TRzPanel;
     RzDBLabel1: TRzDBLabel;
     RzDBLabel2: TRzDBLabel;
-    Label9: TLabel;
     RzPanel5: TRzPanel;
     RzPanel6: TRzPanel;
     SavePresBTN: TBitBtn;
@@ -62,25 +58,6 @@ type
     Nav1Cancel: TwwNavButton;
     InvoiceGRD: TwwDBGrid;
     InvoiceBTN: TRzBitBtn;
-    TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLFK_SEMINAR: TIntegerField;
-    TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
-    TableSQLFK_INSTRUCTOR: TIntegerField;
-    TableSQLFK_VENUE: TIntegerField;
-    TableSQLDATE_STARTED: TDateField;
-    TableSQLDATE_COMPLETED: TDateField;
-    TableSQLDURATION_DAYS: TIntegerField;
-    TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLFEE_ACTUAL: TFloatField;
-    TableSQLAMOUNT_ANAD: TFloatField;
-    TableSQLCOMMENTS: TWideStringField;
-    TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLFEE_ESTIMATE: TFloatField;
-    TableSQLSTATUS: TWideStringField;
-    TableSQLIS_INVOICED: TWideStringField;
-    TableSQLIS_CERTIFICATED: TWideStringField;
-    TableSQLMAX_CAPACITY: TIntegerField;
     personSQL: TIBCQuery;
     personSQLFIRST_NAME: TWideStringField;
     personSQLLAST_NAME: TWideStringField;
@@ -102,12 +79,9 @@ type
     InvoiceSQLIS_ANAD: TWideStringField;
     Label6: TLabel;
     Label7: TLabel;
-    TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     AnadCheckFLD: TwwCheckBox;
     FirstFLD: TRzDBLabel;
     Companylbl: TLabel;
-    TableSQLLAST_NAME: TWideStringField;
     RzDBLabel3: TRzDBLabel;
     wwDBEdit1: TRzDBLabel;
     wwDBEdit2: TRzDBLabel;
@@ -143,7 +117,7 @@ type
   public
     { Public declarations }
     IN_ACTION:String;
-
+    IN_seminar_serial:Integer;
   end;
 
 var
@@ -172,7 +146,7 @@ var
   SEminarSerial:Integer;
 begin
 
-  SEminarSerial := TableSQL.FieldByName('serial_number').AsInteger;
+  SEminarSerial := IN_seminar_serial;
   if personSQL.Active then
     personSQL.Close;
   personSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
@@ -253,8 +227,18 @@ procedure TI_InvoiceSeminarFRM.FormActivate(Sender: TObject);
 var
   params:G_generalProcs.TParameterRecord;
 begin
-  ksOpenTables([TableSQL]);
 
+  personSQL.Close;
+  personSQL.ParamByName('SeminarSerial').Value:=IN_seminar_serial;
+  personSQL.Open;
+
+
+  if not InvoiceSQL.UpdateTransaction.Active then
+     InvoiceSQL.UpdateTransaction.StartTransaction;
+
+  InvoiceSQL.Close;
+  InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+  InvoiceSQL.open;
 
 
 end;
@@ -408,25 +392,8 @@ end;
 
 
 procedure TI_InvoiceSeminarFRM.AnadCheckFLDClick(Sender: TObject);
-var
-  seminar:integer;
-  amountActual,amountAnad:double;
-  amount:double;
 
 begin
-//ShowMessage(InvoiceSQL.FieldByName('is_anad').AsString);
-  if InvoiceSQL.State in [dsInactive] then
-    exit;
-
-amountActual:=TableSQL.FieldByName('fee_actual').AsFloat;
-amountAnad:=TableSQL.FieldByName('fee_with_anad_sub').AsFloat;
-  if InvoiceSQL.State in [dsBrowse] then InvoiceSQL.Edit;
-
-  if AnadCheckfld.Checked then
-    InvoiceSQL.FieldByName('amount_gross').Value:=AmountAnad
-  else
-    InvoiceSQL.FieldByName('amount_gross').Value:=AmountActual;
-
 //  InvoiceSQL.Post;
 
 end;
@@ -436,7 +403,7 @@ var
   SeminarSerial:Integer;
 begin
 
-  SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  SeminarSerial:=IN_seminar_serial;
 
 
 //   if not InvoiceSQL.Connection.InTransaction then

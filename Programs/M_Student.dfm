@@ -490,7 +490,6 @@ object M_StudentFRM: TM_StudentFRM
         CalendarAttributes.Font.Style = []
         DataField = 'DATE_BIRTH'
         DataSource = TableSRC
-        Date = 43040.000000000000000000
         Epoch = 1950
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -530,7 +529,6 @@ object M_StudentFRM: TM_StudentFRM
         Items.Strings = (
           'Male'#9'M'
           'Female'#9'F')
-        ItemIndex = 0
         Sorted = False
         TabOrder = 5
         UnboundDataType = wwDefault
@@ -582,11 +580,12 @@ object M_StudentFRM: TM_StudentFRM
         ControlType.Strings = (
           'IS_COMPANY;CheckBox;Y;N')
         Selected.Strings = (
-          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959#9#9
-          'FIRST_NAME'#9'13'#9#908#957#959#956#945#9#9
-          'IS_COMPANY'#9'1'#9' '#917#964#945#953#961#949#943#945#9#9
-          'NATIONAL_ID'#9'9'#9#932#945#965#964#972#964#951#964#945#9#9
-          'PHONE_MOBILE'#9'12'#9#922#953#957#951#964#972#9#9)
+          'SERIAL_NUMBER'#9'10'#9'A/A'
+          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'13'#9#908#957#959#956#945
+          'IS_COMPANY'#9'1'#9' '#917#964#945#953#961#949#943#945
+          'NATIONAL_ID'#9'9'#9#932#945#965#964#972#964#951#964#945
+          'PHONE_MOBILE'#9'12'#9#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -1099,6 +1098,11 @@ object M_StudentFRM: TM_StudentFRM
     OnNewRecord = TableSQLNewRecord
     Left = 49
     Top = 5
+    object TableSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
+    end
     object TableSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
       DisplayWidth = 17
@@ -1136,10 +1140,6 @@ object M_StudentFRM: TM_StudentFRM
       FieldName = 'PHONE_MOBILE'
       FixedChar = True
       Size = 15
-    end
-    object TableSQLSERIAL_NUMBER: TIntegerField
-      FieldName = 'SERIAL_NUMBER'
-      Visible = False
     end
     object TableSQLDATE_STARTED: TDateField
       DisplayLabel = #919#956#949#961'.'

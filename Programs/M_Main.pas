@@ -51,6 +51,7 @@ type
     N9: TMenuItem;
     N10: TMenuItem;
     N11: TMenuItem;
+    N12: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -70,6 +71,7 @@ type
     procedure SystemParameters1Click(Sender: TObject);
     procedure N10Click(Sender: TObject);
     procedure N11Click(Sender: TObject);
+    procedure N12Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -86,7 +88,7 @@ implementation
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
-  L_Companies, R_invoices, V_SeminarStages, L_reminders;
+  L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -155,6 +157,12 @@ procedure TM_mainFRM.N11Click(Sender: TObject);
 begin
 
 gpShowModal(TV_SeminarStagesFRM);
+end;
+
+procedure TM_mainFRM.N12Click(Sender: TObject);
+begin
+gpShowModal(TR_ExpiryFRM);
+
 end;
 
 procedure TM_mainFRM.N1Click(Sender: TObject);

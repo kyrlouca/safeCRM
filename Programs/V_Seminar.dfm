@@ -31,7 +31,6 @@ object V_SeminarFRM: TV_SeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 869
     object Label4: TRzPanel
       AlignWithMargins = True
       Left = 4
@@ -46,7 +45,6 @@ object V_SeminarFRM: TV_SeminarFRM
       TabOrder = 0
       Transparent = True
       WordWrap = False
-      ExplicitWidth = 861
       object RzPanel9: TRzPanel
         Left = 0
         Top = 0
@@ -66,7 +64,6 @@ object V_SeminarFRM: TV_SeminarFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 869
   end
   object Panel3x: TRzPanel
     Left = 0
@@ -76,7 +73,6 @@ object V_SeminarFRM: TV_SeminarFRM
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitWidth = 869
     object PageControlPC: TRzPageControl
       Left = 2
       Top = 2
@@ -95,17 +91,15 @@ object V_SeminarFRM: TV_SeminarFRM
       TabIndex = 0
       TabOrder = 0
       OnChanging = PageControlPCChanging
-      ExplicitWidth = 865
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
-        ExplicitWidth = 861
         object FirstGRP: TGroupBox
           Left = 28
           Top = 23
           Width = 370
-          Height = 346
+          Height = 354
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -330,7 +324,7 @@ object V_SeminarFRM: TV_SeminarFRM
             AllowClearKey = True
             ShowMatchText = True
           end
-          object DatePassedFLD: TwwDBDateTimePicker
+          object StartDateFLD: TwwDBDateTimePicker
             Left = 114
             Top = 61
             Width = 90
@@ -381,7 +375,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 404
           Top = 23
           Width = 321
-          Height = 210
+          Height = 241
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -403,22 +397,9 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
           end
-          object Label9: TLabel
-            Left = 25
-            Top = 82
-            Width = 76
-            Height = 14
-            Caption = #916#953#940#961#954#949#953#945' '#956#941#961#949#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
           object Label10: TLabel
             Left = 27
-            Top = 106
+            Top = 82
             Width = 74
             Height = 14
             Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
@@ -488,7 +469,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label22: TLabel
             Left = 4
-            Top = 139
+            Top = 112
             Width = 97
             Height = 14
             Caption = #913#961#953#952#956#972#962' '#924#945#952#951#964#974#957
@@ -499,24 +480,38 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
           end
-          object wwDBEdit1: TwwDBEdit
-            Left = 108
-            Top = 103
-            Width = 90
-            Height = 22
-            DataField = 'DURATION_HOURS'
-            DataSource = SeminarSRC
-            TabOrder = 3
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
+          object Label20: TLabel
+            Left = 24
+            Top = 143
+            Width = 73
+            Height = 14
+            Caption = #933#960#940#961#967#949#953' '#923#942#958#951
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
           end
-          object wwDBEdit2: TwwDBEdit
+          object Label21: TLabel
+            Left = 53
+            Top = 171
+            Width = 48
+            Height = 14
+            Caption = #931#949' '#924#942#957#949#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object wwDBEdit1: TwwDBEdit
             Left = 108
             Top = 79
             Width = 90
             Height = 22
-            DataField = 'DURATION_DAYS'
+            DataField = 'DURATION_HOURS'
             DataSource = SeminarSRC
             TabOrder = 2
             UnboundDataType = wwDefault
@@ -576,20 +571,49 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object wwDBEdit5: TwwDBEdit
             Left = 108
-            Top = 131
+            Top = 104
             Width = 90
             Height = 22
             DataField = 'MAX_CAPACITY'
             DataSource = SeminarSRC
+            TabOrder = 3
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object CompletedFLD: TwwCheckBox
+            Left = 108
+            Top = 142
+            Width = 37
+            Height = 18
+            DisableThemes = False
+            AlwaysTransparent = False
+            ValueChecked = 'Y'
+            ValueUnchecked = 'N'
+            DisplayValueChecked = 'Y'
+            DisplayValueUnchecked = 'N'
+            NullAndBlankState = cbUnchecked
+            DataField = 'HAS_EXPIRY'
+            DataSource = SeminarSRC
+            ShowText = False
             TabOrder = 4
+          end
+          object wwDBEdit6: TwwDBEdit
+            Left = 108
+            Top = 166
+            Width = 75
+            Height = 22
+            DataField = 'EXPIRY_PERIOD'
+            DataSource = SeminarSRC
+            TabOrder = 5
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
           end
         end
         object BitBtn2: TBitBtn
-          Left = 24
-          Top = 413
+          Left = 28
+          Top = 453
           Width = 160
           Height = 34
           Caption = #904#947#954#961#953#963#951' '#945#960#972' '#913#925#913#916
@@ -661,9 +685,9 @@ object V_SeminarFRM: TV_SeminarFRM
         end
         object RzGroupBox3: TRzGroupBox
           Left = 404
-          Top = 246
+          Top = 270
           Width = 321
-          Height = 123
+          Height = 107
           Caption = #932#953#956#941#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -764,7 +788,6 @@ object V_SeminarFRM: TV_SeminarFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 861
         object RzPanel5: TRzPanel
           Left = 0
           Top = 0
@@ -773,7 +796,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 861
         end
         object GroupBox1: TGroupBox
           Left = 0
@@ -789,7 +811,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitWidth = 283
           object RzPanel6: TRzPanel
             Left = 2
             Top = 16
@@ -798,7 +819,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitWidth = 279
             object wwDBNavigator1: TwwDBNavigator
               Left = 0
               Top = 0
@@ -961,7 +981,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitLeft = 283
           object RzPanel7: TRzPanel
             Left = 0
             Top = 0
@@ -1172,7 +1191,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object StudentsTS: TRzTabSheet
         OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
-        ExplicitWidth = 861
         object RzPanel2: TRzPanel
           Left = 0
           Top = 0
@@ -1181,7 +1199,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 861
         end
         object RzGroupBox1: TRzGroupBox
           Left = 0
@@ -1473,7 +1490,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object CostTS: TRzTabSheet
         OnShow = CostTSShow
         Caption = #922#972#963#964#959#962
-        ExplicitWidth = 861
         object RzPanel10: TRzPanel
           Left = 0
           Top = 0
@@ -1482,7 +1498,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 861
         end
         object GroupBox3: TGroupBox
           Left = 0
@@ -1694,7 +1709,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        ExplicitWidth = 861
         object GroupBox4: TGroupBox
           Left = 43
           Top = 53
@@ -1734,7 +1748,7 @@ object V_SeminarFRM: TV_SeminarFRM
               'NUMBER_OF_DAYS_MONTHS'#9'5'#9#931#949
               'DAYS_OR_MONTHS'#9'10'#9#919#956#941#961#949#962'/'#924#942#957#949#962
               'AFTER_OR_BEFORE'#9'8'#9#928#961#953#957'/'#924#949#964#940
-              'START_OR_END'#9'11'#9#913#960#972' '#9'F'
+              'START_OR_END'#9'11'#9#913#960#972' '
               'DATE_TARGETED'#9'12'#9#923#942#958#951)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
@@ -1755,9 +1769,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitLeft = 2
-            ExplicitTop = 61
-            ExplicitHeight = 266
             object AfterFLD: TwwDBComboBox
               Left = 94
               Top = 81
@@ -1979,8 +1990,6 @@ object V_SeminarFRM: TV_SeminarFRM
             BorderOuter = fsFlatRounded
             BorderSides = [sdRight, sdBottom]
             TabOrder = 4
-            ExplicitLeft = 4
-            ExplicitTop = 24
             object wwDBNavigator4: TwwDBNavigator
               Left = 1
               Top = 7
@@ -2169,7 +2178,6 @@ object V_SeminarFRM: TV_SeminarFRM
       Align = alBottom
       BorderOuter = fsFlatRounded
       TabOrder = 1
-      ExplicitWidth = 865
       object RzPanel1: TRzPanel
         Left = 930
         Top = 2
@@ -2178,7 +2186,6 @@ object V_SeminarFRM: TV_SeminarFRM
         Align = alRight
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitLeft = 763
         object RzBitBtn1: TRzBitBtn
           Left = 6
           Top = 3
@@ -2417,7 +2424,8 @@ object V_SeminarFRM: TV_SeminarFRM
         'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
         'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
         'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
-        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB)'
+        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY' +
+        ', EXPIRY_PERIOD)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
@@ -2425,7 +2433,7 @@ object V_SeminarFRM: TV_SeminarFRM
         'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
         'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
         'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH' +
-        '_ANAD_SUB)')
+        '_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -2444,7 +2452,8 @@ object V_SeminarFRM: TV_SeminarFRM
         '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
         ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
         'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :F' +
-        'EE_WITH_ANAD_SUB'
+        'EE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXP' +
+        'IRY_PERIOD'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -2453,8 +2462,8 @@ object V_SeminarFRM: TV_SeminarFRM
         'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
         'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
         'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
-        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB FROM SE' +
-        'MINAR'
+        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EX' +
+        'PIRY, EXPIRY_PERIOD FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2568,6 +2577,15 @@ object V_SeminarFRM: TV_SeminarFRM
     object SeminarSQLFEE_WITH_ANAD_SUB: TFloatField
       FieldName = 'FEE_WITH_ANAD_SUB'
     end
+    object SeminarSQLHAS_EXPIRY: TWideStringField
+      FieldName = 'HAS_EXPIRY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLEXPIRY_PERIOD: TIntegerField
+      FieldName = 'EXPIRY_PERIOD'
+    end
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -2584,7 +2602,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800680210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800700210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

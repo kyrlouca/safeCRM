@@ -277,22 +277,22 @@ begin
  personSQL.Open;
 
 
-TableSQL.Close;
-TableSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
-TableSQL.open;
+  TableSQL.Close;
+  TableSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+  TableSQL.open;
 
-    if not InvoiceSQL.UpdateTransaction.Active then
-      InvoiceSQL.UpdateTransaction.StartTransaction;
+  if not InvoiceSQL.UpdateTransaction.Active then
+   InvoiceSQL.UpdateTransaction.StartTransaction;
 
-InvoiceSQL.Close;
-InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
-InvoiceSQL.open;
-    if not InvoiceSQL.UpdateTransaction.Active then
-      InvoiceSQL.UpdateTransaction.StartTransaction;
-
-InvoiceSQL.Close;
-InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
-InvoiceSQL.open;
+  InvoiceSQL.Close;
+  InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+  InvoiceSQL.open;
+//    if not InvoiceSQL.UpdateTransaction.Active then
+//      InvoiceSQL.UpdateTransaction.StartTransaction;
+//
+//InvoiceSQL.Close;
+//InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+//InvoiceSQL.open;
 
 
 end;
