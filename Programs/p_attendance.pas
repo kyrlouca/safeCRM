@@ -121,7 +121,6 @@ type
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
@@ -272,17 +271,15 @@ begin
 
 end;
 
-procedure TP_attendanceFRM.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-if TableSQL.State in [dsInsert, dsEdit] then
-   TableSQL.Post;
-end;
-
 procedure TP_attendanceFRM.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
+  if TableSQL.State in [dsInsert, dsEdit] then
+   TableSQL.Post;
+
+  if daySQL.FieldByName('DaySerial').AsInteger >0 then begin
   SavePresenceTable();
+  end;
 
 end;
 
@@ -292,23 +289,6 @@ begin
 end;
 
 
-
-procedure TP_attendanceFRM.N1Click(Sender: TObject);
-vAR
-  Frm:TR_presenceFRM;
-  seminarSerial:Integer;
-begin
-  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
-
-  frm :=  TR_presenceFRM.Create(nil);
-  frm.IN_seminar_serial :=seminarSerial;
-  frm.IN_Day_Serial :=0;
-  try
-    frm.PrintTheSeminar();
-  finally
-    frm.Free;
-  end;
-end;
 
 procedure TP_attendanceFRM.N2Click(Sender: TObject);
 vAR
@@ -344,6 +324,24 @@ begin
     frm.Free;
   end;
 end;
+
+procedure TP_attendanceFRM.N1Click(Sender: TObject);
+vAR
+  Frm:TR_presenceFRM;
+  seminarSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_presenceFRM.Create(nil);
+  frm.IN_seminar_serial :=seminarSerial;
+  frm.IN_Day_Serial :=0;
+  try
+    frm.PrintTheSeminar();
+  finally
+    frm.Free;
+  end;
+end;
+
 
 procedure TP_attendanceFRM.PresentFLDClick(Sender: TObject);
 var
@@ -485,7 +483,10 @@ end;
 
 procedure TP_attendanceFRM.VPresenceSQLNewRecord(DataSet: TDataSet);
 begin
-Dataset.FieldByName('hours_present').AsInteger:=99;
+  if daySQL.FieldByName('DaySerial').AsInteger <1 then begin
+    exit;
+  end;
+  Dataset.FieldByName('hours_present').AsInteger:=99;
 end;
 
 procedure TP_attendanceFRM.SavePresBTNClick(Sender: TObject);

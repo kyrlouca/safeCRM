@@ -47,11 +47,9 @@ type
     ppDesignLayers3: TppDesignLayers;
     ppDesignLayer3: TppDesignLayer;
     ppDBText1: TppDBText;
-    ppDBText3: TppDBText;
     ppDBText5: TppDBText;
     ppLabel1: TppLabel;
     ppLabel3: TppLabel;
-    ppLabel6: TppLabel;
     ppLabel8: TppLabel;
     ppShape1: TppShape;
     ppLabel10: TppLabel;
@@ -65,10 +63,6 @@ type
     SeminarPresenceSQLNATIONAL_ID: TWideStringField;
     ppLabel2: TppLabel;
     myDBCheckBox1: TmyDBCheckBox;
-    ppGroup1: TppGroup;
-    ppGroupHeaderBand1: TppGroupHeaderBand;
-    ppGroupFooterBand1: TppGroupFooterBand;
-    ppLine1: TppLine;
     SeminarSQL: TIBCQuery;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
     SeminarSQLSEMINAR_NAME: TWideStringField;
@@ -78,6 +72,10 @@ type
     ppDBText6: TppDBText;
     ppDBText7: TppDBText;
     ppLabel7: TppLabel;
+    ppGroup1: TppGroup;
+    ppGroupHeaderBand1: TppGroupHeaderBand;
+    ppGroupFooterBand1: TppGroupFooterBand;
+    ppDBText3: TppDBText;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);

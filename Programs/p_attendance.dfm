@@ -15,7 +15,6 @@ object P_attendanceFRM: TP_attendanceFRM
   OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
-  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
