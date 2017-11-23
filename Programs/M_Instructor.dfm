@@ -31,7 +31,6 @@ object M_InstructorFRM: TM_InstructorFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 897
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -53,7 +52,6 @@ object M_InstructorFRM: TM_InstructorFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 897
     object RzPanel1: TRzPanel
       Left = 880
       Top = 1
@@ -62,7 +60,6 @@ object M_InstructorFRM: TM_InstructorFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 796
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -291,7 +288,7 @@ object M_InstructorFRM: TM_InstructorFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 897
+    ExplicitLeft = -1
     object Nav1: TwwDBNavigator
       Left = 1
       Top = 7
@@ -464,9 +461,8 @@ object M_InstructorFRM: TM_InstructorFRM
     Height = 423
     Align = alLeft
     TabOrder = 2
-    ExplicitWidth = 897
     object Panel5: TPanel
-      Left = 666
+      Left = 761
       Top = 1
       Width = 279
       Height = 421
@@ -474,6 +470,7 @@ object M_InstructorFRM: TM_InstructorFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 666
       object GroupBox2: TGroupBox
         Left = 16
         Top = 5
@@ -717,7 +714,7 @@ object M_InstructorFRM: TM_InstructorFRM
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
-      Width = 385
+      Width = 480
       Height = 421
       Align = alLeft
       BorderOuter = fsNone
@@ -725,20 +722,22 @@ object M_InstructorFRM: TM_InstructorFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 385
+        Width = 480
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 385
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 9
-        Width = 368
+        Width = 433
         Height = 412
         Selected.Strings = (
-          'FIRST_NAME'#9'13'#9#908#957#959#956#945
-          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
+          'ANAD_NUMBER'#9'10'#9#913#961'. '#913#925#913#916
+          'LAST_NAME'#9'20'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'17'#9#908#957#959#956#945
           'PHONE_MOBILE'#9'12'#9#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
@@ -770,17 +769,16 @@ object M_InstructorFRM: TM_InstructorFRM
       end
     end
     object RzPanel5: TRzPanel
-      Left = 386
+      Left = 481
       Top = 1
       Width = 280
       Height = 421
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitLeft = 207
-      ExplicitTop = 6
+      ExplicitLeft = 386
       object GroupBox1: TGroupBox
-        Left = 0
+        Left = 6
         Top = 5
         Width = 274
         Height = 331
@@ -794,7 +792,7 @@ object M_InstructorFRM: TM_InstructorFRM
         TabOrder = 0
         object Label2: TLabel
           Left = 34
-          Top = 46
+          Top = 96
           Width = 37
           Height = 14
           Caption = #908#957#959#956#945
@@ -820,7 +818,7 @@ object M_InstructorFRM: TM_InstructorFRM
         end
         object Label5: TLabel
           Left = 30
-          Top = 73
+          Top = 123
           Width = 41
           Height = 14
           Caption = #917#960#943#952#949#964#959
@@ -834,7 +832,7 @@ object M_InstructorFRM: TM_InstructorFRM
         object SerialFLD: TRzDBLabel
           Left = 77
           Top = 18
-          Width = 115
+          Width = 84
           Height = 20
           Alignment = taRightJustify
           BorderOuter = fsFlat
@@ -843,8 +841,8 @@ object M_InstructorFRM: TM_InstructorFRM
           DataSource = TableSRC
         end
         object Label14: TLabel
-          Left = 11
-          Top = 98
+          Left = 16
+          Top = 198
           Width = 55
           Height = 14
           Caption = #917#948#953#954#972#964#951#964#945
@@ -857,7 +855,7 @@ object M_InstructorFRM: TM_InstructorFRM
         end
         object Label15: TLabel
           Left = 10
-          Top = 120
+          Top = 150
           Width = 61
           Height = 14
           Caption = #932#945#965#964#972#964#951#964#945
@@ -868,21 +866,47 @@ object M_InstructorFRM: TM_InstructorFRM
           Font.Style = []
           ParentFont = False
         end
+        object Label16: TLabel
+          Left = 17
+          Top = 69
+          Width = 54
+          Height = 14
+          Caption = #913#961'. '#913#925#913#916
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label17: TLabel
+          Left = 40
+          Top = 46
+          Width = 31
+          Height = 14
+          Caption = #913#925#913#916
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
         object FirstFLD: TwwDBEdit
-          Left = 78
-          Top = 44
+          Left = 77
+          Top = 66
           Width = 161
           Height = 22
           DataField = 'FIRST_NAME'
           DataSource = TableSRC
-          TabOrder = 0
+          TabOrder = 1
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
         end
         object wwCheckBox1: TwwCheckBox
           Left = 25
-          Top = 207
+          Top = 264
           Width = 67
           Height = 17
           DisableThemes = False
@@ -894,49 +918,51 @@ object M_InstructorFRM: TM_InstructorFRM
           NullAndBlankState = cbUnchecked
           Alignment = taLeftJustify
           Caption = #917#957#949#961#947#972#962
+          Checked = True
           DataField = 'STATUS_ACTIVE'
           DataSource = TableSRC
-          TabOrder = 1
+          State = cbChecked
+          TabOrder = 6
         end
         object wwDBEdit1: TwwDBEdit
-          Left = 78
-          Top = 69
+          Left = 77
+          Top = 120
           Width = 161
           Height = 22
           DataField = 'LAST_NAME'
-          DataSource = TableSRC
-          TabOrder = 2
-          UnboundDataType = wwDefault
-          WantReturns = False
-          WordWrap = False
-        end
-        object wwDBEdit2: TwwDBEdit
-          Left = 77
-          Top = 95
-          Width = 161
-          Height = 22
-          DataField = 'JOB_TITLE'
           DataSource = TableSRC
           TabOrder = 3
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
         end
-        object wwDBEdit12: TwwDBEdit
+        object wwDBEdit2: TwwDBEdit
           Left = 77
-          Top = 120
-          Width = 115
+          Top = 195
+          Width = 161
           Height = 22
-          DataField = 'NATIONAL_ID'
+          DataField = 'JOB_TITLE'
           DataSource = TableSRC
           TabOrder = 4
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
         end
+        object wwDBEdit12: TwwDBEdit
+          Left = 77
+          Top = 147
+          Width = 84
+          Height = 22
+          DataField = 'NATIONAL_ID'
+          DataSource = TableSRC
+          TabOrder = 5
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+        end
         object wwCheckBox2: TwwCheckBox
-          Left = 39
-          Top = 148
+          Left = 81
+          Top = 44
           Width = 54
           Height = 17
           DisableThemes = False
@@ -946,13 +972,25 @@ object M_InstructorFRM: TM_InstructorFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Alignment = taLeftJustify
           Caption = #913#925#913#916
           Checked = True
           DataField = 'CERTIFIED_ANAD'
           DataSource = TableSRC
+          ShowText = False
           State = cbChecked
-          TabOrder = 5
+          TabOrder = 0
+        end
+        object wwDBEdit13: TwwDBEdit
+          Left = 77
+          Top = 93
+          Width = 161
+          Height = 22
+          DataField = 'FIRST_NAME'
+          DataSource = TableSRC
+          TabOrder = 2
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
         end
       end
     end
@@ -980,21 +1018,21 @@ object M_InstructorFRM: TM_InstructorFRM
     SQLInsert.Strings = (
       'INSERT INTO INSTRUCTOR'
       
-        '  (SERIAL_NUMBER, NATIONAL_ID, FK_COMPANY_SERIAL, FIRST_NAME, LA' +
-        'ST_NAME, NICKNAME, STATUS, OCCUPATION, PHONE_MOBILE, PHONE_FIXED' +
-        ', PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET,' +
-        ' ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED' +
-        ', DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER' +
-        ', STATUS_ACTIVE, CERTIFIED_ANAD, JOB_TITLE)'
+        '  (SERIAL_NUMBER, ANAD_NUMBER, NATIONAL_ID, FK_COMPANY_SERIAL, F' +
+        'IRST_NAME, LAST_NAME, NICKNAME, STATUS, OCCUPATION, PHONE_MOBILE' +
+        ', PHONE_FIXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, AD' +
+        'DRESS_STREET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT,' +
+        ' DATE_STARTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEB' +
+        'SITE, TWITTER, STATUS_ACTIVE, CERTIFIED_ANAD, JOB_TITLE)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :NATIONAL_ID, :FK_COMPANY_SERIAL, :FIRST_NAME' +
-        ', :LAST_NAME, :NICKNAME, :STATUS, :OCCUPATION, :PHONE_MOBILE, :P' +
-        'HONE_FIXED, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRESS, ' +
-        ':ADDRESS_STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_DIS' +
-        'TRICT, :DATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, :FA' +
-        'CEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE, :CERTIFIED_ANAD, :JO' +
-        'B_TITLE)')
+        '  (:SERIAL_NUMBER, :ANAD_NUMBER, :NATIONAL_ID, :FK_COMPANY_SERIA' +
+        'L, :FIRST_NAME, :LAST_NAME, :NICKNAME, :STATUS, :OCCUPATION, :PH' +
+        'ONE_MOBILE, :PHONE_FIXED, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL' +
+        '_2, :ADDRESS, :ADDRESS_STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY' +
+        ', :ADDRESS_DISTRICT, :DATE_STARTED, :DATE_BIRTH, :DATE_USER, :LI' +
+        'ST_SOURCE, :FACEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE, :CERTI' +
+        'FIED_ANAD, :JOB_TITLE)')
     SQLDelete.Strings = (
       'DELETE FROM INSTRUCTOR'
       'WHERE'
@@ -1003,29 +1041,30 @@ object M_InstructorFRM: TM_InstructorFRM
       'UPDATE INSTRUCTOR'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, NATIONAL_ID = :NATIONAL_ID, FK' +
-        '_COMPANY_SERIAL = :FK_COMPANY_SERIAL, FIRST_NAME = :FIRST_NAME, ' +
-        'LAST_NAME = :LAST_NAME, NICKNAME = :NICKNAME, STATUS = :STATUS, ' +
-        'OCCUPATION = :OCCUPATION, PHONE_MOBILE = :PHONE_MOBILE, PHONE_FI' +
-        'XED = :PHONE_FIXED, PHONE_ALTERNATE = :PHONE_ALTERNATE, FAX = :F' +
-        'AX, EMAIL = :EMAIL, EMAIL_2 = :EMAIL_2, ADDRESS = :ADDRESS, ADDR' +
-        'ESS_STREET = :ADDRESS_STREET, ADDRESS_POST_CODE = :ADDRESS_POST_' +
-        'CODE, ADDRESS_CITY = :ADDRESS_CITY, ADDRESS_DISTRICT = :ADDRESS_' +
-        'DISTRICT, DATE_STARTED = :DATE_STARTED, DATE_BIRTH = :DATE_BIRTH' +
-        ', DATE_USER = :DATE_USER, LIST_SOURCE = :LIST_SOURCE, FACEBOOK =' +
-        ' :FACEBOOK, WEBSITE = :WEBSITE, TWITTER = :TWITTER, STATUS_ACTIV' +
-        'E = :STATUS_ACTIVE, CERTIFIED_ANAD = :CERTIFIED_ANAD, JOB_TITLE ' +
-        '= :JOB_TITLE'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, ANAD_NUMBER = :ANAD_NUMBER, NA' +
+        'TIONAL_ID = :NATIONAL_ID, FK_COMPANY_SERIAL = :FK_COMPANY_SERIAL' +
+        ', FIRST_NAME = :FIRST_NAME, LAST_NAME = :LAST_NAME, NICKNAME = :' +
+        'NICKNAME, STATUS = :STATUS, OCCUPATION = :OCCUPATION, PHONE_MOBI' +
+        'LE = :PHONE_MOBILE, PHONE_FIXED = :PHONE_FIXED, PHONE_ALTERNATE ' +
+        '= :PHONE_ALTERNATE, FAX = :FAX, EMAIL = :EMAIL, EMAIL_2 = :EMAIL' +
+        '_2, ADDRESS = :ADDRESS, ADDRESS_STREET = :ADDRESS_STREET, ADDRES' +
+        'S_POST_CODE = :ADDRESS_POST_CODE, ADDRESS_CITY = :ADDRESS_CITY, ' +
+        'ADDRESS_DISTRICT = :ADDRESS_DISTRICT, DATE_STARTED = :DATE_START' +
+        'ED, DATE_BIRTH = :DATE_BIRTH, DATE_USER = :DATE_USER, LIST_SOURC' +
+        'E = :LIST_SOURCE, FACEBOOK = :FACEBOOK, WEBSITE = :WEBSITE, TWIT' +
+        'TER = :TWITTER, STATUS_ACTIVE = :STATUS_ACTIVE, CERTIFIED_ANAD =' +
+        ' :CERTIFIED_ANAD, JOB_TITLE = :JOB_TITLE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, NATIONAL_ID, FK_COMPANY_SERIAL, FIRST_NAME' +
-        ', LAST_NAME, NICKNAME, STATUS, OCCUPATION, PHONE_MOBILE, PHONE_F' +
-        'IXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STR' +
-        'EET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STA' +
-        'RTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWI' +
-        'TTER, STATUS_ACTIVE, CERTIFIED_ANAD, JOB_TITLE FROM INSTRUCTOR'
+        'SELECT SERIAL_NUMBER, ANAD_NUMBER, NATIONAL_ID, FK_COMPANY_SERIA' +
+        'L, FIRST_NAME, LAST_NAME, NICKNAME, STATUS, OCCUPATION, PHONE_MO' +
+        'BILE, PHONE_FIXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS' +
+        ', ADDRESS_STREET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTR' +
+        'ICT, DATE_STARTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK,' +
+        ' WEBSITE, TWITTER, STATUS_ACTIVE, CERTIFIED_ANAD, JOB_TITLE FROM' +
+        ' INSTRUCTOR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1049,17 +1088,24 @@ object M_InstructorFRM: TM_InstructorFRM
     Active = True
     Left = 40
     Top = 16
-    object TableSQLFIRST_NAME: TWideStringField
-      DisplayLabel = #908#957#959#956#945
-      DisplayWidth = 13
-      FieldName = 'FIRST_NAME'
+    object TableSQLANAD_NUMBER: TWideStringField
+      DisplayLabel = #913#961'. '#913#925#913#916
+      DisplayWidth = 10
+      FieldName = 'ANAD_NUMBER'
       FixedChar = True
       Size = 30
     end
     object TableSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
-      DisplayWidth = 17
+      DisplayWidth = 20
       FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object TableSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 17
+      FieldName = 'FIRST_NAME'
       FixedChar = True
       Size = 30
     end
@@ -1071,6 +1117,7 @@ object M_InstructorFRM: TM_InstructorFRM
       Size = 15
     end
     object TableSQLSERIAL_NUMBER: TIntegerField
+      DisplayWidth = 18
       FieldName = 'SERIAL_NUMBER'
       Visible = False
     end

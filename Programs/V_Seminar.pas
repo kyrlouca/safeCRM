@@ -244,6 +244,14 @@ type
     SeminarSQLHAS_EXPIRY: TWideStringField;
     SeminarSQLEXPIRY_PERIOD: TIntegerField;
     RzPanel14: TRzPanel;
+    Label9: TLabel;
+    wwDBComboBox2: TwwDBComboBox;
+    SpeedButton1: TSpeedButton;
+    SeminarSQLANAD_NUMBER: TWideStringField;
+    SeminarSQLFK_EXAMINER: TIntegerField;
+    SeminarSQLTYPE_MONO_POLY: TWideStringField;
+    Label23: TLabel;
+    wwCheckBox2: TwwCheckBox;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

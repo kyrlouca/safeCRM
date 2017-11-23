@@ -470,7 +470,7 @@ object M_venuFRM: TM_venuFRM
       TabOrder = 1
     end
     object GroupBox1: TGroupBox
-      Left = 423
+      Left = 483
       Top = 6
       Width = 370
       Height = 331
@@ -483,11 +483,11 @@ object M_venuFRM: TM_venuFRM
       ParentFont = False
       TabOrder = 2
       object Label2: TLabel
-        Left = 58
+        Left = 22
         Top = 46
-        Width = 37
+        Width = 74
         Height = 14
-        Caption = #908#957#959#956#945
+        Caption = #908#957#959#956'. '#935#974#961#959#965
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -496,7 +496,7 @@ object M_venuFRM: TM_venuFRM
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 74
+        Left = 75
         Top = 21
         Width = 21
         Height = 14
@@ -509,8 +509,8 @@ object M_venuFRM: TM_venuFRM
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 60
-        Top = 145
+        Left = 61
+        Top = 225
         Width = 35
         Height = 14
         Caption = #931#967#972#955#953#945
@@ -522,8 +522,8 @@ object M_venuFRM: TM_venuFRM
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 38
-        Top = 73
+        Left = 39
+        Top = 153
         Width = 57
         Height = 14
         Caption = #932#959#960#959#952#949#963#943#945
@@ -546,8 +546,8 @@ object M_venuFRM: TM_venuFRM
         DataSource = TableSRC
       end
       object Label17: TLabel
-        Left = 21
-        Top = 95
+        Left = 22
+        Top = 175
         Width = 74
         Height = 14
         Caption = #919#956#949#961'. '#922#972#963#964#959#962
@@ -559,11 +559,37 @@ object M_venuFRM: TM_venuFRM
         ParentFont = False
       end
       object Label15: TLabel
-        Left = 19
-        Top = 120
+        Left = 20
+        Top = 200
         Width = 76
         Height = 14
         Caption = #935#969#961#951#964#953#954#972#964#951#964#945
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 42
+        Top = 116
+        Width = 54
+        Height = 14
+        Caption = #927#957'. '#913#925#913#916
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 8
+        Top = 74
+        Width = 88
+        Height = 14
+        Caption = #908#957#959#956'. '#913#943#952#959#965#963#945#962
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -585,7 +611,7 @@ object M_venuFRM: TM_venuFRM
       end
       object wwDBEdit1: TwwDBEdit
         Left = 102
-        Top = 68
+        Top = 148
         Width = 256
         Height = 22
         DataField = 'VENUE_LOCATION'
@@ -597,7 +623,7 @@ object M_venuFRM: TM_venuFRM
       end
       object wwDBEdit2: TwwDBEdit
         Left = 102
-        Top = 92
+        Top = 172
         Width = 67
         Height = 22
         DataField = 'VENUE_COST'
@@ -609,7 +635,7 @@ object M_venuFRM: TM_venuFRM
       end
       object wwDBEdit13: TwwDBEdit
         Left = 102
-        Top = 117
+        Top = 197
         Width = 67
         Height = 22
         DataField = 'VENUE_CAPACITY'
@@ -620,8 +646,8 @@ object M_venuFRM: TM_venuFRM
         WordWrap = False
       end
       object wwDBEdit7: TwwDBEdit
-        Left = 101
-        Top = 142
+        Left = 102
+        Top = 222
         Width = 256
         Height = 22
         DataField = 'COMMENTS'
@@ -631,11 +657,35 @@ object M_venuFRM: TM_venuFRM
         WantReturns = False
         WordWrap = False
       end
+      object wwDBEdit3: TwwDBEdit
+        Left = 102
+        Top = 111
+        Width = 256
+        Height = 22
+        DataField = 'ANAD_NUMBER'
+        DataSource = TableSRC
+        TabOrder = 5
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+      end
+      object wwDBEdit4: TwwDBEdit
+        Left = 102
+        Top = 71
+        Width = 256
+        Height = 22
+        DataField = 'ROOM_NAME'
+        DataSource = TableSRC
+        TabOrder = 6
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+      end
     end
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
-      Width = 408
+      Width = 476
       Height = 421
       Align = alLeft
       BorderOuter = fsNone
@@ -643,20 +693,22 @@ object M_venuFRM: TM_venuFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 408
+        Width = 476
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 408
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 9
-        Width = 401
+        Width = 472
         Height = 412
         Selected.Strings = (
-          'VENUE_NAME'#9'25'#9#927#957#959#956#945#963#943#945
-          'VENUE_LOCATION'#9'19'#9#932#959#960#959#952#949#963#943#945
+          'ANAD_NUMBER'#9'16'#9#927#957'. '#913#925#913#916
+          'VENUE_NAME'#9'22'#9#927#957#959#956#945#963#943#945' '#935#974#961#959#965
+          'ROOM_NAME'#9'14'#9#913#943#952#959#965#963#945
           'VENUE_CAPACITY'#9'12'#9#935#969#961#951#964#953#954#972#964#951#964#945)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
@@ -701,11 +753,11 @@ object M_venuFRM: TM_venuFRM
       'INSERT INTO VENUE'
       
         '  (SERIAL_NUMBER, VENUE_NAME, VENUE_LOCATION, VENUE_CAPACITY, VE' +
-        'NUE_COST, COMMENTS)'
+        'NUE_COST, COMMENTS, ANAD_NUMBER, ROOM_NAME)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :VENUE_NAME, :VENUE_LOCATION, :VENUE_CAPACITY' +
-        ', :VENUE_COST, :COMMENTS)')
+        ', :VENUE_COST, :COMMENTS, :ANAD_NUMBER, :ROOM_NAME)')
     SQLDelete.Strings = (
       'DELETE FROM VENUE'
       'WHERE'
@@ -716,13 +768,14 @@ object M_venuFRM: TM_venuFRM
       
         '  SERIAL_NUMBER = :SERIAL_NUMBER, VENUE_NAME = :VENUE_NAME, VENU' +
         'E_LOCATION = :VENUE_LOCATION, VENUE_CAPACITY = :VENUE_CAPACITY, ' +
-        'VENUE_COST = :VENUE_COST, COMMENTS = :COMMENTS'
+        'VENUE_COST = :VENUE_COST, COMMENTS = :COMMENTS, ANAD_NUMBER = :A' +
+        'NAD_NUMBER, ROOM_NAME = :ROOM_NAME'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, VENUE_NAME, VENUE_LOCATION, VENUE_CAPACITY' +
-        ', VENUE_COST, COMMENTS FROM VENUE'
+        ', VENUE_COST, COMMENTS, ANAD_NUMBER, ROOM_NAME FROM VENUE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -748,23 +801,38 @@ object M_venuFRM: TM_venuFRM
     AfterInsert = TableSQLAfterInsert
     Left = 49
     Top = 5
+    object TableSQLANAD_NUMBER: TWideStringField
+      DisplayLabel = #927#957'. '#913#925#913#916
+      DisplayWidth = 16
+      FieldName = 'ANAD_NUMBER'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
     object TableSQLVENUE_NAME: TWideStringField
-      DisplayLabel = #927#957#959#956#945#963#943#945
-      DisplayWidth = 25
+      DisplayLabel = #927#957#959#956#945#963#943#945' '#935#974#961#959#965
+      DisplayWidth = 22
       FieldName = 'VENUE_NAME'
       Required = True
       Size = 160
     end
-    object TableSQLVENUE_LOCATION: TWideStringField
-      DisplayLabel = #932#959#960#959#952#949#963#943#945
-      DisplayWidth = 19
-      FieldName = 'VENUE_LOCATION'
-      Size = 160
+    object TableSQLROOM_NAME: TWideStringField
+      DisplayLabel = #913#943#952#959#965#963#945
+      DisplayWidth = 14
+      FieldName = 'ROOM_NAME'
+      Size = 50
     end
     object TableSQLVENUE_CAPACITY: TIntegerField
       DisplayLabel = #935#969#961#951#964#953#954#972#964#951#964#945
       DisplayWidth = 12
       FieldName = 'VENUE_CAPACITY'
+    end
+    object TableSQLVENUE_LOCATION: TWideStringField
+      DisplayLabel = #932#959#960#959#952#949#963#943#945
+      DisplayWidth = 19
+      FieldName = 'VENUE_LOCATION'
+      Visible = False
+      Size = 160
     end
     object TableSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = #913

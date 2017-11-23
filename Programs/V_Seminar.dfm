@@ -79,7 +79,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1032
       Height = 619
       Hint = ''
-      ActivePage = SubjectTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -88,7 +88,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -99,7 +99,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 28
           Top = 23
           Width = 370
-          Height = 354
+          Height = 370
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -173,7 +173,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Companylbl: TLabel
             Left = 65
-            Top = 308
+            Top = 332
             Width = 43
             Height = 14
             Caption = #917#964#945#953#961#949#943#945
@@ -203,6 +203,19 @@ object V_SeminarFRM: TV_SeminarFRM
             Width = 70
             Height = 14
             Caption = #927#955#959#954#955#942#961#969#963#951
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label23: TLabel
+            Left = 37
+            Top = 236
+            Width = 73
+            Height = 14
+            Caption = #933#960#940#961#967#949#953' '#923#942#958#951
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -287,7 +300,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object MonoRGP: TwwRadioGroup
             Left = 118
-            Top = 238
+            Top = 262
             Width = 185
             Height = 62
             DisableThemes = False
@@ -305,7 +318,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object CompanyFLD: TwwDBLookupCombo
             Left = 114
-            Top = 306
+            Top = 330
             Width = 143
             Height = 22
             DropDownAlignment = taLeftJustify
@@ -370,6 +383,23 @@ object V_SeminarFRM: TV_SeminarFRM
             TabOrder = 7
             DisplayFormat = 'dd/mm/yyyy'
           end
+          object wwCheckBox2: TwwCheckBox
+            Left = 121
+            Top = 235
+            Width = 37
+            Height = 18
+            DisableThemes = False
+            AlwaysTransparent = False
+            ValueChecked = 'Y'
+            ValueUnchecked = 'N'
+            DisplayValueChecked = 'Y'
+            DisplayValueUnchecked = 'N'
+            NullAndBlankState = cbUnchecked
+            DataField = 'HAS_EXPIRY'
+            DataSource = SeminarSRC
+            ShowText = False
+            TabOrder = 8
+          end
         end
         object SecondGRP: TRzGroupBox
           Left = 404
@@ -399,7 +429,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label10: TLabel
             Left = 27
-            Top = 82
+            Top = 103
             Width = 74
             Height = 14
             Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
@@ -411,8 +441,8 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label11: TLabel
-            Left = 67
-            Top = 43
+            Left = 68
+            Top = 68
             Width = 34
             Height = 14
             Caption = #935#974#961#959#962
@@ -446,8 +476,8 @@ object V_SeminarFRM: TV_SeminarFRM
             OnClick = InstructorBTNClick
           end
           object VenueBTN: TSpeedButton
-            Left = 257
-            Top = 41
+            Left = 258
+            Top = 68
             Width = 21
             Height = 19
             Font.Charset = DEFAULT_CHARSET
@@ -469,7 +499,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label22: TLabel
             Left = 4
-            Top = 112
+            Top = 133
             Width = 97
             Height = 14
             Caption = #913#961#953#952#956#972#962' '#924#945#952#951#964#974#957
@@ -482,7 +512,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label20: TLabel
             Left = 24
-            Top = 143
+            Top = 164
             Width = 73
             Height = 14
             Caption = #933#960#940#961#967#949#953' '#923#942#958#951
@@ -495,7 +525,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object Label21: TLabel
             Left = 53
-            Top = 171
+            Top = 192
             Width = 48
             Height = 14
             Caption = #931#949' '#924#942#957#949#962
@@ -506,9 +536,44 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
           end
+          object Label9: TLabel
+            Left = 35
+            Top = 47
+            Width = 66
+            Height = 14
+            Caption = #913#958#953#959#955#959#947#951#964#942#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object SpeedButton1: TSpeedButton
+            Left = 257
+            Top = 43
+            Width = 21
+            Height = 19
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            Glyph.Data = {
+              D6000000424DD60000000000000076000000280000000C0000000C0000000100
+              0400000000006000000000000000000000001000000000000000000000000000
+              80000080000000808000800000008000800080800000C0C0C000808080000000
+              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+              0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+              0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+              0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
+            Layout = blGlyphBottom
+            ParentFont = False
+            OnClick = InstructorBTNClick
+          end
           object wwDBEdit1: TwwDBEdit
             Left = 108
-            Top = 79
+            Top = 100
             Width = 90
             Height = 22
             DataField = 'DURATION_HOURS'
@@ -545,7 +610,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object VenueFLD: TwwDBComboBox
             Left = 108
-            Top = 41
+            Top = 66
             Width = 144
             Height = 21
             ShowButton = True
@@ -571,7 +636,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object wwDBEdit5: TwwDBEdit
             Left = 108
-            Top = 104
+            Top = 125
             Width = 90
             Height = 22
             DataField = 'MAX_CAPACITY'
@@ -583,7 +648,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object CompletedFLD: TwwCheckBox
             Left = 108
-            Top = 142
+            Top = 163
             Width = 37
             Height = 18
             DisableThemes = False
@@ -600,7 +665,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object wwDBEdit6: TwwDBEdit
             Left = 108
-            Top = 166
+            Top = 187
             Width = 75
             Height = 22
             DataField = 'EXPIRY_PERIOD'
@@ -609,6 +674,31 @@ object V_SeminarFRM: TV_SeminarFRM
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
+          end
+          object wwDBComboBox2: TwwDBComboBox
+            Left = 108
+            Top = 42
+            Width = 144
+            Height = 21
+            ShowButton = True
+            Style = csDropDownList
+            MapList = True
+            AllowClearKey = False
+            AutoDropDown = True
+            ShowMatchText = True
+            DataField = 'FK_INSTRUCTOR'
+            DataSource = SeminarSRC
+            DropDownCount = 8
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ItemHeight = 0
+            ParentFont = False
+            Sorted = False
+            TabOrder = 6
+            UnboundDataType = wwDefault
           end
         end
         object BitBtn2: TBitBtn
@@ -2430,20 +2520,21 @@ object V_SeminarFRM: TV_SeminarFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_COMPAN' +
-        'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
-        'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
-        'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
-        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY' +
-        ', EXPIRY_PERIOD)'
+        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VEN' +
+        'UE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, D' +
+        'ATE_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_' +
+        'ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STAT' +
+        'US, IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SU' +
+        'B, HAS_EXPIRY, EXPIRY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
-        'OMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP_TYPE, :DATE_S' +
-        'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
-        'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
-        'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH' +
-        '_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD)')
+        '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
+        'K_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP' +
+        '_TYPE, :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION' +
+        '_HOURS, :FEE_ACTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :F' +
+        'EE_ESTIMATE, :STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPAC' +
+        'ITY, :FEE_WITH_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :FK_EXAMIN' +
+        'ER, :TYPE_MONO_POLY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -2452,28 +2543,30 @@ object V_SeminarFRM: TV_SeminarFRM
       'UPDATE SEMINAR'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, FK_I' +
-        'NSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, FK_COMPANY_PER' +
-        'SON_SERIAL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_' +
-        'NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE, DATE_STARTED = :DA' +
-        'TE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :D' +
-        'URATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FE' +
-        'E_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD' +
-        '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
-        ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
-        'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :F' +
-        'EE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXP' +
-        'IRY_PERIOD'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, ANAD_NUMBER = :ANAD_NUMBER, FK' +
+        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE' +
+        ' = :FK_VENUE, FK_COMPANY_PERSON_SERIAL = :FK_COMPANY_PERSON_SERI' +
+        'AL, SEMINAR_NAME = :SEMINAR_NAME, SEMINAR_CORP_TYPE = :SEMINAR_C' +
+        'ORP_TYPE, DATE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_C' +
+        'OMPLETED, DURATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURA' +
+        'TION_HOURS, FEE_ACTUAL = :FEE_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD' +
+        ', COMMENTS = :COMMENTS, ANAD_APPROVED = :ANAD_APPROVED, FEE_ESTI' +
+        'MATE = :FEE_ESTIMATE, STATUS = :STATUS, IS_INVOICED = :IS_INVOIC' +
+        'ED, IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPA' +
+        'CITY, FEE_WITH_ANAD_SUB = :FEE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_' +
+        'EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, FK_EXAMINER = :FK_EXAMIN' +
+        'ER, TYPE_MONO_POLY = :TYPE_MONO_POLY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_CO' +
-        'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
-        'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
-        'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
-        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EX' +
-        'PIRY, EXPIRY_PERIOD FROM SEMINAR'
+        'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
+        '_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYP' +
+        'E, DATE_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, ' +
+        'FEE_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, ' +
+        'STATUS, IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANA' +
+        'D_SUB, HAS_EXPIRY, EXPIRY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY FR' +
+        'OM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2596,6 +2689,21 @@ object V_SeminarFRM: TV_SeminarFRM
     object SeminarSQLEXPIRY_PERIOD: TIntegerField
       FieldName = 'EXPIRY_PERIOD'
     end
+    object SeminarSQLANAD_NUMBER: TWideStringField
+      FieldName = 'ANAD_NUMBER'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
+    object SeminarSQLFK_EXAMINER: TIntegerField
+      FieldName = 'FK_EXAMINER'
+    end
+    object SeminarSQLTYPE_MONO_POLY: TWideStringField
+      FieldName = 'TYPE_MONO_POLY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -2612,7 +2720,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 250
     Top = 5
     Bitmap = {
-      494C010110008800780210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088007C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

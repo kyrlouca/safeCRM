@@ -56,6 +56,12 @@ type
     TableSQLVENUE_COST: TFloatField;
     TableSQLCOMMENTS: TWideStringField;
     wwDBEdit7: TwwDBEdit;
+    Label6: TLabel;
+    wwDBEdit3: TwwDBEdit;
+    Label7: TLabel;
+    wwDBEdit4: TwwDBEdit;
+    TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLROOM_NAME: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

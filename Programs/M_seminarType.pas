@@ -142,6 +142,12 @@ type
     TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     RzPanel7: TRzPanel;
     RzPanel8: TRzPanel;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
+    Label18: TLabel;
+    wwCheckBox1: TwwCheckBox;
+    Label20: TLabel;
+    wwCheckBox3: TwwCheckBox;
+    SeminarReminderSQLIS_HIGH: TWideStringField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

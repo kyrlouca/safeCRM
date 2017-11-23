@@ -100,6 +100,10 @@ type
     TableSQLSTATUS_ACTIVE: TWideStringField;
     TableSQLCERTIFIED_ANAD: TWideStringField;
     TableSQLJOB_TITLE: TWideStringField;
+    Label16: TLabel;
+    wwDBEdit13: TwwDBEdit;
+    Label17: TLabel;
+    TableSQLANAD_NUMBER: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
