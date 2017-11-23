@@ -27,11 +27,12 @@ uses
   R_Presence in 'R_Presence.pas' {R_presenceFRM},
   G_DebugUnit in 'G_DebugUnit.pas',
   L_reminders in 'L_reminders.pas' {L_RemindersFRM},
-  M_reminder in 'M_reminder.pas' {M_reminderFRM},
   M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM},
   M_Student in 'M_Student.pas' {M_StudentFRM},
   R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
-  L_Companies in 'L_Companies.pas' {L_companiesFRM};
+  L_Companies in 'L_Companies.pas' {L_companiesFRM},
+  M_reminderComplete in 'M_reminderComplete.pas' {M_ReminderCompleteFRM},
+  M_reminder in 'M_reminder.pas' {M_reminderFRM};
 
 {$R *.res}
 
@@ -52,7 +53,7 @@ begin
   Application.CreateForm(TI_CertificatesFRM, I_CertificatesFRM);
   Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
   Application.CreateForm(TP_attendanceFRM, P_attendanceFRM);
-  Application.CreateForm(TM_reminderFRM, M_reminderFRM);
+  Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);
   Application.CreateForm(TM_CompanyFRM, M_CompanyFRM);
   Application.CreateForm(TL_RemindersFRM, L_RemindersFRM);
   Application.CreateForm(TL_SeminarFRM, L_SeminarFRM);
@@ -69,5 +70,8 @@ begin
   Application.CreateForm(TM_StudentFRM, M_StudentFRM);
   Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
   Application.CreateForm(TL_companiesFRM, L_companiesFRM);
+  Application.CreateForm(TM_reminderFRM, M_reminderFRM);
+  //  Application.CreateForm(TM_reminderFRM1, M_reminderFRM1);
+  Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);
   Application.Run;
 end.

@@ -180,10 +180,6 @@
             <Form>L_RemindersFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="M_reminder.pas">
-            <Form>M_reminderFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="M_CompanyNew.pas">
             <Form>M_companyNewFRM</Form>
             <FormType>dfm</FormType>
@@ -198,6 +194,14 @@
         </DCCReference>
         <DCCReference Include="L_Companies.pas">
             <Form>L_companiesFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_reminderComplete.pas">
+            <Form>M_ReminderCompleteFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_reminder.pas">
+            <Form>M_reminderFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

@@ -89,6 +89,7 @@ type
     TableSQLDaysLeft: TIntegerField;
     DateRefFLD: TwwDBDateTimePicker;
     Label5: TLabel;
+    CompleteBTN: TRzBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -112,11 +113,13 @@ type
     procedure EditBTNClick(Sender: TObject);
     procedure TableSQLCalcFields(DataSet: TDataSet);
     procedure DateRefFLDCloseUp(Sender: TObject);
+    procedure CompleteBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
     procedure DisplayFilter;
     procedure EditCompany();
+    procedure CompleteTask();
     procedure DeleteCompany();
   procedure  InsertCompany();
   public
@@ -131,7 +134,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, R_Reminders, M_reminder;
+uses   U_Database, G_generalProcs, R_Reminders, M_reminder, M_reminderComplete;
 
 
 {$R *.DFM}
@@ -188,6 +191,12 @@ end;
 procedure TL_RemindersFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure TL_RemindersFRM.CompleteBTNClick(Sender: TObject);
+begin
+  CompleteTask();
+  DisplayFilter();
 end;
 
 procedure TL_RemindersFRM.EditBTNClick(Sender: TObject);
@@ -252,7 +261,7 @@ end;
 procedure TL_RemindersFRM.FormActivate(Sender: TObject);
 begin
   ksOpenTables([SeminarSQL]);
-  SeminarSFld.Text:='';
+  SeminarSFld.Clear;
   DateRefFLD.Date:=Date;
   DisplayFilter;
 end;
@@ -288,6 +297,30 @@ begin
 
 
 end;
+
+procedure TL_RemindersFRM.COmpleteTask();
+vAR
+  serial:Integer;
+  Frm:TM_ReminderCompleteFRM;
+begin
+
+  SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
+  if serial<1 then exit;
+
+  frm :=  TM_ReminderCompleteFRM.Create(nil);
+  frm.IN_ACTION :='EDIT';
+  frm.IN_PERSON_Serial:=Serial;
+  try
+    frm.ShowModal;
+    ksOpenTables([TableSQL]);
+  finally
+    frm.Free;
+  end;
+
+
+end;
+
+
 
 procedure TL_RemindersFRM.DateRefFLDCloseUp(Sender: TObject);
 begin

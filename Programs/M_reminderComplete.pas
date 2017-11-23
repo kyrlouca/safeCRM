@@ -1,4 +1,4 @@
-unit M_reminder;
+unit M_reminderComplete;
 
 interface
 
@@ -10,7 +10,7 @@ uses
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   vcl.wwcheckbox, RzTabs, RzSplit, Vcl.ComCtrls, vcl.wwriched, RzDBEdit;
 type
-  TM_reminderFRM = class(TForm)
+  TM_ReminderCompleteFRM = class(TForm)
     Panel1: TPanel;
     Panel4: TPanel;
     Panel2: TPanel;
@@ -46,8 +46,6 @@ type
     Label10: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    FirstFLD: TwwDBEdit;
-    DatePassedFLD: TwwDBDateTimePicker;
     wwDBDateTimePicker1: TwwDBDateTimePicker;
     CompletedFLD: TwwCheckBox;
     CompanySQLSEMINAR_NAME: TWideStringField;
@@ -61,7 +59,9 @@ type
     wwDBEdit7: TwwDBEdit;
     wwDBDateTimePicker5: TwwDBDateTimePicker;
     CompanySQLSEMINAR_DATE_STARTED: TDateField;
-    RzDBRichEdit1: TRzDBRichEdit;
+    RzDBLabel1: TRzDBLabel;
+    RzDBLabel2: TRzDBLabel;
+    RzDBLabel3: TRzDBLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure CompanySRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -69,11 +69,11 @@ type
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
-    procedure Nav1InsertClick(Sender: TObject);
     procedure CompanySQLNewRecord(DataSet: TDataSet);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure CompletedFLDClick(Sender: TObject);
+    procedure CompleteBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -87,7 +87,7 @@ type
   end;
 
 var
-  M_reminderFRM: TM_reminderFRM;
+  M_ReminderCompleteFRM: TM_ReminderCompleteFRM;
 
 implementation
 
@@ -96,17 +96,17 @@ uses   U_Database, G_generalProcs;
 
 {$R *.DFM}
 
-procedure TM_reminderFRM.BitBtn1Click(Sender: TObject);
+procedure TM_ReminderCompleteFRM.BitBtn1Click(Sender: TObject);
 begin
 close;
 end;
 
-procedure TM_reminderFRM.BitBtn2Click(Sender: TObject);
+procedure TM_ReminderCompleteFRM.BitBtn2Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure TM_reminderFRM.CompanySQLNewRecord(DataSet: TDataSet);
+procedure TM_ReminderCompleteFRM.CompanySQLNewRecord(DataSet: TDataSet);
 begin
   Dataset.FieldByName('reminder_type').Value:='S';
   Dataset.FieldByName('PERSON_OR_SEMINAR').Value:='S';
@@ -114,7 +114,7 @@ begin
 
 end;
 
-procedure TM_reminderFRM.CompanySRCStateChange(Sender: TObject);
+procedure TM_ReminderCompleteFRM.CompanySRCStateChange(Sender: TObject);
 begin
 
 
@@ -128,7 +128,7 @@ begin
 
 end;
 
-procedure TM_reminderFRM.CompletedFLDClick(Sender: TObject);
+procedure TM_ReminderCompleteFRM.CompleteBTNClick(Sender: TObject);
 begin
   if CompanySQL.State in [dsBrowse] then CompanySQL.Edit;
 
@@ -139,17 +139,28 @@ begin
 
 end;
 
-procedure TM_reminderFRM.RzBitBtn1Click(Sender: TObject);
+procedure TM_ReminderCompleteFRM.CompletedFLDClick(Sender: TObject);
+begin
+  if CompanySQL.State in [dsBrowse] then CompanySQL.Edit;
+
+  if Completedfld.Checked then
+    CompanySQL.FieldByName('date_completed').AsDateTime:=Date
+  else
+    CompanySQL.FieldByName('date_completed').Clear;
+
+end;
+
+procedure TM_ReminderCompleteFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
 end;
 
-procedure TM_reminderFRM.FormActivate(Sender: TObject);
+procedure TM_ReminderCompleteFRM.FormActivate(Sender: TObject);
 begin
 ksOpenTables([CompanySQL]);
   if IN_ACTION='INSERT' then begin
     CompanySQL.Insert;
-    FirstFLD.SetFocus;
+//    FirstFLD.SetFocus;
   end else if IN_ACTION='EDIT' then begin
      EditCompany(IN_PERSON_Serial);
   end;
@@ -159,7 +170,7 @@ ksOpenTables([CompanySQL]);
 
 end;
 
-Procedure TM_reminderFRM.EditCompany(Const CompanySerial:integer);
+Procedure TM_ReminderCompleteFRM.EditCompany(Const CompanySerial:integer);
 Var
         Dataset:TIBCQuery;
 Begin
@@ -170,38 +181,31 @@ Begin
     Open;
   end;
 
-  if FirstFLD.CanFocus then
-  firstFLD.SetFocus;
 
 End;
 
 
 
-procedure TM_reminderFRM.FormClose(Sender: TObject;
+procedure TM_ReminderCompleteFRM.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
 if CompanySQL.State in [dsInsert, dsEdit] then
    CompanySQL.Post;
 end;
 
-procedure TM_reminderFRM.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+procedure TM_ReminderCompleteFRM.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if CompanySQL.State in [dsEdit,dsInsert] then begin
     COmpanySQL.Post;
   end;
 end;
 
-procedure TM_reminderFRM.FormCreate(Sender: TObject);
+procedure TM_ReminderCompleteFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
 end;
 
-procedure TM_reminderFRM.Nav1InsertClick(Sender: TObject);
-begin
-  FirstFLD.SetFocus;
-end;
-
-procedure TM_reminderFRM.CanelBTNClick(Sender: TObject);
+procedure TM_ReminderCompleteFRM.CanelBTNClick(Sender: TObject);
 begin
   CompanySQL.Cancel;
   close;

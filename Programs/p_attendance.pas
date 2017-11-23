@@ -462,6 +462,11 @@ procedure TP_attendanceFRM.VPresenceSQLBeforePost(DataSet: TDataSet);
 var
    maxHours:Integer;
 begin
+  if daySQL.FieldByName('DaySerial').AsInteger <1 then begin
+    Dataset.Cancel;
+    exit;
+  end;
+
 
   if Dataset.FieldByName('is_present').AsString<>'Y' then begin
     Dataset.FieldByName('hours_present').AsInteger:=0;
@@ -485,6 +490,9 @@ end;
 
 procedure TP_attendanceFRM.SavePresBTNClick(Sender: TObject);
 begin
+  if daySQL.FieldByName('DaySerial').AsInteger <1 then begin
+    exit;
+  end;
   SavePresenceTable();
 
 end;

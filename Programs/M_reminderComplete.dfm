@@ -1,4 +1,4 @@
-object M_reminderFRM: TM_reminderFRM
+object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
   Left = 365
   Top = 153
   Caption = '--'
@@ -40,9 +40,9 @@ object M_reminderFRM: TM_reminderFRM
       Height = 45
       Align = alClient
       Alignment = taCenter
-      Caption = #917#961#947#945#963#943#945
+      Caption = #927#955#959#954#955#942#961#969#963#951' '#917#961#947#945#963#943#945#962
       Layout = tlCenter
-      ExplicitWidth = 109
+      ExplicitWidth = 305
       ExplicitHeight = 32
     end
   end
@@ -298,7 +298,7 @@ object M_reminderFRM: TM_reminderFRM
     Align = alClient
     TabOrder = 3
     object GroupBox1: TGroupBox
-      Left = 16
+      Left = 24
       Top = 18
       Width = 353
       Height = 239
@@ -364,7 +364,7 @@ object M_reminderFRM: TM_reminderFRM
         ParentFont = False
       end
       object SerialFLD: TRzDBLabel
-        Left = 130
+        Left = 110
         Top = 19
         Width = 49
         Height = 20
@@ -388,7 +388,7 @@ object M_reminderFRM: TM_reminderFRM
       end
       object Label6: TLabel
         Left = 7
-        Top = 172
+        Top = 196
         Width = 89
         Height = 14
         Caption = #919#956#949#961'. '#917#954#964#941#955#949#963#951#962
@@ -398,11 +398,10 @@ object M_reminderFRM: TM_reminderFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        Visible = False
       end
       object Label7: TLabel
         Left = 37
-        Top = 202
+        Top = 167
         Width = 59
         Height = 14
         Caption = #932#949#955#949#953#969#956#941#957#951
@@ -412,46 +411,43 @@ object M_reminderFRM: TM_reminderFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        Visible = False
       end
-      object FirstFLD: TwwDBEdit
-        Left = 130
-        Top = 45
-        Width = 216
-        Height = 22
+      object RzDBLabel1: TRzDBLabel
+        Left = 110
+        Top = 47
+        Width = 215
+        Height = 20
+        Alignment = taRightJustify
+        BorderOuter = fsFlat
+        BorderWidth = 1
         DataField = 'DESCRIPTION'
         DataSource = CompanySRC
-        TabOrder = 0
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
       end
-      object DatePassedFLD: TwwDBDateTimePicker
-        Left = 130
-        Top = 140
-        Width = 115
-        Height = 23
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'Arial'
-        CalendarAttributes.Font.Style = []
+      object RzDBLabel2: TRzDBLabel
+        Left = 110
+        Top = 73
+        Width = 215
+        Height = 20
+        Alignment = taRightJustify
+        BorderOuter = fsFlat
+        BorderWidth = 1
+        DataField = 'REMINDER_MESSAGE'
+        DataSource = CompanySRC
+      end
+      object RzDBLabel3: TRzDBLabel
+        Left = 110
+        Top = 143
+        Width = 110
+        Height = 20
+        Alignment = taRightJustify
+        BorderOuter = fsFlat
+        BorderWidth = 1
         DataField = 'DATE_TARGETED'
         DataSource = CompanySRC
-        Epoch = 1950
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ShowButton = True
-        TabOrder = 2
-        DisplayFormat = 'dd/mm/yyyy'
       end
       object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 130
-        Top = 169
+        Left = 110
+        Top = 193
         Width = 115
         Height = 23
         CalendarAttributes.Font.Charset = DEFAULT_CHARSET
@@ -459,7 +455,6 @@ object M_reminderFRM: TM_reminderFRM
         CalendarAttributes.Font.Height = -11
         CalendarAttributes.Font.Name = 'Arial'
         CalendarAttributes.Font.Style = []
-        Color = clBtnFace
         DataField = 'DATE_COMPLETED'
         DataSource = CompanySRC
         Epoch = 1950
@@ -469,15 +464,13 @@ object M_reminderFRM: TM_reminderFRM
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
-        ReadOnly = True
         ShowButton = True
-        TabOrder = 3
+        TabOrder = 0
         DisplayFormat = 'dd/mm/yyyy'
-        Visible = False
       end
       object CompletedFLD: TwwCheckBox
-        Left = 130
-        Top = 197
+        Left = 110
+        Top = 169
         Width = 37
         Height = 18
         DisableThemes = False
@@ -490,24 +483,8 @@ object M_reminderFRM: TM_reminderFRM
         DataField = 'IS_COMPLETED'
         DataSource = CompanySRC
         ShowText = False
-        TabOrder = 4
-        Visible = False
-        OnClick = CompletedFLDClick
-      end
-      object RzDBRichEdit1: TRzDBRichEdit
-        Left = 130
-        Top = 73
-        Width = 215
-        Height = 46
-        DataField = 'REMINDER_MESSAGE'
-        DataSource = CompanySRC
-        Font.Charset = GREEK_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
         TabOrder = 1
-        Zoom = 100
+        OnClick = CompletedFLDClick
       end
     end
     object GroupBox2: TGroupBox
