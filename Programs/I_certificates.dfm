@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 611
+  ClientHeight = 571
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 568
+    Top = 528
     Width = 1004
     Height = 43
     Align = alBottom
@@ -150,14 +150,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 476
+    Height = 436
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 474
+      Height = 434
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -323,7 +323,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 431
+        Top = 391
         Width = 671
         Height = 43
         Align = alBottom
@@ -523,7 +523,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 474
+      Height = 434
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -538,7 +538,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 277
+        Top = 237
         Width = 328
         Height = 197
         Align = alBottom
@@ -945,31 +945,16 @@ object I_CertificatesFRM: TI_CertificatesFRM
         Name = 'SeminarSerial'
         Value = nil
       end>
-    object TableSQLSERIAL_NUMBER: TIntegerField
-      DisplayLabel = #913'/'#913
-      DisplayWidth = 10
-      FieldName = 'SERIAL_NUMBER'
-    end
-    object TableSQLFK_SEMINAR: TIntegerField
-      FieldName = 'FK_SEMINAR'
-    end
     object TableSQLSEMINAR_NAME: TWideStringField
       DisplayLabel = #928#949#961#953#947#961#945#966#942
       DisplayWidth = 25
       FieldName = 'SEMINAR_NAME'
       Size = 160
     end
-    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLFK_INSTRUCTOR: TIntegerField
-      FieldName = 'FK_INSTRUCTOR'
-    end
-    object TableSQLFK_VENUE: TIntegerField
-      FieldName = 'FK_VENUE'
+    object TableSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = #913'/'#913
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
     end
     object TableSQLDATE_STARTED: TDateField
       DisplayLabel = #904#957#945#961#958#951
@@ -977,67 +962,120 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FieldName = 'DATE_STARTED'
       DisplayFormat = 'dd/mm/yyyy'
     end
+    object TableSQLFK_SEMINAR: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'FK_SEMINAR'
+      Visible = False
+    end
+    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
+      DisplayWidth = 1
+      FieldName = 'SEMINAR_CORP_TYPE'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLFK_INSTRUCTOR: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'FK_INSTRUCTOR'
+      Visible = False
+    end
+    object TableSQLFK_VENUE: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'FK_VENUE'
+      Visible = False
+    end
     object TableSQLDATE_COMPLETED: TDateField
+      DisplayWidth = 10
       FieldName = 'DATE_COMPLETED'
+      Visible = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object TableSQLDURATION_DAYS: TIntegerField
+      DisplayWidth = 10
       FieldName = 'DURATION_DAYS'
+      Visible = False
     end
     object TableSQLDURATION_HOURS: TIntegerField
+      DisplayWidth = 10
       FieldName = 'DURATION_HOURS'
+      Visible = False
     end
     object TableSQLFEE_ACTUAL: TFloatField
+      DisplayWidth = 10
       FieldName = 'FEE_ACTUAL'
+      Visible = False
       DisplayFormat = '0.00'
     end
     object TableSQLAMOUNT_ANAD: TFloatField
+      DisplayWidth = 10
       FieldName = 'AMOUNT_ANAD'
+      Visible = False
     end
     object TableSQLCOMMENTS: TWideStringField
+      DisplayWidth = 160
       FieldName = 'COMMENTS'
+      Visible = False
       Size = 160
     end
     object TableSQLANAD_APPROVED: TWideStringField
+      DisplayWidth = 1
       FieldName = 'ANAD_APPROVED'
       Required = True
+      Visible = False
       FixedChar = True
       Size = 1
     end
     object TableSQLFEE_ESTIMATE: TFloatField
+      DisplayWidth = 10
       FieldName = 'FEE_ESTIMATE'
+      Visible = False
     end
     object TableSQLSTATUS: TWideStringField
+      DisplayWidth = 1
       FieldName = 'STATUS'
+      Visible = False
       FixedChar = True
       Size = 1
     end
     object TableSQLIS_INVOICED: TWideStringField
+      DisplayWidth = 1
       FieldName = 'IS_INVOICED'
       Required = True
+      Visible = False
       FixedChar = True
       Size = 1
     end
     object TableSQLIS_CERTIFICATED: TWideStringField
+      DisplayWidth = 1
       FieldName = 'IS_CERTIFICATED'
       Required = True
+      Visible = False
       FixedChar = True
       Size = 1
     end
     object TableSQLMAX_CAPACITY: TIntegerField
+      DisplayWidth = 10
       FieldName = 'MAX_CAPACITY'
       Required = True
+      Visible = False
     end
     object TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
+      DisplayWidth = 10
       FieldName = 'FK_COMPANY_PERSON_SERIAL'
+      Visible = False
     end
     object TableSQLFEE_WITH_ANAD_SUB: TFloatField
+      DisplayWidth = 10
       FieldName = 'FEE_WITH_ANAD_SUB'
+      Visible = False
       DisplayFormat = '0.00'
     end
     object TableSQLLAST_NAME: TWideStringField
+      DisplayWidth = 30
       FieldName = 'LAST_NAME'
       ReadOnly = True
+      Visible = False
       FixedChar = True
       Size = 30
     end

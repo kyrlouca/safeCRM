@@ -40,7 +40,6 @@ type
     Label3: TLabel;
     SerialFLD: TRzDBLabel;
     FirstFLD: TwwDBEdit;
-    wwDBComboBox1: TwwDBComboBox;
     SeminarTypeFLD: TwwDBComboBox;
     SecondGRP: TRzGroupBox;
     Label5: TLabel;
@@ -163,12 +162,10 @@ type
     NamePersonFLD: TwwDBComboBox;
     StartEndLD: TwwDBComboBox;
     Button1: TButton;
-    Label4: TRzPanel;
-    RzPanel9: TRzPanel;
+    TitleLbl: TRzPanel;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
     SeminarSQLFK_SEMINAR: TIntegerField;
     SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
     SeminarSQLFK_INSTRUCTOR: TIntegerField;
     SeminarSQLFK_VENUE: TIntegerField;
     SeminarSQLDATE_STARTED: TDateField;
@@ -251,7 +248,9 @@ type
     SeminarSQLFK_EXAMINER: TIntegerField;
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
     Label23: TLabel;
-    wwCheckBox2: TwwCheckBox;
+    wwDBEdit2: TwwDBEdit;
+    RzPanel9: TRzPanel;
+    RzDBLabel2: TRzDBLabel;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -406,6 +405,7 @@ end;
 procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
 begin
   ksOpenTables([CompanySQL]);
+
   StartDateFLD.SetFocus;
 end;
 
@@ -822,6 +822,7 @@ Begin
 
           if FirstFLD.CanFocus then
           firstFLD.SetFocus;
+         TitleLBL.Caption:= Trim(SeminarSQL.FieldByName('seminar_name').AsString);
 
 End;
 

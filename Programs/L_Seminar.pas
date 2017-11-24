@@ -73,6 +73,7 @@ type
     TableSQLHAS_EXPIRY: TWideStringField;
     TableSQLEXPIRY_PERIOD: TIntegerField;
     TableSQLFK_EXAMINER: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -90,6 +91,8 @@ type
     procedure RzBitBtn3Click(Sender: TObject);
     procedure TableSQLNewRecord(DataSet: TDataSet);
     procedure InvoiceBTNClick(Sender: TObject);
+    procedure wwIncrementalSearch1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -145,6 +148,17 @@ begin
 //         StationIDFLD.Enabled:=true;
      end;
   end;//with
+
+end;
+
+procedure TL_SeminarFRM.wwIncrementalSearch1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key=VK_DOWN then begin
+    Grid1.SetFocus;
+    exit;
+  end;
+
 
 end;
 

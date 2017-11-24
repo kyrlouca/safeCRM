@@ -220,7 +220,7 @@ object L_SeminarFRM: TL_SeminarFRM
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
-      Left = 721
+      Left = 761
       Top = 1
       Width = 224
       Height = 360
@@ -228,6 +228,7 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 721
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -622,7 +623,7 @@ object L_SeminarFRM: TL_SeminarFRM
     object RzPanel2: TRzPanel
       Left = 57
       Top = 1
-      Width = 664
+      Width = 704
       Height = 360
       Align = alLeft
       BorderOuter = fsNone
@@ -630,11 +631,12 @@ object L_SeminarFRM: TL_SeminarFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 664
+        Width = 704
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 664
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -764,23 +766,26 @@ object L_SeminarFRM: TL_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          OnKeyDown = wwIncrementalSearch1KeyDown
         end
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 664
+        Width = 681
         Height = 327
         ControlType.Strings = (
-          'SEMINAR_CORP_TYPE;CustomEdit;wwDBComboBox1;F')
+          'SEMINAR_CORP_TYPE;CustomEdit;wwDBComboBox1;F'
+          'TYPE_MONO_POLY;CheckBox;M;P')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'SEMINAR_NAME'#9'20'#9#928#949#961#953#947#961#945#966#942#9#9
-          'SEMINAR_CORP_TYPE'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972#9#9
-          'LAST_NAME'#9'18'#9#917#964#945#953#961#949#943#945#9#9
-          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951#9#9
-          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962#9#9
-          'DURATION_HOURS'#9'6'#9#911#961#949#962#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'SEMINAR_NAME'#9'20'#9#928#949#961#953#947#961#945#966#942
+          'ANAD_NUMBER'#9'13'#9#913#925#913#916' '
+          'TYPE_MONO_POLY'#9'1'#9#924#972#957#959'-'#917#960#967#9'F'
+          'LAST_NAME'#9'18'#9#917#964#945#953#961#949#943#945
+          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
+          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
+          'DURATION_HOURS'#9'6'#9#911#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -861,7 +866,7 @@ object L_SeminarFRM: TL_SeminarFRM
         'ATE_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_' +
         'ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STAT' +
         'US, IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SU' +
-        'B, HAS_EXPIRY, EXPIRY_PERIOD, FK_EXAMINER)'
+        'B, HAS_EXPIRY, EXPIRY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
@@ -870,7 +875,7 @@ object L_SeminarFRM: TL_SeminarFRM
         '_HOURS, :FEE_ACTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :F' +
         'EE_ESTIMATE, :STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPAC' +
         'ITY, :FEE_WITH_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :FK_EXAMIN' +
-        'ER)')
+        'ER, :TYPE_MONO_POLY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -891,7 +896,7 @@ object L_SeminarFRM: TL_SeminarFRM
         'ED, IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPA' +
         'CITY, FEE_WITH_ANAD_SUB = :FEE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_' +
         'EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, FK_EXAMINER = :FK_EXAMIN' +
-        'ER'
+        'ER, TYPE_MONO_POLY = :TYPE_MONO_POLY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -901,7 +906,8 @@ object L_SeminarFRM: TL_SeminarFRM
         'E, DATE_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, ' +
         'FEE_ACTUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, ' +
         'STATUS, IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANA' +
-        'D_SUB, HAS_EXPIRY, EXPIRY_PERIOD, FK_EXAMINER FROM SEMINAR'
+        'D_SUB, HAS_EXPIRY, EXPIRY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY FR' +
+        'OM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -944,10 +950,18 @@ object L_SeminarFRM: TL_SeminarFRM
       FieldName = 'SEMINAR_NAME'
       Size = 160
     end
-    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
-      DisplayLabel = #917#960#953#967#949#953#961#953#963#953#945#954#972
+    object TableSQLANAD_NUMBER: TWideStringField
+      DisplayLabel = #913#925#913#916' '
       DisplayWidth = 13
-      FieldName = 'SEMINAR_CORP_TYPE'
+      FieldName = 'ANAD_NUMBER'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
+    object TableSQLTYPE_MONO_POLY: TWideStringField
+      DisplayLabel = #924#972#957#959'-'#917#960#967
+      DisplayWidth = 1
+      FieldName = 'TYPE_MONO_POLY'
       Required = True
       FixedChar = True
       Size = 1
@@ -974,6 +988,15 @@ object L_SeminarFRM: TL_SeminarFRM
       DisplayLabel = #911#961#949#962
       DisplayWidth = 6
       FieldName = 'DURATION_HOURS'
+    end
+    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
+      DisplayLabel = #917#960#953#967#949#953#961#953#963#953#945#954#972
+      DisplayWidth = 13
+      FieldName = 'SEMINAR_CORP_TYPE'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
     end
     object TableSQLDURATION_DAYS: TIntegerField
       DisplayLabel = #924#941#961#949#962
@@ -1048,13 +1071,6 @@ object L_SeminarFRM: TL_SeminarFRM
       ReadOnly = True
       Visible = False
       Size = 160
-    end
-    object TableSQLANAD_NUMBER: TWideStringField
-      FieldName = 'ANAD_NUMBER'
-      Required = True
-      Visible = False
-      FixedChar = True
-      Size = 30
     end
     object TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
       FieldName = 'FK_COMPANY_PERSON_SERIAL'
