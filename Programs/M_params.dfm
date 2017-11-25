@@ -3,7 +3,7 @@ object M_paramsFRM: TM_paramsFRM
   Top = 0
   Caption = 'M_paramsFRM'
   ClientHeight = 530
-  ClientWidth = 697
+  ClientWidth = 938
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -28,20 +28,22 @@ object M_paramsFRM: TM_paramsFRM
   object ButtonsPNL: TPanel
     Left = 0
     Top = 485
-    Width = 697
+    Width = 938
     Height = 45
     Align = alBottom
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
+    ExplicitWidth = 726
     object Panel1: TPanel
-      Left = 560
+      Left = 801
       Top = 2
       Width = 135
       Height = 41
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitLeft = 589
       object BitBtn1: TRzBitBtn
         Left = 54
         Top = 1
@@ -272,7 +274,7 @@ object M_paramsFRM: TM_paramsFRM
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 697
+    Width = 938
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -282,10 +284,11 @@ object M_paramsFRM: TM_paramsFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 2
+    ExplicitWidth = 726
     object TitleLbl: TLabel
       Left = 1
       Top = 1
-      Width = 695
+      Width = 936
       Height = 51
       Align = alClient
       Alignment = taCenter
@@ -297,11 +300,30 @@ object M_paramsFRM: TM_paramsFRM
   object RzPanel1: TRzPanel
     Left = 0
     Top = 53
-    Width = 697
+    Width = 938
     Height = 432
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
+    ExplicitLeft = -1
+    ExplicitTop = 55
+    object Image1: TImage
+      Left = 497
+      Top = 256
+      Width = 105
+      Height = 105
+      Proportional = True
+      Stretch = True
+    end
+    object ImgShow: TImage
+      Left = 725
+      Top = 57
+      Width = 105
+      Height = 105
+      ParentCustomHint = False
+      Proportional = True
+      Stretch = True
+    end
     object OptionGRP: TRzRadioGroup
       Left = 534
       Top = 26
@@ -316,10 +338,10 @@ object M_paramsFRM: TM_paramsFRM
       OnClick = OptionGRPClick
     end
     object GroupBox1: TGroupBox
-      Left = 8
-      Top = 26
+      Left = -29
+      Top = -6
       Width = 504
-      Height = 330
+      Height = 367
       Caption = 'Details'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -464,8 +486,8 @@ object M_paramsFRM: TM_paramsFRM
         ParentFont = False
       end
       object SpeedButton1: TSpeedButton
-        Left = 154
-        Top = 280
+        Left = 156
+        Top = 303
         Width = 26
         Height = 24
         Glyph.Data = {
@@ -527,11 +549,26 @@ object M_paramsFRM: TM_paramsFRM
           A54C289E4522973CC1E0C3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       end
       object Label1: TLabel
-        Left = 89
-        Top = 286
+        Left = 88
+        Top = 318
         Width = 54
         Height = 14
         Caption = 'Copy text'
+      end
+      object Label2: TLabel
+        Left = 6
+        Top = 276
+        Width = 174
+        Height = 18
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Parameter String Value'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
       end
       object VS1FLD: TwwDBEdit
         Left = 188
@@ -646,8 +683,8 @@ object M_paramsFRM: TM_paramsFRM
         WordWrap = False
       end
       object VS3FLD: TwwDBEdit
-        Left = 188
-        Top = 168
+        Left = 186
+        Top = 220
         Width = 296
         Height = 21
         BorderStyle = bsNone
@@ -692,8 +729,8 @@ object M_paramsFRM: TM_paramsFRM
         WordWrap = False
       end
       object VS5FLD: TwwDBEdit
-        Left = 188
-        Top = 223
+        Left = 186
+        Top = 158
         Width = 296
         Height = 21
         BorderStyle = bsNone
@@ -738,12 +775,197 @@ object M_paramsFRM: TM_paramsFRM
         WordWrap = False
       end
       object File1FLD: TEdit
-        Left = 189
-        Top = 284
+        Left = 188
+        Top = 316
         Width = 296
         Height = 22
         TabOrder = 9
       end
+      object wwDBEdit1: TwwDBEdit
+        Left = 188
+        Top = 276
+        Width = 296
+        Height = 21
+        BorderStyle = bsNone
+        DataField = 'ANAD_PICTURE'
+        DataSource = FindParamSRC
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Enabled = True
+        Frame.NonFocusBorders = [efLeftBorder, efTopBorder, efRightBorder, efBottomBorder]
+        Frame.FocusStyle = efsFrameSingle
+        Frame.NonFocusStyle = efsFrameSunken
+        ParentFont = False
+        TabOrder = 10
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+      end
+    end
+    object Img1: TDBImage
+      Left = 621
+      Top = 256
+      Width = 105
+      Height = 105
+      DataField = 'ANAD_PICTURE'
+      DataSource = FindParamSRC
+      Proportional = True
+      Stretch = True
+      TabOrder = 2
+      OnClick = Img1Click
+    end
+    object RzBitBtn3: TRzBitBtn
+      Left = 289
+      Top = 389
+      Width = 80
+      Height = 37
+      Caption = 'Ok'
+      DoubleBuffered = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentDoubleBuffered = False
+      ParentFont = False
+      TabOrder = 3
+      OnClick = RzBitBtn3Click
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF05793AEDF8F2FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0E8245
+        63CE9D108447EFF9F3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFF0D844472D1A76DD0A466CE9F0F8747E8F4ECFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF0D864480D7B07ED5AE76D2A96DD0A465CD9F108947EBF6EEFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF04823D8FDAB98FDAB986D8B37DD5AE74D2A86ACF
+        A261CC9D0F8B48EEF7F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0C88469CDFC19FE0C398DDBF8EDBB8
+        85D7B27AD4AB6FD1A665CE9F5CCB9A0F8D4AEEF7F1FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF098C47A5E1C6ADE4CCA7
+        E2C89FDFC395DCBC8AD9B67ED6AE72D1A868CEA05ECB9A57C9970E904CCBE3CC
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF099048A7E2
+        C8B8E7D2B5E6D0AEE4CCA4E1C699DDBF26B46688D9B475D2A96ACFA260CC9B57
+        C99651C794048C41D5E9D6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        079347A1E1C4B8E7D2BEE9D6B7E7D3AFE5CDA3E0C60D964AFFFFFF1FAD5F83D7
+        B26BD0A260CC9C58C99651C89351C7930E974DDAECDBFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFF0291438FDBB9AEE4CCB4E6D0B8E7D2B5E6D0A7E2C80B974BFFFFFF
+        FFFFFFFFFFFF1FAD5F7CD5AD60CC9C57CA9651C89350C79251C7920E984EDDEE
+        DEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF19A359A0E0C3AEE4CCB0E4CDA4E1C51D
+        A35BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF23B16373D1A856C99650C7924FC791
+        4FC79251C791119C51DEEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1CA75C9DDF
+        C2A6E2C7109F51FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF23B1636B
+        D0A24FC7924FC79250C79250C79250C791139E53E3F2E5FFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF1AA85A16A557FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF24B36563CD9E50C7924FC79250C79250C79251C7920C9B4DFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20AF615FCC9A4FC79250C79251C8
+        93088D46FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1BAA5C
+        5ACA9853C8940A964BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF11A052139F53FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      Margin = -1
+    end
+    object RzBitBtn4: TRzBitBtn
+      Left = 621
+      Top = 367
+      Width = 80
+      Height = 37
+      Caption = 'Ok'
+      DoubleBuffered = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentDoubleBuffered = False
+      ParentFont = False
+      TabOrder = 4
+      OnClick = RzBitBtn4Click
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF05793AEDF8F2FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0E8245
+        63CE9D108447EFF9F3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFF0D844472D1A76DD0A466CE9F0F8747E8F4ECFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF0D864480D7B07ED5AE76D2A96DD0A465CD9F108947EBF6EEFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF04823D8FDAB98FDAB986D8B37DD5AE74D2A86ACF
+        A261CC9D0F8B48EEF7F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0C88469CDFC19FE0C398DDBF8EDBB8
+        85D7B27AD4AB6FD1A665CE9F5CCB9A0F8D4AEEF7F1FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF098C47A5E1C6ADE4CCA7
+        E2C89FDFC395DCBC8AD9B67ED6AE72D1A868CEA05ECB9A57C9970E904CCBE3CC
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF099048A7E2
+        C8B8E7D2B5E6D0AEE4CCA4E1C699DDBF26B46688D9B475D2A96ACFA260CC9B57
+        C99651C794048C41D5E9D6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        079347A1E1C4B8E7D2BEE9D6B7E7D3AFE5CDA3E0C60D964AFFFFFF1FAD5F83D7
+        B26BD0A260CC9C58C99651C89351C7930E974DDAECDBFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFF0291438FDBB9AEE4CCB4E6D0B8E7D2B5E6D0A7E2C80B974BFFFFFF
+        FFFFFFFFFFFF1FAD5F7CD5AD60CC9C57CA9651C89350C79251C7920E984EDDEE
+        DEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF19A359A0E0C3AEE4CCB0E4CDA4E1C51D
+        A35BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF23B16373D1A856C99650C7924FC791
+        4FC79251C791119C51DEEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1CA75C9DDF
+        C2A6E2C7109F51FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF23B1636B
+        D0A24FC7924FC79250C79250C79250C791139E53E3F2E5FFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF1AA85A16A557FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF24B36563CD9E50C7924FC79250C79250C79251C7920C9B4DFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20AF615FCC9A4FC79250C79251C8
+        93088D46FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1BAA5C
+        5ACA9853C8940A964BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF11A052139F53FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      Margin = -1
     end
   end
   object ReadOnlyTrans: TIBCTransaction
@@ -754,6 +976,7 @@ object M_paramsFRM: TM_paramsFRM
   end
   object UpdateTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
+    Active = True
     Left = 640
     Top = 136
   end
@@ -762,11 +985,11 @@ object M_paramsFRM: TM_paramsFRM
       'INSERT INTO GENERAL_PARAMETER'
       
         '  (CODE, INT_1, INT_2, STR_1, STR_2, STR_3, STR_4, STR_5, STR_6,' +
-        ' FLOAT_1, FLOAT_2, DESCRIPTION)'
+        ' FLOAT_1, FLOAT_2, DESCRIPTION, ANAD_PICTURE)'
       'VALUES'
       
         '  (:CODE, :INT_1, :INT_2, :STR_1, :STR_2, :STR_3, :STR_4, :STR_5' +
-        ', :STR_6, :FLOAT_1, :FLOAT_2, :DESCRIPTION)')
+        ', :STR_6, :FLOAT_1, :FLOAT_2, :DESCRIPTION, :ANAD_PICTURE)')
     SQLDelete.Strings = (
       'DELETE FROM GENERAL_PARAMETER'
       'WHERE'
@@ -778,13 +1001,14 @@ object M_paramsFRM: TM_paramsFRM
         '  CODE = :CODE, INT_1 = :INT_1, INT_2 = :INT_2, STR_1 = :STR_1, ' +
         'STR_2 = :STR_2, STR_3 = :STR_3, STR_4 = :STR_4, STR_5 = :STR_5, ' +
         'STR_6 = :STR_6, FLOAT_1 = :FLOAT_1, FLOAT_2 = :FLOAT_2, DESCRIPT' +
-        'ION = :DESCRIPTION'
+        'ION = :DESCRIPTION, ANAD_PICTURE = :ANAD_PICTURE'
       'WHERE'
       '  CODE = :Old_CODE')
     SQLRefresh.Strings = (
       
         'SELECT CODE, INT_1, INT_2, STR_1, STR_2, STR_3, STR_4, STR_5, ST' +
-        'R_6, FLOAT_1, FLOAT_2, DESCRIPTION FROM GENERAL_PARAMETER'
+        'R_6, FLOAT_1, FLOAT_2, DESCRIPTION, ANAD_PICTURE FROM GENERAL_PA' +
+        'RAMETER'
       'WHERE'
       '  CODE = :CODE')
     SQLLock.Strings = (
@@ -807,8 +1031,11 @@ object M_paramsFRM: TM_paramsFRM
       '    GENERAL_PARAMETER '
       'where'
       '   Code= :Code')
-    Left = 625
-    Top = 311
+    Options.CacheBlobs = False
+    Options.StreamedBlobs = True
+    AfterScroll = FindGeneralParameterSQLAfterScroll
+    Left = 537
+    Top = 239
     ParamData = <
       item
         DataType = ftUnknown
@@ -861,10 +1088,145 @@ object M_paramsFRM: TM_paramsFRM
       FieldName = 'DESCRIPTION'
       Size = 80
     end
+    object FindGeneralParameterSQLANAD_PICTURE: TBlobField
+      FieldName = 'ANAD_PICTURE'
+    end
   end
   object FindParamSRC: TIBCDataSource
     DataSet = FindGeneralParameterSQL
-    Left = 600
-    Top = 389
+    Left = 616
+    Top = 237
+  end
+  object DoSQL: TIBCSQL
+    Connection = U_databaseFRM.DataConnection
+    Transaction = UpdateTrans
+    SQL.Strings = (
+      
+        'update general_parameter set anad_picture = :picture where code ' +
+        '= :code')
+    AutoCommit = True
+    Left = 88
+    Top = 24
+    ParamData = <
+      item
+        DataType = ftBlob
+        Name = 'picture'
+        Value = ''
+      end
+      item
+        DataType = ftUnknown
+        Name = 'code'
+        Value = nil
+      end>
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Left = 416
+    Top = 199
+  end
+  object qr: TIBCQuery
+    SQLInsert.Strings = (
+      'INSERT INTO GENERAL_PARAMETER'
+      
+        '  (CODE, INT_1, INT_2, STR_1, STR_2, STR_3, STR_4, STR_5, STR_6,' +
+        ' FLOAT_1, FLOAT_2, DESCRIPTION, ANAD_PICTURE)'
+      'VALUES'
+      
+        '  (:CODE, :INT_1, :INT_2, :STR_1, :STR_2, :STR_3, :STR_4, :STR_5' +
+        ', :STR_6, :FLOAT_1, :FLOAT_2, :DESCRIPTION, :ANAD_PICTURE)')
+    SQLDelete.Strings = (
+      'DELETE FROM GENERAL_PARAMETER'
+      'WHERE'
+      '  CODE = :Old_CODE')
+    SQLUpdate.Strings = (
+      'UPDATE GENERAL_PARAMETER'
+      'SET'
+      
+        '  CODE = :CODE, INT_1 = :INT_1, INT_2 = :INT_2, STR_1 = :STR_1, ' +
+        'STR_2 = :STR_2, STR_3 = :STR_3, STR_4 = :STR_4, STR_5 = :STR_5, ' +
+        'STR_6 = :STR_6, FLOAT_1 = :FLOAT_1, FLOAT_2 = :FLOAT_2, DESCRIPT' +
+        'ION = :DESCRIPTION, ANAD_PICTURE = :ANAD_PICTURE'
+      'WHERE'
+      '  CODE = :Old_CODE')
+    SQLRefresh.Strings = (
+      
+        'SELECT CODE, INT_1, INT_2, STR_1, STR_2, STR_3, STR_4, STR_5, ST' +
+        'R_6, FLOAT_1, FLOAT_2, DESCRIPTION, ANAD_PICTURE FROM GENERAL_PA' +
+        'RAMETER'
+      'WHERE'
+      '  CODE = :CODE')
+    SQLLock.Strings = (
+      'SELECT NULL FROM GENERAL_PARAMETER'
+      'WHERE'
+      'CODE = :Old_CODE'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM GENERAL_PARAMETER'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadOnlyTrans
+    UpdateTransaction = UpdateTrans
+    SQL.Strings = (
+      'select * from general_Parameter where code = :TheCode')
+    Options.CacheBlobs = False
+    Options.StreamedBlobs = True
+    Left = 464
+    Top = 123
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'TheCode'
+        ParamType = ptInput
+        Value = ''
+      end>
+    object CODE: TWideStringField
+      FieldName = 'CODE'
+      FixedChar = True
+      Size = 3
+    end
+    object qrINT_1: TIntegerField
+      FieldName = 'INT_1'
+    end
+    object qrINT_2: TIntegerField
+      FieldName = 'INT_2'
+    end
+    object qrSTR_1: TWideStringField
+      FieldName = 'STR_1'
+      Size = 160
+    end
+    object qrSTR_2: TWideStringField
+      FieldName = 'STR_2'
+      Size = 160
+    end
+    object qrSTR_3: TWideStringField
+      FieldName = 'STR_3'
+      Size = 80
+    end
+    object qrSTR_4: TWideStringField
+      FieldName = 'STR_4'
+      Size = 80
+    end
+    object qrSTR_5: TWideStringField
+      FieldName = 'STR_5'
+      Size = 80
+    end
+    object qrSTR_6: TWideStringField
+      FieldName = 'STR_6'
+      Size = 80
+    end
+    object qrFLOAT_1: TFloatField
+      FieldName = 'FLOAT_1'
+    end
+    object qrFLOAT_2: TFloatField
+      FieldName = 'FLOAT_2'
+    end
+    object qrDESCRIPTION: TWideStringField
+      FieldName = 'DESCRIPTION'
+      Size = 80
+    end
+    object qrANAD_PICTURE: TBlobField
+      FieldName = 'ANAD_PICTURE'
+    end
   end
 end

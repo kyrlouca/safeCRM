@@ -7230,7 +7230,15 @@ object M_mainFRM: TM_mainFRM
         BB01D75E82B64FFBF11FB4AA436D1FE5BA540000000049454E44AE426082}
       Proportional = True
       Stretch = True
-      ExplicitTop = 2
+      ExplicitTop = -3
+    end
+    object Image2: TImage
+      Left = 623
+      Top = 128
+      Width = 105
+      Height = 105
+      Proportional = True
+      Stretch = True
     end
     object LoginBTN: TRzBitBtn
       Left = 14
@@ -7316,8 +7324,36 @@ object M_mainFRM: TM_mainFRM
       Height = 25
       Caption = 'Button1'
       TabOrder = 1
-      Visible = False
       OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 272
+      Top = 112
+      Width = 75
+      Height = 25
+      Caption = 'Button2'
+      TabOrder = 2
+      OnClick = Button2Click
+    end
+    object DBImage1: TDBImage
+      Left = 512
+      Top = 128
+      Width = 105
+      Height = 105
+      DataField = 'ANAD_PICTURE'
+      DataSource = IBCDataSource1
+      Proportional = True
+      Stretch = True
+      TabOrder = 3
+    end
+    object BitBtn2: TBitBtn
+      Left = 272
+      Top = 152
+      Width = 75
+      Height = 25
+      Caption = 'BitBtn2'
+      TabOrder = 4
+      OnClick = BitBtn2Click
     end
   end
   object MainMenu1: TMainMenu
@@ -7430,5 +7466,119 @@ object M_mainFRM: TM_mainFRM
     Left = 144
     Top = 187
     Data = {04000000000000000000}
+  end
+  object qr: TIBCQuery
+    SQLInsert.Strings = (
+      'INSERT INTO GENERAL_PARAMETER'
+      
+        '  (CODE, INT_1, INT_2, STR_1, STR_2, STR_3, STR_4, STR_5, STR_6,' +
+        ' FLOAT_1, FLOAT_2, DESCRIPTION, ANAD_PICTURE)'
+      'VALUES'
+      
+        '  (:CODE, :INT_1, :INT_2, :STR_1, :STR_2, :STR_3, :STR_4, :STR_5' +
+        ', :STR_6, :FLOAT_1, :FLOAT_2, :DESCRIPTION, :ANAD_PICTURE)')
+    SQLDelete.Strings = (
+      'DELETE FROM GENERAL_PARAMETER'
+      'WHERE'
+      '  CODE = :Old_CODE')
+    SQLUpdate.Strings = (
+      'UPDATE GENERAL_PARAMETER'
+      'SET'
+      
+        '  CODE = :CODE, INT_1 = :INT_1, INT_2 = :INT_2, STR_1 = :STR_1, ' +
+        'STR_2 = :STR_2, STR_3 = :STR_3, STR_4 = :STR_4, STR_5 = :STR_5, ' +
+        'STR_6 = :STR_6, FLOAT_1 = :FLOAT_1, FLOAT_2 = :FLOAT_2, DESCRIPT' +
+        'ION = :DESCRIPTION, ANAD_PICTURE = :ANAD_PICTURE'
+      'WHERE'
+      '  CODE = :Old_CODE')
+    SQLRefresh.Strings = (
+      
+        'SELECT CODE, INT_1, INT_2, STR_1, STR_2, STR_3, STR_4, STR_5, ST' +
+        'R_6, FLOAT_1, FLOAT_2, DESCRIPTION, ANAD_PICTURE FROM GENERAL_PA' +
+        'RAMETER'
+      'WHERE'
+      '  CODE = :CODE')
+    SQLLock.Strings = (
+      'SELECT NULL FROM GENERAL_PARAMETER'
+      'WHERE'
+      'CODE = :Old_CODE'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM GENERAL_PARAMETER'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = M_paramsFRM.ReadOnlyTrans
+    UpdateTransaction = M_paramsFRM.UpdateTrans
+    SQL.Strings = (
+      'select * from general_Parameter where code = :TheCode')
+    Options.StreamedBlobs = True
+    Left = 408
+    Top = 163
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'TheCode'
+        ParamType = ptInput
+        Value = ''
+      end>
+    object CODE: TWideStringField
+      FieldName = 'CODE'
+      FixedChar = True
+      Size = 3
+    end
+    object qrINT_1: TIntegerField
+      FieldName = 'INT_1'
+    end
+    object qrINT_2: TIntegerField
+      FieldName = 'INT_2'
+    end
+    object qrSTR_1: TWideStringField
+      FieldName = 'STR_1'
+      Size = 160
+    end
+    object qrSTR_2: TWideStringField
+      FieldName = 'STR_2'
+      Size = 160
+    end
+    object qrSTR_3: TWideStringField
+      FieldName = 'STR_3'
+      Size = 80
+    end
+    object qrSTR_4: TWideStringField
+      FieldName = 'STR_4'
+      Size = 80
+    end
+    object qrSTR_5: TWideStringField
+      FieldName = 'STR_5'
+      Size = 80
+    end
+    object qrSTR_6: TWideStringField
+      FieldName = 'STR_6'
+      Size = 80
+    end
+    object qrFLOAT_1: TFloatField
+      FieldName = 'FLOAT_1'
+    end
+    object qrFLOAT_2: TFloatField
+      FieldName = 'FLOAT_2'
+    end
+    object qrDESCRIPTION: TWideStringField
+      FieldName = 'DESCRIPTION'
+      Size = 80
+    end
+    object qrANAD_PICTURE: TBlobField
+      FieldName = 'ANAD_PICTURE'
+    end
+  end
+  object IBCDataSource1: TIBCDataSource
+    DataSet = qr
+    Left = 496
+    Top = 160
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Left = 384
+    Top = 232
   end
 end

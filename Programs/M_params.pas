@@ -7,9 +7,10 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, DBAccess, IBC,
   MemDS, vcl.wwspeedbutton, vcl.wwdbnavigator, Vcl.ExtCtrls, vcl.wwclearpanel,
   Vcl.Grids, vcl.wwdbigrd, vcl.wwdbgrid, RzPanel, RzRadGrp, Vcl.Mask,
-  vcl.Wwdbedit, Vcl.Buttons, RzButton;
+  vcl.Wwdbedit, Vcl.Buttons, RzButton, Vcl.DBCtrls,jpeg,pngimage, Vcl.ExtDlgs;
 
 type
+ TitTYPES=(itJPG,itPNG,itBMP);
   TLabelArray = Array of Tlabel;
   TFieldArray = Array of TwwDbEdit;
   TStringArray= Array of String;
@@ -62,6 +63,30 @@ type
     FindGeneralParameterSQLDESCRIPTION: TWideStringField;
     RzBitBtn2: TRzBitBtn;
     RzBitBtn1: TRzBitBtn;
+    Label2: TLabel;
+    wwDBEdit1: TwwDBEdit;
+    FindGeneralParameterSQLANAD_PICTURE: TBlobField;
+    Img1: TDBImage;
+    DoSQL: TIBCSQL;
+    OpenPictureDialog1: TOpenPictureDialog;
+    Image1: TImage;
+    RzBitBtn3: TRzBitBtn;
+    qr: TIBCQuery;
+    CODE: TWideStringField;
+    qrINT_1: TIntegerField;
+    qrINT_2: TIntegerField;
+    qrSTR_1: TWideStringField;
+    qrSTR_2: TWideStringField;
+    qrSTR_3: TWideStringField;
+    qrSTR_4: TWideStringField;
+    qrSTR_5: TWideStringField;
+    qrSTR_6: TWideStringField;
+    qrFLOAT_1: TFloatField;
+    qrFLOAT_2: TFloatField;
+    qrDESCRIPTION: TWideStringField;
+    qrANAD_PICTURE: TBlobField;
+    RzBitBtn4: TRzBitBtn;
+    ImgShow: TImage;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure OptionGRPClick(Sender: TObject);
@@ -70,6 +95,12 @@ type
     procedure RzBitBtn1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure LoadPicture;
+    procedure Img1Click(Sender: TObject);
+    procedure RzBitBtn3Click(Sender: TObject);
+    procedure RzBitBtn4Click(Sender: TObject);
+    procedure FindGeneralParameterSQLAfterScroll(DataSet: TDataSet);
+
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -110,6 +141,33 @@ begin
 
 end;
 
+procedure TM_paramsFRM.FindGeneralParameterSQLAfterScroll(DataSet: TDataSet);
+var
+  code:string;
+  BlobFIeld:TField;
+  BS:TStream;
+begin
+  code:=FindGeneralParameterSQL.FieldByName('code').AsString;
+
+  with qr do
+  begin
+    close;
+    qr.ParamByName('Thecode').AsString :=Code;
+    open;
+    if qr.IsEmpty then
+      showMessage('empgy');
+    BlobField := FieldByName('anad_picture');
+
+    BS := CreateBlobStream(BlobField,bmRead);
+    bs.Position:=0;
+    ImgShow.Picture.LoadFromStream(bs);
+    close;
+//    FindGeneralParameterSQL.Refresh;
+
+  end;
+
+end;
+
 procedure TM_paramsFRM.FormActivate(Sender: TObject);
 begin
 ShowOneRecord(0);
@@ -126,6 +184,11 @@ end;
 procedure TM_paramsFRM.FormCreate(Sender: TObject);
 begin
 cn:=U_databaseFRM.DataConnection;
+end;
+
+procedure TM_paramsFRM.Img1Click(Sender: TObject);
+begin
+  loadPicture();
 end;
 
 procedure TM_paramsFRM.OptionGRPClick(Sender: TObject);
@@ -146,6 +209,116 @@ begin
         if self.FindGeneralParameterSQL.State in [dsEdit,dsInsert] then begin
               self.FindGeneralParameterSQL.Post ;
         end;
+
+end;
+
+procedure TM_paramsFRM.RzBitBtn3Click(Sender: TObject);
+var
+  BlobField: TField;
+  BS: TStream;
+  fileName:String;
+  code:String;
+begin
+
+  code:=FindGeneralParameterSQL.FieldByName('code').AsString;
+  bs:=TMemoryStream.Create();
+
+ if not OpenPictureDialog1.Execute then
+    Exit;
+
+    filename :=OpenPictureDialog1.FileName;
+    image1.Picture.LoadFromFile(filename);
+    Image1.Picture.SaveToStream(BS);
+    bs.Position:=0;
+
+    doSQL.ParamByName('code').Value:=Code;
+    doSQL.ParamByName('picture').LoadFromStream(bs,ftBlob);
+    doSQL.Execute;
+
+    bs.Free;
+    FindGeneralParameterSQL.Refresh;
+
+
+    exit;
+
+  with qr do
+  begin
+    close;
+
+    qr.ParamByName('Thecode').AsString :='T00';
+    open;
+    if qr.IsEmpty then
+      showMessage('empgy');
+    Edit;
+    BlobField := FieldByName('anad_picture');
+    BS := CreateBlobStream(BlobField,bmWrite);
+    Image1.Picture.SaveToStream(BS);
+
+//    Bitmap.SavetoStream(BS);
+    Post;
+    close;
+    FindGeneralParameterSQL.Refresh;
+
+  end;
+
+end;
+
+
+procedure TM_paramsFRM.RzBitBtn4Click(Sender: TObject);
+var
+  BlobField: TField;
+  BS: TStream;
+  fileName:String;
+  code:String;
+  str1:String;
+  zz:TksQuery;
+begin
+
+//code:= 'Τ00'
+  code:=FindGeneralParameterSQL.FieldByName('code').AsString;
+ if not OpenPictureDialog1.Execute then     begin
+  showMessage('exit');
+    Exit;
+ end;
+
+    filename :=OpenPictureDialog1.FileName;
+    Image1.Picture:=nil;
+    image1.Picture.LoadFromFile(filename);
+
+//    img1.Picture:=nil;
+
+
+  code:=FindGeneralParameterSQL.FieldByName('code').AsString;
+  str1:=FindGeneralParameterSQL.FieldByName('str_1').AsString +'x';
+
+
+    showMessage(code);
+    ksExecSQLVar(cn,'update general_parameter set str_1= :str1, anad_picture = null  where code= :code',[str1,code]);
+
+    FindGeneralParameterSQL.Refresh;
+
+//  ShowOneRecord(OptionGRP.ItemIndex);
+
+  with qr do
+  begin
+    close;
+      qr.ParamByName('Thecode').AsString :=Code;
+    open;
+    if qr.IsEmpty then
+      showMessage('empgy');
+    Edit;
+     BlobField := FieldByName('anad_picture');
+     BS := CreateBlobStream(BlobField,bmWrite);
+//    bs.Position:=0;
+
+    Image1.Picture.SaveToStream(BS);
+
+//    Bitmap.SavetoStream(BS);
+    Post;
+    close;
+    FindGeneralParameterSQL.Refresh;
+
+  end;
 
 end;
 
@@ -202,11 +375,11 @@ procedure TM_paramsFRM.ShowOneRecord(RecordIndex:Integer);
 Const
 //        LabelValuesArray:Array[0..4,0..8] of String = (
         LabelValuesArray:Array[0..4] of TStringArray = (
-                ['Τ00','Reports Title - First line ','Φ.Π.Α.','% Ελάχιστης Παρακολούθησης','','Image File as Invoice logo','','',''],
-                ['Τ01','','','','','','','',''],
-                ['Τ02','Unused','','','','','','',''],
-                ['T)3','','VAT Rate','','','','','',''],
-                ['Τ04','','','','','','','','']
+                ['T00','Reports Title - First line ','Φ.Π.Α.','% Ελάχιστης Παρακολούθησης','','Image File as Invoice logo','','',''],
+                ['T01','Test','','','','','','',''],
+                ['T02','Unused','','','','','','',''],
+                ['T03','','VAT Rate','','','','','',''],
+                ['T04','','','','','','','','']
                 );
 
 Var
@@ -228,5 +401,160 @@ begin
 
 end;
 
+
+procedure TM_paramsFRM.LoadPicture;
+begin
+
+end;
+{
+var
+ jp:TJpegimage;
+ img:TImage;
+ g:TGraphic;
+ qry:TksQuery;
+ blobStream: TBlobStream;
+  Jpg: TJpegImage;
+  fileName:String;
+  code:String;
+  aStream:TStream;
+//  surf:TBitmapSurface;
+
+begin
+
+  code:=FindGeneralParameterSQL.FieldByName('code').AsString;
+
+
+ if not OpenPictureDialog1.Execute then
+    Exit;
+    {
+    aStream:= TMemoryStream.Create();
+    filename :=OpenPictureDialog1.FileName;
+    image1.Picture.LoadFromFile(filename);
+
+    Surf := TBitmapSurface.Create;
+    Surf.Assign(Image1.Bitmap);
+    aStream := TMemoryStream.Create;
+    if not TBitmapCodecManager.SaveToStream(aStream, Surf, '.png') then
+      raise EBitmapSavingFailed.Create('No');
+    BlobStream.Position := 0;
+
+    doSQL.ParamByName('code').Value:=code;
+    doSQL.ParamByName('picture').LoadFromStream(aStream,ftBlob);
+    doSQL.ExecSQl;
+
+//    myquery2.ParamByName('imagem').LoadFromStream(BlobStream, ftBlob);
+//
+//    myquery2.ExecSQL;
+    Surf.Free;
+
+    {
+    Surf := TBitmapSurface.Create;
+    Surf.Assign(Image1.Bitmap);
+
+
+    surf.Picture.SaveToStream(aStream);
+    aStream.Position:=0;
+    }
+
+ {
+    doSQL.Transaction.StartTransaction;
+    doSQL.ParamByName('code').Value:=code;
+    doSQL.ParamByName('picture').LoadFromStream(aStream,ftBlob);
+    doSQL.ExecQuery;
+    doSQL.Transaction.Commit;
+    FindGeneralParameterSQL.Refresh;
+    FindGeneralParameterSQL.FieldByName('anad_picture').
+
+
+ }
+
+    {
+    blobStream := FindGeneralParameterSQL.CreateBlobStream(FindGeneralParameterSQL.FieldByName('ANAD_PICTURE'), bmWrite) as TblobStream;
+    image1.Picture.SaveToStream(blobStream);
+
+    If FindGeneralParameterSQL.State in [dsEdit ] then begin
+      FindGeneralParameterSQL.Post;
+      FindGeneralParameterSQL.Refresh;
+    end;
+
+  exit;
+
+
+    blobStream := Qry.CreateBlobStream(Qry.FieldByName('ANAD_PICTURE'), bmWrite) as TblobStream;
+    image1.Picture.SaveToStream(blobStream);
+
+    qry.parambyName('a').LoadFromStream();
+    qry.post;
+    //Jpg.Assign(Image1.Picture.Graphic);
+  finally
+    qry.free;
+  end;
+    }
+  {
+  procedure TForm1.Button1Click(Sender: TObject);
+var
+  BlobStream: tStream;
+  Surf: TBitmapSurface;
+begin
+  if Image1 <> nil then
+  begin
+    Surf := TBitmapSurface.Create;
+    Surf.Assign(Image1.Bitmap);
+    BlobStream := TMemoryStream.Create;
+    if not TBitmapCodecManager.SaveToStream(BlobStream, Surf, '.jpg') then
+      raise EBitmapSavingFailed.Create('No');
+    BlobStream.Position := 0;
+    myquery2.ParamByName('imagem').LoadFromStream(BlobStream, ftBlob);
+    myquery2.ExecSQL;
+    Surf.Free;
+  end;
+end;
+
+CODE: SELECT ALL
+procedure TForm1.Button2Click(Sender: TObject);
+var
+  BlobStream: TStream;
+  Jpg: TJPEGImage;
+begin
+  BlobStream := TMemoryStream.Create;
+  myquery1.GetBlob(myQuery1.FieldByName('imagem')).SaveToStream(BlobStream);
+  Blobstream.Position := 0;
+  Jpg := TJPEGImage.Create;
+  try
+    Jpg.LoadFromStream(BlobStream);
+    Image2.Picture.Assign(Jpg);
+  finally
+    Jpg.Free;
+  end;
+  BlobStream.Free;
+end;
+
+  }
+
+    // Assign other query parameters here
+
+//  Stream := Qry.CreateBlobStream(Qry.FieldByName('ANAD_PICTURE'), bmWrite) as TblobStream;
+  //Image1.Picture.LoadFromFile(OpenPictureDialog1.FileName);
+
+{
+  qry:=TksQuery.Create(cn,'select * from general_parameter where code= ''T00'' ' );
+  Jpg := TJpegImage.Create;
+  try
+    Jpg.Assign(Image1.Picture.Graphic);
+    // Assign other query parameters here
+  Stream := Qry.CreateBlobStream(Qry.FieldByName('ANAD_PICTURE'), bmWrite) as TblobStream;
+//    Stream := Qry.CreateBlobStream(Qry.FieldByName('BLOBVAL'), bmWrite);
+    try
+      Jpg.SaveToStream(Stream);
+      Qry.ExecSQL;
+    finally
+      Stream.Free;
+    end;
+  finally
+    Jpg.Free;
+    qry.free;
+  end;
+}
+//end;
 
 end.
