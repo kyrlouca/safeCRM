@@ -70,7 +70,6 @@ type
     DoSQL: TIBCSQL;
     OpenPictureDialog1: TOpenPictureDialog;
     Image1: TImage;
-    RzBitBtn3: TRzBitBtn;
     qr: TIBCQuery;
     CODE: TWideStringField;
     qrINT_1: TIntegerField;
@@ -85,8 +84,9 @@ type
     qrFLOAT_2: TFloatField;
     qrDESCRIPTION: TWideStringField;
     qrANAD_PICTURE: TBlobField;
-    RzBitBtn4: TRzBitBtn;
     ImgShow: TImage;
+    Label3: TLabel;
+    RzBitBtn4: TRzBitBtn;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure OptionGRPClick(Sender: TObject);
@@ -97,13 +97,14 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure LoadPicture;
     procedure Img1Click(Sender: TObject);
-    procedure RzBitBtn3Click(Sender: TObject);
     procedure RzBitBtn4Click(Sender: TObject);
     procedure FindGeneralParameterSQLAfterScroll(DataSet: TDataSet);
 
   private
     { Private declarations }
     cn:TIBCConnection;
+    procedure SelectPicture();
+
     procedure ShowOneRecord(RecordIndex:Integer);
   procedure ShowXLabels(LabelValueLine:TstringArray; LabelArray:TlabelArray;FieldsArray:TFieldArray);
   public
@@ -212,59 +213,12 @@ begin
 
 end;
 
-procedure TM_paramsFRM.RzBitBtn3Click(Sender: TObject);
-var
-  BlobField: TField;
-  BS: TStream;
-  fileName:String;
-  code:String;
+procedure TM_paramsFRM.RzBitBtn4Click(Sender: TObject);
 begin
-
-  code:=FindGeneralParameterSQL.FieldByName('code').AsString;
-  bs:=TMemoryStream.Create();
-
- if not OpenPictureDialog1.Execute then
-    Exit;
-
-    filename :=OpenPictureDialog1.FileName;
-    image1.Picture.LoadFromFile(filename);
-    Image1.Picture.SaveToStream(BS);
-    bs.Position:=0;
-
-    doSQL.ParamByName('code').Value:=Code;
-    doSQL.ParamByName('picture').LoadFromStream(bs,ftBlob);
-    doSQL.Execute;
-
-    bs.Free;
-    FindGeneralParameterSQL.Refresh;
-
-
-    exit;
-
-  with qr do
-  begin
-    close;
-
-    qr.ParamByName('Thecode').AsString :='T00';
-    open;
-    if qr.IsEmpty then
-      showMessage('empgy');
-    Edit;
-    BlobField := FieldByName('anad_picture');
-    BS := CreateBlobStream(BlobField,bmWrite);
-    Image1.Picture.SaveToStream(BS);
-
-//    Bitmap.SavetoStream(BS);
-    Post;
-    close;
-    FindGeneralParameterSQL.Refresh;
-
-  end;
-
+  SelectPIcture;
 end;
 
-
-procedure TM_paramsFRM.RzBitBtn4Click(Sender: TObject);
+procedure TM_paramsFRM.SelectPicture();
 var
   BlobField: TField;
   BS: TStream;
