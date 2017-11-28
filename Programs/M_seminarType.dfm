@@ -39,7 +39,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Width = 1044
       Height = 541
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = PictureTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 3
       TabOrder = 0
       OnChanging = SeminarPCChanging
       FixedDimension = 22
@@ -80,9 +80,9 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               'ANAD_APPROVED;CheckBox;Y;N'
               'TYPE_MONO_POLY;CheckBox;P;M')
             Selected.Strings = (
-              'SEMINAR_NAME'#9'28'#9#928#949#961#953#947#961#945#966#942#9#9
-              'ANAD_APPROVED'#9'6'#9#913#925#913#916#9#9
-              'TYPE_MONO_POLY'#9'1'#9#928#959#955#965#917#960#967#9'F'#9)
+              'SEMINAR_NAME'#9'28'#9#928#949#961#953#947#961#945#966#942
+              'ANAD_APPROVED'#9'6'#9#913#925#913#916
+              'TYPE_MONO_POLY'#9'1'#9#928#959#955#965#917#960#967)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -1443,10 +1443,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         OnShow = PictureTSShow
         Caption = #917#953#954#972#957#949#962
         OnExit = PictureTSExit
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object RzGroupBox2: TRzGroupBox
           Left = 15
           Top = 37
@@ -1461,7 +1457,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           ParentFont = False
           TabOrder = 0
           object Label19: TLabel
-            Left = 18
+            Left = 47
             Top = 27
             Width = 60
             Height = 14
@@ -1474,7 +1470,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             ParentFont = False
           end
           object Label21: TLabel
-            Left = 18
+            Left = 47
             Top = 55
             Width = 60
             Height = 14
@@ -1487,7 +1483,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             ParentFont = False
           end
           object Label23: TLabel
-            Left = 18
+            Left = 48
             Top = 173
             Width = 59
             Height = 14
@@ -1500,7 +1496,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             ParentFont = False
           end
           object Label26: TLabel
-            Left = 18
+            Left = 48
             Top = 198
             Width = 59
             Height = 14
@@ -1513,7 +1509,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             ParentFont = False
           end
           object Label27: TLabel
-            Left = 18
+            Left = 48
             Top = 229
             Width = 59
             Height = 14
@@ -1525,8 +1521,32 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Font.Style = []
             ParentFont = False
           end
+          object ImgShow: TImage
+            Left = 116
+            Top = 79
+            Width = 87
+            Height = 82
+            ParentCustomHint = False
+            Center = True
+            Proportional = True
+            Stretch = True
+          end
+          object Label25: TLabel
+            Left = 11
+            Top = 103
+            Width = 96
+            Height = 14
+            Alignment = taRightJustify
+            Caption = #917#953#954#972#957#945' '#931#949#956#953#957#945#961#943#959#965
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
           object wwDBEdit5: TwwDBEdit
-            Left = 84
+            Left = 116
             Top = 24
             Width = 375
             Height = 22
@@ -1538,7 +1558,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             WordWrap = False
           end
           object wwDBEdit6: TwwDBEdit
-            Left = 84
+            Left = 116
             Top = 52
             Width = 375
             Height = 22
@@ -1550,7 +1570,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             WordWrap = False
           end
           object wwDBEdit11: TwwDBEdit
-            Left = 83
+            Left = 116
             Top = 195
             Width = 375
             Height = 22
@@ -1562,7 +1582,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             WordWrap = False
           end
           object wwDBEdit12: TwwDBEdit
-            Left = 84
+            Left = 116
             Top = 167
             Width = 375
             Height = 22
@@ -1574,7 +1594,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             WordWrap = False
           end
           object wwDBEdit13: TwwDBEdit
-            Left = 84
+            Left = 116
             Top = 223
             Width = 375
             Height = 22
@@ -1584,6 +1604,81 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
+          end
+          object RzBitBtn2: TRzBitBtn
+            Left = 224
+            Top = 103
+            Width = 121
+            Height = 37
+            Caption = 'Select Picture'
+            DoubleBuffered = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentDoubleBuffered = False
+            ParentFont = False
+            TabOrder = 5
+            OnClick = RzBitBtn2Click
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000CAC8C77D7877
+              95918F938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F
+              8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D94908E85817EB7
+              B4B37E7979DFDCDBDFDDDCE2DFDFE3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0
+              E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E2E0
+              DFE0DDDCE4E2E18A858486807DDFDDDBC9C6C58C8986918D8A918D8A918D8A91
+              8D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A
+              918D8A918D8A8E8B87B7B4B0DDDCD99C99968B8683ECECECE1DFDECCCACACECC
+              CCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCE
+              CCCCCECCCCCECCCCCFCDCCD2CECFD0CDCDDCDAD9EBEBEAA5A29F918D88F6F6F5
+              EFEEEDF0EFEEF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0
+              EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF8F3F6D1DCCED0D9CCF1EEEEF6F4F4AF
+              ABA9999390FDFEFDF5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4
+              F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F8F6F7DBE6DB0693260EAB
+              388DB687FFFFFFB7B6B29F9A96FFFFFFFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFA
+              FAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFDFBFD
+              E2EFE432BF601ECA6C9AC79AFFFFFFBEBBBAA7A29FFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFBAE5C6A6DCB2F0F6F1FFFFFFC8C4C2C4C0BED5D3D1
+              E5E5E4E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4
+              E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E5E5E4EAE6E8EBE7E9E7E6E6E2E0E0B5
+              B0AEFFFFFFDDDBDAD8D6D4D8D6D4D8D6D4DAD7D6E0DCDDE1DDDEDAD7D6D8D6D4
+              D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6
+              D4D8D6D4D7D5D3FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
+              4C00004A00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFF0C530A41853C25882B0D4F0AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFF185E173D85388FE3A92BBF4C25882B1B5819FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFF185E173E893B8EE3AC28BF4E2DBE4F2FC04F
+              25882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C6D1E3F903E8EE4AE28C1522B
+              BE522EBF532FBE522FC25225882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1E7A24409842A0E7
+              BD28C4582BC0562EC1572EC0562DBF542EC2542DBD4D25882B1F5F1CFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF238A2D
+              38983FA2EFCA33D17024C4562CC45C2DC25B2DC25A2EC1572FC3582ECA5B2EC0
+              4E25882B1F621CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFF259131259131359C3F288B2E177518A9E7C525C45B2DC55E2DC45D2DC35C
+              2AB1491F5E191F631D20661F20631F20631FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1A8222A2E8C522C7602D
+              C7642DC6612DC7622BB64F216C21FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C8B
+              26A2E8C822C9652CCA6A2CC9672EC8682BB953227122FFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFF1D942AA2EAC921CB6C2BCC6F2CCB6E2CCB6B2BBD59237925FFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A2EACC21CD722BCE752BCD722BCD73
+              2BBF5E237925FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A3EDD51DD37C26
+              D37D26D17927D27A27C46425882BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF26AC
+              3C58CC785AC9795AC6775AC47558C0725BC07225882BFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            Margin = -1
           end
         end
       end
@@ -2348,5 +2443,9 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     OnStateChange = TableSRCStateChange
     Left = 216
     Top = 329
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Left = 416
+    Top = 199
   end
 end
