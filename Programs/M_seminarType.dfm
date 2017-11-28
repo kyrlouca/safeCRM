@@ -39,7 +39,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Width = 1044
       Height = 541
       Hint = ''
-      ActivePage = ReminderTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 2
+      TabIndex = 0
       TabOrder = 0
       OnChanging = SeminarPCChanging
       FixedDimension = 22
@@ -1334,7 +1334,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitWidth = 419
           end
           object wwDBGrid2: TwwDBGrid
             Left = 1
@@ -1437,6 +1436,154 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               TabOrder = 2
               UnboundDataType = wwDefault
             end
+          end
+        end
+      end
+      object PictureTS: TRzTabSheet
+        OnShow = PictureTSShow
+        Caption = #917#953#954#972#957#949#962
+        OnExit = PictureTSExit
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object RzGroupBox2: TRzGroupBox
+          Left = 15
+          Top = 37
+          Width = 562
+          Height = 292
+          Caption = #928#955#951#961#959#966#959#961#943#949#962
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          object Label19: TLabel
+            Left = 18
+            Top = 27
+            Width = 60
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#913'1'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label21: TLabel
+            Left = 18
+            Top = 55
+            Width = 60
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#913'2'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label23: TLabel
+            Left = 18
+            Top = 173
+            Width = 59
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#914'1'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label26: TLabel
+            Left = 18
+            Top = 198
+            Width = 59
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#914'2'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label27: TLabel
+            Left = 18
+            Top = 229
+            Width = 59
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#914'3'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object wwDBEdit5: TwwDBEdit
+            Left = 84
+            Top = 24
+            Width = 375
+            Height = 22
+            DataField = 'LINE_A1'
+            DataSource = SeminarPictureSRC
+            TabOrder = 0
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit6: TwwDBEdit
+            Left = 84
+            Top = 52
+            Width = 375
+            Height = 22
+            DataField = 'LINE_A2'
+            DataSource = SeminarPictureSRC
+            TabOrder = 1
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit11: TwwDBEdit
+            Left = 83
+            Top = 195
+            Width = 375
+            Height = 22
+            DataField = 'LINE_B2'
+            DataSource = SeminarPictureSRC
+            TabOrder = 2
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit12: TwwDBEdit
+            Left = 84
+            Top = 167
+            Width = 375
+            Height = 22
+            DataField = 'LINE_B1'
+            DataSource = SeminarPictureSRC
+            TabOrder = 3
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit13: TwwDBEdit
+            Left = 84
+            Top = 223
+            Width = 375
+            Height = 22
+            DataField = 'LINE_B3'
+            DataSource = SeminarPictureSRC
+            TabOrder = 4
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
           end
         end
       end
@@ -1723,15 +1870,15 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       'INSERT INTO SEMINAR_TYPE'
       
         '  (SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED, SEM' +
-        'INAR_CATEGORY, SEMINAR_CORP_TYPE, DURATION_HOURS, DURATION_DAYS,' +
-        ' COMMENTS, FEE_ESTIMATE, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD' +
-        ', FEE_ACTUAL, FEE_WITH_ANAD_SUB, TYPE_MONO_POLY)'
+        'INAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, FEE_ESTI' +
+        'MATE, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, FEE_ACTUAL, FEE_W' +
+        'ITH_ANAD_SUB, TYPE_MONO_POLY)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :SEMINAR_NAME, :SEMINAR_COST, :ANAD_APPROVED,' +
-        ' :SEMINAR_CATEGORY, :SEMINAR_CORP_TYPE, :DURATION_HOURS, :DURATI' +
-        'ON_DAYS, :COMMENTS, :FEE_ESTIMATE, :MAX_CAPACITY, :HAS_EXPIRY, :' +
-        'EXPIRY_PERIOD, :FEE_ACTUAL, :FEE_WITH_ANAD_SUB, :TYPE_MONO_POLY)')
+        ' :SEMINAR_CATEGORY, :DURATION_HOURS, :DURATION_DAYS, :COMMENTS, ' +
+        ':FEE_ESTIMATE, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, :FEE_' +
+        'ACTUAL, :FEE_WITH_ANAD_SUB, :TYPE_MONO_POLY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE'
       'WHERE'
@@ -1742,21 +1889,20 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       
         '  SERIAL_NUMBER = :SERIAL_NUMBER, SEMINAR_NAME = :SEMINAR_NAME, ' +
         'SEMINAR_COST = :SEMINAR_COST, ANAD_APPROVED = :ANAD_APPROVED, SE' +
-        'MINAR_CATEGORY = :SEMINAR_CATEGORY, SEMINAR_CORP_TYPE = :SEMINAR' +
-        '_CORP_TYPE, DURATION_HOURS = :DURATION_HOURS, DURATION_DAYS = :D' +
-        'URATION_DAYS, COMMENTS = :COMMENTS, FEE_ESTIMATE = :FEE_ESTIMATE' +
-        ', MAX_CAPACITY = :MAX_CAPACITY, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY' +
-        '_PERIOD = :EXPIRY_PERIOD, FEE_ACTUAL = :FEE_ACTUAL, FEE_WITH_ANA' +
-        'D_SUB = :FEE_WITH_ANAD_SUB, TYPE_MONO_POLY = :TYPE_MONO_POLY'
+        'MINAR_CATEGORY = :SEMINAR_CATEGORY, DURATION_HOURS = :DURATION_H' +
+        'OURS, DURATION_DAYS = :DURATION_DAYS, COMMENTS = :COMMENTS, FEE_' +
+        'ESTIMATE = :FEE_ESTIMATE, MAX_CAPACITY = :MAX_CAPACITY, HAS_EXPI' +
+        'RY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, FEE_ACTUAL = :' +
+        'FEE_ACTUAL, FEE_WITH_ANAD_SUB = :FEE_WITH_ANAD_SUB, TYPE_MONO_PO' +
+        'LY = :TYPE_MONO_POLY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED,' +
-        ' SEMINAR_CATEGORY, SEMINAR_CORP_TYPE, DURATION_HOURS, DURATION_D' +
-        'AYS, COMMENTS, FEE_ESTIMATE, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PE' +
-        'RIOD, FEE_ACTUAL, FEE_WITH_ANAD_SUB, TYPE_MONO_POLY FROM SEMINAR' +
-        '_TYPE'
+        ' SEMINAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, FEE_' +
+        'ESTIMATE, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, FEE_ACTUAL, F' +
+        'EE_WITH_ANAD_SUB, TYPE_MONO_POLY FROM SEMINAR_TYPE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1801,15 +1947,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       DisplayWidth = 1
       FieldName = 'TYPE_MONO_POLY'
       Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
-      DisplayLabel = #917#960#953#967#949#953#961#953#963#953#945#954#972
-      DisplayWidth = 13
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      Visible = False
       FixedChar = True
       Size = 1
     end
@@ -1935,7 +2072,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
     MasterSource = TableSRC
     Active = True
-    Left = 297
+    Left = 361
     Top = 13
     ParamData = <
       item
@@ -1972,8 +2109,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   object SeminarReminderSRC: TDataSource
     DataSet = SeminarReminderSQL
     OnStateChange = TableSRCStateChange
-    Left = 96
-    Top = 297
+    Left = 504
+    Top = 265
   end
   object SeminarReminderSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
@@ -2036,8 +2173,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
     MasterSource = TableSRC
     Active = True
-    Left = 281
-    Top = 301
+    Left = 513
+    Top = 341
     ParamData = <
       item
         DataType = ftInteger
@@ -2114,5 +2251,102 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       FixedChar = True
       Size = 1
     end
+  end
+  object SeminarPictureSQL: TIBCQuery
+    KeyFields = 'SERIAL_NUMBER'
+    KeyGenerator = 'GEN_SEMINAR_TYPE_PICTURES'
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR_TYPE_PICTURES'
+      
+        '  (SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LI' +
+        'NE_B2, LINE_B3, FK_SEMINAR_TYPE_SERIAL)'
+      'VALUES'
+      
+        '  (:SERIAL_NUMBER, :PICTURE_SEMINAR, :LINE_A1, :LINE_A2, :LINE_B' +
+        '1, :LINE_B2, :LINE_B3, :FK_SEMINAR_TYPE_SERIAL)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR_TYPE_PICTURES'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR_TYPE_PICTURES'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, PICTURE_SEMINAR = :PICTURE_SEM' +
+        'INAR, LINE_A1 = :LINE_A1, LINE_A2 = :LINE_A2, LINE_B1 = :LINE_B1' +
+        ', LINE_B2 = :LINE_B2, LINE_B3 = :LINE_B3, FK_SEMINAR_TYPE_SERIAL' +
+        ' = :FK_SEMINAR_TYPE_SERIAL'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1' +
+        ', LINE_B2, LINE_B3, FK_SEMINAR_TYPE_SERIAL FROM SEMINAR_TYPE_PIC' +
+        'TURES'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR_TYPE_PICTURES'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR_TYPE_PICTURES'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'SELECT STP.* '
+      'FROM '
+      'seminar_type_pictures STP'
+      'where stp.FK_SEMINAR_TYPE_SERIAL = :SeminarSerial')
+    Left = 121
+    Top = 341
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'SeminarSerial'
+        Value = nil
+      end>
+    object SeminarPictureSQLSERIAL_NUMBER: TIntegerField
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+    end
+    object SeminarPictureSQLPICTURE_SEMINAR: TBlobField
+      FieldName = 'PICTURE_SEMINAR'
+    end
+    object SeminarPictureSQLLINE_A1: TWideStringField
+      FieldName = 'LINE_A1'
+      Size = 500
+    end
+    object SeminarPictureSQLLINE_A2: TWideStringField
+      FieldName = 'LINE_A2'
+      Size = 500
+    end
+    object SeminarPictureSQLLINE_B1: TWideStringField
+      FieldName = 'LINE_B1'
+      Size = 500
+    end
+    object SeminarPictureSQLLINE_B2: TWideStringField
+      FieldName = 'LINE_B2'
+      Size = 500
+    end
+    object SeminarPictureSQLLINE_B3: TWideStringField
+      FieldName = 'LINE_B3'
+      Size = 500
+    end
+    object SeminarPictureSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_TYPE_SERIAL'
+      Required = True
+    end
+  end
+  object SeminarPictureSRC: TDataSource
+    DataSet = SeminarPictureSQL
+    OnStateChange = TableSRCStateChange
+    Left = 216
+    Top = 329
   end
 end

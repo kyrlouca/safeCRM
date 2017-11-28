@@ -21,7 +21,6 @@ type
     TableSQLSEMINAR_COST: TFloatField;
     TableSQLANAD_APPROVED: TWideStringField;
     TableSQLSEMINAR_CATEGORY: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
     TableSQLDURATION_HOURS: TIntegerField;
     TableSQLDURATION_DAYS: TIntegerField;
     TableSQLCOMMENTS: TWideStringField;
@@ -148,6 +147,28 @@ type
     Label20: TLabel;
     wwCheckBox3: TwwCheckBox;
     SeminarReminderSQLIS_HIGH: TWideStringField;
+    PictureTS: TRzTabSheet;
+    RzGroupBox2: TRzGroupBox;
+    Label19: TLabel;
+    Label21: TLabel;
+    Label23: TLabel;
+    wwDBEdit5: TwwDBEdit;
+    wwDBEdit6: TwwDBEdit;
+    Label26: TLabel;
+    Label27: TLabel;
+    wwDBEdit11: TwwDBEdit;
+    wwDBEdit12: TwwDBEdit;
+    wwDBEdit13: TwwDBEdit;
+    SeminarPictureSQL: TIBCQuery;
+    SeminarPictureSQLSERIAL_NUMBER: TIntegerField;
+    SeminarPictureSQLPICTURE_SEMINAR: TBlobField;
+    SeminarPictureSQLLINE_A1: TWideStringField;
+    SeminarPictureSQLLINE_A2: TWideStringField;
+    SeminarPictureSQLLINE_B1: TWideStringField;
+    SeminarPictureSQLLINE_B2: TWideStringField;
+    SeminarPictureSQLLINE_B3: TWideStringField;
+    SeminarPictureSRC: TDataSource;
+    SeminarPictureSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -164,6 +185,8 @@ type
     procedure wwNavButton5Click(Sender: TObject);
     procedure SeminarPCChanging(Sender: TObject; NewIndex: Integer;
       var AllowChange: Boolean);
+    procedure PictureTSShow(Sender: TObject);
+    procedure PictureTSExit(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -271,6 +294,8 @@ procedure TM_SeminarTypeFRM.FormClose(Sender: TObject;
 begin
 if TableSQL.State in [dsInsert, dsEdit] then
    TableSQL.Post;
+if SeminarPictureSQL.State in [dsInsert, dsEdit] then
+   SeminarPictureSQL.Post;
 end;
 
 procedure TM_SeminarTypeFRM.FormCreate(Sender: TObject);
@@ -278,23 +303,45 @@ begin
   cn:=U_databaseFRM.DataConnection;
 end;
 
-procedure TM_SeminarTypeFRM.Grid1TitleButtonClick(Sender: TObject;
-  AFieldName: string);
-  var
+procedure TM_SeminarTypeFRM.Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
+var
          sortInfoHawb:TSOrtInfo;
          Table:TIBCQuery;
-
-
-  begin
+begin
         Table:=TIbcQuery(Grid1.DataSource.DataSet);
         SortInfoHawb.Table:=Table;
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
-
 end;
 
 procedure TM_SeminarTypeFRM.Nav1InsertClick(Sender: TObject);
 begin
 REminderDescFLD.SetFocus;
+end;
+
+procedure TM_SeminarTypeFRM.PictureTSExit(Sender: TObject);
+begin
+  If SeminarPictureSQL.State in [dsEdit,dsInsert] then begin
+    SeminarPictureSQL.Post;
+  end;
+// AllowChange:= SeminarPictureSQL.FieldByName('serial_number').AsInteger > 0;
+
+end;
+
+procedure TM_SeminarTypeFRM.PictureTSShow(Sender: TObject);
+var
+  SeminarSerial:Integer;
+begin
+  SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+
+  SeminarPictureSQL.Close;
+  SeminarPictureSQL.ParamByName('SeminarSerial').AsInteger:=SeminarSerial;
+  SeminarPictureSQL.Open;
+  if SeminarPictureSQL.IsEmpty then begin
+    SeminarPictureSQL.Insert;
+    SeminarPictureSQL.FieldByName('FK_SEMINAR_TYPE_SERIAL').AsInteger:=SeminarSerial;
+    SeminarPictureSQL.Post;
+  end;
+
 end;
 
 procedure TM_SeminarTypeFRM.CanelBTNClick(Sender: TObject);

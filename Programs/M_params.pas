@@ -63,13 +63,9 @@ type
     FindGeneralParameterSQLDESCRIPTION: TWideStringField;
     RzBitBtn2: TRzBitBtn;
     RzBitBtn1: TRzBitBtn;
-    Label2: TLabel;
-    wwDBEdit1: TwwDBEdit;
     FindGeneralParameterSQLANAD_PICTURE: TBlobField;
-    Img1: TDBImage;
     DoSQL: TIBCSQL;
     OpenPictureDialog1: TOpenPictureDialog;
-    Image1: TImage;
     qr: TIBCQuery;
     CODE: TWideStringField;
     qrINT_1: TIntegerField;
@@ -130,14 +126,13 @@ var
 qr:TksQuery;
 name:String;
 begin
-    qr:=TksQuery.Create(cn,'select * from person');
+  qr:=TksQuery.Create(cn,'select * from person');
   try
     qr.Open;
     name:=qr.FieldByName('first_name').AsString;
     showMessage('name'+name);
   finally
     qr.Free;
-
   end;
 
 end;
@@ -150,8 +145,7 @@ var
 begin
   code:=FindGeneralParameterSQL.FieldByName('code').AsString;
 
-  with qr do
-  begin
+  with qr do begin
     close;
     qr.ParamByName('Thecode').AsString :=Code;
     open;
@@ -163,7 +157,6 @@ begin
     bs.Position:=0;
     ImgShow.Picture.LoadFromStream(bs);
     close;
-//    FindGeneralParameterSQL.Refresh;
 
   end;
 
@@ -226,6 +219,7 @@ var
   code:String;
   str1:String;
   zz:TksQuery;
+  imgTemp:TImage;
 begin
 
 //code:= 'Ô00'
@@ -235,43 +229,30 @@ begin
     Exit;
  end;
 
+  imgTemp:=Timage.Create(M_paramsFRM);
+   try
     filename :=OpenPictureDialog1.FileName;
-    Image1.Picture:=nil;
-    image1.Picture.LoadFromFile(filename);
+    ImgTemp.Picture:=nil;
+    imgTemp.Picture.LoadFromFile(filename);
+//    code:=FindGeneralParameterSQL.FieldByName('code').AsString;
 
-//    img1.Picture:=nil;
-
-
-  code:=FindGeneralParameterSQL.FieldByName('code').AsString;
-  str1:=FindGeneralParameterSQL.FieldByName('str_1').AsString +'x';
-
-
-    showMessage(code);
-    ksExecSQLVar(cn,'update general_parameter set str_1= :str1, anad_picture = null  where code= :code',[str1,code]);
-
-    FindGeneralParameterSQL.Refresh;
-
-//  ShowOneRecord(OptionGRP.ItemIndex);
-
-  with qr do
-  begin
-    close;
+    with qr do  begin
+      close;
       qr.ParamByName('Thecode').AsString :=Code;
-    open;
-    if qr.IsEmpty then
-      showMessage('empgy');
-    Edit;
-     BlobField := FieldByName('anad_picture');
-     BS := CreateBlobStream(BlobField,bmWrite);
+      open;
+      if qr.IsEmpty then
+        showMessage('empgy');
+      Edit;
+      BlobField := FieldByName('anad_picture');
+      BS := CreateBlobStream(BlobField,bmWrite);
 //    bs.Position:=0;
-
-    Image1.Picture.SaveToStream(BS);
-
-//    Bitmap.SavetoStream(BS);
-    Post;
-    close;
-    FindGeneralParameterSQL.Refresh;
-
+      ImgTEmp.Picture.SaveToStream(BS);
+      Post;
+      close;
+      FindGeneralParameterSQL.Refresh;
+    end;
+  finally
+    imgTEmp.Free;
   end;
 
 end;

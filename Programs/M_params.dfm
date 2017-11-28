@@ -34,7 +34,6 @@ object M_paramsFRM: TM_paramsFRM
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitTop = 485
     object Panel1: TPanel
       Left = 801
       Top = 2
@@ -303,16 +302,6 @@ object M_paramsFRM: TM_paramsFRM
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
-    ExplicitLeft = 1
-    ExplicitTop = 55
-    object Image1: TImage
-      Left = 497
-      Top = 256
-      Width = 105
-      Height = 105
-      Proportional = True
-      Stretch = True
-    end
     object OptionGRP: TRzRadioGroup
       Left = 534
       Top = 26
@@ -327,8 +316,8 @@ object M_paramsFRM: TM_paramsFRM
       OnClick = OptionGRPClick
     end
     object GroupBox1: TGroupBox
-      Left = -29
-      Top = 5
+      Left = 8
+      Top = 26
       Width = 504
       Height = 444
       Caption = 'Details'
@@ -430,8 +419,8 @@ object M_paramsFRM: TM_paramsFRM
         ParentFont = False
       end
       object PS4LBL: TLabel
-        Left = 6
-        Top = 197
+        Left = 8
+        Top = 193
         Width = 174
         Height = 17
         Alignment = taRightJustify
@@ -544,27 +533,13 @@ object M_paramsFRM: TM_paramsFRM
         Height = 14
         Caption = 'Copy text'
       end
-      object Label2: TLabel
-        Left = 6
-        Top = 276
-        Width = 174
-        Height = 18
-        Alignment = taRightJustify
-        AutoSize = False
-        Caption = 'Parameter String Value'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
       object ImgShow: TImage
         Left = 186
         Top = 303
         Width = 87
         Height = 82
         ParentCustomHint = False
+        Center = True
         Proportional = True
         Stretch = True
       end
@@ -697,7 +672,7 @@ object M_paramsFRM: TM_paramsFRM
       end
       object VS3FLD: TwwDBEdit
         Left = 188
-        Top = 222
+        Top = 168
         Width = 296
         Height = 21
         BorderStyle = bsNone
@@ -743,7 +718,7 @@ object M_paramsFRM: TM_paramsFRM
       end
       object VS5FLD: TwwDBEdit
         Left = 188
-        Top = 168
+        Top = 222
         Width = 296
         Height = 21
         BorderStyle = bsNone
@@ -794,29 +769,6 @@ object M_paramsFRM: TM_paramsFRM
         Height = 22
         TabOrder = 9
       end
-      object wwDBEdit1: TwwDBEdit
-        Left = 188
-        Top = 276
-        Width = 296
-        Height = 21
-        BorderStyle = bsNone
-        DataField = 'ANAD_PICTURE'
-        DataSource = FindParamSRC
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Frame.Enabled = True
-        Frame.NonFocusBorders = [efLeftBorder, efTopBorder, efRightBorder, efBottomBorder]
-        Frame.FocusStyle = efsFrameSingle
-        Frame.NonFocusStyle = efsFrameSunken
-        ParentFont = False
-        TabOrder = 10
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
       object RzBitBtn4: TRzBitBtn
         Left = 304
         Top = 327
@@ -831,7 +783,7 @@ object M_paramsFRM: TM_paramsFRM
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        TabOrder = 11
+        TabOrder = 10
         OnClick = RzBitBtn4Click
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
@@ -892,18 +844,6 @@ object M_paramsFRM: TM_paramsFRM
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
         Margin = -1
       end
-    end
-    object Img1: TDBImage
-      Left = 621
-      Top = 256
-      Width = 105
-      Height = 105
-      DataField = 'ANAD_PICTURE'
-      DataSource = FindParamSRC
-      Proportional = True
-      Stretch = True
-      TabOrder = 2
-      OnClick = Img1Click
     end
   end
   object ReadOnlyTrans: TIBCTransaction
