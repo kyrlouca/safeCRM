@@ -10,7 +10,8 @@ uses
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   System.ImageList,System.DateUtils, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
   Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
-  vcl.wwradiogroup, RzRadChk, RzDBChk,G_debugUnit,codeSiteLogging,CodeSiteMessage;
+  vcl.wwradiogroup, RzRadChk, RzDBChk,G_debugUnit,codeSiteLogging,CodeSiteMessage,
+  Vcl.ExtDlgs;
 type
 //Function TV_SeminarFRM.FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   TactionDateRec= record
@@ -251,6 +252,32 @@ type
     wwDBEdit2: TwwDBEdit;
     RzPanel9: TRzPanel;
     RzDBLabel2: TRzDBLabel;
+    PictureTS: TRzTabSheet;
+    RzGroupBox4: TRzGroupBox;
+    Label4: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    ImgShow: TImage;
+    Label28: TLabel;
+    wwDBEdit7: TwwDBEdit;
+    wwDBEdit8: TwwDBEdit;
+    wwDBEdit9: TwwDBEdit;
+    wwDBEdit10: TwwDBEdit;
+    wwDBEdit11: TwwDBEdit;
+    RzBitBtn2: TRzBitBtn;
+    SeminarPictureSQL: TIBCQuery;
+    SeminarPictureSQLSERIAL_NUMBER: TIntegerField;
+    SeminarPictureSQLPICTURE_SEMINAR: TBlobField;
+    SeminarPictureSQLLINE_A1: TWideStringField;
+    SeminarPictureSQLLINE_A2: TWideStringField;
+    SeminarPictureSQLLINE_B1: TWideStringField;
+    SeminarPictureSQLLINE_B2: TWideStringField;
+    SeminarPictureSQLLINE_B3: TWideStringField;
+    SeminarPictureSRC: TDataSource;
+    SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField;
+    OpenPictureDialog1: TOpenPictureDialog;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -288,10 +315,16 @@ type
     procedure wwNavButton19Click(Sender: TObject);
     procedure MonoRGPChange(Sender: TObject);
     procedure SeminarReminderSQLNewRecord(DataSet: TDataSet);
+    procedure PictureTSShow(Sender: TObject);
+    procedure RzBitBtn2Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
 //  Function FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
+  procedure ShowPicture();
+  procedure SelectPicture();
+
+
   Function FindActionDate(ActionDateRec:TActionDateRec):Tdate;
 
 
@@ -349,6 +382,24 @@ end;
 procedure TV_SeminarFRM.ReminderTSShow(Sender: TObject);
 begin
 ksOpenTables([SeminarReminderSQL]);
+
+end;
+
+procedure TV_SeminarFRM.PictureTSShow(Sender: TObject);
+var
+  SeminarSerial:Integer;
+begin
+  SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
+
+  SeminarPictureSQL.Close;
+  SeminarPictureSQL.ParamByName('SeminarSerial').AsInteger:=SeminarSerial;
+  SeminarPictureSQL.Open;
+  if SeminarPictureSQL.IsEmpty then begin
+    SeminarPictureSQL.Insert;
+    SeminarPictureSQL.FieldByName('FK_SEMINAR_SERIAL').AsInteger:=SeminarSerial;
+    SeminarPictureSQL.Post;
+  end;
+  SHowPicture();
 
 end;
 
@@ -486,7 +537,7 @@ begin
 
  //NOw the subjects (may be a different functions)
  ksExecSQLVar(cn,'delete from seminar_subject where fk_seminar_serial= :semSerial',[SeminarSerial]);
- qr:=TksQuery.Create(cn,'select * from seminar_type_subject where FK_SEMINAR_TYPE_SERIAL= :serial');
+ qr:=TksQuery.Create(cn,'select * from seminar_type_subject where FK_SEMINAR_SERIAL= :serial');
  try
    qr.ParamByName('serial').Value:=TypeSerial;
    qr.Open;
@@ -714,6 +765,11 @@ begin
   close;
 end;
 
+procedure TV_SeminarFRM.RzBitBtn2Click(Sender: TObject);
+begin
+SelectPicture();
+end;
+
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
 begin
   ksfillComboF1(cn,SeminarTYpeFLD,'SEMINAR_TYPE','SERIAL_NUMBER','SEMINAR_NAME','SEMINAR_NAME');
@@ -911,6 +967,93 @@ begin
     result:=EncodeDate(1900,01,01);
   end;
 
+
+end;
+
+
+procedure TV_SeminarFRM.ShowPicture();
+ var
+  code:string;
+  BlobFIeld:TField;
+  BS:TStream;
+  qr:TksQuery;
+//  imgTemp:TImage;
+  SeminarSerial:Integer;
+
+begin
+ SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
+ if seminarSerial<1 then
+    exit;
+
+  qr:= TksQuery.Create(cn,'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial');
+   try
+      with qr do begin
+      close;
+      qr.ParamByName('seminarSerial').Value:=seminarSerial;
+      open;
+      if qr.IsEmpty then
+        exit;
+      BlobField := FieldByName('picture_seminar');
+      BS := CreateBlobStream(BlobField,bmRead);
+      bs.Position:=0;
+      ImgShow.Picture.LoadFromStream(bs);
+      close;
+      end;
+   finally
+      qr.Free;
+//      imgTemp.Free;
+   end;
+
+end;
+
+
+procedure TV_SeminarFRM.SelectPicture();
+var
+  BlobField: TField;
+  BS: TStream;
+  fileName:String;
+  code:String;
+  str1:String;
+  qr:TksQuery;
+  imgTemp:TImage;
+  SeminarSerial:Integer;
+Begin
+
+//code:= 'Ô00'
+ SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
+ if seminarSerial<1 then
+  exit;
+ if not OpenPictureDialog1.Execute then     begin
+  showMessage('exit');
+    Exit;
+ end;
+
+  imgTemp:=Timage.Create(self);
+  qr:= TksQuery.Create(cn,'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial');
+   try
+    filename :=OpenPictureDialog1.FileName;
+    ImgTemp.Picture:=nil;
+    imgTemp.Picture.LoadFromFile(filename);
+
+    with qr do  begin
+      close;
+      qr.ParamByName('seminarSerial').Value:=seminarSerial;
+      open;
+      if qr.IsEmpty then
+       exit;
+      Edit;
+      BlobField := FieldByName('picture_seminar');
+      BS := CreateBlobStream(BlobField,bmWrite);
+      //bs.Position:=0;
+      ImgTEmp.Picture.SaveToStream(BS);
+      Post;
+      close;
+      SeminarPictureSQL.Refresh;
+    end;
+  finally
+    imgTEmp.Free;
+    qr.Free;
+  end;
 
 end;
 

@@ -31,7 +31,6 @@ object V_SeminarFRM: TV_SeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitTop = -6
     object TitleLbl: TRzPanel
       AlignWithMargins = True
       Left = 4
@@ -46,7 +45,6 @@ object V_SeminarFRM: TV_SeminarFRM
       TabOrder = 0
       Transparent = True
       WordWrap = False
-      ExplicitWidth = 1028
       object RzDBLabel2: TRzDBLabel
         Left = 769
         Top = 0
@@ -70,7 +68,6 @@ object V_SeminarFRM: TV_SeminarFRM
         BorderOuter = fsNone
         Caption = 'Active'
         TabOrder = 0
-        ExplicitLeft = 8
       end
     end
   end
@@ -81,7 +78,6 @@ object V_SeminarFRM: TV_SeminarFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 1036
   end
   object Panel3x: TRzPanel
     Left = 0
@@ -91,14 +87,13 @@ object V_SeminarFRM: TV_SeminarFRM
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitWidth = 1036
     object PageControlPC: TRzPageControl
       Left = 2
       Top = 2
       Width = 934
       Height = 619
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = PictureTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -107,15 +102,13 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 5
       TabOrder = 0
       OnChanging = PageControlPCChanging
-      ExplicitWidth = 1032
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
-        ExplicitWidth = 1028
         object FirstGRP: TGroupBox
           Left = 28
           Top = 23
@@ -872,7 +865,6 @@ object V_SeminarFRM: TV_SeminarFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 1028
         object RzPanel5: TRzPanel
           Left = 0
           Top = 0
@@ -881,7 +873,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 1028
         end
         object GroupBox1: TGroupBox
           Left = 0
@@ -897,7 +888,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitWidth = 450
           object RzPanel6: TRzPanel
             Left = 2
             Top = 16
@@ -906,7 +896,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitWidth = 446
             object wwDBNavigator1: TwwDBNavigator
               Left = 0
               Top = 0
@@ -1059,7 +1048,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitWidth = 446
           end
         end
         object RzPanel4: TRzPanel
@@ -1070,7 +1058,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitLeft = 450
           object RzPanel7: TRzPanel
             Left = 0
             Top = 0
@@ -1281,7 +1268,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object StudentsTS: TRzTabSheet
         OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
-        ExplicitWidth = 1028
         object RzPanel2: TRzPanel
           Left = 0
           Top = 0
@@ -1290,7 +1276,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 1028
         end
         object RzGroupBox1: TRzGroupBox
           Left = 0
@@ -1582,7 +1567,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object CostTS: TRzTabSheet
         OnShow = CostTSShow
         Caption = #922#972#963#964#959#962
-        ExplicitWidth = 1028
         object RzPanel10: TRzPanel
           Left = 0
           Top = 0
@@ -1591,7 +1575,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 1028
         end
         object GroupBox3: TGroupBox
           Left = 0
@@ -1803,7 +1786,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        ExplicitWidth = 1028
         object GroupBox4: TGroupBox
           Left = 0
           Top = 25
@@ -1820,7 +1802,6 @@ object V_SeminarFRM: TV_SeminarFRM
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          ExplicitWidth = 1028
           object RzPanel12: TRzPanel
             Left = 1
             Top = 15
@@ -1829,7 +1810,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitWidth = 1026
           end
           object wwDBGrid3: TwwDBGrid
             Left = 1
@@ -2274,7 +2254,252 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 3
-          ExplicitWidth = 1028
+        end
+      end
+      object PictureTS: TRzTabSheet
+        OnShow = PictureTSShow
+        Caption = #917#953#954#972#957#949#962
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object RzGroupBox4: TRzGroupBox
+          Left = 15
+          Top = 37
+          Width = 562
+          Height = 292
+          Caption = #928#955#951#961#959#966#959#961#943#949#962
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          object Label4: TLabel
+            Left = 47
+            Top = 27
+            Width = 60
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#913'1'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label24: TLabel
+            Left = 47
+            Top = 55
+            Width = 60
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#913'2'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label25: TLabel
+            Left = 48
+            Top = 173
+            Width = 59
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#914'1'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label26: TLabel
+            Left = 48
+            Top = 198
+            Width = 59
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#914'2'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label27: TLabel
+            Left = 48
+            Top = 229
+            Width = 59
+            Height = 14
+            Caption = #915#961#945#956#956#942' '#914'3'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object ImgShow: TImage
+            Left = 116
+            Top = 79
+            Width = 87
+            Height = 82
+            ParentCustomHint = False
+            Center = True
+            Proportional = True
+            Stretch = True
+          end
+          object Label28: TLabel
+            Left = 11
+            Top = 103
+            Width = 96
+            Height = 14
+            Alignment = taRightJustify
+            Caption = #917#953#954#972#957#945' '#931#949#956#953#957#945#961#943#959#965
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object wwDBEdit7: TwwDBEdit
+            Left = 113
+            Top = 24
+            Width = 375
+            Height = 22
+            DataField = 'LINE_A1'
+            DataSource = SeminarPictureSRC
+            TabOrder = 0
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit8: TwwDBEdit
+            Left = 116
+            Top = 52
+            Width = 375
+            Height = 22
+            DataField = 'LINE_A2'
+            DataSource = SeminarPictureSRC
+            TabOrder = 1
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit9: TwwDBEdit
+            Left = 116
+            Top = 195
+            Width = 375
+            Height = 22
+            DataField = 'LINE_B2'
+            DataSource = SeminarPictureSRC
+            TabOrder = 2
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit10: TwwDBEdit
+            Left = 116
+            Top = 167
+            Width = 375
+            Height = 22
+            DataField = 'LINE_B1'
+            DataSource = SeminarPictureSRC
+            TabOrder = 3
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit11: TwwDBEdit
+            Left = 116
+            Top = 223
+            Width = 375
+            Height = 22
+            DataField = 'LINE_B3'
+            DataSource = SeminarPictureSRC
+            TabOrder = 4
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object RzBitBtn2: TRzBitBtn
+            Left = 224
+            Top = 103
+            Width = 121
+            Height = 37
+            Caption = 'Select Picture'
+            DoubleBuffered = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentDoubleBuffered = False
+            ParentFont = False
+            TabOrder = 5
+            OnClick = RzBitBtn2Click
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000CAC8C77D7877
+              95918F938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F
+              8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D94908E85817EB7
+              B4B37E7979DFDCDBDFDDDCE2DFDFE3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0
+              E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E2E0
+              DFE0DDDCE4E2E18A858486807DDFDDDBC9C6C58C8986918D8A918D8A918D8A91
+              8D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A
+              918D8A918D8A8E8B87B7B4B0DDDCD99C99968B8683ECECECE1DFDECCCACACECC
+              CCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCE
+              CCCCCECCCCCECCCCCFCDCCD2CECFD0CDCDDCDAD9EBEBEAA5A29F918D88F6F6F5
+              EFEEEDF0EFEEF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0
+              EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF8F3F6D1DCCED0D9CCF1EEEEF6F4F4AF
+              ABA9999390FDFEFDF5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4
+              F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F8F6F7DBE6DB0693260EAB
+              388DB687FFFFFFB7B6B29F9A96FFFFFFFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFA
+              FAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFDFBFD
+              E2EFE432BF601ECA6C9AC79AFFFFFFBEBBBAA7A29FFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFBAE5C6A6DCB2F0F6F1FFFFFFC8C4C2C4C0BED5D3D1
+              E5E5E4E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4
+              E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E5E5E4EAE6E8EBE7E9E7E6E6E2E0E0B5
+              B0AEFFFFFFDDDBDAD8D6D4D8D6D4D8D6D4DAD7D6E0DCDDE1DDDEDAD7D6D8D6D4
+              D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6
+              D4D8D6D4D7D5D3FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
+              4C00004A00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFF0C530A41853C25882B0D4F0AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFF185E173D85388FE3A92BBF4C25882B1B5819FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFF185E173E893B8EE3AC28BF4E2DBE4F2FC04F
+              25882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C6D1E3F903E8EE4AE28C1522B
+              BE522EBF532FBE522FC25225882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1E7A24409842A0E7
+              BD28C4582BC0562EC1572EC0562DBF542EC2542DBD4D25882B1F5F1CFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF238A2D
+              38983FA2EFCA33D17024C4562CC45C2DC25B2DC25A2EC1572FC3582ECA5B2EC0
+              4E25882B1F621CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFF259131259131359C3F288B2E177518A9E7C525C45B2DC55E2DC45D2DC35C
+              2AB1491F5E191F631D20661F20631F20631FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1A8222A2E8C522C7602D
+              C7642DC6612DC7622BB64F216C21FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C8B
+              26A2E8C822C9652CCA6A2CC9672EC8682BB953227122FFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFF1D942AA2EAC921CB6C2BCC6F2CCB6E2CCB6B2BBD59237925FFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A2EACC21CD722BCE752BCD722BCD73
+              2BBF5E237925FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A3EDD51DD37C26
+              D37D26D17927D27A27C46425882BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF26AC
+              3C58CC785AC9795AC6775AC47558C0725BC07225882BFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            Margin = -1
+          end
         end
       end
     end
@@ -2286,7 +2511,6 @@ object V_SeminarFRM: TV_SeminarFRM
       Align = alBottom
       BorderOuter = fsFlatRounded
       TabOrder = 1
-      ExplicitWidth = 1032
       object RzPanel1: TRzPanel
         Left = 832
         Top = 2
@@ -2295,7 +2519,6 @@ object V_SeminarFRM: TV_SeminarFRM
         Align = alRight
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitLeft = 930
         object RzBitBtn1: TRzBitBtn
           Left = 6
           Top = 3
@@ -2723,7 +2946,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 226
     Top = 45
     Bitmap = {
-      494C010110008800800210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800840210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4153,5 +4376,103 @@ object V_SeminarFRM: TV_SeminarFRM
       Required = True
       Visible = False
     end
+  end
+  object SeminarPictureSQL: TIBCQuery
+    KeyFields = 'SERIAL_NUMBER'
+    KeyGenerator = 'GEN_SEMINAR_TYPE_PICTURES'
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR_PICTURES'
+      
+        '  (SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LI' +
+        'NE_B2, LINE_B3, FK_SEMINAR_SERIAL)'
+      'VALUES'
+      
+        '  (:SERIAL_NUMBER, :PICTURE_SEMINAR, :LINE_A1, :LINE_A2, :LINE_B' +
+        '1, :LINE_B2, :LINE_B3, :FK_SEMINAR_SERIAL)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR_PICTURES'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR_PICTURES'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, PICTURE_SEMINAR = :PICTURE_SEM' +
+        'INAR, LINE_A1 = :LINE_A1, LINE_A2 = :LINE_A2, LINE_B1 = :LINE_B1' +
+        ', LINE_B2 = :LINE_B2, LINE_B3 = :LINE_B3, FK_SEMINAR_SERIAL = :F' +
+        'K_SEMINAR_SERIAL'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1' +
+        ', LINE_B2, LINE_B3, FK_SEMINAR_SERIAL FROM SEMINAR_PICTURES'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR_PICTURES'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR_PICTURES'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'SELECT STP.* '
+      'FROM '
+      'seminar_pictures STP'
+      'where stp.FK_SEMINAR_SERIAL = :SeminarSerial')
+    Left = 465
+    Top = 269
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'SeminarSerial'
+        Value = nil
+      end>
+    object SeminarPictureSQLSERIAL_NUMBER: TIntegerField
+      FieldName = 'SERIAL_NUMBER'
+    end
+    object SeminarPictureSQLPICTURE_SEMINAR: TBlobField
+      FieldName = 'PICTURE_SEMINAR'
+    end
+    object SeminarPictureSQLLINE_A1: TWideStringField
+      FieldName = 'LINE_A1'
+      Size = 500
+    end
+    object SeminarPictureSQLLINE_A2: TWideStringField
+      FieldName = 'LINE_A2'
+      Size = 500
+    end
+    object SeminarPictureSQLLINE_B1: TWideStringField
+      FieldName = 'LINE_B1'
+      Size = 500
+    end
+    object SeminarPictureSQLLINE_B2: TWideStringField
+      FieldName = 'LINE_B2'
+      Size = 500
+    end
+    object SeminarPictureSQLLINE_B3: TWideStringField
+      FieldName = 'LINE_B3'
+      Size = 500
+    end
+    object SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_SERIAL'
+      Required = True
+    end
+  end
+  object SeminarPictureSRC: TDataSource
+    DataSet = SeminarPictureSQL
+    Left = 560
+    Top = 257
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Left = 416
+    Top = 199
   end
 end

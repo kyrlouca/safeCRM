@@ -39,7 +39,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Width = 1044
       Height = 541
       Hint = ''
-      ActivePage = PictureTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 3
+      TabIndex = 0
       TabOrder = 0
       OnChanging = SeminarPCChanging
       FixedDimension = 22
@@ -2268,8 +2268,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
     MasterSource = TableSRC
     Active = True
-    Left = 513
-    Top = 341
+    Left = 241
+    Top = 285
     ParamData = <
       item
         DataType = ftInteger
