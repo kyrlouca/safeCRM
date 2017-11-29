@@ -83,9 +83,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               'ANAD_APPROVED;CheckBox;Y;N'
               'TYPE_MONO_POLY;CheckBox;P;M')
             Selected.Strings = (
+              'SERIAL_NUMBER'#9'4'#9'A/A'
               'SEMINAR_NAME'#9'28'#9#928#949#961#953#947#961#945#966#942
               'ANAD_APPROVED'#9'6'#9#913#925#913#916
-              'TYPE_MONO_POLY'#9'1'#9#928#959#955#965#917#960#967)
+              'TYPE_MONO_POLY'#9'9'#9#928#959#955#965#917#960#967)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -1689,12 +1690,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Margin = -1
           end
         end
-        object MonoRGP: TwwRadioGroup
+        object LanguageRGP: TwwRadioGroup
           Left = 23
           Top = 27
           Width = 162
           Height = 62
           DisableThemes = False
+          ItemIndex = 0
           Caption = #915#955#974#963#963#945
           DataField = 'TYPE_MONO_POLY'
           Items.Strings = (
@@ -1702,12 +1704,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             'English')
           TabOrder = 1
           Values.Strings = (
-            'M'
-            'P')
+            'G'
+            'E')
+          OnChange = LanguageRGPChange
         end
       end
     end
-    object RzPanel7: TRzPanel
+    object TitlePNL: TRzPanel
       AlignWithMargins = True
       Left = 3
       Top = 3
@@ -2047,9 +2050,15 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       'FROM'
       'SEMINAR_type ORDER BY SEMINAR_NAME')
     Active = True
+    AfterScroll = TableSQLAfterScroll
     OnNewRecord = TableSQLNewRecord
     Left = 49
     Top = 5
+    object TableSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 4
+      FieldName = 'SERIAL_NUMBER'
+    end
     object TableSQLSEMINAR_NAME: TWideStringField
       DisplayLabel = #928#949#961#953#947#961#945#966#942
       DisplayWidth = 28
@@ -2067,15 +2076,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     end
     object TableSQLTYPE_MONO_POLY: TWideStringField
       DisplayLabel = #928#959#955#965#917#960#967
-      DisplayWidth = 1
+      DisplayWidth = 9
       FieldName = 'TYPE_MONO_POLY'
       Required = True
       FixedChar = True
       Size = 1
-    end
-    object TableSQLSERIAL_NUMBER: TIntegerField
-      FieldName = 'SERIAL_NUMBER'
-      Visible = False
     end
     object TableSQLSEMINAR_COST: TFloatField
       DisplayLabel = #922#972#963#964#959#962
@@ -2381,12 +2386,14 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR_TYPE_PICTURES'
       
-        '  (SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LI' +
-        'NE_B2, LINE_B3, FK_SEMINAR_TYPE_SERIAL)'
+        '  (SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_ENGL' +
+        'ISH, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B' +
+        '3)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :PICTURE_SEMINAR, :LINE_A1, :LINE_A2, :LINE_B' +
-        '1, :LINE_B2, :LINE_B3, :FK_SEMINAR_TYPE_SERIAL)')
+        '  (:SERIAL_NUMBER, :FK_SEMINAR_TYPE_SERIAL, :LANGUAGE_GREEK_OR_E' +
+        'NGLISH, :PICTURE_SEMINAR, :LINE_A1, :LINE_A2, :LINE_B1, :LINE_B2' +
+        ', :LINE_B3)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE_PICTURES'
       'WHERE'
@@ -2395,17 +2402,18 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       'UPDATE SEMINAR_TYPE_PICTURES'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, PICTURE_SEMINAR = :PICTURE_SEM' +
-        'INAR, LINE_A1 = :LINE_A1, LINE_A2 = :LINE_A2, LINE_B1 = :LINE_B1' +
-        ', LINE_B2 = :LINE_B2, LINE_B3 = :LINE_B3, FK_SEMINAR_TYPE_SERIAL' +
-        ' = :FK_SEMINAR_TYPE_SERIAL'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL = :FK_S' +
+        'EMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_ENGLISH = :LANGUAGE_GREEK_' +
+        'OR_ENGLISH, PICTURE_SEMINAR = :PICTURE_SEMINAR, LINE_A1 = :LINE_' +
+        'A1, LINE_A2 = :LINE_A2, LINE_B1 = :LINE_B1, LINE_B2 = :LINE_B2, ' +
+        'LINE_B3 = :LINE_B3'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1' +
-        ', LINE_B2, LINE_B3, FK_SEMINAR_TYPE_SERIAL FROM SEMINAR_TYPE_PIC' +
-        'TURES'
+        'SELECT SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_' +
+        'ENGLISH, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LI' +
+        'NE_B3 FROM SEMINAR_TYPE_PICTURES'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2425,13 +2433,20 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       'SELECT STP.* '
       'FROM '
       'seminar_type_pictures STP'
-      'where stp.FK_SEMINAR_TYPE_SERIAL = :SeminarSerial')
+      
+        'where stp.FK_SEMINAR_TYPE_SERIAL = :SeminarSerial and stp.LANGUA' +
+        'GE_GREEK_OR_ENGLISH = :language')
     Left = 121
     Top = 341
     ParamData = <
       item
         DataType = ftUnknown
         Name = 'SeminarSerial'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'language'
         Value = nil
       end>
     object SeminarPictureSQLSERIAL_NUMBER: TIntegerField
@@ -2464,6 +2479,12 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     object SeminarPictureSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_TYPE_SERIAL'
       Required = True
+    end
+    object SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField
+      FieldName = 'LANGUAGE_GREEK_OR_ENGLISH'
+      Required = True
+      FixedChar = True
+      Size = 1
     end
   end
   object SeminarPictureSRC: TDataSource

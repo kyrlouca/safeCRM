@@ -140,7 +140,7 @@ type
     wwDBEdit2: TwwDBEdit;
     TableSQLFEE_ACTUAL: TFloatField;
     TableSQLFEE_WITH_ANAD_SUB: TFloatField;
-    RzPanel7: TRzPanel;
+    TitlePNL: TRzPanel;
     RzPanel8: TRzPanel;
     TableSQLTYPE_MONO_POLY: TWideStringField;
     Label18: TLabel;
@@ -174,7 +174,8 @@ type
     Label25: TLabel;
     RzBitBtn2: TRzBitBtn;
     OpenPictureDialog1: TOpenPictureDialog;
-    MonoRGP: TwwRadioGroup;
+    LanguageRGP: TwwRadioGroup;
+    SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -194,11 +195,16 @@ type
     procedure PictureTSShow(Sender: TObject);
     procedure PictureTSExit(Sender: TObject);
     procedure RzBitBtn2Click(Sender: TObject);
+    procedure LanguageRGPChange(Sender: TObject);
+    procedure TableSQLAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
-  procedure SelectPicture();
-  procedure ShowPicture();
+  procedure CheckPictures(COnst TypeSerial:Integer);
+  procedure SelectPicture(Const SeminarSerial:Integer; Const Language:String);
+  procedure ShowPicture(Const TypeSerial:Integer;Const  Language:String);
+  procedure ShowPictureData(Const TypeSerial:Integer;Const  Language:String);
+  procedure SavePicture(Const SeminarSerial:Integer; Const Language:String;img:Timage);
 
   public
     { Public declarations }
@@ -219,7 +225,14 @@ uses   U_Database, G_generalProcs;
 
 procedure TM_SeminarTypeFRM.BitBtn1Click(Sender: TObject);
 begin
-  close;
+ if SeminarPictureSQL.State in [dsEdit, dsInsert] then begin
+         SeminarPictureSQL.Post;
+ end;
+end;
+
+procedure TM_SeminarTypeFRM.TableSQLAfterScroll(DataSet: TDataSet);
+begin
+         TitlePNL.Caption:= Trim(Dataset.FieldByName('seminar_name').AsString);
 end;
 
 procedure TM_SeminarTypeFRM.TableSQLBeforeEdit(
@@ -271,9 +284,12 @@ close;
 end;
 
 procedure TM_SeminarTypeFRM.RzBitBtn2Click(Sender: TObject);
+var
+  TypeSerial:Integer;
 begin
-  SelectPicture();
-  ShowPicture();
+  TypeSerial:=TableSQL.fieldbyName('serial_number').AsInteger;
+  SelectPicture(TypeSerial,'G');
+  ShowPicture(TypeSerial,'G');
 end;
 
 procedure TM_SeminarTypeFRM.SeminarPCChanging(Sender: TObject;
@@ -329,6 +345,24 @@ begin
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 end;
 
+procedure TM_SeminarTypeFRM.LanguageRGPChange(Sender: TObject);
+var
+  TypeSerial:Integer;
+begin
+//  SHowMessage(LanguageRGP.Value);
+  if SeminarPictureSQL.State in [dsEdit,dsInsert] then
+    SeminarPictureSQL.Post;
+  TypeSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+  if typeSerial<1 then exit;
+  if trim(LanguageRGP.Value)='' then exit;
+
+
+  ShowPicture(TypeSerial,LanguageRGP.Value);
+  ShowPictureData(TypeSerial,LanguageRGP.Value);
+
+
+end;
+
 procedure TM_SeminarTypeFRM.Nav1InsertClick(Sender: TObject);
 begin
 REminderDescFLD.SetFocus;
@@ -346,40 +380,41 @@ end;
 procedure TM_SeminarTypeFRM.PictureTSShow(Sender: TObject);
 var
   SeminarTypeSerial:Integer;
+begin
+  SeminarTypeSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+CheckPictures(SeminarTypeSerial);
+end;
+
+procedure TM_SeminarTypeFRM.CheckPictures(COnst TypeSerial:Integer);
+var
+  Serial:Integer;
   str:String;
   strIns:String;
 begin
 
   strIns:= 'insert into seminar_type_pictures '
-+'(serial_number, LANGUAGE_GREEK_ENGLISH) values (:Serial, :lang)';
++'(serial_number,FK_SEMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_ENGLISH) values (:Serial, :typeSerial, :lang)';
 
-  SeminarTypeSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+  if TypeSerial<1 then exit;
 
   str:=
 ' select serial_number'
   +'  from'
   +'      seminar_type_pictures stp'
   +'  where'
-  +'   stp.fk_seminar_type_serial= :SeminarTYpeSerial and stp.language_greek_english= :lang';
+  +'   stp.fk_seminar_type_serial= :SeminarTYpeSerial and stp.language_greek_or_english = :lang';
 
-  if ksCountRecVarSQL(cn,str,[SeminarTypeSerial,'G']) then begin
-    ksExecSQLVar()
+  if ksCountRecVarSQL(cn,str,[TypeSerial,'G'])=0 then begin
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_TYPE_PICTURES');
+    ksExecSQLVar(cn,strIns,[serial,TypeSerial,'G']);
   end;
 
-  if ksCountRecVarSQL(cn,str,[SeminarTypeSerial,'E']) then begin
-
+  if ksCountRecVarSQL(cn,str,[TypeSerial,'E'])=0 then begin
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_TYPE_PICTURES');
+    ksExecSQLVar(cn,strIns,[serial, TypeSerial,'E']);
   end;
 
-  SeminarPictureSQL.Close;
-  SeminarPictureSQL.ParamByName('SeminarSerial').AsInteger:=SeminarSerial;
-  SeminarPictureSQL.Open;
-  if SeminarPictureSQL.IsEmpty then begin
-    SeminarPictureSQL.Insert;
-    SeminarPictureSQL.FieldByName('FK_SEMINAR_TYPE_SERIAL').AsInteger:=SeminarSerial;
-    SeminarPictureSQL.Post;
-  end;
-  SHowPicture();
-
+  SHowPicture(TypeSerial,'G');
 end;
 
 procedure TM_SeminarTypeFRM.CanelBTNClick(Sender: TObject);
@@ -388,9 +423,47 @@ TableSQL.Cancel;
 close;
 end;
 
+procedure TM_SeminarTypeFRM.SavePicture(Const SeminarSerial:Integer; Const Language:String;img:Timage);
+var
+  BlobField: TField;
+  BS: TStream;
+  str2:String;
+  qr:TksQuery;
+begin
+
+  str2:='select * from seminar_type_pictures stp '
+  + ' where stp.fk_seminar_type_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
+  qr:= TksQuery.Create(cn,str2);
+   try
+    with qr do  begin
+      close;
+      qr.ParamByName('seminarSerial').Value:=seminarSerial;
+      qr.ParamByName('Language').Value:=Language;
+      open;
+      if qr.IsEmpty then
+       exit;
+      qr.Edit;
+      BlobField := FieldByName('picture_seminar');
+      BS := CreateBlobStream(BlobField,bmWrite);
+      //bs.Position:=0;
+      Img.Picture.SaveToStream(BS);
+
+      if BS.Size=0 then begin
+        BlobField.Clear;
+      end;
+
+      Post;
+      close;
+//      SeminarPictureSQL.Refresh;
+    end;
+  finally
+    qr.Free;
+  end;
+
+end;
 
 
-procedure TM_SeminarTypeFRM.SelectPicture();
+procedure TM_SeminarTypeFRM.SelectPicture(Const SeminarSerial:Integer; Const Language:String);
 var
   BlobField: TField;
   BS: TStream;
@@ -399,11 +472,10 @@ var
   str1:String;
   qr:TksQuery;
   imgTemp:TImage;
-  SeminarSerial:Integer;
+  str2:String;
 Begin
 
 //code:= 'Ô00'
- SeminarSerial:=TableSQL.fieldbyName('serial_number').AsInteger;
  if seminarSerial<1 then
   exit;
  if not OpenPictureDialog1.Execute then     begin
@@ -412,7 +484,22 @@ Begin
  end;
 
   imgTemp:=Timage.Create(self);
-  qr:= TksQuery.Create(cn,'select * from seminar_type_pictures stp where stp.fk_seminar_type_serial= :seminarSerial');
+   try
+    filename :=OpenPictureDialog1.FileName;
+    ImgTemp.Picture:=nil;
+    imgTemp.Picture.LoadFromFile(filename);
+    SavePicture(SeminarSerial,Language,ImgTemp);
+   finally
+     imgTEmp.Free;
+   end;
+
+
+
+ {
+  imgTemp:=Timage.Create(self);
+  str2:='select * from seminar_type_pictures stp '
+  + ' where stp.fk_seminar_type_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
+  qr:= TksQuery.Create(cn,str2);
    try
     filename :=OpenPictureDialog1.FileName;
     ImgTemp.Picture:=nil;
@@ -421,6 +508,7 @@ Begin
     with qr do  begin
       close;
       qr.ParamByName('seminarSerial').Value:=seminarSerial;
+      qr.ParamByName('Language').Value:=Language;
       open;
       if qr.IsEmpty then
        exit;
@@ -437,28 +525,39 @@ Begin
     imgTEmp.Free;
     qr.Free;
   end;
+}
+end;
+
+
+procedure TM_SeminarTypeFRM.ShowPictureData(Const TypeSerial:Integer;Const  Language:String);
+begin
+   SeminarPictureSQL.Close;
+   SeminarPictureSQL.ParamByName('SeminarSerial').Value:=TypeSerial;
+   SeminarPictureSQL.ParamByName('language').Value:=Language;
+   SeminarPictureSQL.Open;
 
 end;
 
-procedure TM_SeminarTypeFRM.ShowPicture();
+procedure TM_SeminarTypeFRM.ShowPicture(Const TypeSerial:Integer;Const  Language:String);
  var
   code:string;
   BlobFIeld:TField;
   BS:TStream;
   qr:TksQuery;
 //  imgTemp:TImage;
-  SeminarSerial:Integer;
 
 begin
- SeminarSerial:=TableSQL.fieldbyName('serial_number').AsInteger;
- if seminarSerial<1 then
+ if TypeSerial<1 then
     exit;
+ if (Language<>'G') ANd (Language<>'E') then
+  exit;
 
-  qr:= TksQuery.Create(cn,'select * from seminar_type_pictures stp where stp.fk_seminar_type_serial= :seminarSerial');
+  qr:= TksQuery.Create(cn,'select * from seminar_type_pictures stp where stp.fk_seminar_type_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language');
    try
       with qr do begin
       close;
-      qr.ParamByName('seminarSerial').Value:=seminarSerial;
+      qr.ParamByName('seminarSerial').Value:=TypeSerial;
+      qr.ParamByName('LANGUAGE').Value:=Language;
       open;
       if qr.IsEmpty then
         exit;
@@ -466,12 +565,18 @@ begin
       BS := CreateBlobStream(BlobField,bmRead);
       bs.Position:=0;
       ImgShow.Picture.LoadFromStream(bs);
+
+      if BS.Size=0 then begin
+        ImgShow.Picture:=nil;
+      end;
+
       close;
       end;
    finally
       qr.Free;
 //      imgTemp.Free;
    end;
+
 
 end;
 
