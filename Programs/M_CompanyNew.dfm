@@ -466,7 +466,7 @@ object M_companyNewFRM: TM_companyNewFRM
       Width = 1094
       Height = 421
       Hint = ''
-      ActivePage = InfoTS
+      ActivePage = PictureTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -474,9 +474,11 @@ object M_companyNewFRM: TM_companyNewFRM
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 2
       TabOrder = 2
       OnChanging = PageControlPCChanging
+      ExplicitLeft = 0
+      ExplicitTop = 0
       FixedDimension = 22
       object InfoTS: TRzTabSheet
         Caption = #917#964#945#953#961#949#943#945
@@ -1225,6 +1227,13 @@ object M_companyNewFRM: TM_companyNewFRM
             TitleButtons = True
           end
         end
+      end
+      object PictureTS: TRzTabSheet
+        Caption = #917#953#954#972#957#949#962
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
       end
     end
   end

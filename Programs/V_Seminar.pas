@@ -249,7 +249,7 @@ type
     SeminarSQLFK_EXAMINER: TIntegerField;
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
     Label23: TLabel;
-    wwDBEdit2: TwwDBEdit;
+    AnadFLD: TwwDBEdit;
     RzPanel9: TRzPanel;
     RzDBLabel2: TRzDBLabel;
     PictureTS: TRzTabSheet;
@@ -317,6 +317,7 @@ type
     procedure SeminarReminderSQLNewRecord(DataSet: TDataSet);
     procedure PictureTSShow(Sender: TObject);
     procedure RzBitBtn2Click(Sender: TObject);
+    procedure PictureTSExit(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -334,6 +335,7 @@ type
   procedure InsertPerson();
   procedure UseSeminarTemplate(Const SeminarSerial, TypeSerial:Integer);
    procedure GetReminderFromTemplate(Const SeminarSerial, TypeSerial:Integer);
+ procedure  GetTemplatePIctures(Const SeminarSerial, TypeSerial:Integer);
 
   Function UpdateCostFooter(Const SeminarSerial:Integer):Double;
 
@@ -385,6 +387,14 @@ ksOpenTables([SeminarReminderSQL]);
 
 end;
 
+procedure TV_SeminarFRM.PictureTSExit(Sender: TObject);
+begin
+  If SeminarPictureSQL.State in [dsEdit,dsInsert] then begin
+    SeminarPictureSQL.Post;
+  end;
+
+end;
+
 procedure TV_SeminarFRM.PictureTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
@@ -431,7 +441,7 @@ procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
 begin
 Dataset.FieldByName('Status').Value:='P';
 Dataset.FieldByName('ANAD_APPROVED').Value:='Y';
-Dataset.FieldByName('SEMINAR_CORP_TYPE').Value:='P';
+Dataset.FieldByName('TYPE_MONo_pOLY').Value:='P';
 Dataset.FieldByName('is_invoiced').Value:='N';
 Dataset.FieldByName('is_certificated').Value:='N';
 Dataset.FieldByName('Max_capacity').Value:=0;
@@ -457,7 +467,7 @@ procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
 begin
   ksOpenTables([CompanySQL]);
 
-  StartDateFLD.SetFocus;
+  AnadFLD.SetFocus;
 end;
 
 
@@ -478,6 +488,7 @@ begin
  if (not select) or (Seminarserial<1) or (TypeSerial<1) then exit;
  UseSeminarTEmplate(SeminarSerial,TypeSerial);
  GetReminderFromTemplate(SEminarSerial,TYpeSerial);
+ GetTemplatePIctures(SEminarSerial,TYpeSerial);
 
 
   SeminarSQL.close;
@@ -537,7 +548,7 @@ begin
 
  //NOw the subjects (may be a different functions)
  ksExecSQLVar(cn,'delete from seminar_subject where fk_seminar_serial= :semSerial',[SeminarSerial]);
- qr:=TksQuery.Create(cn,'select * from seminar_type_subject where FK_SEMINAR_SERIAL= :serial');
+ qr:=TksQuery.Create(cn,'select * from seminar_type_subject where FK_SEMINAR_TYPE_SERIAL= :serial');
  try
    qr.ParamByName('serial').Value:=TypeSerial;
    qr.Open;
@@ -621,6 +632,77 @@ begin
 
  end;
 
+ procedure TV_SeminarFRM.GetTemplatePIctures(Const SeminarSerial, TypeSerial:Integer);
+var
+  serial:Integer;
+  Typeqr:TksQuery;
+  seminarQr:TksQuery;
+  str:String;
+   fdesc,fmessage,fafter,fperson,fstart,fDays:string;
+   fnumber_of_days:Integer;
+   ActionDate:TDate;
+   ActionDateRec:TActionDateRec;
+   blobRead,blobWrite : TBlobField;
+   streamRead,StreamWrite:TStream;
+   img:TImage;
+begin
+
+ ksExecSQLVar(cn,'delete from SEMINAR_pictures where fk_seminar_serial=:serial',[SeminarSerial]);
+
+  str:=
+  ' INSERT INTO SEMINAR_PICTURES'
+  +'  (SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3, FK_SEMINAR_SERIAL)'
+  +'   VALUES (:s1,:P1,:a1,:a2,:b1,:b2,:b3,:x1)';
+ img:=Timage.Create(self);
+ SeminarQr:= TksQuery.Create(cn,' select * from seminar_pictures where fk_seminar_serial= :seminarSerial');
+ Typeqr:=TksQuery.Create(cn,'select * from seminar_type_pictures where fk_seminar_type_serial= :Typeserial');
+ try
+   Typeqr.ParamByName('Typeserial').Value:=TYpeSerial;
+   Typeqr.Open;
+   SeminarQr.ParamByName('seminarSerial').Value:=SeminarSerial;
+   SeminarQR.Open;
+
+
+   try
+
+    while not Typeqr.Eof do begin
+
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
+
+    blobRead := Typeqr.FieldByName('picture_seminar') as TBlobField;
+    streamRead := Typeqr.CreateBlobStream(blobRead, bmRead);
+    Img.Picture.LoadFromStream(streamRead);
+
+    SeminarQR.Insert;
+    SeminarQR.FieldByName('serial_number').Value:=serial;
+    SeminarQR.FieldByName('line_a1').Value:= Typeqr.FieldByName('line_a1').AsString;
+    SeminarQR.FieldByName('line_a2').Value:= Typeqr.FieldByName('line_a2').AsString;
+    SeminarQR.FieldByName('line_b1').Value:= Typeqr.FieldByName('line_b1').AsString;
+    SeminarQR.FieldByName('line_b2').Value:= Typeqr.FieldByName('line_b2').AsString;
+    SeminarQR.FieldByName('line_b3').Value:= Typeqr.FieldByName('line_b3').AsString;
+    SeminarQR.FieldByName('fk_seminar_serial').Value:= SeminarSerial;
+
+    blobWrite := Seminarqr.FieldByName('picture_seminar') as TBlobField;
+    streamWrite := Seminarqr.CreateBlobStream(blobWrite, bmWrite);
+    StreamWrite.Position:=0;
+    Img.Picture.SaveToStream(streamWrite);
+    SeminarQR.Post;
+    TypeQr.Next;
+
+    end;
+   finally
+    streamWrite.Free;
+    streamRead.Free;
+
+   end;
+ finally
+   Typeqr.Free;
+   SeminarQr.Free;
+   img.Free;
+ end;
+
+
+ end;
 
  procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);
 var
@@ -768,6 +850,7 @@ end;
 procedure TV_SeminarFRM.RzBitBtn2Click(Sender: TObject);
 begin
 SelectPicture();
+ShowPicture();
 end;
 
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
@@ -1007,6 +1090,8 @@ begin
 end;
 
 
+
+
 procedure TV_SeminarFRM.SelectPicture();
 var
   BlobField: TField;
@@ -1017,6 +1102,7 @@ var
   qr:TksQuery;
   imgTemp:TImage;
   SeminarSerial:Integer;
+
 Begin
 
 //code:= 'Ô00'

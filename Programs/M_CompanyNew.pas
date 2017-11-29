@@ -132,6 +132,7 @@ type
     IncludedPersonsSQLCOMP_SERIAL: TIntegerField;
     IncludedPersonsSQLCOMP_REG: TWideStringField;
     IncludedPersonsSQLPHONE_MOBILE: TWideStringField;
+    PictureTS: TRzTabSheet;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure CompanySRCStateChange(Sender: TObject);

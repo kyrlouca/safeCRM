@@ -44,7 +44,6 @@ type
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLFK_SEMINAR: TIntegerField;
     TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
     TableSQLFK_INSTRUCTOR: TIntegerField;
     TableSQLFK_VENUE: TIntegerField;
     TableSQLDATE_STARTED: TDateField;
@@ -61,7 +60,6 @@ type
     TableSQLIS_CERTIFICATED: TWideStringField;
     TableSQLDESCRIPTION: TWideStringField;
     TableSQLDESCRIPTION_GREEK: TWideStringField;
-    wwDBComboBox1: TwwDBComboBox;
     TableSQLLAST_NAME: TWideStringField;
     CertificatesBTN: TRzBitBtn;
     RzBitBtn3: TRzBitBtn;
