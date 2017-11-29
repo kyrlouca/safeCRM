@@ -9,7 +9,7 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   vcl.wwcheckbox, Vcl.ComCtrls, RzDBEdit, RzTabs, RzRadGrp, RzDBRGrp,
-  Vcl.ExtDlgs;
+  Vcl.ExtDlgs, vcl.wwclearbuttongroup, vcl.wwradiogroup;
 type
   TM_SeminarTypeFRM = class(TForm)
     Panel3: TRzPanel;
@@ -174,6 +174,7 @@ type
     Label25: TLabel;
     RzBitBtn2: TRzBitBtn;
     OpenPictureDialog1: TOpenPictureDialog;
+    MonoRGP: TwwRadioGroup;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -344,9 +345,30 @@ end;
 
 procedure TM_SeminarTypeFRM.PictureTSShow(Sender: TObject);
 var
-  SeminarSerial:Integer;
+  SeminarTypeSerial:Integer;
+  str:String;
+  strIns:String;
 begin
-  SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+
+  strIns:= 'insert into seminar_type_pictures '
++'(serial_number, LANGUAGE_GREEK_ENGLISH) values (:Serial, :lang)';
+
+  SeminarTypeSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+
+  str:=
+' select serial_number'
+  +'  from'
+  +'      seminar_type_pictures stp'
+  +'  where'
+  +'   stp.fk_seminar_type_serial= :SeminarTYpeSerial and stp.language_greek_english= :lang';
+
+  if ksCountRecVarSQL(cn,str,[SeminarTypeSerial,'G']) then begin
+    ksExecSQLVar()
+  end;
+
+  if ksCountRecVarSQL(cn,str,[SeminarTypeSerial,'E']) then begin
+
+  end;
 
   SeminarPictureSQL.Close;
   SeminarPictureSQL.ParamByName('SeminarSerial').AsInteger:=SeminarSerial;

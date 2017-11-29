@@ -3,7 +3,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   Top = 153
   Caption = '--'
   ClientHeight = 641
-  ClientWidth = 1044
+  ClientWidth = 789
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   object Panel3: TRzPanel
     Left = 0
     Top = 0
-    Width = 1044
+    Width = 789
     Height = 598
     Align = alClient
     BorderOuter = fsNone
@@ -33,10 +33,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     ParentFont = False
     TabOrder = 0
     VisualStyle = vsClassic
+    ExplicitWidth = 1044
     object SeminarPC: TRzPageControl
       Left = 0
       Top = 57
-      Width = 1044
+      Width = 789
       Height = 541
       Hint = ''
       ActivePage = PictureTS
@@ -51,9 +52,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       TabIndex = 3
       TabOrder = 0
       OnChanging = SeminarPCChanging
+      ExplicitWidth = 1044
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
+        ExplicitWidth = 1040
         object RzPanel2: TRzPanel
           Left = 0
           Top = 39
@@ -263,12 +266,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         object Panel5: TRzPanel
           Left = 0
           Top = 0
-          Width = 1040
+          Width = 785
           Height = 39
           Align = alTop
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
           TabOrder = 0
+          ExplicitWidth = 1040
           object wwDBNavigator2: TwwDBNavigator
             Left = 1
             Top = 7
@@ -655,6 +659,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
         Caption = #920#941#956#945#964#945
+        ExplicitWidth = 1040
         object GroupBox2: TGroupBox
           Left = 20
           Top = 15
@@ -834,6 +839,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
+        ExplicitWidth = 1040
         object GroupBox4: TGroupBox
           Left = 533
           Top = 68
@@ -1140,12 +1146,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         object RzPanel6: TRzPanel
           Left = 0
           Top = 0
-          Width = 1040
+          Width = 785
           Height = 39
           Align = alTop
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
           TabOrder = 1
+          ExplicitWidth = 1040
           object wwDBNavigator4: TwwDBNavigator
             Left = 1
             Top = 7
@@ -1443,9 +1450,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         OnShow = PictureTSShow
         Caption = #917#953#954#972#957#949#962
         OnExit = PictureTSExit
+        ExplicitWidth = 1040
         object RzGroupBox2: TRzGroupBox
-          Left = 15
-          Top = 37
+          Left = 23
+          Top = 103
           Width = 562
           Height = 292
           Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -1458,7 +1466,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           TabOrder = 0
           object Label19: TLabel
             Left = 47
-            Top = 27
+            Top = 51
             Width = 60
             Height = 14
             Caption = #915#961#945#956#956#942' '#913'1'
@@ -1471,7 +1479,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object Label21: TLabel
             Left = 47
-            Top = 55
+            Top = 79
             Width = 60
             Height = 14
             Caption = #915#961#945#956#956#942' '#913'2'
@@ -1484,7 +1492,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object Label23: TLabel
             Left = 48
-            Top = 173
+            Top = 197
             Width = 59
             Height = 14
             Caption = #915#961#945#956#956#942' '#914'1'
@@ -1497,7 +1505,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object Label26: TLabel
             Left = 48
-            Top = 198
+            Top = 222
             Width = 59
             Height = 14
             Caption = #915#961#945#956#956#942' '#914'2'
@@ -1510,7 +1518,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object Label27: TLabel
             Left = 48
-            Top = 229
+            Top = 253
             Width = 59
             Height = 14
             Caption = #915#961#945#956#956#942' '#914'3'
@@ -1523,7 +1531,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object ImgShow: TImage
             Left = 116
-            Top = 79
+            Top = 103
             Width = 87
             Height = 82
             ParentCustomHint = False
@@ -1533,7 +1541,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object Label25: TLabel
             Left = 11
-            Top = 103
+            Top = 127
             Width = 96
             Height = 14
             Alignment = taRightJustify
@@ -1547,7 +1555,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object wwDBEdit5: TwwDBEdit
             Left = 116
-            Top = 24
+            Top = 48
             Width = 375
             Height = 22
             DataField = 'LINE_A1'
@@ -1559,7 +1567,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object wwDBEdit6: TwwDBEdit
             Left = 116
-            Top = 52
+            Top = 76
             Width = 375
             Height = 22
             DataField = 'LINE_A2'
@@ -1571,7 +1579,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object wwDBEdit11: TwwDBEdit
             Left = 116
-            Top = 195
+            Top = 219
             Width = 375
             Height = 22
             DataField = 'LINE_B2'
@@ -1583,7 +1591,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object wwDBEdit12: TwwDBEdit
             Left = 116
-            Top = 167
+            Top = 191
             Width = 375
             Height = 22
             DataField = 'LINE_B1'
@@ -1595,7 +1603,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object wwDBEdit13: TwwDBEdit
             Left = 116
-            Top = 223
+            Top = 247
             Width = 375
             Height = 22
             DataField = 'LINE_B3'
@@ -1607,7 +1615,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
           object RzBitBtn2: TRzBitBtn
             Left = 224
-            Top = 103
+            Top = 127
             Width = 121
             Height = 37
             Caption = 'Select Picture'
@@ -1681,13 +1689,29 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Margin = -1
           end
         end
+        object MonoRGP: TwwRadioGroup
+          Left = 23
+          Top = 27
+          Width = 162
+          Height = 62
+          DisableThemes = False
+          Caption = #915#955#974#963#963#945
+          DataField = 'TYPE_MONO_POLY'
+          Items.Strings = (
+            #917#955#955#951#957#953#954#940
+            'English')
+          TabOrder = 1
+          Values.Strings = (
+            'M'
+            'P')
+        end
       end
     end
     object RzPanel7: TRzPanel
       AlignWithMargins = True
       Left = 3
       Top = 3
-      Width = 1038
+      Width = 783
       Height = 38
       Align = alTop
       BorderOuter = fsFlatRounded
@@ -1703,34 +1727,38 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Transparent = True
       VisualStyle = vsClassic
       WordWrap = False
+      ExplicitWidth = 1038
     end
     object RzPanel8: TRzPanel
       Left = 0
       Top = 44
-      Width = 1044
+      Width = 789
       Height = 13
       Align = alTop
       BorderOuter = fsNone
       TabOrder = 2
+      ExplicitWidth = 1044
     end
   end
   object Panel4: TRzPanel
     Left = 0
     Top = 598
-    Width = 1044
+    Width = 789
     Height = 43
     Align = alBottom
     BorderOuter = fsFlatRounded
     BorderSides = [sdLeft, sdRight, sdBottom]
     TabOrder = 1
+    ExplicitWidth = 1044
     object RzPanel1: TRzPanel
-      Left = 942
+      Left = 687
       Top = 0
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 942
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
