@@ -24,15 +24,6 @@ type
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
     DaySQL: TIBCQuery;
-    FirstGRP: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    SerialFLD: TRzDBLabel;
-    Label5: TLabel;
-    FirstFLD: TwwDBEdit;
-    wwCheckBox1: TwwCheckBox;
-    wwDBComboBox1: TwwDBComboBox;
-    Label1: TLabel;
     vPresenceSRC: TIBCDataSource;
     TableSRC: TIBCDataSource;
     DaySRC: TIBCDataSource;
@@ -43,8 +34,6 @@ type
     wwNavButton1: TwwNavButton;
     wwNavButton2: TwwNavButton;
     wwNavButton3: TwwNavButton;
-    RzDBLabel1: TRzDBLabel;
-    RzDBLabel2: TRzDBLabel;
     VPresenceSQLFirst_Name: TStringField;
     VPresenceSQLpercentage_present: TIntegerField;
     VPresenceSQLPersonSerial: TIntegerField;
@@ -73,7 +62,6 @@ type
     TableSQLFK_VENUE: TIntegerField;
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
     TableSQLDATE_STARTED: TDateField;
     TableSQLDATE_COMPLETED: TDateField;
     TableSQLDURATION_DAYS: TIntegerField;
@@ -118,6 +106,11 @@ type
     N1: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;
+    TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLHAS_EXPIRY: TWideStringField;
+    TableSQLEXPIRY_PERIOD: TIntegerField;
+    TableSQLFK_EXAMINER: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

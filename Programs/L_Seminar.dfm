@@ -42,6 +42,12 @@ object L_SeminarFRM: TL_SeminarFRM
       Align = alClient
       Alignment = taCenter
       Caption = #916#953#945#967#949#943#961#953#963#951' '#931#949#956#953#957#945#961#943#969#957
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 3947580
+      Font.Height = -27
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
       Transparent = True
       Layout = tlCenter
       ExplicitWidth = 299

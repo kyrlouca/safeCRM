@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 571
+  ClientHeight = 551
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 528
+    Top = 508
     Width = 1004
     Height = 43
     Align = alBottom
@@ -150,14 +150,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 436
+    Height = 416
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 434
+      Height = 414
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -323,7 +323,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 391
+        Top = 371
         Width = 671
         Height = 43
         Align = alBottom
@@ -523,7 +523,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 434
+      Height = 414
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -538,7 +538,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 237
+        Top = 217
         Width = 328
         Height = 197
         Align = alBottom
@@ -790,7 +790,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       object FirstFLD: TRzDBLabel
         Left = 79
         Top = 46
-        Width = 6
+        Width = 44
         Height = 16
         AutoSize = True
         ParentColor = False
@@ -853,7 +853,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
         MapList = True
         AllowClearKey = False
         AutoDropDown = True
-        DataField = 'SEMINAR_CORP_TYPE'
+        DataField = 'TYPE_MONO_POLY'
         DataSource = TableSRC
         DropDownCount = 8
         ItemHeight = 0
@@ -870,19 +870,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_COMPAN' +
-        'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
-        'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
-        'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
-        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB)'
+        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VEN' +
+        'UE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_STARTED, DATE_C' +
+        'OMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_ANAD' +
+        ', COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOICED, IS' +
+        '_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY, EXPI' +
+        'RY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
-        'OMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP_TYPE, :DATE_S' +
-        'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
-        'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
-        'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH' +
-        '_ANAD_SUB)')
+        '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
+        'K_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME, :DATE_STARTED' +
+        ', :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_ACTUAL,' +
+        ' :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :STATUS' +
+        ', :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH_ANAD_' +
+        'SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :FK_EXAMINER, :TYPE_MONO_POLY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -891,27 +892,28 @@ object I_CertificatesFRM: TI_CertificatesFRM
       'UPDATE SEMINAR'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, FK_I' +
-        'NSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, FK_COMPANY_PER' +
-        'SON_SERIAL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_' +
-        'NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE, DATE_STARTED = :DA' +
-        'TE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :D' +
-        'URATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FE' +
-        'E_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD' +
-        '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
-        ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
-        'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :F' +
-        'EE_WITH_ANAD_SUB'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, ANAD_NUMBER = :ANAD_NUMBER, FK' +
+        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE' +
+        ' = :FK_VENUE, FK_COMPANY_PERSON_SERIAL = :FK_COMPANY_PERSON_SERI' +
+        'AL, SEMINAR_NAME = :SEMINAR_NAME, DATE_STARTED = :DATE_STARTED, ' +
+        'DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :DURATION_DAYS' +
+        ', DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FEE_ACTUAL, AM' +
+        'OUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED = ' +
+        ':ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS = :STATUS, ' +
+        'IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CERTIFICATED, ' +
+        'MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :FEE_WITH_ANAD' +
+        '_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, ' +
+        'FK_EXAMINER = :FK_EXAMINER, TYPE_MONO_POLY = :TYPE_MONO_POLY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_CO' +
-        'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
-        'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
-        'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
-        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB FROM SE' +
-        'MINAR'
+        'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
+        '_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_STARTED, DA' +
+        'TE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_' +
+        'ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOICED' +
+        ', IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY, ' +
+        'EXPIRY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -936,7 +938,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
       'where '
       'se.serial_number= :SeminarSerial')
     ReadOnly = True
-    Active = True
     Left = 49
     Top = 5
     ParamData = <
@@ -966,14 +967,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
       DisplayWidth = 10
       FieldName = 'FK_SEMINAR'
       Visible = False
-    end
-    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
-      DisplayWidth = 1
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      Visible = False
-      FixedChar = True
-      Size = 1
     end
     object TableSQLFK_INSTRUCTOR: TIntegerField
       DisplayWidth = 10
@@ -1078,6 +1071,30 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Visible = False
       FixedChar = True
       Size = 30
+    end
+    object TableSQLANAD_NUMBER: TWideStringField
+      FieldName = 'ANAD_NUMBER'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
+    object TableSQLHAS_EXPIRY: TWideStringField
+      FieldName = 'HAS_EXPIRY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLEXPIRY_PERIOD: TIntegerField
+      FieldName = 'EXPIRY_PERIOD'
+    end
+    object TableSQLFK_EXAMINER: TIntegerField
+      FieldName = 'FK_EXAMINER'
+    end
+    object TableSQLTYPE_MONO_POLY: TWideStringField
+      FieldName = 'TYPE_MONO_POLY'
+      Required = True
+      FixedChar = True
+      Size = 1
     end
   end
   object WriteTrans: TIBCTransaction

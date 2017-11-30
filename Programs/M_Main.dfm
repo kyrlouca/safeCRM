@@ -28,7 +28,7 @@ object M_mainFRM: TM_mainFRM
     BorderOuter = fsGroove
     Caption = 'Safe CRM - V0.85'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
+    Font.Color = 3947580
     Font.Height = -48
     Font.Name = 'Bookman Old Style'
     Font.Style = [fsBold]
@@ -7232,14 +7232,6 @@ object M_mainFRM: TM_mainFRM
       Stretch = True
       ExplicitTop = -3
     end
-    object Image2: TImage
-      Left = 623
-      Top = 128
-      Width = 105
-      Height = 105
-      Proportional = True
-      Stretch = True
-    end
     object LoginBTN: TRzBitBtn
       Left = 14
       Top = 209
@@ -7333,27 +7325,6 @@ object M_mainFRM: TM_mainFRM
       Height = 25
       Caption = 'Button2'
       TabOrder = 2
-      OnClick = Button2Click
-    end
-    object DBImage1: TDBImage
-      Left = 512
-      Top = 128
-      Width = 105
-      Height = 105
-      DataField = 'ANAD_PICTURE'
-      DataSource = IBCDataSource1
-      Proportional = True
-      Stretch = True
-      TabOrder = 3
-    end
-    object BitBtn2: TBitBtn
-      Left = 272
-      Top = 152
-      Width = 75
-      Height = 25
-      Caption = 'BitBtn2'
-      TabOrder = 4
-      OnClick = BitBtn2Click
     end
   end
   object MainMenu1: TMainMenu
@@ -7509,7 +7480,6 @@ object M_mainFRM: TM_mainFRM
       ''
       ') q')
     Connection = U_databaseFRM.DataConnection
-    Transaction = M_paramsFRM.ReadOnlyTrans
     UpdateTransaction = M_paramsFRM.UpdateTrans
     SQL.Strings = (
       'select * from general_Parameter where code = :TheCode')

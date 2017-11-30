@@ -9,7 +9,8 @@ uses
   Mask, wwdbedit,  DBGrids, wwdbdatetimepicker, ppDB, ppCtrls,
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
-  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox;
+  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox, vcl.wwclearbuttongroup,
+  vcl.wwradiogroup, ppStrtch, ppRichTx;
 
 type
   TReminderResult= Record
@@ -69,6 +70,47 @@ type
     ppDBText6: TppDBText;
     NameLbl: TppVariable;
     SubjectLbl: TppVariable;
+    LanguageRGP: TwwRadioGroup;
+    SeminarPicturesSQL: TIBCQuery;
+    SeminarPictureSRC: TDataSource;
+    SeminarPIcturePIP: TppDBPipeline;
+    SeminarPicturesSQLSERIAL_NUMBER: TIntegerField;
+    SeminarPicturesSQLPICTURE_SEMINAR: TBlobField;
+    SeminarPicturesSQLLINE_A1: TWideStringField;
+    SeminarPicturesSQLLINE_A2: TWideStringField;
+    SeminarPicturesSQLLINE_B1: TWideStringField;
+    SeminarPicturesSQLLINE_B2: TWideStringField;
+    SeminarPicturesSQLLINE_B3: TWideStringField;
+    SeminarPicturesSQLFK_SEMINAR_SERIAL: TIntegerField;
+    SeminarPicturesSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
+    dbr1: TppDBRichText;
+    ppReport2: TppReport;
+    ppDetailBand1: TppDetailBand;
+    ppDBText3: TppDBText;
+    ppDBText4: TppDBText;
+    ppLabel7: TppLabel;
+    ppVariable1: TppVariable;
+    ppLabel10: TppLabel;
+    ppLabel11: TppLabel;
+    ppLabel12: TppLabel;
+    ppLabel13: TppLabel;
+    ppDBText7: TppDBText;
+    ppLabel14: TppLabel;
+    ppLabel15: TppLabel;
+    ppLine2: TppLine;
+    ppVariable2: TppVariable;
+    ppVariable3: TppVariable;
+    ppDBText8: TppDBText;
+    ppVariable4: TppVariable;
+    ppVariable5: TppVariable;
+    ppDBRichText2: TppDBRichText;
+    ppFooterBand2: TppFooterBand;
+    ppLabel16: TppLabel;
+    ppDesignLayers1: TppDesignLayers;
+    ppDesignLayer1: TppDesignLayer;
+    ppParameterList1: TppParameterList;
+    Button1: TButton;
+    Rt1: TppRichText;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -84,15 +126,18 @@ type
     procedure DurationFLDCalc(Sender: TObject; var Value: Variant);
     procedure SerialLblCalc(Sender: TObject; var Value: Variant);
     procedure SubjectLblCalc(Sender: TObject; var Value: Variant);
+    procedure Button1Click(Sender: TObject);
+    procedure Rt1Print(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
-  procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer);
+  procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer;Const language:String);
 
   public
     { Public declarations }
     IN_Seminar_Serial:Integer;
     IN_certificate_serial:Integer;
+    IN_Language:String;
     procedure PrintTheSeminar();
   end;
 
@@ -124,6 +169,11 @@ end;
 
 
 
+procedure TR_certificateFRM.Button1Click(Sender: TObject);
+begin
+showMessage(LanguageRGP.Value);
+end;
+
 procedure TR_certificateFRM.DurationFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
@@ -139,6 +189,11 @@ begin
 
 end;
 
+
+procedure TR_certificateFRM.Rt1Print(Sender: TObject);
+begin
+   rt1.Text:=  SeminarPicturesSQL.FieldByName('line_a1').Value;
+end;
 
 procedure TR_certificateFRM.NameFLDCalc(Sender: TObject;
   var Value: Variant);
@@ -204,11 +259,15 @@ end;
 
 
 procedure TR_certificateFRM.PrintTheSeminar();
+var
+  Language:String;
+
 begin
-  PrintSeminar(IN_Seminar_Serial,IN_certificate_serial);
+  Language:=LanguageRGP.Value;
+  PrintSeminar(IN_Seminar_Serial,IN_certificate_serial,Language);
 end;
 
-procedure TR_certificateFRM.PrintSeminar(Const SeminarSerial,CertificateSerial:Integer);
+procedure TR_certificateFRM.PrintSeminar(Const SeminarSerial,CertificateSerial:Integer;Const Language:String);
 Var
    FromDate:TDateTime;
    DaysLeft:integer;
@@ -227,13 +286,21 @@ begin
     Open ;
   end;
 
+    with SeminarPicturesSQL do begin
+    SeminarPicturesSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
+    SeminarPicturesSQL.ParamByName('Language').Value:=Language;
+    Open ;
+  end;
+
+
+
  PpReport1.Print;
 
 end;
 
 procedure TR_certificateFRM.FormActivate(Sender: TObject);
 begin
-
+LanguageRGP.ItemIndex:=0;
 if (Trim(FromDateFLD.text)='') then
    FromDateFLD.Date:=now;
 

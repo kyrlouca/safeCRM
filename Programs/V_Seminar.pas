@@ -11,7 +11,7 @@ uses
   System.ImageList,System.DateUtils, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
   Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
   vcl.wwradiogroup, RzRadChk, RzDBChk,G_debugUnit,codeSiteLogging,CodeSiteMessage,
-  Vcl.ExtDlgs;
+  Vcl.ExtDlgs, vcl.wwriched;
 type
 //Function TV_SeminarFRM.FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   TactionDateRec= record
@@ -261,7 +261,6 @@ type
     Label27: TLabel;
     ImgShow: TImage;
     Label28: TLabel;
-    wwDBEdit7: TwwDBEdit;
     wwDBEdit8: TwwDBEdit;
     wwDBEdit9: TwwDBEdit;
     wwDBEdit10: TwwDBEdit;
@@ -280,6 +279,7 @@ type
     OpenPictureDialog1: TOpenPictureDialog;
     LanguageRGP: TwwRadioGroup;
     ClearPictBTN: TRzBitBtn;
+    wwDBRichEdit1: TwwDBRichEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

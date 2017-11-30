@@ -54,7 +54,6 @@ type
     vt: TVirtualTable;
     Button2: TButton;
     qr: TIBCQuery;
-    DBImage1: TDBImage;
     IBCDataSource1: TIBCDataSource;
     CODE: TWideStringField;
     qrINT_1: TIntegerField;
@@ -70,8 +69,6 @@ type
     qrDESCRIPTION: TWideStringField;
     qrANAD_PICTURE: TBlobField;
     OpenPictureDialog1: TOpenPictureDialog;
-    Image2: TImage;
-    BitBtn2: TBitBtn;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -92,8 +89,6 @@ type
     procedure N10Click(Sender: TObject);
     procedure N11Click(Sender: TObject);
     procedure N12Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure BitBtn2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -140,56 +135,6 @@ begin
   str2:=intTOStr(j);
 //  Str:=ch+'Â';
   showMessage(str1+'-'+str2);
-end;
-
-procedure TM_mainFRM.BitBtn2Click(Sender: TObject);
-begin
-  with qr do
-  begin
-    close;
-    qr.ParamByName('Thecode').AsString :='T00';
-    open;
-    if qr.IsEmpty then
-      showMessage('empt;y');
-    //close;
-
-  end;
-
-end;
-
-
-procedure TM_mainFRM.Button2Click(Sender: TObject);
-var
-  BlobField: TField;
-  BS: TStream;
-  fileName:String;
-  code:String;
-begin
-
-//code:= 'Ô00'
- if not OpenPictureDialog1.Execute then
-    Exit;
-
-    filename :=OpenPictureDialog1.FileName;
-    image2.Picture.LoadFromFile(filename);
-
-  with qr do
-  begin
-    close;
-
-    qr.ParamByName('Thecode').AsString :='T00';
-    open;
-    if qr.IsEmpty then
-      showMessage('empgy');
-    Edit;
-    BlobField := FieldByName('anad_picture');
-    BS := CreateBlobStream(BlobField,bmWrite);
-    Image2.Picture.SaveToStream(BS);
-
-//    Bitmap.SavetoStream(BS);
-    Post;
-  end;
-
 end;
 
 procedure TM_mainFRM.Countries2Click(Sender: TObject);

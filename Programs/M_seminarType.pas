@@ -9,7 +9,7 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   vcl.wwcheckbox, Vcl.ComCtrls, RzDBEdit, RzTabs, RzRadGrp, RzDBRGrp,
-  Vcl.ExtDlgs, vcl.wwclearbuttongroup, vcl.wwradiogroup;
+  Vcl.ExtDlgs, vcl.wwclearbuttongroup, vcl.wwradiogroup, vcl.wwriched;
 type
   TM_SeminarTypeFRM = class(TForm)
     Panel3: TRzPanel;
@@ -153,7 +153,6 @@ type
     Label19: TLabel;
     Label21: TLabel;
     Label23: TLabel;
-    wwDBEdit5: TwwDBEdit;
     wwDBEdit6: TwwDBEdit;
     Label26: TLabel;
     Label27: TLabel;
@@ -177,6 +176,7 @@ type
     LanguageRGP: TwwRadioGroup;
     SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
     ClearPictBTN: TRzBitBtn;
+    wwDBRichEdit1: TwwDBRichEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

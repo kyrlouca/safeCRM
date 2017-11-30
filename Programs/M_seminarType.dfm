@@ -1546,18 +1546,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Font.Style = []
             ParentFont = False
           end
-          object wwDBEdit5: TwwDBEdit
-            Left = 116
-            Top = 48
-            Width = 375
-            Height = 22
-            DataField = 'LINE_A1'
-            DataSource = SeminarPictureSRC
-            TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
           object wwDBEdit6: TwwDBEdit
             Left = 116
             Top = 76
@@ -1565,7 +1553,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Height = 22
             DataField = 'LINE_A2'
             DataSource = SeminarPictureSRC
-            TabOrder = 1
+            TabOrder = 0
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -1577,7 +1565,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Height = 22
             DataField = 'LINE_B2'
             DataSource = SeminarPictureSRC
-            TabOrder = 2
+            TabOrder = 1
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -1589,7 +1577,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Height = 22
             DataField = 'LINE_B1'
             DataSource = SeminarPictureSRC
-            TabOrder = 3
+            TabOrder = 2
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -1601,7 +1589,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Height = 22
             DataField = 'LINE_B3'
             DataSource = SeminarPictureSRC
-            TabOrder = 4
+            TabOrder = 3
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -1620,7 +1608,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Font.Style = []
             ParentDoubleBuffered = False
             ParentFont = False
-            TabOrder = 5
+            TabOrder = 4
             OnClick = RzBitBtn2Click
             Glyph.Data = {
               F6060000424DF606000000000000360000002800000018000000180000000100
@@ -1695,7 +1683,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Font.Style = []
             ParentDoubleBuffered = False
             ParentFont = False
-            TabOrder = 6
+            TabOrder = 5
             OnClick = ClearPictBTNClick
             Glyph.Data = {
               F6060000424DF606000000000000360000002800000018000000180000000100
@@ -1756,6 +1744,57 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             Margin = -1
           end
+          object wwDBRichEdit1: TwwDBRichEdit
+            Left = 116
+            Top = 37
+            Width = 421
+            Height = 33
+            AutoURLDetect = False
+            DataField = 'LINE_A1'
+            DataSource = SeminarPictureSRC
+            Font.Charset = GREEK_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GutterWidth = 3
+            HideSelection = False
+            ParentFont = False
+            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - M_seminarType [Built]'
+            TabOrder = 6
+            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+            EditorCaption = 'Edit Rich Text'
+            EditorPosition.Left = 0
+            EditorPosition.Top = 0
+            EditorPosition.Width = 0
+            EditorPosition.Height = 0
+            MeasurementUnits = muInches
+            PrintMargins.Top = 1.000000000000000000
+            PrintMargins.Bottom = 1.000000000000000000
+            PrintMargins.Left = 1.000000000000000000
+            PrintMargins.Right = 1.000000000000000000
+            PrintHeader.VertMargin = 0.500000000000000000
+            PrintHeader.Font.Charset = DEFAULT_CHARSET
+            PrintHeader.Font.Color = clWindowText
+            PrintHeader.Font.Height = -11
+            PrintHeader.Font.Name = 'Tahoma'
+            PrintHeader.Font.Style = []
+            PrintFooter.VertMargin = 0.500000000000000000
+            PrintFooter.Font.Charset = DEFAULT_CHARSET
+            PrintFooter.Font.Color = clWindowText
+            PrintFooter.Font.Height = -11
+            PrintFooter.Font.Name = 'Tahoma'
+            PrintFooter.Font.Style = []
+            DoubleBuffered = False
+            ParentDoubleBuffered = False
+            RichEditVersion = 2
+            Data = {
+              860000007B5C727466315C616E73695C616E7369637067313235335C64656666
+              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+              345C7563315C706172645C66305C667331382077774442526963684564697431
+              5C7061720D0A7D0D0A00}
+          end
         end
         object LanguageRGP: TwwRadioGroup
           Left = 23
@@ -1787,7 +1826,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       BorderOuter = fsFlatRounded
       Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlue
+      Font.Color = 3947580
       Font.Height = -29
       Font.Name = 'Arial'
       Font.Style = [fsBold]

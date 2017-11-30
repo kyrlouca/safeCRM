@@ -56,7 +56,6 @@ type
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLFK_SEMINAR: TIntegerField;
     TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
     TableSQLFK_INSTRUCTOR: TIntegerField;
     TableSQLFK_VENUE: TIntegerField;
     TableSQLDATE_STARTED: TDateField;
@@ -112,6 +111,11 @@ type
     Reports1: TMenuItem;
     N3: TMenuItem;
     N1: TMenuItem;
+    TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLHAS_EXPIRY: TWideStringField;
+    TableSQLEXPIRY_PERIOD: TIntegerField;
+    TableSQLFK_EXAMINER: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -233,6 +237,7 @@ procedure TI_CertificatesFRM.N3Click(Sender: TObject);
 vAR
   Frm:TR_certificateFRM;
   seminarSerial:Integer;
+
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
@@ -241,7 +246,7 @@ begin
   frm.IN_certificate_serial:=0;
 //  frm.IN_Day_Serial :=0;
   try
-    frm.PrintTheSeminar();
+    frm.ShowModal;
   finally
     frm.Free;
   end;
