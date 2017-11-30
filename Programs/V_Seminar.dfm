@@ -2,7 +2,7 @@ object V_SeminarFRM: TV_SeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 758
+  ClientHeight = 766
   ClientWidth = 938
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -80,23 +80,25 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 0
     Top = 53
     Width = 938
-    Height = 39
+    Height = 12
     Align = alTop
     TabOrder = 1
   end
   object Panel3x: TRzPanel
     Left = 0
-    Top = 92
+    Top = 65
     Width = 938
-    Height = 666
+    Height = 701
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
+    ExplicitTop = 92
+    ExplicitHeight = 666
     object PageControlPC: TRzPageControl
       Left = 2
       Top = 2
       Width = 934
-      Height = 619
+      Height = 654
       Hint = ''
       ActivePage = CertificationTS
       ActivePageDefault = SeminarTS
@@ -110,15 +112,17 @@ object V_SeminarFRM: TV_SeminarFRM
       TabIndex = 5
       TabOrder = 0
       OnChanging = PageControlPCChanging
+      ExplicitHeight = 619
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
+        ExplicitHeight = 593
         object FirstGRP: TGroupBox
           Left = 28
           Top = 23
           Width = 370
-          Height = 370
+          Height = 402
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -695,7 +699,7 @@ object V_SeminarFRM: TV_SeminarFRM
         end
         object BitBtn2: TBitBtn
           Left = 28
-          Top = 453
+          Top = 581
           Width = 160
           Height = 34
           Caption = #904#947#954#961#953#963#951' '#945#960#972' '#913#925#913#916
@@ -769,7 +773,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 404
           Top = 270
           Width = 321
-          Height = 107
+          Height = 155
           Caption = #932#953#956#941#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -870,6 +874,7 @@ object V_SeminarFRM: TV_SeminarFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        ExplicitHeight = 593
         object RzPanel5: TRzPanel
           Left = 0
           Top = 0
@@ -883,7 +888,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 25
           Width = 352
-          Height = 568
+          Height = 603
           Align = alClient
           Caption = #920#941#956#945#964#945
           Font.Charset = DEFAULT_CHARSET
@@ -893,6 +898,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          ExplicitHeight = 568
           object RzPanel6: TRzPanel
             Left = 2
             Top = 16
@@ -1033,7 +1039,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 2
             Top = 49
             Width = 348
-            Height = 517
+            Height = 552
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'SUBJECT'#9'55'#9#920#941#956#945)
@@ -1053,30 +1059,33 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitHeight = 525
           end
         end
         object RzPanel4: TRzPanel
           Left = 352
           Top = 25
           Width = 578
-          Height = 568
+          Height = 603
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 2
+          ExplicitHeight = 568
           object RzPanel7: TRzPanel
             Left = 0
             Top = 0
             Width = 97
-            Height = 568
+            Height = 603
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 0
+            ExplicitHeight = 568
           end
           object GroupBox2: TGroupBox
             Left = 97
             Top = 0
             Width = 481
-            Height = 568
+            Height = 603
             Align = alClient
             Caption = #924#941#961#949#962' '#916#953#949#958#945#947#969#947#942#962
             Font.Charset = DEFAULT_CHARSET
@@ -1086,6 +1095,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
             TabOrder = 1
+            ExplicitHeight = 568
             object RzPanel8: TRzPanel
               Left = 2
               Top = 16
@@ -1226,7 +1236,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 2
               Top = 49
               Width = 477
-              Height = 517
+              Height = 552
               ControlType.Strings = (
                 'SEMINAR_DAY;CustomEdit;SeminarDayFLD;F')
               Selected.Strings = (
@@ -1249,6 +1259,7 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
+              ExplicitHeight = 525
               object SeminarDayFLD: TwwDBDateTimePicker
                 Left = -16
                 Top = 200
@@ -1273,6 +1284,7 @@ object V_SeminarFRM: TV_SeminarFRM
       object StudentsTS: TRzTabSheet
         OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
+        ExplicitHeight = 593
         object RzPanel2: TRzPanel
           Left = 0
           Top = 0
@@ -1286,7 +1298,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 18
           Width = 425
-          Height = 575
+          Height = 610
           Align = alLeft
           Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
           Font.Charset = DEFAULT_CHARSET
@@ -1296,6 +1308,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          ExplicitHeight = 575
           object RzSizePanel2: TRzSizePanel
             Left = 1
             Top = 15
@@ -1308,7 +1321,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 1
             Top = 44
             Width = 423
-            Height = 530
+            Height = 565
             ControlType.Strings = (
               'IS_GUEST;CheckBox;Y;N')
             Selected.Strings = (
@@ -1333,16 +1346,18 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitHeight = 538
           end
         end
         object RzPanel3: TRzPanel
           Left = 425
           Top = 18
           Width = 94
-          Height = 575
+          Height = 610
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
+          ExplicitHeight = 575
           object ToRightBTN: TBitBtn
             Left = 3
             Top = 141
@@ -1492,7 +1507,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 519
           Top = 18
           Width = 391
-          Height = 575
+          Height = 610
           Align = alLeft
           Caption = #922#945#964#940#955#959#947#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -1502,11 +1517,12 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 3
+          ExplicitHeight = 575
           object AllPersonsGRD: TwwDBGrid
             Left = 1
             Top = 57
             Width = 389
-            Height = 517
+            Height = 552
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959
@@ -1541,6 +1557,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = True
             OnDblClick = AllPersonsGRDDblClick
             OnKeyDown = AllPersonsGRDKeyDown
+            ExplicitHeight = 525
           end
           object RzSizePanel1: TRzSizePanel
             Left = 1
@@ -1572,6 +1589,7 @@ object V_SeminarFRM: TV_SeminarFRM
       object CostTS: TRzTabSheet
         OnShow = CostTSShow
         Caption = #922#972#963#964#959#962
+        ExplicitHeight = 593
         object RzPanel10: TRzPanel
           Left = 0
           Top = 0
@@ -1585,7 +1603,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 25
           Width = 593
-          Height = 568
+          Height = 603
           Align = alLeft
           Caption = #922#972#963#964#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -1595,6 +1613,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          ExplicitHeight = 568
           object RzPanel11: TRzPanel
             Left = 2
             Top = 16
@@ -1735,7 +1754,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 2
             Top = 49
             Width = 589
-            Height = 517
+            Height = 552
             ControlType.Strings = (
               'FK_COST_ITEM;CustomEdit;CostTypeFLD;T')
             Selected.Strings = (
@@ -1763,6 +1782,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = False
             OnUpdateFooter = CostGRDUpdateFooter
             StyleElements = [seFont, seClient]
+            ExplicitHeight = 525
             object CostTypeFLD: TwwDBLookupCombo
               Left = 183
               Top = 88
@@ -1791,11 +1811,12 @@ object V_SeminarFRM: TV_SeminarFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
+        ExplicitHeight = 593
         object GroupBox4: TGroupBox
           Left = 0
           Top = 25
           Width = 930
-          Height = 568
+          Height = 603
           Align = alClient
           Caption = #933#960#949#957#952#965#956#943#963#949#953#962
           Ctl3D = False
@@ -1807,6 +1828,7 @@ object V_SeminarFRM: TV_SeminarFRM
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
+          ExplicitHeight = 568
           object RzPanel12: TRzPanel
             Left = 1
             Top = 15
@@ -1820,7 +1842,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 1
             Top = 25
             Width = 592
-            Height = 542
+            Height = 577
             ControlType.Strings = (
               'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
               'DAYS_OR_MONTHS;CustomEdit;NamePersonFLD;F'
@@ -1852,6 +1874,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitHeight = 550
             object AfterFLD: TwwDBComboBox
               Left = 94
               Top = 81
@@ -2265,13 +2288,12 @@ object V_SeminarFRM: TV_SeminarFRM
         OnShow = CertificationTSShow
         Caption = #928#959#953#963#964#959#960#959#953#951#964#953#954#940
         OnExit = CertificationTSExit
-        ExplicitLeft = 2
-        ExplicitTop = 22
+        ExplicitHeight = 593
         object RzGroupBox4: TRzGroupBox
           Left = 24
-          Top = 101
-          Width = 562
-          Height = 420
+          Top = 76
+          Width = 825
+          Height = 533
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2346,10 +2368,10 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object ImgShow: TImage
-            Left = 108
-            Top = 175
-            Width = 87
-            Height = 82
+            Left = 353
+            Top = 143
+            Width = 73
+            Height = 53
             ParentCustomHint = False
             Center = True
             Proportional = True
@@ -2369,57 +2391,19 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
           end
-          object wwDBEdit8: TwwDBEdit
-            Left = 108
-            Top = 148
-            Width = 375
-            Height = 22
-            DataField = 'LINE_A2'
-            DataSource = SeminarPictureSRC
-            TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit9: TwwDBEdit
-            Left = 108
-            Top = 291
-            Width = 375
-            Height = 22
-            DataField = 'LINE_B2'
-            DataSource = SeminarPictureSRC
-            TabOrder = 1
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit10: TwwDBEdit
-            Left = 108
-            Top = 263
-            Width = 375
-            Height = 22
-            DataField = 'LINE_B1'
-            DataSource = SeminarPictureSRC
-            TabOrder = 2
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit11: TwwDBEdit
-            Left = 108
-            Top = 319
-            Width = 375
-            Height = 22
-            DataField = 'LINE_B3'
-            DataSource = SeminarPictureSRC
-            TabOrder = 3
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
+          object Image1: TImage
+            Left = 3
+            Top = 483
+            Width = 73
+            Height = 53
+            ParentCustomHint = False
+            Center = True
+            Proportional = True
+            Stretch = True
           end
           object SelectPictBTN: TRzBitBtn
-            Left = 216
-            Top = 199
+            Left = 464
+            Top = 159
             Width = 121
             Height = 37
             Caption = 'Select Picture'
@@ -2431,7 +2415,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentDoubleBuffered = False
             ParentFont = False
-            TabOrder = 4
+            TabOrder = 0
             OnClick = SelectPictBTNClick
             Glyph.Data = {
               F6060000424DF606000000000000360000002800000018000000180000000100
@@ -2493,8 +2477,8 @@ object V_SeminarFRM: TV_SeminarFRM
             Margin = -1
           end
           object ClearPictBTN: TRzBitBtn
-            Left = 343
-            Top = 199
+            Left = 600
+            Top = 159
             Width = 121
             Height = 37
             Caption = 'Clear Picture'
@@ -2506,7 +2490,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentDoubleBuffered = False
             ParentFont = False
-            TabOrder = 5
+            TabOrder = 1
             OnClick = ClearPictBTNClick
             Glyph.Data = {
               F6060000424DF606000000000000360000002800000018000000180000000100
@@ -2568,12 +2552,216 @@ object V_SeminarFRM: TV_SeminarFRM
             Margin = -1
           end
           object wwDBRichEdit1: TwwDBRichEdit
-            Left = 105
-            Top = 53
-            Width = 424
-            Height = 89
+            Left = 169
+            Top = 21
+            Width = 640
+            Height = 116
             AutoURLDetect = False
             DataField = 'LINE_A1'
+            DataSource = SeminarPictureSRC
+            Font.Charset = GREEK_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GutterWidth = 3
+            HideSelection = False
+            ParentFont = False
+            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+            TabOrder = 2
+            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+            EditorCaption = 'Edit Rich Text'
+            EditorPosition.Left = 0
+            EditorPosition.Top = 0
+            EditorPosition.Width = 0
+            EditorPosition.Height = 0
+            MeasurementUnits = muInches
+            PrintMargins.Top = 1.000000000000000000
+            PrintMargins.Bottom = 1.000000000000000000
+            PrintMargins.Left = 1.000000000000000000
+            PrintMargins.Right = 1.000000000000000000
+            PrintHeader.VertMargin = 0.500000000000000000
+            PrintHeader.Font.Charset = DEFAULT_CHARSET
+            PrintHeader.Font.Color = clWindowText
+            PrintHeader.Font.Height = -11
+            PrintHeader.Font.Name = 'Tahoma'
+            PrintHeader.Font.Style = []
+            PrintFooter.VertMargin = 0.500000000000000000
+            PrintFooter.Font.Charset = DEFAULT_CHARSET
+            PrintFooter.Font.Color = clWindowText
+            PrintFooter.Font.Height = -11
+            PrintFooter.Font.Name = 'Tahoma'
+            PrintFooter.Font.Style = []
+            DoubleBuffered = False
+            ParentDoubleBuffered = False
+            RichEditVersion = 2
+            Data = {
+              860000007B5C727466315C616E73695C616E7369637067313235335C64656666
+              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+              345C7563315C706172645C66305C667331382077774442526963684564697431
+              5C7061720D0A7D0D0A00}
+          end
+          object wwDBRichEdit2: TwwDBRichEdit
+            Left = 169
+            Top = 219
+            Width = 640
+            Height = 116
+            AutoURLDetect = False
+            DataField = 'LINE_A2'
+            DataSource = SeminarPictureSRC
+            Font.Charset = GREEK_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GutterWidth = 3
+            HideSelection = False
+            ParentFont = False
+            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+            TabOrder = 3
+            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+            EditorCaption = 'Edit Rich Text'
+            EditorPosition.Left = 0
+            EditorPosition.Top = 0
+            EditorPosition.Width = 0
+            EditorPosition.Height = 0
+            MeasurementUnits = muInches
+            PrintMargins.Top = 1.000000000000000000
+            PrintMargins.Bottom = 1.000000000000000000
+            PrintMargins.Left = 1.000000000000000000
+            PrintMargins.Right = 1.000000000000000000
+            PrintHeader.VertMargin = 0.500000000000000000
+            PrintHeader.Font.Charset = DEFAULT_CHARSET
+            PrintHeader.Font.Color = clWindowText
+            PrintHeader.Font.Height = -11
+            PrintHeader.Font.Name = 'Tahoma'
+            PrintHeader.Font.Style = []
+            PrintFooter.VertMargin = 0.500000000000000000
+            PrintFooter.Font.Charset = DEFAULT_CHARSET
+            PrintFooter.Font.Color = clWindowText
+            PrintFooter.Font.Height = -11
+            PrintFooter.Font.Name = 'Tahoma'
+            PrintFooter.Font.Style = []
+            DoubleBuffered = False
+            ParentDoubleBuffered = False
+            RichEditVersion = 2
+            Data = {
+              860000007B5C727466315C616E73695C616E7369637067313235335C64656666
+              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+              345C7563315C706172645C66305C667331382077774442526963684564697432
+              5C7061720D0A7D0D0A00}
+          end
+          object wwDBRichEdit3: TwwDBRichEdit
+            Left = 600
+            Top = 341
+            Width = 208
+            Height = 116
+            AutoURLDetect = False
+            DataField = 'LINE_B2'
+            DataSource = SeminarPictureSRC
+            Font.Charset = GREEK_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GutterWidth = 3
+            HideSelection = False
+            ParentFont = False
+            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+            TabOrder = 4
+            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+            EditorCaption = 'Edit Rich Text'
+            EditorPosition.Left = 0
+            EditorPosition.Top = 0
+            EditorPosition.Width = 0
+            EditorPosition.Height = 0
+            MeasurementUnits = muInches
+            PrintMargins.Top = 1.000000000000000000
+            PrintMargins.Bottom = 1.000000000000000000
+            PrintMargins.Left = 1.000000000000000000
+            PrintMargins.Right = 1.000000000000000000
+            PrintHeader.VertMargin = 0.500000000000000000
+            PrintHeader.Font.Charset = DEFAULT_CHARSET
+            PrintHeader.Font.Color = clWindowText
+            PrintHeader.Font.Height = -11
+            PrintHeader.Font.Name = 'Tahoma'
+            PrintHeader.Font.Style = []
+            PrintFooter.VertMargin = 0.500000000000000000
+            PrintFooter.Font.Charset = DEFAULT_CHARSET
+            PrintFooter.Font.Color = clWindowText
+            PrintFooter.Font.Height = -11
+            PrintFooter.Font.Name = 'Tahoma'
+            PrintFooter.Font.Style = []
+            DoubleBuffered = False
+            ParentDoubleBuffered = False
+            RichEditVersion = 2
+            Data = {
+              860000007B5C727466315C616E73695C616E7369637067313235335C64656666
+              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+              345C7563315C706172645C66305C667331382077774442526963684564697433
+              5C7061720D0A7D0D0A00}
+          end
+          object wwDBRichEdit4: TwwDBRichEdit
+            Left = 169
+            Top = 349
+            Width = 208
+            Height = 116
+            AutoURLDetect = False
+            DataField = 'LINE_B1'
+            DataSource = SeminarPictureSRC
+            Font.Charset = GREEK_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GutterWidth = 3
+            HideSelection = False
+            ParentFont = False
+            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+            TabOrder = 5
+            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+            EditorCaption = 'Edit Rich Text'
+            EditorPosition.Left = 0
+            EditorPosition.Top = 0
+            EditorPosition.Width = 0
+            EditorPosition.Height = 0
+            MeasurementUnits = muInches
+            PrintMargins.Top = 1.000000000000000000
+            PrintMargins.Bottom = 1.000000000000000000
+            PrintMargins.Left = 1.000000000000000000
+            PrintMargins.Right = 1.000000000000000000
+            PrintHeader.VertMargin = 0.500000000000000000
+            PrintHeader.Font.Charset = DEFAULT_CHARSET
+            PrintHeader.Font.Color = clWindowText
+            PrintHeader.Font.Height = -11
+            PrintHeader.Font.Name = 'Tahoma'
+            PrintHeader.Font.Style = []
+            PrintFooter.VertMargin = 0.500000000000000000
+            PrintFooter.Font.Charset = DEFAULT_CHARSET
+            PrintFooter.Font.Color = clWindowText
+            PrintFooter.Font.Height = -11
+            PrintFooter.Font.Name = 'Tahoma'
+            PrintFooter.Font.Style = []
+            DoubleBuffered = False
+            ParentDoubleBuffered = False
+            RichEditVersion = 2
+            Data = {
+              860000007B5C727466315C616E73695C616E7369637067313235335C64656666
+              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+              345C7563315C706172645C66305C667331382077774442526963684564697434
+              5C7061720D0A7D0D0A00}
+          end
+          object wwDBRichEdit5: TwwDBRichEdit
+            Left = 169
+            Top = 471
+            Width = 640
+            Height = 42
+            AutoURLDetect = False
+            DataField = 'LINE_B3'
             DataSource = SeminarPictureSRC
             Font.Charset = GREEK_CHARSET
             Font.Color = clWindowText
@@ -2615,15 +2803,117 @@ object V_SeminarFRM: TV_SeminarFRM
               860000007B5C727466315C616E73695C616E7369637067313235335C64656666
               305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
               6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
-              345C7563315C706172645C66305C667331382077774442526963684564697431
+              345C7563315C706172645C66305C667331382077774442526963684564697435
+              5C7061720D0A7D0D0A00}
+          end
+          object wwDBRichEdit6: TwwDBRichEdit
+            Left = -3
+            Top = 289
+            Width = 155
+            Height = 93
+            AutoURLDetect = False
+            DataField = 'LINE_A1'
+            DataSource = SeminarPictureSRC
+            Font.Charset = GREEK_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GutterWidth = 3
+            HideSelection = False
+            ParentFont = False
+            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+            TabOrder = 7
+            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+            EditorCaption = 'Edit Rich Text'
+            EditorPosition.Left = 0
+            EditorPosition.Top = 0
+            EditorPosition.Width = 0
+            EditorPosition.Height = 0
+            MeasurementUnits = muInches
+            PrintMargins.Top = 1.000000000000000000
+            PrintMargins.Bottom = 1.000000000000000000
+            PrintMargins.Left = 1.000000000000000000
+            PrintMargins.Right = 1.000000000000000000
+            PrintHeader.VertMargin = 0.500000000000000000
+            PrintHeader.Font.Charset = DEFAULT_CHARSET
+            PrintHeader.Font.Color = clWindowText
+            PrintHeader.Font.Height = -11
+            PrintHeader.Font.Name = 'Tahoma'
+            PrintHeader.Font.Style = []
+            PrintFooter.VertMargin = 0.500000000000000000
+            PrintFooter.Font.Charset = DEFAULT_CHARSET
+            PrintFooter.Font.Color = clWindowText
+            PrintFooter.Font.Height = -11
+            PrintFooter.Font.Name = 'Tahoma'
+            PrintFooter.Font.Style = []
+            DoubleBuffered = False
+            ParentDoubleBuffered = False
+            RichEditVersion = 2
+            Data = {
+              860000007B5C727466315C616E73695C616E7369637067313235335C64656666
+              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+              345C7563315C706172645C66305C667331382077774442526963684564697436
+              5C7061720D0A7D0D0A00}
+          end
+          object wwDBRichEdit7: TwwDBRichEdit
+            Left = 3
+            Top = 388
+            Width = 152
+            Height = 89
+            AutoURLDetect = False
+            DataField = 'LINE_A1'
+            DataSource = SeminarPictureSRC
+            Font.Charset = GREEK_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GutterWidth = 3
+            HideSelection = False
+            ParentFont = False
+            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+            TabOrder = 8
+            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+            EditorCaption = 'Edit Rich Text'
+            EditorPosition.Left = 0
+            EditorPosition.Top = 0
+            EditorPosition.Width = 0
+            EditorPosition.Height = 0
+            MeasurementUnits = muInches
+            PrintMargins.Top = 1.000000000000000000
+            PrintMargins.Bottom = 1.000000000000000000
+            PrintMargins.Left = 1.000000000000000000
+            PrintMargins.Right = 1.000000000000000000
+            PrintHeader.VertMargin = 0.500000000000000000
+            PrintHeader.Font.Charset = DEFAULT_CHARSET
+            PrintHeader.Font.Color = clWindowText
+            PrintHeader.Font.Height = -11
+            PrintHeader.Font.Name = 'Tahoma'
+            PrintHeader.Font.Style = []
+            PrintFooter.VertMargin = 0.500000000000000000
+            PrintFooter.Font.Charset = DEFAULT_CHARSET
+            PrintFooter.Font.Color = clWindowText
+            PrintFooter.Font.Height = -11
+            PrintFooter.Font.Name = 'Tahoma'
+            PrintFooter.Font.Style = []
+            DoubleBuffered = False
+            ParentDoubleBuffered = False
+            RichEditVersion = 2
+            Data = {
+              860000007B5C727466315C616E73695C616E7369637067313235335C64656666
+              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+              345C7563315C706172645C66305C667331382077774442526963684564697437
               5C7061720D0A7D0D0A00}
           end
         end
         object LanguageRGP: TwwRadioGroup
           Left = 24
-          Top = 33
-          Width = 162
-          Height = 62
+          Top = 0
+          Width = 273
+          Height = 49
           DisableThemes = False
           ItemIndex = 0
           Caption = #915#955#974#963#963#945
@@ -2641,12 +2931,13 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object Panel4: TRzPanel
       Left = 2
-      Top = 621
+      Top = 656
       Width = 934
       Height = 43
       Align = alBottom
       BorderOuter = fsFlatRounded
       TabOrder = 1
+      ExplicitTop = 621
       object RzPanel1: TRzPanel
         Left = 832
         Top = 2
@@ -2958,8 +3249,8 @@ object V_SeminarFRM: TV_SeminarFRM
       '')
     Active = True
     OnNewRecord = SeminarSQLNewRecord
-    Left = 25
-    Top = 261
+    Left = 49
+    Top = 213
     ParamData = <
       item
         DataType = ftUnknown
@@ -3080,7 +3371,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 226
     Top = 45
     Bitmap = {
-      494C010110008800980210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088009C0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3811,7 +4102,7 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
-    Left = 10
+    Left = 74
     Top = 481
     ParamData = <
       item
@@ -3872,8 +4163,8 @@ object V_SeminarFRM: TV_SeminarFRM
   object AttendingSRC: TDataSource
     DataSet = AttendingSQL
     OnStateChange = SeminarSRCStateChange
-    Left = 104
-    Top = 481
+    Left = 136
+    Top = 209
   end
   object NonAttendSQL: TIBCQuery
     UpdatingTable = 'person'
@@ -4059,8 +4350,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object SeminarSubjectSRC: TDataSource
     DataSet = seminarSubjectSQL
-    Left = 264
-    Top = 393
+    Left = 232
+    Top = 353
   end
   object SeminarDaySQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
@@ -4204,8 +4495,8 @@ object V_SeminarFRM: TV_SeminarFRM
     MasterSource = SeminarSRC
     Active = True
     OnCalcFields = SeminarCostItemSQLCalcFields
-    Left = 609
-    Top = 253
+    Left = 657
+    Top = 261
     ParamData = <
       item
         DataType = ftInteger
@@ -4251,8 +4542,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object SeminarCostItemSRC: TDataSource
     DataSet = SeminarCostItemSQL
-    Left = 648
-    Top = 329
+    Left = 664
+    Top = 417
   end
   object CostItemTBL: TIBCTable
     TableName = 'COST_ITEM_TYPE'
@@ -4281,7 +4572,7 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object SeminarReminderSRC: TDataSource
     DataSet = SeminarReminderSQL
-    Left = 216
+    Left = 192
     Top = 585
   end
   object SeminarReminderSQL: TIBCQuery
@@ -4518,11 +4809,13 @@ object V_SeminarFRM: TV_SeminarFRM
       'INSERT INTO SEMINAR_PICTURES'
       
         '  (SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LI' +
-        'NE_B2, LINE_B3, FK_SEMINAR_SERIAL)'
+        'NE_B2, LINE_B3, FK_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLISH, LI' +
+        'NE_C1)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :PICTURE_SEMINAR, :LINE_A1, :LINE_A2, :LINE_B' +
-        '1, :LINE_B2, :LINE_B3, :FK_SEMINAR_SERIAL)')
+        '1, :LINE_B2, :LINE_B3, :FK_SEMINAR_SERIAL, :LANGUAGE_GREEK_OR_EN' +
+        'GLISH, :LINE_C1)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_PICTURES'
       'WHERE'
@@ -4534,13 +4827,15 @@ object V_SeminarFRM: TV_SeminarFRM
         '  SERIAL_NUMBER = :SERIAL_NUMBER, PICTURE_SEMINAR = :PICTURE_SEM' +
         'INAR, LINE_A1 = :LINE_A1, LINE_A2 = :LINE_A2, LINE_B1 = :LINE_B1' +
         ', LINE_B2 = :LINE_B2, LINE_B3 = :LINE_B3, FK_SEMINAR_SERIAL = :F' +
-        'K_SEMINAR_SERIAL'
+        'K_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLISH = :LANGUAGE_GREEK_OR' +
+        '_ENGLISH, LINE_C1 = :LINE_C1'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1' +
-        ', LINE_B2, LINE_B3, FK_SEMINAR_SERIAL FROM SEMINAR_PICTURES'
+        ', LINE_B2, LINE_B3, FK_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLISH' +
+        ', LINE_C1 FROM SEMINAR_PICTURES'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -4563,8 +4858,8 @@ object V_SeminarFRM: TV_SeminarFRM
       
         'where stp.FK_SEMINAR_SERIAL = :SeminarSerial  and stp.LANGUAGE_G' +
         'REEK_OR_ENGLISH = :language')
-    Left = 465
-    Top = 269
+    Left = 745
+    Top = 209
     ParamData = <
       item
         DataType = ftUnknown
@@ -4578,39 +4873,49 @@ object V_SeminarFRM: TV_SeminarFRM
       end>
     object SeminarPictureSQLSERIAL_NUMBER: TIntegerField
       FieldName = 'SERIAL_NUMBER'
+      Required = True
     end
     object SeminarPictureSQLPICTURE_SEMINAR: TBlobField
       FieldName = 'PICTURE_SEMINAR'
     end
     object SeminarPictureSQLLINE_A1: TWideStringField
       FieldName = 'LINE_A1'
-      Size = 500
+      Size = 1500
     end
     object SeminarPictureSQLLINE_A2: TWideStringField
       FieldName = 'LINE_A2'
-      Size = 500
+      Size = 1500
     end
     object SeminarPictureSQLLINE_B1: TWideStringField
       FieldName = 'LINE_B1'
-      Size = 500
+      Size = 1500
     end
     object SeminarPictureSQLLINE_B2: TWideStringField
       FieldName = 'LINE_B2'
-      Size = 500
+      Size = 1500
     end
     object SeminarPictureSQLLINE_B3: TWideStringField
       FieldName = 'LINE_B3'
-      Size = 500
+      Size = 1500
     end
     object SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SERIAL'
       Required = True
     end
+    object SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField
+      FieldName = 'LANGUAGE_GREEK_OR_ENGLISH'
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarPictureSQLLINE_C1: TWideStringField
+      FieldName = 'LINE_C1'
+      Size = 1500
+    end
   end
   object SeminarPictureSRC: TDataSource
     DataSet = SeminarPictureSQL
-    Left = 560
-    Top = 257
+    Left = 832
+    Top = 201
   end
   object OpenPictureDialog1: TOpenPictureDialog
     Left = 416

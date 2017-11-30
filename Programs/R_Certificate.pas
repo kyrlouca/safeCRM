@@ -39,8 +39,6 @@ type
     ppDesignLayers3: TppDesignLayers;
     ppDesignLayer3: TppDesignLayer;
     CertificateSQL: TIBCQuery;
-    ppDBText1: TppDBText;
-    ppDBText2: TppDBText;
     CertificateSRC: TDataSource;
     CertificateSQLSERIAL_NUMBER: TIntegerField;
     CertificateSQLFK_SEMINAR_SERIAL: TIntegerField;
@@ -57,23 +55,7 @@ type
     CertificateSQLINSTRUCTOR_NAME: TWideStringField;
     CertificateSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
     CertificateSQLHAS_ANOTHER_DATE: TWideStringField;
-    ppLabel1: TppLabel;
-    IdFLD: TppVariable;
-    ppLabel2: TppLabel;
-    ppLabel3: TppLabel;
-    ppLabel4: TppLabel;
-    ppLabel5: TppLabel;
-    ppLabel6: TppLabel;
-    ppDBText5: TppDBText;
-    ppLabel8: TppLabel;
-    ppLabel9: TppLabel;
-    ppLine1: TppLine;
-    DurationFLD: TppVariable;
     ppFooterBand1: TppFooterBand;
-    SerialLbl: TppVariable;
-    ppDBText6: TppDBText;
-    NameLbl: TppVariable;
-    SubjectLbl: TppVariable;
     LanguageRGP: TwwRadioGroup;
     SeminarPicturesSQL: TIBCQuery;
     SeminarPictureSRC: TDataSource;
@@ -87,7 +69,7 @@ type
     SeminarPicturesSQLLINE_B3: TWideStringField;
     SeminarPicturesSQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarPicturesSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
-    dbr1: TppDBRichText;
+    TopFld: TppDBRichText;
     ppReport2: TppReport;
     ppDetailBand1: TppDetailBand;
     ppDBText3: TppDBText;
@@ -114,6 +96,15 @@ type
     ppDesignLayer1: TppDesignLayer;
     ppParameterList1: TppParameterList;
     Button1: TButton;
+    ppDBImage1: TppDBImage;
+    ppDBImage2: TppDBImage;
+    MiddleFld: TppDBRichText;
+    BottomRIghtFLD: TppDBRichText;
+    BottomLeftFLD: TppDBRichText;
+    SideTopFLD: TppDBRichText;
+    SideBottomFLD: TppDBRichText;
+    ppDBImage3: TppDBImage;
+    ppDBRichText7: TppDBRichText;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -131,7 +122,7 @@ type
     procedure SubjectLblCalc(Sender: TObject; var Value: Variant);
     procedure Button1Click(Sender: TObject);
     procedure dbr1GetRichText(Sender: TObject; var Text: string);
-    procedure dbr1Print(Sender: TObject);
+    procedure TopFldPrint(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -204,7 +195,7 @@ begin
 
 end;
 
-procedure TR_certificateFRM.dbr1Print(Sender: TObject);
+procedure TR_certificateFRM.TopFldPrint(Sender: TObject);
 
   var
   SelPos: Integer;
