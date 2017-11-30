@@ -252,7 +252,7 @@ type
     AnadFLD: TwwDBEdit;
     RzPanel9: TRzPanel;
     RzDBLabel2: TRzDBLabel;
-    PictureTS: TRzTabSheet;
+    CertificationTS: TRzTabSheet;
     RzGroupBox4: TRzGroupBox;
     Label4: TLabel;
     Label24: TLabel;
@@ -266,7 +266,7 @@ type
     wwDBEdit9: TwwDBEdit;
     wwDBEdit10: TwwDBEdit;
     wwDBEdit11: TwwDBEdit;
-    RzBitBtn2: TRzBitBtn;
+    SelectPictBTN: TRzBitBtn;
     SeminarPictureSQL: TIBCQuery;
     SeminarPictureSQLSERIAL_NUMBER: TIntegerField;
     SeminarPictureSQLPICTURE_SEMINAR: TBlobField;
@@ -279,6 +279,7 @@ type
     SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField;
     OpenPictureDialog1: TOpenPictureDialog;
     LanguageRGP: TwwRadioGroup;
+    ClearPictBTN: TRzBitBtn;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -316,10 +317,11 @@ type
     procedure wwNavButton19Click(Sender: TObject);
     procedure MonoRGPChange(Sender: TObject);
     procedure SeminarReminderSQLNewRecord(DataSet: TDataSet);
-    procedure PictureTSShow(Sender: TObject);
-    procedure RzBitBtn2Click(Sender: TObject);
-    procedure PictureTSExit(Sender: TObject);
+    procedure CertificationTSShow(Sender: TObject);
+    procedure SelectPictBTNClick(Sender: TObject);
+    procedure CertificationTSExit(Sender: TObject);
     procedure LanguageRGPChange(Sender: TObject);
+    procedure ClearPictBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -395,7 +397,7 @@ ksOpenTables([SeminarReminderSQL]);
 
 end;
 
-procedure TV_SeminarFRM.PictureTSExit(Sender: TObject);
+procedure TV_SeminarFRM.CertificationTSExit(Sender: TObject);
 begin
   If SeminarPictureSQL.State in [dsEdit,dsInsert] then begin
     SeminarPictureSQL.Post;
@@ -403,7 +405,7 @@ begin
 
 end;
 
-procedure TV_SeminarFRM.PictureTSShow(Sender: TObject);
+procedure TV_SeminarFRM.CertificationTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
 begin
@@ -653,8 +655,8 @@ begin
 
   str:=
   ' INSERT INTO SEMINAR_PICTURES'
-  +'  (SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3, FK_SEMINAR_SERIAL)'
-  +'   VALUES (:s1,:P1,:a1,:a2,:b1,:b2,:b3,:x1)';
+  +'  (SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3, FK_SEMINAR_SERIAL,LANGUAGE_GREEK_OR_ENGLISH)'
+  +'   VALUES (:s1,:P1,:a1,:a2,:b1,:b2,:b3,:x1,:x2)';
  img:=Timage.Create(self);
  SeminarQr:= TksQuery.Create(cn,' select * from seminar_pictures where fk_seminar_serial= :seminarSerial');
  Typeqr:=TksQuery.Create(cn,'select * from seminar_type_pictures where fk_seminar_type_serial= :Typeserial');
@@ -663,7 +665,6 @@ begin
    Typeqr.Open;
    SeminarQr.ParamByName('seminarSerial').Value:=SeminarSerial;
    SeminarQR.Open;
-
 
    try
 
@@ -683,12 +684,14 @@ begin
     SeminarQR.FieldByName('line_b2').Value:= Typeqr.FieldByName('line_b2').AsString;
     SeminarQR.FieldByName('line_b3').Value:= Typeqr.FieldByName('line_b3').AsString;
     SeminarQR.FieldByName('fk_seminar_serial').Value:= SeminarSerial;
+    SeminarQR.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').Value:= Typeqr.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
 
     blobWrite := Seminarqr.FieldByName('picture_seminar') as TBlobField;
     streamWrite := Seminarqr.CreateBlobStream(blobWrite, bmWrite);
     StreamWrite.Position:=0;
     Img.Picture.SaveToStream(streamWrite);
     SeminarQR.Post;
+
     TypeQr.Next;
 
     end;
@@ -865,7 +868,7 @@ begin
   close;
 end;
 
-procedure TV_SeminarFRM.RzBitBtn2Click(Sender: TObject);
+procedure TV_SeminarFRM.SelectPictBTNClick(Sender: TObject);
 var
   SeminarSerial:Integer;
 begin
@@ -877,6 +880,17 @@ begin
   end;
 
 end;
+
+procedure TV_SeminarFRM.ClearPictBTNClick(Sender: TObject);
+var
+  SeminarSerial:Integer;
+begin
+  SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
+  ImgShow.Picture:=nil;
+  SavePictureX(SeminarSerial, LanguageRGP.Value,ImgShow);
+
+end;
+
 
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
 begin
@@ -1117,6 +1131,7 @@ strIns:= 'insert into seminar_pictures '
 
 
 end;
+
 
 procedure TV_SeminarFRM.SavePictureX(Const SeminarSerial:Integer; Const Language:String;img:Timage);
 var

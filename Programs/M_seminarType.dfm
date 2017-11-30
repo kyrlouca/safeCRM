@@ -39,7 +39,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Width = 789
       Height = 541
       Hint = ''
-      ActivePage = PictureTS
+      ActivePage = CertificationTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -1440,10 +1440,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           end
         end
       end
-      object PictureTS: TRzTabSheet
-        OnShow = PictureTSShow
-        Caption = #917#953#954#972#957#949#962
-        OnExit = PictureTSExit
+      object CertificationTS: TRzTabSheet
+        OnShow = CertificationTSShow
+        Caption = #928#953#963#964#959#960#959#953#951#964#951#954#940
+        OnExit = CertificationTSExit
         object RzGroupBox2: TRzGroupBox
           Left = 23
           Top = 103

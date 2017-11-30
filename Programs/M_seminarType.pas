@@ -148,7 +148,7 @@ type
     Label20: TLabel;
     wwCheckBox3: TwwCheckBox;
     SeminarReminderSQLIS_HIGH: TWideStringField;
-    PictureTS: TRzTabSheet;
+    CertificationTS: TRzTabSheet;
     RzGroupBox2: TRzGroupBox;
     Label19: TLabel;
     Label21: TLabel;
@@ -193,8 +193,8 @@ type
     procedure wwNavButton5Click(Sender: TObject);
     procedure SeminarPCChanging(Sender: TObject; NewIndex: Integer;
       var AllowChange: Boolean);
-    procedure PictureTSShow(Sender: TObject);
-    procedure PictureTSExit(Sender: TObject);
+    procedure CertificationTSShow(Sender: TObject);
+    procedure CertificationTSExit(Sender: TObject);
     procedure RzBitBtn2Click(Sender: TObject);
     procedure LanguageRGPChange(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
@@ -389,7 +389,7 @@ begin
 REminderDescFLD.SetFocus;
 end;
 
-procedure TM_SeminarTypeFRM.PictureTSExit(Sender: TObject);
+procedure TM_SeminarTypeFRM.CertificationTSExit(Sender: TObject);
 begin
   If SeminarPictureSQL.State in [dsEdit,dsInsert] then begin
     SeminarPictureSQL.Post;
@@ -398,7 +398,7 @@ begin
 
 end;
 
-procedure TM_SeminarTypeFRM.PictureTSShow(Sender: TObject);
+procedure TM_SeminarTypeFRM.CertificationTSShow(Sender: TObject);
 var
   SeminarTypeSerial:Integer;
 begin
