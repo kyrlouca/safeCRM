@@ -92,7 +92,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 934
       Height = 619
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = PictureTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -101,7 +101,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 5
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -2260,8 +2260,8 @@ object V_SeminarFRM: TV_SeminarFRM
         Caption = #917#953#954#972#957#949#962
         OnExit = PictureTSExit
         object RzGroupBox4: TRzGroupBox
-          Left = 15
-          Top = 37
+          Left = 23
+          Top = 101
           Width = 562
           Height = 292
           Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -2496,6 +2496,24 @@ object V_SeminarFRM: TV_SeminarFRM
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             Margin = -1
           end
+        end
+        object LanguageRGP: TwwRadioGroup
+          Left = 24
+          Top = 33
+          Width = 162
+          Height = 62
+          DisableThemes = False
+          ItemIndex = 0
+          Caption = #915#955#974#963#963#945
+          DataField = 'TYPE_MONO_POLY'
+          Items.Strings = (
+            #917#955#955#951#957#953#954#940
+            'English')
+          TabOrder = 1
+          Values.Strings = (
+            'G'
+            'E')
+          OnChange = LanguageRGPChange
         end
       end
     end
@@ -2940,7 +2958,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 226
     Top = 45
     Bitmap = {
-      494C010110008800900210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800940210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4064,8 +4082,8 @@ object V_SeminarFRM: TV_SeminarFRM
     MasterSource = SeminarSRC
     Active = True
     OnCalcFields = SeminarCostItemSQLCalcFields
-    Left = 265
-    Top = 301
+    Left = 609
+    Top = 253
     ParamData = <
       item
         DataType = ftInteger
@@ -4111,8 +4129,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object SeminarCostItemSRC: TDataSource
     DataSet = SeminarCostItemSQL
-    Left = 352
-    Top = 313
+    Left = 648
+    Top = 329
   end
   object CostItemTBL: TIBCTable
     TableName = 'COST_ITEM_TYPE'
@@ -4420,13 +4438,20 @@ object V_SeminarFRM: TV_SeminarFRM
       'SELECT STP.* '
       'FROM '
       'seminar_pictures STP'
-      'where stp.FK_SEMINAR_SERIAL = :SeminarSerial')
+      
+        'where stp.FK_SEMINAR_SERIAL = :SeminarSerial  and stp.LANGUAGE_G' +
+        'REEK_OR_ENGLISH = :language')
     Left = 465
     Top = 269
     ParamData = <
       item
         DataType = ftUnknown
         Name = 'SeminarSerial'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'language'
         Value = nil
       end>
     object SeminarPictureSQLSERIAL_NUMBER: TIntegerField

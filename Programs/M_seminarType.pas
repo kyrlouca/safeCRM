@@ -439,10 +439,11 @@ strIns:= 'insert into seminar_type_pictures '
     ksExecSQLVar(cn,strIns,[serial, TypeSerial,'E']);
   end;
 
-  SHowPicture(TypeSerial,'G');
+
+//  SHowPicture(TypeSerial,'G');
 end;
 
-
+////////////////////////////////////////
 procedure TM_SeminarTypeFRM.SavePicture(Const SeminarSerial:Integer; Const Language:String;img:Timage);
 var
   BlobField: TField;
@@ -480,8 +481,6 @@ begin
   end;
 
 end;
-
-
 function TM_SeminarTypeFRM.SelectPicture():Boolean;
 var
   fileName:String;
@@ -496,8 +495,6 @@ Begin
     imgShow.Picture.LoadFromFile(filename);
     result:=true;
 end;
-
-
 procedure TM_SeminarTypeFRM.ShowPictureData(Const TypeSerial:Integer;Const  Language:String);
 begin
    SeminarPictureSQL.Close;
@@ -506,7 +503,6 @@ begin
    SeminarPictureSQL.Open;
 
 end;
-
 procedure TM_SeminarTypeFRM.ShowPicture(Const TypeSerial:Integer;Const  Language:String);
  var
   code:string;
@@ -548,5 +544,5 @@ begin
 
 
 end;
-
+//////////////////////////////////////////
 End.

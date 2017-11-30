@@ -33,7 +33,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     ParentFont = False
     TabOrder = 0
     VisualStyle = vsClassic
-    ExplicitWidth = 1044
     object SeminarPC: TRzPageControl
       Left = 0
       Top = 57
@@ -52,11 +51,9 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       TabIndex = 3
       TabOrder = 0
       OnChanging = SeminarPCChanging
-      ExplicitWidth = 1044
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
-        ExplicitWidth = 1040
         object RzPanel2: TRzPanel
           Left = 0
           Top = 39
@@ -273,7 +270,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
           TabOrder = 0
-          ExplicitWidth = 1040
           object wwDBNavigator2: TwwDBNavigator
             Left = 1
             Top = 7
@@ -660,7 +656,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
         Caption = #920#941#956#945#964#945
-        ExplicitWidth = 1040
         object GroupBox2: TGroupBox
           Left = 20
           Top = 15
@@ -840,7 +835,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        ExplicitWidth = 1040
         object GroupBox4: TGroupBox
           Left = 533
           Top = 68
@@ -1153,7 +1147,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
           TabOrder = 1
-          ExplicitWidth = 1040
           object wwDBNavigator4: TwwDBNavigator
             Left = 1
             Top = 7
@@ -1451,7 +1444,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         OnShow = PictureTSShow
         Caption = #917#953#954#972#957#949#962
         OnExit = PictureTSExit
-        ExplicitWidth = 1040
         object RzGroupBox2: TRzGroupBox
           Left = 23
           Top = 103
@@ -1805,7 +1797,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Transparent = True
       VisualStyle = vsClassic
       WordWrap = False
-      ExplicitWidth = 1038
     end
     object RzPanel8: TRzPanel
       Left = 0
@@ -1815,7 +1806,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Align = alTop
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitWidth = 1044
     end
   end
   object Panel4: TRzPanel
@@ -1827,7 +1817,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     BorderOuter = fsFlatRounded
     BorderSides = [sdLeft, sdRight, sdBottom]
     TabOrder = 1
-    ExplicitWidth = 1044
     object RzPanel1: TRzPanel
       Left = 687
       Top = 0
@@ -1836,7 +1825,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 942
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3

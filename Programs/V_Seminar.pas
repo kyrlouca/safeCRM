@@ -278,6 +278,7 @@ type
     SeminarPictureSRC: TDataSource;
     SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField;
     OpenPictureDialog1: TOpenPictureDialog;
+    LanguageRGP: TwwRadioGroup;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -318,12 +319,19 @@ type
     procedure PictureTSShow(Sender: TObject);
     procedure RzBitBtn2Click(Sender: TObject);
     procedure PictureTSExit(Sender: TObject);
+    procedure LanguageRGPChange(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
 //  Function FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
-  procedure ShowPicture();
-  procedure SelectPicture();
+
+  procedure CheckPicturesX(COnst TypeSerial:Integer);
+  procedure ShowPictureX(Const TypeSerial:Integer;Const  Language:String);
+  procedure ShowPictureDataX(Const TypeSerial:Integer;Const  Language:String);
+  function  SelectPictureX():Boolean;
+  procedure SavePictureX(Const SeminarSerial:Integer; Const Language:String;img:Timage);
+
+
 
 
   Function FindActionDate(ActionDateRec:TActionDateRec):Tdate;
@@ -400,16 +408,10 @@ var
   SeminarSerial:Integer;
 begin
   SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
-
-  SeminarPictureSQL.Close;
-  SeminarPictureSQL.ParamByName('SeminarSerial').AsInteger:=SeminarSerial;
-  SeminarPictureSQL.Open;
-  if SeminarPictureSQL.IsEmpty then begin
-    SeminarPictureSQL.Insert;
-    SeminarPictureSQL.FieldByName('FK_SEMINAR_SERIAL').AsInteger:=SeminarSerial;
-    SeminarPictureSQL.Post;
-  end;
-  SHowPicture();
+  CheckPicturesX(SeminarSerial);
+  LanguageRGP.ItemIndex:=0;
+  SHowPictureX(SeminarSerial,'G');
+  SHowPictureDataX(SeminarSerial,'G');
 
 end;
 
@@ -738,6 +740,22 @@ begin
 end;
 
 
+procedure TV_SeminarFRM.LanguageRGPChange(Sender: TObject);
+var
+  SeminarSerial:Integer;
+begin
+//  SHowMessage(LanguageRGP.Value);
+  if SeminarPictureSQL.State in [dsEdit,dsInsert] then
+    SeminarPictureSQL.Post;
+  SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
+  if SeminarSerial<1 then exit;
+  if trim(LanguageRGP.Value)='' then exit;
+
+
+  ShowPictureX(SeminarSerial,LanguageRGP.Value);
+  ShowPictureDataX(SeminarSerial,LanguageRGP.Value);
+end;
+
 procedure TV_SeminarFRM.MembersGRDKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -848,9 +866,16 @@ begin
 end;
 
 procedure TV_SeminarFRM.RzBitBtn2Click(Sender: TObject);
+var
+  SeminarSerial:Integer;
 begin
-SelectPicture();
-ShowPicture();
+  SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
+  if SelectPicturex() then begin
+    SavePictureX(SeminarSerial, LanguageRGP.Value,ImgShow);
+    ShowPictureX(SeminarSerial,LanguageRGP.Value);
+//    ShowPictureData(TypeSerial,LanguageRGP.Value);
+  end;
+
 end;
 
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
@@ -1054,32 +1079,136 @@ begin
 end;
 
 
-procedure TV_SeminarFRM.ShowPicture();
+
+
+////////////////////////////////////////
+///
+///
+///
+procedure TV_SeminarFRM.CheckPicturesX(COnst TypeSerial:Integer);
+var
+  Serial:Integer;
+  str:String;
+  strIns:String;
+begin
+//create the records if not exist
+
+strIns:= 'insert into seminar_pictures '
++'(serial_number,FK_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLISH) values (:Serial, :typeSerial, :lang)';
+
+  if TypeSerial<1 then exit;
+
+  str:=
+' select serial_number'
+  +'  from'
+  +'      seminar_pictures stp'
+  +'  where'
+  +'   stp.fk_seminar_serial= :SeminarTYpeSerial and stp.language_greek_or_english = :lang';
+
+  if ksCountRecVarSQL(cn,str,[TypeSerial,'G'])=0 then begin
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
+    ksExecSQLVar(cn,strIns,[serial,TypeSerial,'G']);
+  end;
+
+  if ksCountRecVarSQL(cn,str,[TypeSerial,'E'])=0 then begin
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
+    ksExecSQLVar(cn,strIns,[serial, TypeSerial,'E']);
+  end;
+
+
+end;
+
+procedure TV_SeminarFRM.SavePictureX(Const SeminarSerial:Integer; Const Language:String;img:Timage);
+var
+  BlobField: TField;
+  BS: TStream;
+  str2:String;
+  qr:TksQuery;
+begin
+
+  str2:='select * from seminar_pictures stp '
+  + ' where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
+  qr:= TksQuery.Create(cn,str2);
+   try
+    with qr do  begin
+      close;
+      qr.ParamByName('seminarSerial').Value:=seminarSerial;
+      qr.ParamByName('Language').Value:=Language;
+      open;
+      if qr.IsEmpty then
+       exit;
+      qr.Edit;
+      BlobField := FieldByName('picture_seminar');
+      BS := CreateBlobStream(BlobField,bmWrite);
+      //bs.Position:=0;
+      Img.Picture.SaveToStream(BS);
+
+      if BS.Size=0 then begin
+        BlobField.Clear;
+      end;
+      qr.Post;
+      qr.close;
+
+    end;
+  finally
+    qr.Free;
+  end;
+
+end;
+function TV_SeminarFRM.SelectPictureX():Boolean;
+var
+  fileName:String;
+Begin
+    result:=false;
+    if not OpenPictureDialog1.Execute then     begin
+//    showMessage('exit');
+      Exit;
+    end;
+    filename :=OpenPictureDialog1.FileName;
+    ImgShow.Picture :=nil;
+    imgShow.Picture.LoadFromFile(filename);
+    result:=true;
+end;
+procedure TV_SeminarFRM.ShowPictureDataX(Const TypeSerial:Integer;Const  Language:String);
+begin
+   SeminarPictureSQL.Close;
+   SeminarPictureSQL.ParamByName('SeminarSerial').Value:=TypeSerial;
+   SeminarPictureSQL.ParamByName('language').Value:=Language;
+   SeminarPictureSQL.Open;
+
+end;
+procedure TV_SeminarFRM.ShowPictureX(Const TypeSerial:Integer;Const  Language:String);
  var
   code:string;
   BlobFIeld:TField;
   BS:TStream;
   qr:TksQuery;
 //  imgTemp:TImage;
-  SeminarSerial:Integer;
 
 begin
- SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
- if seminarSerial<1 then
+ if TypeSerial<1 then
     exit;
+ if (Language<>'G') ANd (Language<>'E') then
+  exit;
 
-  qr:= TksQuery.Create(cn,'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial');
+  qr:= TksQuery.Create(cn,'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language');
    try
       with qr do begin
       close;
-      qr.ParamByName('seminarSerial').Value:=seminarSerial;
-      open;
+      qr.ParamByName('seminarSerial').Value:=TypeSerial;
+      qr.ParamByName('LANGUAGE').Value:=Language;
+      qr.open;
       if qr.IsEmpty then
         exit;
-      BlobField := FieldByName('picture_seminar');
+      BlobField := qr.FieldByName('picture_seminar');
       BS := CreateBlobStream(BlobField,bmRead);
       bs.Position:=0;
       ImgShow.Picture.LoadFromStream(bs);
+
+      if BS.Size=0 then begin
+        ImgShow.Picture:=nil;
+      end;
+
       close;
       end;
    finally
@@ -1087,61 +1216,9 @@ begin
 //      imgTemp.Free;
    end;
 
-end;
-
-
-
-
-procedure TV_SeminarFRM.SelectPicture();
-var
-  BlobField: TField;
-  BS: TStream;
-  fileName:String;
-  code:String;
-  str1:String;
-  qr:TksQuery;
-  imgTemp:TImage;
-  SeminarSerial:Integer;
-
-Begin
-
-//code:= 'Ô00'
- SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
- if seminarSerial<1 then
-  exit;
- if not OpenPictureDialog1.Execute then     begin
-  showMessage('exit');
-    Exit;
- end;
-
-  imgTemp:=Timage.Create(self);
-  qr:= TksQuery.Create(cn,'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial');
-   try
-    filename :=OpenPictureDialog1.FileName;
-    ImgTemp.Picture:=nil;
-    imgTemp.Picture.LoadFromFile(filename);
-
-    with qr do  begin
-      close;
-      qr.ParamByName('seminarSerial').Value:=seminarSerial;
-      open;
-      if qr.IsEmpty then
-       exit;
-      Edit;
-      BlobField := FieldByName('picture_seminar');
-      BS := CreateBlobStream(BlobField,bmWrite);
-      //bs.Position:=0;
-      ImgTEmp.Picture.SaveToStream(BS);
-      Post;
-      close;
-      SeminarPictureSQL.Refresh;
-    end;
-  finally
-    imgTEmp.Free;
-    qr.Free;
-  end;
 
 end;
+//////////////////////////////////////////
 
 
 
