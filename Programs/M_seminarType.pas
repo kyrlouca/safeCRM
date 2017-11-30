@@ -176,6 +176,7 @@ type
     OpenPictureDialog1: TOpenPictureDialog;
     LanguageRGP: TwwRadioGroup;
     SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
+    ClearPictBTN: TRzBitBtn;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -197,11 +198,13 @@ type
     procedure RzBitBtn2Click(Sender: TObject);
     procedure LanguageRGPChange(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
+    procedure ClearPictBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
   procedure CheckPictures(COnst TypeSerial:Integer);
-  procedure SelectPicture(Const SeminarSerial:Integer; Const Language:String);
+
+  function SelectPicture():Boolean;
   procedure ShowPicture(Const TypeSerial:Integer;Const  Language:String);
   procedure ShowPictureData(Const TypeSerial:Integer;Const  Language:String);
   procedure SavePicture(Const SeminarSerial:Integer; Const Language:String;img:Timage);
@@ -288,8 +291,21 @@ var
   TypeSerial:Integer;
 begin
   TypeSerial:=TableSQL.fieldbyName('serial_number').AsInteger;
-  SelectPicture(TypeSerial,'G');
-  ShowPicture(TypeSerial,'G');
+  if SelectPicture() then begin
+    SavePicture(TypeSerial, LanguageRGP.Value,ImgShow);
+    ShowPicture(TypeSerial,LanguageRGP.Value);
+//    ShowPictureData(TypeSerial,LanguageRGP.Value);
+  end;
+
+end;
+
+procedure TM_SeminarTypeFRM.ClearPictBTNClick(Sender: TObject);
+var
+  TypeSerial:Integer;
+begin
+  TypeSerial:=TableSQL.fieldbyName('serial_number').AsInteger;
+  ImgShow.Picture:=nil;
+  SavePicture(TypeSerial, LanguageRGP.Value,ImgShow);
 end;
 
 procedure TM_SeminarTypeFRM.SeminarPCChanging(Sender: TObject;
@@ -300,6 +316,12 @@ begin
   end;
  AllowChange:= TableSQL.FieldByName('serial_number').AsInteger > 0;
  End;
+
+ procedure TM_SeminarTypeFRM.CanelBTNClick(Sender: TObject);
+begin
+TableSQL.Cancel;
+close;
+end;
 
 procedure TM_SeminarTypeFRM.SubjectTSShow(Sender: TObject);
 var
@@ -360,7 +382,6 @@ begin
   ShowPicture(TypeSerial,LanguageRGP.Value);
   ShowPictureData(TypeSerial,LanguageRGP.Value);
 
-
 end;
 
 procedure TM_SeminarTypeFRM.Nav1InsertClick(Sender: TObject);
@@ -382,7 +403,10 @@ var
   SeminarTypeSerial:Integer;
 begin
   SeminarTypeSerial:= TableSQL.FieldByName('serial_number').AsInteger;
-CheckPictures(SeminarTypeSerial);
+  CheckPictures(SeminarTypeSerial);
+  LanguageRGP.ItemIndex:=0;
+  SHowPicture(SeminarTypeSerial,'G');
+  SHowPictureData(SeminarTypeSerial,'G');
 end;
 
 procedure TM_SeminarTypeFRM.CheckPictures(COnst TypeSerial:Integer);
@@ -391,8 +415,9 @@ var
   str:String;
   strIns:String;
 begin
+//create the records if not exist
 
-  strIns:= 'insert into seminar_type_pictures '
+strIns:= 'insert into seminar_type_pictures '
 +'(serial_number,FK_SEMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_ENGLISH) values (:Serial, :typeSerial, :lang)';
 
   if TypeSerial<1 then exit;
@@ -417,11 +442,6 @@ begin
   SHowPicture(TypeSerial,'G');
 end;
 
-procedure TM_SeminarTypeFRM.CanelBTNClick(Sender: TObject);
-begin
-TableSQL.Cancel;
-close;
-end;
 
 procedure TM_SeminarTypeFRM.SavePicture(Const SeminarSerial:Integer; Const Language:String;img:Timage);
 var
@@ -451,10 +471,9 @@ begin
       if BS.Size=0 then begin
         BlobField.Clear;
       end;
+      qr.Post;
+      qr.close;
 
-      Post;
-      close;
-//      SeminarPictureSQL.Refresh;
     end;
   finally
     qr.Free;
@@ -463,69 +482,19 @@ begin
 end;
 
 
-procedure TM_SeminarTypeFRM.SelectPicture(Const SeminarSerial:Integer; Const Language:String);
+function TM_SeminarTypeFRM.SelectPicture():Boolean;
 var
-  BlobField: TField;
-  BS: TStream;
   fileName:String;
-  code:String;
-  str1:String;
-  qr:TksQuery;
-  imgTemp:TImage;
-  str2:String;
 Begin
-
-//code:= 'Ô00'
- if seminarSerial<1 then
-  exit;
- if not OpenPictureDialog1.Execute then     begin
-  showMessage('exit');
-    Exit;
- end;
-
-  imgTemp:=Timage.Create(self);
-   try
-    filename :=OpenPictureDialog1.FileName;
-    ImgTemp.Picture:=nil;
-    imgTemp.Picture.LoadFromFile(filename);
-    SavePicture(SeminarSerial,Language,ImgTemp);
-   finally
-     imgTEmp.Free;
-   end;
-
-
-
- {
-  imgTemp:=Timage.Create(self);
-  str2:='select * from seminar_type_pictures stp '
-  + ' where stp.fk_seminar_type_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
-  qr:= TksQuery.Create(cn,str2);
-   try
-    filename :=OpenPictureDialog1.FileName;
-    ImgTemp.Picture:=nil;
-    imgTemp.Picture.LoadFromFile(filename);
-
-    with qr do  begin
-      close;
-      qr.ParamByName('seminarSerial').Value:=seminarSerial;
-      qr.ParamByName('Language').Value:=Language;
-      open;
-      if qr.IsEmpty then
-       exit;
-      Edit;
-      BlobField := FieldByName('picture_seminar');
-      BS := CreateBlobStream(BlobField,bmWrite);
-      //bs.Position:=0;
-      ImgTEmp.Picture.SaveToStream(BS);
-      Post;
-      close;
-      SeminarPictureSQL.Refresh;
+    result:=false;
+    if not OpenPictureDialog1.Execute then     begin
+//    showMessage('exit');
+      Exit;
     end;
-  finally
-    imgTEmp.Free;
-    qr.Free;
-  end;
-}
+    filename :=OpenPictureDialog1.FileName;
+    ImgShow.Picture :=nil;
+    imgShow.Picture.LoadFromFile(filename);
+    result:=true;
 end;
 
 
@@ -558,10 +527,10 @@ begin
       close;
       qr.ParamByName('seminarSerial').Value:=TypeSerial;
       qr.ParamByName('LANGUAGE').Value:=Language;
-      open;
+      qr.open;
       if qr.IsEmpty then
         exit;
-      BlobField := FieldByName('picture_seminar');
+      BlobField := qr.FieldByName('picture_seminar');
       BS := CreateBlobStream(BlobField,bmRead);
       bs.Position:=0;
       ImgShow.Picture.LoadFromStream(bs);
