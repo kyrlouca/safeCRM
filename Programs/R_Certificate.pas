@@ -128,17 +128,20 @@ type
     procedure SubjectLblCalc(Sender: TObject; var Value: Variant);
     procedure Button1Click(Sender: TObject);
     procedure Rt1Print(Sender: TObject);
+    procedure dbr1GetRichText(Sender: TObject; var Text: string);
+    procedure dbr1Print(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
   procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer;Const language:String);
-
+    procedure ReplaceText;
   public
     { Public declarations }
     IN_Seminar_Serial:Integer;
     IN_certificate_serial:Integer;
     IN_Language:String;
     procedure PrintTheSeminar();
+
   end;
 
 var
@@ -174,6 +177,54 @@ begin
 showMessage(LanguageRGP.Value);
 end;
 
+procedure TR_certificateFRM.dbr1GetRichText(Sender: TObject; var Text: string);
+var
+  txt:string;
+  selPos,ToEnd:Integer;
+begin
+{
+//ReplaceText(Text);
+
+    txt:='CC';
+//       ToEnd := Length(dbr1.Text);
+       ToEnd := 1000;
+       selPos:=  dbr1.FindText(txt,0,toEnd,[]);
+    if SelPos >= 0 then  begin
+      dbr1.SelStart := SelPos - 1;
+      dbr1.SelLength := Length(txt);
+//      dbr1.SelStart := 4;
+//      dbr1.SelLength := 10;
+
+      dbr1.SelText := 'what the fuck';
+    end
+
+}
+
+end;
+
+procedure TR_certificateFRM.dbr1Print(Sender: TObject);
+
+  var
+  SelPos: Integer;
+  txt:String;
+  toEnd:Integer;
+begin
+    txt:='CC';
+//       ToEnd := Length(dbr1.Text);
+       ToEnd := 1000;
+       selPos:=  dbr1.FindText(txt,0,toEnd,[]);
+    if SelPos > 0 then  begin
+      dbr1.SelStart := SelPos - 1;
+      dbr1.SelLength := Length(txt);
+//      dbr1.SelStart := 4;
+//      dbr1.SelLength := 10;
+
+      { Replace selected text with ReplaceText }
+      dbr1.SelText := 'whackky';
+    end
+
+end;
+
 procedure TR_certificateFRM.DurationFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
@@ -191,8 +242,24 @@ end;
 
 
 procedure TR_certificateFRM.Rt1Print(Sender: TObject);
+var
+  SelPos: Integer;
+  txt:String;
+  toEnd:Integer;
 begin
-   rt1.Text:=  SeminarPicturesSQL.FieldByName('line_a1').Value;
+    txt:='CC';
+       ToEnd := 1000;
+       selPos:=  rt1.FindText(txt,0,toEnd,[]);
+    if SelPos >= 0 then  begin
+      rt1.SelStart := SelPos - 1;
+      rt1.SelLength := Length(txt);
+//      dbr1.SelStart := 4;
+//      dbr1.SelLength := 10;
+
+      { Replace selected text with ReplaceText }
+      rt1.SelText := 'what the fuck';
+    end
+
 end;
 
 procedure TR_certificateFRM.NameFLDCalc(Sender: TObject;
@@ -318,5 +385,30 @@ begin
     value:='(Αρ. Ταυτότητας: '+Trim(CertificateSQL.FieldByName('National_id').AsString)+ ')' ;
 
 end;
+
+
+procedure TR_certificateFRM.ReplaceText;
+
+var
+  SelPos: Integer;
+  txt:String;
+  toEnd:Integer;
+begin
+    txt:='CC';
+//       ToEnd := Length(dbr1.Text);
+       ToEnd := 1000;
+       selPos:=  dbr1.FindText(txt,0,toEnd,[]);
+    if SelPos >= 0 then  begin
+      dbr1.SelStart := SelPos - 1;
+      dbr1.SelLength := Length(txt);
+//      dbr1.SelStart := 4;
+//      dbr1.SelLength := 10;
+
+      { Replace selected text with ReplaceText }
+      dbr1.SelText := 'what the fuck';
+    end
+
+end;
+
 
 end.
