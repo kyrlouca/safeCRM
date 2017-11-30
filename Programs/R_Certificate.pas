@@ -17,6 +17,10 @@ type
     daysLeft:Integer;
     DateFinal:Tdate;
   End;
+  TReplaceItem= Record
+    text:String;
+    Field:String;
+  End;
 
   TR_certificateFRM = class(TForm)
     Panel1: TPanel;
@@ -110,7 +114,6 @@ type
     ppDesignLayer1: TppDesignLayer;
     ppParameterList1: TppParameterList;
     Button1: TButton;
-    Rt1: TppRichText;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -127,14 +130,13 @@ type
     procedure SerialLblCalc(Sender: TObject; var Value: Variant);
     procedure SubjectLblCalc(Sender: TObject; var Value: Variant);
     procedure Button1Click(Sender: TObject);
-    procedure Rt1Print(Sender: TObject);
     procedure dbr1GetRichText(Sender: TObject; var Text: string);
     procedure dbr1Print(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
   procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer;Const language:String);
-    procedure ReplaceText;
+  procedure ReplaceText(RichFld :TppCustomRichText);
   public
     { Public declarations }
     IN_Seminar_Serial:Integer;
@@ -208,7 +210,10 @@ procedure TR_certificateFRM.dbr1Print(Sender: TObject);
   SelPos: Integer;
   txt:String;
   toEnd:Integer;
+
 begin
+  ReplaceText(sender as TppDBRichText);
+{
     txt:='CC';
 //       ToEnd := Length(dbr1.Text);
        ToEnd := 1000;
@@ -219,10 +224,9 @@ begin
 //      dbr1.SelStart := 4;
 //      dbr1.SelLength := 10;
 
-      { Replace selected text with ReplaceText }
       dbr1.SelText := 'whackky';
     end
-
+}
 end;
 
 procedure TR_certificateFRM.DurationFLDCalc(Sender: TObject;
@@ -240,27 +244,6 @@ begin
 
 end;
 
-
-procedure TR_certificateFRM.Rt1Print(Sender: TObject);
-var
-  SelPos: Integer;
-  txt:String;
-  toEnd:Integer;
-begin
-    txt:='CC';
-       ToEnd := 1000;
-       selPos:=  rt1.FindText(txt,0,toEnd,[]);
-    if SelPos >= 0 then  begin
-      rt1.SelStart := SelPos - 1;
-      rt1.SelLength := Length(txt);
-//      dbr1.SelStart := 4;
-//      dbr1.SelLength := 10;
-
-      { Replace selected text with ReplaceText }
-      rt1.SelText := 'what the fuck';
-    end
-
-end;
 
 procedure TR_certificateFRM.NameFLDCalc(Sender: TObject;
   var Value: Variant);
@@ -387,26 +370,38 @@ begin
 end;
 
 
-procedure TR_certificateFRM.ReplaceText;
+procedure TR_certificateFRM.ReplaceText(RichFld :TppCustomRichText);
+const
+  ReplaceArray : array of String= ['[NAME]','[Id]','[Hours]','[Date]'] ;
+//  ReplaceArray : array of String= ['[NAME]'];
 
 var
   SelPos: Integer;
   txt:String;
   toEnd:Integer;
+  item:String;
+  temp:String;
 begin
-    txt:='CC';
-//       ToEnd := Length(dbr1.Text);
-       ToEnd := 1000;
-       selPos:=  dbr1.FindText(txt,0,toEnd,[]);
-    if SelPos >= 0 then  begin
-      dbr1.SelStart := SelPos - 1;
-      dbr1.SelLength := Length(txt);
-//      dbr1.SelStart := 4;
-//      dbr1.SelLength := 10;
 
-      { Replace selected text with ReplaceText }
-      dbr1.SelText := 'what the fuck';
-    end
+    For item in ReplaceArray do begin
+//      toEnd:=Length(RichFLD.RichText)+1;
+      toEnd:=1000;
+      selPos:=  RichFLD.FindText(item,0,toEnd,[]);
+      if SelPos >= 0 then begin
+         if item='[NAME]' then begin
+            temp:=CertificateSQL.FieldByName('First_name').AsString +' '+CertificateSQL.FieldByName('Last_Name').AsString;
+         end else if item='[ID]' then begin
+            temp:=CertificateSQL.FieldByName('National_id').AsString;
+         end else if item='[Hours]' then begin
+            temp:=CertificateSQL.FieldByName('SEMINAR_DURATION').AsString;
+         end else if item='[Date]' then begin
+            temp:=CertificateSQL.FieldByName('DATE_ISSUED').AsString;
+         end;
+        RichFld.SelStart := SelPos;
+        RichFLD.SelLength := Length(item);
+        RichFLD.SelText:= temp;
+      end;
+    end;
 
 end;
 
