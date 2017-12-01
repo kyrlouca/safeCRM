@@ -254,13 +254,7 @@ type
     RzDBLabel2: TRzDBLabel;
     CertificationTS: TRzTabSheet;
     RzGroupBox4: TRzGroupBox;
-    Label4: TLabel;
-    Label24: TLabel;
-    Label25: TLabel;
-    Label26: TLabel;
-    Label27: TLabel;
     ImgShow: TImage;
-    Label28: TLabel;
     SelectPictBTN: TRzBitBtn;
     SeminarPictureSQL: TIBCQuery;
     SeminarPictureSRC: TDataSource;
@@ -273,7 +267,6 @@ type
     wwDBRichEdit4: TwwDBRichEdit;
     wwDBRichEdit5: TwwDBRichEdit;
     wwDBRichEdit6: TwwDBRichEdit;
-    wwDBRichEdit7: TwwDBRichEdit;
     Image1: TImage;
     SeminarPictureSQLSERIAL_NUMBER: TIntegerField;
     SeminarPictureSQLPICTURE_SEMINAR: TBlobField;
@@ -285,6 +278,11 @@ type
     SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
     SeminarPictureSQLLINE_C1: TWideStringField;
+    Image2: TImage;
+    RzBitBtn2: TRzBitBtn;
+    RzBitBtn3: TRzBitBtn;
+    RzBitBtn4: TRzBitBtn;
+    RzBitBtn5: TRzBitBtn;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

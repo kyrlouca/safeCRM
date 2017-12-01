@@ -306,10 +306,9 @@ object M_StudentFRM: TM_StudentFRM
       Height = 515
       Align = alClient
       TabOrder = 1
-      ExplicitWidth = 488
       object GroupBox1: TGroupBox
-        Left = 286
-        Top = 49
+        Left = 6
+        Top = 46
         Width = 274
         Height = 226
         Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -510,13 +509,14 @@ object M_StudentFRM: TM_StudentFRM
           Items.Strings = (
             'Male'#9'M'
             'Female'#9'F')
+          LimitEditRect = True
           Sorted = False
           TabOrder = 5
           UnboundDataType = wwDefault
         end
       end
       object GroupBox2: TGroupBox
-        Left = 6
+        Left = 318
         Top = 49
         Width = 274
         Height = 355
@@ -776,7 +776,7 @@ object M_StudentFRM: TM_StudentFRM
         end
       end
       object CompanyGRP: TGroupBox
-        Left = 286
+        Left = 6
         Top = 278
         Width = 274
         Height = 126
@@ -921,9 +921,6 @@ object M_StudentFRM: TM_StudentFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 3
-        ExplicitLeft = 176
-        ExplicitTop = 16
-        ExplicitWidth = 185
         object Nav1: TwwDBNavigator
           Left = 4
           Top = 3

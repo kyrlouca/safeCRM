@@ -116,6 +116,9 @@ type
     TableSQLEXPIRY_PERIOD: TIntegerField;
     TableSQLFK_EXAMINER: TIntegerField;
     TableSQLTYPE_MONO_POLY: TWideStringField;
+    InvoiceSQLSUBJECT_HOURS: TIntegerField;
+    InvoiceSQLSEMINAR_CERTIFICATE: TWideStringField;
+    InvoiceSQLSEX: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -357,6 +360,7 @@ type
     FirstName:String;
     LastName:String;
     NationalId:string;
+    Sex:String;
   end;
 
 var
@@ -472,7 +476,7 @@ begin
         end;
 
       str:=' Select'
-      +'  per.last_name,per.first_name, per.last_first_name, per.national_id'
+      +'  per.last_name,per.first_name, per.last_first_name, per.national_id, per.sex'
       +'  from person_view per'
       +'  where  per.serial_number= :PersonSerial';
       PersonQr := TksQuery.Create(cn,str);
@@ -482,6 +486,7 @@ begin
          person.FirstName:=personQr.FieldByName('first_name').AsString;
          person.LastName:=personQr.FieldByName('Last_name').AsString;
          person.NationalId:=personQr.FieldByName('National_id').AsString;
+         person.sex:=personQr.FieldByName('SEX').AsString;
          personQr.Close;
       finally
         personQr.Free;
@@ -498,6 +503,7 @@ begin
         InvoiceSQL.FieldByName('first_name').Value:=person.FirstName;
         InvoiceSQL.FieldByName('Last_name').Value:=Person.LastName;
         InvoiceSQL.FieldByName('National_id').Value:=Person.NationalId;
+        InvoiceSQL.FieldByName('SEX').Value:=Person.Sex;
         InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
         InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
 

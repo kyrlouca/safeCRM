@@ -3,7 +3,7 @@ unit R_Certificate;
 interface
 
 uses
-  Windows, Messages, SysUtils,System.DateUtils,System.math, Classes, Graphics, Controls, Forms, Dialogs,
+  Windows, Messages, SysUtils,System.DateUtils,System.math,System.Character, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Buttons, ExtCtrls, wwSpeedButton, wwDBNavigator, Db, Wwdatsrc,
    DBAccess, IBC, MemDS, IBCError,  Grids, Wwdbigrd, Wwdbgrid, Wwkeycb, wwDialog, wwidlg,
   Mask, wwdbedit,  DBGrids, wwdbdatetimepicker, ppDB, ppCtrls,
@@ -27,9 +27,6 @@ type
     Panel3: TPanel;
     Panel4: TPanel;
     CertificatePIP: TppDBPipeline;
-    GroupBox1: TGroupBox;
-    Label6: TLabel;
-    FromDateFLD: TwwDBDateTimePicker;
     PrintRBtn: TBitBtn;
     Panel11: TRzPanel;
     BitBtn1: TBitBtn;
@@ -80,13 +77,8 @@ type
     ppLabel11: TppLabel;
     ppLabel12: TppLabel;
     ppLabel13: TppLabel;
-    ppDBText7: TppDBText;
     ppLabel14: TppLabel;
-    ppLabel15: TppLabel;
-    ppLine2: TppLine;
-    ppVariable2: TppVariable;
     ppVariable3: TppVariable;
-    ppDBText8: TppDBText;
     ppVariable4: TppVariable;
     ppVariable5: TppVariable;
     ppDBRichText2: TppDBRichText;
@@ -102,12 +94,14 @@ type
     BottomRIghtFLD: TppDBRichText;
     BottomLeftFLD: TppDBRichText;
     SideTopFLD: TppDBRichText;
-    SideBottomFLD: TppDBRichText;
     ppDBImage3: TppDBImage;
     ppDBRichText7: TppDBRichText;
+    SeminarPicturesSQLLINE_C1: TWideStringField;
+    CertificateSQLSUBJECT_HOURS: TIntegerField;
+    CertificateSQLSEMINAR_CERTIFICATE: TWideStringField;
+    CertificateSQLSEX: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
-    procedure ppLabel10GetText(Sender: TObject; var Text: String);
     procedure FormActivate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -123,6 +117,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure dbr1GetRichText(Sender: TObject; var Text: string);
     procedure TopFldPrint(Sender: TObject);
+    procedure MiddleFldPrint(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -204,20 +199,6 @@ procedure TR_certificateFRM.TopFldPrint(Sender: TObject);
 
 begin
   ReplaceText(sender as TppDBRichText);
-{
-    txt:='CC';
-//       ToEnd := Length(dbr1.Text);
-       ToEnd := 1000;
-       selPos:=  dbr1.FindText(txt,0,toEnd,[]);
-    if SelPos > 0 then  begin
-      dbr1.SelStart := SelPos - 1;
-      dbr1.SelLength := Length(txt);
-//      dbr1.SelStart := 4;
-//      dbr1.SelLength := 10;
-
-      dbr1.SelText := 'whackky';
-    end
-}
 end;
 
 procedure TR_certificateFRM.DurationFLDCalc(Sender: TObject;
@@ -246,7 +227,7 @@ end;
 
 procedure TR_certificateFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
 begin
-   value:=FromDateFLD.Date;
+//   value:=FromDateFLD.Date;
 end;
 
 procedure TR_certificateFRM.RzBitBtn1Click(Sender: TObject);
@@ -281,16 +262,6 @@ procedure TR_certificateFRM.VtFilterRecord(DataSet: TDataSet;
 begin
   accept := Dataset.FieldByName('DaysCalc').asInteger >= 0;
 end;
-
-
-procedure TR_certificateFRM.ppLabel10GetText(Sender: TObject;
-  var Text: String);
-begin
-  Text:= 'Reference Date :'+ FromDateFLD.Text;
-
-end;
-
-
 
 
 procedure TR_certificateFRM.PrintRBtnClick(Sender: TObject);
@@ -342,8 +313,6 @@ end;
 procedure TR_certificateFRM.FormActivate(Sender: TObject);
 begin
 LanguageRGP.ItemIndex:=0;
-if (Trim(FromDateFLD.text)='') then
-   FromDateFLD.Date:=now;
 
 end;
 
@@ -361,9 +330,14 @@ begin
 end;
 
 
+procedure TR_certificateFRM.MiddleFldPrint(Sender: TObject);
+begin
+  ReplaceText(sender as TppDBRichText);
+end;
+
 procedure TR_certificateFRM.ReplaceText(RichFld :TppCustomRichText);
 const
-  ReplaceArray : array of String= ['[NAME]','[Id]','[Hours]','[Date]'] ;
+  ReplaceArray : array of String= ['[NAME]','[SEX]','[Id]','[Hours]','[Date]'] ;
 //  ReplaceArray : array of String= ['[NAME]'];
 
 var
@@ -372,7 +346,21 @@ var
   toEnd:Integer;
   item:String;
   temp:String;
+  GreekOrEnglish:String;
+  function checkUpper (val:string):String;
+  var
+    FirstLetter:String;
+  begin
+    RichFld.SelStart := SelPos+1;//letter at pos 0 is [
+    RichFLD.SelLength := 1;
+    firstLetter:= RichFLD.SelText;
+    if System.Character.IsUpper(firstLetter,1) then
+      result:=System.Character.ToUpper(val)
+    else
+      result:=System.Character.ToLower(val);
+  end;
 begin
+
 
     For item in ReplaceArray do begin
 //      toEnd:=Length(RichFLD.RichText)+1;
@@ -381,12 +369,22 @@ begin
       if SelPos >= 0 then begin
          if item='[NAME]' then begin
             temp:=CertificateSQL.FieldByName('First_name').AsString +' '+CertificateSQL.FieldByName('Last_Name').AsString;
+         end else if item='[SEX]' then begin
+
+            temp:=CertificateSQL.FieldByName('SEX').AsString;
+            if temp='M' then
+              temp:='Ï'
+            else
+              temp:='Ç';
+            temp:= checkUpper(temp);
          end else if item='[ID]' then begin
             temp:=CertificateSQL.FieldByName('National_id').AsString;
          end else if item='[Hours]' then begin
             temp:=CertificateSQL.FieldByName('SEMINAR_DURATION').AsString;
          end else if item='[Date]' then begin
-            temp:=CertificateSQL.FieldByName('DATE_ISSUED').AsString;
+            GreekOrEnglish:=SeminarPicturesSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+            temp:=FormatGreekDate(CertificateSQL.FieldByName('DATE_ISSUED').AsDateTime,GreekOrEnglish);
+
          end;
         RichFld.SelStart := SelPos;
         RichFLD.SelLength := Length(item);
@@ -395,6 +393,7 @@ begin
     end;
 
 end;
+
 
 
 end.

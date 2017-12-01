@@ -16,6 +16,7 @@ type
 
 function test1():Integer;
 Function CalcDaysOld(const DateSeminar,DateRef:TDateTime;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Integer;
+Function FormatGreekDate(const aDateTime:TDateTime;Const GreekOrEnglish:String):string;
 
 implementation
 function test1():Integer;
@@ -46,9 +47,34 @@ begin
     result:=-1;
   end;
 
+
+
+
+
 end;
 
+Function FormatGreekDate(const aDateTime:TDateTime;Const GreekOrEnglish:String):string;
+const
+  GreekMonths   :Array of String =['Ιανουαρίου', 'Φεβρουαρίου','Μαρτίου','Απριλίου','Μαίου','Ιουνίου','Ιουλίου','Αυγούστου','Σεπτεμβρίου', 'Οκτωβρίου','Νοεμβρίου', 'Δεκεμβρίου'];
+  EnglishMonths :Array of String =['Janouary', 'Febrouary','March','April','May','June','Jyly','August','September','October','November','December'];
+var
+Year,Month,Day:Word;
+sMonth:String;
+begin
 
+  DecodeDate(aDateTime, Year ,Month,Day);
+  if Year=0 then begin
+    result:='dd/mm/yyyy';
+    exit;
+  end;
+
+  if GreekOrEnglish='G' then
+    sMOnth:=GreekMonths[Month-1]
+  else
+    sMonth:=EnglishMonths[MOnth];
+  result:= intToStr(day)+' ' + sMonth+' '+IntTOStr(Year);
+
+end;
 
 
 
