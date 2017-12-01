@@ -124,9 +124,9 @@ var
 
 begin
 
-  str1:='Õ·Òﬂ·';
-  str1:='';
-  If AllUPper(str1) then
+  str1:='Ã¡r∫¢';
+  str1:='n·Òºﬂ·';
+  If AllLower(str1) then
     showMessage('all Upper');
   exit;
 

@@ -19,6 +19,7 @@ Function CalcDaysOld(const DateSeminar,DateRef:TDateTime;Const isAfter,isDayUnit
 Function FormatGreekDate(const aDateTime:TDateTime;Const GreekOrEnglish:String):string;
 Function RemoveAccents(Const val:String):string;
 function AllUpper (val:string):Boolean;
+function AllLower (val:string):Boolean;
 
 
 implementation
@@ -124,21 +125,28 @@ begin
   end;
 end;
 
-{
-function checkUpper (val:string):String;
+function AllLower (val:string):Boolean;
 var
-    FirstLetter:String;
+  chr : Char;
 begin
+  if length(val)<1 then begin
+    result:=false;
+    exit;
+  end;
 
-    RichFld.SelStart := SelPos+1;//letter at pos 0 is [
-    RichFLD.SelLength := 1;
-    firstLetter:= RichFLD.SelText;
-    if System.Character.IsUpper(firstLetter,1) then
-      result:=System.Character.ToUpper(val)
-    else
-      result:=System.Character.ToLower(val);
+  result:=true;
+  for chr in Val do begin
+    if not System.Character.IsLower(chr) then begin
+        result:=false;
+        exit;
+    end;
+
+  end;
 end;
 
-}
+
+
+
+
 
 end.

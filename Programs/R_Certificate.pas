@@ -344,9 +344,12 @@ var
   SelPos: Integer;
   txt:String;
   toEnd:Integer;
-  item:String;
+  Token:String;
   temp:String;
   GreekOrEnglish:String;
+  isAllUpper:Boolean;
+  isAllLower:Boolean;
+
   function checkUpper (val:string):String;
   var
     FirstLetter:String;
@@ -362,39 +365,72 @@ var
 begin
 
 
-    For item in ReplaceArray do begin
+ For token in ReplaceArray do begin
 //      toEnd:=Length(RichFLD.RichText)+1;
       toEnd:=1000;
-      selPos:=  RichFLD.FindText(item,0,toEnd,[]);
+      selPos:=  RichFLD.FindText(token,0,toEnd,[]);
+
       if SelPos >= 0 then begin
-         if item='[NAME]' then begin
-            temp:=CertificateSQL.FieldByName('First_name').AsString +' '+CertificateSQL.FieldByName('Last_Name').AsString;
-            temp:= checkUpper(temp);
-            temp:= RemoveAccents(Temp);
-         end else if item='[SEX]' then begin
+        RichFld.SelStart := SelPos;
+        RichFLD.SelLength := Length(token);
+        temp:=RichFLD.SelText;
+        isAllUpper:=AllUPper(temp);
+        isAllLower:=AllLower(temp);
+        //check if the user has written the TOKEN in all upper, all lower, or mixed capitals
+        //change case of value accordingly
+
+         if token='[NAME]' then begin
+            temp:=Trim(CertificateSQL.FieldByName('First_name').AsString) +' '+Trim(CertificateSQL.FieldByName('Last_Name').AsString);
+             if isAllUpper then begin
+                temp:= ToUpper(temp);
+                temp:= RemoveAccents(Temp);
+             end;
+
+             if isAllLower then begin
+                temp:= ToLower(Temp);
+             end;
+
+
+         end else if token='[SEX]' then begin
 
             temp:=CertificateSQL.FieldByName('SEX').AsString;
             if temp='M' then
               temp:='Ï'
             else
               temp:='Ç';
-            temp:= checkUpper(temp);
-            temp:= RemoveAccents(Temp);
-         end else if item='[ID]' then begin
+
+             if isAllUpper then begin
+                temp:= ToUpper(temp);
+                temp:= RemoveAccents(Temp);
+             end;
+
+             if isAllLower then begin
+                temp:= ToLower(Temp);
+             end;
+
+         end else if token='[ID]' then begin
             temp:=CertificateSQL.FieldByName('National_id').AsString;
-         end else if item='[Hours]' then begin
+         end else if token='[Hours]' then begin
             temp:=CertificateSQL.FieldByName('SEMINAR_DURATION').AsString;
-         end else if item='[Date]' then begin
+         end else if token='[Date]' then begin
             GreekOrEnglish:=SeminarPicturesSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
             temp:=FormatGreekDate(CertificateSQL.FieldByName('DATE_ISSUED').AsDateTime,GreekOrEnglish);
+             if isAllUpper then begin
+                temp:= ToUpper(temp);
+                temp:= RemoveAccents(Temp);
+             end;
+
+             if isAllLower then begin
+                temp:= ToLower(Temp);
+             end;
 
          end;
         RichFld.SelStart := SelPos;
-        RichFLD.SelLength := Length(item);
+        RichFLD.SelLength := Length(token);
         RichFLD.SelText:= temp;
-      end;
-    end;
 
+    end;
+ end;
 end;
 
 
