@@ -11,7 +11,7 @@ uses
   System.ImageList,System.DateUtils, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
   Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
   vcl.wwradiogroup, RzRadChk, RzDBChk,G_debugUnit,codeSiteLogging,CodeSiteMessage,
-  Vcl.ExtDlgs, vcl.wwriched;
+  Vcl.ExtDlgs, vcl.wwriched, Vcl.Menus;
 type
 //Function TV_SeminarFRM.FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   TactionDateRec= record
@@ -283,6 +283,10 @@ type
     RzBitBtn3: TRzBitBtn;
     RzBitBtn4: TRzBitBtn;
     RzBitBtn5: TRzBitBtn;
+    MainMenu1: TMainMenu;
+    Help1: TMenuItem;
+    Certifcates1: TMenuItem;
+    certificatesHelpRE: TwwDBRichEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -325,6 +329,7 @@ type
     procedure CertificationTSExit(Sender: TObject);
     procedure LanguageRGPChange(Sender: TObject);
     procedure ClearPictBTNClick(Sender: TObject);
+    procedure Certifcates1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -364,7 +369,8 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs;
+uses   U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs,
+  H_Help;
 
 
 {$R *.DFM}
@@ -398,6 +404,21 @@ procedure TV_SeminarFRM.ReminderTSShow(Sender: TObject);
 begin
 ksOpenTables([SeminarReminderSQL]);
 
+end;
+
+procedure TV_SeminarFRM.Certifcates1Click(Sender: TObject);
+vAR
+  Frm:TH_HelpFRM;
+begin
+  frm := TH_HelpFRM.Create(nil);
+  try
+
+    frm.IN_RtfTExt:=certificatesHelpRE.Text;
+    frm.IN_RichEdit:=certificatesHelpRE;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TV_SeminarFRM.CertificationTSExit(Sender: TObject);

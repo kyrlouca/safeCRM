@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RzButton, Vcl.Buttons, Vcl.ExtCtrls,
   RzPanel, RzSplit, Vcl.StdCtrls, Vcl.Menus, Vcl.Imaging.pngimage, RzForms,
-  Data.DB, MemDS, VirtualTable, Vcl.ExtDlgs, DBAccess, IBC, Vcl.DBCtrls;
+  Data.DB, MemDS, VirtualTable, Vcl.ExtDlgs, DBAccess, IBC, Vcl.DBCtrls,
+  Vcl.ComCtrls, vcl.wwriched;
 
 type
   TM_mainFRM = class(TForm)
@@ -69,6 +70,7 @@ type
     qrDESCRIPTION: TWideStringField;
     qrANAD_PICTURE: TBlobField;
     OpenPictureDialog1: TOpenPictureDialog;
+    MainHelpRE: TwwDBRichEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -164,9 +166,16 @@ begin
 end;
 
 procedure TM_mainFRM.HelpFile1Click(Sender: TObject);
+vAR
+  Frm:TH_HelpFRM;
 begin
-gpShowModal(TH_HelpFRM);
-
+  frm := TH_HelpFRM.Create(nil);
+  try
+    frm.IN_RichEdit:=MainHelpRE;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TM_mainFRM.LoginBTNClick(Sender: TObject);

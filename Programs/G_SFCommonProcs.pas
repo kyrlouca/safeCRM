@@ -75,7 +75,7 @@ begin
   if GreekOrEnglish='G' then
     sMOnth:=GreekMonths[Month-1]
   else
-    sMonth:=EnglishMonths[MOnth];
+    sMonth:=EnglishMonths[MOnth-1];
   result:= intToStr(day)+' ' + sMonth+' '+IntTOStr(Year);
 
 end;

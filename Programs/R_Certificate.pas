@@ -10,7 +10,7 @@ uses
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
   RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox, vcl.wwclearbuttongroup,
-  vcl.wwradiogroup, ppStrtch, ppRichTx;
+  vcl.wwradiogroup, ppStrtch, ppRichTx, Vcl.ComCtrls, vcl.wwriched;
 
 type
   TReminderResult= Record
@@ -299,9 +299,14 @@ begin
   end;
 
     with SeminarPicturesSQL do begin
+    SeminarPicturesSQL.Close ;
     SeminarPicturesSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
     SeminarPicturesSQL.ParamByName('Language').Value:=Language;
-    Open ;
+    SeminarPicturesSQL.Open ;
+    if     SeminarPicturesSQL.IsEmpty then begin
+      showMessage('error: missing seminar picture record');
+      exit;
+    end;
   end;
 
 
@@ -337,8 +342,8 @@ end;
 
 procedure TR_certificateFRM.ReplaceText(RichFld :TppCustomRichText);
 const
-//  ReplaceArray : array of String= ['[NAME]','[SEX]','[Id]','[Hours]','[Date]'] ;
-  ReplaceArray : array of String= ['[NAME]'];
+  ReplaceArray : array of String= ['[NAME]','[SEX]','[ID]','[HOURS]','[DATE]'] ;
+//  ReplaceArray : array of String= ['[NAME]'];
 
 var
   SelPos: Integer;
@@ -398,9 +403,9 @@ begin
 
          end else if token='[ID]' then begin
             temp:=CertificateSQL.FieldByName('National_id').AsString;
-         end else if token='[Hours]' then begin
+         end else if token='[HOURS]' then begin
             temp:=CertificateSQL.FieldByName('SEMINAR_DURATION').AsString;
-         end else if token='[Date]' then begin
+         end else if token='[DATE]' then begin
             GreekOrEnglish:=SeminarPicturesSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
             temp:=FormatGreekDate(CertificateSQL.FieldByName('DATE_ISSUED').AsDateTime,GreekOrEnglish);
              if isAllUpper then begin
