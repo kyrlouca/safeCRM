@@ -337,8 +337,8 @@ end;
 
 procedure TR_certificateFRM.ReplaceText(RichFld :TppCustomRichText);
 const
-  ReplaceArray : array of String= ['[NAME]','[SEX]','[Id]','[Hours]','[Date]'] ;
-//  ReplaceArray : array of String= ['[NAME]'];
+//  ReplaceArray : array of String= ['[NAME]','[SEX]','[Id]','[Hours]','[Date]'] ;
+  ReplaceArray : array of String= ['[NAME]'];
 
 var
   SelPos: Integer;
@@ -349,28 +349,16 @@ var
   GreekOrEnglish:String;
   isAllUpper:Boolean;
   isAllLower:Boolean;
-
-  function checkUpper (val:string):String;
-  var
-    FirstLetter:String;
-  begin
-    RichFld.SelStart := SelPos+1;//letter at pos 0 is [
-    RichFLD.SelLength := 1;
-    firstLetter:= RichFLD.SelText;
-    if System.Character.IsUpper(firstLetter,1) then
-      result:=System.Character.ToUpper(val)
-    else
-      result:=System.Character.ToLower(val);
-  end;
 begin
 
 
  For token in ReplaceArray do begin
 //      toEnd:=Length(RichFLD.RichText)+1;
-      toEnd:=1000;
+      toEnd:=1500;
       selPos:=  RichFLD.FindText(token,0,toEnd,[]);
+      if selPos <0 then
+        Continue;
 
-      if SelPos >= 0 then begin
         RichFld.SelStart := SelPos;
         RichFLD.SelLength := Length(token);
         temp:=RichFLD.SelText;
@@ -429,7 +417,6 @@ begin
         RichFLD.SelLength := Length(token);
         RichFLD.SelText:= temp;
 
-    end;
  end;
 end;
 

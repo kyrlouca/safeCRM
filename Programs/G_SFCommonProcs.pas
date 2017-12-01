@@ -117,7 +117,7 @@ begin
 
   result:=true;
   for chr in Val do begin
-    if not System.Character.IsUpper(chr) then begin
+    if system.Character.IsLetter(chr) and (not System.Character.IsUpper(chr)) then begin
            result:=false;
            exit;
     end;
@@ -136,7 +136,7 @@ begin
 
   result:=true;
   for chr in Val do begin
-    if not System.Character.IsLower(chr) then begin
+    if system.Character.IsLetter(chr) and (not System.Character.IsLower(chr)) then begin
         result:=false;
         exit;
     end;
