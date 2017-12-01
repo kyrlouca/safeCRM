@@ -2,7 +2,7 @@ unit G_SFCommonProcs;
 
 interface
 uses
-G_KyriacosTypes, Messages, System.SysUtils, System.DateUtils,System.Variants,Classes, Graphics, Controls,  Dialogs,
+System.Character,G_KyriacosTypes, Messages, System.SysUtils, System.DateUtils,System.Variants,Classes, Graphics, Controls,  Dialogs,
   StdCtrls;
 
 type
@@ -17,6 +17,9 @@ type
 function test1():Integer;
 Function CalcDaysOld(const DateSeminar,DateRef:TDateTime;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Integer;
 Function FormatGreekDate(const aDateTime:TDateTime;Const GreekOrEnglish:String):string;
+Function RemoveAccents(Const val:String):string;
+function AllUpper (val:string):Boolean;
+
 
 implementation
 function test1():Integer;
@@ -77,5 +80,65 @@ begin
 end;
 
 
+Function RemoveAccents(Const val:String):string;
+const
+  Accented = '¢¼¿¸º¹¾';
+  Plain = 'ÁÏÙÅÉÇÕ';
+var
+  sMonth:String;
+  temp:string;
+  ch:String;
+  str:String;
+  ndx:Integer;
+begin
+  result:='';
+  for ch in val do begin
+    ndx:= Pos(ch,Accented);
+    if ndx>0 then
+      temp:=copy(Plain,ndx,1)
+    else
+      temp:= ch;
+
+    result:=result+temp;
+  end;
+
+end;
+
+
+function AllUpper (val:string):Boolean;
+var
+  chr : Char;
+begin
+  if length(val)<1 then begin
+    result:=false;
+    exit;
+  end;
+
+  result:=true;
+  for chr in Val do begin
+    if not System.Character.IsUpper(chr) then begin
+           result:=false;
+           exit;
+    end;
+
+  end;
+end;
+
+{
+function checkUpper (val:string):String;
+var
+    FirstLetter:String;
+begin
+
+    RichFld.SelStart := SelPos+1;//letter at pos 0 is [
+    RichFLD.SelLength := 1;
+    firstLetter:= RichFLD.SelText;
+    if System.Character.IsUpper(firstLetter,1) then
+      result:=System.Character.ToUpper(val)
+    else
+      result:=System.Character.ToLower(val);
+end;
+
+}
 
 end.

@@ -105,7 +105,8 @@ implementation
 uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
-  L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry;
+  L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
+  G_SFCommonProcs;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -123,14 +124,28 @@ var
 
 begin
 
+  str1:='Ναρία';
+  str1:='';
+  If AllUPper(str1) then
+    showMessage('all Upper');
+  exit;
+
+
+  STR2:=  G_SFCommonProcs.RemoveAccents(str1);
+  ShowMessage(str2);
+  exit;
+
   alpha:='Α';
 //  ch:=chr(Ord(char('Α')));
 
-  ch1:=chr(Ord(char('ε')));
-  ch2:=chr(Ord(char('έ')));
+  ch1:=chr(Ord(char('Ω')));
+  ch2:=chr(Ord(char('Ώ')));
+
+
 
   i:=Ord(ch1);
   j:=Ord(ch2);
+  ShowMessage('diff='+intToStr(i-j));
   str1:=IntToStr(i);
   str2:=intTOStr(j);
 //  Str:=ch+'Β';

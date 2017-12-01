@@ -369,6 +369,8 @@ begin
       if SelPos >= 0 then begin
          if item='[NAME]' then begin
             temp:=CertificateSQL.FieldByName('First_name').AsString +' '+CertificateSQL.FieldByName('Last_Name').AsString;
+            temp:= checkUpper(temp);
+            temp:= RemoveAccents(Temp);
          end else if item='[SEX]' then begin
 
             temp:=CertificateSQL.FieldByName('SEX').AsString;
@@ -377,6 +379,7 @@ begin
             else
               temp:='Ç';
             temp:= checkUpper(temp);
+            temp:= RemoveAccents(Temp);
          end else if item='[ID]' then begin
             temp:=CertificateSQL.FieldByName('National_id').AsString;
          end else if item='[Hours]' then begin
