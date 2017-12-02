@@ -103,7 +103,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1082
       Height = 634
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = CertificationTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -112,7 +112,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 5
       TabOrder = 0
       OnChanging = PageControlPCChanging
       ExplicitWidth = 934

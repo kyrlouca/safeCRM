@@ -353,7 +353,8 @@ type
   procedure ShowPictureDataX(Const TypeSerial:Integer;Const  Language:String);
   procedure ShowPictureX(Const TypeSerial:Integer;Const FieldName :String;Const  Language:String;img:TImage);
   procedure SavePictureX(Const SeminarSerial:Integer;Const FieldName:String; Const Language:String;img:Timage);
-  procedure SelectAndSavePicture(Const SeminarSerial:Integer;Const Language:String; img:TImage);
+  procedure SelectAndSavePictureX(Const SeminarSerial:Integer;Const Language:String; img:TImage);
+  procedure ClearPictureX(Const SeminarSerial:Integer;Const FieldName :String; Const Language:String;img:Timage);
 
 
 
@@ -423,13 +424,13 @@ end;
 
 procedure TV_SeminarFRM.CertBottomLeftIMGDblClick(Sender: TObject);
 begin
-  SelectAndSavePicture(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
+  SelectAndSavePictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
 
 end;
 
 procedure TV_SeminarFRM.CertBottomRIghtIMGDblClick(Sender: TObject);
 begin
-  SelectAndSavePicture(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
+  SelectAndSavePictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
 
 end;
 
@@ -470,20 +471,21 @@ end;
 
 procedure TV_SeminarFRM.PICTURE_TOP_L1DblClick(Sender: TObject);
 begin
-  SelectAndSavePicture(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
+  SelectAndSavePictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
 end;
 
 procedure TV_SeminarFRM.PICTURE_TOP_L1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-if (ssCtrl in Shift) then begin
-  ShowMessage( Timage(Sender).Name);
-end;
+  if (ssCtrl in Shift) then begin
+    ShowMessage( Timage(Sender).Name);
+    ClearPictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,TImage(sender).name,LanguageRGP.Value,TImage(Sender));
+  end;
 end;
 
 procedure TV_SeminarFRM.CertTopRIghtIMGDblClick(Sender: TObject);
 begin
-  SelectAndSavePicture(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
+  SelectAndSavePictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
 end;
 
 procedure TV_SeminarFRM.ToLeftBTNClick(Sender: TObject);
@@ -937,7 +939,7 @@ begin
   close;
 end;
 
-procedure TV_SeminarFRM.SelectAndSavePicture(Const SeminarSerial:Integer;Const Language:String; img:TImage);
+procedure TV_SeminarFRM.SelectAndSavePictureX(Const SeminarSerial:Integer;Const Language:String; img:TImage);
 begin
 //  SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
   if SelectPicturex(img) then begin
@@ -963,6 +965,8 @@ begin
   end;
 }
 end;
+
+
 
 procedure TV_SeminarFRM.ClearTopLeftBTNClick(Sender: TObject);
 var
@@ -1215,6 +1219,14 @@ strIns:= 'insert into seminar_pictures '
 
 
 end;
+
+
+procedure TV_SeminarFRM.ClearPictureX(Const SeminarSerial:Integer;Const FieldName :String; Const Language:String;img:Timage);
+begin
+  img.Picture:=nil;
+asd
+end;
+
 
 
 procedure TV_SeminarFRM.SavePictureX(Const SeminarSerial:Integer;Const FieldName :String; Const Language:String;img:Timage);
