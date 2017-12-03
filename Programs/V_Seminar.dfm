@@ -104,7 +104,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1082
       Height = 689
       Hint = ''
-      ActivePage = CertificationTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -113,7 +113,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 5
+      TabIndex = 0
       TabOrder = 0
       OnChanging = PageControlPCChanging
       ExplicitWidth = 934
@@ -4433,8 +4433,8 @@ object V_SeminarFRM: TV_SeminarFRM
   object AttendingSRC: TDataSource
     DataSet = AttendingSQL
     OnStateChange = SeminarSRCStateChange
-    Left = 136
-    Top = 209
+    Left = 64
+    Top = 169
   end
   object NonAttendSQL: TIBCQuery
     UpdatingTable = 'person'

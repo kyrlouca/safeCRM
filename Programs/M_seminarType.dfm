@@ -2819,14 +2819,14 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_ENGL' +
         'ISH, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B' +
         '3, TL_X, TL_Y, TR_X, TR_Y, BL_X, BL_Y, BR_X, BR_Y, PICTURE_TOP_L' +
-        '1, PICTURE_TOP_R1, PICTURE_BOT_L1, PICTURE_BOT_R1)'
+        '1, PICTURE_TOP_R1, PICTURE_BOT_L1, PICTURE_BOT_R1, LINE_C1)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_TYPE_SERIAL, :LANGUAGE_GREEK_OR_E' +
         'NGLISH, :PICTURE_SEMINAR, :LINE_A1, :LINE_A2, :LINE_B1, :LINE_B2' +
         ', :LINE_B3, :TL_X, :TL_Y, :TR_X, :TR_Y, :BL_X, :BL_Y, :BR_X, :BR' +
         '_Y, :PICTURE_TOP_L1, :PICTURE_TOP_R1, :PICTURE_BOT_L1, :PICTURE_' +
-        'BOT_R1)')
+        'BOT_R1, :LINE_C1)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE_PICTURES'
       'WHERE'
@@ -2843,7 +2843,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         '_Y = :TR_Y, BL_X = :BL_X, BL_Y = :BL_Y, BR_X = :BR_X, BR_Y = :BR' +
         '_Y, PICTURE_TOP_L1 = :PICTURE_TOP_L1, PICTURE_TOP_R1 = :PICTURE_' +
         'TOP_R1, PICTURE_BOT_L1 = :PICTURE_BOT_L1, PICTURE_BOT_R1 = :PICT' +
-        'URE_BOT_R1'
+        'URE_BOT_R1, LINE_C1 = :LINE_C1'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -2851,8 +2851,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_' +
         'ENGLISH, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LI' +
         'NE_B3, TL_X, TL_Y, TR_X, TR_Y, BL_X, BL_Y, BR_X, BR_Y, PICTURE_T' +
-        'OP_L1, PICTURE_TOP_R1, PICTURE_BOT_L1, PICTURE_BOT_R1 FROM SEMIN' +
-        'AR_TYPE_PICTURES'
+        'OP_L1, PICTURE_TOP_R1, PICTURE_BOT_L1, PICTURE_BOT_R1, LINE_C1 F' +
+        'ROM SEMINAR_TYPE_PICTURES'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2960,6 +2960,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     end
     object SeminarPictureSQLPICTURE_BOT_R1: TBlobField
       FieldName = 'PICTURE_BOT_R1'
+    end
+    object SeminarPictureSQLLINE_C1: TWideStringField
+      FieldName = 'LINE_C1'
+      Size = 1500
     end
   end
   object SeminarPictureSRC: TDataSource

@@ -383,6 +383,9 @@ type
 
   Function UpdateCostFooter(Const SeminarSerial:Integer):Double;
 
+  Procedure CopyRecord(SourceSerial:Integer;SourceDataset,DestDataset:TDataSet);
+
+
   public
     { Public declarations }
     IN_ACTION:String;
@@ -718,14 +721,23 @@ var
    blobRead,blobWrite : TBlobField;
    streamRead,StreamWrite:TStream;
    img:TImage;
+   I:Integer;
 begin
 
  ksExecSQLVar(cn,'delete from SEMINAR_pictures where fk_seminar_serial=:serial',[SeminarSerial]);
 
   str:=
-  ' INSERT INTO SEMINAR_PICTURES'
-  +'  (SERIAL_NUMBER, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3, FK_SEMINAR_SERIAL,LANGUAGE_GREEK_OR_ENGLISH)'
-  +'   VALUES (:s1,:P1,:a1,:a2,:b1,:b2,:b3,:x1,:x2)';
+' INSERT INTO SEMINAR_PICTURES'
+  +'   (SERIAL_NUMBER,  FK_SEMINAR_SERIAL,LANGUAGE_GREEK_OR_ENGLISH,'
+  +'   LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3,LINE_C1,'
+  +'   picture_top_l1,picture_top_r1, picture_bot_l1,picture_bot_r1,'
+  +'   tl_x,tl_y, tr_x,tr_y, bl_x,bl_y,br_x,br_y)'
+  +'    VALUES ('
+  +'    :s1,:s2,:s3,'
+  +'    :l1,:l2,:l3,:l4,:l5,:l6,'
+  +'    :p1,:p2,:p3,:p4,'
+  +'    :t1,:t2,:t3,:t4,:t5,:t6,:t7,:t8)';
+
  img:=Timage.Create(self);
  SeminarQr:= TksQuery.Create(cn,' select * from seminar_pictures where fk_seminar_serial= :seminarSerial');
  Typeqr:=TksQuery.Create(cn,'select * from seminar_type_pictures where fk_seminar_type_serial= :Typeserial');
@@ -741,11 +753,15 @@ begin
 
     serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
 
-    blobRead := Typeqr.FieldByName('picture_seminar') as TBlobField;
-    streamRead := Typeqr.CreateBlobStream(blobRead, bmRead);
-    Img.Picture.LoadFromStream(streamRead);
+//    blobRead := Typeqr.FieldByName('picture_seminar') as TBlobField;
+//    streamRead := Typeqr.CreateBlobStream(blobRead, bmRead);
+//    Img.Picture.LoadFromStream(streamRead);
 
     SeminarQR.Insert;
+    SeminarQR.FieldByName('Serial_number').value:=Serial;
+    SeminarQR.FieldByName('FK_Seminar_serial').value:=SeminarSerial;
+    CopyRecord(2,typeQr,SeminarQR);
+{
     SeminarQR.FieldByName('serial_number').Value:=serial;
     SeminarQR.FieldByName('line_a1').Value:= Typeqr.FieldByName('line_a1').AsString;
     SeminarQR.FieldByName('line_a2').Value:= Typeqr.FieldByName('line_a2').AsString;
@@ -754,11 +770,11 @@ begin
     SeminarQR.FieldByName('line_b3').Value:= Typeqr.FieldByName('line_b3').AsString;
     SeminarQR.FieldByName('fk_seminar_serial').Value:= SeminarSerial;
     SeminarQR.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').Value:= Typeqr.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
-
-    blobWrite := Seminarqr.FieldByName('picture_seminar') as TBlobField;
-    streamWrite := Seminarqr.CreateBlobStream(blobWrite, bmWrite);
-    StreamWrite.Position:=0;
-    Img.Picture.SaveToStream(streamWrite);
+}
+//    blobWrite := Seminarqr.FieldByName('picture_seminar') as TBlobField;
+//    streamWrite := Seminarqr.CreateBlobStream(blobWrite, bmWrite);
+//    StreamWrite.Position:=0;
+//    Img.Picture.SaveToStream(streamWrite);
     SeminarQR.Post;
 
     TypeQr.Next;
@@ -1368,6 +1384,30 @@ begin
 end;
 //////////////////////////////////////////
 
+
+
+Procedure TV_SeminarFRM.CopyRecord(SourceSerial:Integer;SourceDataset,DestDataset:TDataSet);
+Var
+   MaxFields:Integer;
+   VField,SourceField:TField;
+   TheFieldName:String;
+   I:integer;
+begin
+
+  For I:=0 to DestDataset.FieldCount-1 do begin
+    vField:=DestDataset.Fields[i];
+    if (UpperCase(vField.FieldName)='SERIAL_NUMBER')
+    or (UpperCase(vField.FieldName)='FK_SEMINAR_SERIAL')then
+    begin
+      continue;
+    end;
+
+    SourceField:=SourceDataset.FindField(vField.FieldName);
+    if SourceField <> nil then begin
+      vField.Value:= SourceField.Value;
+    end;
+  end;
+end;
 
 
 End.

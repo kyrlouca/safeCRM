@@ -199,6 +199,7 @@ type
     SeminarPictureSQLPICTURE_TOP_R1: TBlobField;
     SeminarPictureSQLPICTURE_BOT_L1: TBlobField;
     SeminarPictureSQLPICTURE_BOT_R1: TBlobField;
+    SeminarPictureSQLLINE_C1: TWideStringField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -444,9 +445,9 @@ strIns:= 'insert into seminar_Type_pictures '
   str:=
 ' select serial_number'
   +'  from'
-  +'      seminar_pictures stp'
+  +'      seminar_Type_pictures stp'
   +'  where'
-  +'   stp.fk_seminar_serial= :SeminarTYpeSerial and stp.language_greek_or_english = :lang';
+  +'   stp.fk_seminar_type_serial= :SeminarTYpeSerial and stp.language_greek_or_english = :lang';
 
   if ksCountRecVarSQL(cn,str,[TypeSerial,'G'])=0 then begin
     serial:=ksGenerateSerial(cn,'GEN_SEMINAR_TYPE_PICTURES');
