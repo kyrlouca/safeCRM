@@ -39,7 +39,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Width = 789
       Height = 541
       Hint = ''
-      ActivePage = CertificationTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 3
+      TabIndex = 0
       TabOrder = 0
       OnChanging = SeminarPCChanging
       FixedDimension = 22
@@ -835,6 +835,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object GroupBox4: TGroupBox
           Left = 533
           Top = 68
@@ -1444,6 +1448,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         OnShow = CertificationTSShow
         Caption = #928#953#963#964#959#960#959#953#951#964#951#954#940
         OnExit = CertificationTSExit
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object RzGroupBox2: TRzGroupBox
           Left = 23
           Top = 103

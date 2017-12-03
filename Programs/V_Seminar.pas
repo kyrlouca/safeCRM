@@ -276,24 +276,38 @@ type
     SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
     SeminarPictureSQLLINE_C1: TWideStringField;
-    SelTopRightBTN: TRzBitBtn;
-    ClearTopRightBTN: TRzBitBtn;
-    SelBottomLeftBTN: TRzBitBtn;
-    ClearBottomLeftBTN: TRzBitBtn;
     MainMenu1: TMainMenu;
     Help1: TMenuItem;
     Certifcates1: TMenuItem;
     certificatesHelpRE: TwwDBRichEdit;
-    SelectBottomRightBTN: TRzBitBtn;
-    ClearBottomRightBTN: TRzBitBtn;
     RzPanel15: TRzPanel;
     PICTURE_TOP_L1: TImage;
     RzPanel16: TRzPanel;
     RzPanel17: TRzPanel;
     RzPanel18: TRzPanel;
-    CertTopRIghtIMG: TImage;
-    CertBottomRIghtIMG: TImage;
-    CertBottomLeftIMG: TImage;
+    PICTURE_TOP_R1: TImage;
+    PICTURE_BOT_R1: TImage;
+    PICTURE_BOT_L1: TImage;
+    SeminarPictureSQLPICTURE_TOP_L1: TBlobField;
+    SeminarPictureSQLPICTURE_TOP_R1: TBlobField;
+    SeminarPictureSQLPICTURE_BOT_L1: TBlobField;
+    SeminarPictureSQLPICTURE_BOT_R1: TBlobField;
+    SeminarPictureSQLTL_X: TIntegerField;
+    SeminarPictureSQLTL_Y: TIntegerField;
+    SeminarPictureSQLTR_X: TIntegerField;
+    SeminarPictureSQLTR_Y: TIntegerField;
+    SeminarPictureSQLBL_X: TIntegerField;
+    SeminarPictureSQLBL_Y: TIntegerField;
+    SeminarPictureSQLBR_X: TIntegerField;
+    SeminarPictureSQLBR_Y: TIntegerField;
+    wwDBEdit9: TwwDBEdit;
+    wwDBEdit8: TwwDBEdit;
+    wwDBEdit2: TwwDBEdit;
+    wwDBEdit7: TwwDBEdit;
+    wwDBEdit10: TwwDBEdit;
+    wwDBEdit11: TwwDBEdit;
+    wwDBEdit12: TwwDBEdit;
+    wwDBEdit13: TwwDBEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -340,9 +354,6 @@ type
     procedure PICTURE_TOP_L1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure PICTURE_TOP_L1DblClick(Sender: TObject);
-    procedure CertTopRIghtIMGDblClick(Sender: TObject);
-    procedure CertBottomLeftIMGDblClick(Sender: TObject);
-    procedure CertBottomRIghtIMGDblClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -351,9 +362,10 @@ type
   procedure CheckPicturesX(COnst TypeSerial:Integer);
   function  SelectPictureX(var img :TImage):Boolean;
   procedure ShowPictureDataX(Const TypeSerial:Integer;Const  Language:String);
-  procedure ShowPictureX(Const TypeSerial:Integer;Const FieldName :String;Const  Language:String;img:TImage);
-  procedure SavePictureX(Const SeminarSerial:Integer;Const FieldName:String; Const Language:String;img:Timage);
-  procedure SelectAndSavePicture(Const SeminarSerial:Integer;Const Language:String; img:TImage);
+  procedure ShowPictureX(Const TypeSerial:Integer;Const aFieldName :String;Const  Language:String;img:TImage);
+  procedure SavePictureX(Const SeminarSerial:Integer;Const aFieldName:String; Const Language:String;img:Timage);
+  procedure SelectAndSavePictureX(Const SeminarSerial:Integer;Const Language:String; img:TImage);
+  procedure ClearPictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
 
 
 
@@ -421,18 +433,6 @@ ksOpenTables([SeminarReminderSQL]);
 
 end;
 
-procedure TV_SeminarFRM.CertBottomLeftIMGDblClick(Sender: TObject);
-begin
-  SelectAndSavePicture(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
-
-end;
-
-procedure TV_SeminarFRM.CertBottomRIghtIMGDblClick(Sender: TObject);
-begin
-  SelectAndSavePicture(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
-
-end;
-
 procedure TV_SeminarFRM.Certifcates1Click(Sender: TObject);
 vAR
   Frm:TH_HelpFRM;
@@ -461,29 +461,29 @@ var
   SeminarSerial:Integer;
 begin
   SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
-  CheckPicturesX(SeminarSerial);
   LanguageRGP.ItemIndex:=0;
+//  showMessage(LanguageRGP.Values[LanguageRGP.ItemIndex]);
+//  showMessage(languageRGP.Value);
+  CheckPicturesX(SeminarSerial);
   SHowPictureX(SeminarSerial,Picture_top_l1.Name,'G',Picture_top_L1);
+  SHowPictureX(SeminarSerial,Picture_top_R1.Name,'G',Picture_top_R1);
+  SHowPictureX(SeminarSerial,Picture_bot_l1.Name,'G',Picture_bot_L1);
+  SHowPictureX(SeminarSerial,Picture_bot_R1.Name,'G',Picture_bot_R1);
   SHowPictureDataX(SeminarSerial,'G');
 
 end;
 
 procedure TV_SeminarFRM.PICTURE_TOP_L1DblClick(Sender: TObject);
 begin
-  SelectAndSavePicture(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
+  SelectAndSavePictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Values[LanguageRGP.ItemIndex],TImage(Sender));
 end;
 
 procedure TV_SeminarFRM.PICTURE_TOP_L1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-if (ssCtrl in Shift) then begin
-  ShowMessage( Timage(Sender).Name);
-end;
-end;
-
-procedure TV_SeminarFRM.CertTopRIghtIMGDblClick(Sender: TObject);
-begin
-  SelectAndSavePicture(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Value,TImage(Sender));
+  if (ssCtrl in Shift) then begin
+    ClearPictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,TImage(sender).name, LanguageRGP.Values[LanguageRGP.ItemIndex],TImage(Sender));
+  end;
 end;
 
 procedure TV_SeminarFRM.ToLeftBTNClick(Sender: TObject);
@@ -822,9 +822,13 @@ begin
   SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
   if SeminarSerial<1 then exit;
   if trim(LanguageRGP.Value)='' then exit;
+//  SHowMessage('ch lan='+LanguageRGP.Value);
 
+  SHowPictureX(SeminarSerial,Picture_top_l1.Name, LanguageRGP.Value, Picture_top_L1);
+  SHowPictureX(SeminarSerial,Picture_top_R1.Name, LanguageRGP.Value, Picture_top_R1);
+  SHowPictureX(SeminarSerial,Picture_bot_l1.Name, LanguageRGP.Value, Picture_bot_L1);
+  SHowPictureX(SeminarSerial,Picture_bot_R1.Name, LanguageRGP.Value, Picture_bot_R1);
 
-  ShowPictureX(SeminarSerial,Picture_top_l1.Name, LanguageRGP.Value, Picture_top_l1);
   ShowPictureDataX(SeminarSerial,LanguageRGP.Value);
 end;
 
@@ -937,7 +941,7 @@ begin
   close;
 end;
 
-procedure TV_SeminarFRM.SelectAndSavePicture(Const SeminarSerial:Integer;Const Language:String; img:TImage);
+procedure TV_SeminarFRM.SelectAndSavePictureX(Const SeminarSerial:Integer;Const Language:String; img:TImage);
 begin
 //  SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
   if SelectPicturex(img) then begin
@@ -963,6 +967,8 @@ begin
   end;
 }
 end;
+
+
 
 procedure TV_SeminarFRM.ClearTopLeftBTNClick(Sender: TObject);
 var
@@ -1217,14 +1223,31 @@ strIns:= 'insert into seminar_pictures '
 end;
 
 
-procedure TV_SeminarFRM.SavePictureX(Const SeminarSerial:Integer;Const FieldName :String; Const Language:String;img:Timage);
+procedure TV_SeminarFRM.ClearPictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
+begin
+//  showMessage('clear lang='+language);
+
+
+  img.Picture:=nil;
+  SavePictureX(SeminarSerial,aFieldName, LanguageRGP.Values[LanguageRGP.ItemIndex],img);
+end;
+
+
+
+procedure TV_SeminarFRM.SavePictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
 var
-  BlobField: TField;
+//  BlobField: TField;
+  BlobField: TBlobField;
   BS: TStream;
   str2:String;
   qr:TksQuery;
 begin
 
+  CodeSite.send(InttoStr(SeminarSerial));
+
+  CodeSite.Send(afieldName);
+  CodeSite.Send(Language);
+  CodeSite.Send(img.Name);
   str2:='select * from seminar_pictures stp '
   + ' where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
   qr:= TksQuery.Create(cn,str2);
@@ -1237,26 +1260,33 @@ begin
       if qr.IsEmpty then
        exit;
 
-      if (qr.FindField(FieldName)=nil) then begin
-        ShowMessage('Cannot find field. Name of the picture =fieldname= '+FieldName);
+      if (qr.FindField(aFieldName)=nil) then begin
+        ShowMessage('Cannot find field. Name of the picture =fieldname= '+aFieldName);
         exit;
       end;
 
       qr.Edit;
-      BlobField := FieldByName(FieldName);
-      BS := CreateBlobStream(BlobField,bmWrite);
-      //bs.Position:=0;
-      Img.Picture.SaveToStream(BS);
+      BlobField := FieldByName(aFieldName) as TBlobField;
+      BS := qr.CreateBlobStream(BlobField,bmWrite);
+      try
+        Bs.Position:=0;
+        Img.Picture.SaveToStream(BS);
 
-      if BS.Size=0 then begin
-        BlobField.Clear;
+        if BS.Size=0 then begin
+          BlobField.Clear;
+        end;
+        qr.Post;
+        qr.close;
+
+      finally
+      //    BS.Free;
+      // somehow it is freed by itself and i get a runtime erro
       end;
-      qr.Post;
-      qr.close;
 
     end;
   finally
     qr.Free;
+//    BS.Free;
   end;
 
 end;
@@ -1282,7 +1312,7 @@ begin
    SeminarPictureSQL.Open;
 
 end;
-procedure TV_SeminarFRM.ShowPictureX(Const TypeSerial:Integer;Const FieldName :String; Const  Language:String;img:TImage);
+procedure TV_SeminarFRM.ShowPictureX(Const TypeSerial:Integer;Const aFieldName :String; Const  Language:String;img:TImage);
  var
   code:string;
   BlobFIeld:TField;
@@ -1290,38 +1320,53 @@ procedure TV_SeminarFRM.ShowPictureX(Const TypeSerial:Integer;Const FieldName :S
   qr:TksQuery;
 //  imgTemp:TImage;
 
+
 begin
+
  if TypeSerial<1 then
     exit;
- if (Language<>'G') ANd (Language<>'E') then
+ if (Language<>'G') ANd (Language<>'E') then begin
+  showMessage('ERROR lang='+language);
   exit;
+ end;
+
+  Img.Picture:= nil;
 
   qr:= TksQuery.Create(cn,'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language');
    try
       with qr do begin
-      close;
-      qr.ParamByName('seminarSerial').Value:=TypeSerial;
-      qr.ParamByName('LANGUAGE').Value:=Language;
-      qr.open;
-      if qr.IsEmpty then
+        qr.close;
+        qr.ParamByName('seminarSerial').Value:=TypeSerial;
+        qr.ParamByName('LANGUAGE').Value:=Language;
+        qr.open;
+        if qr.IsEmpty then
+          exit;
+
+        if (qr.FindField(aFieldName)=nil) then begin
+        ShowMessage('Cannot find field. Name of the picture =fieldname= '+aFieldName);
         exit;
+        end;
 
-      if (qr.FindField(FieldName)=nil) then begin
-        ShowMessage('Cannot find field. Name of the picture =fieldname= '+FieldName);
-        exit;
+//        if aFieldName='PICTURE_TOP_R1' then
+//         img.Picture.LoadFromFile('C:\Data\DelphiProjects\Safe_CRM\pictures\SafetyLogo.png');
+
+
+        BlobField := qr.FieldByName(aFieldName);
+        BS := qr.CreateBlobStream(BlobField,bmRead);
+        try
+          BS.Position:=0;
+          if bs.Size>0 then
+            Img.Picture.LoadFromStream(bs)
+          else
+            Img.Picture:= nil;
+          qr.Close;
+        finally
+          bs.Free;
+        end;
+
       end;
 
-      BlobField := qr.FieldByName(FieldName);
-      BS := CreateBlobStream(BlobField,bmRead);
-      bs.Position:=0;
-        Img.Picture.LoadFromStream(bs);
 
-      if BS.Size=0 then begin
-        Img.Picture:=nil;
-      end;
-
-      close;
-      end;
    finally
       qr.Free;
    end;
