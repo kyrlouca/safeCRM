@@ -1476,6 +1476,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Values.Strings = (
             'G'
             'E')
+          OnChange = LanguageRGPChange
         end
         object RzGroupBox2: TRzGroupBox
           Left = 23
@@ -1964,6 +1965,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Center = True
               Proportional = True
               Stretch = True
+              OnDblClick = PICTURE_TOP_L1DblClick
+              OnMouseDown = PICTURE_TOP_L1MouseDown
               ExplicitLeft = 18
               ExplicitTop = -1
             end
@@ -1985,6 +1988,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Center = True
               Proportional = True
               Stretch = True
+              OnDblClick = PICTURE_TOP_L1DblClick
+              OnMouseDown = PICTURE_TOP_L1MouseDown
               ExplicitTop = 0
             end
           end
@@ -2005,6 +2010,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Center = True
               Proportional = True
               Stretch = True
+              OnDblClick = PICTURE_TOP_L1DblClick
+              OnMouseDown = PICTURE_TOP_L1MouseDown
               ExplicitLeft = 14
               ExplicitTop = 4
             end
@@ -2026,6 +2033,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Center = True
               Proportional = True
               Stretch = True
+              OnDblClick = PICTURE_TOP_L1DblClick
+              OnMouseDown = PICTURE_TOP_L1MouseDown
               ExplicitLeft = 10
               ExplicitTop = 4
             end
@@ -2809,13 +2818,15 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       
         '  (SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_ENGL' +
         'ISH, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B' +
-        '3, TL_X, TL_Y, TR_X, TR_Y, BL_X, BL_Y, BR_X, BR_Y)'
+        '3, TL_X, TL_Y, TR_X, TR_Y, BL_X, BL_Y, BR_X, BR_Y, PICTURE_TOP_L' +
+        '1, PICTURE_TOP_R1, PICTURE_BOT_L1, PICTURE_BOT_R1)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_TYPE_SERIAL, :LANGUAGE_GREEK_OR_E' +
         'NGLISH, :PICTURE_SEMINAR, :LINE_A1, :LINE_A2, :LINE_B1, :LINE_B2' +
         ', :LINE_B3, :TL_X, :TL_Y, :TR_X, :TR_Y, :BL_X, :BL_Y, :BR_X, :BR' +
-        '_Y)')
+        '_Y, :PICTURE_TOP_L1, :PICTURE_TOP_R1, :PICTURE_BOT_L1, :PICTURE_' +
+        'BOT_R1)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE_PICTURES'
       'WHERE'
@@ -2830,14 +2841,17 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         'A1, LINE_A2 = :LINE_A2, LINE_B1 = :LINE_B1, LINE_B2 = :LINE_B2, ' +
         'LINE_B3 = :LINE_B3, TL_X = :TL_X, TL_Y = :TL_Y, TR_X = :TR_X, TR' +
         '_Y = :TR_Y, BL_X = :BL_X, BL_Y = :BL_Y, BR_X = :BR_X, BR_Y = :BR' +
-        '_Y'
+        '_Y, PICTURE_TOP_L1 = :PICTURE_TOP_L1, PICTURE_TOP_R1 = :PICTURE_' +
+        'TOP_R1, PICTURE_BOT_L1 = :PICTURE_BOT_L1, PICTURE_BOT_R1 = :PICT' +
+        'URE_BOT_R1'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, FK_SEMINAR_TYPE_SERIAL, LANGUAGE_GREEK_OR_' +
         'ENGLISH, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LI' +
-        'NE_B3, TL_X, TL_Y, TR_X, TR_Y, BL_X, BL_Y, BR_X, BR_Y FROM SEMIN' +
+        'NE_B3, TL_X, TL_Y, TR_X, TR_Y, BL_X, BL_Y, BR_X, BR_Y, PICTURE_T' +
+        'OP_L1, PICTURE_TOP_R1, PICTURE_BOT_L1, PICTURE_BOT_R1 FROM SEMIN' +
         'AR_TYPE_PICTURES'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
@@ -2934,6 +2948,18 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     end
     object SeminarPictureSQLBR_Y: TIntegerField
       FieldName = 'BR_Y'
+    end
+    object SeminarPictureSQLPICTURE_TOP_L1: TBlobField
+      FieldName = 'PICTURE_TOP_L1'
+    end
+    object SeminarPictureSQLPICTURE_TOP_R1: TBlobField
+      FieldName = 'PICTURE_TOP_R1'
+    end
+    object SeminarPictureSQLPICTURE_BOT_L1: TBlobField
+      FieldName = 'PICTURE_BOT_L1'
+    end
+    object SeminarPictureSQLPICTURE_BOT_R1: TBlobField
+      FieldName = 'PICTURE_BOT_R1'
     end
   end
   object SeminarPictureSRC: TDataSource

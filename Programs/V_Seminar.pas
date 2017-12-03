@@ -816,13 +816,11 @@ procedure TV_SeminarFRM.LanguageRGPChange(Sender: TObject);
 var
   SeminarSerial:Integer;
 begin
-//  SHowMessage(LanguageRGP.Value);
   if SeminarPictureSQL.State in [dsEdit,dsInsert] then
     SeminarPictureSQL.Post;
   SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
   if SeminarSerial<1 then exit;
   if trim(LanguageRGP.Value)='' then exit;
-//  SHowMessage('ch lan='+LanguageRGP.Value);
 
   SHowPictureX(SeminarSerial,Picture_top_l1.Name, LanguageRGP.Value, Picture_top_L1);
   SHowPictureX(SeminarSerial,Picture_top_R1.Name, LanguageRGP.Value, Picture_top_R1);

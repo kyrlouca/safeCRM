@@ -2734,7 +2734,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
           object BottomLeftFLD: TwwDBRichEdit
             Left = 47
-            Top = 351
+            Top = 353
             Width = 146
             Height = 80
             AutoURLDetect = False

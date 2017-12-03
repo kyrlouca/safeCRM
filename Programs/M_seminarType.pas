@@ -195,6 +195,10 @@ type
     SeminarPictureSQLBL_Y: TIntegerField;
     SeminarPictureSQLBR_X: TIntegerField;
     SeminarPictureSQLBR_Y: TIntegerField;
+    SeminarPictureSQLPICTURE_TOP_L1: TBlobField;
+    SeminarPictureSQLPICTURE_TOP_R1: TBlobField;
+    SeminarPictureSQLPICTURE_BOT_L1: TBlobField;
+    SeminarPictureSQLPICTURE_BOT_R1: TBlobField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -212,6 +216,10 @@ type
     procedure CertificationTSShow(Sender: TObject);
     procedure CertificationTSExit(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
+    procedure LanguageRGPChange(Sender: TObject);
+    procedure PICTURE_TOP_L1DblClick(Sender: TObject);
+    procedure PICTURE_TOP_L1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -354,9 +362,40 @@ begin
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 end;
 
+procedure TM_SeminarTypeFRM.LanguageRGPChange(Sender: TObject);
+var
+  SeminarSerial:Integer;
+begin
+  if SeminarPictureSQL.State in [dsEdit,dsInsert] then
+    SeminarPictureSQL.Post;
+  SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+  if SeminarSerial<1 then exit;
+  if trim(LanguageRGP.Value)='' then exit;
+
+  SHowPictureT(SeminarSerial,Picture_top_l1.Name, LanguageRGP.Value, Picture_top_L1);
+  SHowPictureT(SeminarSerial,Picture_top_R1.Name, LanguageRGP.Value, Picture_top_R1);
+  SHowPictureT(SeminarSerial,Picture_bot_l1.Name, LanguageRGP.Value, Picture_bot_L1);
+  SHowPictureT(SeminarSerial,Picture_bot_R1.Name, LanguageRGP.Value, Picture_bot_R1);
+
+  ShowPictureDataT(SeminarSerial,LanguageRGP.Value);
+end;
+
 procedure TM_SeminarTypeFRM.Nav1InsertClick(Sender: TObject);
 begin
 REminderDescFLD.SetFocus;
+end;
+
+procedure TM_SeminarTypeFRM.PICTURE_TOP_L1DblClick(Sender: TObject);
+begin
+  SelectAndSavePictureT(TableSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Values[LanguageRGP.ItemIndex],TImage(Sender));
+end;
+
+procedure TM_SeminarTypeFRM.PICTURE_TOP_L1MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  if (ssCtrl in Shift) then begin
+    ClearPictureT(TableSQL.fieldbyName('serial_number').AsInteger,TImage(sender).name, LanguageRGP.Values[LanguageRGP.ItemIndex],TImage(Sender));
+  end;
 end;
 
 procedure TM_SeminarTypeFRM.CertificationTSExit(Sender: TObject);
@@ -364,14 +403,24 @@ begin
   If SeminarPictureSQL.State in [dsEdit,dsInsert] then begin
     SeminarPictureSQL.Post;
   end;
-// AllowChange:= SeminarPictureSQL.FieldByName('serial_number').AsInteger > 0;
 
 end;
 
 procedure TM_SeminarTypeFRM.CertificationTSShow(Sender: TObject);
+var
+  SeminarSerial:Integer;
 begin
+  SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+  LanguageRGP.ItemIndex:=0;
+//  showMessage(LanguageRGP.Values[LanguageRGP.ItemIndex]);
+//  showMessage(languageRGP.Value);
+  CheckPicturesT(SeminarSerial);
+  SHowPictureT(SeminarSerial,Picture_top_l1.Name,'G',Picture_top_L1);
+  SHowPictureT(SeminarSerial,Picture_top_R1.Name,'G',Picture_top_R1);
+  SHowPictureT(SeminarSerial,Picture_bot_l1.Name,'G',Picture_bot_L1);
+  SHowPictureT(SeminarSerial,Picture_bot_R1.Name,'G',Picture_bot_R1);
+  SHowPictureDataT(SeminarSerial,'G');
 end;
-
 
 ////////////////////////////////////////
 
@@ -387,8 +436,8 @@ var
 begin
 //create the records if not exist
 
-strIns:= 'insert into seminar_pictures '
-+'(serial_number,FK_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLISH) values (:Serial, :typeSerial, :lang)';
+strIns:= 'insert into seminar_Type_pictures '
++'(serial_number,FK_SEMINAR_Type_SERIAL, LANGUAGE_GREEK_OR_ENGLISH) values (:Serial, :typeSerial, :lang)';
 
   if TypeSerial<1 then exit;
 
@@ -400,12 +449,12 @@ strIns:= 'insert into seminar_pictures '
   +'   stp.fk_seminar_serial= :SeminarTYpeSerial and stp.language_greek_or_english = :lang';
 
   if ksCountRecVarSQL(cn,str,[TypeSerial,'G'])=0 then begin
-    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_TYPE_PICTURES');
     ksExecSQLVar(cn,strIns,[serial,TypeSerial,'G']);
   end;
 
   if ksCountRecVarSQL(cn,str,[TypeSerial,'E'])=0 then begin
-    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
+    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_TYPE_PICTURES');
     ksExecSQLVar(cn,strIns,[serial, TypeSerial,'E']);
   end;
 
@@ -433,8 +482,8 @@ begin
 //  CodeSite.Send(afieldName);
 //  CodeSite.Send(Language);
 //  CodeSite.Send(img.Name);
-  str2:='select * from seminar_pictures stp '
-  + ' where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
+  str2:='select * from seminar_Type_pictures stp '
+  + ' where stp.fk_seminar_Type_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
   qr:= TksQuery.Create(cn,str2);
    try
     with qr do  begin
@@ -517,7 +566,7 @@ begin
 
   Img.Picture:= nil;
 
-  qr:= TksQuery.Create(cn,'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language');
+  qr:= TksQuery.Create(cn,'select * from seminar_Type_pictures stp where stp.fk_seminar_Type_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language');
    try
       with qr do begin
         qr.close;
