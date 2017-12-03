@@ -1221,8 +1221,6 @@ strIns:= 'insert into seminar_pictures '
 
 
 end;
-
-
 procedure TV_SeminarFRM.ClearPictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
 begin
 //  showMessage('clear lang='+language);
@@ -1231,9 +1229,6 @@ begin
   img.Picture:=nil;
   SavePictureX(SeminarSerial,aFieldName, LanguageRGP.Values[LanguageRGP.ItemIndex],img);
 end;
-
-
-
 procedure TV_SeminarFRM.SavePictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
 var
 //  BlobField: TField;
