@@ -238,6 +238,7 @@ type
 
 
 
+  procedure CopyFromDefault();
 
   public
     { Public declarations }
@@ -668,6 +669,49 @@ begin
 end;
 
 //////////////////////////////////////////
+
+
+procedure TM_SeminarTypeFRM.CopyFromDefault();
+var
+  DefaultQr:TksQuery;
+  pictQR:TksQuery;
+  PictureSerial:integer;
+  Language:String;
+begin
+
+  DefaultQR:=TksQuery.Create(cn,'select * from prototype_pictures where serial_number= 0 and LANGUAGE_GREEK_OR_ENGLISH = :language');
+  PictQR:=TksQuery.Create(cn,'SELECT * FROM seminar_type_pictures where serial_number = :SerialNumber ');
+
+  try
+    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
+    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+
+    pictQr.ParamByName('SerialNumber').Value:=PictureSerial;
+    PictQr.Open;
+    if PictQR.IsEmpty then
+      exit;
+
+    DefaultQr.ParamByName('Language').Value:=Language;
+    DefaultQR.Open;
+    if DefaultQR.IsEmpty then begin
+      DefaultQR.Insert
+    end else begin
+      DefaultQR.Edit;
+    end;
+
+//    DefaultQr.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').Value:=Language;
+    CopyDataRecord(pictQR,DefaultQr);
+    DefaultQr.FieldByName('serial_number').Value:=0;
+
+    DefaultQr.Post;
+  finally
+    pictQR.Free;
+    DefaultQr.Free;
+  end;
+
+
+
+end;
 
 
 
