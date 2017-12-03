@@ -3,7 +3,7 @@ unit G_SFCommonProcs;
 interface
 uses
 System.Character,G_KyriacosTypes, Messages, System.SysUtils, System.DateUtils,System.Variants,Classes, Graphics, Controls,  Dialogs,
-  StdCtrls;
+  StdCtrls,Db;
 
 type
   Txxx =(trRead,trWrite);
@@ -20,6 +20,7 @@ Function FormatGreekDate(const aDateTime:TDateTime;Const GreekOrEnglish:String):
 Function RemoveAccents(Const val:String):string;
 function AllUpper (val:string):Boolean;
 function AllLower (val:string):Boolean;
+Procedure CopyDataRecord(SourceDataset,DestDataset:TDataSet);
 
 
 implementation
@@ -144,6 +145,29 @@ begin
   end;
 end;
 
+
+Procedure CopyDataRecord(SourceDataset,DestDataset:TDataSet);
+Var
+   MaxFields:Integer;
+   VField,SourceField:TField;
+   TheFieldName:String;
+   I:integer;
+begin
+
+  For I:=0 to DestDataset.FieldCount-1 do begin
+    vField:=DestDataset.Fields[i];
+    if (UpperCase(vField.FieldName)='SERIAL_NUMBER')
+    or (UpperCase(vField.FieldName)='FK_SEMINAR_SERIAL')then
+    begin
+      continue;
+    end;
+
+    SourceField:=SourceDataset.FindField(vField.FieldName);
+    if SourceField <> nil then begin
+      vField.Value:= SourceField.Value;
+    end;
+  end;
+end;
 
 
 

@@ -383,7 +383,6 @@ type
 
   Function UpdateCostFooter(Const SeminarSerial:Integer):Double;
 
-  Procedure CopyRecord(SourceSerial:Integer;SourceDataset,DestDataset:TDataSet);
 
 
   public
@@ -738,7 +737,7 @@ begin
   +'    :p1,:p2,:p3,:p4,'
   +'    :t1,:t2,:t3,:t4,:t5,:t6,:t7,:t8)';
 
- img:=Timage.Create(self);
+// img:=Timage.Create(self);
  SeminarQr:= TksQuery.Create(cn,' select * from seminar_pictures where fk_seminar_serial= :seminarSerial');
  Typeqr:=TksQuery.Create(cn,'select * from seminar_type_pictures where fk_seminar_type_serial= :Typeserial');
  try
@@ -760,35 +759,23 @@ begin
     SeminarQR.Insert;
     SeminarQR.FieldByName('Serial_number').value:=Serial;
     SeminarQR.FieldByName('FK_Seminar_serial').value:=SeminarSerial;
-    CopyRecord(2,typeQr,SeminarQR);
-{
-    SeminarQR.FieldByName('serial_number').Value:=serial;
-    SeminarQR.FieldByName('line_a1').Value:= Typeqr.FieldByName('line_a1').AsString;
-    SeminarQR.FieldByName('line_a2').Value:= Typeqr.FieldByName('line_a2').AsString;
-    SeminarQR.FieldByName('line_b1').Value:= Typeqr.FieldByName('line_b1').AsString;
-    SeminarQR.FieldByName('line_b2').Value:= Typeqr.FieldByName('line_b2').AsString;
-    SeminarQR.FieldByName('line_b3').Value:= Typeqr.FieldByName('line_b3').AsString;
-    SeminarQR.FieldByName('fk_seminar_serial').Value:= SeminarSerial;
-    SeminarQR.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').Value:= Typeqr.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
-}
+    CopyDataRecord(typeQr,SeminarQR);
 //    blobWrite := Seminarqr.FieldByName('picture_seminar') as TBlobField;
 //    streamWrite := Seminarqr.CreateBlobStream(blobWrite, bmWrite);
 //    StreamWrite.Position:=0;
 //    Img.Picture.SaveToStream(streamWrite);
     SeminarQR.Post;
-
     TypeQr.Next;
-
     end;
    finally
-    streamWrite.Free;
-    streamRead.Free;
+//    streamWrite.Free;
+//    streamRead.Free;
 
    end;
  finally
    Typeqr.Free;
    SeminarQr.Free;
-   img.Free;
+//   img.Free;
  end;
 
 
@@ -1385,29 +1372,6 @@ end;
 //////////////////////////////////////////
 
 
-
-Procedure TV_SeminarFRM.CopyRecord(SourceSerial:Integer;SourceDataset,DestDataset:TDataSet);
-Var
-   MaxFields:Integer;
-   VField,SourceField:TField;
-   TheFieldName:String;
-   I:integer;
-begin
-
-  For I:=0 to DestDataset.FieldCount-1 do begin
-    vField:=DestDataset.Fields[i];
-    if (UpperCase(vField.FieldName)='SERIAL_NUMBER')
-    or (UpperCase(vField.FieldName)='FK_SEMINAR_SERIAL')then
-    begin
-      continue;
-    end;
-
-    SourceField:=SourceDataset.FindField(vField.FieldName);
-    if SourceField <> nil then begin
-      vField.Value:= SourceField.Value;
-    end;
-  end;
-end;
 
 
 End.

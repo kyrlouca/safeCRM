@@ -200,6 +200,8 @@ type
     SeminarPictureSQLPICTURE_BOT_L1: TBlobField;
     SeminarPictureSQLPICTURE_BOT_R1: TBlobField;
     SeminarPictureSQLLINE_C1: TWideStringField;
+    CopyDefaultBTN: TRzBitBtn;
+    SaveDefaultBTN: TRzBitBtn;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -221,6 +223,7 @@ type
     procedure PICTURE_TOP_L1DblClick(Sender: TObject);
     procedure PICTURE_TOP_L1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure CopyDefaultBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -248,7 +251,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, G_SFCommonProcs;
 
 
 {$R *.DFM}
@@ -311,6 +314,48 @@ end;
 procedure TM_SeminarTypeFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure TM_SeminarTypeFRM.CopyDefaultBTNClick(Sender: TObject);
+var
+  DefaultQr:TksQuery;
+  pictQR:TksQuery;
+  PictureSerial:integer;
+  Language:String;
+begin
+
+  DefaultQR:=TksQuery.Create(cn,'select * from prototype_pictures where serial_number= 0 and LANGUAGE_GREEK_OR_ENGLISH = :language');
+  PictQR:=TksQuery.Create(cn,'SELECT * FROM seminar_type_pictures where serial_number = :SerialNumber ');
+
+  try
+    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
+    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+
+    pictQr.ParamByName('SerialNumber').Value:=PictureSerial;
+    PictQr.Open;
+    if PictQR.IsEmpty then
+      exit;
+
+    DefaultQr.ParamByName('Language').Value:=Language;
+    DefaultQR.Open;
+    if DefaultQR.IsEmpty then begin
+      DefaultQR.Insert
+    end else begin
+      DefaultQR.Edit;
+    end;
+
+//    DefaultQr.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').Value:=Language;
+    CopyDataRecord(pictQR,DefaultQr);
+    DefaultQr.FieldByName('serial_number').Value:=0;
+
+    DefaultQr.Post;
+  finally
+    pictQR.Free;
+    DefaultQr.Free;
+  end;
+
+
+
 end;
 
 procedure TM_SeminarTypeFRM.CanelBTNClick(Sender: TObject);
