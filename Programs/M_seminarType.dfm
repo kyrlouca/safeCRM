@@ -1959,8 +1959,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Stretch = True
               OnDblClick = PICTURE_TOP_L1DblClick
               OnMouseDown = PICTURE_TOP_L1MouseDown
-              ExplicitLeft = 18
-              ExplicitTop = -1
+              ExplicitLeft = 0
+              ExplicitTop = 4
             end
           end
           object RzPanel9: TRzPanel

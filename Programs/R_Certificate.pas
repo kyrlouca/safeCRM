@@ -79,7 +79,7 @@ type
     ppDesignLayer1: TppDesignLayer;
     ppParameterList1: TppParameterList;
     Button1: TButton;
-    ppDBImage1: TppDBImage;
+    PICTURE_TOP_L1: TppDBImage;
     ppDBImage2: TppDBImage;
     MiddleFld: TppDBRichText;
     BottomRIghtFLD: TppDBRichText;
@@ -113,6 +113,7 @@ type
     SeminarPicturesSQLBR_X: TIntegerField;
     SeminarPicturesSQLBR_Y: TIntegerField;
     CertificateSQLANAD_NUMBER: TWideStringField;
+    ppDBImage4: TppDBImage;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -131,11 +132,14 @@ type
     procedure dbr1GetRichText(Sender: TObject; var Text: string);
     procedure TopFldPrint(Sender: TObject);
     procedure MiddleFldPrint(Sender: TObject);
+    procedure PICTURE_TOP_L1Print(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
   procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer;Const language:String);
   procedure ReplaceText(RichFld :TppCustomRichText);
+  procedure MovePosition(img :TppDBImage);
+
   public
     { Public declarations }
     IN_Seminar_Serial:Integer;
@@ -236,6 +240,11 @@ begin
             value:=AnsiUpperCase(Trim(CertificateSQL.FieldByName('First_name').AsString))+'  '+
             AnsiUpperCase(Trim(CertificateSQL.FieldByName('First_name').AsString));
 
+end;
+
+procedure TR_certificateFRM.PICTURE_TOP_L1Print(Sender: TObject);
+begin
+  MovePosition(TppDBImage(Sender));
 end;
 
 procedure TR_certificateFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
@@ -439,6 +448,91 @@ begin
 
  end;
 end;
+
+
+
+
+
+
+
+
+procedure TR_certificateFRM.MovePosition(img :TppDBImage);
+TYpe
+  TPosRec= record
+    fName:String;
+    Left:String;
+    Top:String;
+  end;
+
+
+const
+  Items : array[0..3] of TPosRec =
+    (
+  	( Fname : 'PICTURE_TOP_L1'; Left:'TL_X';top:'TL_Y'),
+  	( Fname : 'PICTURE_TOP_R1'; Left:'TR_X';Top:'TR_Y'),
+  	( Fname : 'PICTURE_BOT_L1'; Left:'BL_X';TOp:'BL_Y'),
+  	( Fname : 'PICTURE_BOT_R1'; Left:'BR_x';Top:'BR_Y')
+    );
+
+var
+  SelPos: Integer;
+  LeftPos,TopPos:Double;
+  LeftMove,TopMove:Double;
+  posRec:TPosRec;
+
+
+  function findElement(const fFieldName:string):TPosRec;
+  const
+    NulRec :TposRec =  	( Fname : 'NULL'; Left:'';TOp:'');
+  var
+  item:TPosRec;
+  begin
+    result:=NulRec;
+    for Item in Items do begin
+      if item.fName=fFieldName then begin
+        result:=item;
+        exit;
+      end;
+    end;
+
+  end;
+begin
+
+
+  leftPos:=img.Left;
+  posRec:=findElement(img.Name);
+  if (SeminarPicturesSQL.FindField(posRec.fName) <> nil ) then begin
+    img.Left:=img.Left+ SeminarPicturesSQL.FieldByName(posRec.Left).AsFloat/100.0;
+    img.Top:=img.Top+ SeminarPicturesSQL.FieldByName(posRec.Top).AsFloat/100;
+  end;
+
+
+//  img.Left:=
+//  SHowMessage(posRec.fName);
+
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
