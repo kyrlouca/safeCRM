@@ -119,6 +119,7 @@ type
     InvoiceSQLSUBJECT_HOURS: TIntegerField;
     InvoiceSQLSEMINAR_CERTIFICATE: TWideStringField;
     InvoiceSQLSEX: TWideStringField;
+    InvoiceSQLANAD_NUMBER: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -373,6 +374,7 @@ var
   SeminarSubject:String;
   SeminarHours:Integer;
   SeminarType:Integer;
+  ANadNumber:String;
 
   PersonSerial:Integer;
 
@@ -411,6 +413,7 @@ begin
     qr.open;
     seminarType:=qr.FieldByName('fk_seminar').AsInteger;
     SeminarSubject:=qr.FieldByName('seminar_name').asString;
+    AnadNumber:=qr.FieldByName('ANad_number').asString;
     InstName:=trim(qr.FieldByName('first_name').asString)+' '+trim(qr.FieldByName('Last_name').asString);
     InstJob:=qr.FieldByName('job_title').asString;
   finally
@@ -467,7 +470,13 @@ begin
           HasAnotherDate:='N';
 
         HoursActual:=qr.FieldByName('hours').AsInteger + AdditionalHours;
-        PercentActual:=HoursActual/SeminarHours * 100.0;
+
+        if SeminarHours>0 then
+          PercentActual:=HoursActual/SeminarHours * 100.0
+        else
+         PercentActual:=0;
+
+
         isPass:= PercentActual >= PercentPass;
 
         if isFound or isGuest or (not isPresent) or (not isPass)  then begin
@@ -506,6 +515,7 @@ begin
         InvoiceSQL.FieldByName('SEX').Value:=Person.Sex;
         InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
         InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
+        InvoiceSQL.FieldByName('ANAD_number').Value:=AnadNumber;
 
         InvoiceSQL.FieldByName('instructor_name').Value:=InstName;
         InvoiceSQL.FieldByName('instructor_job_title').Value:=InstJob;

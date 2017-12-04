@@ -208,6 +208,8 @@ type
     MainMenu1: TMainMenu;
     Help1: TMenuItem;
     Certifcates1: TMenuItem;
+    CopyHardBTN: TRzBitBtn;
+    SaveHardBTN: TRzBitBtn;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -232,6 +234,8 @@ type
     procedure CopyDefaultBTNClick(Sender: TObject);
     procedure LanguageRGPChange(Sender: TObject);
     procedure Certifcates1Click(Sender: TObject);
+    procedure CopyHardBTNClick(Sender: TObject);
+    procedure SaveHardBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -680,6 +684,20 @@ begin
 end;
 
 
+procedure TM_SeminarTypeFRM.SaveHardBTNClick(Sender: TObject);
+var
+  PictureSerial:Integer;
+  Language:string;
+begin
+    if SeminarPictureSQL.State in [dsEdit,dsInsert] then begin
+      SeminarPictureSQL.post;
+    end;
+    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
+    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+    SaveToDefault(PictureSerial,-1,Language);
+
+end;
+
 procedure TM_SeminarTypeFRM.SaveToDefault(Const PictureSerial:Integer;Const DefaultPicSerial:Integer;Const Language:String);
 var
   DefaultQr:TksQuery;
@@ -709,7 +727,7 @@ begin
 
 //    DefaultQr.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').Value:=Language;
     CopyDataRecord(pictQR,DefaultQr);
-    DefaultQr.FieldByName('serial_number').Value:=0;
+    DefaultQr.FieldByName('serial_number').Value:=DefaultPicSerial;
     codeSite.Send('TksQuery',DefaultQr);
 
     DefaultQr.Post;
@@ -781,6 +799,20 @@ begin
 end;
 
 
+
+procedure TM_SeminarTypeFRM.CopyHardBTNClick(Sender: TObject);
+var
+  SeminarSerial:Integer;
+  PictureSerial:Integer;
+  Language:string;
+begin
+
+    SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
+    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+    CopyFromDefault(PictureSerial,-1,Language);
+    ShowAll(SeminarSerial,Language);
+end;
 
 //////////////////////////////////////////
 End.

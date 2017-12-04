@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 587
+  ClientHeight = 567
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -48,12 +48,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 544
+    Top = 524
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 488
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -151,20 +150,18 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 452
+    Height = 432
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 396
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 450
+      Height = 430
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 394
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -326,14 +323,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 407
+        Top = 387
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
-        ExplicitTop = 351
         object RzPanel6: TRzPanel
           Left = 570
           Top = 0
@@ -527,11 +523,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 450
+      Height = 430
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 394
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -543,13 +538,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 253
+        Top = 233
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 197
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -1208,14 +1202,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'ED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NAME, ' +
         'FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, INST' +
         'RUCTOR_NAME, INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE, SUBJECT_HOU' +
-        'RS, SEMINAR_CERTIFICATE, SEX)'
+        'RS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :DATE_' +
         'ISSUED, :HOURS_COMPLETED, :PERCENTAGE_COMPLETED, :IS_VALID, :LAS' +
         'T_NAME, :FIRST_NAME, :NATIONAL_ID, :SEMINAR_SUBJECT, :SEMINAR_DU' +
         'RATION, :INSTRUCTOR_NAME, :INSTRUCTOR_JOB_TITLE, :HAS_ANOTHER_DA' +
-        'TE, :SUBJECT_HOURS, :SEMINAR_CERTIFICATE, :SEX)')
+        'TE, :SUBJECT_HOURS, :SEMINAR_CERTIFICATE, :SEX, :ANAD_NUMBER)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_CERTIFICATE'
       'WHERE'
@@ -1233,7 +1227,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'R_DURATION, INSTRUCTOR_NAME = :INSTRUCTOR_NAME, INSTRUCTOR_JOB_T' +
         'ITLE = :INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE = :HAS_ANOTHER_DA' +
         'TE, SUBJECT_HOURS = :SUBJECT_HOURS, SEMINAR_CERTIFICATE = :SEMIN' +
-        'AR_CERTIFICATE, SEX = :SEX'
+        'AR_CERTIFICATE, SEX = :SEX, ANAD_NUMBER = :ANAD_NUMBER'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1242,7 +1236,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'ISSUED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NA' +
         'ME, FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, ' +
         'INSTRUCTOR_NAME, INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE, SUBJECT' +
-        '_HOURS, SEMINAR_CERTIFICATE, SEX FROM SEMINAR_CERTIFICATE'
+        '_HOURS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER FROM SEMINAR_CERTI' +
+        'FICATE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1378,6 +1373,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Visible = False
       FixedChar = True
       Size = 1
+    end
+    object InvoiceSQLANAD_NUMBER: TWideStringField
+      FieldName = 'ANAD_NUMBER'
+      Visible = False
+      FixedChar = True
+      Size = 30
     end
   end
   object MainMenu1: TMainMenu

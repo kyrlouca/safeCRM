@@ -57,15 +57,6 @@ type
     SeminarPicturesSQL: TIBCQuery;
     SeminarPictureSRC: TDataSource;
     SeminarPIcturePIP: TppDBPipeline;
-    SeminarPicturesSQLSERIAL_NUMBER: TIntegerField;
-    SeminarPicturesSQLPICTURE_SEMINAR: TBlobField;
-    SeminarPicturesSQLLINE_A1: TWideStringField;
-    SeminarPicturesSQLLINE_A2: TWideStringField;
-    SeminarPicturesSQLLINE_B1: TWideStringField;
-    SeminarPicturesSQLLINE_B2: TWideStringField;
-    SeminarPicturesSQLLINE_B3: TWideStringField;
-    SeminarPicturesSQLFK_SEMINAR_SERIAL: TIntegerField;
-    SeminarPicturesSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
     TopFld: TppDBRichText;
     ppReport2: TppReport;
     ppDetailBand1: TppDetailBand;
@@ -96,10 +87,32 @@ type
     SideTopFLD: TppDBRichText;
     ppDBImage3: TppDBImage;
     ppDBRichText7: TppDBRichText;
-    SeminarPicturesSQLLINE_C1: TWideStringField;
     CertificateSQLSUBJECT_HOURS: TIntegerField;
     CertificateSQLSEMINAR_CERTIFICATE: TWideStringField;
     CertificateSQLSEX: TWideStringField;
+    SeminarPicturesSQLSERIAL_NUMBER: TIntegerField;
+    SeminarPicturesSQLFK_SEMINAR_SERIAL: TIntegerField;
+    SeminarPicturesSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
+    SeminarPicturesSQLPICTURE_SEMINAR: TBlobField;
+    SeminarPicturesSQLLINE_A1: TWideStringField;
+    SeminarPicturesSQLLINE_A2: TWideStringField;
+    SeminarPicturesSQLLINE_B1: TWideStringField;
+    SeminarPicturesSQLLINE_B2: TWideStringField;
+    SeminarPicturesSQLLINE_B3: TWideStringField;
+    SeminarPicturesSQLLINE_C1: TWideStringField;
+    SeminarPicturesSQLPICTURE_TOP_L1: TBlobField;
+    SeminarPicturesSQLPICTURE_TOP_R1: TBlobField;
+    SeminarPicturesSQLPICTURE_BOT_L1: TBlobField;
+    SeminarPicturesSQLPICTURE_BOT_R1: TBlobField;
+    SeminarPicturesSQLTL_X: TIntegerField;
+    SeminarPicturesSQLTL_Y: TIntegerField;
+    SeminarPicturesSQLTR_X: TIntegerField;
+    SeminarPicturesSQLTR_Y: TIntegerField;
+    SeminarPicturesSQLBL_X: TIntegerField;
+    SeminarPicturesSQLBL_Y: TIntegerField;
+    SeminarPicturesSQLBR_X: TIntegerField;
+    SeminarPicturesSQLBR_Y: TIntegerField;
+    CertificateSQLANAD_NUMBER: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -275,7 +288,7 @@ var
   Language:String;
 
 begin
-  Language:=LanguageRGP.Value;
+  Language:=LanguageRGP.Values[LanguageRGP.ItemIndex];
   PrintSeminar(IN_Seminar_Serial,IN_certificate_serial,Language);
 end;
 
@@ -359,7 +372,7 @@ begin
 
  For token in ReplaceArray do begin
 //      toEnd:=Length(RichFLD.RichText)+1;
-      toEnd:=1500;
+      toEnd:=10000;
       selPos:=  RichFLD.FindText(token,0,toEnd,[]);
       if selPos <0 then
         Continue;
