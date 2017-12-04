@@ -3020,29 +3020,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
-    object SeminarPictureSQLPICTURE_SEMINAR: TBlobField
-      FieldName = 'PICTURE_SEMINAR'
-    end
-    object SeminarPictureSQLLINE_A1: TWideStringField
-      FieldName = 'LINE_A1'
-      Size = 500
-    end
-    object SeminarPictureSQLLINE_A2: TWideStringField
-      FieldName = 'LINE_A2'
-      Size = 500
-    end
-    object SeminarPictureSQLLINE_B1: TWideStringField
-      FieldName = 'LINE_B1'
-      Size = 500
-    end
-    object SeminarPictureSQLLINE_B2: TWideStringField
-      FieldName = 'LINE_B2'
-      Size = 500
-    end
-    object SeminarPictureSQLLINE_B3: TWideStringField
-      FieldName = 'LINE_B3'
-      Size = 500
-    end
     object SeminarPictureSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_TYPE_SERIAL'
       Required = True
@@ -3052,6 +3029,29 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Required = True
       FixedChar = True
       Size = 1
+    end
+    object SeminarPictureSQLPICTURE_SEMINAR: TBlobField
+      FieldName = 'PICTURE_SEMINAR'
+    end
+    object SeminarPictureSQLLINE_A1: TWideStringField
+      FieldName = 'LINE_A1'
+      Size = 1500
+    end
+    object SeminarPictureSQLLINE_A2: TWideStringField
+      FieldName = 'LINE_A2'
+      Size = 1500
+    end
+    object SeminarPictureSQLLINE_B1: TWideStringField
+      FieldName = 'LINE_B1'
+      Size = 1500
+    end
+    object SeminarPictureSQLLINE_B2: TWideStringField
+      FieldName = 'LINE_B2'
+      Size = 1500
+    end
+    object SeminarPictureSQLLINE_B3: TWideStringField
+      FieldName = 'LINE_B3'
+      Size = 1500
     end
     object SeminarPictureSQLTL_X: TIntegerField
       FieldName = 'TL_X'
