@@ -9,7 +9,8 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   vcl.wwcheckbox, Vcl.ComCtrls, RzDBEdit, RzTabs, RzRadGrp, RzDBRGrp,
-  Vcl.ExtDlgs, vcl.wwclearbuttongroup, vcl.wwradiogroup, vcl.wwriched;
+  Vcl.ExtDlgs, vcl.wwclearbuttongroup, vcl.wwradiogroup, vcl.wwriched,codeSiteLogging,CodeSiteMessage
+;
 type
   TM_SeminarTypeFRM = class(TForm)
     Panel3: TRzPanel;
@@ -219,15 +220,17 @@ type
     procedure CertificationTSShow(Sender: TObject);
     procedure CertificationTSExit(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
-    procedure LanguageRGPChange(Sender: TObject);
     procedure PICTURE_TOP_L1DblClick(Sender: TObject);
     procedure PICTURE_TOP_L1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure SaveDefaultBTNClick(Sender: TObject);
     procedure CopyDefaultBTNClick(Sender: TObject);
+    procedure LanguageRGPChange(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
 
+  procedure ShowAll(Const SeminarSerial:integer;Const Language :String);
   procedure CheckPicturesT(COnst TypeSerial:Integer);
   function  SelectPictureT(var img :TImage):Boolean;
   procedure ShowPictureDataT(Const TypeSerial:Integer;Const  Language:String);
@@ -238,7 +241,8 @@ type
 
 
 
-  procedure CopyFromDefault();
+  procedure CopyFromDefault(Const PictureSerial:Integer;Const Language:String);
+  procedure SaveToDefault(Const PictureSerial:Integer;Const Language:String);
 
   public
     { Public declarations }
@@ -317,48 +321,6 @@ begin
 close;
 end;
 
-procedure TM_SeminarTypeFRM.CopyDefaultBTNClick(Sender: TObject);
-var
-  DefaultQr:TksQuery;
-  pictQR:TksQuery;
-  PictureSerial:integer;
-  Language:String;
-begin
-
-  DefaultQR:=TksQuery.Create(cn,'select * from prototype_pictures where serial_number= 0 and LANGUAGE_GREEK_OR_ENGLISH = :language');
-  PictQR:=TksQuery.Create(cn,'SELECT * FROM seminar_type_pictures where serial_number = :SerialNumber ');
-
-  try
-    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
-    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
-
-    pictQr.ParamByName('SerialNumber').Value:=PictureSerial;
-    PictQr.Open;
-    if PictQR.IsEmpty then
-      exit;
-
-    DefaultQr.ParamByName('Language').Value:=Language;
-    DefaultQR.Open;
-    if DefaultQR.IsEmpty then begin
-      DefaultQR.Insert
-    end else begin
-      DefaultQR.Edit;
-    end;
-
-//    DefaultQr.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').Value:=Language;
-    CopyDataRecord(pictQR,DefaultQr);
-    DefaultQr.FieldByName('serial_number').Value:=0;
-
-    DefaultQr.Post;
-  finally
-    pictQR.Free;
-    DefaultQr.Free;
-  end;
-
-
-
-end;
-
 procedure TM_SeminarTypeFRM.CanelBTNClick(Sender: TObject);
 begin
 TableSQL.Cancel;
@@ -409,23 +371,34 @@ begin
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 end;
 
+
 procedure TM_SeminarTypeFRM.LanguageRGPChange(Sender: TObject);
 var
   SeminarSerial:Integer;
+  Language:String;
 begin
   if SeminarPictureSQL.State in [dsEdit,dsInsert] then
     SeminarPictureSQL.Post;
   SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+  Language:=LanguageRGP.Value;
+  ShowAll(seminarSerial,Language);
+
+end;
+
+procedure TM_SeminarTypeFRM.ShowAll(Const SeminarSerial:integer;Const Language :String);
+begin
   if SeminarSerial<1 then exit;
   if trim(LanguageRGP.Value)='' then exit;
 
-  SHowPictureT(SeminarSerial,Picture_top_l1.Name, LanguageRGP.Value, Picture_top_L1);
-  SHowPictureT(SeminarSerial,Picture_top_R1.Name, LanguageRGP.Value, Picture_top_R1);
-  SHowPictureT(SeminarSerial,Picture_bot_l1.Name, LanguageRGP.Value, Picture_bot_L1);
-  SHowPictureT(SeminarSerial,Picture_bot_R1.Name, LanguageRGP.Value, Picture_bot_R1);
+  SHowPictureT(SeminarSerial,Picture_top_l1.Name, Language, Picture_top_L1);
+  SHowPictureT(SeminarSerial,Picture_top_R1.Name, Language, Picture_top_R1);
+  SHowPictureT(SeminarSerial,Picture_bot_l1.Name, Language, Picture_bot_L1);
+  SHowPictureT(SeminarSerial,Picture_bot_R1.Name, Language, Picture_bot_R1);
 
-  ShowPictureDataT(SeminarSerial,LanguageRGP.Value);
+  ShowPictureDataT(SeminarSerial,Language);
 end;
+
+
 
 procedure TM_SeminarTypeFRM.Nav1InsertClick(Sender: TObject);
 begin
@@ -515,6 +488,8 @@ begin
   img.Picture:=nil;
   SavePictureT(SeminarSerial,aFieldName, LanguageRGP.Values[LanguageRGP.ItemIndex],img);
 end;
+
+
 procedure TM_SeminarTypeFRM.SavePictureT(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
 var
 //  BlobField: TField;
@@ -670,21 +645,32 @@ end;
 
 //////////////////////////////////////////
 
+procedure TM_SeminarTypeFRM.SaveDefaultBTNClick(Sender: TObject);
+var
+  PictureSerial:Integer;
+  Language:string;
+begin
+    if SeminarPictureSQL.State in [dsEdit,dsInsert] then begin
+      SeminarPictureSQL.post;
+    end;
+    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
+    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+    SaveToDefault(PictureSerial,Language);
+end;
 
-procedure TM_SeminarTypeFRM.CopyFromDefault();
+
+procedure TM_SeminarTypeFRM.SaveToDefault(Const PictureSerial:Integer;Const Language:String);
 var
   DefaultQr:TksQuery;
   pictQR:TksQuery;
-  PictureSerial:integer;
-  Language:String;
+//  PictureSerial:integer;
+//  Language:String;
 begin
 
   DefaultQR:=TksQuery.Create(cn,'select * from prototype_pictures where serial_number= 0 and LANGUAGE_GREEK_OR_ENGLISH = :language');
   PictQR:=TksQuery.Create(cn,'SELECT * FROM seminar_type_pictures where serial_number = :SerialNumber ');
 
   try
-    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
-    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
 
     pictQr.ParamByName('SerialNumber').Value:=PictureSerial;
     PictQr.Open;
@@ -702,8 +688,66 @@ begin
 //    DefaultQr.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').Value:=Language;
     CopyDataRecord(pictQR,DefaultQr);
     DefaultQr.FieldByName('serial_number').Value:=0;
+    codeSite.Send('TksQuery',DefaultQr);
 
     DefaultQr.Post;
+  finally
+    pictQR.Free;
+    DefaultQr.Free;
+  end;
+
+end;
+
+
+procedure TM_SeminarTypeFRM.CopyDefaultBTNClick(Sender: TObject);
+var
+  SeminarSerial:Integer;
+  PictureSerial:Integer;
+  Language:string;
+begin
+
+    SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
+    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+    CopyFromDefault(PictureSerial,Language);
+    ShowAll(SeminarSerial,Language);
+
+end;
+
+procedure TM_SeminarTypeFRM.CopyFromDefault(Const PictureSerial:Integer;Const Language:String);
+var
+  DefaultQr:TksQuery;
+  pictQR:TksQuery;
+//  PictureSerial:integer;
+  Picture_FK:Integer;
+//  Language:String;
+begin
+
+  DefaultQR:=TksQuery.Create(cn,'select * from prototype_pictures where serial_number= 0 and LANGUAGE_GREEK_OR_ENGLISH = :language');
+  PictQR:=TksQuery.Create(cn,'SELECT * FROM seminar_type_pictures where serial_number = :SerialNumber ');
+
+  try
+//    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
+
+    DefaultQr.ParamByName('Language').Value:=Language;
+    DefaultQR.Open;
+
+    if DefaultQR.IsEmpty then begin
+      exit;
+    end;
+
+    pictQr.ParamByName('SerialNumber').Value:=PictureSerial;
+    PictQr.Open;
+    if PictQR.IsEmpty then
+      exit;
+
+    Picture_FK:=SeminarPictureSQL.FieldByName('FK_SEMINAR_TYPE_SERIAL').AsInteger;
+
+    pictQR.Edit;
+    CopyDataRecord(DefaultQr,pictQR);
+    PictQr.FieldByName('FK_SEMINAR_TYPE_SERIAL').Value:=Picture_FK;
+
+    PictQr.Post;
   finally
     pictQR.Free;
     DefaultQr.Free;
