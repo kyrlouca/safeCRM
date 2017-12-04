@@ -342,7 +342,7 @@ end;
 
 procedure TR_certificateFRM.ReplaceText(RichFld :TppCustomRichText);
 const
-  ReplaceArray : array of String= ['[NAME]','[SEX]','[ID]','[HOURS]','[DATE]'] ;
+  ReplaceArray : array of String= ['[NAME]','[SEX]','[ID]','[HOURS]','[DATE]','[ANAD]' ];
 //  ReplaceArray : array of String= ['[NAME]'];
 
 var
@@ -416,6 +416,8 @@ begin
              if isAllLower then begin
                 temp:= ToLower(Temp);
              end;
+         end else if token='[ANAD]' then begin
+            temp:=CertificateSQL.FieldByName('ANAD_NUMBER').AsString;
 
          end;
         RichFld.SelStart := SelPos;
