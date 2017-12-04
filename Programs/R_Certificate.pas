@@ -215,6 +215,7 @@ procedure TR_certificateFRM.TopFldPrint(Sender: TObject);
   toEnd:Integer;
 
 begin
+  ShowMessage(CertificateSQL.FieldByName('last_name').AsString);
   ReplaceText(sender as TppDBRichText);
 end;
 
@@ -451,11 +452,6 @@ end;
 
 
 
-
-
-
-
-
 procedure TR_certificateFRM.MovePosition(img :TppDBImage);
 TYpe
   TPosRec= record
@@ -500,10 +496,10 @@ begin
 
 
   leftPos:=img.Left;
-  posRec:=findElement(img.Name);
+  posRec:=findElement(img.DataField);
   if (SeminarPicturesSQL.FindField(posRec.fName) <> nil ) then begin
-    img.Left:=img.Left+ SeminarPicturesSQL.FieldByName(posRec.Left).AsFloat/100.0;
-    img.Top:=img.Top+ SeminarPicturesSQL.FieldByName(posRec.Top).AsFloat/100;
+    img.Left:=img.Left+ SeminarPicturesSQL.FieldByName(posRec.Left).AsFloat/10.0;
+    img.Top:=img.Top+ SeminarPicturesSQL.FieldByName(posRec.Top).AsFloat/10;
   end;
 
 
