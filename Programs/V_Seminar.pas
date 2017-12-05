@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  System.ImageList,System.DateUtils, Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
+  System.ImageList,System.DateUtils, System.TypInfo,Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
   Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
   vcl.wwradiogroup, RzRadChk, RzDBChk,G_debugUnit,codeSiteLogging,CodeSiteMessage,
   Vcl.ExtDlgs, vcl.wwriched, Vcl.Menus;
@@ -253,7 +253,7 @@ type
     RzPanel9: TRzPanel;
     RzDBLabel2: TRzDBLabel;
     CertificationTS: TRzTabSheet;
-    RzGroupBox4: TRzGroupBox;
+    PictureGRP: TRzGroupBox;
     SelTopLeftBTN: TRzBitBtn;
     SeminarPictureSQL: TIBCQuery;
     SeminarPictureSRC: TDataSource;
@@ -462,7 +462,22 @@ end;
 procedure TV_SeminarFRM.CertificationTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
+  allowModify:boolean;
+  i:Integer;
+  item:TComponent;
+  controlItem:TControl;
+  tabSheet:TrzTabSheet;
+  vCnt:Integer;
+  control:Tcontrol;
 begin
+  allowModify:=AllowToModify();
+  PictureGRP.Enabled:=allowModify;
+
+
+
+
+
+
   SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
   LanguageRGP.ItemIndex:=0;
 //  showMessage(LanguageRGP.Values[LanguageRGP.ItemIndex]);

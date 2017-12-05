@@ -99,7 +99,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1082
       Height = 649
       Hint = ''
-      ActivePage = CostTS
+      ActivePage = CertificationTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -108,7 +108,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 3
+      TabIndex = 5
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -2267,12 +2267,15 @@ object V_SeminarFRM: TV_SeminarFRM
         OnShow = CertificationTSShow
         Caption = #928#959#953#963#964#959#960#959#953#951#964#953#954#940
         OnExit = CertificationTSExit
-        object RzGroupBox4: TRzGroupBox
+        ExplicitLeft = 2
+        ExplicitTop = 25
+        object PictureGRP: TRzGroupBox
           Left = 24
           Top = 102
           Width = 1002
           Height = 558
           Caption = #928#955#951#961#959#966#959#961#943#949#962
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -2288,6 +2291,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 37
             Caption = 'Select Picture'
             DoubleBuffered = True
+            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -2364,6 +2368,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 37
             Caption = 'Clear Picture'
             DoubleBuffered = True
+            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -2441,6 +2446,7 @@ object V_SeminarFRM: TV_SeminarFRM
             AutoURLDetect = False
             DataField = 'LINE_A1'
             DataSource = SeminarPictureSRC
+            Enabled = False
             Font.Charset = GREEK_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2492,6 +2498,7 @@ object V_SeminarFRM: TV_SeminarFRM
             AutoURLDetect = False
             DataField = 'LINE_A2'
             DataSource = SeminarPictureSRC
+            Enabled = False
             Font.Charset = GREEK_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2544,6 +2551,7 @@ object V_SeminarFRM: TV_SeminarFRM
             AutoURLDetect = False
             DataField = 'LINE_B2'
             DataSource = SeminarPictureSRC
+            Enabled = False
             Font.Charset = GREEK_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2595,6 +2603,7 @@ object V_SeminarFRM: TV_SeminarFRM
             AutoURLDetect = False
             DataField = 'LINE_B1'
             DataSource = SeminarPictureSRC
+            Enabled = False
             Font.Charset = GREEK_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2646,6 +2655,7 @@ object V_SeminarFRM: TV_SeminarFRM
             AutoURLDetect = False
             DataField = 'LINE_B3'
             DataSource = SeminarPictureSRC
+            Enabled = False
             Font.Charset = GREEK_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2697,6 +2707,7 @@ object V_SeminarFRM: TV_SeminarFRM
             AutoURLDetect = False
             DataField = 'LINE_C1'
             DataSource = SeminarPictureSRC
+            Enabled = False
             Font.Charset = GREEK_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2746,6 +2757,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Width = 82
             Height = 79
             BorderOuter = fsGroove
+            Enabled = False
             TabOrder = 8
             object PICTURE_TOP_L1: TImage
               Left = 2
@@ -2755,12 +2767,13 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentCustomHint = False
               Align = alClient
               Center = True
+              Enabled = False
               Proportional = True
               Stretch = True
               OnDblClick = PICTURE_TOP_L1DblClick
               OnMouseDown = PICTURE_TOP_L1MouseDown
-              ExplicitLeft = 18
-              ExplicitTop = -1
+              ExplicitLeft = 0
+              ExplicitTop = 4
             end
           end
           object RzPanel16: TRzPanel
@@ -2769,6 +2782,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Width = 82
             Height = 79
             BorderOuter = fsGroove
+            Enabled = False
             TabOrder = 9
             object PICTURE_TOP_R1: TImage
               Left = 2
@@ -2778,6 +2792,7 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentCustomHint = False
               Align = alClient
               Center = True
+              Enabled = False
               Proportional = True
               Stretch = True
               OnDblClick = PICTURE_TOP_L1DblClick
@@ -2791,6 +2806,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Width = 82
             Height = 79
             BorderOuter = fsGroove
+            Enabled = False
             TabOrder = 10
             object PICTURE_BOT_L1: TImage
               Left = 2
@@ -2800,6 +2816,7 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentCustomHint = False
               Align = alClient
               Center = True
+              Enabled = False
               Proportional = True
               Stretch = True
               OnDblClick = PICTURE_TOP_L1DblClick
@@ -2814,6 +2831,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Width = 82
             Height = 79
             BorderOuter = fsGroove
+            Enabled = False
             TabOrder = 11
             object PICTURE_BOT_R1: TImage
               Left = 2
@@ -2823,6 +2841,7 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentCustomHint = False
               Align = alClient
               Center = True
+              Enabled = False
               Proportional = True
               Stretch = True
               OnDblClick = PICTURE_TOP_L1DblClick
@@ -2838,6 +2857,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 22
             DataField = 'TR_Y'
             DataSource = SeminarPictureSRC
+            Enabled = False
             TabOrder = 12
             UnboundDataType = wwDefault
             WantReturns = False
@@ -2850,6 +2870,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 22
             DataField = 'TR_X'
             DataSource = SeminarPictureSRC
+            Enabled = False
             TabOrder = 13
             UnboundDataType = wwDefault
             WantReturns = False
@@ -2862,6 +2883,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 22
             DataField = 'TL_Y'
             DataSource = SeminarPictureSRC
+            Enabled = False
             TabOrder = 14
             UnboundDataType = wwDefault
             WantReturns = False
@@ -2874,6 +2896,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 22
             DataField = 'TL_X'
             DataSource = SeminarPictureSRC
+            Enabled = False
             TabOrder = 15
             UnboundDataType = wwDefault
             WantReturns = False
@@ -2886,6 +2909,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 22
             DataField = 'BL_Y'
             DataSource = SeminarPictureSRC
+            Enabled = False
             TabOrder = 16
             UnboundDataType = wwDefault
             WantReturns = False
@@ -2898,6 +2922,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 22
             DataField = 'BL_X'
             DataSource = SeminarPictureSRC
+            Enabled = False
             TabOrder = 17
             UnboundDataType = wwDefault
             WantReturns = False
@@ -2911,6 +2936,7 @@ object V_SeminarFRM: TV_SeminarFRM
             DisableThemes = True
             DataField = 'BR_Y'
             DataSource = SeminarPictureSRC
+            Enabled = False
             TabOrder = 18
             UnboundDataType = wwDefault
             WantReturns = False
@@ -2923,6 +2949,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Height = 22
             DataField = 'BR_X'
             DataSource = SeminarPictureSRC
+            Enabled = False
             TabOrder = 19
             UnboundDataType = wwDefault
             WantReturns = False
