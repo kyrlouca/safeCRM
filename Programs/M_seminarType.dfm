@@ -2,7 +2,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 743
+  ClientHeight = 723
   ClientWidth = 1017
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -23,7 +23,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     Left = 0
     Top = 0
     Width = 1017
-    Height = 700
+    Height = 680
     Align = alClient
     BorderOuter = fsNone
     Font.Charset = DEFAULT_CHARSET
@@ -34,12 +34,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     ParentFont = False
     TabOrder = 0
     VisualStyle = vsClassic
-    ExplicitHeight = 720
     object SeminarPC: TRzPageControl
       Left = 0
       Top = 67
       Width = 1017
-      Height = 633
+      Height = 613
       Hint = ''
       ActivePage = CertificationTS
       ActivePageDefault = SeminarTS
@@ -52,20 +51,17 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       ParentFont = False
       TabIndex = 3
       TabOrder = 0
-      ExplicitHeight = 653
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
-        ExplicitHeight = 627
         object RzPanel2: TRzPanel
           Left = 0
           Top = 39
           Width = 361
-          Height = 568
+          Height = 548
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 1
-          ExplicitHeight = 588
           object RzPanel3: TRzPanel
             Left = 0
             Top = 0
@@ -79,7 +75,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Left = 0
             Top = 17
             Width = 361
-            Height = 551
+            Height = 531
             ControlType.Strings = (
               'ANAD_APPROVED;CheckBox;Y;N'
               'TYPE_MONO_POLY;CheckBox;P;M')
@@ -116,7 +112,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             TitleLines = 1
             TitleButtons = True
             OnTitleButtonClick = Grid1TitleButtonClick
-            ExplicitHeight = 571
           end
         end
         object GroupBox1: TGroupBox
@@ -661,7 +656,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
         Caption = #920#941#956#945#964#945
-        ExplicitHeight = 627
         object GroupBox2: TGroupBox
           Left = 20
           Top = 15
@@ -841,7 +835,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        ExplicitHeight = 627
         object GroupBox4: TGroupBox
           Left = 533
           Top = 68
@@ -1451,7 +1444,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         OnShow = CertificationTSShow
         Caption = #928#953#963#964#959#960#959#953#951#964#951#954#940
         OnExit = CertificationTSExit
-        ExplicitHeight = 627
         object LanguageRGP: TwwRadioGroup
           Left = 23
           Top = 3
@@ -2672,14 +2664,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   end
   object Panel4: TRzPanel
     Left = 0
-    Top = 700
+    Top = 680
     Width = 1017
     Height = 43
     Align = alBottom
     BorderOuter = fsFlatRounded
     BorderSides = [sdLeft, sdRight, sdBottom]
     TabOrder = 1
-    ExplicitTop = 720
     object RzPanel1: TRzPanel
       Left = 915
       Top = 0

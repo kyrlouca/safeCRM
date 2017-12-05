@@ -3,14 +3,15 @@ unit R_Certificate;
 interface
 
 uses
-  Windows, Messages, SysUtils,System.DateUtils,System.math,System.Character, Classes, Graphics, Controls, Forms, Dialogs,
+  Windows, Messages, SysUtils,System.DateUtils,System.math,System.strUtils,system.Character, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Buttons, ExtCtrls, wwSpeedButton, wwDBNavigator, Db, Wwdatsrc,
    DBAccess, IBC, MemDS, IBCError,  Grids, Wwdbigrd, Wwdbgrid, Wwkeycb, wwDialog, wwidlg,
   Mask, wwdbedit,  DBGrids, wwdbdatetimepicker, ppDB, ppCtrls,
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
   RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox, vcl.wwclearbuttongroup,
-  vcl.wwradiogroup, ppStrtch, ppRichTx, Vcl.ComCtrls, vcl.wwriched;
+  vcl.wwradiogroup, ppStrtch, ppRichTx, Vcl.ComCtrls, vcl.wwriched,ClipBrd,
+  Vcl.DBCtrls, RzDBEdit;
 
 type
   TReminderResult= Record
@@ -21,6 +22,14 @@ type
     text:String;
     Field:String;
   End;
+  TImgPos= record
+    fName:String;
+    Left:double;
+    Top:double;
+    FieldForLeft:String;
+    FieldForRIght:String;
+  end;
+
 
   TR_certificateFRM = class(TForm)
     Panel1: TPanel;
@@ -114,6 +123,8 @@ type
     SeminarPicturesSQLBR_Y: TIntegerField;
     CertificateSQLANAD_NUMBER: TWideStringField;
     ppDBImage4: TppDBImage;
+    wwMemo: TwwDBRichEdit;
+    LeftStartVar: TppVariable;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -129,15 +140,15 @@ type
     procedure SerialLblCalc(Sender: TObject; var Value: Variant);
     procedure SubjectLblCalc(Sender: TObject; var Value: Variant);
     procedure Button1Click(Sender: TObject);
-    procedure dbr1GetRichText(Sender: TObject; var Text: string);
-    procedure TopFldPrint(Sender: TObject);
-    procedure MiddleFldPrint(Sender: TObject);
     procedure PICTURE_TOP_L1Print(Sender: TObject);
+    procedure TopFldGetRichText(Sender: TObject; var Text: string);
+    procedure ppReport1BeforePrint(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
   procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer;Const language:String);
-  procedure ReplaceText(RichFld :TppCustomRichText);
+
+  function ReplaceText(picFIeldName:String):String;
   procedure MovePosition(img :TppDBImage);
 
   public
@@ -151,6 +162,7 @@ type
 
 var
   R_certificateFRM: TR_certificateFRM;
+  ImgPosArray : array of TImgPos;
 
 implementation
 
@@ -182,48 +194,44 @@ begin
 showMessage(LanguageRGP.Value);
 end;
 
-procedure TR_certificateFRM.dbr1GetRichText(Sender: TObject; var Text: string);
-var
-  txt:string;
-  selPos,ToEnd:Integer;
-begin
-{
-//ReplaceText(Text);
-
-    txt:='CC';
-//       ToEnd := Length(dbr1.Text);
-       ToEnd := 1000;
-       selPos:=  dbr1.FindText(txt,0,toEnd,[]);
-    if SelPos >= 0 then  begin
-      dbr1.SelStart := SelPos - 1;
-      dbr1.SelLength := Length(txt);
-//      dbr1.SelStart := 4;
-//      dbr1.SelLength := 10;
-
-      dbr1.SelText := 'what the fuck';
-    end
-
-}
-
-end;
-
-procedure TR_certificateFRM.TopFldPrint(Sender: TObject);
-
-  var
-  SelPos: Integer;
-  txt:String;
-  toEnd:Integer;
-
-begin
-  ShowMessage(CertificateSQL.FieldByName('last_name').AsString);
-  ReplaceText(sender as TppDBRichText);
-end;
 
 procedure TR_certificateFRM.DurationFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
             value:='Διάρκειας: '+CertificateSQL.FieldByName('seminar_duration').AsString + ' ωρών';
 
+end;
+
+procedure TR_certificateFRM.ppReport1BeforePrint(Sender: TObject);
+const
+   imgNames :TArray<String> =[ 'PICTURE_TOP_L1', 'PICTURE_TOP_R1' ,'PICTURE_BOT_L1', 'PICTURE_BOT_L1'];
+var
+  I:integer;
+  img:TppdbImage;
+   imgPos:TImgPos;
+   ndx:Integer;
+begin
+    for i := 0 to ComponentCount - 1 do    begin
+      if  (Components[i] is TppdbImage) then begin
+        img:=TppdbImage(Components[i]);
+        imgPos.fName:=img.DataField;
+        ImgPos.Left:=img.Left;
+        ImgPos.Top:=Img.Top;
+
+        Case  IndexStr(imgPos.fName,imgNames ) of
+          0:begin imgPos.FieldForLeft:='TL_X';imgPos.FieldForRIght:='TL_Y' end;
+          1:begin imgPos.FieldForLeft:='TR_X';imgPos.FieldForRIght:='TR_Y' end;
+          2:begin imgPos.FieldForLeft:='BL_X';imgPos.FieldForRIght:='BL_Y' end;
+          3:begin imgPos.FieldForLeft:='BR_X';imgPos.FieldForRIght:='BR_Y' end;
+          -1:begin imgPos.FieldForLeft:='xxx';imgPos.FieldForRIght:='yyy' end;
+        else
+          ShowMessage('FIeld NOT FOUND Option'); // present, but not handled above
+        end;
+
+        insert(imgPos,ImgPosArray,0);
+      end;
+
+    end;
 end;
 
 procedure TR_certificateFRM.ppReport1PreviewFormCreate(
@@ -279,6 +287,15 @@ begin
   value:= strLeft +CertificateSQL.FieldByName('Seminar_subject').AsString+StrRight;
 end;
 
+
+procedure TR_certificateFRM.TopFldGetRichText(Sender: TObject;
+  var Text: string);
+var
+  rtfText:String;
+begin
+  rtfText:=  ReplaceText(TppDBRichText(Sender).DataField);
+  text:=rtfText;
+end;
 
 procedure TR_certificateFRM.VtFilterRecord(DataSet: TDataSet;
   var Accept: Boolean);
@@ -358,12 +375,7 @@ begin
 end;
 
 
-procedure TR_certificateFRM.MiddleFldPrint(Sender: TObject);
-begin
-  ReplaceText(sender as TppDBRichText);
-end;
-
-procedure TR_certificateFRM.ReplaceText(RichFld :TppCustomRichText);
+function TR_certificateFRM.ReplaceText(picFIeldName:String):String;
 const
   ReplaceArray : array of String= ['[NAME]','[SEX]','[ID]','[HOURS]','[DATE]','[ANAD]' ];
 //  ReplaceArray : array of String= ['[NAME]'];
@@ -373,29 +385,31 @@ var
   txt:String;
   toEnd:Integer;
   Token:String;
+  TokenInMemo:String;
   temp:String;
   GreekOrEnglish:String;
   isAllUpper:Boolean;
   isAllLower:Boolean;
 begin
 
+  wwMemo.Clear;
+  wwMemo.SetRtfText(SeminarPicturesSQL.FieldByName(picFieldName).AsString);
+
 
  For token in ReplaceArray do begin
-//      toEnd:=Length(RichFLD.RichText)+1;
-      toEnd:=10000;
-      selPos:=  RichFLD.FindText(token,0,toEnd,[]);
-      if selPos <0 then
-        Continue;
 
-        RichFld.SelStart := SelPos;
-        RichFLD.SelLength := Length(token);
-        temp:=RichFLD.SelText;
-        isAllUpper:=AllUPper(temp);
-        isAllLower:=AllLower(temp);
-        //check if the user has written the TOKEN in all upper, all lower, or mixed capitals
-        //change case of value accordingly
+  selPos:=wwMemo.FindText(token,0,3000,[]);
 
-         if token='[NAME]' then begin
+  wwMemo.SelStart:=SelPos;
+  if selPos<0 then
+    continue;
+  wwMemo.SelLength := Length(token);
+
+  tokenInMemo:=wwMemo.SelText;
+  isAllUpper:=AllUPper(tokenInMemo);
+  isAllLower:=AllLower(tokenInMemo);
+
+          if token='[NAME]' then begin
             temp:=Trim(CertificateSQL.FieldByName('First_name').AsString) +' '+Trim(CertificateSQL.FieldByName('Last_Name').AsString);
              if isAllUpper then begin
                 temp:= ToUpper(temp);
@@ -405,7 +419,6 @@ begin
              if isAllLower then begin
                 temp:= ToLower(Temp);
              end;
-
 
          end else if token='[SEX]' then begin
 
@@ -443,32 +456,22 @@ begin
             temp:=CertificateSQL.FieldByName('ANAD_NUMBER').AsString;
 
          end;
-        RichFld.SelStart := SelPos;
-        RichFLD.SelLength := Length(token);
-        RichFLD.SelText:= temp;
+        wwMemo.SelText :=Temp;
 
  end;
+ result:=wwMemo.GetRTFText;
 end;
 
 
 
 procedure TR_certificateFRM.MovePosition(img :TppDBImage);
-TYpe
-  TPosRec= record
+type
+TPosRec= record
     fName:String;
-    Left:String;
-    Top:String;
+    Left:string;
+    Top:string;
   end;
 
-
-const
-  Items : array[0..3] of TPosRec =
-    (
-  	( Fname : 'PICTURE_TOP_L1'; Left:'TL_X';top:'TL_Y'),
-  	( Fname : 'PICTURE_TOP_R1'; Left:'TR_X';Top:'TR_Y'),
-  	( Fname : 'PICTURE_BOT_L1'; Left:'BL_X';TOp:'BL_Y'),
-  	( Fname : 'PICTURE_BOT_R1'; Left:'BR_x';Top:'BR_Y')
-    );
 
 var
   SelPos: Integer;
@@ -477,7 +480,7 @@ var
   posRec:TPosRec;
 
 
-  function findElement(const fFieldName:string):TPosRec;
+function findElement(const fFieldName:string):TPosRec;
   const
     NulRec :TposRec =  	( Fname : 'NULL'; Left:'';TOp:'');
   var
@@ -492,6 +495,8 @@ var
     end;
 
   end;
+
+
 begin
 
 
