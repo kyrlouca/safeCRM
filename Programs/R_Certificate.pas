@@ -124,7 +124,6 @@ type
     CertificateSQLANAD_NUMBER: TWideStringField;
     ppDBImage4: TppDBImage;
     wwMemo: TwwDBRichEdit;
-    LeftStartVar: TppVariable;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -204,7 +203,7 @@ end;
 
 procedure TR_certificateFRM.ppReport1BeforePrint(Sender: TObject);
 const
-   imgNames :TArray<String> =[ 'PICTURE_TOP_L1', 'PICTURE_TOP_R1' ,'PICTURE_BOT_L1', 'PICTURE_BOT_L1'];
+   imgNames :TArray<String> =[ 'PICTURE_TOP_L1', 'PICTURE_TOP_R1' ,'PICTURE_BOT_L1', 'PICTURE_BOT_R1'];
 var
   I:integer;
   img:TppdbImage;
@@ -223,7 +222,7 @@ begin
           1:begin imgPos.FieldForLeft:='TR_X';imgPos.FieldForRIght:='TR_Y' end;
           2:begin imgPos.FieldForLeft:='BL_X';imgPos.FieldForRIght:='BL_Y' end;
           3:begin imgPos.FieldForLeft:='BR_X';imgPos.FieldForRIght:='BR_Y' end;
-          -1:begin imgPos.FieldForLeft:='xxx';imgPos.FieldForRIght:='yyy' end;
+          -1:begin imgPos.FieldForLeft:='';imgPos.FieldForRIght:='' end;
         else
           ShowMessage('FIeld NOT FOUND Option'); // present, but not handled above
         end;
@@ -465,29 +464,29 @@ end;
 
 
 procedure TR_certificateFRM.MovePosition(img :TppDBImage);
-type
-TPosRec= record
-    fName:String;
-    Left:string;
-    Top:string;
-  end;
+//type
+//TPosRec= record
+//    fName:String;
+//    Left:string;
+//    Top:string;
+//  end;
 
 
 var
   SelPos: Integer;
   LeftPos,TopPos:Double;
   LeftMove,TopMove:Double;
-  posRec:TPosRec;
+  ImgFound:TImgPos;
 
 
-function findElement(const fFieldName:string):TPosRec;
+function findElement(const fFieldName:string):TImgPos;
   const
-    NulRec :TposRec =  	( Fname : 'NULL'; Left:'';TOp:'');
+    NulRec : TImgPos =  	( Fname : ''; Left:0;TOp:0;FieldForLeft:'';FieldForRIght:'');
   var
-  item:TPosRec;
+  item:TImgPos;
   begin
-    result:=NulRec;
-    for Item in Items do begin
+    result:= NulRec;
+    for Item in ImgPosArray do begin
       if item.fName=fFieldName then begin
         result:=item;
         exit;
@@ -498,18 +497,13 @@ function findElement(const fFieldName:string):TPosRec;
 
 
 begin
-
-
-  leftPos:=img.Left;
-  posRec:=findElement(img.DataField);
-  if (SeminarPicturesSQL.FindField(posRec.fName) <> nil ) then begin
-    img.Left:=img.Left+ SeminarPicturesSQL.FieldByName(posRec.Left).AsFloat/10.0;
-    img.Top:=img.Top+ SeminarPicturesSQL.FieldByName(posRec.Top).AsFloat/10;
+  ImgFound:=findElement(img.DataField);
+  if imgFound.fName='' then
+    exit;
+  if (SeminarPicturesSQL.FindField(ImgFound.fName) <> nil ) then begin
+    img.Left:=ImgFound.Left+ SeminarPicturesSQL.FieldByName(imgFound.FieldForLeft).AsFloat/10.0;
+    img.Top:= ImgFound.Top+ SeminarPicturesSQL.FieldByName(imgFOund.FieldForRIght).AsFloat/10;
   end;
-
-
-//  img.Left:=
-//  SHowMessage(posRec.fName);
 
 end;
 

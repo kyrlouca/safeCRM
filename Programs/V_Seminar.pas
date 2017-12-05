@@ -368,6 +368,7 @@ type
   procedure ClearPictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
 
 
+  function allowToModify():Boolean;
 
 
   Function FindActionDate(ActionDateRec:TActionDateRec):Tdate;
@@ -784,6 +785,8 @@ begin
  procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
+  st:string;
+  allowModify:BOolean;
 begin
 
   SeminarSerial:= SEminarSQL.FieldByName('serial_number').AsInteger;
@@ -792,6 +795,11 @@ begin
   NonAttendSQL.Open;
 
   ksOpenTables([AttendingSQL]);
+
+//  st:=SeminarSQL.FieldByName('status').AsString;
+//  allowModify := (St='P') or (St='N') or (St='W');
+//
+//  Dataset.ReadOnly:= not allowModify;
 
 end;
 
@@ -913,6 +921,13 @@ var
   seminarSerial:Integer;
   str:string;
 begin
+
+  if not allowToModify() then begin
+    ShowMessage('Cannot Modify');
+    exit;
+  end;
+
+
   PersonSerial:=NonAttendSQL.FieldByName('serial_number').AsInteger;
   SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
   if Personserial<1 then exit;
@@ -1016,7 +1031,15 @@ var
   Personserial:Integer;
   seminarSerial:Integer;
   str:string;
+  st:string;
+  AllowModify:Boolean;
 begin
+  if not allowToModify() then begin
+    ShowMessage('Cannot Modify');
+    exit;
+  end;
+
+
   PersonSerial:=AttendingSQL.FieldByName('fk_person_serial').AsInteger;
   SeminarSerial:=AttendingSQL.FieldByName('fk_seminar_serial').AsInteger;
   if (Personserial<1) or (seminarSerial<1) then exit;
@@ -1056,8 +1079,15 @@ end;
 
 
 procedure TV_SeminarFRM.CostTSShow(Sender: TObject);
+var
+  allowModify:boolean;
 begin
 ksOpenTables([CostItemTBL,SeminarCostItemSQL]);
+  AllowmodifY:=allowToModify();
+//  CostItemTBL.ReadOnly:=not allowmodify;
+  SeminarCostItemSQL.ReadOnly:=not allowmodify;
+
+
 end;
 
 procedure TV_SeminarFRM.CostTypeFLDCloseUp(Sender: TObject; LookupTable,
@@ -1074,19 +1104,38 @@ with (Sender as TwwDBLookupCombo) do
 end;
 
 procedure TV_SeminarFRM.SubjectTSShow(Sender: TObject);
+var
+  allowmodify:Boolean;
 begin
-ksOpenTables([seminarSubjectSQL,SeminarDaySQL]);
+
+  ksOpenTables([seminarSubjectSQL,SeminarDaySQL]);
+
+  AllowmodifY:=allowToModify();
+  seminarSubjectSQL.ReadOnly:=not allowmodify;
+  SeminarDaySQL.ReadOnly:=not allowmodify;
+
+
 end;
 
 Procedure TV_SeminarFRM.EditSeminar(Const SeminarSerial:integer);
 Var
         Dataset:TIBCQuery;
+        allowModify:Boolean;
+        St:String;
 Begin
         Dataset:=SeminarSQL;
         with Dataset do begin
           close;
           ParamByName('SerialNumber').value:=SeminarSerial;
           Open;
+          if Dataset.IsEmpty then begin
+            Dataset.Close;
+            self.Close;
+          end;
+          st:=Dataset.FieldByName('status').AsString;
+
+          allowModify := (St='P') or (St='N') or (St='W');
+          Dataset.ReadOnly:= not allowModify;
         end;
 
           if FirstFLD.CanFocus then
@@ -1373,5 +1422,12 @@ end;
 
 
 
+function TV_SeminarFRM.allowToModify():Boolean;
+var
+  st:String;
+begin
+  st:=SeminarSQL.FieldByName('status').AsString;
+  result:=(St='P') or (St='N') or (St='W');
 
+end;
 End.

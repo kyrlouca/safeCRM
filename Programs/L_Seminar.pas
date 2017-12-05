@@ -72,6 +72,7 @@ type
     TableSQLFK_EXAMINER: TIntegerField;
     TableSQLTYPE_MONO_POLY: TWideStringField;
     Label4: TRzLabel;
+    StatusShowFLD: TwwDBComboBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -184,6 +185,7 @@ end;
 
 procedure TL_SeminarFRM.FormActivate(Sender: TObject);
 begin
+ksfillComboF1(cn,StatusShowFLD,'status_activity','status','description');
 ksOpenTables([TableSQL]);
 if IN_ACTION='INSERT' then begin
    TableSQL.Insert;
