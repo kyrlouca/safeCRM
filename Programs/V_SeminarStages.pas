@@ -91,16 +91,7 @@ type
     InvoicedBTN: TRzBitBtn;
     CertifiedBTN: TRzBitBtn;
     RzPanel1: TRzPanel;
-    Nav1: TwwDBNavigator;
-    Nav1Button: TwwNavButton;
-    Nav1Prior: TwwNavButton;
-    Nav1Next: TwwNavButton;
-    Nav1Button1: TwwNavButton;
     Panel2: TRzPanel;
-    RzGroupBox1: TRzGroupBox;
-    Label8: TLabel;
-    FilterBox: TwwDBComboBox;
-    Label1: TLabel;
     wwDBLookupCombo1: TwwDBLookupCombo;
     Panel1: TRzPanel;
     ApprovedST: TRzGlyphStatus;
@@ -116,9 +107,35 @@ type
     TableSQLFK_EXAMINER: TIntegerField;
     TableSQLTYPE_MONO_POLY: TWideStringField;
     GroupBox2: TGroupBox;
-    CategoryFLD: TwwDBComboBox;
+    CategoryChangeFLD: TwwDBComboBox;
     TableSQLSEM_CATEGORY: TWideStringField;
-    procedure BitBtn2Click(Sender: TObject);
+    GroupBox3: TGroupBox;
+    wwIncrementalSearch1: TwwIncrementalSearch;
+    Nav1: TwwDBNavigator;
+    Nav1Button: TwwNavButton;
+    Nav1Prior: TwwNavButton;
+    Nav1Next: TwwNavButton;
+    Nav1Button1: TwwNavButton;
+    Label1: TLabel;
+    RzDBLabel4: TRzDBLabel;
+    WriteTrans: TIBCTransaction;
+    ReadTrans: TIBCTransaction;
+    AcceptBTN: TBitBtn;
+    CanelBTN: TBitBtn;
+    StatusChangeFLD: TwwDBComboBox;
+    Panel5: TRzPanel;
+    TitleLbl: TRzPanel;
+    StatusFLD: TwwDBComboBox;
+    wwIncrementalSearch2: TwwIncrementalSearch;
+    wwDBNavigator1: TwwDBNavigator;
+    wwDBNavigator1First: TwwNavButton;
+    wwDBNavigator1Prior: TwwNavButton;
+    wwDBNavigator1Next: TwwNavButton;
+    wwDBNavigator1Last: TwwNavButton;
+    wwDBNavigator1Post: TwwNavButton;
+    wwDBNavigator1Cancel: TwwNavButton;
+    wwDBNavigator1Refresh: TwwNavButton;
+    procedure AcceptBTNClick(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -126,9 +143,13 @@ type
     procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure FormActivate(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure CanelBTNClick(Sender: TObject);
+    procedure TableSQLAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
+  procedure ShowStatus(Dataset:TDataset);
   Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   Function CalcDaysLeft():TReminderResult;
   public
@@ -154,9 +175,10 @@ begin
 close;
 end;
 
-procedure TV_SeminarStagesFRM.BitBtn2Click(Sender: TObject);
+procedure TV_SeminarStagesFRM.AcceptBTNClick(Sender: TObject);
 begin
-close;
+  if TableSQL.State in [dsEdit] then
+    TableSQL.Post;
 
 end;
 
@@ -174,12 +196,22 @@ begin
 end;
 
 
-
+procedure TV_SeminarStagesFRM.TableSQLAfterPost(DataSet: TDataSet);
+begin
+ShowStatus(Dataset);
+end;
 
 procedure TV_SeminarStagesFRM.TableSQLAfterScroll(DataSet: TDataSet);
+begin
+ShowStatus(Dataset);
+end;
+
+
+
+procedure TV_SeminarStagesFRM.ShowStatus(Dataset:TDataset);
 type
 
-  StatusType = (iCreated,iPlanned,iApproved,iCertified,iInvoiced,iCompleted);
+  StatusType = (iCreated,iApproved,iCertified,iInvoiced,iCompleted);
 Var
   isCreated:Boolean;
   isPlanned:Boolean;
@@ -192,7 +224,7 @@ Var
 
   BtnArray : Array of TrzBitBTN;
   StArray : Array of TrzGlyphStatus;
-  BoolArray : Array[0..5] of Boolean;
+  BoolArray : Array[0..4] of Boolean;
   i:integer;
 
 begin
@@ -204,9 +236,8 @@ begin
 
   BoolArray[Ord(iCreated)]:= True;
   BoolArray[Ord(iApproved)]:= (status='A') or (status='F') ;
-  BoolArray[Ord(iPlanned)]:= (status='P');
-  BoolArray[Ord(iCertified)]:= Dataset.FieldByName('IS_CERTIFICATED').AsString='Y';
-  BoolArray[Ord(iInvoiced)]:= ksCountRecVarSQL(cn,'select serial_number from invoice inv where inv.fk_seminar_serial = :seminarSerial',[SeminarSerial])>0;
+  BoolArray[Ord(iCertified)]:= ksCountRecVarSQL(cn,'select serial_number FROM seminar_certificate SEM where sem.fk_seminar_serial= :seminarSerial',[SeminarSerial])>0;
+  BoolArray[Ord(iInvoiced)]:=  ksCountRecVarSQL(cn,'select serial_number from invoice inv where inv.fk_seminar_serial = :seminarSerial',[SeminarSerial])>0;
   BoolArray[Ord(iCompleted)]:= (status='F');
 
 
@@ -233,6 +264,14 @@ end;
 
 
 
+procedure TV_SeminarStagesFRM.CanelBTNClick(Sender: TObject);
+begin
+  if TableSQL.State in [dsEdit] then
+    TableSQL.Cancel;
+  close;
+
+end;
+
 Function TV_SeminarStagesFRM.FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
 begin
 
@@ -241,9 +280,17 @@ end;
 
 procedure TV_SeminarStagesFRM.FormActivate(Sender: TObject);
 begin
-  ksfillComboF1(cn,CategoryFLD,'SEM_CATEGORY','CATEGORY_CODE','DESCRIPTION','order_NUMBER' );
+  ksfillComboF1(cn,CategoryChangeFLD,'SEM_CATEGORY','CATEGORY_CODE','DESCRIPTION_greek','order_NUMBER' );
+  ksfillComboF1(cn,StatusChangeFLD,'status_activity','status','DESCRIPTION_greek','order_NUMBER' );
 
 ksOpenTables([TableSQL])
+end;
+
+procedure TV_SeminarStagesFRM.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+if TableSQL.State in [dsEdit] then
+  TableSQL.Post;
 end;
 
 procedure TV_SeminarStagesFRM.FormCreate(Sender: TObject);

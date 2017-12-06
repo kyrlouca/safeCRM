@@ -53,7 +53,7 @@ type
     wwDBEdit2: TwwDBEdit;
     wwDBEdit5: TwwDBEdit;
     wwDBEdit6: TwwDBEdit;
-    wwDBEdit3: TwwDBEdit;
+    ANADFLD: TwwDBEdit;
     wwDBEdit4: TwwDBEdit;
     Nav1: TwwDBNavigator;
     Nav1Button: TwwNavButton;
@@ -73,7 +73,6 @@ type
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
-    procedure Nav1InsertClick(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
   private
     { Private declarations }
@@ -97,7 +96,8 @@ uses   U_Database, G_generalProcs;
 
 procedure TM_venuFRM.BitBtn2Click(Sender: TObject);
 begin
-  close;
+if TableSQL.State in [dsEdit,dsInsert] then
+  TableSQL.Post;
 end;
 
 procedure TM_venuFRM.TableSQLBeforeEdit(
@@ -128,8 +128,7 @@ end;
 
 procedure TM_venuFRM.TableSQLAfterInsert(DataSet: TDataSet);
 begin
-//      StationIDFLD.SetFocus;
-
+  AnadFLD.SetFocus;
 end;
 
 
@@ -178,11 +177,6 @@ procedure TM_venuFRM.Grid1TitleButtonClick(Sender: TObject;
         SortInfoHawb.Table:=Table;
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 
-end;
-
-procedure TM_venuFRM.Nav1InsertClick(Sender: TObject);
-begin
-  FirstFLD.SetFocus;
 end;
 
 procedure TM_venuFRM.CanelBTNClick(Sender: TObject);

@@ -312,7 +312,6 @@ object M_venuFRM: TM_venuFRM
     Height = 423
     Align = alClient
     TabOrder = 2
-    ExplicitTop = 91
     object Panel5: TPanel
       Left = 544
       Top = 1
@@ -330,7 +329,6 @@ object M_venuFRM: TM_venuFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitTop = 8
         object Nav1: TwwDBNavigator
           Left = 3
           Top = 4
@@ -424,7 +422,6 @@ object M_venuFRM: TM_venuFRM
             Caption = 'Nav1Insert'
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            OnClick = Nav1InsertClick
             Index = 4
             Style = nbsInsert
           end
@@ -668,7 +665,7 @@ object M_venuFRM: TM_venuFRM
           WantReturns = False
           WordWrap = False
         end
-        object wwDBEdit3: TwwDBEdit
+        object ANADFLD: TwwDBEdit
           Left = 102
           Top = 42
           Width = 256
@@ -702,7 +699,6 @@ object M_venuFRM: TM_venuFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 1
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -718,10 +714,10 @@ object M_venuFRM: TM_venuFRM
         Width = 472
         Height = 412
         Selected.Strings = (
-          'VENUE_NAME'#9'22'#9#927#957#959#956#945#963#943#945' '#935#974#961#959#965#9#9
-          'ANAD_NUMBER'#9'10'#9#927#957'. '#913#925#913#916#9#9
-          'ROOM_NAME'#9'14'#9#913#943#952#959#965#963#945#9#9
-          'VENUE_CAPACITY'#9'12'#9#935#969#961#951#964#953#954#972#964#951#964#945#9#9)
+          'VENUE_NAME'#9'22'#9#927#957#959#956#945#963#943#945' '#935#974#961#959#965
+          'ANAD_NUMBER'#9'10'#9#927#957'. '#913#925#913#916
+          'ROOM_NAME'#9'14'#9#913#943#952#959#965#963#945
+          'VENUE_CAPACITY'#9'12'#9#935#969#961#951#964#953#954#972#964#951#964#945)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -759,7 +755,6 @@ object M_venuFRM: TM_venuFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitHeight = 916
     end
   end
   object TableSRC: TDataSource

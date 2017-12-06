@@ -75,6 +75,7 @@ type
     StatusShowFLD: TwwDBComboBox;
     Label1: TLabel;
     CategoryFLD: TwwDBComboBox;
+    TableSQLSEM_CATEGORY: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -95,6 +96,7 @@ type
     procedure wwIncrementalSearch1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure StatusFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure CategoryFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -206,8 +208,15 @@ end;
 procedure TL_SeminarFRM.FormActivate(Sender: TObject);
 begin
 ksfillComboF1(cn,StatusFLD, 'status_activity','status','description_greek','',false,True);
-ksfillComboF1(cn,CategoryFLD,'sem_category','Category_code','description_greek');
+ksfillComboF1(cn,CategoryFLD,'sem_category','Category_code','description_greek','',false,True);
+
+ksfillComboF1(cn,StatusShowFLD, 'status_activity','status','description_greek');
+
+statusFLD.ItemIndex:=1;
+tableSQL.AddWhere('sem_category= ''N'' ');
 ksOpenTables([TableSQL]);
+
+
 if IN_ACTION='INSERT' then begin
    TableSQL.Insert;
 end;
@@ -332,6 +341,23 @@ procedure TL_SeminarFRM.CanelBTNClick(Sender: TObject);
 begin
 TableSQL.Cancel;
 close;
+end;
+
+procedure TL_SeminarFRM.CategoryFLDCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+var
+  val:string;
+begin
+if not select then exit;
+  TableSQL.close;
+  TableSQL.RestoreSQL;
+    if Sender.Value>'' then begin
+      TableSQL.AddWhere('sem.sem_category = :cat');
+      TableSQL.ParamByName('cat').Value:=Sender.Value;
+
+    end;
+  TableSQL.Open;
+
 end;
 
 procedure TL_SeminarFRM.CertificatesBTNClick(Sender: TObject);

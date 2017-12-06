@@ -7449,7 +7449,7 @@ object M_mainFRM: TM_mainFRM
         OnClick = ExchangeRates1Click
       end
       object N11: TMenuItem
-        Caption = #917#960#949#958#949#961#947#945#963#943#945
+        Caption = #931#964#940#948#953#945' '#954#945#953' '#932#973#960#959#953
         OnClick = N11Click
       end
     end

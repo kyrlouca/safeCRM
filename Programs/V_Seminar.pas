@@ -40,7 +40,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     SerialFLD: TRzDBLabel;
-    FirstFLD: TwwDBEdit;
+    DescFLD: TwwDBEdit;
     SeminarTypeFLD: TwwDBComboBox;
     SecondGRP: TRzGroupBox;
     Label5: TLabel;
@@ -63,8 +63,8 @@ type
     NonAttendSQLNATIONAL_ID: TWideStringField;
     Panel4: TRzPanel;
     RzPanel1: TRzPanel;
-    RzBitBtn1: TRzBitBtn;
-    BitBtn1: TBitBtn;
+    CLoseBTN: TRzBitBtn;
+    AcceptBTN: TBitBtn;
     CanelBTN: TBitBtn;
     RzPanel2: TRzPanel;
     RzGroupBox1: TRzGroupBox;
@@ -77,16 +77,6 @@ type
     SearchPersonFLD: TwwIncrementalSearch;
     RzSizePanel2: TRzSizePanel;
     RzPanel5: TRzPanel;
-    GroupBox1: TGroupBox;
-    RzPanel6: TRzPanel;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
     seminarSubjectSQL: TIBCQuery;
     SeminarSubjectSRC: TDataSource;
     RzPanel4: TRzPanel;
@@ -117,7 +107,6 @@ type
     AttendingSQLFK_SEMINAR_SERIAL: TIntegerField;
     AttendingSQLFK_PERSON_SERIAL: TIntegerField;
     AttendingSQLATTENDANCE_STATUS: TWideStringField;
-    wwDBGrid1: TwwDBGrid;
     SeminarDaySQLSERIAL_NUMBER: TIntegerField;
     SeminarDaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     SeminarDaySQLSEMINAR_DAY: TDateField;
@@ -308,13 +297,25 @@ type
     wwDBEdit12: TwwDBEdit;
     wwDBEdit13: TwwDBEdit;
     StatusFLD: TwwDBComboBox;
-    procedure BitBtn1Click(Sender: TObject);
+    SeminarSQLSEM_CATEGORY: TWideStringField;
+    GroupBox1: TGroupBox;
+    RzPanel6: TRzPanel;
+    wwDBNavigator1: TwwDBNavigator;
+    wwDBNavigator1Prior: TwwNavButton;
+    wwDBNavigator1Next: TwwNavButton;
+    wwDBNavigator1Insert: TwwNavButton;
+    wwDBNavigator1Delete: TwwNavButton;
+    wwDBNavigator1Post: TwwNavButton;
+    wwDBNavigator1Cancel: TwwNavButton;
+    wwDBNavigator1Refresh: TwwNavButton;
+    wwDBGrid1: TwwDBGrid;
+    procedure AcceptBTNClick(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure RzBitBtn1Click(Sender: TObject);
+    procedure CLoseBTNClick(Sender: TObject);
     procedure Nav1InsertClick(Sender: TObject);
     procedure InstructorBTNClick(Sender: TObject);
     procedure VenueBTNClick(Sender: TObject);
@@ -354,6 +355,7 @@ type
     procedure PICTURE_TOP_L1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure PICTURE_TOP_L1DblClick(Sender: TObject);
+    procedure SeminarCostItemSQLNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -404,7 +406,7 @@ uses   U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs,
 
 {$R *.DFM}
 
-procedure TV_SeminarFRM.BitBtn1Click(Sender: TObject);
+procedure TV_SeminarFRM.AcceptBTNClick(Sender: TObject);
 begin
   ksPostTables([SeminarSQL]);
   case PageControlPC.ActivePageIndex of
@@ -520,6 +522,21 @@ dataset.FieldByName('totalAmnt').Value:=Dataset.FieldByName('AMOUNT_PER_ITEM').A
 * Dataset.FieldByName('NUMBER_OF_ITEMS').AsInteger;
 end;
 
+procedure TV_SeminarFRM.SeminarCostItemSQLNewRecord(DataSet: TDataSet);
+var
+  cnt:Integer;
+  SEminarSerial:Integer;
+begin
+  SEminarSErial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+  cnt := ksCountRecVarSQL(cn,'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial',[SeminarSerial]);
+  Dataset.FieldByName('Number_of_items').Value:= cnt;
+
+  CostGRD.setfocus;
+  CostGRD.SetActiveField('FK_COst_item');
+
+
+end;
+
 procedure TV_SeminarFRM.SeminarReminderSQLNewRecord(DataSet: TDataSet);
 begin
 
@@ -533,6 +550,7 @@ begin
 Dataset.FieldByName('Status').Value:='P';
 Dataset.FieldByName('ANAD_APPROVED').Value:='Y';
 Dataset.FieldByName('TYPE_MONo_pOLY').Value:='P';
+Dataset.FieldByName('sem_category').Value:='N';
 Dataset.FieldByName('is_invoiced').Value:='N';
 Dataset.FieldByName('is_certificated').Value:='N';
 Dataset.FieldByName('Max_capacity').Value:=0;
@@ -570,7 +588,7 @@ var
 //  ReminderSerial:Integer;
 begin
  if SeminarSQL.State in [dsEdit,dsInsert] then begin
-   FirstFLD.Text:=seminarTypeFLD.Text;
+   DescFLD.Text:=seminarTypeFLD.Text;
    SeminarSQL.Post;
  end;
 
@@ -585,7 +603,7 @@ begin
   SeminarSQL.close;
   seminarSQL.ParamByName('serialNumber').Value:=seminarSerial;
   seminarSQL.Open;
-  StartDateFLD.SetFocus;
+  DescFLD.SetFocus;
 
 end;
 
@@ -966,7 +984,7 @@ begin
 
 end;
 
-procedure TV_SeminarFRM.RzBitBtn1Click(Sender: TObject);
+procedure TV_SeminarFRM.CLoseBTNClick(Sender: TObject);
 begin
   ksPostTables([SeminarSQL,AttendingSQL]);
   close;
@@ -1154,8 +1172,8 @@ Begin
           Dataset.ReadOnly:= not allowModify;
         end;
 
-          if FirstFLD.CanFocus then
-          firstFLD.SetFocus;
+          if AnadFLD.CanFocus then
+          AnadFLD.SetFocus;
          TitleLBL.Caption:= Trim(SeminarSQL.FieldByName('seminar_name').AsString);
 
 End;

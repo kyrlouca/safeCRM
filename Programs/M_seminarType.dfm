@@ -2,7 +2,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 723
+  ClientHeight = 776
   ClientWidth = 1017
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,6 +14,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
+  WindowState = wsMaximized
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
@@ -23,7 +24,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     Left = 0
     Top = 0
     Width = 1017
-    Height = 680
+    Height = 733
     Align = alClient
     BorderOuter = fsNone
     Font.Charset = DEFAULT_CHARSET
@@ -34,13 +35,14 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     ParentFont = False
     TabOrder = 0
     VisualStyle = vsClassic
+    ExplicitHeight = 660
     object SeminarPC: TRzPageControl
       Left = 0
       Top = 67
       Width = 1017
-      Height = 613
+      Height = 666
       Hint = ''
-      ActivePage = CertificationTS
+      ActivePage = ReminderTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -49,19 +51,25 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 3
+      TabIndex = 2
       TabOrder = 0
+      ExplicitTop = 66
+      ExplicitHeight = 593
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
+        ExplicitLeft = -812
+        ExplicitTop = -10
+        ExplicitHeight = 567
         object RzPanel2: TRzPanel
           Left = 0
           Top = 39
           Width = 361
-          Height = 548
+          Height = 601
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 1
+          ExplicitHeight = 528
           object RzPanel3: TRzPanel
             Left = 0
             Top = 0
@@ -75,7 +83,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Left = 0
             Top = 17
             Width = 361
-            Height = 531
+            Height = 584
             ControlType.Strings = (
               'ANAD_APPROVED;CheckBox;Y;N'
               'TYPE_MONO_POLY;CheckBox;P;M')
@@ -112,153 +120,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             TitleLines = 1
             TitleButtons = True
             OnTitleButtonClick = Grid1TitleButtonClick
-          end
-        end
-        object GroupBox1: TGroupBox
-          Left = 379
-          Top = 45
-          Width = 349
-          Height = 188
-          Caption = #928#955#951#961#959#966#959#961#943#949#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 2
-          object Label2: TLabel
-            Left = 54
-            Top = 46
-            Width = 58
-            Height = 14
-            Caption = #928#949#961#953#947#961#945#966#942
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label3: TLabel
-            Left = 91
-            Top = 21
-            Width = 21
-            Height = 14
-            Caption = #913'/'#913
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label5: TLabel
-            Left = 78
-            Top = 104
-            Width = 34
-            Height = 14
-            Caption = #932#973#960#959#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object SerialFLD: TRzDBLabel
-            Left = 119
-            Top = 19
-            Width = 75
-            Height = 20
-            Alignment = taRightJustify
-            BorderOuter = fsFlat
-            BorderWidth = 1
-            DataField = 'SERIAL_NUMBER'
-            DataSource = TableSRC
-          end
-          object Label7: TLabel
-            Left = 77
-            Top = 132
-            Width = 35
-            Height = 14
-            Caption = #931#967#972#955#953#945
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label18: TLabel
-            Left = 60
-            Top = 81
-            Width = 52
-            Height = 14
-            Caption = #928#959#955#965'-'#917#960#967
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object FirstFLD: TwwDBEdit
-            Left = 119
-            Top = 43
-            Width = 219
-            Height = 22
-            DataField = 'SEMINAR_NAME'
-            DataSource = TableSRC
-            TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit1: TwwDBEdit
-            Left = 119
-            Top = 101
-            Width = 219
-            Height = 22
-            DataField = 'SEMINAR_CATEGORY'
-            DataSource = TableSRC
-            TabOrder = 1
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object RzDBRichEdit1: TRzDBRichEdit
-            Left = 119
-            Top = 129
-            Width = 219
-            Height = 49
-            DataField = 'COMMENTS'
-            DataSource = TableSRC
-            Font.Charset = GREEK_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            TabOrder = 2
-            Zoom = 100
-          end
-          object wwCheckBox1: TwwCheckBox
-            AlignWithMargins = True
-            Left = 119
-            Top = 78
-            Width = 29
-            Height = 17
-            DisableThemes = False
-            AlwaysTransparent = False
-            ValueChecked = 'Y'
-            ValueUnchecked = 'N'
-            DisplayValueChecked = 'P'
-            DisplayValueUnchecked = 'M'
-            NullAndBlankState = cbUnchecked
-            DataField = 'TYPE_MONO_POLY'
-            DataSource = TableSRC
-            ShowText = False
-            TabOrder = 3
+            ExplicitHeight = 511
           end
         end
         object Panel5: TRzPanel
@@ -270,157 +132,9 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
           TabOrder = 0
-          object wwDBNavigator2: TwwDBNavigator
-            Left = 1
-            Top = 7
-            Width = 184
-            Height = 26
-            AutosizeStyle = asSizeNavButtons
-            DataSource = TableSRC
-            RepeatInterval.InitialDelay = 500
-            RepeatInterval.Interval = 100
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Arial'
-            Font.Style = []
-            object wwNavButton1: TwwNavButton
-              Left = 0
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Move to first record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Button'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 0
-              Style = nbsFirst
-            end
-            object wwNavButton2: TwwNavButton
-              Left = 23
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Move to prior record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Prior'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 1
-              Style = nbsPrior
-            end
-            object wwNavButton3: TwwNavButton
-              Left = 46
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Move to next record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Next'
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 2
-              Style = nbsNext
-            end
-            object wwNavButton4: TwwNavButton
-              Left = 69
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Move to last record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Button1'
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 3
-              Style = nbsLast
-            end
-            object wwNavButton5: TwwNavButton
-              Left = 92
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Insert new record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Insert'
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              OnClick = wwNavButton5Click
-              Index = 4
-              Style = nbsInsert
-            end
-            object wwNavButton6: TwwNavButton
-              Left = 115
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Delete current record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Delete'
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 5
-              Style = nbsDelete
-            end
-            object wwNavButton7: TwwNavButton
-              Left = 138
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Post changes of current record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Post'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 6
-              Style = nbsPost
-            end
-            object wwNavButton8: TwwNavButton
-              Left = 161
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Cancel changes made to current record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Cancel'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 7
-              Style = nbsCancel
-            end
-          end
           object wwIncrementalSearch1: TwwIncrementalSearch
-            Left = 191
-            Top = 12
+            Left = 15
+            Top = 11
             Width = 128
             Height = 22
             DataSource = TableSRC
@@ -431,231 +145,562 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
-            TabOrder = 1
+            TabOrder = 0
           end
         end
-        object SecondGRP: TRzGroupBox
-          Left = 734
-          Top = 45
-          Width = 321
-          Height = 180
-          Caption = #928#955#951#961#959#966#959#961#943#949#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 3
-          object Label22: TLabel
-            Left = 58
-            Top = 21
-            Width = 74
-            Height = 14
-            Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
+        object RzPanel12: TRzPanel
+          Left = 361
+          Top = 39
+          Width = 652
+          Height = 601
+          Align = alClient
+          TabOrder = 2
+          ExplicitLeft = 358
+          ExplicitTop = 85
+          ExplicitWidth = 603
+          ExplicitHeight = 386
+          object GroupBox1: TGroupBox
+            Left = 28
+            Top = 31
+            Width = 349
+            Height = 188
+            Caption = #928#955#951#961#959#966#959#961#943#949#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
-          end
-          object Label24: TLabel
-            Left = 8
-            Top = 49
-            Width = 124
-            Height = 14
-            Caption = #924#941#947#953#963#964#959#962' '#913#961'. '#924#945#952#951#964#974#957
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label1: TLabel
-            Left = 59
-            Top = 87
-            Width = 73
-            Height = 14
-            Caption = #933#960#940#961#967#949#953' '#923#942#958#951
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label8: TLabel
-            Left = 53
-            Top = 113
-            Width = 79
-            Height = 14
-            Caption = #923#942#958#951' '#963#949' '#924#942#957#949#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object wwDBEdit9: TwwDBEdit
-            Left = 138
-            Top = 18
-            Width = 90
-            Height = 22
-            DataField = 'DURATION_HOURS'
-            DataSource = TableSRC
             TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
+            object Label2: TLabel
+              Left = 54
+              Top = 46
+              Width = 58
+              Height = 14
+              Caption = #928#949#961#953#947#961#945#966#942
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label3: TLabel
+              Left = 91
+              Top = 21
+              Width = 21
+              Height = 14
+              Caption = #913'/'#913
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label5: TLabel
+              Left = 78
+              Top = 104
+              Width = 34
+              Height = 14
+              Caption = #932#973#960#959#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object SerialFLD: TRzDBLabel
+              Left = 119
+              Top = 19
+              Width = 75
+              Height = 20
+              Alignment = taRightJustify
+              BorderOuter = fsFlat
+              BorderWidth = 1
+              DataField = 'SERIAL_NUMBER'
+              DataSource = TableSRC
+            end
+            object Label7: TLabel
+              Left = 77
+              Top = 132
+              Width = 35
+              Height = 14
+              Caption = #931#967#972#955#953#945
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label18: TLabel
+              Left = 60
+              Top = 81
+              Width = 52
+              Height = 14
+              Caption = #928#959#955#965'-'#917#960#967
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object FirstFLD: TwwDBEdit
+              Left = 119
+              Top = 43
+              Width = 219
+              Height = 22
+              DataField = 'SEMINAR_NAME'
+              DataSource = TableSRC
+              TabOrder = 0
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit1: TwwDBEdit
+              Left = 119
+              Top = 101
+              Width = 219
+              Height = 22
+              DataField = 'SEMINAR_CATEGORY'
+              DataSource = TableSRC
+              TabOrder = 1
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object RzDBRichEdit1: TRzDBRichEdit
+              Left = 119
+              Top = 129
+              Width = 219
+              Height = 49
+              DataField = 'COMMENTS'
+              DataSource = TableSRC
+              Font.Charset = GREEK_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              TabOrder = 2
+              Zoom = 100
+            end
+            object wwCheckBox1: TwwCheckBox
+              AlignWithMargins = True
+              Left = 119
+              Top = 78
+              Width = 29
+              Height = 17
+              DisableThemes = False
+              AlwaysTransparent = False
+              ValueChecked = 'Y'
+              ValueUnchecked = 'N'
+              DisplayValueChecked = 'P'
+              DisplayValueUnchecked = 'M'
+              NullAndBlankState = cbUnchecked
+              DataField = 'TYPE_MONO_POLY'
+              DataSource = TableSRC
+              ShowText = False
+              TabOrder = 3
+            end
           end
-          object wwDBEdit10: TwwDBEdit
-            Left = 138
-            Top = 46
-            Width = 90
-            Height = 22
-            DataField = 'MAX_CAPACITY'
-            DataSource = TableSRC
+          object RzGroupBox1: TRzGroupBox
+            Left = 28
+            Top = 233
+            Width = 349
+            Height = 123
+            Caption = #932#953#956#941#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 1
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
+            object Label4: TLabel
+              Left = 35
+              Top = 80
+              Width = 112
+              Height = 14
+              Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label6: TLabel
+              Left = 19
+              Top = 52
+              Width = 128
+              Height = 14
+              Caption = #932#953#956#942' '#967#969#961#943#962' '#949#960#953#967#959#961#942#947#951#963#951
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label17: TLabel
+              Left = 42
+              Top = 29
+              Width = 105
+              Height = 14
+              Caption = #917#960#953#967#959#961#942#947#951#963#951' '#913#925#913#916
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object wwCheckBox2: TwwCheckBox
+              AlignWithMargins = True
+              Left = 153
+              Top = 26
+              Width = 29
+              Height = 17
+              DisableThemes = False
+              AlwaysTransparent = False
+              ValueChecked = 'Y'
+              ValueUnchecked = 'N'
+              DisplayValueChecked = 'Y'
+              DisplayValueUnchecked = 'N'
+              NullAndBlankState = cbUnchecked
+              Checked = True
+              DataField = 'ANAD_APPROVED'
+              DataSource = TableSRC
+              ShowText = False
+              State = cbChecked
+              TabOrder = 0
+            end
+            object wwDBEdit3: TwwDBEdit
+              Left = 156
+              Top = 77
+              Width = 76
+              Height = 22
+              DataField = 'FEE_WITH_ANAD_SUB'
+              DataSource = TableSRC
+              TabOrder = 2
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit4: TwwDBEdit
+              Left = 156
+              Top = 49
+              Width = 76
+              Height = 22
+              DataField = 'FEE_ACTUAL'
+              DataSource = TableSRC
+              TabOrder = 1
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
           end
-          object CompletedFLD: TwwCheckBox
-            Left = 138
-            Top = 86
-            Width = 37
-            Height = 18
-            DisableThemes = False
-            AlwaysTransparent = False
-            ValueChecked = 'Y'
-            ValueUnchecked = 'N'
-            DisplayValueChecked = 'Y'
-            DisplayValueUnchecked = 'N'
-            NullAndBlankState = cbUnchecked
-            Checked = True
-            DataField = 'HAS_EXPIRY'
-            DataSource = TableSRC
-            ShowText = False
-            State = cbChecked
+          object SecondGRP: TRzGroupBox
+            Left = 391
+            Top = 31
+            Width = 321
+            Height = 188
+            Caption = #928#955#951#961#959#966#959#961#943#949#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 2
+            object Label19: TLabel
+              Left = 58
+              Top = 21
+              Width = 74
+              Height = 14
+              Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label21: TLabel
+              Left = 8
+              Top = 49
+              Width = 124
+              Height = 14
+              Caption = #924#941#947#953#963#964#959#962' '#913#961'. '#924#945#952#951#964#974#957
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label1: TLabel
+              Left = 59
+              Top = 87
+              Width = 73
+              Height = 14
+              Caption = #933#960#940#961#967#949#953' '#923#942#958#951
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label8: TLabel
+              Left = 53
+              Top = 113
+              Width = 79
+              Height = 14
+              Caption = #923#942#958#951' '#963#949' '#924#942#957#949#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object wwDBEdit9: TwwDBEdit
+              Left = 138
+              Top = 18
+              Width = 90
+              Height = 22
+              DataField = 'DURATION_HOURS'
+              DataSource = TableSRC
+              TabOrder = 0
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit10: TwwDBEdit
+              Left = 138
+              Top = 46
+              Width = 90
+              Height = 22
+              DataField = 'MAX_CAPACITY'
+              DataSource = TableSRC
+              TabOrder = 1
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object CompletedFLD: TwwCheckBox
+              Left = 138
+              Top = 86
+              Width = 37
+              Height = 18
+              DisableThemes = False
+              AlwaysTransparent = False
+              ValueChecked = 'Y'
+              ValueUnchecked = 'N'
+              DisplayValueChecked = 'Y'
+              DisplayValueUnchecked = 'N'
+              NullAndBlankState = cbUnchecked
+              Checked = True
+              DataField = 'HAS_EXPIRY'
+              DataSource = TableSRC
+              ShowText = False
+              State = cbChecked
+              TabOrder = 2
+            end
+            object wwDBEdit2: TwwDBEdit
+              Left = 138
+              Top = 110
+              Width = 75
+              Height = 22
+              DataField = 'EXPIRY_PERIOD'
+              DataSource = TableSRC
+              TabOrder = 3
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
           end
-          object wwDBEdit2: TwwDBEdit
-            Left = 138
-            Top = 110
-            Width = 75
-            Height = 22
-            DataField = 'EXPIRY_PERIOD'
-            DataSource = TableSRC
+          object RzPanel13: TRzPanel
+            Left = 2
+            Top = 2
+            Width = 648
+            Height = 23
+            Align = alTop
+            BorderOuter = fsNone
             TabOrder = 3
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-        end
-        object RzGroupBox1: TRzGroupBox
-          Left = 379
-          Top = 231
-          Width = 338
-          Height = 123
-          Caption = #932#953#956#941#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 4
-          object Label4: TLabel
-            Left = 35
-            Top = 80
-            Width = 112
-            Height = 14
-            Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label6: TLabel
-            Left = 19
-            Top = 52
-            Width = 128
-            Height = 14
-            Caption = #932#953#956#942' '#967#969#961#943#962' '#949#960#953#967#959#961#942#947#951#963#951
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label17: TLabel
-            Left = 42
-            Top = 29
-            Width = 105
-            Height = 14
-            Caption = #917#960#953#967#959#961#942#947#951#963#951' '#913#925#913#916
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object wwCheckBox2: TwwCheckBox
-            AlignWithMargins = True
-            Left = 153
-            Top = 26
-            Width = 29
-            Height = 17
-            DisableThemes = False
-            AlwaysTransparent = False
-            ValueChecked = 'Y'
-            ValueUnchecked = 'N'
-            DisplayValueChecked = 'Y'
-            DisplayValueUnchecked = 'N'
-            NullAndBlankState = cbUnchecked
-            Checked = True
-            DataField = 'ANAD_APPROVED'
-            DataSource = TableSRC
-            ShowText = False
-            State = cbChecked
-            TabOrder = 0
-          end
-          object wwDBEdit3: TwwDBEdit
-            Left = 156
-            Top = 77
-            Width = 76
-            Height = 22
-            DataField = 'FEE_WITH_ANAD_SUB'
-            DataSource = TableSRC
-            TabOrder = 2
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit4: TwwDBEdit
-            Left = 156
-            Top = 49
-            Width = 76
-            Height = 22
-            DataField = 'FEE_ACTUAL'
-            DataSource = TableSRC
-            TabOrder = 1
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
+            ExplicitLeft = 4
+            ExplicitTop = 10
+            object wwDBNavigator2: TwwDBNavigator
+              Left = 23
+              Top = 0
+              Width = 207
+              Height = 23
+              AutosizeStyle = asSizeNavButtons
+              DataSource = TableSRC
+              RepeatInterval.InitialDelay = 500
+              RepeatInterval.Interval = 100
+              Align = alLeft
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ExplicitLeft = 0
+              object wwNavButton1: TwwNavButton
+                Left = 0
+                Top = 0
+                Width = 26
+                Height = 23
+                Hint = 'Move to first record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Button'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 0
+                Style = nbsFirst
+              end
+              object wwNavButton2: TwwNavButton
+                Left = 26
+                Top = 0
+                Width = 26
+                Height = 23
+                Hint = 'Move to prior record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Prior'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 1
+                Style = nbsPrior
+              end
+              object wwNavButton3: TwwNavButton
+                Left = 52
+                Top = 0
+                Width = 26
+                Height = 23
+                Hint = 'Move to next record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Next'
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 2
+                Style = nbsNext
+              end
+              object wwNavButton4: TwwNavButton
+                Left = 78
+                Top = 0
+                Width = 26
+                Height = 23
+                Hint = 'Move to last record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Button1'
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 3
+                Style = nbsLast
+              end
+              object wwNavButton5: TwwNavButton
+                Left = 104
+                Top = 0
+                Width = 26
+                Height = 23
+                Hint = 'Insert new record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Insert'
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                OnClick = wwNavButton5Click
+                Index = 4
+                Style = nbsInsert
+              end
+              object wwNavButton6: TwwNavButton
+                Left = 130
+                Top = 0
+                Width = 26
+                Height = 23
+                Hint = 'Delete current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Delete'
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 5
+                Style = nbsDelete
+              end
+              object wwNavButton7: TwwNavButton
+                Left = 156
+                Top = 0
+                Width = 26
+                Height = 23
+                Hint = 'Post changes of current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Post'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 6
+                Style = nbsPost
+              end
+              object wwNavButton8: TwwNavButton
+                Left = 182
+                Top = 0
+                Width = 25
+                Height = 23
+                Hint = 'Cancel changes made to current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Cancel'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 7
+                Style = nbsCancel
+              end
+            end
+            object RzPanel14: TRzPanel
+              Left = 0
+              Top = 0
+              Width = 23
+              Height = 23
+              Align = alLeft
+              BorderOuter = fsNone
+              TabOrder = 1
+              ExplicitLeft = 8
+            end
           end
         end
       end
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
         Caption = #920#941#956#945#964#945
+        ExplicitHeight = 567
         object GroupBox2: TGroupBox
           Left = 20
           Top = 15
@@ -835,309 +880,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        object GroupBox4: TGroupBox
-          Left = 533
-          Top = 68
-          Width = 338
-          Height = 482
-          Caption = #928#955#951#961#959#966#959#961#943#949#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          object Label9: TLabel
-            Left = 43
-            Top = 46
-            Width = 58
-            Height = 14
-            Caption = #928#949#961#953#947#961#945#966#942
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label10: TLabel
-            Left = 80
-            Top = 21
-            Width = 21
-            Height = 14
-            Caption = #913'/'#913
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object RzDBLabel1: TRzDBLabel
-            Left = 107
-            Top = 17
-            Width = 75
-            Height = 20
-            Alignment = taRightJustify
-            BorderOuter = fsFlat
-            BorderWidth = 1
-            DataField = 'SERIAL_NUMBER'
-            DataSource = TableSRC
-          end
-          object Label15: TLabel
-            Left = 20
-            Top = 423
-            Width = 80
-            Height = 14
-            Caption = #931#949' '#956#942#957#949#962'/'#956#941#961#949#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label16: TLabel
-            Left = 58
-            Top = 71
-            Width = 43
-            Height = 14
-            Caption = #924#942#957#965#956#945
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label12: TLabel
-            Left = 28
-            Top = 212
-            Width = 73
-            Height = 14
-            Caption = #925#945' '#945#960#959#963#964#945#955#949#943
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            WordWrap = True
-          end
-          object Label13: TLabel
-            Left = 63
-            Top = 149
-            Width = 38
-            Height = 14
-            Caption = #913#966#959#961#940
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label11: TLabel
-            Left = 33
-            Top = 279
-            Width = 68
-            Height = 28
-            Alignment = taRightJustify
-            Caption = #919#956#949#961#959#956#951#956#943#945' '#913#957#945#966#959#961#940#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            WordWrap = True
-          end
-          object Label14: TLabel
-            Left = 7
-            Top = 345
-            Width = 94
-            Height = 22
-            AutoSize = False
-            Caption = #924#941#964#961#951#963#951' '#935#961#972#957#959#965
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            WordWrap = True
-          end
-          object Label20: TLabel
-            Left = 46
-            Top = 118
-            Width = 55
-            Height = 14
-            Caption = #931#951#956#945#957#964#953#954#972
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object REminderDescFLD: TwwDBEdit
-            Left = 108
-            Top = 43
-            Width = 219
-            Height = 22
-            DataField = 'DESCRIPTION'
-            DataSource = SeminarReminderSRC
-            TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit8: TwwDBEdit
-            Left = 108
-            Top = 419
-            Width = 75
-            Height = 22
-            DataField = 'NUMBER_OF_DAYS_MONTHS'
-            DataSource = SeminarReminderSRC
-            TabOrder = 6
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object RzDBRichEdit2: TRzDBRichEdit
-            Left = 107
-            Top = 71
-            Width = 219
-            Height = 41
-            DataField = 'REMINDER_MESSAGE'
-            DataSource = SeminarReminderSRC
-            Font.Charset = GREEK_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            TabOrder = 1
-            Zoom = 100
-          end
-          object RzDBRadioGroup2: TRzDBRadioGroup
-            Left = 108
-            Top = 212
-            Width = 125
-            Height = 60
-            DataField = 'AFTER_OR_BEFORE'
-            DataSource = SeminarReminderSRC
-            Items.Strings = (
-              #924#949#964#940' '#964#959' '#931#949#956#953#957#940#961#953#959
-              #928#961#943#957' '#964#959' '#931#949#956#953#957#940#961#953#959)
-            Values.Strings = (
-              'A'
-              'B')
-            Caption = #913#960#959#963#964#959#955#942
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ItemHeight = 14
-            ParentFont = False
-            SpaceEvenly = True
-            TabOrder = 3
-            VisualStyle = vsGradient
-          end
-          object RzDBRadioGroup3: TRzDBRadioGroup
-            Left = 108
-            Top = 279
-            Width = 125
-            Height = 60
-            DataField = 'START_OR_END'
-            DataSource = SeminarReminderSRC
-            Items.Strings = (
-              #904#957#945#961#958#951' '#931#949#956#953#957#945#961#943#959#965
-              #932#941#955#959#962' '#931#949#956#953#957#945#961#943#959#965)
-            Values.Strings = (
-              'S'
-              'E')
-            Caption = #931#951#956#945#957#964#953#954#942' '#919#956#949#961#959#956#951#957#943#945
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ItemHeight = 14
-            ParentFont = False
-            SpaceEvenly = True
-            TabOrder = 4
-            VisualStyle = vsGradient
-          end
-          object RzDBRadioGroup4: TRzDBRadioGroup
-            Left = 108
-            Top = 345
-            Width = 125
-            Height = 60
-            DataField = 'DAYS_OR_MONTHS'
-            DataSource = SeminarReminderSRC
-            Items.Strings = (
-              #924#942#957#949#962
-              #919#956#941#961#949#962)
-            Values.Strings = (
-              'M'
-              'D')
-            Caption = #924#959#957#940#948#945' '#935#961#972#957#959#965
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ItemHeight = 14
-            ParentFont = False
-            SpaceEvenly = True
-            TabOrder = 5
-            VisualStyle = vsGradient
-          end
-          object RzDBRadioGroup1: TRzDBRadioGroup
-            Left = 107
-            Top = 146
-            Width = 125
-            Height = 60
-            DataField = 'PERSON_OR_SEMINAR'
-            DataSource = SeminarReminderSRC
-            Items.Strings = (
-              #931#949#956#953#957#940#961#953#959
-              #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962)
-            Values.Strings = (
-              'S'
-              'P')
-            Caption = #928#945#961#945#955#942#960#964#951#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ItemHeight = 14
-            ParentFont = False
-            SpaceEvenly = True
-            TabOrder = 2
-            VisualStyle = vsGradient
-          end
-          object wwCheckBox3: TwwCheckBox
-            Left = 107
-            Top = 118
-            Width = 37
-            Height = 18
-            DisableThemes = False
-            AlwaysTransparent = False
-            ValueChecked = 'Y'
-            ValueUnchecked = 'N'
-            DisplayValueChecked = 'Y'
-            DisplayValueUnchecked = 'N'
-            NullAndBlankState = cbUnchecked
-            DataField = 'IS_HIGH'
-            DataSource = SeminarReminderSRC
-            ShowText = False
-            TabOrder = 7
-          end
-        end
+        ExplicitLeft = 2
+        ExplicitHeight = 567
         object RzPanel6: TRzPanel
           Left = 0
           Top = 0
@@ -1146,159 +890,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Align = alTop
           BorderOuter = fsFlatRounded
           BorderSides = [sdRight, sdBottom]
-          TabOrder = 1
-          object wwDBNavigator4: TwwDBNavigator
-            Left = 1
-            Top = 7
-            Width = 184
-            Height = 26
-            AutosizeStyle = asSizeNavButtons
-            DataSource = SeminarReminderSRC
-            RepeatInterval.InitialDelay = 500
-            RepeatInterval.Interval = 100
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Arial'
-            Font.Style = []
-            object wwNavButton16: TwwNavButton
-              Left = 0
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Move to first record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Button'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 0
-              Style = nbsFirst
-            end
-            object wwNavButton17: TwwNavButton
-              Left = 23
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Move to prior record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Prior'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 1
-              Style = nbsPrior
-            end
-            object wwNavButton18: TwwNavButton
-              Left = 46
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Move to next record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Next'
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 2
-              Style = nbsNext
-            end
-            object wwNavButton19: TwwNavButton
-              Left = 69
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Move to last record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Button1'
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 3
-              Style = nbsLast
-            end
-            object wwNavButton20: TwwNavButton
-              Left = 92
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Insert new record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Insert'
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              OnClick = Nav1InsertClick
-              Index = 4
-              Style = nbsInsert
-            end
-            object wwNavButton21: TwwNavButton
-              Left = 115
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Delete current record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Delete'
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 5
-              Style = nbsDelete
-            end
-            object wwNavButton22: TwwNavButton
-              Left = 138
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Post changes of current record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Post'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 6
-              Style = nbsPost
-            end
-            object wwNavButton23: TwwNavButton
-              Left = 161
-              Top = 0
-              Width = 23
-              Height = 26
-              Hint = 'Cancel changes made to current record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'Nav1Cancel'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 7
-              Style = nbsCancel
-            end
-          end
+          TabOrder = 0
           object wwIncrementalSearch2: TwwIncrementalSearch
-            Left = 191
-            Top = 12
-            Width = 128
+            Left = 15
+            Top = 11
+            Width = 218
             Height = 22
             DataSource = SeminarReminderSRC
             SearchField = 'Description'
@@ -1309,14 +905,15 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
-            TabOrder = 1
+            TabOrder = 0
           end
         end
         object GroupBox3: TGroupBox
-          Left = 43
-          Top = 53
+          Left = 0
+          Top = 39
           Width = 469
-          Height = 322
+          Height = 601
+          Align = alLeft
           Caption = #933#960#949#957#952#965#956#943#963#949#953#962
           Ctl3D = False
           Font.Charset = DEFAULT_CHARSET
@@ -1326,21 +923,24 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Font.Style = []
           ParentCtl3D = False
           ParentFont = False
-          TabOrder = 2
+          TabOrder = 1
+          ExplicitLeft = 43
+          ExplicitTop = 53
+          ExplicitHeight = 322
           object RzPanel5: TRzPanel
             Left = 1
             Top = 15
             Width = 467
-            Height = 10
+            Height = 18
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
           end
           object wwDBGrid2: TwwDBGrid
             Left = 1
-            Top = 25
+            Top = 33
             Width = 467
-            Height = 296
+            Height = 567
             ControlType.Strings = (
               'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
               'DAYS_OR_MONTHS;CustomEdit;NamePersonFLD;F'
@@ -1371,6 +971,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitTop = 25
+            ExplicitHeight = 296
             object AfterFLD: TwwDBComboBox
               Left = 94
               Top = 81
@@ -1439,11 +1041,506 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             end
           end
         end
+        object RzPanel17: TRzPanel
+          Left = 469
+          Top = 39
+          Width = 461
+          Height = 601
+          Align = alLeft
+          BorderOuter = fsNone
+          TabOrder = 2
+          ExplicitLeft = 474
+          ExplicitHeight = 528
+          object GroupBox4: TGroupBox
+            Left = 31
+            Top = 31
+            Width = 338
+            Height = 482
+            Caption = #928#955#951#961#959#966#959#961#943#949#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            object Label9: TLabel
+              Left = 43
+              Top = 46
+              Width = 58
+              Height = 14
+              Caption = #928#949#961#953#947#961#945#966#942
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label10: TLabel
+              Left = 80
+              Top = 21
+              Width = 21
+              Height = 14
+              Caption = #913'/'#913
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object RzDBLabel1: TRzDBLabel
+              Left = 107
+              Top = 17
+              Width = 75
+              Height = 20
+              Alignment = taRightJustify
+              BorderOuter = fsFlat
+              BorderWidth = 1
+              DataField = 'SERIAL_NUMBER'
+              DataSource = SeminarReminderSRC
+            end
+            object Label15: TLabel
+              Left = 20
+              Top = 423
+              Width = 80
+              Height = 14
+              Caption = #931#949' '#956#942#957#949#962'/'#956#941#961#949#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label16: TLabel
+              Left = 58
+              Top = 71
+              Width = 43
+              Height = 14
+              Caption = #924#942#957#965#956#945
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label12: TLabel
+              Left = 28
+              Top = 212
+              Width = 73
+              Height = 14
+              Caption = #925#945' '#945#960#959#963#964#945#955#949#943
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              WordWrap = True
+            end
+            object Label13: TLabel
+              Left = 63
+              Top = 149
+              Width = 38
+              Height = 14
+              Caption = #913#966#959#961#940
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label11: TLabel
+              Left = 33
+              Top = 279
+              Width = 68
+              Height = 28
+              Alignment = taRightJustify
+              Caption = #919#956#949#961#959#956#951#956#943#945' '#913#957#945#966#959#961#940#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              WordWrap = True
+            end
+            object Label14: TLabel
+              Left = 7
+              Top = 345
+              Width = 94
+              Height = 22
+              AutoSize = False
+              Caption = #924#941#964#961#951#963#951' '#935#961#972#957#959#965
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              WordWrap = True
+            end
+            object Label20: TLabel
+              Left = 46
+              Top = 118
+              Width = 55
+              Height = 14
+              Caption = #931#951#956#945#957#964#953#954#972
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
+            object REminderDescFLD: TwwDBEdit
+              Left = 108
+              Top = 43
+              Width = 219
+              Height = 22
+              DataField = 'DESCRIPTION'
+              DataSource = SeminarReminderSRC
+              TabOrder = 0
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit8: TwwDBEdit
+              Left = 108
+              Top = 419
+              Width = 75
+              Height = 22
+              DataField = 'NUMBER_OF_DAYS_MONTHS'
+              DataSource = SeminarReminderSRC
+              TabOrder = 6
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object RzDBRichEdit2: TRzDBRichEdit
+              Left = 107
+              Top = 71
+              Width = 219
+              Height = 41
+              DataField = 'REMINDER_MESSAGE'
+              DataSource = SeminarReminderSRC
+              Font.Charset = GREEK_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              TabOrder = 1
+              Zoom = 100
+            end
+            object RzDBRadioGroup2: TRzDBRadioGroup
+              Left = 108
+              Top = 212
+              Width = 125
+              Height = 60
+              DataField = 'AFTER_OR_BEFORE'
+              DataSource = SeminarReminderSRC
+              Items.Strings = (
+                #924#949#964#940' '#964#959' '#931#949#956#953#957#940#961#953#959
+                #928#961#943#957' '#964#959' '#931#949#956#953#957#940#961#953#959)
+              Values.Strings = (
+                'A'
+                'B')
+              Caption = #913#960#959#963#964#959#955#942
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 14
+              ParentFont = False
+              SpaceEvenly = True
+              TabOrder = 3
+              VisualStyle = vsGradient
+            end
+            object RzDBRadioGroup3: TRzDBRadioGroup
+              Left = 108
+              Top = 279
+              Width = 125
+              Height = 60
+              DataField = 'START_OR_END'
+              DataSource = SeminarReminderSRC
+              Items.Strings = (
+                #904#957#945#961#958#951' '#931#949#956#953#957#945#961#943#959#965
+                #932#941#955#959#962' '#931#949#956#953#957#945#961#943#959#965)
+              Values.Strings = (
+                'S'
+                'E')
+              Caption = #931#951#956#945#957#964#953#954#942' '#919#956#949#961#959#956#951#957#943#945
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 14
+              ParentFont = False
+              SpaceEvenly = True
+              TabOrder = 4
+              VisualStyle = vsGradient
+            end
+            object RzDBRadioGroup4: TRzDBRadioGroup
+              Left = 108
+              Top = 345
+              Width = 125
+              Height = 60
+              DataField = 'DAYS_OR_MONTHS'
+              DataSource = SeminarReminderSRC
+              Items.Strings = (
+                #924#942#957#949#962
+                #919#956#941#961#949#962)
+              Values.Strings = (
+                'M'
+                'D')
+              Caption = #924#959#957#940#948#945' '#935#961#972#957#959#965
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 14
+              ParentFont = False
+              SpaceEvenly = True
+              TabOrder = 5
+              VisualStyle = vsGradient
+            end
+            object RzDBRadioGroup1: TRzDBRadioGroup
+              Left = 107
+              Top = 146
+              Width = 125
+              Height = 60
+              DataField = 'PERSON_OR_SEMINAR'
+              DataSource = SeminarReminderSRC
+              Items.Strings = (
+                #931#949#956#953#957#940#961#953#959
+                #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962)
+              Values.Strings = (
+                'S'
+                'P')
+              Caption = #928#945#961#945#955#942#960#964#951#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 14
+              ParentFont = False
+              SpaceEvenly = True
+              TabOrder = 2
+              VisualStyle = vsGradient
+            end
+            object wwCheckBox3: TwwCheckBox
+              Left = 107
+              Top = 118
+              Width = 37
+              Height = 18
+              DisableThemes = False
+              AlwaysTransparent = False
+              ValueChecked = 'Y'
+              ValueUnchecked = 'N'
+              DisplayValueChecked = 'Y'
+              DisplayValueUnchecked = 'N'
+              NullAndBlankState = cbUnchecked
+              DataField = 'IS_HIGH'
+              DataSource = SeminarReminderSRC
+              ShowText = False
+              TabOrder = 7
+            end
+          end
+          object RzPanel15: TRzPanel
+            Left = 0
+            Top = 0
+            Width = 461
+            Height = 23
+            Align = alTop
+            BorderOuter = fsNone
+            TabOrder = 1
+            ExplicitLeft = 4
+            ExplicitTop = 10
+            ExplicitWidth = 457
+            object RzPanel16: TRzPanel
+              Left = 23
+              Top = 0
+              Width = 23
+              Height = 23
+              Align = alLeft
+              BorderOuter = fsNone
+              TabOrder = 0
+              ExplicitLeft = 0
+            end
+            object wwDBNavigator3: TwwDBNavigator
+              Left = 1
+              Top = -3
+              Width = 184
+              Height = 26
+              AutosizeStyle = asSizeNavButtons
+              DataSource = SeminarReminderSRC
+              RepeatInterval.InitialDelay = 500
+              RepeatInterval.Interval = 100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              object wwNavButton9: TwwNavButton
+                Left = 0
+                Top = 0
+                Width = 23
+                Height = 26
+                Hint = 'Move to first record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Button'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 0
+                Style = nbsFirst
+              end
+              object wwNavButton10: TwwNavButton
+                Left = 23
+                Top = 0
+                Width = 23
+                Height = 26
+                Hint = 'Move to prior record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Prior'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 1
+                Style = nbsPrior
+              end
+              object wwNavButton11: TwwNavButton
+                Left = 46
+                Top = 0
+                Width = 23
+                Height = 26
+                Hint = 'Move to next record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Next'
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 2
+                Style = nbsNext
+              end
+              object wwNavButton12: TwwNavButton
+                Left = 69
+                Top = 0
+                Width = 23
+                Height = 26
+                Hint = 'Move to last record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Button1'
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 3
+                Style = nbsLast
+              end
+              object wwNavButton13: TwwNavButton
+                Left = 92
+                Top = 0
+                Width = 23
+                Height = 26
+                Hint = 'Insert new record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Insert'
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                OnClick = Nav1InsertClick
+                Index = 4
+                Style = nbsInsert
+              end
+              object wwNavButton14: TwwNavButton
+                Left = 115
+                Top = 0
+                Width = 23
+                Height = 26
+                Hint = 'Delete current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Delete'
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 5
+                Style = nbsDelete
+              end
+              object wwNavButton15: TwwNavButton
+                Left = 138
+                Top = 0
+                Width = 23
+                Height = 26
+                Hint = 'Post changes of current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Post'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 6
+                Style = nbsPost
+              end
+              object wwNavButton16: TwwNavButton
+                Left = 161
+                Top = 0
+                Width = 23
+                Height = 26
+                Hint = 'Cancel changes made to current record'
+                ImageIndex = -1
+                NumGlyphs = 2
+                Spacing = 4
+                Transparent = False
+                Caption = 'Nav1Cancel'
+                Enabled = False
+                DisabledTextColors.ShadeColor = clGray
+                DisabledTextColors.HighlightColor = clBtnHighlight
+                Index = 7
+                Style = nbsCancel
+              end
+            end
+            object RzPanel18: TRzPanel
+              Left = 0
+              Top = 0
+              Width = 23
+              Height = 23
+              Align = alLeft
+              BorderOuter = fsNone
+              TabOrder = 2
+              ExplicitLeft = 8
+            end
+          end
+        end
       end
       object CertificationTS: TRzTabSheet
         OnShow = CertificationTSShow
         Caption = #928#953#963#964#959#960#959#953#951#964#951#954#940
         OnExit = CertificationTSExit
+        ExplicitHeight = 567
         object LanguageRGP: TwwRadioGroup
           Left = 23
           Top = 3
@@ -2569,6 +2666,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 6
+          Visible = False
           OnClick = SaveHardBTNClick
           Glyph.Data = {
             F6060000424DF606000000000000360000002800000018000000180000000100
@@ -2664,13 +2762,14 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   end
   object Panel4: TRzPanel
     Left = 0
-    Top = 680
+    Top = 733
     Width = 1017
     Height = 43
     Align = alBottom
     BorderOuter = fsFlatRounded
     BorderSides = [sdLeft, sdRight, sdBottom]
     TabOrder = 1
+    ExplicitTop = 660
     object RzPanel1: TRzPanel
       Left = 915
       Top = 0
@@ -3460,8 +3559,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     Top = 329
   end
   object OpenPictureDialog1: TOpenPictureDialog
-    Left = 416
-    Top = 199
+    Left = 680
+    Top = 63
   end
   object MainMenu1: TMainMenu
     Left = 36

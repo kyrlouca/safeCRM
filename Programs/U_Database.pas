@@ -91,15 +91,15 @@ begin
   cn:=DataConnection;
 
    if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['P'])=0 then begin
-      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['P','Prepared','Σε Προετοιμασία']);
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS,Order_number, DESCRIPTION,description_Greek) values( :ST,:o,:DS,:Gr)',['P',0,'Prepared','Σε Προετοιμασία']);
    end;
 
    if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['A'])=0 then begin
-      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['A','ANAD Approved','Έγκριση ΑΝΑΔ']);
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS,Order_number, DESCRIPTION,description_Greek) values( :ST,:o,:DS,:Gr)',['A',1,'ANAD Approved','Έγκριση ΑΝΑΔ']);
    end;
 
    if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['F'])=0 then begin
-      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['F','Completed','Ολοκληρωμένο']);
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, Order_number,DESCRIPTION,description_Greek) values( :ST,:o,:DS,:Gr)',['F',2,'Completed','Ολοκληρωμένο']);
    end;
 
 
