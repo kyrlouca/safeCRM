@@ -835,15 +835,15 @@ object L_SeminarFRM: TL_SeminarFRM
           'TYPE_MONO_POLY;CheckBox;M;P'
           'STATUS;CustomEdit;StatusShowFLD;T')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'5'#9'A/A'#9#9
-          'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942#9#9
-          'ANAD_NUMBER'#9'13'#9#913#925#913#916' '#9#9
-          'STATUS'#9'11'#9#931#964#940#948#953#959#9#9
-          'TYPE_MONO_POLY'#9'9'#9#924#972#957#959'-'#917#960#967#9#9
-          'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945#9#9
-          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951#9#9
-          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962#9#9
-          'DURATION_HOURS'#9'6'#9#911#961#949#962#9#9)
+          'SERIAL_NUMBER'#9'5'#9'A/A'
+          'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942
+          'ANAD_NUMBER'#9'13'#9#913#925#913#916' '
+          'STATUS'#9'11'#9#931#964#940#948#953#959
+          'TYPE_MONO_POLY'#9'9'#9#924#972#957#959'-'#917#960#967
+          'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945
+          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
+          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
+          'DURATION_HOURS'#9'6'#9#911#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace

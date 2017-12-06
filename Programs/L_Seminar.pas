@@ -212,8 +212,12 @@ ksfillComboF1(cn,CategoryFLD,'sem_category','Category_code','description_greek',
 
 ksfillComboF1(cn,StatusShowFLD, 'status_activity','status','description_greek');
 
-statusFLD.ItemIndex:=1;
-tableSQL.AddWhere('sem_category= ''N'' ');
+statusFLD.ItemIndex:=0;
+//tableSQL.AddWhere('sem.status = '''' ');
+
+CategoryFLD.ItemIndex:=1;
+tableSQL.AddWhere('sem.sem_category= ''N'' ');
+
 ksOpenTables([TableSQL]);
 
 

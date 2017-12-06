@@ -2,7 +2,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 646
+  ClientHeight = 626
   ClientWidth = 913
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 603
+    Top = 583
     Width = 913
     Height = 43
     Align = alBottom
@@ -150,14 +150,14 @@ object P_attendanceFRM: TP_attendanceFRM
     Left = 0
     Top = 92
     Width = 913
-    Height = 511
+    Height = 491
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 457
       Top = 1
       Width = 416
-      Height = 509
+      Height = 489
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -166,7 +166,7 @@ object P_attendanceFRM: TP_attendanceFRM
         Left = 0
         Top = 36
         Width = 416
-        Height = 430
+        Height = 410
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
@@ -192,7 +192,6 @@ object P_attendanceFRM: TP_attendanceFRM
         TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
-        ExplicitLeft = 6
         object PresentFLD: TwwCheckBox
           Left = 72
           Top = 62
@@ -341,7 +340,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 466
+        Top = 446
         Width = 416
         Height = 43
         Align = alBottom
@@ -507,7 +506,7 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 456
-      Height = 509
+      Height = 489
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
@@ -522,7 +521,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 312
+        Top = 292
         Width = 456
         Height = 197
         Align = alBottom

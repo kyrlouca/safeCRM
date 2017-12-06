@@ -274,6 +274,8 @@ begin
   SavePresenceTable();
   end;
 
+
+
 end;
 
 procedure TP_attendanceFRM.FormCreate(Sender: TObject);
@@ -501,6 +503,8 @@ var
   Percentage: Integer;
   Hours:Integer;
 begin
+ if vPresenceSQL.State in [dsEdit,dsInsert] then
+  VPresenceSQL.Post;
 str:=
   ' Insert Into person_presence'
   +'  (serial_number, fk_person_serial, fk_day_serial,is_present,percentage_present,hours_present)'

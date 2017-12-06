@@ -36,12 +36,6 @@ type
     StudentsTS: TRzTabSheet;
     CostTS: TRzTabSheet;
     SubjectTS: TRzTabSheet;
-    FirstGRP: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    SerialFLD: TRzDBLabel;
-    DescFLD: TwwDBEdit;
-    SeminarTypeFLD: TwwDBComboBox;
     SecondGRP: TRzGroupBox;
     Label5: TLabel;
     Label10: TLabel;
@@ -51,7 +45,6 @@ type
     Label11: TLabel;
     InstructorBTN: TSpeedButton;
     VenueBTN: TSpeedButton;
-    Label12: TLabel;
     ReminderTS: TRzTabSheet;
     AttendingSQL: TIBCQuery;
     AttendingSRC: TDataSource;
@@ -95,9 +88,6 @@ type
     SeminarDaySQL: TIBCQuery;
     SeminarDaySRC: TDataSource;
     SeminarDayFLD: TwwDBDateTimePicker;
-    Label13: TLabel;
-    RzDBRichEdit1: TRzDBRichEdit;
-    BitBtn2: TBitBtn;
     seminarSubjectSQLSERIAL_NUMBER: TIntegerField;
     seminarSubjectSQLFK_SEMINAR_SERIAL: TIntegerField;
     seminarSubjectSQLSUBJECT: TWideStringField;
@@ -181,9 +171,6 @@ type
     CompanySQLLAST_NAME: TWideStringField;
     CompanySQLNATIONAL_ID: TWideStringField;
     CompanySQLSERIAL_NUMBER: TIntegerField;
-    MonoRGP: TwwRadioGroup;
-    Companylbl: TLabel;
-    CompanyFLD: TwwDBLookupCombo;
     SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
     Date1FLD: TwwDBDateTimePicker;
     Label16: TLabel;
@@ -196,10 +183,6 @@ type
     wwDBEdit3: TwwDBEdit;
     wwDBEdit4: TwwDBEdit;
     Label19: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    StartDateFLD: TwwDBDateTimePicker;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
     SeminarReminderSQLSERIAL_NUMBER: TIntegerField;
     SeminarReminderSQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarReminderSQLDESCRIPTION: TWideStringField;
@@ -237,8 +220,6 @@ type
     SeminarSQLANAD_NUMBER: TWideStringField;
     SeminarSQLFK_EXAMINER: TIntegerField;
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
-    Label23: TLabel;
-    AnadFLD: TwwDBEdit;
     RzDBLabel2: TRzDBLabel;
     CertificationTS: TRzTabSheet;
     PictureGRP: TRzGroupBox;
@@ -309,6 +290,24 @@ type
     wwDBNavigator1Cancel: TwwNavButton;
     wwDBNavigator1Refresh: TwwNavButton;
     wwDBGrid1: TwwDBGrid;
+    FirstGRP: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    SerialFLD: TRzDBLabel;
+    Label4: TLabel;
+    Label12: TLabel;
+    Companylbl: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label13: TLabel;
+    DescFLD: TwwDBEdit;
+    SeminarTypeFLD: TwwDBComboBox;
+    RzDBRichEdit1: TRzDBRichEdit;
+    MonoRGP: TwwRadioGroup;
+    CompanyFLD: TwwDBLookupCombo;
+    StartDateFLD: TwwDBDateTimePicker;
+    wwDBDateTimePicker1: TwwDBDateTimePicker;
+    AnadFLD: TwwDBEdit;
     procedure AcceptBTNClick(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -356,6 +355,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure PICTURE_TOP_L1DblClick(Sender: TObject);
     procedure SeminarCostItemSQLNewRecord(DataSet: TDataSet);
+    procedure SeminarDaySQLBeforeInsert(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -534,6 +534,13 @@ begin
   CostGRD.setfocus;
   CostGRD.SetActiveField('FK_COst_item');
 
+
+end;
+
+procedure TV_SeminarFRM.SeminarDaySQLBeforeInsert(DataSet: TDataSet);
+begin
+if seminarSubjectSQL.State in [dsEdit,dsInsert] then
+  seminarSubjectSQL.Post;
 
 end;
 
