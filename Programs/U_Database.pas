@@ -15,6 +15,8 @@ type
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
+    procedure CheckStatusActivity();
+    procedure CheckStatusNormal();
   public
     { Public declarations }
      cn:TIBCConnection;
@@ -76,23 +78,24 @@ begin
 
 end;
 
-
-
 procedure TU_databaseFRM.DataModuleCreate(Sender: TObject);
+begin
+ CheckStatusActivity();
+ CheckStatusNormal();
+end;
+
+
+procedure TU_databaseFRM.CheckStatusActivity();
 begin
   ConnectToDatabase;
   cn:=DataConnection;
 
-   if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['I'])=0 then begin
-      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['I','Initial','Σε Προετοιμασία']);
+   if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['P'])=0 then begin
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['P','Prepared','Σε Προετοιμασία']);
    end;
 
    if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['A'])=0 then begin
-      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['A','Active','Σε Εξέλιξη']);
-   end;
-
-   if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['P'])=0 then begin
-      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['P','Planned','Μελλοντικά']);
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS, DESCRIPTION,description_Greek) values( :ST,:DS,:Gr)',['A','ANAD Approved','Έγκριση ΑΝΑΔ']);
    end;
 
    if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['F'])=0 then begin
@@ -102,6 +105,31 @@ begin
 
 
 end;
+
+procedure TU_databaseFRM.CheckStatusNormal();
+begin
+  ConnectToDatabase;
+  cn:=DataConnection;
+
+   if ksCountRecSQL(cn,'select nt.CATEGORY_CODE from SEM_CATEGORY nt where nt.CATEGORY_CODE= ''N'' ',[])=0 then begin
+      ksExecSQLVar(cn,'INSERT INTO SEM_CATEGORY (CATEGORY_CODE,ORDER_NUMBER, DESCRIPTION, DESCRIPTION_GREEK) VALUES (:T,:o,:D,:DG)',['N',0,'Normal','Κανονικό']);
+   end;
+
+   if ksCountRecSQL(cn,'select nt.CATEGORY_CODE from SEM_CATEGORY nt where nt.CATEGORY_CODE= ''F'' ',[])=0 then begin
+      ksExecSQLVar(cn,'INSERT INTO SEM_CATEGORY (CATEGORY_CODE,ORDER_NUMBER, DESCRIPTION, DESCRIPTION_GREEK) VALUES (:T,:O,:D,:DG)',['F',1,'Future','Μελλοντικό']);
+   end;
+
+   if ksCountRecSQL(cn,'select nt.CATEGORY_CODE from SEM_CATEGORY nt where nt.CATEGORY_CODE= ''M'' ',[])=0 then begin
+      ksExecSQLVar(cn,'INSERT INTO SEM_CATEGORY (CATEGORY_CODE,ORDER_NUMBER, DESCRIPTION, DESCRIPTION_GREEK) VALUES (:T,:o,:D,:DG)',['M',2,'Monitor','Παρακολούθηση']);
+   end;
+
+
+
+
+end;
+
+
+
 
 end.
 

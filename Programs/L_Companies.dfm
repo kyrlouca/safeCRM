@@ -547,7 +547,6 @@ object L_companiesFRM: TL_companiesFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitTop = -4
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7

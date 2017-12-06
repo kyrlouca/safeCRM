@@ -11,7 +11,7 @@ uses
   System.ImageList,System.DateUtils, System.TypInfo,Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
   Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
   vcl.wwradiogroup, RzRadChk, RzDBChk,G_debugUnit,codeSiteLogging,CodeSiteMessage,
-  Vcl.ExtDlgs, vcl.wwriched, Vcl.Menus;
+  Vcl.ExtDlgs, vcl.wwriched, Vcl.Menus, RzCmboBx, RzDBCmbo;
 type
 //Function TV_SeminarFRM.FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   TactionDateRec= record
@@ -250,7 +250,6 @@ type
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
     Label23: TLabel;
     AnadFLD: TwwDBEdit;
-    RzPanel9: TRzPanel;
     RzDBLabel2: TRzDBLabel;
     CertificationTS: TRzTabSheet;
     PictureGRP: TRzGroupBox;
@@ -308,6 +307,7 @@ type
     wwDBEdit11: TwwDBEdit;
     wwDBEdit12: TwwDBEdit;
     wwDBEdit13: TwwDBEdit;
+    StatusFLD: TwwDBComboBox;
     procedure BitBtn1Click(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -1018,6 +1018,7 @@ begin
   ksfillComboF1(cn,SeminarTYpeFLD,'SEMINAR_TYPE','SERIAL_NUMBER','SEMINAR_NAME','SEMINAR_NAME');
   ksfillComboF1(cn,InstructorFLD,'INSTRUCTOR','SERIAL_NUMBER','Last_NAME','last_NAME');
   ksfillComboF1(cn,VenueFLD,'VENUE','SERIAL_NUMBER','VENUE_NAME','VENUE_NAME');
+  ksfillComboF1(cn,StatusFLD,'status_activity','status','description');
   ksOpenTables([SeminarSQL]);
   if IN_ACTION='INSERT' then begin
     SeminarSQL.Insert;

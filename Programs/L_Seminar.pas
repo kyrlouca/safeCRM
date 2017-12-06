@@ -30,7 +30,7 @@ type
     DeletehawbBTN: TRzBitBtn;
     RzGroupBox1: TRzGroupBox;
     Label2: TLabel;
-    FilterBox: TwwDBComboBox;
+    StatusFLD: TwwDBComboBox;
     RzBitBtn2: TRzBitBtn;
     Nav1: TwwDBNavigator;
     Nav1Button: TwwNavButton;
@@ -73,6 +73,8 @@ type
     TableSQLTYPE_MONO_POLY: TWideStringField;
     Label4: TRzLabel;
     StatusShowFLD: TwwDBComboBox;
+    Label1: TLabel;
+    CategoryFLD: TwwDBComboBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -92,6 +94,7 @@ type
     procedure InvoiceBTNClick(Sender: TObject);
     procedure wwIncrementalSearch1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure StatusFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -183,9 +186,27 @@ begin
   end;
 end;
 
+procedure TL_SeminarFRM.StatusFLDCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+var
+  val:string;
+begin
+if not select then exit;
+  TableSQL.close;
+  TableSQL.RestoreSQL;
+    if Sender.Value>'' then begin
+      TableSQL.AddWhere('sem.status = :status');
+      TableSQL.ParamByName('status').Value:=Sender.Value;
+
+    end;
+  TableSQL.Open;
+
+end;
+
 procedure TL_SeminarFRM.FormActivate(Sender: TObject);
 begin
-ksfillComboF1(cn,StatusShowFLD,'status_activity','status','description');
+ksfillComboF1(cn,StatusFLD, 'status_activity','status','description_greek','',false,True);
+ksfillComboF1(cn,CategoryFLD,'sem_category','Category_code','description_greek');
 ksOpenTables([TableSQL]);
 if IN_ACTION='INSERT' then begin
    TableSQL.Insert;

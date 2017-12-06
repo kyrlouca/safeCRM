@@ -27,7 +27,6 @@ type
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLFK_SEMINAR: TIntegerField;
     TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
     TableSQLFK_INSTRUCTOR: TIntegerField;
     TableSQLFK_VENUE: TIntegerField;
     TableSQLDATE_STARTED: TDateField;
@@ -110,9 +109,15 @@ type
     CompletedST: TRzGlyphStatus;
     RzGlyphStatus2: TRzGlyphStatus;
     CreatedBTN: TRzBitBtn;
-    PlannedBTN: TRzBitBtn;
     CreatedST: TRzGlyphStatus;
-    PlannedST: TRzGlyphStatus;
+    TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLHAS_EXPIRY: TWideStringField;
+    TableSQLEXPIRY_PERIOD: TIntegerField;
+    TableSQLFK_EXAMINER: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
+    GroupBox2: TGroupBox;
+    CategoryFLD: TwwDBComboBox;
+    TableSQLSEM_CATEGORY: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -135,7 +140,7 @@ var
 
 implementation
 
-uses U_Database, G_SFCommonProcs, G_KyrSQL;
+uses U_Database, G_SFCommonProcs, G_KyrSQL, G_generalProcs;
 
 
 {$R *.DFM}
@@ -191,8 +196,8 @@ Var
   i:integer;
 
 begin
-  BtnArray :=[CreatedBTn,PlannedBTN,ApprovedBTN,CertifiedBTN,InvoicedBTN,CompletedBTN];
-  StArray := [CreatedST,PlannedST,ApprovedST,CertifiedST,InvoicedST,CompletedST];
+  BtnArray :=[CreatedBTn,ApprovedBTN,CertifiedBTN,InvoicedBTN,CompletedBTN];
+  StArray := [CreatedST,ApprovedST,CertifiedST,InvoicedST,CompletedST];
 
   Status:= Dataset.FieldByName('Status').AsString;
   SeminarSerial:= Dataset.FieldByName('Serial_number').AsInteger;
@@ -236,6 +241,8 @@ end;
 
 procedure TV_SeminarStagesFRM.FormActivate(Sender: TObject);
 begin
+  ksfillComboF1(cn,CategoryFLD,'SEM_CATEGORY','CATEGORY_CODE','DESCRIPTION','order_NUMBER' );
+
 ksOpenTables([TableSQL])
 end;
 

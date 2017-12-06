@@ -33,7 +33,6 @@ object L_SeminarFRM: TL_SeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 918
     object Label4: TRzLabel
       AlignWithMargins = True
       Left = 4
@@ -62,7 +61,6 @@ object L_SeminarFRM: TL_SeminarFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 918
     object RzPanel1: TRzPanel
       Left = 952
       Top = 1
@@ -71,7 +69,6 @@ object L_SeminarFRM: TL_SeminarFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 817
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -156,10 +153,9 @@ object L_SeminarFRM: TL_SeminarFRM
     Height = 100
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 918
     object RzGroupBox1: TRzGroupBox
-      Left = 7
-      Top = 0
+      Left = 5
+      Top = 2
       Width = 237
       Height = 97
       Caption = 'Filter Seminars'
@@ -173,11 +169,11 @@ object L_SeminarFRM: TL_SeminarFRM
       ParentFont = False
       TabOrder = 0
       object Label2: TLabel
-        Left = 11
+        Left = 32
         Top = 24
-        Width = 69
+        Width = 35
         Height = 15
-        Caption = 'Active Status'
+        Caption = #931#964#940#948#953#959
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -185,7 +181,20 @@ object L_SeminarFRM: TL_SeminarFRM
         Font.Style = []
         ParentFont = False
       end
-      object FilterBox: TwwDBComboBox
+      object Label1: TLabel
+        Left = 11
+        Top = 53
+        Width = 56
+        Height = 15
+        Caption = #922#945#964#951#947#959#961#943#945
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object StatusFLD: TwwDBComboBox
         Left = 86
         Top = 21
         Width = 140
@@ -218,6 +227,43 @@ object L_SeminarFRM: TL_SeminarFRM
         Sorted = False
         TabOrder = 0
         UnboundDataType = wwDefault
+        OnCloseUp = StatusFLDCloseUp
+        DoubleBuffered = False
+        ParentDoubleBuffered = False
+      end
+      object CategoryFLD: TwwDBComboBox
+        Left = 86
+        Top = 50
+        Width = 140
+        Height = 23
+        ParentCustomHint = False
+        BiDiMode = bdLeftToRight
+        ParentBiDiMode = False
+        ShowButton = True
+        Style = csDropDownList
+        MapList = True
+        AllowClearKey = False
+        Color = clWhite
+        Ctl3D = True
+        DropDownCount = 8
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'All'#9'All'
+          'Approved'#9'A'
+          'Planned'#9'P'
+          'Outsourced'#9'O')
+        ParentCtl3D = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Sorted = False
+        TabOrder = 1
+        UnboundDataType = wwDefault
         DoubleBuffered = False
         ParentDoubleBuffered = False
       end
@@ -230,7 +276,6 @@ object L_SeminarFRM: TL_SeminarFRM
     Height = 362
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 918
     object Panel5: TPanel
       Left = 833
       Top = 1
@@ -240,7 +285,6 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 761
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -648,7 +692,6 @@ object L_SeminarFRM: TL_SeminarFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 704
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -794,7 +837,7 @@ object L_SeminarFRM: TL_SeminarFRM
           'SERIAL_NUMBER'#9'5'#9'A/A'
           'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942
           'ANAD_NUMBER'#9'13'#9#913#925#913#916' '
-          'STATUS'#9'11'#9#931#964#940#948#953#959#9'F'
+          'STATUS'#9'11'#9#931#964#940#948#953#959
           'TYPE_MONO_POLY'#9'9'#9#924#972#957#959'-'#917#960#967
           'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945
           'DATE_STARTED'#9'12'#9#904#957#945#961#958#951

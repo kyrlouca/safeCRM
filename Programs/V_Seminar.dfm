@@ -2,8 +2,8 @@ object V_SeminarFRM: TV_SeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 761
-  ClientWidth = 1086
+  ClientHeight = 741
+  ClientWidth = 923
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object V_SeminarFRM: TV_SeminarFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1086
+    Width = 923
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -32,11 +32,12 @@ object V_SeminarFRM: TV_SeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1086
     object TitleLbl: TRzPanel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 1078
+      Width = 915
       Height = 45
       Align = alClient
       AutoSize = True
@@ -52,54 +53,67 @@ object V_SeminarFRM: TV_SeminarFRM
       TabOrder = 0
       Transparent = True
       WordWrap = False
+      ExplicitWidth = 1078
       object RzDBLabel2: TRzDBLabel
-        Left = 917
+        Left = 0
         Top = 0
-        Width = 161
+        Width = 284
         Height = 45
-        Align = alRight
+        Align = alLeft
         Layout = tlCenter
         WordWrap = True
         DataField = 'ANAD_NUMBER'
         DataSource = SeminarSRC
-        ExplicitLeft = 775
-        ExplicitTop = -2
       end
-      object RzPanel9: TRzPanel
-        Left = 0
+      object StatusFLD: TwwDBComboBox
+        Left = 749
         Top = 0
-        Width = 185
+        Width = 166
         Height = 45
-        Align = alLeft
-        BorderOuter = fsNone
-        Caption = 'Active'
+        BevelInner = bvNone
+        ShowButton = False
+        Style = csDropDown
+        MapList = False
+        AllowClearKey = False
+        BorderStyle = bsNone
+        Color = clBtnFace
+        DataField = 'STATUS'
+        DataSource = SeminarSRC
+        DropDownCount = 8
+        ItemHeight = 0
+        Sorted = False
         TabOrder = 0
+        UnboundDataType = wwDefault
+        Align = alRight
+        ExplicitLeft = 912
       end
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 1086
+    Width = 923
     Height = 12
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 1086
   end
   object Panel3x: TRzPanel
     Left = 0
     Top = 65
-    Width = 1086
-    Height = 696
+    Width = 923
+    Height = 676
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
+    ExplicitWidth = 1086
     object PageControlPC: TRzPageControl
       Left = 2
       Top = 2
-      Width = 1082
-      Height = 649
+      Width = 919
+      Height = 629
       Hint = ''
-      ActivePage = CertificationTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -108,13 +122,15 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 5
+      TabIndex = 0
       TabOrder = 0
       OnChanging = PageControlPCChanging
+      ExplicitWidth = 1082
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
+        ExplicitWidth = 1078
         object FirstGRP: TGroupBox
           Left = 28
           Top = 23
@@ -871,21 +887,22 @@ object V_SeminarFRM: TV_SeminarFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        ExplicitWidth = 1078
         object RzPanel5: TRzPanel
           Left = 0
           Top = 0
-          Width = 1078
+          Width = 915
           Height = 25
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitLeft = -1
+          ExplicitWidth = 1078
         end
         object GroupBox1: TGroupBox
           Left = 0
           Top = 25
-          Width = 500
-          Height = 598
+          Width = 337
+          Height = 578
           Align = alClient
           Caption = #920#941#956#945#964#945
           Font.Charset = DEFAULT_CHARSET
@@ -895,14 +912,16 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          ExplicitWidth = 500
           object RzPanel6: TRzPanel
             Left = 2
             Top = 16
-            Width = 496
+            Width = 333
             Height = 33
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
+            ExplicitWidth = 496
             object wwDBNavigator1: TwwDBNavigator
               Left = 0
               Top = 0
@@ -1034,8 +1053,8 @@ object V_SeminarFRM: TV_SeminarFRM
           object wwDBGrid1: TwwDBGrid
             Left = 2
             Top = 49
-            Width = 496
-            Height = 547
+            Width = 333
+            Height = 527
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'SUBJECT'#9'55'#9#920#941#956#945)
@@ -1055,21 +1074,23 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitWidth = 496
           end
         end
         object RzPanel4: TRzPanel
-          Left = 500
+          Left = 337
           Top = 25
           Width = 578
-          Height = 598
+          Height = 578
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 2
+          ExplicitLeft = 500
           object RzPanel7: TRzPanel
             Left = 0
             Top = 0
             Width = 97
-            Height = 598
+            Height = 578
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 0
@@ -1078,7 +1099,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 97
             Top = 0
             Width = 481
-            Height = 598
+            Height = 578
             Align = alClient
             Caption = #924#941#961#949#962' '#916#953#949#958#945#947#969#947#942#962
             Font.Charset = DEFAULT_CHARSET
@@ -1228,7 +1249,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 2
               Top = 49
               Width = 477
-              Height = 547
+              Height = 527
               ControlType.Strings = (
                 'SEMINAR_DAY;CustomEdit;SeminarDayFLD;F')
               Selected.Strings = (
@@ -1275,20 +1296,22 @@ object V_SeminarFRM: TV_SeminarFRM
       object StudentsTS: TRzTabSheet
         OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
+        ExplicitWidth = 1078
         object RzPanel2: TRzPanel
           Left = 0
           Top = 0
-          Width = 1078
+          Width = 915
           Height = 18
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitWidth = 1078
         end
         object RzGroupBox1: TRzGroupBox
           Left = 0
           Top = 18
           Width = 425
-          Height = 605
+          Height = 585
           Align = alLeft
           Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
           Font.Charset = DEFAULT_CHARSET
@@ -1310,7 +1333,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 1
             Top = 44
             Width = 423
-            Height = 560
+            Height = 540
             ControlType.Strings = (
               'IS_GUEST;CheckBox;Y;N')
             Selected.Strings = (
@@ -1341,7 +1364,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 425
           Top = 18
           Width = 94
-          Height = 605
+          Height = 585
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
@@ -1494,7 +1517,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 519
           Top = 18
           Width = 391
-          Height = 605
+          Height = 585
           Align = alLeft
           Caption = #922#945#964#940#955#959#947#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -1508,7 +1531,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 1
             Top = 57
             Width = 389
-            Height = 547
+            Height = 527
             Selected.Strings = (
               'SERIAL_NUMBER'#9'10'#9'A/A'
               'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959
@@ -1574,20 +1597,22 @@ object V_SeminarFRM: TV_SeminarFRM
       object CostTS: TRzTabSheet
         OnShow = CostTSShow
         Caption = #922#972#963#964#959#962
+        ExplicitWidth = 1078
         object RzPanel10: TRzPanel
           Left = 0
           Top = 0
-          Width = 1078
+          Width = 915
           Height = 25
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitWidth = 1078
         end
         object GroupBox3: TGroupBox
           Left = 0
           Top = 25
           Width = 593
-          Height = 598
+          Height = 578
           Align = alLeft
           Caption = #922#972#963#964#959#962
           Font.Charset = DEFAULT_CHARSET
@@ -1737,7 +1762,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 2
             Top = 49
             Width = 589
-            Height = 547
+            Height = 527
             ControlType.Strings = (
               'FK_COST_ITEM;CustomEdit;CostTypeFLD;T')
             Selected.Strings = (
@@ -1793,11 +1818,12 @@ object V_SeminarFRM: TV_SeminarFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
+        ExplicitWidth = 1078
         object GroupBox4: TGroupBox
           Left = 0
           Top = 25
-          Width = 1078
-          Height = 598
+          Width = 915
+          Height = 578
           Align = alClient
           Caption = #933#960#949#957#952#965#956#943#963#949#953#962
           Ctl3D = False
@@ -1809,20 +1835,22 @@ object V_SeminarFRM: TV_SeminarFRM
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
+          ExplicitWidth = 1078
           object RzPanel12: TRzPanel
             Left = 1
             Top = 15
-            Width = 1076
+            Width = 913
             Height = 10
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
+            ExplicitWidth = 1076
           end
           object wwDBGrid3: TwwDBGrid
             Left = 1
             Top = 25
             Width = 592
-            Height = 572
+            Height = 552
             ControlType.Strings = (
               'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
               'DAYS_OR_MONTHS;CustomEdit;NamePersonFLD;F'
@@ -2256,19 +2284,19 @@ object V_SeminarFRM: TV_SeminarFRM
         object RzPanel14: TRzPanel
           Left = 0
           Top = 0
-          Width = 1078
+          Width = 915
           Height = 25
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 3
+          ExplicitWidth = 1078
         end
       end
       object CertificationTS: TRzTabSheet
         OnShow = CertificationTSShow
         Caption = #928#959#953#963#964#959#960#959#953#951#964#953#954#940
         OnExit = CertificationTSExit
-        ExplicitLeft = 2
-        ExplicitTop = 25
+        ExplicitWidth = 1078
         object PictureGRP: TRzGroupBox
           Left = 24
           Top = 102
@@ -3186,20 +3214,22 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object Panel4: TRzPanel
       Left = 2
-      Top = 651
-      Width = 1082
+      Top = 631
+      Width = 919
       Height = 43
       Align = alBottom
       BorderOuter = fsFlatRounded
       TabOrder = 1
+      ExplicitWidth = 1082
       object RzPanel1: TRzPanel
-        Left = 980
+        Left = 817
         Top = 2
         Width = 100
         Height = 39
         Align = alRight
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitLeft = 980
         object RzBitBtn1: TRzBitBtn
           Left = 6
           Top = 3
@@ -3622,10 +3652,10 @@ object V_SeminarFRM: TV_SeminarFRM
     Top = 1
   end
   object DbImages: TImageList
-    Left = 170
-    Top = 5
+    Left = 210
+    Top = 101
     Bitmap = {
-      494C010110008800AC0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800B00210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5221,8 +5251,8 @@ object V_SeminarFRM: TV_SeminarFRM
     Top = 199
   end
   object MainMenu1: TMainMenu
-    Left = 36
-    Top = 20
+    Left = 28
+    Top = 76
     object Help1: TMenuItem
       Caption = 'Help'
       object Certifcates1: TMenuItem
