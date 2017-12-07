@@ -79,7 +79,6 @@ type
     Label7: TLabel;
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     TableSQLFEE_WITH_ANAD_SUB: TFloatField;
-    FirstFLD: TRzDBLabel;
     Companylbl: TLabel;
     TableSQLLAST_NAME: TWideStringField;
     RzDBLabel3: TRzDBLabel;
@@ -87,8 +86,6 @@ type
     wwDBEdit2: TRzDBLabel;
     Read1: TIBCTransaction;
     write1: TIBCTransaction;
-    SecondGRP: TRzGroupBox;
-    Label8: TLabel;
     wwDBGrid1: TwwDBGrid;
     InvoiceSQL: TIBCQuery;
     InvoiceSQLSERIAL_NUMBER: TIntegerField;
@@ -105,7 +102,6 @@ type
     InvoiceSQLSEMINAR_DURATION: TIntegerField;
     InvoiceSQLINSTRUCTOR_NAME: TWideStringField;
     InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
-    DateFLD: TwwDBDateTimePicker;
     InvoiceSQLHAS_ANOTHER_DATE: TWideStringField;
     MainMenu1: TMainMenu;
     Reports1: TMenuItem;
@@ -120,6 +116,9 @@ type
     InvoiceSQLSEMINAR_CERTIFICATE: TWideStringField;
     InvoiceSQLSEX: TWideStringField;
     InvoiceSQLANAD_NUMBER: TWideStringField;
+    Label9: TLabel;
+    RzDBLabel4: TRzDBLabel;
+    RzDBLabel5: TRzDBLabel;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -222,16 +221,13 @@ vAR
   certSerial:Integer;
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
-  certSerial:=InvoiceSQL.FieldByName('serial_number').AsInteger;
+  CertSerial:=INvoiceSQL.FieldByName('serial_number').AsInteger;
 
   frm :=  TR_certificateFRM.Create(nil);
   frm.IN_seminar_serial :=seminarSerial;
-  frm.IN_certificate_serial:=certSerial;
-  if CertSerial<1 then
-    exit;
-//  frm.IN_Day_Serial :=0;
+  frm.IN_certificate_serial:=CertSerial;
   try
-    frm.PrintTheSeminar();
+    frm.ShowModal;
   finally
     frm.Free;
   end;
@@ -280,7 +276,7 @@ var
 begin
 //  ksOpenTables([TableSQL]);
 
-  DateFLD.Date :=Date;
+//  DateFLD.Date :=Date;
  personSQL.Close;
  personSQL.ParamByName('seminarSerial').Value:=IN_seminar_serial;
  personSQL.Open;
@@ -399,7 +395,7 @@ begin
 
 
   percentPass:=gpGetGeneralParam(cn,'T00' ).P_Integer1;
-  SeminarDate:=DateFLD.Date;
+//  SeminarDate:=DateFLD.Date;
 
   str:= ' select'
   +' sem.*, inst.first_name,inst.last_name, inst.job_title'

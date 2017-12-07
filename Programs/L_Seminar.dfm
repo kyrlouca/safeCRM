@@ -448,7 +448,7 @@ object L_SeminarFRM: TL_SeminarFRM
         Width = 135
         Height = 37
         Alignment = taLeftJustify
-        Caption = #904#954#948#969#963#951' '#916#953#960#955#969#956#940#964#969#957
+        Caption = #928#953#963#964#959#960#959#953#951#964#953#954#940
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText

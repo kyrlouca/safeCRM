@@ -60,7 +60,6 @@ type
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLFK_SEMINAR: TIntegerField;
     TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
     TableSQLFK_INSTRUCTOR: TIntegerField;
     TableSQLFK_VENUE: TIntegerField;
     TableSQLDATE_STARTED: TDateField;
@@ -80,8 +79,6 @@ type
     TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     TableSQLLAST_NAME: TWideStringField;
     TableSRC: TIBCDataSource;
-    Label1: TLabel;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     FirstGRP: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
@@ -118,7 +115,6 @@ type
     SeminarSQLFK_VENUE: TIntegerField;
     SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
     SeminarSQLDATE_STARTED: TDateField;
     SeminarSQLDATE_COMPLETED: TDateField;
     SeminarSQLDURATION_DAYS: TIntegerField;
@@ -145,6 +141,20 @@ type
     ppDBText9: TppDBText;
     ppDBText10: TppDBText;
     ppLabel7: TppLabel;
+    TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLFK_EXAMINER: TIntegerField;
+    TableSQLHAS_EXPIRY: TWideStringField;
+    TableSQLEXPIRY_PERIOD: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
+    TableSQLSEM_CATEGORY: TWideStringField;
+    SeminarSQLANAD_NUMBER: TWideStringField;
+    SeminarSQLFK_EXAMINER: TIntegerField;
+    SeminarSQLHAS_EXPIRY: TWideStringField;
+    SeminarSQLEXPIRY_PERIOD: TIntegerField;
+    SeminarSQLTYPE_MONO_POLY: TWideStringField;
+    SeminarSQLSEM_CATEGORY: TWideStringField;
+    ppLabel9: TppLabel;
+    ppDBText11: TppDBText;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
@@ -161,6 +171,9 @@ type
   Function CalcDaysLeft():TReminderResult;
   public
     { Public declarations }
+    IN_SeminarSerial:Integer;
+    IN_InvoiceSerial:Integer;
+  procedure PrintSeminar();
   end;
 
 var
@@ -251,15 +264,24 @@ begin
 
 end;
 
-
 procedure TR_InvoicesFRM.PrintRBtnClick(Sender: TObject);
+begin
+  PrintSeminar();
+end;
+
+procedure TR_InvoicesFRM.PrintSeminar();
 
 Var
    FromDate:TDateTime;
    DaysLeft:integer;
    SeminarSerial:Integer;
 begin
-  SeminarSerial:=tableSQL.FieldByName('serial_number').AsInteger;
+  SeminarSerial:=IN_SeminarSerial;
+  if SeminarSerial<1 then begin
+    showMessage('Invalid Selected Seminar');
+    exit;
+  end;
+
 
   SeminarSQL.Close;
   SeminarSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
@@ -268,8 +290,7 @@ begin
   InvoiceSQL.Close;
   InvoiceSQL.Open;
 
-
-     PpReport1.Print;
+  PpReport1.Print;
 
 end;
 

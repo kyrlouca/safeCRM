@@ -37,6 +37,8 @@ uses
 {$R *.res}
 
 begin
+ReportMemoryLeaksOnShutdown := DebugHook <> 0;
+
   Application.Initialize;
      {$IFDEF DEBUG}
     CodeSite.Enabled := True;

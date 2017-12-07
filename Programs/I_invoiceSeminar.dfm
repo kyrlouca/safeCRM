@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 558
+  ClientHeight = 577
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
@@ -47,11 +48,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 515
+    Top = 534
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -149,18 +151,20 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 423
+    Height = 442
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 423
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 421
+      Height = 440
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 421
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -322,13 +326,14 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 378
+        Top = 397
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
+        ExplicitTop = 378
         object RzPanel6: TRzPanel
           Left = 570
           Top = 0
@@ -491,16 +496,16 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ControlType.Strings = (
           'IS_ANAD;CustomEdit;AnadCheckFLD;F')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'FK_PERSON_SERIAL'#9'6'#9'P/P'
-          'LastName'#9'15'#9'LastName'
-          'FirstName'#9'15'#9'FirstName'
-          'AMOUNT_GROSS'#9'9'#9'Charge'
-          'IS_ANAD'#9'1'#9#913#925#913#916
-          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'
-          'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'
-          'AMOUNT_VAT'#9'10'#9'VAT'
-          'AMOUNT_WITH_VAT'#9'10'#9'Total')
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'FK_PERSON_SERIAL'#9'6'#9'P/P'#9#9
+          'LastName'#9'15'#9'LastName'#9#9
+          'FirstName'#9'15'#9'FirstName'#9#9
+          'AMOUNT_GROSS'#9'9'#9'Charge'#9#9
+          'IS_ANAD'#9'1'#9#913#925#913#916#9#9
+          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'#9#9
+          'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'#9#9
+          'AMOUNT_VAT'#9'10'#9'VAT'#9#9
+          'AMOUNT_WITH_VAT'#9'10'#9'Total'#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -542,10 +547,11 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 421
+      Height = 440
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 421
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -557,12 +563,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 224
+        Top = 243
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 224
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -638,244 +645,229 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
           Margin = -1
         end
-        object SecondGRP: TRzGroupBox
-          Left = 29
-          Top = 86
-          Width = 271
-          Height = 46
-          Caption = #934#928#913
+      end
+      object FirstGRP: TGroupBox
+        Left = 49
+        Top = 42
+        Width = 273
+        Height = 319
+        Caption = #931#949#956#953#957#940#961#953#959
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        object Label2: TLabel
+          Left = 15
+          Top = 73
+          Width = 58
+          Height = 14
+          Caption = #928#949#961#953#947#961#945#966#942
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 1
-          object Label8: TLabel
-            Left = 21
-            Top = 18
-            Width = 65
-            Height = 14
-            Caption = #932#941#955#959#962' '#934#928#913' '
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object VatFLD: TwwDBEdit
-            Left = 92
-            Top = 15
-            Width = 90
-            Height = 22
-            DataField = 'MAX_CAPACITY'
-            DataSource = TableSRC
-            TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
         end
-      end
-    end
-    object FirstGRP: TGroupBox
-      Left = 44
-      Top = 43
-      Width = 273
-      Height = 262
-      Caption = #931#949#956#953#957#940#961#953#959
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 2
-      object Label2: TLabel
-        Left = 15
-        Top = 49
-        Width = 58
-        Height = 14
-        Caption = #928#949#961#953#947#961#945#966#942
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label3: TLabel
-        Left = 52
-        Top = 24
-        Width = 21
-        Height = 14
-        Caption = #913'/'#913
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object SerialFLD: TRzDBLabel
-        Left = 79
-        Top = 20
-        Width = 75
-        Height = 20
-        Alignment = taRightJustify
-        BorderOuter = fsFlat
-        BorderWidth = 1
-        DataField = 'SERIAL_NUMBER'
-        DataSource = TableSRC
-      end
-      object Label5: TLabel
-        Left = 6
-        Top = 75
-        Width = 67
-        Height = 14
-        Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label1: TLabel
-        Left = 25
-        Top = 101
-        Width = 48
-        Height = 14
-        Caption = #928#949#961#943#959#948#959#962
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RzDBLabel1: TRzDBLabel
-        Left = 79
-        Top = 99
-        Width = 80
-        Height = 20
-        BorderOuter = fsFlat
-        BorderWidth = 1
-        DataField = 'DATE_STARTED'
-        DataSource = TableSRC
-      end
-      object RzDBLabel2: TRzDBLabel
-        Left = 176
-        Top = 99
-        Width = 80
-        Height = 20
-        BorderOuter = fsFlat
-        BorderWidth = 1
-        DataField = 'DATE_COMPLETED'
-        DataSource = TableSRC
-      end
-      object Label6: TLabel
-        Left = 41
-        Top = 202
-        Width = 131
-        Height = 14
-        Caption = #932#953#956#942' '#935#969#961#943#962' '#917#960#953#967#959#961#942#947#951#963#951
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label7: TLabel
-        Left = 60
-        Top = 228
-        Width = 112
-        Height = 14
-        Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object FirstFLD: TRzDBLabel
-        Left = 79
-        Top = 46
-        Width = 44
-        Height = 16
-        AutoSize = True
-        ParentColor = False
-        BorderOuter = fsFlat
-        DataField = 'SEMINAR_NAME'
-        DataSource = TableSRC
-      end
-      object Companylbl: TLabel
-        Left = 30
-        Top = 152
-        Width = 43
-        Height = 14
-        Caption = #917#964#945#953#961#949#943#945
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RzDBLabel3: TRzDBLabel
-        Left = 79
-        Top = 151
-        Width = 175
-        Height = 20
-        ParentColor = False
-        BorderOuter = fsFlat
-        DataSource = TableSRC
-      end
-      object wwDBEdit1: TRzDBLabel
-        Left = 176
-        Top = 227
-        Width = 80
-        Height = 20
-        Alignment = taRightJustify
-        ParentColor = False
-        BorderOuter = fsFlat
-        DataField = 'FEE_WITH_ANAD_SUB'
-        DataSource = TableSRC
-      end
-      object wwDBEdit2: TRzDBLabel
-        Left = 176
-        Top = 201
-        Width = 80
-        Height = 20
-        Alignment = taRightJustify
-        ParentColor = False
-        BorderOuter = fsFlat
-        DataField = 'FEE_ACTUAL'
-        DataSource = TableSRC
-      end
-      object wwDBComboBox1: TwwDBComboBox
-        Left = 79
-        Top = 72
-        Width = 80
-        Height = 22
-        ShowButton = False
-        Style = csDropDownList
-        MapList = True
-        AllowClearKey = False
-        AutoDropDown = True
-        DataField = 'SEMINAR_CORP_TYPE'
-        DataSource = TableSRC
-        DropDownCount = 8
-        ItemHeight = 0
-        Items.Strings = (
-          #924#972#957#959'-'#917#960#967'.'#9'M'
-          #928#972#955#965'-'#917#960#967'.'#9'P')
-        Sorted = False
-        TabOrder = 0
-        UnboundDataType = wwDefault
+        object Label3: TLabel
+          Left = 19
+          Top = 28
+          Width = 54
+          Height = 14
+          Caption = #913#961'. '#913#925#913#916
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object SerialFLD: TRzDBLabel
+          Left = 79
+          Top = 20
+          Width = 75
+          Height = 20
+          Alignment = taRightJustify
+          BorderOuter = fsFlat
+          BorderWidth = 1
+          DataField = 'ANAD_NUMBER'
+          DataSource = TableSRC
+        end
+        object Label5: TLabel
+          Left = 6
+          Top = 99
+          Width = 67
+          Height = 14
+          Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label1: TLabel
+          Left = 25
+          Top = 125
+          Width = 48
+          Height = 14
+          Caption = #928#949#961#943#959#948#959#962
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object RzDBLabel1: TRzDBLabel
+          Left = 79
+          Top = 123
+          Width = 80
+          Height = 20
+          BorderOuter = fsFlat
+          BorderWidth = 1
+          DataField = 'DATE_STARTED'
+          DataSource = TableSRC
+        end
+        object RzDBLabel2: TRzDBLabel
+          Left = 176
+          Top = 123
+          Width = 80
+          Height = 20
+          BorderOuter = fsFlat
+          BorderWidth = 1
+          DataField = 'DATE_COMPLETED'
+          DataSource = TableSRC
+        end
+        object Label6: TLabel
+          Left = 41
+          Top = 226
+          Width = 131
+          Height = 14
+          Caption = #932#953#956#942' '#935#969#961#943#962' '#917#960#953#967#959#961#942#947#951#963#951
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label7: TLabel
+          Left = 60
+          Top = 252
+          Width = 112
+          Height = 14
+          Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Companylbl: TLabel
+          Left = 30
+          Top = 176
+          Width = 43
+          Height = 14
+          Caption = #917#964#945#953#961#949#943#945
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object RzDBLabel3: TRzDBLabel
+          Left = 79
+          Top = 175
+          Width = 175
+          Height = 20
+          ParentColor = False
+          BorderOuter = fsFlat
+          DataField = 'LAST_NAME'
+          DataSource = TableSRC
+        end
+        object wwDBEdit1: TRzDBLabel
+          Left = 176
+          Top = 251
+          Width = 80
+          Height = 20
+          Alignment = taRightJustify
+          ParentColor = False
+          BorderOuter = fsFlat
+          DataField = 'FEE_WITH_ANAD_SUB'
+          DataSource = TableSRC
+        end
+        object wwDBEdit2: TRzDBLabel
+          Left = 176
+          Top = 225
+          Width = 80
+          Height = 20
+          Alignment = taRightJustify
+          ParentColor = False
+          BorderOuter = fsFlat
+          DataField = 'FEE_ACTUAL'
+          DataSource = TableSRC
+        end
+        object Label9: TLabel
+          Left = 52
+          Top = 48
+          Width = 21
+          Height = 14
+          Caption = #913'/'#913
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object RzDBLabel4: TRzDBLabel
+          Left = 79
+          Top = 44
+          Width = 75
+          Height = 20
+          Alignment = taRightJustify
+          BorderOuter = fsFlat
+          BorderWidth = 1
+          DataField = 'SERIAL_NUMBER'
+          DataSource = TableSRC
+        end
+        object RzDBLabel5: TRzDBLabel
+          Left = 79
+          Top = 70
+          Width = 178
+          Height = 20
+          BorderOuter = fsFlat
+          BorderWidth = 1
+          DataField = 'SEMINAR_NAME'
+          DataSource = TableSRC
+        end
+        object wwDBComboBox1: TwwDBComboBox
+          Left = 79
+          Top = 96
+          Width = 80
+          Height = 22
+          ShowButton = False
+          Style = csDropDownList
+          MapList = True
+          AllowClearKey = False
+          AutoDropDown = True
+          DataField = 'TYPE_MONO_POLY'
+          DataSource = TableSRC
+          DropDownCount = 8
+          ItemHeight = 0
+          Items.Strings = (
+            #924#972#957#959'-'#917#960#967'.'#9'M'
+            #928#972#955#965'-'#917#960#967'.'#9'P')
+          Sorted = False
+          TabOrder = 0
+          UnboundDataType = wwDefault
+        end
       end
     end
   end
@@ -1140,20 +1132,21 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_COMPAN' +
-        'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
-        'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
-        'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
-        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY' +
-        ', EXPIRY_PERIOD)'
+        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXA' +
+        'MINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_ST' +
+        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL' +
+        ', AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS' +
+        '_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS' +
+        '_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
-        'OMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP_TYPE, :DATE_S' +
-        'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
-        'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
-        'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH' +
-        '_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD)')
+        '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
+        'K_EXAMINER, :FK_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME,' +
+        ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
+        ', :FEE_ACTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_EST' +
+        'IMATE, :STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :' +
+        'FEE_WITH_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY,' +
+        ' :SEM_CATEGORY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -1162,28 +1155,30 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       'UPDATE SEMINAR'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, FK_I' +
-        'NSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, FK_COMPANY_PER' +
-        'SON_SERIAL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_' +
-        'NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE, DATE_STARTED = :DA' +
-        'TE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :D' +
-        'URATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FE' +
-        'E_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD' +
-        '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
-        ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
-        'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :F' +
-        'EE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXP' +
-        'IRY_PERIOD'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, ANAD_NUMBER = :ANAD_NUMBER, FK' +
+        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_EXAMI' +
+        'NER = :FK_EXAMINER, FK_VENUE = :FK_VENUE, FK_COMPANY_PERSON_SERI' +
+        'AL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_NAME, DA' +
+        'TE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DU' +
+        'RATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, ' +
+        'FEE_ACTUAL = :FEE_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS =' +
+        ' :COMMENTS, ANAD_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_' +
+        'ESTIMATE, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTI' +
+        'FICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WI' +
+        'TH_ANAD_SUB = :FEE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPI' +
+        'RY_PERIOD = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY, SE' +
+        'M_CATEGORY = :SEM_CATEGORY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_CO' +
-        'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
-        'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
-        'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
-        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EX' +
-        'PIRY, EXPIRY_PERIOD FROM SEMINAR'
+        'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
+        '_EXAMINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DAT' +
+        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_AC' +
+        'TUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS' +
+        ', IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB,' +
+        ' HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY FROM SE' +
+        'MINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1207,6 +1202,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       'where '
       'se.serial_number= :SeminarSerial')
     ReadOnly = True
+    Active = True
     Left = 49
     Top = 5
     ParamData = <
@@ -1234,12 +1230,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     object TableSQLSEMINAR_NAME: TWideStringField
       FieldName = 'SEMINAR_NAME'
       Size = 160
-    end
-    object TableSQLSEMINAR_CORP_TYPE: TWideStringField
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      FixedChar = True
-      Size = 1
     end
     object TableSQLDATE_STARTED: TDateField
       FieldName = 'DATE_STARTED'
@@ -1305,10 +1295,41 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     object TableSQLEXPIRY_PERIOD: TIntegerField
       FieldName = 'EXPIRY_PERIOD'
     end
+    object TableSQLANAD_NUMBER: TWideStringField
+      FieldName = 'ANAD_NUMBER'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
+    object TableSQLFK_EXAMINER: TIntegerField
+      FieldName = 'FK_EXAMINER'
+    end
+    object TableSQLTYPE_MONO_POLY: TWideStringField
+      FieldName = 'TYPE_MONO_POLY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLSEM_CATEGORY: TWideStringField
+      FieldName = 'SEM_CATEGORY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
   end
   object TableSRC: TIBCDataSource
     DataSet = TableSQL
     Left = 112
     Top = 9
+  end
+  object MainMenu1: TMainMenu
+    Left = 224
+    object Reports1: TMenuItem
+      Caption = #917#954#964#973#960#969#963#951
+      object N3: TMenuItem
+        Caption = #917#954#964#973#960#969#963#951' '#923#943#963#964#945#962' '#932#953#956#959#955#959#947#943#969#957
+        OnClick = N3Click
+      end
+    end
   end
 end

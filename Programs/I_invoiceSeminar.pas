@@ -9,7 +9,7 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   RzPopups, vcl.wwcheckbox, vcl.wwDialog, vcl.wwIDlg, vcl.wwmonthcalendar,
-  vcl.wwlocate, VirtualTable;
+  vcl.wwlocate, VirtualTable, Vcl.Menus;
 type
   TI_InvoiceSeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -24,17 +24,8 @@ type
     RzBitBtn1: TRzBitBtn;
     PanelX: TRzPanel;
     RzPanel3: TRzPanel;
-    FirstGRP: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    SerialFLD: TRzDBLabel;
-    Label5: TLabel;
-    wwDBComboBox1: TwwDBComboBox;
-    Label1: TLabel;
     RzPanel2: TRzPanel;
     RzPanel4: TRzPanel;
-    RzDBLabel1: TRzDBLabel;
-    RzDBLabel2: TRzDBLabel;
     RzPanel5: TRzPanel;
     RzPanel6: TRzPanel;
     SavePresBTN: TBitBtn;
@@ -71,19 +62,9 @@ type
     InvoiceSQLFirstName: TStringField;
     InvoiceSQLLastName: TStringField;
     InvoiceSQLIS_ANAD: TWideStringField;
-    Label6: TLabel;
-    Label7: TLabel;
     AnadCheckFLD: TwwCheckBox;
-    FirstFLD: TRzDBLabel;
-    Companylbl: TLabel;
-    RzDBLabel3: TRzDBLabel;
-    wwDBEdit1: TRzDBLabel;
-    wwDBEdit2: TRzDBLabel;
     Read1: TIBCTransaction;
     write1: TIBCTransaction;
-    SecondGRP: TRzGroupBox;
-    Label8: TLabel;
-    VatFLD: TwwDBEdit;
     TableSQL: TIBCQuery;
     TableSRC: TIBCDataSource;
     TableSQLSERIAL_NUMBER: TIntegerField;
@@ -92,7 +73,6 @@ type
     TableSQLFK_VENUE: TIntegerField;
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLSEMINAR_CORP_TYPE: TWideStringField;
     TableSQLDATE_STARTED: TDateField;
     TableSQLDATE_COMPLETED: TDateField;
     TableSQLDURATION_DAYS: TIntegerField;
@@ -109,6 +89,31 @@ type
     TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     TableSQLHAS_EXPIRY: TWideStringField;
     TableSQLEXPIRY_PERIOD: TIntegerField;
+    TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLFK_EXAMINER: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
+    TableSQLSEM_CATEGORY: TWideStringField;
+    MainMenu1: TMainMenu;
+    Reports1: TMenuItem;
+    N3: TMenuItem;
+    FirstGRP: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    SerialFLD: TRzDBLabel;
+    Label5: TLabel;
+    Label1: TLabel;
+    RzDBLabel1: TRzDBLabel;
+    RzDBLabel2: TRzDBLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Companylbl: TLabel;
+    RzDBLabel3: TRzDBLabel;
+    wwDBEdit1: TRzDBLabel;
+    wwDBEdit2: TRzDBLabel;
+    Label9: TLabel;
+    RzDBLabel4: TRzDBLabel;
+    RzDBLabel5: TRzDBLabel;
+    wwDBComboBox1: TwwDBComboBox;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -127,6 +132,7 @@ type
     procedure InvoiceSQLBeforePost(DataSet: TDataSet);
     procedure InvoiceGRDCalcCellColors(Sender: TObject; Field: TField;
       State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
+    procedure N3Click(Sender: TObject);
   private
     { Private declarations }
     VatRate:Double;
@@ -144,7 +150,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, R_invoices;
 
 
 {$R *.DFM}
@@ -222,6 +228,25 @@ begin
   Dataset.FieldByName('amount_with_vat').Value:=AmountCharged;
 //
 
+end;
+
+procedure TI_InvoiceSeminarFRM.N3Click(Sender: TObject);
+vAR
+  Frm:TR_InvoicesFRM;
+  seminarSerial:Integer;
+
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_InvoicesFRM.Create(nil);
+  frm.IN_SeminarSerial :=seminarSerial;
+  frm.IN_Invoiceserial:=0;
+//  frm.IN_Day_Serial :=0;
+  try
+    frm.PrintSeminar();
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TI_InvoiceSeminarFRM.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
@@ -331,7 +356,7 @@ var
   vatRate:Double;
 begin
 
-  VatRate:=StrToFloatDef(VatFLD.Text,0);
+//  VatRate:=StrToFloatDef(VatFLD.Text,0);
 
 //  ksExecSQLVar(cn,'delete from invoice where fk_seminar_serial= :SeminarSerial',[SeminarSerial]);
   invoiceSQL.Close;
@@ -341,7 +366,7 @@ begin
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
-    isMono:=qr.FieldByName('SEMINAR_CORP_TYPE').Value='M';
+    isMono:=qr.FieldByName('TYPE_MONO_POLY').Value='M';
     PriceNormal:=qr.FieldByName('fee_actual').AsFloat;
     PriceANAD:=qr.FieldByName('fee_with_ANAD_Sub').AsFloat;    //take this as default
   finally

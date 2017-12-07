@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 567
+  ClientHeight = 601
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -48,11 +48,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 524
+    Top = 558
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 504
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -150,18 +151,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 432
+    Height = 466
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 412
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 430
+      Height = 464
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 410
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -323,21 +326,24 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 387
+        Top = 421
         Width = 671
         Height = 43
         Align = alBottom
-        BorderOuter = fsFlat
+        BorderOuter = fsNone
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
+        ExplicitTop = 367
         object RzPanel6: TRzPanel
-          Left = 570
+          Left = 571
           Top = 0
           Width = 100
-          Height = 42
+          Height = 43
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitLeft = 570
+          ExplicitHeight = 42
         end
         object SavePresBTN: TBitBtn
           Left = 6
@@ -523,10 +529,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 430
+      Height = 464
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 410
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -538,12 +545,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 233
+        Top = 267
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 213
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -619,57 +627,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
             FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
           Margin = -1
         end
-        object SecondGRP: TRzGroupBox
-          Left = 29
-          Top = 86
-          Width = 271
-          Height = 46
-          Caption = #919#956#949#961#959#956#951#957#943#945' '#916#953#960#955#974#956#945#964#959#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-          object Label8: TLabel
-            Left = 21
-            Top = 18
-            Width = 63
-            Height = 14
-            Caption = #919#956#949#961#959#956#951#957#943#945
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object DateFLD: TwwDBDateTimePicker
-            Left = 90
-            Top = 17
-            Width = 121
-            Height = 21
-            AutoSize = False
-            CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-            CalendarAttributes.Font.Color = clWindowText
-            CalendarAttributes.Font.Height = -11
-            CalendarAttributes.Font.Name = 'Tahoma'
-            CalendarAttributes.Font.Style = []
-            CalendarAttributes.PopupYearOptions.StartYear = 2010
-            Epoch = 1950
-            ShowButton = True
-            TabOrder = 0
-            DisplayFormat = 'dd/mm/yyyy'
-          end
-        end
       end
     end
     object FirstGRP: TGroupBox
-      Left = 50
+      Left = 56
       Top = 43
       Width = 273
-      Height = 262
+      Height = 310
       Caption = #931#949#956#953#957#940#961#953#959
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -680,7 +644,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       TabOrder = 2
       object Label2: TLabel
         Left = 15
-        Top = 49
+        Top = 76
         Width = 58
         Height = 14
         Caption = #928#949#961#953#947#961#945#966#942
@@ -692,11 +656,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 52
-        Top = 24
-        Width = 21
+        Left = 19
+        Top = 20
+        Width = 54
         Height = 14
-        Caption = #913'/'#913
+        Caption = #913#961'. '#913#925#913#916
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -706,18 +670,18 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object SerialFLD: TRzDBLabel
         Left = 79
-        Top = 20
+        Top = 18
         Width = 75
         Height = 20
         Alignment = taRightJustify
         BorderOuter = fsFlat
         BorderWidth = 1
-        DataField = 'SERIAL_NUMBER'
+        DataField = 'ANAD_NUMBER'
         DataSource = TableSRC
       end
       object Label5: TLabel
         Left = 6
-        Top = 75
+        Top = 102
         Width = 67
         Height = 14
         Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
@@ -730,7 +694,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object Label1: TLabel
         Left = 25
-        Top = 101
+        Top = 128
         Width = 48
         Height = 14
         Caption = #928#949#961#943#959#948#959#962
@@ -743,7 +707,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzDBLabel1: TRzDBLabel
         Left = 79
-        Top = 99
+        Top = 126
         Width = 80
         Height = 20
         BorderOuter = fsFlat
@@ -753,7 +717,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzDBLabel2: TRzDBLabel
         Left = 176
-        Top = 99
+        Top = 126
         Width = 80
         Height = 20
         BorderOuter = fsFlat
@@ -763,7 +727,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object Label6: TLabel
         Left = 41
-        Top = 202
+        Top = 226
         Width = 131
         Height = 14
         Caption = #932#953#956#942' '#935#969#961#943#962' '#917#960#953#967#959#961#942#947#951#963#951
@@ -776,7 +740,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object Label7: TLabel
         Left = 60
-        Top = 228
+        Top = 252
         Width = 112
         Height = 14
         Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
@@ -787,20 +751,9 @@ object I_CertificatesFRM: TI_CertificatesFRM
         Font.Style = []
         ParentFont = False
       end
-      object FirstFLD: TRzDBLabel
-        Left = 79
-        Top = 46
-        Width = 44
-        Height = 16
-        AutoSize = True
-        ParentColor = False
-        BorderOuter = fsFlat
-        DataField = 'SEMINAR_NAME'
-        DataSource = TableSRC
-      end
       object Companylbl: TLabel
         Left = 30
-        Top = 152
+        Top = 176
         Width = 43
         Height = 14
         Caption = #917#964#945#953#961#949#943#945
@@ -813,7 +766,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzDBLabel3: TRzDBLabel
         Left = 79
-        Top = 151
+        Top = 175
         Width = 175
         Height = 20
         ParentColor = False
@@ -823,7 +776,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object wwDBEdit1: TRzDBLabel
         Left = 176
-        Top = 227
+        Top = 251
         Width = 80
         Height = 20
         Alignment = taRightJustify
@@ -834,7 +787,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object wwDBEdit2: TRzDBLabel
         Left = 176
-        Top = 201
+        Top = 225
         Width = 80
         Height = 20
         Alignment = taRightJustify
@@ -843,9 +796,44 @@ object I_CertificatesFRM: TI_CertificatesFRM
         DataField = 'FEE_ACTUAL'
         DataSource = TableSRC
       end
+      object Label9: TLabel
+        Left = 52
+        Top = 43
+        Width = 21
+        Height = 14
+        Caption = #913'/'#913
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object RzDBLabel4: TRzDBLabel
+        Left = 79
+        Top = 41
+        Width = 75
+        Height = 20
+        Alignment = taRightJustify
+        BorderOuter = fsFlat
+        BorderWidth = 1
+        DataField = 'SERIAL_NUMBER'
+        DataSource = TableSRC
+      end
+      object RzDBLabel5: TRzDBLabel
+        Left = 79
+        Top = 73
+        Width = 178
+        Height = 20
+        Alignment = taRightJustify
+        BorderOuter = fsFlat
+        BorderWidth = 1
+        DataField = 'SEMINAR_NAME'
+        DataSource = TableSRC
+      end
       object wwDBComboBox1: TwwDBComboBox
         Left = 79
-        Top = 72
+        Top = 99
         Width = 80
         Height = 22
         ShowButton = False
@@ -1099,14 +1087,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
-    Left = 105
-    Top = 517
+    Left = 121
+    Top = 453
   end
   object ReadTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
     IsolationLevel = iblReadOnlyReadCommitted
-    Left = 56
-    Top = 513
+    Left = 64
+    Top = 489
   end
   object TableSRC: TIBCDataSource
     DataSet = TableSQL
