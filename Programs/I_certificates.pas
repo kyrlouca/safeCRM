@@ -395,7 +395,6 @@ begin
 
 
   percentPass:=gpGetGeneralParam(cn,'T00' ).P_Integer1;
-//  SeminarDate:=DateFLD.Date;
 
   str:= ' select'
   +' sem.*, inst.first_name,inst.last_name, inst.job_title'
@@ -409,6 +408,7 @@ begin
     qr.open;
     seminarType:=qr.FieldByName('fk_seminar').AsInteger;
     SeminarSubject:=qr.FieldByName('seminar_name').asString;
+    SeminarDate:=qr.FieldByName('Date_completed').AsDateTime;
     AnadNumber:=qr.FieldByName('ANad_number').asString;
     InstName:=trim(qr.FieldByName('first_name').asString)+' '+trim(qr.FieldByName('Last_name').asString);
     InstJob:=qr.FieldByName('job_title').asString;
@@ -521,6 +521,7 @@ begin
         InvoiceSQL.FieldByName('hours_completed').Value:=HoursActual;
         InvoiceSQL.FieldByName('percentage_completed').Value:=percentActual;
         InvoiceSQL.FieldByName('DATE_Issued').AsDateTime:=SeminarDate;
+        InvoiceSQL.FieldByName('DATE_created').AsDateTime:=Date;
 
         InvoiceSQL.FieldByName('HAS_ANOTHER_DATE').AsString:= HasAnotherDate;
 

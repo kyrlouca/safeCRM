@@ -7449,19 +7449,19 @@ object M_mainFRM: TM_mainFRM
         OnClick = ExchangeRates1Click
       end
       object N11: TMenuItem
-        Caption = #931#964#940#948#953#945' '#954#945#953' '#932#973#960#959#953
+        Caption = #931#964#940#948#953#945' '#931#949#956#953#957#945#961#943#969#957
         OnClick = N11Click
       end
     end
     object ables2: TMenuItem
       Caption = #928#949#955#940#964#949#962
-      object Countries2: TMenuItem
-        Caption = #917#964#945#953#961#949#943#949#962
-        OnClick = Countries2Click
-      end
       object N1: TMenuItem
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
         OnClick = N1Click
+      end
+      object Countries2: TMenuItem
+        Caption = #917#964#945#953#961#949#943#949#962
+        OnClick = Countries2Click
       end
     end
     object N8: TMenuItem
@@ -7485,10 +7485,6 @@ object M_mainFRM: TM_mainFRM
       object Reminders1: TMenuItem
         Caption = #917#961#947#945#963#943#949#962
         OnClick = Reminders1Click
-      end
-      object N10: TMenuItem
-        Caption = #932#953#956#959#955#972#947#953#945
-        OnClick = N10Click
       end
       object N12: TMenuItem
         Caption = #923#942#958#949#953#962

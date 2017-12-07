@@ -59,40 +59,12 @@ type
     InvoiceSQLAMOUNT_NET: TFloatField;
     InvoiceSQLAMOUNT_VAT: TFloatField;
     InvoiceSQLAMOUNT_WITH_VAT: TFloatField;
-    InvoiceSQLFirstName: TStringField;
-    InvoiceSQLLastName: TStringField;
     InvoiceSQLIS_ANAD: TWideStringField;
     AnadCheckFLD: TwwCheckBox;
     Read1: TIBCTransaction;
     write1: TIBCTransaction;
     TableSQL: TIBCQuery;
     TableSRC: TIBCDataSource;
-    TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLFK_SEMINAR: TIntegerField;
-    TableSQLFK_INSTRUCTOR: TIntegerField;
-    TableSQLFK_VENUE: TIntegerField;
-    TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLDATE_STARTED: TDateField;
-    TableSQLDATE_COMPLETED: TDateField;
-    TableSQLDURATION_DAYS: TIntegerField;
-    TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLFEE_ACTUAL: TFloatField;
-    TableSQLAMOUNT_ANAD: TFloatField;
-    TableSQLCOMMENTS: TWideStringField;
-    TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLFEE_ESTIMATE: TFloatField;
-    TableSQLSTATUS: TWideStringField;
-    TableSQLIS_INVOICED: TWideStringField;
-    TableSQLIS_CERTIFICATED: TWideStringField;
-    TableSQLMAX_CAPACITY: TIntegerField;
-    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
-    TableSQLHAS_EXPIRY: TWideStringField;
-    TableSQLEXPIRY_PERIOD: TIntegerField;
-    TableSQLANAD_NUMBER: TWideStringField;
-    TableSQLFK_EXAMINER: TIntegerField;
-    TableSQLTYPE_MONO_POLY: TWideStringField;
-    TableSQLSEM_CATEGORY: TWideStringField;
     MainMenu1: TMainMenu;
     Reports1: TMenuItem;
     N3: TMenuItem;
@@ -114,6 +86,36 @@ type
     RzDBLabel4: TRzDBLabel;
     RzDBLabel5: TRzDBLabel;
     wwDBComboBox1: TwwDBComboBox;
+    TableSQLSERIAL_NUMBER: TIntegerField;
+    TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLFK_SEMINAR: TIntegerField;
+    TableSQLFK_INSTRUCTOR: TIntegerField;
+    TableSQLFK_EXAMINER: TIntegerField;
+    TableSQLFK_VENUE: TIntegerField;
+    TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    TableSQLSEMINAR_NAME: TWideStringField;
+    TableSQLDATE_STARTED: TDateField;
+    TableSQLDATE_COMPLETED: TDateField;
+    TableSQLDURATION_DAYS: TIntegerField;
+    TableSQLDURATION_HOURS: TIntegerField;
+    TableSQLFEE_ACTUAL: TFloatField;
+    TableSQLAMOUNT_ANAD: TFloatField;
+    TableSQLCOMMENTS: TWideStringField;
+    TableSQLANAD_APPROVED: TWideStringField;
+    TableSQLFEE_ESTIMATE: TFloatField;
+    TableSQLSTATUS: TWideStringField;
+    TableSQLIS_INVOICED: TWideStringField;
+    TableSQLIS_CERTIFICATED: TWideStringField;
+    TableSQLMAX_CAPACITY: TIntegerField;
+    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
+    TableSQLHAS_EXPIRY: TWideStringField;
+    TableSQLEXPIRY_PERIOD: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
+    TableSQLSEM_CATEGORY: TWideStringField;
+    TableSQLLAST_NAME: TWideStringField;
+    InvoiceSQLLAST_NAME: TWideStringField;
+    InvoiceSQLFIRST_NAME: TWideStringField;
+    InvoiceSQLPERSON_NATIONAL_ID: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -126,13 +128,14 @@ type
     procedure InvoiceBTNClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure CanelBTNClick(Sender: TObject);
-    procedure AnadCheckFLDClick(Sender: TObject);
     procedure TableSQLAfterScroll(DataSet: TDataSet);
     procedure InvoiceGRDColEnter(Sender: TObject);
     procedure InvoiceSQLBeforePost(DataSet: TDataSet);
     procedure InvoiceGRDCalcCellColors(Sender: TObject; Field: TField;
       State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
     procedure N3Click(Sender: TObject);
+    procedure AnadCheckFLDMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
     VatRate:Double;
@@ -216,7 +219,16 @@ Var
   vatAMount,AmountForVat:Double;
   Gross,DiscountCust,DiscountSafe:Double;
   AmountCharged:DOuble;
+  PriceNormal,PriceANAD:Double;
 begin
+
+    if (dataset.FieldByName('is_ANAD').AsString='Y') then begin
+      Dataset.FieldByName('amount_gross').AsFloat :=TableSQL.FieldByName('fee_with_ANAD_Sub').AsFloat;
+    end else begin
+      Dataset.FieldByName('amount_gross').AsFloat :=TableSQL.FieldByName('FEE_ACTUAL').AsFloat;
+    end;
+
+
 
   AmountForVat:=Dataset.FieldByName('amount_gross').AsFloat -Dataset.FieldByName('Discount_customer').AsFloat;
   VatAmount:=AmountForVat *Dataset.FieldByName('vat_rate').AsFloat/100.00;
@@ -352,11 +364,13 @@ var
   DiscountNormal:Double;
   DiscountSafe:Double;
   isFOund:Boolean;
+  param:TParameterRecord;
 
   vatRate:Double;
 begin
 
-//  VatRate:=StrToFloatDef(VatFLD.Text,0);
+ param:=gpGetGeneralParam(cn,'T00');
+  VatRate:=param.P_Float1;
 
 //  ksExecSQLVar(cn,'delete from invoice where fk_seminar_serial= :SeminarSerial',[SeminarSerial]);
   invoiceSQL.Close;
@@ -376,13 +390,26 @@ begin
   //////////////////////////////////////////////////////////////////
   ///
   if isMono then begin
-    str:= 'select sem.fk_company_person_serial as companySerial from seminar sem where sem.serial_number= :SeminarSerial';
+    //company will be invoiced
+    str:=
+    ' select'
+    +'  first 1 sem.fk_company_person_serial as per_Serial, per.NATIONAL_ID, per.last_name as Inv_Last_name, per.first_name as inv_first_name'
+    +'  from'
+    +'      seminar sem left outer join'
+    +'      person per on sem.fk_company_person_serial= per.serial_number'
+    +'  where'
+    +'  sem.serial_number = :SeminarSerial';
+
   end else begin
-    str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
+    str:=
+    '   select'
+    +'    sp.person_serial as per_serial, sp.national_id, sp.last_name as INv_last_name, sp.first_name as inv_first_name'
+    +'  from'
+    +'      seminar_person_view sp'
+    +'  where'
+    +'      sp.fk_seminar_serial = :SeminarSerial    and sp.is_guest<>''Y''  ';
 
   end;
-
-  /////////////////////////////////////////////////////////////////
 
   qr:= TksQuery.Create(cn,str);
   try
@@ -393,11 +420,8 @@ begin
       InvoiceSql.Open;
 
     while not qr.Eof do begin
-        if isMono then
-          PersonSerial:=qr.FieldByName('CompanySerial').AsInteger
-        else
-          PersonSerial:=qr.FieldByName('fk_person_serial').AsInteger;
 
+        PersonSerial := qr.FieldByName('per_serial').AsInteger;
         isFound:=ksCountRecVarSQL(cn,'select * from invoice where fk_seminar_serial=:Seminar and fk_person_serial= :person',[SeminarSerial,PersonSerial])>0;
         if isFound then begin
           qr.Next;
@@ -409,19 +433,24 @@ begin
         InvoiceSQL.Insert;
         InvoiceSQL.FieldByName('serial_number').Value:=SerialNumber;
         InvoiceSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
-        InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
+        InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=qr.FieldByName('per_serial').AsInteger;
+        InvoiceSQL.FieldByName('last_name').Value       :=qr.FieldByName('inv_last_name').AsString;
+        InvoiceSQL.FieldByName('first_name').Value:=qr.FieldByName('inv_first_name').AsString;
+        InvoiceSQL.FieldByName('PERSON_NATIONAL_ID').Value:=qr.FieldByName('national_id').AsString;
 
 
         InvoiceSQL.FieldByName('AMOUNT_GROSS').Value:=PriceAnad;
 
-        InvoiceSQL.FieldByName('Discount_Customer').Value:=0;
-        InvoiceSQL.FieldByName('Discount_by_safe').Value:=0;;
+        InvoiceSQL.FieldByName('Discount_Customer').Value:=0; //will change in beforePost
+        InvoiceSQL.FieldByName('Discount_by_safe').Value:=0;
+
         InvoiceSQL.FieldByName('AMOUNT_GROSS').AsFloat:=PriceAnad;
         InvoiceSQL.FieldByName('VAT_RATE').AsFloat:=VatRate;
-//        AmountVat:= PriceAnad* vatRate/100.00;
-//        AmountTotal:=PriceAnad+amountVat;
-//        InvoiceSQL.FieldByName('AMOUNT_VAT').AsFloat:=AmountVAT;
-//        InvoiceSQL.FieldByName('AMOUNT_With_vat').AsFloat:=AmountTotal;
+
+        AmountVat:= PriceAnad* vatRate/100.00;
+        AmountTotal:=PriceAnad+amountVat;
+
+
         InvoiceSQL.FieldByName('IS_ANAD').Value:='Y';
         InvoiceSQL.FieldByName('Invoice_status').Value:='U';
         InvoiceSQL.FieldByName('DATE_INVOICED').Value:=NOW;
@@ -432,26 +461,26 @@ begin
     qr.Free;
   end;
 
-
-
-
-
 end;
 
-
-procedure TI_InvoiceSeminarFRM.AnadCheckFLDClick(Sender: TObject);
-
-begin
-//  InvoiceSQL.Post;
-
-end;
 
 procedure TI_InvoiceSeminarFRM.InvoiceBTNClick(Sender: TObject);
 var
   SeminarSerial:Integer;
 begin
 
+  if InvoiceSQL.State in [dsEdit,dsInsert] then begin
+    InvoiceSQL.Post;
+  end;
+
+  if InvoiceSQL.UpdatesPending then begin
+   showMessage('Save or Cancel First ');
+   exit;
+  end;
+
+
   SeminarSerial:=IN_seminar_serial;
+
 
 
 //   if not InvoiceSQL.Connection.InTransaction then
@@ -474,6 +503,24 @@ begin
 //   if  InvoiceSQL.Connection.InTransaction then
 //    InvoiceSQL.Connection.Commit;
 end;
+
+procedure TI_InvoiceSeminarFRM.AnadCheckFLDMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+
+  if invoiceSQL.State in [dsBrowse] then
+    invoiceSQL.edit;
+
+
+
+    if (AnadCheckFLD.Checked) then begin
+    //CHECK VALUE before the click
+      InvoiceSQL.FieldByName('amount_gross').AsFloat :=TableSQL.FieldByName('FEE_ACTUAL').AsFloat;
+    end else begin
+      InvoiceSQL.FieldByName('amount_gross').AsFloat :=TableSQL.FieldByName('fee_with_ANAD_Sub').AsFloat;
+    end;
+
+ end;
 
 procedure TI_InvoiceSeminarFRM.Button1Click(Sender: TObject);
 var

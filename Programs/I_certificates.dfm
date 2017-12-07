@@ -673,7 +673,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
         Top = 18
         Width = 75
         Height = 20
-        Alignment = taRightJustify
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'ANAD_NUMBER'
@@ -825,7 +824,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
         Top = 73
         Width = 178
         Height = 20
-        Alignment = taRightJustify
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'SEMINAR_NAME'
@@ -926,6 +924,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       'where '
       'se.serial_number= :SeminarSerial')
     ReadOnly = True
+    Active = True
     Left = 49
     Top = 5
     ParamData = <

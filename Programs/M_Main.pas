@@ -49,7 +49,6 @@ type
     Reminders1: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
-    N10: TMenuItem;
     N11: TMenuItem;
     N12: TMenuItem;
     vt: TVirtualTable;

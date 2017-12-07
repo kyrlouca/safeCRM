@@ -3,7 +3,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Top = 153
   Caption = '--'
   ClientHeight = 577
-  ClientWidth = 1004
+  ClientWidth = 1059
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1004
+    Width = 1059
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -32,11 +32,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1004
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 996
+      Width = 1051
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -49,19 +50,21 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   object Panel4: TPanel
     Left = 0
     Top = 534
-    Width = 1004
+    Width = 1059
     Height = 43
     Align = alBottom
     TabOrder = 3
     ExplicitTop = 515
+    ExplicitWidth = 1004
     object RzPanel1: TRzPanel
-      Left = 903
+      Left = 958
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 903
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -142,37 +145,39 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 1004
+    Width = 1059
     Height = 39
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 1004
   end
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 1004
+    Width = 1059
     Height = 442
     Align = alClient
     TabOrder = 2
+    ExplicitWidth = 1004
     ExplicitHeight = 423
     object Panel5: TPanel
-      Left = 329
+      Left = 305
       Top = 1
-      Width = 671
+      Width = 750
       Height = 440
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 421
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
-        Width = 671
+        Width = 750
         Height = 36
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 671
         object wwDBNavigator2: TwwDBNavigator
           Left = 6
           Top = 15
@@ -327,21 +332,23 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       object RzPanel5: TRzPanel
         Left = 0
         Top = 397
-        Width = 671
+        Width = 750
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
         ExplicitTop = 378
+        ExplicitWidth = 671
         object RzPanel6: TRzPanel
-          Left = 570
+          Left = 649
           Top = 0
           Width = 100
           Height = 42
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitLeft = 570
         end
         object SavePresBTN: TBitBtn
           Left = 6
@@ -491,15 +498,15 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       object InvoiceGRD: TwwDBGrid
         Left = 6
         Top = 47
-        Width = 635
+        Width = 723
         Height = 313
         ControlType.Strings = (
           'IS_ANAD;CustomEdit;AnadCheckFLD;F')
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
           'FK_PERSON_SERIAL'#9'6'#9'P/P'#9#9
-          'LastName'#9'15'#9'LastName'#9#9
-          'FirstName'#9'15'#9'FirstName'#9#9
+          'LAST_NAME'#9'20'#9#917#960#943#952#949#964#959#9#9
+          'FIRST_NAME'#9'20'#9#908#957#959#956#945#9'F'#9
           'AMOUNT_GROSS'#9'9'#9'Charge'#9#9
           'IS_ANAD'#9'1'#9#913#925#913#916#9#9
           'DISCOUNT_CUSTOMER'#9'8'#9'Discount'#9#9
@@ -539,37 +546,38 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           DataSource = InvoiceSRC
           ShowText = False
           TabOrder = 0
-          OnClick = AnadCheckFLDClick
+          OnMouseDown = AnadCheckFLDMouseDown
         end
       end
     end
     object PanelX: TRzPanel
       Left = 1
       Top = 1
-      Width = 328
+      Width = 304
       Height = 440
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 421
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 328
+        Width = 304
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 328
       end
       object RzPanel4: TRzPanel
         Left = 0
         Top = 243
-        Width = 328
+        Width = 304
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
         ExplicitTop = 224
+        ExplicitWidth = 328
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -647,8 +655,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
       end
       object FirstGRP: TGroupBox
-        Left = 49
-        Top = 42
+        Left = 3
+        Top = 34
         Width = 273
         Height = 319
         Caption = #931#949#956#953#957#940#961#953#959
@@ -661,7 +669,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         TabOrder = 2
         object Label2: TLabel
           Left = 15
-          Top = 73
+          Top = 81
           Width = 58
           Height = 14
           Caption = #928#949#961#953#947#961#945#966#942
@@ -674,7 +682,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object Label3: TLabel
           Left = 19
-          Top = 28
+          Top = 22
           Width = 54
           Height = 14
           Caption = #913#961'. '#913#925#913#916
@@ -690,7 +698,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           Top = 20
           Width = 75
           Height = 20
-          Alignment = taRightJustify
           BorderOuter = fsFlat
           BorderWidth = 1
           DataField = 'ANAD_NUMBER'
@@ -698,7 +705,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object Label5: TLabel
           Left = 6
-          Top = 99
+          Top = 107
           Width = 67
           Height = 14
           Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
@@ -711,7 +718,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object Label1: TLabel
           Left = 25
-          Top = 125
+          Top = 133
           Width = 48
           Height = 14
           Caption = #928#949#961#943#959#948#959#962
@@ -724,7 +731,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object RzDBLabel1: TRzDBLabel
           Left = 79
-          Top = 123
+          Top = 131
           Width = 80
           Height = 20
           BorderOuter = fsFlat
@@ -734,7 +741,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object RzDBLabel2: TRzDBLabel
           Left = 176
-          Top = 123
+          Top = 131
           Width = 80
           Height = 20
           BorderOuter = fsFlat
@@ -792,7 +799,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           DataSource = TableSRC
         end
         object wwDBEdit1: TRzDBLabel
-          Left = 176
+          Left = 178
           Top = 251
           Width = 80
           Height = 20
@@ -815,7 +822,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object Label9: TLabel
           Left = 52
-          Top = 48
+          Top = 46
           Width = 21
           Height = 14
           Caption = #913'/'#913
@@ -839,7 +846,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object RzDBLabel5: TRzDBLabel
           Left = 79
-          Top = 70
+          Top = 78
           Width = 178
           Height = 20
           BorderOuter = fsFlat
@@ -849,7 +856,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object wwDBComboBox1: TwwDBComboBox
           Left = 79
-          Top = 96
+          Top = 104
           Width = 80
           Height = 22
           ShowButton = False
@@ -889,13 +896,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, INVOICE_S' +
         'TATUS, DATE_INVOICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTO' +
         'MER, AMOUNT_GROSS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_A' +
-        'NAD)'
+        'NAD, LAST_NAME, FIRST_NAME, PERSON_NATIONAL_ID)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :INVOI' +
         'CE_STATUS, :DATE_INVOICED, :VAT_RATE, :DISCOUNT_BY_SAFE, :DISCOU' +
         'NT_CUSTOMER, :AMOUNT_GROSS, :AMOUNT_NET, :AMOUNT_VAT, :AMOUNT_WI' +
-        'TH_VAT, :IS_ANAD)')
+        'TH_VAT, :IS_ANAD, :LAST_NAME, :FIRST_NAME, :PERSON_NATIONAL_ID)')
     SQLDelete.Strings = (
       'DELETE FROM INVOICE'
       'WHERE'
@@ -910,7 +917,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'T_RATE, DISCOUNT_BY_SAFE = :DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER ' +
         '= :DISCOUNT_CUSTOMER, AMOUNT_GROSS = :AMOUNT_GROSS, AMOUNT_NET =' +
         ' :AMOUNT_NET, AMOUNT_VAT = :AMOUNT_VAT, AMOUNT_WITH_VAT = :AMOUN' +
-        'T_WITH_VAT, IS_ANAD = :IS_ANAD'
+        'T_WITH_VAT, IS_ANAD = :IS_ANAD, LAST_NAME = :LAST_NAME, FIRST_NA' +
+        'ME = :FIRST_NAME, PERSON_NATIONAL_ID = :PERSON_NATIONAL_ID'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -918,7 +926,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, INVOI' +
         'CE_STATUS, DATE_INVOICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_C' +
         'USTOMER, AMOUNT_GROSS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, ' +
-        'IS_ANAD FROM INVOICE'
+        'IS_ANAD, LAST_NAME, FIRST_NAME, PERSON_NATIONAL_ID FROM INVOICE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -939,14 +947,15 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       'inv.*'
       'from'
       'invoice  inv '
-      'where fk_seminar_serial = :seminarSerial')
+      'where fk_seminar_serial = :seminarSerial'
+      'Order by inv.last_name')
     CachedUpdates = True
     AutoCommit = False
     Options.LongStrings = False
     Options.LocalMasterDetail = True
     Active = True
     BeforePost = InvoiceSQLBeforePost
-    Left = 153
+    Left = 145
     Top = 77
     ParamData = <
       item
@@ -966,26 +975,19 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       FieldName = 'FK_PERSON_SERIAL'
       Required = True
     end
-    object InvoiceSQLLastName: TStringField
-      DisplayWidth = 15
-      FieldKind = fkLookup
-      FieldName = 'LastName'
-      LookupDataSet = personSQL
-      LookupKeyFields = 'SERIAL_NUMBER'
-      LookupResultField = 'LAST_NAME'
-      KeyFields = 'FK_PERSON_SERIAL'
-      Lookup = True
-    end
-    object InvoiceSQLFirstName: TStringField
-      DisplayWidth = 15
-      FieldKind = fkLookup
-      FieldName = 'FirstName'
-      LookupDataSet = personSQL
-      LookupKeyFields = 'SERIAL_NUMBER'
-      LookupResultField = 'FIRST_NAME'
-      KeyFields = 'FK_PERSON_SERIAL'
+    object InvoiceSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 20
+      FieldName = 'LAST_NAME'
+      FixedChar = True
       Size = 60
-      Lookup = True
+    end
+    object InvoiceSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 20
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 60
     end
     object InvoiceSQLAMOUNT_GROSS: TFloatField
       DisplayLabel = 'Charge'
@@ -1046,6 +1048,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     object InvoiceSQLVAT_RATE: TFloatField
       FieldName = 'VAT_RATE'
       Visible = False
+    end
+    object InvoiceSQLPERSON_NATIONAL_ID: TWideStringField
+      FieldName = 'PERSON_NATIONAL_ID'
+      Visible = False
+      FixedChar = True
+      Size = 30
     end
   end
   object InvoiceSRC: TIBCDataSource
@@ -1196,9 +1204,10 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     UpdateTransaction = WriteTrans
     SQL.Strings = (
       'SELECT'
-      ' se.*'
+      ' se.*, per.last_name'
       'FROM'
-      '    Seminar se'
+      '    Seminar se left outer join'
+      '    person per on se.fk_company_person_serial =per.serial_number'
       'where '
       'se.serial_number= :SeminarSerial')
     ReadOnly = True
@@ -1215,11 +1224,20 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
+    object TableSQLANAD_NUMBER: TWideStringField
+      FieldName = 'ANAD_NUMBER'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
     object TableSQLFK_SEMINAR: TIntegerField
       FieldName = 'FK_SEMINAR'
     end
     object TableSQLFK_INSTRUCTOR: TIntegerField
       FieldName = 'FK_INSTRUCTOR'
+    end
+    object TableSQLFK_EXAMINER: TIntegerField
+      FieldName = 'FK_EXAMINER'
     end
     object TableSQLFK_VENUE: TIntegerField
       FieldName = 'FK_VENUE'
@@ -1295,15 +1313,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     object TableSQLEXPIRY_PERIOD: TIntegerField
       FieldName = 'EXPIRY_PERIOD'
     end
-    object TableSQLANAD_NUMBER: TWideStringField
-      FieldName = 'ANAD_NUMBER'
-      Required = True
-      FixedChar = True
-      Size = 30
-    end
-    object TableSQLFK_EXAMINER: TIntegerField
-      FieldName = 'FK_EXAMINER'
-    end
     object TableSQLTYPE_MONO_POLY: TWideStringField
       FieldName = 'TYPE_MONO_POLY'
       Required = True
@@ -1315,6 +1324,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Required = True
       FixedChar = True
       Size = 1
+    end
+    object TableSQLLAST_NAME: TWideStringField
+      FieldName = 'LAST_NAME'
+      ReadOnly = True
+      FixedChar = True
+      Size = 30
     end
   end
   object TableSRC: TIBCDataSource
