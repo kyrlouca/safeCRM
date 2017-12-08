@@ -94,6 +94,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    Global_UserID:String;
   end;
 
 var
@@ -107,7 +108,7 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
-  G_SFCommonProcs;
+  G_SFCommonProcs, SN_Login;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -179,6 +180,7 @@ end;
 
 procedure TM_mainFRM.LoginBTNClick(Sender: TObject);
 begin
+gpShowModal(TSN_LoginFRm);
 //TODO  Certificates
 //TODO  seminar has Status (intial, planned,ARCHIVED (for expiry) ,completed, etc,)
 //TODO   seminar-tabsheets save aux tables with ACCEPT button. Save on Close

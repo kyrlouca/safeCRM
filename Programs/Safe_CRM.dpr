@@ -32,7 +32,11 @@ uses
   L_Companies in 'L_Companies.pas' {L_companiesFRM},
   M_reminderComplete in 'M_reminderComplete.pas' {M_ReminderCompleteFRM},
   M_reminder in 'M_reminder.pas' {M_reminderFRM},
-  v_SeminarPictureTemplate in 'v_SeminarPictureTemplate.pas' {V_SeminarPictureTemplateFRM};
+  v_SeminarPictureTemplate in 'v_SeminarPictureTemplate.pas' {V_SeminarPictureTemplateFRM},
+  SN_Login in 'SN_Login.pas' {SN_LoginFRm},
+  SN_User in 'SN_User.pas' {SN_UserFRM},
+  SN_SecurityAccess in 'SN_SecurityAccess.pas' {SN_SecurityAccessFRM},
+  SN_AddUser in 'SN_AddUser.pas' {SN_AddUserFRM};
 
 {$R *.res}
 
@@ -51,6 +55,10 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
   Application.CreateForm(TH_HelpFRM, H_HelpFRM);
+  Application.CreateForm(TSN_LoginFRm, SN_LoginFRm);
+  Application.CreateForm(TSN_UserFRM, SN_UserFRM);
+  Application.CreateForm(TSN_SecurityAccessFRM, SN_SecurityAccessFRM);
+  Application.CreateForm(TSN_AddUserFRM, SN_AddUserFRM);
   //  Application.CreateForm(TM_SeminarPictureTemplateFRM, M_SeminarPictureTemplateFRM);
   //  Application.CreateForm(TM_reminderFRM1, M_reminderFRM1);
   Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);

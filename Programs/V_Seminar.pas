@@ -280,8 +280,8 @@ type
     StartDateFLD: TwwDBDateTimePicker;
     wwDBDateTimePicker1: TwwDBDateTimePicker;
     AnadFLD: TwwDBEdit;
-    RzBitBtn1: TRzBitBtn;
     IBCSQLMonitor1: TIBCSQLMonitor;
+    RzBitBtn2: TRzBitBtn;
     procedure AcceptBTNClick(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
