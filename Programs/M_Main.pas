@@ -90,6 +90,7 @@ type
     procedure N10Click(Sender: TObject);
     procedure N11Click(Sender: TObject);
     procedure N12Click(Sender: TObject);
+    procedure UserSecurity1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,7 +109,7 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
-  G_SFCommonProcs, SN_Login;
+  G_SFCommonProcs, SN_Login, SN_User;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -270,6 +271,11 @@ end;
 procedure TM_mainFRM.SystemParameters1Click(Sender: TObject);
 begin
   gpShowModal(TM_paramsFRM);
+end;
+
+procedure TM_mainFRM.UserSecurity1Click(Sender: TObject);
+begin
+gpShowModal(TSN_UserFRM);
 end;
 
 end.

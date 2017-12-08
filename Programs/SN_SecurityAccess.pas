@@ -11,12 +11,7 @@ type
   TSN_SecurityAccessFRM = class(TForm)
     SecMenu: TMainMenu;
     ScreenSQL: TIBCQuery;
-    ScreenSQLSCREEN_ID: TStringField;
-    ScreenSQLSCREEN_NAME: TStringField;
     FindSQL: TIBCQuery;
-    FindSQLUSER_ID: TStringField;
-    FindSQLSCREEN_ID: TStringField;
-    FindSQLIS_ALLOWED: TStringField;
     Panel1: TPanel;
     Panel3: TPanel;
     Panel2: TPanel;
@@ -30,6 +25,13 @@ type
     Label2: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
+    ReadTrans: TIBCTransaction;
+    WriteTrans: TIBCTransaction;
+    FindSQLUSER_ID: TWideStringField;
+    FindSQLSCREEN_ID: TWideStringField;
+    FindSQLIS_ALLOWED: TWideStringField;
+    ScreenSQLSCREEN_ID: TWideStringField;
+    ScreenSQLSCREEN_NAME: TWideStringField;
     procedure AddMenuBTNClick(Sender: TObject);
     procedure FreeMenuBTNClick(Sender: TObject);
     procedure ItemClick(Sender: TObject);

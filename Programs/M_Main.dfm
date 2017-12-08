@@ -7522,6 +7522,7 @@ object M_mainFRM: TM_mainFRM
         Caption = 'Security'
         object UserSecurity1: TMenuItem
           Caption = 'User Security'
+          OnClick = UserSecurity1Click
         end
       end
       object Params1: TMenuItem

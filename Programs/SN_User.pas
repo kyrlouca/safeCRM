@@ -25,9 +25,9 @@ type
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     UserTBL: TIBCQuery;
-    UserTBLUSER_ID: TStringField;
-    UserTBLUSER_PASSWORD: TStringField;
-    UserTBLUSER_NAME: TStringField;
+    UserTBLUSER_ID: TWideStringField;
+    UserTBLUSER_PASSWORD: TWideStringField;
+    UserTBLUSER_NAME: TWideStringField;
     UserTBLFK_USER_STATION: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure wwDBLookupCombo1NotInList(Sender: TObject;

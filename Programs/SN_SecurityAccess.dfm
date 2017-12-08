@@ -2,7 +2,7 @@ object SN_SecurityAccessFRM: TSN_SecurityAccessFRM
   Left = 181
   Top = 206
   Caption = 'Security Access'
-  ClientHeight = 530
+  ClientHeight = 550
   ClientWidth = 884
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -31,11 +31,10 @@ object SN_SecurityAccessFRM: TSN_SecurityAccessFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 150
   end
   object Panel3: TPanel
     Left = 0
-    Top = 480
+    Top = 500
     Width = 884
     Height = 50
     Align = alBottom
@@ -50,9 +49,6 @@ object SN_SecurityAccessFRM: TSN_SecurityAccessFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 744
-      ExplicitTop = 1
-      ExplicitHeight = 51
       object RzBitBtn1: TRzBitBtn
         Left = 14
         Top = 4
@@ -134,11 +130,11 @@ object SN_SecurityAccessFRM: TSN_SecurityAccessFRM
     Left = 0
     Top = 49
     Width = 884
-    Height = 431
+    Height = 451
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 150
-    ExplicitHeight = 577
+    ExplicitLeft = 368
+    ExplicitTop = 73
     object AddMenuBTN: TButton
       Left = 8
       Top = 216
@@ -269,13 +265,45 @@ object SN_SecurityAccessFRM: TSN_SecurityAccessFRM
     Top = 128
   end
   object ScreenSQL: TIBCQuery
+    SQLInsert.Strings = (
+      'INSERT INTO SECURITY_SCREEN'
+      '  (SCREEN_ID, SCREEN_NAME)'
+      'VALUES'
+      '  (:SCREEN_ID, :SCREEN_NAME)')
+    SQLDelete.Strings = (
+      'DELETE FROM SECURITY_SCREEN'
+      'WHERE'
+      '  SCREEN_ID = :Old_SCREEN_ID')
+    SQLUpdate.Strings = (
+      'UPDATE SECURITY_SCREEN'
+      'SET'
+      '  SCREEN_ID = :SCREEN_ID, SCREEN_NAME = :SCREEN_NAME'
+      'WHERE'
+      '  SCREEN_ID = :Old_SCREEN_ID')
+    SQLRefresh.Strings = (
+      'SELECT SCREEN_ID, SCREEN_NAME FROM SECURITY_SCREEN'
+      'WHERE'
+      '  SCREEN_ID = :SCREEN_ID')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SECURITY_SCREEN'
+      'WHERE'
+      'SCREEN_ID = :Old_SCREEN_ID'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SECURITY_SCREEN'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
     SQL.Strings = (
       'select * from SECURITY_SCREEN'
       'WHERE'
       '     SCREEN_ID= :TheScreen;'
       ' ')
-    Left = 592
-    Top = 204
+    Left = 88
+    Top = 348
     ParamData = <
       item
         DataType = ftString
@@ -283,28 +311,62 @@ object SN_SecurityAccessFRM: TSN_SecurityAccessFRM
         ParamType = ptInput
         Value = nil
       end>
-    object ScreenSQLSCREEN_ID: TStringField
+    object ScreenSQLSCREEN_ID: TWideStringField
       FieldName = 'SCREEN_ID'
-      Origin = 'THERMMS.SEC_SCREEN.SCREEN_ID'
+      Required = True
       FixedChar = True
       Size = 60
     end
-    object ScreenSQLSCREEN_NAME: TStringField
+    object ScreenSQLSCREEN_NAME: TWideStringField
       FieldName = 'SCREEN_NAME'
-      Origin = 'THERMMS.SEC_SCREEN.SCREEN_NAME'
+      Required = True
       FixedChar = True
       Size = 80
     end
   end
   object FindSQL: TIBCQuery
+    SQLInsert.Strings = (
+      'INSERT INTO SECURITY_USER_SCREEN'
+      '  (USER_ID, SCREEN_ID, IS_ALLOWED)'
+      'VALUES'
+      '  (:USER_ID, :SCREEN_ID, :IS_ALLOWED)')
+    SQLDelete.Strings = (
+      'DELETE FROM SECURITY_USER_SCREEN'
+      'WHERE'
+      '  USER_ID = :Old_USER_ID AND SCREEN_ID = :Old_SCREEN_ID')
+    SQLUpdate.Strings = (
+      'UPDATE SECURITY_USER_SCREEN'
+      'SET'
+      
+        '  USER_ID = :USER_ID, SCREEN_ID = :SCREEN_ID, IS_ALLOWED = :IS_A' +
+        'LLOWED'
+      'WHERE'
+      '  USER_ID = :Old_USER_ID AND SCREEN_ID = :Old_SCREEN_ID')
+    SQLRefresh.Strings = (
+      'SELECT USER_ID, SCREEN_ID, IS_ALLOWED FROM SECURITY_USER_SCREEN'
+      'WHERE'
+      '  USER_ID = :USER_ID AND SCREEN_ID = :SCREEN_ID')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SECURITY_USER_SCREEN'
+      'WHERE'
+      'USER_ID = :Old_USER_ID AND SCREEN_ID = :Old_SCREEN_ID'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SECURITY_USER_SCREEN'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
     SQL.Strings = (
       'select * from SECURITY_USER_SCREEN'
       'WHERE'
       '     USER_ID = :TheUser and'
       '     SCREEN_ID= :TheScreen;'
       ' ')
-    Left = 600
-    Top = 276
+    Left = 144
+    Top = 340
     ParamData = <
       item
         DataType = ftString
@@ -318,23 +380,33 @@ object SN_SecurityAccessFRM: TSN_SecurityAccessFRM
         ParamType = ptInput
         Value = nil
       end>
-    object FindSQLUSER_ID: TStringField
+    object FindSQLUSER_ID: TWideStringField
       FieldName = 'USER_ID'
-      Origin = 'THERMMS.SEC_USER_SCREEN.USER_ID'
+      Required = True
       FixedChar = True
-      Size = 3
+      Size = 15
     end
-    object FindSQLSCREEN_ID: TStringField
+    object FindSQLSCREEN_ID: TWideStringField
       FieldName = 'SCREEN_ID'
-      Origin = 'THERMMS.SEC_USER_SCREEN.SCREEN_ID'
+      Required = True
       FixedChar = True
       Size = 60
     end
-    object FindSQLIS_ALLOWED: TStringField
+    object FindSQLIS_ALLOWED: TWideStringField
       FieldName = 'IS_ALLOWED'
-      Origin = 'THERMMS.SEC_USER_SCREEN.IS_ALLOWED'
       FixedChar = True
       Size = 1
     end
+  end
+  object ReadTrans: TIBCTransaction
+    DefaultConnection = U_databaseFRM.DataConnection
+    IsolationLevel = iblReadOnlyReadCommitted
+    Left = 40
+    Top = 17
+  end
+  object WriteTrans: TIBCTransaction
+    DefaultConnection = U_databaseFRM.DataConnection
+    Left = 40
+    Top = 69
   end
 end

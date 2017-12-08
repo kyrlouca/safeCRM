@@ -30,9 +30,9 @@ type
     WriteTrans: TIBCTransaction;
     TableSRC: TIBCDataSource;
     TableSQL: TIBCQuery;
-    TableSQLUSER_ID: TStringField;
-    TableSQLUSER_PASSWORD: TStringField;
-    TableSQLUSER_NAME: TStringField;
+    TableSQLUSER_ID: TWideStringField;
+    TableSQLUSER_PASSWORD: TWideStringField;
+    TableSQLUSER_NAME: TWideStringField;
     TableSQLFK_USER_STATION: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
