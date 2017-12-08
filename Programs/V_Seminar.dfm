@@ -104,14 +104,13 @@ object V_SeminarFRM: TV_SeminarFRM
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitHeight = 636
     object PageControlPC: TRzPageControl
       Left = 2
       Top = 2
       Width = 919
       Height = 689
       Hint = ''
-      ActivePage = StudentsTS
+      ActivePage = CertificationTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -120,15 +119,13 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 2
+      TabIndex = 5
       TabOrder = 0
       OnChanging = PageControlPCChanging
-      ExplicitHeight = 589
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
-        ExplicitHeight = 563
         object SecondGRP: TRzGroupBox
           Left = 404
           Top = 23
@@ -814,7 +811,6 @@ object V_SeminarFRM: TV_SeminarFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitHeight = 563
         object RzPanel5: TRzPanel
           Left = 0
           Top = 0
@@ -832,7 +828,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 1
-          ExplicitHeight = 538
           object RzPanel7: TRzPanel
             Left = 0
             Top = 0
@@ -841,8 +836,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitLeft = 6
-            ExplicitTop = -25
           end
           object GroupBox2: TGroupBox
             Left = 97
@@ -858,7 +851,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
             TabOrder = 1
-            ExplicitHeight = 538
             object RzPanel8: TRzPanel
               Left = 2
               Top = 16
@@ -1022,7 +1014,6 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
-              ExplicitHeight = 495
               object SeminarDayFLD: TwwDBDateTimePicker
                 Left = -16
                 Top = 200
@@ -1057,7 +1048,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 2
-          ExplicitHeight = 538
           object RzPanel6: TRzPanel
             Left = 2
             Top = 16
@@ -1224,7 +1214,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object StudentsTS: TRzTabSheet
         OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
-        ExplicitHeight = 563
         object RzPanel2: TRzPanel
           Left = 0
           Top = 0
@@ -1248,7 +1237,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitHeight = 545
           object RzSizePanel2: TRzSizePanel
             Left = 1
             Top = 15
@@ -1286,7 +1274,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitHeight = 500
           end
         end
         object RzPanel3: TRzPanel
@@ -1297,7 +1284,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitHeight = 545
           object ToRightBTN: TBitBtn
             Left = 3
             Top = 141
@@ -1457,7 +1443,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 3
-          ExplicitHeight = 545
           object AllPersonsGRD: TwwDBGrid
             Left = 1
             Top = 57
@@ -1497,7 +1482,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = True
             OnDblClick = AllPersonsGRDDblClick
             OnKeyDown = AllPersonsGRDKeyDown
-            ExplicitHeight = 487
           end
           object RzSizePanel1: TRzSizePanel
             Left = 1
@@ -1529,7 +1513,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object CostTS: TRzTabSheet
         OnShow = CostTSShow
         Caption = #922#972#963#964#959#962
-        ExplicitHeight = 563
         object RzPanel10: TRzPanel
           Left = 0
           Top = 0
@@ -1553,7 +1536,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          ExplicitHeight = 538
           object RzPanel11: TRzPanel
             Left = 2
             Top = 16
@@ -1698,11 +1680,11 @@ object V_SeminarFRM: TV_SeminarFRM
             ControlType.Strings = (
               'FK_COST_ITEM;CustomEdit;CostTypeFLD;T')
             Selected.Strings = (
-              'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
-              'FK_COST_ITEM'#9'10'#9#932#973#960#959#962' '#922#972#963#964#959#965#962#9#9
-              'NUMBER_OF_ITEMS'#9'15'#9#913#961#953#952#956#972#962' '#924#959#957#940#948#969#957#9#9
-              'AMOUNT_PER_ITEM'#9'14'#9#922#972#963#964#959#962'/'#924#959#957#940#948#945#9#9
-              'TotalAmnt'#9'10'#9#931#973#957#959#955#959#9#9)
+              'SERIAL_NUMBER'#9'10'#9'A/A'
+              'FK_COST_ITEM'#9'10'#9#932#973#960#959#962' '#922#972#963#964#959#965#962
+              'NUMBER_OF_ITEMS'#9'15'#9#913#961#953#952#956#972#962' '#924#959#957#940#948#969#957
+              'AMOUNT_PER_ITEM'#9'14'#9#922#972#963#964#959#962'/'#924#959#957#940#948#945
+              'TotalAmnt'#9'10'#9#931#973#957#959#955#959)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -1722,7 +1704,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleButtons = False
             OnUpdateFooter = CostGRDUpdateFooter
             StyleElements = [seFont, seClient]
-            ExplicitHeight = 487
             object CostTypeFLD: TwwDBLookupCombo
               Left = 183
               Top = 88
@@ -1751,7 +1732,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        ExplicitHeight = 563
         object GroupBox4: TGroupBox
           Left = 0
           Top = 25
@@ -1768,7 +1748,6 @@ object V_SeminarFRM: TV_SeminarFRM
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          ExplicitHeight = 538
           object RzPanel12: TRzPanel
             Left = 1
             Top = 15
@@ -1814,7 +1793,6 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitHeight = 512
             object AfterFLD: TwwDBComboBox
               Left = 94
               Top = 81
@@ -2228,10 +2206,9 @@ object V_SeminarFRM: TV_SeminarFRM
         OnShow = CertificationTSShow
         Caption = #928#959#953#963#964#959#960#959#953#951#964#953#954#940
         OnExit = CertificationTSExit
-        ExplicitHeight = 563
         object PictureGRP: TRzGroupBox
           Left = 24
-          Top = 102
+          Top = 104
           Width = 1002
           Height = 558
           Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -2243,7 +2220,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          OnMouseDown = PICTURE_TOP_L1MouseDown
           object SelTopLeftBTN: TRzBitBtn
             Left = 21
             Top = 100
@@ -3152,7 +3128,6 @@ object V_SeminarFRM: TV_SeminarFRM
       Align = alBottom
       BorderOuter = fsFlatRounded
       TabOrder = 1
-      ExplicitTop = 591
       object RzPanel1: TRzPanel
         Left = 817
         Top = 2
@@ -3381,6 +3356,84 @@ object V_SeminarFRM: TV_SeminarFRM
         TabOrder = 2
         OnClick = CanelBTNClick
       end
+      object RzBitBtn1: TRzBitBtn
+        Left = 251
+        Top = 6
+        Width = 135
+        Height = 37
+        Alignment = taLeftJustify
+        Caption = 'Edit Seminar'
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        LightTextStyle = True
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 3
+        OnClick = RzBitBtn1Click
+        Glyph.Data = {
+          F6060000424DF606000000000000360000002800000018000000180000000100
+          180000000000C006000000000000000000000000000000000000FFFFFFF8F8F8
+          FBFBFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFD0CFCF393939454133869297D0E9F3E4F8FFF4FCFFFBFEFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFEEF0F08988874B454460747995D1E4A4EBFF99
+          E2FF97E1FFDBF3FFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F7F8948B87787A7A95B9
+          C3B6F1FFB3EEFFB3EEFFB5EFFFA7E2FFE4F5FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9FAFB
+          889BA2A2C4CFB9ECFABCF2FFBBEFFFC1F1FFBEEFFFA1E3FF99DBFFE8F7FFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFEFFFFA6DBF2C0F5FFC6F5FFC5F2FFCAF4FFCEF5FFBAEDFF90DAFB
+          8CDBFD9DDCFFEDF9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB4E8FFBCEDFFD0F6FFD6F8FFD8F8FFC8
+          F2FF98DAFE6EC8F775CEF58DDBFCA1DEFFEFF8FFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB1E6FFC6F0FFDCF9
+          FFDDFAFFC8F0FF97D7FF5EB8FC5BB9F967C4F579D1F78DDAFCA4DFFFF4FBFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          D5F1FFB0E5FFAFE4FDA1DDFD79C8FD42A5FF44A5FF51B1FD5CBBF968C4F679CF
+          F58DDAFDA6E0FFF9FDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFC2E6FA46B2F130A3F32498F6319CFB3CA1FF46A8FF
+          52B0FD5EBBF969C5F679D0F68EDAFCA8E0FFFEFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA3D7F51E99EC239AF22C
+          9CF7359EFC3DA1FF48A8FF54B2FC5FBDF96BC5F67AD0F78DDBFCACE1FFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FF9ED5F61F9BEE259BF32E9DF8369FFD3EA3FF49ABFF55B4FC61BEF96BC8F67C
+          D3F790DCFDB1E2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFF97D1F61E9AED269BF42F9DFA389FFD41A4FF4DAC
+          FF57B6FC63C0F76FC9F583D6F88FDBFEB7E4FFFEFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF90CEF41E9AEF279BF5
+          309DFA399FFD42A5FF4EADFF58B7FB64C0F770CAF684D6F88CDBFFDFEFF7FFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFF8ECEF41E99EE279BF5309CFA389FFE43A4FF4DADFF59B8FA64C2F771CCF6
+          8DD5F45D7F87797978FEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFF8CCDF51F99EF289AF5319CFA399FFE42A4FF4F
+          AEFE59B8FC6CC5F86BA9C74B4A4A2B2B2B5C5C5CF7F7FCFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAFDFF8BCCF41F99F0289A
+          F5309DFA39A0FE41A4FF50AFFF7DBEEEA6A9AE5F5F6039393A3D3D3C7472D9FF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FAFDFF8CCDF42099EE289AF52C9CFC3BA3FE8EC9FDE4EAF4AEAEB16C6C6E6F6F
+          715D5A8C675FDDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFF9FDFF83C8F41697F0449EE386ACCEB1B1B4ABABAF
+          919194BABABEA8A6B17D6FD97064D3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAFDFFC8D6DEBAB9B98C
+          8C8C626262818182CACACDEEECF69A88DB836ED47C6BC8FFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFBFBFBDEDDDCC3C3C3939393929094BAB1CAAE99D89277CC8067BE9B8CCBFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFF8F8F8AAA8B27C6C9D866AB3977BBF8D6EB98164
+          B1836DB4E8E4F2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5F4F7A799C37359A0
+          7458A1795EA39A87BCE5E1EFFEFDFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFF7F6FAE1DCEBD5CCE2DDD7E8F9F8FBFFFFFFFFFFFFFFFFFF}
+        Margin = -1
+        Spacing = 8
+      end
     end
   end
   object SeminarSRC: TDataSource
@@ -3595,7 +3648,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800B80210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800C80210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

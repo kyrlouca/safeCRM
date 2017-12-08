@@ -6,21 +6,25 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Mask, DBCtrls, Db, wwSpeedButton, wwDBNavigator,
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
-  DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
-  G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  System.ImageList,System.DateUtils, System.TypInfo,Vcl.ImgList, RzTabs, vcl.wwcheckbox, RzSplit, RzPopups,
+  DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot,
+    vcl.Wwdbcomb,
+  G_KyrSQL, G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl,
+    vcl.Wwdbdatetimepicker,
+  System.ImageList, System.DateUtils, System.TypInfo, Vcl.ImgList, RzTabs,
+    vcl.wwcheckbox, RzSplit, RzPopups,
   Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
-  vcl.wwradiogroup, RzRadChk, RzDBChk,G_debugUnit,codeSiteLogging,CodeSiteMessage,
+  vcl.wwradiogroup, RzRadChk, RzDBChk, G_debugUnit, codeSiteLogging,
+    CodeSiteMessage,
   Vcl.ExtDlgs, vcl.wwriched, Vcl.Menus, RzCmboBx, RzDBCmbo;
 type
 //Function TV_SeminarFRM.FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
-  TactionDateRec= record
-    StartDate:Tdate;
-    EndDate:Tdate;
-    UseStartDate:boolean;
-    isAfter:boolean;
-    isDayUnit:Boolean;
-    NumberOfUnits:Integer;
+  TactionDateRec = record
+    StartDate: Tdate;
+    EndDate: Tdate;
+    UseStartDate: boolean;
+    isAfter: boolean;
+    isDayUnit: Boolean;
+    NumberOfUnits: Integer;
   end;
 
   TV_SeminarFRM = class(TForm)
@@ -308,6 +312,7 @@ type
     StartDateFLD: TwwDBDateTimePicker;
     wwDBDateTimePicker1: TwwDBDateTimePicker;
     AnadFLD: TwwDBEdit;
+    RzBitBtn1: TRzBitBtn;
     procedure AcceptBTNClick(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -356,42 +361,43 @@ type
     procedure PICTURE_TOP_L1DblClick(Sender: TObject);
     procedure SeminarCostItemSQLNewRecord(DataSet: TDataSet);
     procedure SeminarDaySQLBeforeInsert(DataSet: TDataSet);
+    procedure RzBitBtn1Click(Sender: TObject);
   private
     { Private declarations }
-    cn:TIBCConnection;
+    cn: TIBCConnection;
 //  Function FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
 
-  procedure CheckPicturesX(COnst TypeSerial:Integer);
-  function  SelectPictureX(var img :TImage):Boolean;
-  procedure ShowPictureDataX(Const TypeSerial:Integer;Const  Language:String);
-  procedure ShowPictureX(Const TypeSerial:Integer;Const aFieldName :String;Const  Language:String;img:TImage);
-  procedure SavePictureX(Const SeminarSerial:Integer;Const aFieldName:String; Const Language:String;img:Timage);
-  procedure SelectAndSavePictureX(Const SeminarSerial:Integer;Const Language:String; img:TImage);
-  procedure ClearPictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
+    procedure CheckPicturesX(const TypeSerial: Integer);
+    function SelectPictureX(var img: TImage): Boolean;
+    procedure ShowPictureDataX(const TypeSerial: Integer; const Language:
+      string);
+    procedure ShowPictureX(const TypeSerial: Integer; const aFieldName: string;
+      const Language: string; img: TImage);
+    procedure SavePictureX(const SeminarSerial: Integer; const aFieldName:
+      string; const Language: string; img: Timage);
+    procedure SelectAndSavePictureX(const SeminarSerial: Integer; const
+      Language: string; img: TImage);
+    procedure ClearPictureX(const SeminarSerial: Integer; const aFieldName:
+      string; const Language: string; img: Timage);
 
+    function allowToModify(): Boolean;
 
-  function allowToModify():Boolean;
+    function FindActionDate(ActionDateRec: TActionDateRec): Tdate;
 
+    procedure StartSeminar(const SeminarSerial: integer);
+    procedure EditSeminar(const SeminarSerial: integer);
+    procedure RemovePerson();
+    procedure InsertPerson();
+    procedure UseSeminarTemplate(const SeminarSerial, TypeSerial: Integer);
+    procedure GetReminderFromTemplate(const SeminarSerial, TypeSerial: Integer);
+    procedure GetTemplatePIctures(const SeminarSerial, TypeSerial: Integer);
 
-  Function FindActionDate(ActionDateRec:TActionDateRec):Tdate;
-
-
-  Procedure StartSeminar(Const SeminarSerial:integer);
-  Procedure EditSeminar(Const SeminarSerial:integer);
-  procedure RemovePerson();
-  procedure InsertPerson();
-  procedure UseSeminarTemplate(Const SeminarSerial, TypeSerial:Integer);
-   procedure GetReminderFromTemplate(Const SeminarSerial, TypeSerial:Integer);
- procedure  GetTemplatePIctures(Const SeminarSerial, TypeSerial:Integer);
-
-  Function UpdateCostFooter(Const SeminarSerial:Integer):Double;
-
-
+    function UpdateCostFooter(const SeminarSerial: Integer): Double;
 
   public
     { Public declarations }
-    IN_ACTION:String;
-    IN_SEMINAR_SERIAL:Integer;
+    IN_ACTION: string;
+    IN_SEMINAR_SERIAL: Integer;
 
   end;
 
@@ -400,9 +406,8 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs,
-  H_Help;
-
+uses U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs,
+  H_Help, v_SeminarPictureTemplate;
 
 {$R *.DFM}
 
@@ -422,40 +427,40 @@ end;
 
 procedure TV_SeminarFRM.BitBtn2Click(Sender: TObject);
 var
-  seminarSerial:Integer;
+  seminarSerial: Integer;
 begin
 
-  seminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+  seminarSerial := SeminarSQL.FieldByName('serial_number').AsInteger;
   StartSeminar(seminarSerial);
   SeminarSQL.Refresh;
 end;
 
-
-
 procedure TV_SeminarFRM.ReminderTSShow(Sender: TObject);
 begin
-ksOpenTables([SeminarReminderSQL]);
+  ksOpenTables([SeminarReminderSQL]);
 
 end;
 
 procedure TV_SeminarFRM.Certifcates1Click(Sender: TObject);
-vAR
-  Frm:TH_HelpFRM;
+var
+  Frm: TH_HelpFRM;
 begin
   frm := TH_HelpFRM.Create(nil);
   try
 
-    frm.IN_RtfTExt:=certificatesHelpRE.Text;
-    frm.IN_RichEdit:=certificatesHelpRE;
+    frm.IN_RtfTExt := certificatesHelpRE.Text;
+    frm.IN_RichEdit := certificatesHelpRE;
     frm.ShowModal;
   finally
     frm.Free;
   end;
 end;
 
+
 procedure TV_SeminarFRM.CertificationTSExit(Sender: TObject);
 begin
-  If SeminarPictureSQL.State in [dsEdit,dsInsert] then begin
+  if SeminarPictureSQL.State in [dsEdit, dsInsert] then
+  begin
     SeminarPictureSQL.Post;
   end;
 
@@ -463,52 +468,51 @@ end;
 
 procedure TV_SeminarFRM.CertificationTSShow(Sender: TObject);
 var
-  SeminarSerial:Integer;
-  allowModify:boolean;
-  i:Integer;
-  item:TComponent;
-  controlItem:TControl;
-  tabSheet:TrzTabSheet;
-  vCnt:Integer;
-  control:Tcontrol;
+  SeminarSerial: Integer;
+  allowModify: boolean;
+  i: Integer;
+  item: TComponent;
+  controlItem: TControl;
+  tabSheet: TrzTabSheet;
+  vCnt: Integer;
+  control: Tcontrol;
 begin
-  allowModify:=AllowToModify();
-  PictureGRP.Enabled:=allowModify;
+  allowModify := AllowToModify();
+  PictureGRP.Enabled := allowModify;
 
-
-
-
-
-
-  SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
-  LanguageRGP.ItemIndex:=0;
+  SeminarSerial := SeminarSQL.FieldByName('serial_number').AsInteger;
+  LanguageRGP.ItemIndex := 0;
 //  showMessage(LanguageRGP.Values[LanguageRGP.ItemIndex]);
 //  showMessage(languageRGP.Value);
   CheckPicturesX(SeminarSerial);
-  SHowPictureX(SeminarSerial,Picture_top_l1.Name,'G',Picture_top_L1);
-  SHowPictureX(SeminarSerial,Picture_top_R1.Name,'G',Picture_top_R1);
-  SHowPictureX(SeminarSerial,Picture_bot_l1.Name,'G',Picture_bot_L1);
-  SHowPictureX(SeminarSerial,Picture_bot_R1.Name,'G',Picture_bot_R1);
-  SHowPictureDataX(SeminarSerial,'G');
+  SHowPictureX(SeminarSerial, Picture_top_l1.Name, 'G', Picture_top_L1);
+  SHowPictureX(SeminarSerial, Picture_top_R1.Name, 'G', Picture_top_R1);
+  SHowPictureX(SeminarSerial, Picture_bot_l1.Name, 'G', Picture_bot_L1);
+  SHowPictureX(SeminarSerial, Picture_bot_R1.Name, 'G', Picture_bot_R1);
+  SHowPictureDataX(SeminarSerial, 'G');
 
 end;
 
 procedure TV_SeminarFRM.PICTURE_TOP_L1DblClick(Sender: TObject);
 begin
-  SelectAndSavePictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,LanguageRGP.Values[LanguageRGP.ItemIndex],TImage(Sender));
+  SelectAndSavePictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,
+    LanguageRGP.Values[LanguageRGP.ItemIndex], TImage(Sender));
 end;
 
 procedure TV_SeminarFRM.PICTURE_TOP_L1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  if (ssCtrl in Shift) then begin
-    ClearPictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,TImage(sender).name, LanguageRGP.Values[LanguageRGP.ItemIndex],TImage(Sender));
+  if (ssCtrl in Shift) then
+  begin
+    ClearPictureX(SeminarSQL.fieldbyName('serial_number').AsInteger,
+      TImage(sender).name, LanguageRGP.Values[LanguageRGP.ItemIndex],
+      TImage(Sender));
   end;
 end;
 
 procedure TV_SeminarFRM.ToLeftBTNClick(Sender: TObject);
 begin
-InsertPerson();
+  InsertPerson();
 end;
 
 procedure TV_SeminarFRM.ToRightBTNClick(Sender: TObject);
@@ -518,64 +522,69 @@ end;
 
 procedure TV_SeminarFRM.SeminarCostItemSQLCalcFields(DataSet: TDataSet);
 begin
-dataset.FieldByName('totalAmnt').Value:=Dataset.FieldByName('AMOUNT_PER_ITEM').AsFloat
-* Dataset.FieldByName('NUMBER_OF_ITEMS').AsInteger;
+  dataset.FieldByName('totalAmnt').Value :=
+    Dataset.FieldByName('AMOUNT_PER_ITEM').AsFloat
+    * Dataset.FieldByName('NUMBER_OF_ITEMS').AsInteger;
 end;
 
 procedure TV_SeminarFRM.SeminarCostItemSQLNewRecord(DataSet: TDataSet);
 var
-  cnt:Integer;
-  SEminarSerial:Integer;
+  cnt: Integer;
+  SEminarSerial: Integer;
 begin
-  SEminarSErial:=SeminarSQL.FieldByName('serial_number').AsInteger;
-  cnt := ksCountRecVarSQL(cn,'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial',[SeminarSerial]);
-  Dataset.FieldByName('Number_of_items').Value:= cnt;
+  SEminarSErial := SeminarSQL.FieldByName('serial_number').AsInteger;
+  cnt := ksCountRecVarSQL(cn,
+    'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial',
+    [SeminarSerial]);
+  Dataset.FieldByName('Number_of_items').Value := cnt;
 
   CostGRD.setfocus;
   CostGRD.SetActiveField('FK_COst_item');
-
 
 end;
 
 procedure TV_SeminarFRM.SeminarDaySQLBeforeInsert(DataSet: TDataSet);
 begin
-if seminarSubjectSQL.State in [dsEdit,dsInsert] then
-  seminarSubjectSQL.Post;
+  if seminarSubjectSQL.State in [dsEdit, dsInsert] then
+    seminarSubjectSQL.Post;
 
 end;
 
 procedure TV_SeminarFRM.SeminarReminderSQLNewRecord(DataSet: TDataSet);
 begin
 
-  Dataset.FieldByName('reminder_type').Value:='S';
-  Dataset.FieldByName('PERSON_OR_SEMINAR').Value:='S';
-  Dataset.FieldByName('is_completed').Value:='N';
+  Dataset.FieldByName('reminder_type').Value := 'S';
+  Dataset.FieldByName('PERSON_OR_SEMINAR').Value := 'S';
+  Dataset.FieldByName('is_completed').Value := 'N';
 end;
 
 procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
 begin
-Dataset.FieldByName('Status').Value:='P';
-Dataset.FieldByName('ANAD_APPROVED').Value:='Y';
-Dataset.FieldByName('TYPE_MONo_pOLY').Value:='P';
-Dataset.FieldByName('sem_category').Value:='N';
-Dataset.FieldByName('is_invoiced').Value:='N';
-Dataset.FieldByName('is_certificated').Value:='N';
-Dataset.FieldByName('Max_capacity').Value:=0;
-Dataset.FieldByName('hAS_EXPIRY').Value:='N';
+  Dataset.FieldByName('Status').Value := 'P';
+  Dataset.FieldByName('ANAD_APPROVED').Value := 'Y';
+  Dataset.FieldByName('TYPE_MONo_pOLY').Value := 'P';
+  Dataset.FieldByName('sem_category').Value := 'N';
+  Dataset.FieldByName('is_invoiced').Value := 'N';
+  Dataset.FieldByName('is_certificated').Value := 'N';
+  Dataset.FieldByName('Max_capacity').Value := 0;
+  Dataset.FieldByName('hAS_EXPIRY').Value := 'N';
 
 end;
 
 procedure TV_SeminarFRM.SeminarSRCStateChange(Sender: TObject);
 begin
 
-
-  with SeminarSQL do begin
-     If State<>dsInsert then begin
+  with SeminarSQL do
+  begin
+    if State <> dsInsert then
+    begin
 //         StationIDFLD.Enabled:=false;
-     end  else begin
+    end
+    else
+    begin
 //         StationIDFLD.Enabled:=true;
-     end;
-  end;//with
+    end;
+  end; //with
 
 end;
 
@@ -586,252 +595,267 @@ begin
   AnadFLD.SetFocus;
 end;
 
-
 procedure TV_SeminarFRM.SeminarTypeFLDCloseUp(Sender: TwwDBComboBox;
   Select: Boolean);
 var
-  TypeSerial:Integer;
-  SeminarSerial:Integer;
+  TypeSerial: Integer;
+  SeminarSerial: Integer;
 //  ReminderSerial:Integer;
 begin
- if SeminarSQL.State in [dsEdit,dsInsert] then begin
-   DescFLD.Text:=seminarTypeFLD.Text;
-   SeminarSQL.Post;
- end;
+  if SeminarSQL.State in [dsEdit, dsInsert] then
+  begin
+    DescFLD.Text := seminarTypeFLD.Text;
+    SeminarSQL.Post;
+  end;
 
- SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
- TYpeserial:=SeminarSQL.FieldByName('FK_Seminar').AsInteger;
- if (not select) or (Seminarserial<1) or (TypeSerial<1) then exit;
- UseSeminarTEmplate(SeminarSerial,TypeSerial);
- GetReminderFromTemplate(SEminarSerial,TYpeSerial);
- GetTemplatePIctures(SEminarSerial,TYpeSerial);
-
+  SeminarSerial := SeminarSQL.FieldByName('serial_number').AsInteger;
+  TYpeserial := SeminarSQL.FieldByName('FK_Seminar').AsInteger;
+  if (not select) or (Seminarserial < 1) or (TypeSerial < 1) then
+    exit;
+  UseSeminarTEmplate(SeminarSerial, TypeSerial);
+  GetReminderFromTemplate(SEminarSerial, TYpeSerial);
+  GetTemplatePIctures(SEminarSerial, TYpeSerial);
 
   SeminarSQL.close;
-  seminarSQL.ParamByName('serialNumber').Value:=seminarSerial;
+  seminarSQL.ParamByName('serialNumber').Value := seminarSerial;
   seminarSQL.Open;
   DescFLD.SetFocus;
 
 end;
 
-procedure TV_SeminarFRM.UseSeminarTemplate(Const SeminarSerial, TypeSerial:Integer);
+procedure TV_SeminarFRM.UseSeminarTemplate(const SeminarSerial, TypeSerial:
+  Integer);
 var
-  serial:Integer;
-  subjectSerial:Integer;
-  qr:TksQuery;
-   fhours, fdays:integer;
-   fName,fAnad:String;
-   fcost:double;
-   FFeeActual:Double;
-   fFeeANad:double;
-   fMaxCapacity:Integer;
-   fexpiry:String;
-   fexpiryMonths:Integer;
-   str:String;
+  serial: Integer;
+  subjectSerial: Integer;
+  qr: TksQuery;
+  fhours, fdays: integer;
+  fName, fAnad: string;
+  fcost: double;
+  FFeeActual: Double;
+  fFeeANad: double;
+  fMaxCapacity: Integer;
+  fexpiry: string;
+  fexpiryMonths: Integer;
+  str: string;
 begin
 
+  qr := TksQuery.Create(cn,
+    'select * from seminar_type where serial_number= :serial');
+  try
+    qr.ParamByName('serial').Value := TYpeSerial;
+    qr.Open;
 
- qr:=TksQuery.Create(cn,'select * from seminar_type where serial_number= :serial');
- try
-   qr.ParamByName('serial').Value:=TYpeSerial;
-   qr.Open;
-
-   fname:=qr.FieldByName('seminar_name').AsString;
-   fAnad:=   qr.FieldByName('ANAD_APPROVED').AsString;
-   fhours:=qr.FieldByName('DURATION_HOURS').AsInteger;;
-   fMaxCapacity:=  qr.FieldByName('Max_capacity').AsInteger;
+    fname := qr.FieldByName('seminar_name').AsString;
+    fAnad := qr.FieldByName('ANAD_APPROVED').AsString;
+    fhours := qr.FieldByName('DURATION_HOURS').AsInteger;
+    ;
+    fMaxCapacity := qr.FieldByName('Max_capacity').AsInteger;
 //   fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
-   fCost:=  qr.FieldByName('SEMINAR_COST').AsFloat;
+    fCost := qr.FieldByName('SEMINAR_COST').AsFloat;
 
-   fFeeactual:=  qr.FieldByName('FEE_actual').AsFloat;
-   fFeeAnad:=  qr.FieldByName('FEE_with_anad_sub').AsFloat;
-   fExpiry:=qr.FieldByName('has_expiry').AsString;
-   fExpiryMOnths:=qr.FieldByName('expiry_period').AsInteger;
+    fFeeactual := qr.FieldByName('FEE_actual').AsFloat;
+    fFeeAnad := qr.FieldByName('FEE_with_anad_sub').AsFloat;
+    fExpiry := qr.FieldByName('has_expiry').AsString;
+    fExpiryMOnths := qr.FieldByName('expiry_period').AsInteger;
 
+    str :=
+      ' update seminar sem set'
+      + '    seminar_Name= :fname, anad_approved= :fAnad,Duration_hours = :fhours, max_capacity= :FMaxCapacity,   fee_actual= :fFeeActual,'
+      + '    sem.fee_with_anad_sub = :fFeeAnad,sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths'
+      + '  where  sem.serial_number= :fSerial';
 
-    str:=
-   ' update seminar sem set'
-  +'    seminar_Name= :fname, anad_approved= :fAnad,Duration_hours = :fhours, max_capacity= :FMaxCapacity,   fee_actual= :fFeeActual,'
-  +'    sem.fee_with_anad_sub = :fFeeAnad,sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths'
-  +'  where  sem.serial_number= :fSerial';
+    ksExecSQLVar(cn, str,
+      [fname, fAnad, fhours, fMaxCapacity, fFeeActual, fFeeAnad, fExpiry,
+        fExpiryMonths, seminarSerial]);
 
-   ksExecSQLVar(cn,str,
-   [fname,fAnad,fhours,fMaxCapacity,fFeeActual,fFeeAnad,fExpiry,fExpiryMonths,seminarSerial] );
-
- finally
-   qr.Free;
- end;
+  finally
+    qr.Free;
+  end;
 
  //NOw the subjects (may be a different functions)
- ksExecSQLVar(cn,'delete from seminar_subject where fk_seminar_serial= :semSerial',[SeminarSerial]);
- qr:=TksQuery.Create(cn,'select * from seminar_type_subject where FK_SEMINAR_TYPE_SERIAL= :serial');
- try
-   qr.ParamByName('serial').Value:=TypeSerial;
-   qr.Open;
-   while not qr.Eof do begin
-    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_SUBJECT');
-    fname:=qr.FieldByName('SUBJECT').AsString;
-    subjectSerial:=qr.FieldByName('serial_number').AsInteger;
-    ksExecSQLVar(cn,'INSERT INTO SEMINAR_SUBJECT (SERIAL_NUMBER, FK_SEMINAR_SERIAL,fk_subject_type_serial,SUBJECT) VALUES (:serial,:semSerial,:subjectSerial, :subject)',
-    [serial,seminarSerial,subjectSerial,fname] );
-    qr.Next;
-   end;
+  ksExecSQLVar(cn,
+    'delete from seminar_subject where fk_seminar_serial= :semSerial',
+    [SeminarSerial]);
+  qr := TksQuery.Create(cn,
+    'select * from seminar_type_subject where FK_SEMINAR_TYPE_SERIAL= :serial');
+  try
+    qr.ParamByName('serial').Value := TypeSerial;
+    qr.Open;
+    while not qr.Eof do
+    begin
+      serial := ksGenerateSerial(cn, 'GEN_SEMINAR_SUBJECT');
+      fname := qr.FieldByName('SUBJECT').AsString;
+      subjectSerial := qr.FieldByName('serial_number').AsInteger;
+      ksExecSQLVar(cn,
+        'INSERT INTO SEMINAR_SUBJECT (SERIAL_NUMBER, FK_SEMINAR_SERIAL,fk_subject_type_serial,SUBJECT) VALUES (:serial,:semSerial,:subjectSerial, :subject)',
+        [serial, seminarSerial, subjectSerial, fname]);
+      qr.Next;
+    end;
 
- finally
-   qr.Free;
- end;
- end;
+  finally
+    qr.Free;
+  end;
+end;
 
-
- procedure TV_SeminarFRM.GetReminderFromTemplate(Const SeminarSerial, TypeSerial:Integer);
+procedure TV_SeminarFRM.GetReminderFromTemplate(const SeminarSerial, TypeSerial:
+  Integer);
 var
-  serial:Integer;
-  qr:TksQuery;
-  str:String;
-   fdesc,fmessage,fafter,fperson,fstart,fDays:string;
-   fnumber_of_days:Integer;
-   ActionDate:TDate;
-   ActionDateRec:TActionDateRec;
+  serial: Integer;
+  qr: TksQuery;
+  str: string;
+  fdesc, fmessage, fafter, fperson, fstart, fDays: string;
+  fnumber_of_days: Integer;
+  ActionDate: TDate;
+  ActionDateRec: TActionDateRec;
 begin
 
- qr:=TksQuery.Create(cn,'select Date_Started, date_completed from seminar where serial_number= :SeminarSerial');
- try
-   qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
-   qr.Open;
-   ActionDateRec.StartDate:=qr.FieldByName('date_started').AsDateTime;
-   ActionDateRec.EndDate:=qr.FieldByName('date_completed').AsDateTime;
- finally
-   qr.Free;
- end;
+  qr := TksQuery.Create(cn,
+    'select Date_Started, date_completed from seminar where serial_number= :SeminarSerial');
+  try
+    qr.ParamByName('SeminarSerial').Value := SeminarSerial;
+    qr.Open;
+    ActionDateRec.StartDate := qr.FieldByName('date_started').AsDateTime;
+    ActionDateRec.EndDate := qr.FieldByName('date_completed').AsDateTime;
+  finally
+    qr.Free;
+  end;
 
+  ksExecSQLVar(cn,
+    'delete from SEMINAR_REMINDER where fk_seminar_serial=:serial',
+    [SeminarSerial]);
 
- ksExecSQLVar(cn,'delete from SEMINAR_REMINDER where fk_seminar_serial=:serial',[SeminarSerial]);
+  str :=
+    ' INSERT INTO SEMINAR_REMINDER'
+    + '  (SERIAL_NUMBER,fk_seminar_serial, description,reminder_message,after_or_before,person_or_seminar,number_of_days_months,start_or_end,days_or_months,reminder_type,is_completed,date_targeted)'
+    + '  VALUES (:serial,:seminarSerial, :a3,:A4, :a5, :A6,:A7,:a8,:A9,:a10,:a11,:a12)';
 
-  str:=
-  ' INSERT INTO SEMINAR_REMINDER'
-  +'  (SERIAL_NUMBER,fk_seminar_serial, description,reminder_message,after_or_before,person_or_seminar,number_of_days_months,start_or_end,days_or_months,reminder_type,is_completed,date_targeted)'
-  +'  VALUES (:serial,:seminarSerial, :a3,:A4, :a5, :A6,:A7,:a8,:A9,:a10,:a11,:a12)';
+  qr := TksQuery.Create(cn,
+    'select * from seminar_type_reminder where fk_seminar_type_serial= :Typeserial');
+  try
+    qr.ParamByName('Typeserial').Value := TYpeSerial;
+    qr.Open;
+    while not qr.Eof do
+    begin
 
+      serial := ksGenerateSerial(cn, 'GEN_SEMINAR_reminder');
+      fdesc := qr.FieldByName('Description').AsString;
+      fmessage := qr.FieldByName('reminder_message').AsString;
+      fafter := qr.FieldByName('after_or_before').AsString;
+      fperson := qr.FieldByName('person_or_seminar').AsString;
+      fstart := qr.FieldByName('START_OR_END').AsString;
+      fnumber_of_days := qr.FieldByName('NUMBER_OF_DAYS_MONTHS').AsInteger;
+      ;
+      fDays := qr.FieldByName('DAYS_OR_MONTHS').AsString;
 
- qr:=TksQuery.Create(cn,'select * from seminar_type_reminder where fk_seminar_type_serial= :Typeserial');
- try
-   qr.ParamByName('Typeserial').Value:=TYpeSerial;
-   qr.Open;
-   while not qr.Eof do begin
+      ActionDateRec.UseStartDate := (fstart = 'S');
+      ActionDateRec.isAfter := (fafter = 'A');
+      ActionDateRec.isAfter := (fafter = 'A');
+      ActionDateRec.isDayUnit := (fdays = 'D');
+      ActionDateRec.NumberOfUnits := fnumber_of_days;
 
-    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_reminder');
-    fdesc:=qr.FieldByName('Description').AsString;
-    fmessage:=qr.FieldByName('reminder_message').AsString;
-    fafter:=qr.FieldByName('after_or_before').AsString;
-    fperson:=qr.FieldByName('person_or_seminar').AsString;
-    fstart:=qr.FieldByName('START_OR_END').AsString;
-    fnumber_of_days:=qr.FieldByName('NUMBER_OF_DAYS_MONTHS').AsInteger;;
-    fDays:=   qr.FieldByName('DAYS_OR_MONTHS').AsString;
+      G_DebugUnit.TRecViewer<TActionDateREc>.GetFields(ActionDateRec);
+      ActionDate := FindActionDate(ActionDateRec);
+      ksExecSQLVar(cn, str, [serial, SeminarSerial, fdesc, fmessage, fafter,
+        fperson, fnumber_of_days, fstart, fdays, 'S', 'N', ActionDate]);
+      qr.Next;
 
-    ActionDateRec.UseStartDate:= (fstart='S');
-    ActionDateRec.isAfter:= (fafter='A');
-    ActionDateRec.isAfter:= (fafter='A');
-    ActionDateRec.isDayUnit:= (fdays='D');
-    ActionDateRec.NumberOfUnits:= fnumber_of_days;
+    end;
+  finally
+    qr.Free;
+  end;
 
+end;
 
-    G_DebugUnit.TRecViewer<TActionDateREc>.GetFields(ActionDateRec);
-    ActionDate:=FindActionDate(ActionDateRec);
-    ksExecSQLVar(cn,str,[serial,SeminarSerial,fdesc,fmessage,fafter,fperson,fnumber_of_days,fstart, fdays,'S','N',ActionDate ] );
-    qr.Next;
-
-   end;
- finally
-   qr.Free;
- end;
-
-
- end;
-
- procedure TV_SeminarFRM.GetTemplatePIctures(Const SeminarSerial, TypeSerial:Integer);
+procedure TV_SeminarFRM.GetTemplatePIctures(const SeminarSerial, TypeSerial:
+  Integer);
 var
-  serial:Integer;
-  Typeqr:TksQuery;
-  seminarQr:TksQuery;
-  str:String;
-   fdesc,fmessage,fafter,fperson,fstart,fDays:string;
-   fnumber_of_days:Integer;
-   ActionDate:TDate;
-   ActionDateRec:TActionDateRec;
-   blobRead,blobWrite : TBlobField;
-   streamRead,StreamWrite:TStream;
-   img:TImage;
-   I:Integer;
+  serial: Integer;
+  Typeqr: TksQuery;
+  seminarQr: TksQuery;
+  str: string;
+  fdesc, fmessage, fafter, fperson, fstart, fDays: string;
+  fnumber_of_days: Integer;
+  ActionDate: TDate;
+  ActionDateRec: TActionDateRec;
+  blobRead, blobWrite: TBlobField;
+  streamRead, StreamWrite: TStream;
+  img: TImage;
+  I: Integer;
 begin
 
- ksExecSQLVar(cn,'delete from SEMINAR_pictures where fk_seminar_serial=:serial',[SeminarSerial]);
+  ksExecSQLVar(cn,
+    'delete from SEMINAR_pictures where fk_seminar_serial=:serial',
+    [SeminarSerial]);
 
-  str:=
-' INSERT INTO SEMINAR_PICTURES'
-  +'   (SERIAL_NUMBER,  FK_SEMINAR_SERIAL,LANGUAGE_GREEK_OR_ENGLISH,'
-  +'   LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3,LINE_C1,'
-  +'   picture_top_l1,picture_top_r1, picture_bot_l1,picture_bot_r1,'
-  +'   tl_x,tl_y, tr_x,tr_y, bl_x,bl_y,br_x,br_y)'
-  +'    VALUES ('
-  +'    :s1,:s2,:s3,'
-  +'    :l1,:l2,:l3,:l4,:l5,:l6,'
-  +'    :p1,:p2,:p3,:p4,'
-  +'    :t1,:t2,:t3,:t4,:t5,:t6,:t7,:t8)';
+  str :=
+    ' INSERT INTO SEMINAR_PICTURES'
+    + '   (SERIAL_NUMBER,  FK_SEMINAR_SERIAL,LANGUAGE_GREEK_OR_ENGLISH,'
+    + '   LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3,LINE_C1,'
+    + '   picture_top_l1,picture_top_r1, picture_bot_l1,picture_bot_r1,'
+    + '   tl_x,tl_y, tr_x,tr_y, bl_x,bl_y,br_x,br_y)'
+    + '    VALUES ('
+    + '    :s1,:s2,:s3,'
+    + '    :l1,:l2,:l3,:l4,:l5,:l6,'
+    + '    :p1,:p2,:p3,:p4,'
+    + '    :t1,:t2,:t3,:t4,:t5,:t6,:t7,:t8)';
 
 // img:=Timage.Create(self);
- SeminarQr:= TksQuery.Create(cn,' select * from seminar_pictures where fk_seminar_serial= :seminarSerial');
- Typeqr:=TksQuery.Create(cn,'select * from seminar_type_pictures where fk_seminar_type_serial= :Typeserial');
- try
-   Typeqr.ParamByName('Typeserial').Value:=TYpeSerial;
-   Typeqr.Open;
-   SeminarQr.ParamByName('seminarSerial').Value:=SeminarSerial;
-   SeminarQR.Open;
+  SeminarQr := TksQuery.Create(cn,
+    ' select * from seminar_pictures where fk_seminar_serial= :seminarSerial');
+  Typeqr := TksQuery.Create(cn,
+    'select * from seminar_type_pictures where fk_seminar_type_serial= :Typeserial');
+  try
+    Typeqr.ParamByName('Typeserial').Value := TYpeSerial;
+    Typeqr.Open;
+    SeminarQr.ParamByName('seminarSerial').Value := SeminarSerial;
+    SeminarQR.Open;
 
-   try
+    try
 
-    while not Typeqr.Eof do begin
+      while not Typeqr.Eof do
+      begin
 
-    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
+        serial := ksGenerateSerial(cn, 'GEN_SEMINAR_PICTURES');
 
 //    blobRead := Typeqr.FieldByName('picture_seminar') as TBlobField;
 //    streamRead := Typeqr.CreateBlobStream(blobRead, bmRead);
 //    Img.Picture.LoadFromStream(streamRead);
 
-    SeminarQR.Insert;
-    SeminarQR.FieldByName('Serial_number').value:=Serial;
-    SeminarQR.FieldByName('FK_Seminar_serial').value:=SeminarSerial;
-    CopyDataRecord(typeQr,SeminarQR);
+        SeminarQR.Insert;
+        SeminarQR.FieldByName('Serial_number').value := Serial;
+        SeminarQR.FieldByName('FK_Seminar_serial').value := SeminarSerial;
+        CopyDataRecord(typeQr, SeminarQR);
 //    blobWrite := Seminarqr.FieldByName('picture_seminar') as TBlobField;
 //    streamWrite := Seminarqr.CreateBlobStream(blobWrite, bmWrite);
 //    StreamWrite.Position:=0;
 //    Img.Picture.SaveToStream(streamWrite);
-    SeminarQR.Post;
-    TypeQr.Next;
-    end;
-   finally
+        SeminarQR.Post;
+        TypeQr.Next;
+      end;
+    finally
 //    streamWrite.Free;
 //    streamRead.Free;
 
-   end;
- finally
-   Typeqr.Free;
-   SeminarQr.Free;
+    end;
+  finally
+    Typeqr.Free;
+    SeminarQr.Free;
 //   img.Free;
- end;
+  end;
 
+end;
 
- end;
-
- procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);
+procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);
 var
-  SeminarSerial:Integer;
-  st:string;
-  allowModify:BOolean;
+  SeminarSerial: Integer;
+  st: string;
+  allowModify: BOolean;
 begin
 
-  SeminarSerial:= SEminarSQL.FieldByName('serial_number').AsInteger;
+  SeminarSerial := SEminarSQL.FieldByName('serial_number').AsInteger;
   NonAttendSQL.Close;
-  NonAttendSQL.ParamByName('seminarSerial').Value:=seminarSerial;
+  NonAttendSQL.ParamByName('seminarSerial').Value := seminarSerial;
   NonAttendSQL.Open;
 
   ksOpenTables([AttendingSQL]);
@@ -844,17 +868,19 @@ begin
 end;
 
 procedure TV_SeminarFRM.InstructorBTNClick(Sender: TObject);
-vAR
+var
 
-Frm:TM_InstructorFRM;
-Serial:Integer;
+  Frm: TM_InstructorFRM;
+  Serial: Integer;
 begin
-  if seminarSQL.State in [dsEdit] then SeminarSQL.Post;
-  serial:=strToIntdef(InstructorFLD.Value,0);
-  if Serial<1 then exit;
+  if seminarSQL.State in [dsEdit] then
+    SeminarSQL.Post;
+  serial := strToIntdef(InstructorFLD.Value, 0);
+  if Serial < 1 then
+    exit;
   frm := TM_InstructorFRM.Create(nil);
-  frm.IN_ACTION :='DISPLAY';
-  frm.in_INSTRUCTOR_SERIAL:=Serial;
+  frm.IN_ACTION := 'DISPLAY';
+  frm.in_INSTRUCTOR_SERIAL := Serial;
   try
     frm.ShowModal;
   finally
@@ -862,51 +888,59 @@ begin
   end;
 end;
 
-
 procedure TV_SeminarFRM.LanguageRGPChange(Sender: TObject);
 var
-  SeminarSerial:Integer;
+  SeminarSerial: Integer;
 begin
-  if SeminarPictureSQL.State in [dsEdit,dsInsert] then
+  if SeminarPictureSQL.State in [dsEdit, dsInsert] then
     SeminarPictureSQL.Post;
-  SeminarSerial:= SeminarSQL.FieldByName('serial_number').AsInteger;
-  if SeminarSerial<1 then exit;
-  if trim(LanguageRGP.Value)='' then exit;
+  SeminarSerial := SeminarSQL.FieldByName('serial_number').AsInteger;
+  if SeminarSerial < 1 then
+    exit;
+  if trim(LanguageRGP.Value) = '' then
+    exit;
 
-  SHowPictureX(SeminarSerial,Picture_top_l1.Name, LanguageRGP.Value, Picture_top_L1);
-  SHowPictureX(SeminarSerial,Picture_top_R1.Name, LanguageRGP.Value, Picture_top_R1);
-  SHowPictureX(SeminarSerial,Picture_bot_l1.Name, LanguageRGP.Value, Picture_bot_L1);
-  SHowPictureX(SeminarSerial,Picture_bot_R1.Name, LanguageRGP.Value, Picture_bot_R1);
+  SHowPictureX(SeminarSerial, Picture_top_l1.Name, LanguageRGP.Value,
+    Picture_top_L1);
+  SHowPictureX(SeminarSerial, Picture_top_R1.Name, LanguageRGP.Value,
+    Picture_top_R1);
+  SHowPictureX(SeminarSerial, Picture_bot_l1.Name, LanguageRGP.Value,
+    Picture_bot_L1);
+  SHowPictureX(SeminarSerial, Picture_bot_R1.Name, LanguageRGP.Value,
+    Picture_bot_R1);
 
-  ShowPictureDataX(SeminarSerial,LanguageRGP.Value);
+  ShowPictureDataX(SeminarSerial, LanguageRGP.Value);
 end;
 
 procedure TV_SeminarFRM.MembersGRDKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  IF KEY=VK_RETURN THEN begin
+  if KEY = VK_RETURN then
+  begin
     RemovePerson();
   end;
 end;
 
 procedure TV_SeminarFRM.MonoRGPChange(Sender: TObject);
 begin
-CompanyFLD.Visible := MonoRGP.Value='M';
-Companylbl.Visible := MonoRGP.Value='M';
+  CompanyFLD.Visible := MonoRGP.Value = 'M';
+  Companylbl.Visible := MonoRGP.Value = 'M';
 end;
 
 procedure TV_SeminarFRM.VenueBTNClick(Sender: TObject);
-vAR
+var
 
-Frm:TM_venuFRM;
-Serial:Integer;
+  Frm: TM_venuFRM;
+  Serial: Integer;
 begin
-  if seminarSQL.State in [dsEdit] then SeminarSQL.Post;
-  serial:=strToIntdef(venueFLD.Value,0);
-  if Serial<1 then exit;
+  if seminarSQL.State in [dsEdit] then
+    SeminarSQL.Post;
+  serial := strToIntdef(venueFLD.Value, 0);
+  if Serial < 1 then
+    exit;
   frm := TM_venuFRM.Create(nil);
-  frm.IN_ACTION :='EDIT';
-  frm.in_SERIAL:=Serial;
+  frm.IN_ACTION := 'EDIT';
+  frm.in_SERIAL := Serial;
   try
     frm.ShowModal;
   finally
@@ -916,20 +950,21 @@ end;
 
 procedure TV_SeminarFRM.wwNavButton19Click(Sender: TObject);
 begin
-REminderDescFLD.SetFocus;
+  REminderDescFLD.SetFocus;
 end;
 
 procedure TV_SeminarFRM.CostGRDUpdateFooter(Sender: TObject);
 var
-  amount:Double;
-  SeminarSErial:Integer;
+  amount: Double;
+  SeminarSErial: Integer;
 begin
 
-      SeminarSErial:=costgrd.DataSource.DataSet.FieldByName('fk_seminar_serial').AsInteger;
-      Amount:=UpdateCostFooter(SeminarSerial);
+  SeminarSErial :=
+    costgrd.DataSource.DataSet.FieldByName('fk_seminar_serial').AsInteger;
+  Amount := UpdateCostFooter(SeminarSerial);
 
-   CostGRD.ColumnByName('TotalAmnt').FooterValue:=
-      FloatToStrF(Amount, ffCurrency, 10, 2);
+  CostGRD.ColumnByName('TotalAmnt').FooterValue :=
+    FloatToStrF(Amount, ffCurrency, 10, 2);
 
 end;
 
@@ -937,13 +972,13 @@ procedure TV_SeminarFRM.SearchPersonFLDKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
 
-  IF KEY=VK_RETURN THEN begin
-    if SearchPersonFLD.Text='' then
+  if KEY = VK_RETURN then
+  begin
+    if SearchPersonFLD.Text = '' then
       exit;
     InsertPerson();
     SearchPersonFLD.Clear;
     SearchPersonFLD.ClearSelection;
-
 
   end;
 
@@ -956,36 +991,36 @@ end;
 
 procedure TV_SeminarFRM.InsertPerson();
 var
-  qr:TksQuery;
-  Personserial:Integer;
-  seminarSerial:Integer;
-  str:string;
+  qr: TksQuery;
+  Personserial: Integer;
+  seminarSerial: Integer;
+  str: string;
 begin
 
-  if not allowToModify() then begin
+  if not allowToModify() then
+  begin
     ShowMessage('Cannot Modify');
     exit;
   end;
 
-
-  PersonSerial:=NonAttendSQL.FieldByName('serial_number').AsInteger;
-  SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
-  if Personserial<1 then exit;
-  str:=' insert into seminar_person  (fk_seminar_serial,fk_person_serial,attendance_status,is_guest) '
-    +' values(:seminar,:person,:attend,:gest)';
-  ksExecSQLVar(cn,str,[seminarSerial,Personserial,'fff','N']);
+  PersonSerial := NonAttendSQL.FieldByName('serial_number').AsInteger;
+  SeminarSerial := SeminarSQL.FieldByName('serial_number').AsInteger;
+  if Personserial < 1 then
+    exit;
+  str := ' insert into seminar_person  (fk_seminar_serial,fk_person_serial,attendance_status,is_guest) '
+    + ' values(:seminar,:person,:attend,:gest)';
+  ksExecSQLVar(cn, str, [seminarSerial, Personserial, 'fff', 'N']);
 
   AttendingSQL.Refresh;
   NonAttendSQL.Refresh;
-
-
 
 end;
 
 procedure TV_SeminarFRM.AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  IF KEY=VK_RETURN THEN begin
+  if KEY = VK_RETURN then
+  begin
     InsertPerson();
   end;
 
@@ -993,26 +1028,26 @@ end;
 
 procedure TV_SeminarFRM.CLoseBTNClick(Sender: TObject);
 begin
-  ksPostTables([SeminarSQL,AttendingSQL]);
+  ksPostTables([SeminarSQL, AttendingSQL]);
   close;
 end;
 
-procedure TV_SeminarFRM.SelectAndSavePictureX(Const SeminarSerial:Integer;Const Language:String; img:TImage);
+procedure TV_SeminarFRM.SelectAndSavePictureX(const SeminarSerial: Integer; const
+  Language: string; img: TImage);
 begin
 //  SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
-  if SelectPicturex(img) then begin
-    SavePictureX(SeminarSerial, img.Name, Language,img);
-    ShowPictureX(SeminarSerial,img.Name,Language, img);
+  if SelectPicturex(img) then
+  begin
+    SavePictureX(SeminarSerial, img.Name, Language, img);
+    ShowPictureX(SeminarSerial, img.Name, Language, img);
 //    ShowPictureData(TypeSerial,LanguageRGP.Value);
   end;
 
-
 end;
-
 
 procedure TV_SeminarFRM.SelTopLeftBTNClick(Sender: TObject);
 var
-  SeminarSerial:Integer;
+  SeminarSerial: Integer;
 begin
 {
   SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
@@ -1024,11 +1059,9 @@ begin
 }
 end;
 
-
-
 procedure TV_SeminarFRM.ClearTopLeftBTNClick(Sender: TObject);
 var
-  SeminarSerial:Integer;
+  SeminarSerial: Integer;
 begin
 {
   SeminarSerial:=SeminarSQL.fieldbyName('serial_number').AsInteger;
@@ -1037,58 +1070,80 @@ begin
 }
 end;
 
-
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
 begin
-  ksfillComboF1(cn,SeminarTYpeFLD,'SEMINAR_TYPE','SERIAL_NUMBER','SEMINAR_NAME','SEMINAR_NAME');
-  ksfillComboF1(cn,InstructorFLD,'INSTRUCTOR','SERIAL_NUMBER','Last_NAME','last_NAME');
-  ksfillComboF1(cn,VenueFLD,'VENUE','SERIAL_NUMBER','VENUE_NAME','VENUE_NAME');
-  ksfillComboF1(cn,StatusFLD,'status_activity','status','description');
+  ksfillComboF1(cn, SeminarTYpeFLD, 'SEMINAR_TYPE', 'SERIAL_NUMBER',
+    'SEMINAR_NAME', 'SEMINAR_NAME');
+  ksfillComboF1(cn, InstructorFLD, 'INSTRUCTOR', 'SERIAL_NUMBER', 'Last_NAME',
+    'last_NAME');
+  ksfillComboF1(cn, VenueFLD, 'VENUE', 'SERIAL_NUMBER', 'VENUE_NAME',
+    'VENUE_NAME');
+  ksfillComboF1(cn, StatusFLD, 'status_activity', 'status', 'description');
   ksOpenTables([SeminarSQL]);
-  if IN_ACTION='INSERT' then begin
+  if IN_ACTION = 'INSERT' then
+  begin
     SeminarSQL.Insert;
-  end else if IN_ACTION='EDIT' then begin
-     EditSeminar(IN_SEMINAR_SERIAL);
+  end
+  else if IN_ACTION = 'EDIT' then
+  begin
+    EditSeminar(IN_SEMINAR_SERIAL);
   end;
-PageControlPC.ActivePageIndex:=0;
+  PageControlPC.ActivePageIndex := 0;
 
 end;
 
 procedure TV_SeminarFRM.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-if SeminarSQL.State in [dsInsert, dsEdit] then
-   SeminarSQL.Post;
+  if SeminarSQL.State in [dsInsert, dsEdit] then
+    SeminarSQL.Post;
 end;
 
 procedure TV_SeminarFRM.FormCreate(Sender: TObject);
 begin
-  cn:=U_databaseFRM.DataConnection;
+  cn := U_databaseFRM.DataConnection;
 end;
 
 procedure TV_SeminarFRM.RemovePerson();
 var
-  qr:TksQuery;
-  Personserial:Integer;
-  seminarSerial:Integer;
-  str:string;
-  st:string;
-  AllowModify:Boolean;
+  qr: TksQuery;
+  Personserial: Integer;
+  seminarSerial: Integer;
+  str: string;
+  st: string;
+  AllowModify: Boolean;
 begin
-  if not allowToModify() then begin
+  if not allowToModify() then
+  begin
     ShowMessage('Cannot Modify');
     exit;
   end;
 
-
-  PersonSerial:=AttendingSQL.FieldByName('fk_person_serial').AsInteger;
-  SeminarSerial:=AttendingSQL.FieldByName('fk_seminar_serial').AsInteger;
-  if (Personserial<1) or (seminarSerial<1) then exit;
-  str:=' delete from seminar_person where fk_person_serial= :personSerial and fk_seminar_serial= :seminarSerial';
-  ksExecSQLVar(cn,str,[Personserial,seminarSerial]);
+  PersonSerial := AttendingSQL.FieldByName('fk_person_serial').AsInteger;
+  SeminarSerial := AttendingSQL.FieldByName('fk_seminar_serial').AsInteger;
+  if (Personserial < 1) or (seminarSerial < 1) then
+    exit;
+  str :=
+    ' delete from seminar_person where fk_person_serial= :personSerial and fk_seminar_serial= :seminarSerial';
+  ksExecSQLVar(cn, str, [Personserial, seminarSerial]);
 
   AttendingSQL.Refresh;
   NonAttendSQL.Refresh;
+end;
+
+procedure TV_SeminarFRM.RzBitBtn1Click(Sender: TObject);
+var
+  Frm: TV_SeminarPictureTemplateFRM;
+begin
+  frm := TV_SeminarPictureTemplateFRM.Create(nil);
+  try
+
+    frm.IN_SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+    frm.IN_allowModify:=true;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 
@@ -1101,232 +1156,236 @@ procedure TV_SeminarFRM.PageControlPCChanging(Sender: TObject;
   NewIndex: Integer; var AllowChange: Boolean);
 begin
   try
-    if SeminarSQL.State in [dsInsert,dsEdit] then
+    if SeminarSQL.State in [dsInsert, dsEdit] then
       SeminarSQl.Post;
   except
-    allowChange:= false;
+    allowChange := false;
     exit;
   end;
-  allowChange:=  (SeminarSQL.FieldByName('serial_number').AsInteger >0);
+  allowChange := (SeminarSQL.FieldByName('serial_number').AsInteger > 0);
 
 end;
 
 procedure TV_SeminarFRM.CanelBTNClick(Sender: TObject);
 begin
-SeminarSQL.Cancel;
-close;
+  SeminarSQL.Cancel;
+  close;
 end;
-
-
 
 procedure TV_SeminarFRM.CostTSShow(Sender: TObject);
 var
-  allowModify:boolean;
+  allowModify: boolean;
 begin
-ksOpenTables([CostItemTBL,SeminarCostItemSQL]);
-  AllowmodifY:=allowToModify();
+  ksOpenTables([CostItemTBL, SeminarCostItemSQL]);
+  AllowmodifY := allowToModify();
 //  CostItemTBL.ReadOnly:=not allowmodify;
-  SeminarCostItemSQL.ReadOnly:=not allowmodify;
-
+  SeminarCostItemSQL.ReadOnly := not allowmodify;
 
 end;
 
 procedure TV_SeminarFRM.CostTypeFLDCloseUp(Sender: TObject; LookupTable,
   FillTable: TDataSet; modified: Boolean);
 begin
-FillTable.FieldByName('amount_per_item').AsFloat:=LookupTable.FieldByName('amount').AsFloat;
+  FillTable.FieldByName('amount_per_item').AsFloat :=
+    LookupTable.FieldByName('amount').AsFloat;
 end;
 
 procedure TV_SeminarFRM.CostTypeFLDDropDown(Sender: TObject);
 begin
-with (Sender as TwwDBLookupCombo) do
-   (LookupTable as TIBCTable).IndexFieldNames :='COST_NAME';
+  with (Sender as TwwDBLookupCombo) do
+    (LookupTable as TIBCTable).IndexFieldNames := 'COST_NAME';
 //    'COST_ITEM_TYPE_NAME_IDX';
 end;
 
 procedure TV_SeminarFRM.SubjectTSShow(Sender: TObject);
 var
-  allowmodify:Boolean;
+  allowmodify: Boolean;
 begin
 
-  ksOpenTables([seminarSubjectSQL,SeminarDaySQL]);
+  ksOpenTables([seminarSubjectSQL, SeminarDaySQL]);
 
-  AllowmodifY:=allowToModify();
-  seminarSubjectSQL.ReadOnly:=not allowmodify;
-  SeminarDaySQL.ReadOnly:=not allowmodify;
-
+  AllowmodifY := allowToModify();
+  seminarSubjectSQL.ReadOnly := not allowmodify;
+  SeminarDaySQL.ReadOnly := not allowmodify;
 
 end;
 
-Procedure TV_SeminarFRM.EditSeminar(Const SeminarSerial:integer);
-Var
-        Dataset:TIBCQuery;
-        allowModify:Boolean;
-        St:String;
-Begin
-        Dataset:=SeminarSQL;
-        with Dataset do begin
-          close;
-          ParamByName('SerialNumber').value:=SeminarSerial;
-          Open;
-          if Dataset.IsEmpty then begin
-            Dataset.Close;
-            self.Close;
-          end;
-          st:=Dataset.FieldByName('status').AsString;
-
-          allowModify := (St='P') or (St='N') or (St='W');
-          Dataset.ReadOnly:= not allowModify;
-        end;
-
-          if AnadFLD.CanFocus then
-          AnadFLD.SetFocus;
-         TitleLBL.Caption:= Trim(SeminarSQL.FieldByName('seminar_name').AsString);
-
-End;
-
-
-Procedure TV_SeminarFRM.StartSeminar(Const SeminarSerial:integer);
+procedure TV_SeminarFRM.EditSeminar(const SeminarSerial: integer);
 var
-  qr:TksQuery;
-  status:String;
-Begin
-  if SeminarSerial<1 then exit;
-  qr:=TksQuery.Create(cn,'select * from Seminar where serial_number= :serial');
+  Dataset: TIBCQuery;
+  allowModify: Boolean;
+  St: string;
+begin
+  Dataset := SeminarSQL;
+  with Dataset do
+  begin
+    close;
+    ParamByName('SerialNumber').value := SeminarSerial;
+    Open;
+    if Dataset.IsEmpty then
+    begin
+      Dataset.Close;
+      self.Close;
+    end;
+    st := Dataset.FieldByName('status').AsString;
+
+    allowModify := (St = 'P') or (St = 'N') or (St = 'W');
+    Dataset.ReadOnly := not allowModify;
+  end;
+
+  if AnadFLD.CanFocus then
+    AnadFLD.SetFocus;
+  TitleLBL.Caption := Trim(SeminarSQL.FieldByName('seminar_name').AsString);
+
+end;
+
+procedure TV_SeminarFRM.StartSeminar(const SeminarSerial: integer);
+var
+  qr: TksQuery;
+  status: string;
+begin
+  if SeminarSerial < 1 then
+    exit;
+  qr := TksQuery.Create(cn,
+    'select * from Seminar where serial_number= :serial');
   try
-    qr.ParamByName('serial').AsInteger:=seminarSerial;
+    qr.ParamByName('serial').AsInteger := seminarSerial;
     qr.Open;
-    status:=qr.FieldByName('status').AsString;
-    if status='P' then begin
-      ksExecSQLVar(cn,'update seminar set status= ''A'' where serial_number= :serial',[SeminarSerial]);
+    status := qr.FieldByName('status').AsString;
+    if status = 'P' then
+    begin
+      ksExecSQLVar(cn,
+        'update seminar set status= ''A'' where serial_number= :serial',
+        [SeminarSerial]);
     end;
   finally
     qr.Free;
   end;
 
-End;
+end;
 
-
-Function TV_SeminarFRM.UpdateCostFooter(Const SeminarSerial:Integer):Double;
+function TV_SeminarFRM.UpdateCostFooter(const SeminarSerial: Integer): Double;
 var
-  qr : TksQuery;
-  str:String;
+  qr: TksQuery;
+  str: string;
 
 begin
 
-    if SeminarSerial<1 then begin
-    result:=0;
+  if SeminarSerial < 1 then
+  begin
+    result := 0;
     exit;
-    end;
-    Str:=
-' select'
-  +'  sum(nullif(  sci.number_of_items ,0)*NulliF(sci.amount_per_item,0) ) as Total'
-  +'  from seminar_cost_item sci'
-  +'  where sci.fk_seminar_serial= :seminarSerial';
+  end;
+  Str :=
+    ' select'
+    + '  sum(nullif(  sci.number_of_items ,0)*NulliF(sci.amount_per_item,0) ) as Total'
+    + '  from seminar_cost_item sci'
+    + '  where sci.fk_seminar_serial= :seminarSerial';
 
-  qr:= TksQuery.Create(cn,str);
+  qr := TksQuery.Create(cn, str);
   try
-    with qr do begin
-      ParamByName('SeminarSerial').Value:=Seminarserial;
-    open;
-      result:=FieldbyName('Total').AsFloat;
-    close;
+    with qr do
+    begin
+      ParamByName('SeminarSerial').Value := Seminarserial;
+      open;
+      result := FieldbyName('Total').AsFloat;
+      close;
     end;
 
   finally
-   qr.Free;
+    qr.Free;
   end;
 end;
 
-
-
-Function TV_SeminarFRM.FindActionDate(ActionDateRec:TActionDateRec):Tdate;
+function TV_SeminarFRM.FindActionDate(ActionDateRec: TActionDateRec): Tdate;
 var
-  mySign:Integer;
-  DateReminder:TDate;
-  RefDate:TDate;
-  dt:TactionDateRec;
+  mySign: Integer;
+  DateReminder: TDate;
+  RefDate: TDate;
+  dt: TactionDateRec;
 begin
   dt := ActionDateRec;
   if dt.UseStartDate then
-    RefDate:=dt.StartDate
+    RefDate := dt.StartDate
   else
-    RefDate:=dt.EndDate;
+    RefDate := dt.EndDate;
 
   if dt.isAfter then
-    mySign:=1
+    mySign := 1
   else
-    mySign:=-1;
-
+    mySign := -1;
 
   try
     if dt.IsDayUnit then
-      DateReminder:= IncDay( RefDate, mySign * dt.NumberOfUnits)
+      DateReminder := IncDay(RefDate, mySign * dt.NumberOfUnits)
     else
-      DateReminder:= IncMonth( RefDate, mySign * dt.NumberOFUnits);
+      DateReminder := IncMonth(RefDate, mySign * dt.NumberOFUnits);
 
-    Result:=Trunc( DateREminder);
+    Result := Trunc(DateREminder);
   except
-    result:=EncodeDate(1900,01,01);
+    result := EncodeDate(1900, 01, 01);
   end;
 
-
 end;
-
-
-
 
 ////////////////////////////////////////
 ///
 ///
 ///
-procedure TV_SeminarFRM.CheckPicturesX(COnst TypeSerial:Integer);
+
+procedure TV_SeminarFRM.CheckPicturesX(const TypeSerial: Integer);
 var
-  Serial:Integer;
-  str:String;
-  strIns:String;
+  Serial: Integer;
+  str: string;
+  strIns: string;
 begin
 //create the records if not exist
 
-strIns:= 'insert into seminar_pictures '
-+'(serial_number,FK_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLISH) values (:Serial, :typeSerial, :lang)';
+  strIns := 'insert into seminar_pictures '
+    + '(serial_number,FK_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLISH) values (:Serial, :typeSerial, :lang)';
 
-  if TypeSerial<1 then exit;
+  if TypeSerial < 1 then
+    exit;
 
-  str:=
-' select serial_number'
-  +'  from'
-  +'      seminar_pictures stp'
-  +'  where'
-  +'   stp.fk_seminar_serial= :SeminarTYpeSerial and stp.language_greek_or_english = :lang';
+  str :=
+    ' select serial_number'
+    + '  from'
+    + '      seminar_pictures stp'
+    + '  where'
+    + '   stp.fk_seminar_serial= :SeminarTYpeSerial and stp.language_greek_or_english = :lang';
 
-  if ksCountRecVarSQL(cn,str,[TypeSerial,'G'])=0 then begin
-    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
-    ksExecSQLVar(cn,strIns,[serial,TypeSerial,'G']);
+  if ksCountRecVarSQL(cn, str, [TypeSerial, 'G']) = 0 then
+  begin
+    serial := ksGenerateSerial(cn, 'GEN_SEMINAR_PICTURES');
+    ksExecSQLVar(cn, strIns, [serial, TypeSerial, 'G']);
   end;
 
-  if ksCountRecVarSQL(cn,str,[TypeSerial,'E'])=0 then begin
-    serial:=ksGenerateSerial(cn,'GEN_SEMINAR_PICTURES');
-    ksExecSQLVar(cn,strIns,[serial, TypeSerial,'E']);
+  if ksCountRecVarSQL(cn, str, [TypeSerial, 'E']) = 0 then
+  begin
+    serial := ksGenerateSerial(cn, 'GEN_SEMINAR_PICTURES');
+    ksExecSQLVar(cn, strIns, [serial, TypeSerial, 'E']);
   end;
-
 
 end;
-procedure TV_SeminarFRM.ClearPictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
+
+procedure TV_SeminarFRM.ClearPictureX(const SeminarSerial: Integer; const
+  aFieldName: string; const Language: string; img: Timage);
 begin
 //  showMessage('clear lang='+language);
 
-
-  img.Picture:=nil;
-  SavePictureX(SeminarSerial,aFieldName, LanguageRGP.Values[LanguageRGP.ItemIndex],img);
+  img.Picture := nil;
+  SavePictureX(SeminarSerial, aFieldName,
+    LanguageRGP.Values[LanguageRGP.ItemIndex], img);
 end;
-procedure TV_SeminarFRM.SavePictureX(Const SeminarSerial:Integer;Const aFieldName :String; Const Language:String;img:Timage);
+
+procedure TV_SeminarFRM.SavePictureX(const SeminarSerial: Integer; const
+  aFieldName: string; const Language: string; img: Timage);
 var
 //  BlobField: TField;
   BlobField: TBlobField;
   BS: TStream;
-  str2:String;
-  qr:TksQuery;
+  str2: string;
+  qr: TksQuery;
 begin
 
   CodeSite.send(InttoStr(SeminarSerial));
@@ -1334,31 +1393,35 @@ begin
   CodeSite.Send(afieldName);
   CodeSite.Send(Language);
   CodeSite.Send(img.Name);
-  str2:='select * from seminar_pictures stp '
-  + ' where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
-  qr:= TksQuery.Create(cn,str2);
-   try
-    with qr do  begin
+  str2 := 'select * from seminar_pictures stp '
+    + ' where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
+  qr := TksQuery.Create(cn, str2);
+  try
+    with qr do
+    begin
       close;
-      qr.ParamByName('seminarSerial').Value:=seminarSerial;
-      qr.ParamByName('Language').Value:=Language;
+      qr.ParamByName('seminarSerial').Value := seminarSerial;
+      qr.ParamByName('Language').Value := Language;
       open;
       if qr.IsEmpty then
-       exit;
+        exit;
 
-      if (qr.FindField(aFieldName)=nil) then begin
-        ShowMessage('Cannot find field. Name of the picture =fieldname= '+aFieldName);
+      if (qr.FindField(aFieldName) = nil) then
+      begin
+        ShowMessage('Cannot find field. Name of the picture =fieldname= ' +
+          aFieldName);
         exit;
       end;
 
       qr.Edit;
       BlobField := FieldByName(aFieldName) as TBlobField;
-      BS := qr.CreateBlobStream(BlobField,bmWrite);
+      BS := qr.CreateBlobStream(BlobField, bmWrite);
       try
-        Bs.Position:=0;
+        Bs.Position := 0;
         Img.Picture.SaveToStream(BS);
 
-        if BS.Size=0 then begin
+        if BS.Size = 0 then
+        begin
           BlobField.Clear;
         end;
         qr.Post;
@@ -1376,99 +1439,105 @@ begin
   end;
 
 end;
-function TV_SeminarFRM.SelectPictureX(var img:TImage):Boolean;
+
+function TV_SeminarFRM.SelectPictureX(var img: TImage): Boolean;
 var
-  fileName:String;
-Begin
-    result:=false;
-    if not OpenPictureDialog1.Execute then     begin
-//    showMessage('exit');
-      Exit;
-    end;
-    filename :=OpenPictureDialog1.FileName;
-    Img.Picture :=nil;
-    img.Picture.LoadFromFile(filename);
-    result:=true;
-end;
-procedure TV_SeminarFRM.ShowPictureDataX(Const TypeSerial:Integer;Const  Language:String);
+  fileName: string;
 begin
-   SeminarPictureSQL.Close;
-   SeminarPictureSQL.ParamByName('SeminarSerial').Value:=TypeSerial;
-   SeminarPictureSQL.ParamByName('language').Value:=Language;
-   SeminarPictureSQL.Open;
+  result := false;
+  if not OpenPictureDialog1.Execute then
+  begin
+//    showMessage('exit');
+    Exit;
+  end;
+  filename := OpenPictureDialog1.FileName;
+  Img.Picture := nil;
+  img.Picture.LoadFromFile(filename);
+  result := true;
+end;
+
+procedure TV_SeminarFRM.ShowPictureDataX(const TypeSerial: Integer; const
+  Language: string);
+begin
+  SeminarPictureSQL.Close;
+  SeminarPictureSQL.ParamByName('SeminarSerial').Value := TypeSerial;
+  SeminarPictureSQL.ParamByName('language').Value := Language;
+  SeminarPictureSQL.Open;
 
 end;
-procedure TV_SeminarFRM.ShowPictureX(Const TypeSerial:Integer;Const aFieldName :String; Const  Language:String;img:TImage);
- var
-  code:string;
-  BlobFIeld:TField;
-  BS:TStream;
-  qr:TksQuery;
+
+procedure TV_SeminarFRM.ShowPictureX(const TypeSerial: Integer; const
+  aFieldName: string; const Language: string; img: TImage);
+var
+  code: string;
+  BlobFIeld: TField;
+  BS: TStream;
+  qr: TksQuery;
 //  imgTemp:TImage;
 
-
 begin
 
- if TypeSerial<1 then
+  if TypeSerial < 1 then
     exit;
- if (Language<>'G') ANd (Language<>'E') then begin
-  showMessage('ERROR lang='+language);
-  exit;
- end;
+  if (Language <> 'G') and (Language <> 'E') then
+  begin
+    showMessage('ERROR lang=' + language);
+    exit;
+  end;
 
-  Img.Picture:= nil;
+  Img.Picture := nil;
 
-  qr:= TksQuery.Create(cn,'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language');
-   try
-      with qr do begin
-        qr.close;
-        qr.ParamByName('seminarSerial').Value:=TypeSerial;
-        qr.ParamByName('LANGUAGE').Value:=Language;
-        qr.open;
-        if qr.IsEmpty then
-          exit;
-
-        if (qr.FindField(aFieldName)=nil) then begin
-        ShowMessage('Cannot find field. Name of the picture =fieldname= '+aFieldName);
+  qr := TksQuery.Create(cn,
+    'select * from seminar_pictures stp where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language');
+  try
+    with qr do
+    begin
+      qr.close;
+      qr.ParamByName('seminarSerial').Value := TypeSerial;
+      qr.ParamByName('LANGUAGE').Value := Language;
+      qr.open;
+      if qr.IsEmpty then
         exit;
-        end;
+
+      if (qr.FindField(aFieldName) = nil) then
+      begin
+        ShowMessage('Cannot find field. Name of the picture =fieldname= ' +
+          aFieldName);
+        exit;
+      end;
 
 //        if aFieldName='PICTURE_TOP_R1' then
 //         img.Picture.LoadFromFile('C:\Data\DelphiProjects\Safe_CRM\pictures\SafetyLogo.png');
 
-
-        BlobField := qr.FieldByName(aFieldName);
-        BS := qr.CreateBlobStream(BlobField,bmRead);
-        try
-          BS.Position:=0;
-          if bs.Size>0 then
-            Img.Picture.LoadFromStream(bs)
-          else
-            Img.Picture:= nil;
-          qr.Close;
-        finally
-          bs.Free;
-        end;
-
+      BlobField := qr.FieldByName(aFieldName);
+      BS := qr.CreateBlobStream(BlobField, bmRead);
+      try
+        BS.Position := 0;
+        if bs.Size > 0 then
+          Img.Picture.LoadFromStream(bs)
+        else
+          Img.Picture := nil;
+        qr.Close;
+      finally
+        bs.Free;
       end;
 
+    end;
 
-   finally
-      qr.Free;
-   end;
-
+  finally
+    qr.Free;
+  end;
 
 end;
 //////////////////////////////////////////
 
-
-
-function TV_SeminarFRM.allowToModify():Boolean;
+function TV_SeminarFRM.allowToModify(): Boolean;
 var
-  st:String;
+  st: string;
 begin
-  st:=SeminarSQL.FieldByName('status').AsString;
-  result:=(St='P') or (St='N') or (St='W');
+  st := SeminarSQL.FieldByName('status').AsString;
+  result := (St = 'P') or (St = 'N') or (St = 'W');
 
 end;
-End.
+end.
+

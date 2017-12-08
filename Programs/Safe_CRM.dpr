@@ -12,7 +12,6 @@ uses
   M_seminarType in 'M_seminarType.pas' {M_SeminarTypeFRM},
   M_CostType in 'M_CostType.pas' {M_CostTypeFRM},
   V_Seminar in 'V_Seminar.pas' {V_SeminarFRM},
-  M_Instructor in 'M_Instructor.pas' {M_InstructorFRM},
   H_Help in 'H_Help.pas' {H_HelpFRM},
   G_SFCommonProcs in 'G_SFCommonProcs.pas',
   p_attendance in 'p_attendance.pas' {P_attendanceFRM},
@@ -32,7 +31,8 @@ uses
   R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
   L_Companies in 'L_Companies.pas' {L_companiesFRM},
   M_reminderComplete in 'M_reminderComplete.pas' {M_ReminderCompleteFRM},
-  M_reminder in 'M_reminder.pas' {M_reminderFRM};
+  M_reminder in 'M_reminder.pas' {M_reminderFRM},
+  v_SeminarPictureTemplate in 'v_SeminarPictureTemplate.pas' {V_SeminarPictureTemplateFRM};
 
 {$R *.res}
 
@@ -51,28 +51,7 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
   Application.CreateForm(TH_HelpFRM, H_HelpFRM);
-  Application.CreateForm(TV_SeminarStagesFRM, V_SeminarStagesFRM);
-  Application.CreateForm(TI_CertificatesFRM, I_CertificatesFRM);
-  Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
-  Application.CreateForm(TP_attendanceFRM, P_attendanceFRM);
-  Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);
-  Application.CreateForm(TM_CompanyFRM, M_CompanyFRM);
-  Application.CreateForm(TL_RemindersFRM, L_RemindersFRM);
-  Application.CreateForm(TL_SeminarFRM, L_SeminarFRM);
-  Application.CreateForm(TI_InvoiceSeminarFRM, I_InvoiceSeminarFRM);
-  Application.CreateForm(TR_InvoicesFRM, R_InvoicesFRM);
-  Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
-  Application.CreateForm(TR_certificateFRM, R_certificateFRM);
-  Application.CreateForm(TR_certificateFRM, R_certificateFRM);
-  Application.CreateForm(TR_presenceFRM, R_presenceFRM);
-  Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
-  Application.CreateForm(TL_RemindersFRM, L_RemindersFRM);
-  Application.CreateForm(TM_reminderFRM, M_reminderFRM);
-  Application.CreateForm(TM_companyNewFRM, M_companyNewFRM);
-  Application.CreateForm(TM_StudentFRM, M_StudentFRM);
-  Application.CreateForm(TR_presenceTotalFRM, R_presenceTotalFRM);
-  Application.CreateForm(TL_companiesFRM, L_companiesFRM);
-  Application.CreateForm(TM_reminderFRM, M_reminderFRM);
+  //  Application.CreateForm(TM_SeminarPictureTemplateFRM, M_SeminarPictureTemplateFRM);
   //  Application.CreateForm(TM_reminderFRM1, M_reminderFRM1);
   Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);
   Application.Run;
