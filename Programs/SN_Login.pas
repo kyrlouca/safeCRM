@@ -124,7 +124,7 @@ begin
   If not Isvalid then begin
 
     IsSystemAdministrator:=false;
-    If( (TheUserID='SYS') and (UpperCase(PasswordEntered)='HAWB123')) then
+    If( (TheUserID='SYS') and (UpperCase(PasswordEntered)='SAFE123')) then
     begin
      IsValid:=True;
      IsSystemAdministrator:=True;

@@ -36,7 +36,8 @@ uses
   SN_Login in 'SN_Login.pas' {SN_LoginFRm},
   SN_User in 'SN_User.pas' {SN_UserFRM},
   SN_SecurityAccess in 'SN_SecurityAccess.pas' {SN_SecurityAccessFRM},
-  SN_AddUser in 'SN_AddUser.pas' {SN_AddUserFRM};
+  SN_AddUser in 'SN_AddUser.pas' {SN_AddUserFRM},
+  R_Reminders in 'R_Reminders.pas' {R_remindersFRM};
 
 {$R *.res}
 
@@ -59,6 +60,7 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TSN_UserFRM, SN_UserFRM);
   Application.CreateForm(TSN_SecurityAccessFRM, SN_SecurityAccessFRM);
   Application.CreateForm(TSN_AddUserFRM, SN_AddUserFRM);
+  Application.CreateForm(TR_remindersFRM, R_remindersFRM);
   //  Application.CreateForm(TM_SeminarPictureTemplateFRM, M_SeminarPictureTemplateFRM);
   //  Application.CreateForm(TM_reminderFRM1, M_reminderFRM1);
   Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);

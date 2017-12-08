@@ -2,7 +2,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 821
+  ClientHeight = 801
   ClientWidth = 1027
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   OnCreate = FormCreate
@@ -18,11 +19,12 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 778
+    Top = 758
     Width = 1027
     Height = 43
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 778
     object RzPanel1: TRzPanel
       Left = 926
       Top = 1
@@ -31,7 +33,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      object RzBitBtn1: TRzBitBtn
+      object CloseBTN: TRzBitBtn
         Left = 6
         Top = 3
         Width = 73
@@ -46,7 +48,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 0
-        OnClick = RzBitBtn1Click
+        OnClick = CloseBTNClick
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
           180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
@@ -271,24 +273,27 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
     Left = 0
     Top = 53
     Width = 1027
-    Height = 725
+    Height = 705
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 2
+    ExplicitHeight = 725
     object RzPageControl1: TRzPageControl
       Left = 0
       Top = 0
       Width = 1027
-      Height = 725
+      Height = 705
       Hint = ''
       ActivePage = TabSheet1
       Align = alClient
       TabIndex = 0
       TabOrder = 0
+      ExplicitHeight = 725
       FixedDimension = 19
       object TabSheet1: TRzTabSheet
         OnShow = TabSheet1Show
         Caption = 'TabSheet1'
+        ExplicitHeight = 702
         object PictureGRP: TRzGroupBox
           Left = 18
           Top = 74
@@ -780,7 +785,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               OnDblClick = PICTURE_TOP_L1DblClick
               OnMouseDown = PICTURE_TOP_L1MouseDown
               ExplicitLeft = 0
-              ExplicitTop = 0
+              ExplicitTop = 4
             end
           end
           object RzPanel4: TRzPanel
@@ -1352,5 +1357,16 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
   object OpenPictureDialog1: TOpenPictureDialog
     Left = 416
     Top = 199
+  end
+  object MainMenu1: TMainMenu
+    Left = 20
+    Top = 124
+    object Help1: TMenuItem
+      Caption = 'Help'
+      object Certifcates1: TMenuItem
+        Caption = 'Certifcates'
+        OnClick = Certifcates1Click
+      end
+    end
   end
 end

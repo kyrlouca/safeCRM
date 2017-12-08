@@ -863,10 +863,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        ExplicitLeft = 2
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 567
         object RzPanel6: TRzPanel
           Left = 0
           Top = 0
@@ -909,9 +905,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 1
-          ExplicitLeft = 43
-          ExplicitTop = 53
-          ExplicitHeight = 322
           object RzPanel5: TRzPanel
             Left = 1
             Top = 15
@@ -1032,8 +1025,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitLeft = 474
-          ExplicitHeight = 528
           object GroupBox4: TGroupBox
             Left = 31
             Top = 31
@@ -1345,9 +1336,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 1
-            ExplicitLeft = 4
-            ExplicitTop = 10
-            ExplicitWidth = 457
             object RzPanel16: TRzPanel
               Left = 23
               Top = 0
@@ -1356,7 +1344,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Align = alLeft
               BorderOuter = fsNone
               TabOrder = 0
-              ExplicitLeft = 0
             end
             object wwDBNavigator3: TwwDBNavigator
               Left = 1
@@ -1514,7 +1501,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Align = alLeft
               BorderOuter = fsNone
               TabOrder = 2
-              ExplicitLeft = 8
             end
           end
         end

@@ -4,7 +4,7 @@ object L_RemindersFRM: TL_RemindersFRM
   Align = alClient
   Caption = '--'
   ClientHeight = 538
-  ClientWidth = 1059
+  ClientWidth = 1067
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,7 +23,7 @@ object L_RemindersFRM: TL_RemindersFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1059
+    Width = 1067
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -33,11 +33,12 @@ object L_RemindersFRM: TL_RemindersFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1059
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 1051
+      Width = 1059
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -50,18 +51,21 @@ object L_RemindersFRM: TL_RemindersFRM
   object Panel4: TPanel
     Left = 0
     Top = 495
-    Width = 1059
+    Width = 1067
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitLeft = 91
+    ExplicitTop = 487
     object RzPanel1: TRzPanel
-      Left = 958
+      Left = 966
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 958
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -142,10 +146,12 @@ object L_RemindersFRM: TL_RemindersFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 1059
+    Width = 1067
     Height = 173
     Align = alTop
     TabOrder = 1
+    ExplicitLeft = -1
+    ExplicitTop = 47
     object RzGroupBox1: TRzGroupBox
       Left = 4
       Top = 6
@@ -163,7 +169,7 @@ object L_RemindersFRM: TL_RemindersFRM
       TabOrder = 0
       object Label2: TLabel
         Left = 33
-        Top = 37
+        Top = 33
         Width = 60
         Height = 15
         Caption = #917#954#954#961#949#956#959#973#957
@@ -176,7 +182,7 @@ object L_RemindersFRM: TL_RemindersFRM
       end
       object Label1: TLabel
         Left = 43
-        Top = 64
+        Top = 61
         Width = 50
         Height = 14
         Caption = #931#949#956#953#957#940#961#953#959
@@ -188,24 +194,11 @@ object L_RemindersFRM: TL_RemindersFRM
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 27
-        Top = 87
-        Width = 66
+        Left = 28
+        Top = 91
+        Width = 60
         Height = 15
-        Caption = #935#969#961#943#962' '#931#964#972#967#959
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label5: TLabel
-        Left = 5
-        Top = 119
-        Width = 89
-        Height = 15
-        Caption = #919#956#951#961'. '#913#957#945#966#959#961#940#962
+        Caption = #935#969#961#943#962' '#923#942#958#951
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -311,8 +304,8 @@ object L_RemindersFRM: TL_RemindersFRM
         ParentDoubleBuffered = False
       end
       object RzBitBtn3: TRzBitBtn
-        Left = 357
-        Top = 24
+        Left = 317
+        Top = 29
         Width = 87
         Height = 41
         Caption = 'Display '
@@ -376,47 +369,26 @@ object L_RemindersFRM: TL_RemindersFRM
           ECC5B3B7A99196AC9298B69592AF999EBCA8ACDDD3D4FFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       end
-      object DateRefFLD: TwwDBDateTimePicker
-        Left = 100
-        Top = 117
-        Width = 124
-        Height = 23
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'Arial'
-        CalendarAttributes.Font.Style = []
-        Epoch = 1950
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ShowButton = True
-        TabOrder = 4
-        UnboundDataType = wwDTEdtDate
-        DisplayFormat = 'dd/mm/yyyy'
-        OnCloseUp = DateRefFLDCloseUp
-      end
     end
   end
   object Panel3: TPanel
     Left = 0
     Top = 226
-    Width = 1059
+    Width = 1067
     Height = 269
     Align = alClient
     TabOrder = 2
+    ExplicitWidth = 1059
     object Panel5: TPanel
-      Left = 833
+      Left = 921
       Top = 1
-      Width = 202
+      Width = 155
       Height = 267
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 880
       object InsertHawbBTN: TRzBitBtn
         Left = 2
         Top = 32
@@ -656,7 +628,7 @@ object L_RemindersFRM: TL_RemindersFRM
     object RzPanel2: TRzPanel
       Left = 41
       Top = 1
-      Width = 792
+      Width = 880
       Height = 267
       Align = alLeft
       BorderOuter = fsNone
@@ -664,11 +636,14 @@ object L_RemindersFRM: TL_RemindersFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 792
+        Width = 880
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitLeft = -4
+        ExplicitTop = 5
+        ExplicitWidth = 792
         object wwIncrementalSearch1: TwwIncrementalSearch
           Left = 119
           Top = 4
@@ -765,20 +740,22 @@ object L_RemindersFRM: TL_RemindersFRM
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 778
+        Width = 865
         Height = 234
         ControlType.Strings = (
-          'IS_COMPLETED;CustomEdit;CompletedFLD;F')
+          'IS_COMPLETED;CustomEdit;CompletedFLD;F'
+          'IS_HIGH;CustomEdit;HighFLD;F')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'DESCRIPTION'#9'23'#9#928#949#961#953#947#961#945#966#942
-          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945
-          'SEMINAR_SERIAL'#9'6'#9'S/S'
-          'SEMINAR_NAME'#9'17'#9#931#949#956#953#957#940#961#953#959
-          'DATE_TARGETED'#9'11'#9#916#961#940#963#951
-          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951
-          'IS_COMPLETED'#9'4'#9#932#941#955#959#962
-          'DaysLeft'#9'5'#9#924#941#961#949#962)
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'DESCRIPTION'#9'23'#9#928#949#961#953#947#961#945#966#942#9#9
+          'IS_HIGH'#9'8'#9#931#951#956#945#957#964#953#954#972#9#9
+          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945#9#9
+          'ANAD_NUMBER'#9'10'#9#913#925#913#916#9#9
+          'SEMINAR_NAME'#9'15'#9#931#949#956#953#957#940#961#953#959#9#9
+          'DATE_TARGETED'#9'11'#9#916#961#940#963#951#9#9
+          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951#9#9
+          'IS_COMPLETED'#9'4'#9#932#941#955#959#962#9#9
+          'DaysLeft'#9'5'#9#924#941#961#949#962#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -808,8 +785,8 @@ object L_RemindersFRM: TL_RemindersFRM
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
         object CompletedFLD: TwwCheckBox
-          Left = 656
-          Top = 128
+          Left = 688
+          Top = 200
           Width = 37
           Height = 18
           DisableThemes = False
@@ -822,8 +799,39 @@ object L_RemindersFRM: TL_RemindersFRM
           Alignment = taLeftJustify
           DataField = 'IS_COMPLETED'
           DataSource = TableSRC
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
           ShowText = False
           TabOrder = 0
+        end
+        object HighFLD: TwwCheckBox
+          Left = 73
+          Top = 209
+          Width = 61
+          Height = 18
+          DisableThemes = False
+          AlwaysTransparent = False
+          ValueChecked = 'Y'
+          ValueUnchecked = 'N'
+          DisplayValueChecked = 'Y'
+          DisplayValueUnchecked = 'N'
+          NullAndBlankState = cbUnchecked
+          Alignment = taLeftJustify
+          DataField = 'IS_HIGH'
+          DataSource = TableSRC
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ShowText = False
+          TabOrder = 1
+          OnClick = HighFLDClick
         end
       end
     end
@@ -865,13 +873,13 @@ object L_RemindersFRM: TL_RemindersFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_MESSA' +
         'GE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_OR_MO' +
         'NTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DATE_T' +
-        'ARGETED, DATE_COMPLETED)'
+        'ARGETED, DATE_COMPLETED, IS_HIGH)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :DESCRIPTION, :REMINDER_M' +
         'ESSAGE, :AFTER_OR_BEFORE, :PERSON_OR_SEMINAR, :START_OR_END, :DA' +
         'YS_OR_MONTHS, :NUMBER_OF_DAYS_MONTHS, :REMINDER_TYPE, :IS_COMPLE' +
-        'TED, :DATE_TARGETED, :DATE_COMPLETED)')
+        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_REMINDER'
       'WHERE'
@@ -887,7 +895,7 @@ object L_RemindersFRM: TL_RemindersFRM
         'NTHS = :DAYS_OR_MONTHS, NUMBER_OF_DAYS_MONTHS = :NUMBER_OF_DAYS_' +
         'MONTHS, REMINDER_TYPE = :REMINDER_TYPE, IS_COMPLETED = :IS_COMPL' +
         'ETED, DATE_TARGETED = :DATE_TARGETED, DATE_COMPLETED = :DATE_COM' +
-        'PLETED'
+        'PLETED, IS_HIGH = :IS_HIGH'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -895,7 +903,7 @@ object L_RemindersFRM: TL_RemindersFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_M' +
         'ESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_O' +
         'R_MONTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DA' +
-        'TE_TARGETED, DATE_COMPLETED FROM SEMINAR_REMINDER'
+        'TE_TARGETED, DATE_COMPLETED, IS_HIGH FROM SEMINAR_REMINDER'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -913,25 +921,26 @@ object L_RemindersFRM: TL_RemindersFRM
     UpdateTransaction = WriteTrans
     SQL.Strings = (
       'Select'
-      'sr.*,sem.seminar_name, sem.Serial_number as Seminar_serial'
+      '(sr.date_targeted - cast( :theDate as date  ) )as DaysLeft,'
+      
+        'sr.*,sem.seminar_name, sem.Serial_number as Seminar_serial, Sem.' +
+        'ANad_number'
       'from'
       'seminar_reminder sr'
       
         'left outer join seminar sem on sr.fk_seminar_serial=sem.serial_n' +
         'umber'
-      'where'
-      'sr.is_completed ='#39'N'#39
-      'or (sr.is_completed='#39'Y'#39' and sr.date_targeted >= :DateRef)'
+      ''
       'order by sr.date_targeted')
     Active = True
     OnCalcFields = TableSQLCalcFields
     OnNewRecord = TableSQLNewRecord
-    Left = 32
-    Top = 65528
+    Left = 40
+    Top = 24
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'DateRef'
+        Name = 'theDate'
         Value = nil
       end>
     object TableSQLSERIAL_NUMBER: TIntegerField
@@ -946,6 +955,14 @@ object L_RemindersFRM: TL_RemindersFRM
       Required = True
       Size = 160
     end
+    object TableSQLIS_HIGH: TWideStringField
+      DisplayLabel = #931#951#956#945#957#964#953#954#972
+      DisplayWidth = 8
+      FieldName = 'IS_HIGH'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
     object TableSQLREMINDER_MESSAGE: TWideStringField
       DisplayLabel = #924#942#957#965#956#945
       DisplayWidth = 12
@@ -953,15 +970,17 @@ object L_RemindersFRM: TL_RemindersFRM
       Required = True
       Size = 160
     end
-    object TableSQLSEMINAR_SERIAL: TIntegerField
-      DisplayLabel = 'S/S'
-      DisplayWidth = 6
-      FieldName = 'SEMINAR_SERIAL'
+    object TableSQLANAD_NUMBER: TWideStringField
+      DisplayLabel = #913#925#913#916
+      DisplayWidth = 10
+      FieldName = 'ANAD_NUMBER'
       ReadOnly = True
+      FixedChar = True
+      Size = 30
     end
     object TableSQLSEMINAR_NAME: TWideStringField
       DisplayLabel = #931#949#956#953#957#940#961#953#959
-      DisplayWidth = 17
+      DisplayWidth = 15
       FieldName = 'SEMINAR_NAME'
       ReadOnly = True
       Size = 160
@@ -970,27 +989,25 @@ object L_RemindersFRM: TL_RemindersFRM
       DisplayLabel = #916#961#940#963#951
       DisplayWidth = 11
       FieldName = 'DATE_TARGETED'
-      DisplayFormat = 'dd/mm/yyyy'
     end
     object TableSQLDATE_COMPLETED: TDateField
       DisplayLabel = #917#954#964#941#955#949#963#951
       DisplayWidth = 12
       FieldName = 'DATE_COMPLETED'
-      DisplayFormat = 'dd/mm/yyyy'
     end
     object TableSQLIS_COMPLETED: TWideStringField
       DisplayLabel = #932#941#955#959#962
       DisplayWidth = 4
       FieldName = 'IS_COMPLETED'
+      Required = True
       FixedChar = True
       Size = 1
     end
-    object TableSQLDaysLeft: TIntegerField
+    object TableSQLDAYSLEFT: TIntegerField
       DisplayLabel = #924#941#961#949#962
       DisplayWidth = 5
-      FieldKind = fkCalculated
-      FieldName = 'DaysLeft'
-      Calculated = True
+      FieldName = 'DAYSLEFT'
+      ReadOnly = True
     end
     object TableSQLFK_SEMINAR_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SERIAL'
@@ -1004,6 +1021,7 @@ object L_RemindersFRM: TL_RemindersFRM
     end
     object TableSQLPERSON_OR_SEMINAR: TWideStringField
       FieldName = 'PERSON_OR_SEMINAR'
+      Required = True
       Visible = False
       FixedChar = True
       Size = 1
@@ -1026,28 +1044,36 @@ object L_RemindersFRM: TL_RemindersFRM
     end
     object TableSQLREMINDER_TYPE: TWideStringField
       FieldName = 'REMINDER_TYPE'
+      Required = True
       Visible = False
       FixedChar = True
       Size = 1
+    end
+    object TableSQLSEMINAR_SERIAL: TIntegerField
+      FieldName = 'SEMINAR_SERIAL'
+      ReadOnly = True
+      Visible = False
     end
   end
   object SeminarSQL: TIBCQuery
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_COMPAN' +
-        'Y_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_STARTED, ' +
-        'DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUN' +
-        'T_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOIC' +
-        'ED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB)'
+        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXA' +
+        'MINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_ST' +
+        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL' +
+        ', AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS' +
+        '_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS' +
+        '_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :FK_VENUE, :FK_C' +
-        'OMPANY_PERSON_SERIAL, :SEMINAR_NAME, :SEMINAR_CORP_TYPE, :DATE_S' +
-        'TARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_A' +
-        'CTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :' +
-        'STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH' +
-        '_ANAD_SUB)')
+        '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
+        'K_EXAMINER, :FK_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME,' +
+        ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
+        ', :FEE_ACTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_EST' +
+        'IMATE, :STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :' +
+        'FEE_WITH_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY,' +
+        ' :SEM_CATEGORY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -1056,26 +1082,29 @@ object L_RemindersFRM: TL_RemindersFRM
       'UPDATE SEMINAR'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR = :FK_SEMINAR, FK_I' +
-        'NSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE = :FK_VENUE, FK_COMPANY_PER' +
-        'SON_SERIAL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_' +
-        'NAME, SEMINAR_CORP_TYPE = :SEMINAR_CORP_TYPE, DATE_STARTED = :DA' +
-        'TE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :D' +
-        'URATION_DAYS, DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FE' +
-        'E_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD' +
-        '_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS' +
-        ' = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CE' +
-        'RTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :F' +
-        'EE_WITH_ANAD_SUB'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, ANAD_NUMBER = :ANAD_NUMBER, FK' +
+        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_EXAMI' +
+        'NER = :FK_EXAMINER, FK_VENUE = :FK_VENUE, FK_COMPANY_PERSON_SERI' +
+        'AL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_NAME, DA' +
+        'TE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DU' +
+        'RATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, ' +
+        'FEE_ACTUAL = :FEE_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS =' +
+        ' :COMMENTS, ANAD_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_' +
+        'ESTIMATE, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTI' +
+        'FICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WI' +
+        'TH_ANAD_SUB = :FEE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPI' +
+        'RY_PERIOD = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY, SE' +
+        'M_CATEGORY = :SEM_CATEGORY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VENUE, FK_CO' +
-        'MPANY_PERSON_SERIAL, SEMINAR_NAME, SEMINAR_CORP_TYPE, DATE_START' +
-        'ED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, A' +
-        'MOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_IN' +
-        'VOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB FROM SE' +
+        'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
+        '_EXAMINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DAT' +
+        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_AC' +
+        'TUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS' +
+        ', IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB,' +
+        ' HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY FROM SE' +
         'MINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
@@ -1116,12 +1145,6 @@ object L_RemindersFRM: TL_RemindersFRM
       DisplayLabel = #928#949#961#953#947#961#945#966#942
       FieldName = 'SEMINAR_NAME'
       Size = 160
-    end
-    object SeminarSQLSEMINAR_CORP_TYPE: TWideStringField
-      FieldName = 'SEMINAR_CORP_TYPE'
-      Required = True
-      FixedChar = True
-      Size = 1
     end
     object SeminarSQLDATE_STARTED: TDateField
       FieldName = 'DATE_STARTED'
@@ -1177,6 +1200,12 @@ object L_RemindersFRM: TL_RemindersFRM
     end
     object SeminarSQLFEE_WITH_ANAD_SUB: TFloatField
       FieldName = 'FEE_WITH_ANAD_SUB'
+    end
+    object SeminarSQLTYPE_MONO_POLY: TWideStringField
+      FieldName = 'TYPE_MONO_POLY'
+      Required = True
+      FixedChar = True
+      Size = 1
     end
   end
   object SeminarSRC: TDataSource

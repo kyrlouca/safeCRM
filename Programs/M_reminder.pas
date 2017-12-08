@@ -45,11 +45,9 @@ type
     SerialFLD: TRzDBLabel;
     Label10: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
     FirstFLD: TwwDBEdit;
     DatePassedFLD: TwwDBDateTimePicker;
     wwDBDateTimePicker1: TwwDBDateTimePicker;
-    CompletedFLD: TwwCheckBox;
     CompanySQLSEMINAR_NAME: TWideStringField;
     CompanySQLSEMINAR_SERIAL: TIntegerField;
     GroupBox2: TGroupBox;
@@ -62,6 +60,9 @@ type
     wwDBDateTimePicker5: TwwDBDateTimePicker;
     CompanySQLSEMINAR_DATE_STARTED: TDateField;
     RzDBRichEdit1: TRzDBRichEdit;
+    Label8: TLabel;
+    wwCheckBox1: TwwCheckBox;
+    CompanySQLIS_HIGH: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure CompanySRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -73,7 +74,6 @@ type
     procedure CompanySQLNewRecord(DataSet: TDataSet);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure CompletedFLDClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -125,17 +125,6 @@ begin
 //         StationIDFLD.Enabled:=true;
      end;
   end;//with
-
-end;
-
-procedure TM_reminderFRM.CompletedFLDClick(Sender: TObject);
-begin
-  if CompanySQL.State in [dsBrowse] then CompanySQL.Edit;
-
-  if Completedfld.Checked then
-    CompanySQL.FieldByName('date_completed').AsDateTime:=Date
-  else
-    CompanySQL.FieldByName('date_completed').Clear;
 
 end;
 

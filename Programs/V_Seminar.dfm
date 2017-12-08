@@ -1,4 +1,4 @@
-object V_SeminarFRM: TV_SeminarFRM
+﻿object V_SeminarFRM: TV_SeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
@@ -41,7 +41,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Height = 45
       Align = alClient
       AutoSize = True
-      BorderOuter = fsNone
+      BorderOuter = fsFlatRounded
       Caption = #931#949#956#953#957#940#961#953#959
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 3947580
@@ -54,21 +54,24 @@ object V_SeminarFRM: TV_SeminarFRM
       Transparent = True
       WordWrap = False
       object RzDBLabel2: TRzDBLabel
-        Left = 0
-        Top = 0
+        Left = 2
+        Top = 2
         Width = 284
-        Height = 45
+        Height = 41
         Align = alLeft
         Layout = tlCenter
         WordWrap = True
         DataField = 'ANAD_NUMBER'
         DataSource = SeminarSRC
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitHeight = 45
       end
       object StatusFLD: TwwDBComboBox
-        Left = 749
-        Top = 0
+        Left = 747
+        Top = 2
         Width = 166
-        Height = 45
+        Height = 41
         BevelInner = bvNone
         ShowButton = False
         Style = csDropDown
@@ -84,17 +87,11 @@ object V_SeminarFRM: TV_SeminarFRM
         TabOrder = 0
         UnboundDataType = wwDefault
         Align = alRight
+        ExplicitLeft = 749
+        ExplicitTop = 0
         ExplicitHeight = 38
       end
     end
-  end
-  object Panel2: TPanel
-    Left = 0
-    Top = 53
-    Width = 923
-    Height = 12
-    Align = alTop
-    TabOrder = 1
   end
   object Panel3x: TRzPanel
     Left = 0
@@ -110,7 +107,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 919
       Height = 689
       Hint = ''
-      ActivePage = SeminarTS
+      ActivePage = ReminderTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -119,7 +116,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 0
+      TabIndex = 4
       TabOrder = 0
       OnChanging = PageControlPCChanging
       FixedDimension = 22
@@ -1837,7 +1834,7 @@ object V_SeminarFRM: TV_SeminarFRM
           object wwDBGrid3: TwwDBGrid
             Left = 1
             Top = 25
-            Width = 592
+            Width = 552
             Height = 612
             ControlType.Strings = (
               'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
@@ -1870,6 +1867,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitHeight = 616
             object AfterFLD: TwwDBComboBox
               Left = 94
               Top = 81
@@ -1936,8 +1934,8 @@ object V_SeminarFRM: TV_SeminarFRM
           end
         end
         object GroupBox5: TGroupBox
-          Left = 607
-          Top = 40
+          Left = 583
+          Top = 50
           Width = 338
           Height = 482
           Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -2013,11 +2011,11 @@ object V_SeminarFRM: TV_SeminarFRM
             ParentFont = False
           end
           object Label18: TLabel
-            Left = 10
+            Left = 40
             Top = 241
-            Width = 81
+            Width = 55
             Height = 14
-            Caption = #927#955#959#954#955#951#961#974#952#951#954#949
+            Caption = #931#951#956#945#957#964#953#954#972
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -2069,18 +2067,18 @@ object V_SeminarFRM: TV_SeminarFRM
             ShowButton = True
             TabOrder = 2
           end
-          object RzDBCheckBox1: TRzDBCheckBox
+          object HIghFLD: TRzDBCheckBox
             Left = 96
             Top = 240
             Width = 19
             Height = 15
-            DataField = 'IS_COMPLETED'
+            DataField = 'IS_HIGH'
             DataSource = SeminarReminderSRC
-            ReadOnly = True
             ValueChecked = 'Y'
             ValueUnchecked = 'N'
             Alignment = taLeftJustify
             TabOrder = 3
+            OnClick = HIghFLDClick
           end
           object RzPanel13: TRzPanel
             Left = 2
@@ -2518,6 +2516,15 @@ object V_SeminarFRM: TV_SeminarFRM
       end
     end
   end
+  object Panel2: TRzPanel
+    Left = 0
+    Top = 53
+    Width = 923
+    Height = 12
+    Align = alTop
+    BorderOuter = fsNone
+    TabOrder = 1
+  end
   object SeminarSRC: TDataSource
     DataSet = SeminarSQL
     OnStateChange = SeminarSRCStateChange
@@ -2730,7 +2737,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800D00210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800D40210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3903,8 +3910,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object SeminarCostItemSRC: TDataSource
     DataSet = SeminarCostItemSQL
-    Left = 568
-    Top = 409
+    Left = 400
+    Top = 481
   end
   object CostItemTBL: TIBCTable
     TableName = 'COST_ITEM_TYPE'
@@ -3945,13 +3952,13 @@ object V_SeminarFRM: TV_SeminarFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_MESSA' +
         'GE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_OR_MO' +
         'NTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DATE_T' +
-        'ARGETED, DATE_COMPLETED)'
+        'ARGETED, DATE_COMPLETED, IS_HIGH)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :DESCRIPTION, :REMINDER_M' +
         'ESSAGE, :AFTER_OR_BEFORE, :PERSON_OR_SEMINAR, :START_OR_END, :DA' +
         'YS_OR_MONTHS, :NUMBER_OF_DAYS_MONTHS, :REMINDER_TYPE, :IS_COMPLE' +
-        'TED, :DATE_TARGETED, :DATE_COMPLETED)')
+        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_REMINDER'
       'WHERE'
@@ -3967,7 +3974,7 @@ object V_SeminarFRM: TV_SeminarFRM
         'NTHS = :DAYS_OR_MONTHS, NUMBER_OF_DAYS_MONTHS = :NUMBER_OF_DAYS_' +
         'MONTHS, REMINDER_TYPE = :REMINDER_TYPE, IS_COMPLETED = :IS_COMPL' +
         'ETED, DATE_TARGETED = :DATE_TARGETED, DATE_COMPLETED = :DATE_COM' +
-        'PLETED'
+        'PLETED, IS_HIGH = :IS_HIGH'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -3975,7 +3982,7 @@ object V_SeminarFRM: TV_SeminarFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_M' +
         'ESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_O' +
         'R_MONTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DA' +
-        'TE_TARGETED, DATE_COMPLETED FROM SEMINAR_REMINDER'
+        'TE_TARGETED, DATE_COMPLETED, IS_HIGH FROM SEMINAR_REMINDER'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -4089,8 +4096,15 @@ object V_SeminarFRM: TV_SeminarFRM
       FieldName = 'DATE_COMPLETED'
       Visible = False
     end
+    object SeminarReminderSQLIS_HIGH: TWideStringField
+      FieldName = 'IS_HIGH'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
   end
-  object SeminarPictureSQL: TIBCQuery
+  object SeminarPictureSQLχχχχ: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
     KeyGenerator = 'GEN_SEMINAR_TYPE_PICTURES'
     SQLInsert.Strings = (
@@ -4155,8 +4169,8 @@ object V_SeminarFRM: TV_SeminarFRM
       
         'where stp.FK_SEMINAR_SERIAL = :SeminarSerial  and stp.LANGUAGE_G' +
         'REEK_OR_ENGLISH = :language')
-    Left = 681
-    Top = 225
+    Left = 417
+    Top = 273
     ParamData = <
       item
         DataType = ftUnknown
@@ -4168,85 +4182,85 @@ object V_SeminarFRM: TV_SeminarFRM
         Name = 'language'
         Value = nil
       end>
-    object SeminarPictureSQLSERIAL_NUMBER: TIntegerField
+    object SeminarPictureSQLχχχχSERIAL_NUMBER: TIntegerField
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
-    object SeminarPictureSQLPICTURE_SEMINAR: TBlobField
+    object SeminarPictureSQLχχχχPICTURE_SEMINAR: TBlobField
       FieldName = 'PICTURE_SEMINAR'
     end
-    object SeminarPictureSQLLINE_A1: TWideStringField
+    object SeminarPictureSQLχχχχLINE_A1: TWideStringField
       FieldName = 'LINE_A1'
       Size = 1500
     end
-    object SeminarPictureSQLLINE_A2: TWideStringField
+    object SeminarPictureSQLχχχχLINE_A2: TWideStringField
       FieldName = 'LINE_A2'
       Size = 1500
     end
-    object SeminarPictureSQLLINE_B1: TWideStringField
+    object SeminarPictureSQLχχχχLINE_B1: TWideStringField
       FieldName = 'LINE_B1'
       Size = 1500
     end
-    object SeminarPictureSQLLINE_B2: TWideStringField
+    object SeminarPictureSQLχχχχLINE_B2: TWideStringField
       FieldName = 'LINE_B2'
       Size = 1500
     end
-    object SeminarPictureSQLLINE_B3: TWideStringField
+    object SeminarPictureSQLχχχχLINE_B3: TWideStringField
       FieldName = 'LINE_B3'
       Size = 1500
     end
-    object SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField
+    object SeminarPictureSQLχχχχFK_SEMINAR_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SERIAL'
       Required = True
     end
-    object SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField
+    object SeminarPictureSQLχχχχLANGUAGE_GREEK_OR_ENGLISH: TWideStringField
       FieldName = 'LANGUAGE_GREEK_OR_ENGLISH'
       FixedChar = True
       Size = 1
     end
-    object SeminarPictureSQLLINE_C1: TWideStringField
+    object SeminarPictureSQLχχχχLINE_C1: TWideStringField
       FieldName = 'LINE_C1'
       Size = 1500
     end
-    object SeminarPictureSQLPICTURE_TOP_L1: TBlobField
+    object SeminarPictureSQLχχχχPICTURE_TOP_L1: TBlobField
       FieldName = 'PICTURE_TOP_L1'
     end
-    object SeminarPictureSQLPICTURE_TOP_R1: TBlobField
+    object SeminarPictureSQLχχχχPICTURE_TOP_R1: TBlobField
       FieldName = 'PICTURE_TOP_R1'
     end
-    object SeminarPictureSQLPICTURE_BOT_L1: TBlobField
+    object SeminarPictureSQLχχχχPICTURE_BOT_L1: TBlobField
       FieldName = 'PICTURE_BOT_L1'
     end
-    object SeminarPictureSQLPICTURE_BOT_R1: TBlobField
+    object SeminarPictureSQLχχχχPICTURE_BOT_R1: TBlobField
       FieldName = 'PICTURE_BOT_R1'
     end
-    object SeminarPictureSQLTL_X: TIntegerField
+    object SeminarPictureSQLχχχχTL_X: TIntegerField
       FieldName = 'TL_X'
     end
-    object SeminarPictureSQLTL_Y: TIntegerField
+    object SeminarPictureSQLχχχχTL_Y: TIntegerField
       FieldName = 'TL_Y'
     end
-    object SeminarPictureSQLTR_X: TIntegerField
+    object SeminarPictureSQLχχχχTR_X: TIntegerField
       FieldName = 'TR_X'
     end
-    object SeminarPictureSQLTR_Y: TIntegerField
+    object SeminarPictureSQLχχχχTR_Y: TIntegerField
       FieldName = 'TR_Y'
     end
-    object SeminarPictureSQLBL_X: TIntegerField
+    object SeminarPictureSQLχχχχBL_X: TIntegerField
       FieldName = 'BL_X'
     end
-    object SeminarPictureSQLBL_Y: TIntegerField
+    object SeminarPictureSQLχχχχBL_Y: TIntegerField
       FieldName = 'BL_Y'
     end
-    object SeminarPictureSQLBR_X: TIntegerField
+    object SeminarPictureSQLχχχχBR_X: TIntegerField
       FieldName = 'BR_X'
     end
-    object SeminarPictureSQLBR_Y: TIntegerField
+    object SeminarPictureSQLχχχχBR_Y: TIntegerField
       FieldName = 'BR_Y'
     end
   end
   object SeminarPictureSRC: TDataSource
-    DataSet = SeminarPictureSQL
+    DataSet = SeminarPictureSQLχχχχ
     Left = 832
     Top = 201
   end
@@ -4261,7 +4275,6 @@ object V_SeminarFRM: TV_SeminarFRM
       Caption = 'Help'
       object Certifcates1: TMenuItem
         Caption = 'Certifcates'
-        OnClick = Certifcates1Click
       end
     end
   end

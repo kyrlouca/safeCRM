@@ -65,8 +65,11 @@ type
     myDBCheckBox1: TmyDBCheckBox;
     ppLabel2: TppLabel;
     ppLabel3: TppLabel;
-    SeminarReminderSQLDaysLeft: TIntegerField;
-    DaysLeftLBL: TppDBText;
+    ppLabel14: TppLabel;
+    ppDBText2: TppDBText;
+    myDBCheckBox2: TmyDBCheckBox;
+    ppLabel16: TppLabel;
+    SeminarReminderSQLDAYSLEFT: TIntegerField;
     SeminarReminderSQLSERIAL_NUMBER: TIntegerField;
     SeminarReminderSQLFK_SEMINAR_SERIAL: TIntegerField;
     SeminarReminderSQLDESCRIPTION: TWideStringField;
@@ -80,8 +83,11 @@ type
     SeminarReminderSQLIS_COMPLETED: TWideStringField;
     SeminarReminderSQLDATE_TARGETED: TDateField;
     SeminarReminderSQLDATE_COMPLETED: TDateField;
+    SeminarReminderSQLIS_HIGH: TWideStringField;
     SeminarReminderSQLSEMINAR_NAME: TWideStringField;
     SeminarReminderSQLSEMINAR_SERIAL: TIntegerField;
+    SeminarReminderSQLANAD_NUMBER: TWideStringField;
+    DaysLeftLBL: TppDBText;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -91,7 +97,6 @@ type
     procedure ppVariable1Calc(Sender: TObject; var Value: Variant);
     procedure FormCreate(Sender: TObject);
     procedure ppVariable2Calc(Sender: TObject; var Value: Variant);
-    procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
     procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure SeminarReminderSQLCalcFields(DataSet: TDataSet);
     procedure DaysLeftLBLPrint(Sender: TObject);
@@ -100,12 +105,12 @@ type
     cn:TIBCConnection;
   Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   Function CalcDaysLeft():TReminderResult;
+
   public
     { Public declarations }
     IN_SeminarSerial:Integer;
-    IN_isCompleted:String;
-    IN_HasDate:String;
-    IN_DateRef:TDate;
+    IN_SQL:String;
+    IN_DateRef:Tdate;
     Procedure PrintTheSeminar();
 
   end;
@@ -158,11 +163,6 @@ begin
 
 end;
 
-procedure TR_remindersFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
-begin
-   value:=IN_DateRef;
-end;
-
 procedure TR_remindersFRM.RzBitBtn1Click(Sender: TObject);
 begin
   close;
@@ -174,6 +174,7 @@ end;
 procedure TR_remindersFRM.SeminarReminderSQLCalcFields(DataSet: TDataSet);
 var
   days:integer;
+
 begin
   Days:= Trunc(Dataset.FieldByName('date_targeted').AsDateTime - IN_DateRef);
   Dataset.FieldByName('daysLeft').AsInteger:=days;
@@ -247,29 +248,18 @@ begin
 
 fromDate:=FromDateFLD.Date;
 
-  if IN_isCompleted='C' then begin
-     SeminarReminderSQL.AddWhere('is_completed = ''Y'' ');
-  end else if IN_isCompleted='P' then begin
-    SeminarReminderSQL.AddWhere('is_completed = ''N'' ');
-  end;
 
-  if IN_SeminarSerial >0  then begin
-    SeminarReminderSQL.AddWhere('fk_seminar_serial = :seminarSerial');
+   SeminarReminderSQL.close;
+   SeminarReminderSQL.SQL.Clear;
+   SeminarReminderSQL.SQL.Add(IN_SQL);
+   SeminarReminderSQL.Prepare;
+   if SeminarReminderSQL.FindParam('SeminarSerial')<>nil then begin
+    SeminarReminderSQL.ParamByName('seminarSerial').Value:= IN_SeminarSerial;
   end;
+   SeminarReminderSQL.ParamByName('TheDate').AsDate:= IN_DateRef;
+  SeminarReminderSQL.open;
 
-  if IN_HasDate ='D' then begin
-      SeminarReminderSQL.AddWhere('Date_targeted is not null');
-  end else if IN_HasDate ='N' then begin
-      SeminarReminderSQL.AddWhere('Date_targeted is null');
-  end;
-
-  if SeminarReminderSQL.FindParam('SeminarSerial')<>nil then begin
-    SeminarReminderSQL.ParamByName('seminarSerial').Value:=IN_SeminarSerial;
-  end;
- SeminarReminderSQL.ParamByName('DateRef').AsDate:= IN_DateRef;
-
-  SeminarReminderSQL.Open;
-     PpReport1.Print;
+  PpReport1.Print;
 
 end;
 
@@ -287,6 +277,8 @@ procedure TR_remindersFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
 end;
+
+
 
 
 end.

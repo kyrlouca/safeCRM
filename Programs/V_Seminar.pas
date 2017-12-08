@@ -30,7 +30,6 @@ type
 
   TV_SeminarFRM = class(TForm)
     Panel1: TPanel;
-    Panel2: TPanel;
     SeminarSRC: TDataSource;
     SeminarSQL: TIBCQuery;
     WriteTrans: TIBCTransaction;
@@ -174,7 +173,7 @@ type
     SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
     Date1FLD: TwwDBDateTimePicker;
     Label16: TLabel;
-    RzDBCheckBox1: TRzDBCheckBox;
+    HIghFLD: TRzDBCheckBox;
     Label18: TLabel;
     RzGroupBox3: TRzGroupBox;
     Label1: TLabel;
@@ -221,34 +220,34 @@ type
     SeminarSQLFK_EXAMINER: TIntegerField;
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
     RzDBLabel2: TRzDBLabel;
-    SeminarPictureSQL: TIBCQuery;
+    SeminarPictureSQL÷÷÷÷: TIBCQuery;
     SeminarPictureSRC: TDataSource;
     OpenPictureDialog1: TOpenPictureDialog;
-    SeminarPictureSQLSERIAL_NUMBER: TIntegerField;
-    SeminarPictureSQLPICTURE_SEMINAR: TBlobField;
-    SeminarPictureSQLLINE_A1: TWideStringField;
-    SeminarPictureSQLLINE_A2: TWideStringField;
-    SeminarPictureSQLLINE_B1: TWideStringField;
-    SeminarPictureSQLLINE_B2: TWideStringField;
-    SeminarPictureSQLLINE_B3: TWideStringField;
-    SeminarPictureSQLFK_SEMINAR_SERIAL: TIntegerField;
-    SeminarPictureSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
-    SeminarPictureSQLLINE_C1: TWideStringField;
+    SeminarPictureSQL÷÷÷÷SERIAL_NUMBER: TIntegerField;
+    SeminarPictureSQL÷÷÷÷PICTURE_SEMINAR: TBlobField;
+    SeminarPictureSQL÷÷÷÷LINE_A1: TWideStringField;
+    SeminarPictureSQL÷÷÷÷LINE_A2: TWideStringField;
+    SeminarPictureSQL÷÷÷÷LINE_B1: TWideStringField;
+    SeminarPictureSQL÷÷÷÷LINE_B2: TWideStringField;
+    SeminarPictureSQL÷÷÷÷LINE_B3: TWideStringField;
+    SeminarPictureSQL÷÷÷÷FK_SEMINAR_SERIAL: TIntegerField;
+    SeminarPictureSQL÷÷÷÷LANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
+    SeminarPictureSQL÷÷÷÷LINE_C1: TWideStringField;
     MainMenu1: TMainMenu;
     Help1: TMenuItem;
     Certifcates1: TMenuItem;
-    SeminarPictureSQLPICTURE_TOP_L1: TBlobField;
-    SeminarPictureSQLPICTURE_TOP_R1: TBlobField;
-    SeminarPictureSQLPICTURE_BOT_L1: TBlobField;
-    SeminarPictureSQLPICTURE_BOT_R1: TBlobField;
-    SeminarPictureSQLTL_X: TIntegerField;
-    SeminarPictureSQLTL_Y: TIntegerField;
-    SeminarPictureSQLTR_X: TIntegerField;
-    SeminarPictureSQLTR_Y: TIntegerField;
-    SeminarPictureSQLBL_X: TIntegerField;
-    SeminarPictureSQLBL_Y: TIntegerField;
-    SeminarPictureSQLBR_X: TIntegerField;
-    SeminarPictureSQLBR_Y: TIntegerField;
+    SeminarPictureSQL÷÷÷÷PICTURE_TOP_L1: TBlobField;
+    SeminarPictureSQL÷÷÷÷PICTURE_TOP_R1: TBlobField;
+    SeminarPictureSQL÷÷÷÷PICTURE_BOT_L1: TBlobField;
+    SeminarPictureSQL÷÷÷÷PICTURE_BOT_R1: TBlobField;
+    SeminarPictureSQL÷÷÷÷TL_X: TIntegerField;
+    SeminarPictureSQL÷÷÷÷TL_Y: TIntegerField;
+    SeminarPictureSQL÷÷÷÷TR_X: TIntegerField;
+    SeminarPictureSQL÷÷÷÷TR_Y: TIntegerField;
+    SeminarPictureSQL÷÷÷÷BL_X: TIntegerField;
+    SeminarPictureSQL÷÷÷÷BL_Y: TIntegerField;
+    SeminarPictureSQL÷÷÷÷BR_X: TIntegerField;
+    SeminarPictureSQL÷÷÷÷BR_Y: TIntegerField;
     StatusFLD: TwwDBComboBox;
     SeminarSQLSEM_CATEGORY: TWideStringField;
     GroupBox1: TGroupBox;
@@ -282,6 +281,8 @@ type
     AnadFLD: TwwDBEdit;
     IBCSQLMonitor1: TIBCSQLMonitor;
     RzBitBtn2: TRzBitBtn;
+    Panel2: TRzPanel;
+    SeminarReminderSQLIS_HIGH: TWideStringField;
     procedure AcceptBTNClick(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -320,12 +321,11 @@ type
     procedure MonoRGPChange(Sender: TObject);
     procedure SeminarReminderSQLNewRecord(DataSet: TDataSet);
     procedure SelTopLeftBTNClick(Sender: TObject);
-    procedure CertificationTSExit(Sender: TObject);
     procedure ClearTopLeftBTNClick(Sender: TObject);
-    procedure Certifcates1Click(Sender: TObject);
     procedure SeminarCostItemSQLNewRecord(DataSet: TDataSet);
     procedure SeminarDaySQLBeforeInsert(DataSet: TDataSet);
     procedure RzBitBtn1Click(Sender: TObject);
+    procedure HIghFLDClick(Sender: TObject);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -372,7 +372,7 @@ begin
     2: ksPostTables([AttendingSQL]);
     3: ksPostTables([SeminarCostItemSQL]);
     4: ksPostTables([SeminarReminderSQL]);
-    5: ksPostTables([SeminarPictureSQL]);
+//    5: ksPostTables([SeminarPictureSQL]);
   end;
 
 end;
@@ -392,34 +392,6 @@ begin
   ksOpenTables([SeminarReminderSQL]);
 
 end;
-
-procedure TV_SeminarFRM.Certifcates1Click(Sender: TObject);
-var
-  Frm: TH_HelpFRM;
-begin
-{
-  frm := TH_HelpFRM.Create(nil);
-  try
-
-    frm.IN_RtfTExt := certificatesHelpRE.Text;
-    frm.IN_RichEdit := certificatesHelpRE;
-    frm.ShowModal;
-  finally
-    frm.Free;
-  end;
-  }
-end;
-
-
-procedure TV_SeminarFRM.CertificationTSExit(Sender: TObject);
-begin
-  if SeminarPictureSQL.State in [dsEdit, dsInsert] then
-  begin
-    SeminarPictureSQL.Post;
-  end;
-
-end;
-
 
 procedure TV_SeminarFRM.ToLeftBTNClick(Sender: TObject);
 begin
@@ -754,6 +726,14 @@ begin
 //   img.Free;
   end;
 
+end;
+
+procedure TV_SeminarFRM.HIghFLDClick(Sender: TObject);
+begin
+  if HighFLD.Checked then
+    HighFld.Color:=clRed
+  else
+    highFLD.Color:=clBtnFace;
 end;
 
 procedure TV_SeminarFRM.StudentsTSShow(Sender: TObject);

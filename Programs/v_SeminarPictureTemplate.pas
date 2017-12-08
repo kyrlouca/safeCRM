@@ -10,14 +10,14 @@ uses
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   vcl.wwcheckbox, RzTabs, vcl.wwclearbuttongroup, vcl.wwradiogroup,
   Vcl.ComCtrls, vcl.wwriched,codeSiteLogging,
-    CodeSiteMessage, Vcl.ExtDlgs;
+    CodeSiteMessage, Vcl.ExtDlgs, Vcl.Menus;
 type
   TV_SeminarPictureTemplateFRM = class(TForm)
     Panel4: TPanel;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     RzPanel1: TRzPanel;
-    RzBitBtn1: TRzBitBtn;
+    CloseBTN: TRzBitBtn;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
     Panel1: TRzPanel;
@@ -76,16 +76,20 @@ type
     wwDBEdit8: TwwDBEdit;
     LanguageRGP: TwwRadioGroup;
     certificatesHelpRE: TwwDBRichEdit;
+    MainMenu1: TMainMenu;
+    Help1: TMenuItem;
+    Certifcates1: TMenuItem;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
-    procedure RzBitBtn1Click(Sender: TObject);
+    procedure CloseBTNClick(Sender: TObject);
     procedure TabSheet1Show(Sender: TObject);
     procedure LanguageRGPChange(Sender: TObject);
     procedure PictureGRPExit(Sender: TObject);
     procedure PICTURE_TOP_L1DblClick(Sender: TObject);
     procedure PICTURE_TOP_L1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure Certifcates1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -109,7 +113,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, H_Help;
 
 
 {$R *.DFM}
@@ -149,7 +153,7 @@ begin
 
 end;
 
-procedure TV_SeminarPictureTemplateFRM.RzBitBtn1Click(Sender: TObject);
+procedure TV_SeminarPictureTemplateFRM.CloseBTNClick(Sender: TObject);
 begin
 close;
 end;
@@ -233,6 +237,23 @@ end;
 
 
 
+procedure TV_SeminarPictureTemplateFRM.Certifcates1Click(Sender: TObject);
+var
+  Frm: TH_HelpFRM;
+begin
+
+  frm := TH_HelpFRM.Create(nil);
+  try
+
+    frm.IN_RtfTExt := certificatesHelpRE.Text;
+    frm.IN_RichEdit := certificatesHelpRE;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+
+end;
+
 procedure TV_SeminarPictureTemplateFRM.CheckPicturesX(const TypeSerial: Integer);
 var
   Serial: Integer;
@@ -297,7 +318,7 @@ begin
     + ' where stp.fk_seminar_serial= :seminarSerial and LANGUAGE_GREEK_OR_ENGLISH = :language';
   qr := TksQuery.Create(cn, str2);
   try
-      close;
+      qr.close;
       qr.ParamByName('seminarSerial').Value := seminarSerial;
       qr.ParamByName('Language').Value := Language;
       qr.open;

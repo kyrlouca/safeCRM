@@ -298,10 +298,10 @@ object M_reminderFRM: TM_reminderFRM
     Align = alClient
     TabOrder = 3
     object GroupBox1: TGroupBox
-      Left = 16
+      Left = 7
       Top = 18
       Width = 353
-      Height = 239
+      Height = 303
       Caption = #917#961#947#945#963#943#945
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -312,7 +312,7 @@ object M_reminderFRM: TM_reminderFRM
       TabOrder = 0
       TabStop = True
       object Label2: TLabel
-        Left = 38
+        Left = 50
         Top = 48
         Width = 58
         Height = 14
@@ -325,7 +325,7 @@ object M_reminderFRM: TM_reminderFRM
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 75
+        Left = 87
         Top = 21
         Width = 21
         Height = 14
@@ -338,7 +338,7 @@ object M_reminderFRM: TM_reminderFRM
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 21
+        Left = 33
         Top = 143
         Width = 75
         Height = 14
@@ -351,7 +351,7 @@ object M_reminderFRM: TM_reminderFRM
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 53
+        Left = 65
         Top = 75
         Width = 43
         Height = 14
@@ -364,7 +364,7 @@ object M_reminderFRM: TM_reminderFRM
         ParentFont = False
       end
       object SerialFLD: TRzDBLabel
-        Left = 130
+        Left = 117
         Top = 19
         Width = 49
         Height = 20
@@ -387,7 +387,7 @@ object M_reminderFRM: TM_reminderFRM
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 7
+        Left = 19
         Top = 172
         Width = 89
         Height = 14
@@ -400,22 +400,21 @@ object M_reminderFRM: TM_reminderFRM
         ParentFont = False
         Visible = False
       end
-      object Label7: TLabel
-        Left = 37
-        Top = 202
-        Width = 59
+      object Label8: TLabel
+        Left = 50
+        Top = 210
+        Width = 55
         Height = 14
-        Caption = #932#949#955#949#953#969#956#941#957#951
+        Caption = #931#951#956#945#957#964#953#954#942
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        Visible = False
       end
       object FirstFLD: TwwDBEdit
-        Left = 130
+        Left = 117
         Top = 45
         Width = 216
         Height = 22
@@ -427,7 +426,7 @@ object M_reminderFRM: TM_reminderFRM
         WordWrap = False
       end
       object DatePassedFLD: TwwDBDateTimePicker
-        Left = 130
+        Left = 117
         Top = 140
         Width = 115
         Height = 23
@@ -450,7 +449,7 @@ object M_reminderFRM: TM_reminderFRM
         DisplayFormat = 'dd/mm/yyyy'
       end
       object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 130
+        Left = 117
         Top = 169
         Width = 115
         Height = 23
@@ -475,27 +474,8 @@ object M_reminderFRM: TM_reminderFRM
         DisplayFormat = 'dd/mm/yyyy'
         Visible = False
       end
-      object CompletedFLD: TwwCheckBox
-        Left = 130
-        Top = 197
-        Width = 37
-        Height = 18
-        DisableThemes = False
-        AlwaysTransparent = False
-        ValueChecked = 'Y'
-        ValueUnchecked = 'N'
-        DisplayValueChecked = 'Y'
-        DisplayValueUnchecked = 'N'
-        NullAndBlankState = cbUnchecked
-        DataField = 'IS_COMPLETED'
-        DataSource = CompanySRC
-        ShowText = False
-        TabOrder = 4
-        Visible = False
-        OnClick = CompletedFLDClick
-      end
       object RzDBRichEdit1: TRzDBRichEdit
-        Left = 130
+        Left = 117
         Top = 73
         Width = 215
         Height = 46
@@ -508,6 +488,23 @@ object M_reminderFRM: TM_reminderFRM
         Font.Style = []
         TabOrder = 1
         Zoom = 100
+      end
+      object wwCheckBox1: TwwCheckBox
+        Left = 117
+        Top = 207
+        Width = 37
+        Height = 18
+        DisableThemes = False
+        AlwaysTransparent = False
+        ValueChecked = 'Y'
+        ValueUnchecked = 'N'
+        DisplayValueChecked = 'Y'
+        DisplayValueUnchecked = 'N'
+        NullAndBlankState = cbUnchecked
+        DataField = 'IS_HIGH'
+        DataSource = CompanySRC
+        ShowText = False
+        TabOrder = 4
       end
     end
     object GroupBox2: TGroupBox
@@ -641,13 +638,13 @@ object M_reminderFRM: TM_reminderFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_MESSA' +
         'GE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_OR_MO' +
         'NTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DATE_T' +
-        'ARGETED, DATE_COMPLETED)'
+        'ARGETED, DATE_COMPLETED, IS_HIGH)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :DESCRIPTION, :REMINDER_M' +
         'ESSAGE, :AFTER_OR_BEFORE, :PERSON_OR_SEMINAR, :START_OR_END, :DA' +
         'YS_OR_MONTHS, :NUMBER_OF_DAYS_MONTHS, :REMINDER_TYPE, :IS_COMPLE' +
-        'TED, :DATE_TARGETED, :DATE_COMPLETED)')
+        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_REMINDER'
       'WHERE'
@@ -663,7 +660,7 @@ object M_reminderFRM: TM_reminderFRM
         'NTHS = :DAYS_OR_MONTHS, NUMBER_OF_DAYS_MONTHS = :NUMBER_OF_DAYS_' +
         'MONTHS, REMINDER_TYPE = :REMINDER_TYPE, IS_COMPLETED = :IS_COMPL' +
         'ETED, DATE_TARGETED = :DATE_TARGETED, DATE_COMPLETED = :DATE_COM' +
-        'PLETED'
+        'PLETED, IS_HIGH = :IS_HIGH'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -671,7 +668,7 @@ object M_reminderFRM: TM_reminderFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_M' +
         'ESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_O' +
         'R_MONTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DA' +
-        'TE_TARGETED, DATE_COMPLETED FROM SEMINAR_REMINDER'
+        'TE_TARGETED, DATE_COMPLETED, IS_HIGH FROM SEMINAR_REMINDER'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -779,6 +776,12 @@ object M_reminderFRM: TM_reminderFRM
     object CompanySQLSEMINAR_DATE_STARTED: TDateField
       FieldName = 'SEMINAR_DATE_STARTED'
       ReadOnly = True
+    end
+    object CompanySQLIS_HIGH: TWideStringField
+      FieldName = 'IS_HIGH'
+      Required = True
+      FixedChar = True
+      Size = 1
     end
   end
   object WriteTrans: TIBCTransaction

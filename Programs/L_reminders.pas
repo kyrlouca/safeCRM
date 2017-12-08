@@ -33,19 +33,6 @@ type
     EditBTN: TRzBitBtn;
     wwIncrementalSearch1: TwwIncrementalSearch;
     TableSQL: TIBCQuery;
-    TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLFK_SEMINAR_SERIAL: TIntegerField;
-    TableSQLDESCRIPTION: TWideStringField;
-    TableSQLREMINDER_MESSAGE: TWideStringField;
-    TableSQLAFTER_OR_BEFORE: TWideStringField;
-    TableSQLPERSON_OR_SEMINAR: TWideStringField;
-    TableSQLSTART_OR_END: TWideStringField;
-    TableSQLDAYS_OR_MONTHS: TWideStringField;
-    TableSQLNUMBER_OF_DAYS_MONTHS: TIntegerField;
-    TableSQLREMINDER_TYPE: TWideStringField;
-    TableSQLIS_COMPLETED: TWideStringField;
-    TableSQLDATE_TARGETED: TDateField;
-    TableSQLDATE_COMPLETED: TDateField;
     Grid1: TwwDBGrid;
     CompletedFLD: TwwCheckBox;
     wwDBNavigator1: TwwDBNavigator;
@@ -53,7 +40,6 @@ type
     wwDBNavigator1Prior: TwwNavButton;
     wwDBNavigator1Next: TwwNavButton;
     wwDBNavigator1Last: TwwNavButton;
-    TableSQLSEMINAR_NAME: TWideStringField;
     SeminarSQL: TIBCQuery;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
     SeminarSQLFK_SEMINAR: TIntegerField;
@@ -61,7 +47,6 @@ type
     SeminarSQLFK_VENUE: TIntegerField;
     SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
     SeminarSQLDATE_STARTED: TDateField;
     SeminarSQLDATE_COMPLETED: TDateField;
     SeminarSQLDURATION_DAYS: TIntegerField;
@@ -79,17 +64,33 @@ type
     SeminarSRC: TDataSource;
     SeminarSFLD: TwwDBLookupCombo;
     Label1: TLabel;
-    TableSQLSEMINAR_SERIAL: TIntegerField;
     Label3: TLabel;
     DateSFld: TwwDBComboBox;
     RzBitBtn3: TRzBitBtn;
     MainMenu1: TMainMenu;
     Reports1: TMenuItem;
     N3: TMenuItem;
-    TableSQLDaysLeft: TIntegerField;
-    DateRefFLD: TwwDBDateTimePicker;
-    Label5: TLabel;
     CompleteBTN: TRzBitBtn;
+    SeminarSQLTYPE_MONO_POLY: TWideStringField;
+    HighFLD: TwwCheckBox;
+    TableSQLDAYSLEFT: TIntegerField;
+    TableSQLSERIAL_NUMBER: TIntegerField;
+    TableSQLFK_SEMINAR_SERIAL: TIntegerField;
+    TableSQLDESCRIPTION: TWideStringField;
+    TableSQLREMINDER_MESSAGE: TWideStringField;
+    TableSQLAFTER_OR_BEFORE: TWideStringField;
+    TableSQLPERSON_OR_SEMINAR: TWideStringField;
+    TableSQLSTART_OR_END: TWideStringField;
+    TableSQLDAYS_OR_MONTHS: TWideStringField;
+    TableSQLNUMBER_OF_DAYS_MONTHS: TIntegerField;
+    TableSQLREMINDER_TYPE: TWideStringField;
+    TableSQLIS_COMPLETED: TWideStringField;
+    TableSQLDATE_TARGETED: TDateField;
+    TableSQLDATE_COMPLETED: TDateField;
+    TableSQLIS_HIGH: TWideStringField;
+    TableSQLSEMINAR_NAME: TWideStringField;
+    TableSQLSEMINAR_SERIAL: TIntegerField;
+    TableSQLANAD_NUMBER: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -114,6 +115,7 @@ type
     procedure TableSQLCalcFields(DataSet: TDataSet);
     procedure DateRefFLDCloseUp(Sender: TObject);
     procedure CompleteBTNClick(Sender: TObject);
+    procedure HighFLDClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -162,7 +164,7 @@ procedure TL_RemindersFRM.TableSQLCalcFields(DataSet: TDataSet);
 var
   days:integer;
 begin
-  Days:= Trunc(Dataset.FieldByName('date_targeted').AsDateTime - DateRefFLD.Date);
+  Days:= Trunc(Dataset.FieldByName('date_targeted').AsDateTime - Date);
   Dataset.FieldByName('daysLeft').AsInteger:=days;
 end;
 
@@ -186,6 +188,14 @@ begin
      end;
   end;//with
 
+end;
+
+procedure TL_RemindersFRM.HighFLDClick(Sender: TObject);
+begin
+  if HighFLD.Checked then
+    HighFld.Color:=clRed
+  else
+    highFLD.Color:=clBtnFace;
 end;
 
 procedure TL_RemindersFRM.RzBitBtn1Click(Sender: TObject);
@@ -230,10 +240,6 @@ TableSQL.RestoreSQL;
       TableSQL.AddWhere('is_completed = ''Y'' ');
   end;
 
-  seminarSerial:= SeminarSFLD.lookupTable.FieldByName('serial_number').AsInteger;
-  if (Trim(SeminarSFLD.text)>'') and  (SeminarSerial >0)  then begin
-    TableSQL.AddWhere('fk_seminar_serial = :seminarSerial');
-  end;
 
   if DateSFld.ItemIndex=0 then begin
       TableSQL.AddWhere('Date_targeted is not null');
@@ -241,10 +247,15 @@ TableSQL.RestoreSQL;
       TableSQL.AddWhere('Date_targeted is  null');
   end;
 
+  seminarSerial:= SeminarSFLD.lookupTable.FieldByName('serial_number').AsInteger;
+  if (Trim(SeminarSFLD.text)>'') and  (SeminarSerial >0)  then begin
+    TableSQL.AddWhere('fk_seminar_serial = :seminarSerial');
+  end;
+
   if TableSQL.FindParam('SeminarSerial')<>nil then begin
     TableSQL.ParamByName('seminarSerial').Value:=SeminarSerial;
   end;
- TableSQL.ParamByName('DateRef').AsDate:= DateRefFLD.Date;
+  TableSQL.ParamByName('theDate').AsDate:= Date;
 
   TableSQL.Open;
 
@@ -262,7 +273,6 @@ procedure TL_RemindersFRM.FormActivate(Sender: TObject);
 begin
   ksOpenTables([SeminarSQL]);
   SeminarSFld.Clear;
-  DateRefFLD.Date:=Date;
   DisplayFilter;
 end;
 
@@ -402,9 +412,8 @@ begin
 
   frm :=  TR_remindersFRM.Create(nil);
   frm.IN_seminarSerial :=seminarSerial;
-  frm.IN_isCompleted:= ActiveSFLD.Value;
-  frm.IN_HasDate:= DateSFld.Value;
-  frm.IN_DateRef:= DateRefFLD.Date;
+  frm.IN_DateRef := Date;
+  frm.IN_SQL:=TableSQL.FinalSQL;
 
   try
     frm.PrintTheSeminar();
