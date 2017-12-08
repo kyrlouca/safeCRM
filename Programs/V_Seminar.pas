@@ -15,7 +15,8 @@ uses
   Vcl.ComCtrls, RzDBEdit, RzRadGrp, RzDBRGrp, RzDTP, vcl.wwclearbuttongroup,
   vcl.wwradiogroup, RzRadChk, RzDBChk, G_debugUnit, codeSiteLogging,
     CodeSiteMessage,
-  Vcl.ExtDlgs, vcl.wwriched, Vcl.Menus, RzCmboBx, RzDBCmbo;
+  Vcl.ExtDlgs, vcl.wwriched, Vcl.Menus, RzCmboBx, RzDBCmbo, DASQLMonitor,
+  IBCSQLMonitor;
 type
 //Function TV_SeminarFRM.FindActionDate(const StartDate,EndDate:TDate; Const UseStartDate:Boolean; Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   TactionDateRec = record
@@ -170,11 +171,6 @@ type
     AttendingSQLIS_GUEST: TWideStringField;
     wwDBGrid4: TwwDBGrid;
     SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    CompanySQL: TIBCQuery;
-    CompanySQLFIRST_NAME: TWideStringField;
-    CompanySQLLAST_NAME: TWideStringField;
-    CompanySQLNATIONAL_ID: TWideStringField;
-    CompanySQLSERIAL_NUMBER: TIntegerField;
     SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
     Date1FLD: TwwDBDateTimePicker;
     Label16: TLabel;
@@ -285,6 +281,7 @@ type
     wwDBDateTimePicker1: TwwDBDateTimePicker;
     AnadFLD: TwwDBEdit;
     RzBitBtn1: TRzBitBtn;
+    IBCSQLMonitor1: TIBCSQLMonitor;
     procedure AcceptBTNClick(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -504,7 +501,6 @@ end;
 
 procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
 begin
-  ksOpenTables([CompanySQL]);
 
   AnadFLD.SetFocus;
 end;

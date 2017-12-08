@@ -35,14 +35,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     ParentFont = False
     TabOrder = 0
     VisualStyle = vsClassic
-    ExplicitHeight = 660
     object SeminarPC: TRzPageControl
       Left = 0
       Top = 67
       Width = 1017
       Height = 666
       Hint = ''
-      ActivePage = ReminderTS
+      ActivePage = CertificationTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -51,16 +50,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 2
+      TabIndex = 3
       TabOrder = 0
-      ExplicitTop = 66
-      ExplicitHeight = 593
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         Caption = #931#949#956#953#957#940#961#953#945
-        ExplicitLeft = -812
-        ExplicitTop = -10
-        ExplicitHeight = 567
         object RzPanel2: TRzPanel
           Left = 0
           Top = 39
@@ -69,7 +63,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 1
-          ExplicitHeight = 528
           object RzPanel3: TRzPanel
             Left = 0
             Top = 0
@@ -120,7 +113,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             TitleLines = 1
             TitleButtons = True
             OnTitleButtonClick = Grid1TitleButtonClick
-            ExplicitHeight = 511
           end
         end
         object Panel5: TRzPanel
@@ -155,10 +147,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Height = 601
           Align = alClient
           TabOrder = 2
-          ExplicitLeft = 358
-          ExplicitTop = 85
-          ExplicitWidth = 603
-          ExplicitHeight = 386
           object GroupBox1: TGroupBox
             Left = 28
             Top = 31
@@ -532,8 +520,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 3
-            ExplicitLeft = 4
-            ExplicitTop = 10
             object wwDBNavigator2: TwwDBNavigator
               Left = 23
               Top = 0
@@ -549,7 +535,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Font.Height = -12
               Font.Name = 'Arial'
               Font.Style = []
-              ExplicitLeft = 0
               object wwNavButton1: TwwNavButton
                 Left = 0
                 Top = 0
@@ -692,7 +677,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Align = alLeft
               BorderOuter = fsNone
               TabOrder = 1
-              ExplicitLeft = 8
             end
           end
         end
@@ -700,7 +684,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
         Caption = #920#941#956#945#964#945
-        ExplicitHeight = 567
         object GroupBox2: TGroupBox
           Left = 20
           Top = 15
@@ -881,6 +864,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
         ExplicitLeft = 2
+        ExplicitTop = 0
+        ExplicitWidth = 0
         ExplicitHeight = 567
         object RzPanel6: TRzPanel
           Left = 0
@@ -971,8 +956,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitTop = 25
-            ExplicitHeight = 296
             object AfterFLD: TwwDBComboBox
               Left = 94
               Top = 81
@@ -1540,7 +1523,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         OnShow = CertificationTSShow
         Caption = #928#953#963#964#959#960#959#953#951#964#951#954#940
         OnExit = CertificationTSExit
-        ExplicitHeight = 567
         object LanguageRGP: TwwRadioGroup
           Left = 23
           Top = 3
@@ -2769,7 +2751,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     BorderOuter = fsFlatRounded
     BorderSides = [sdLeft, sdRight, sdBottom]
     TabOrder = 1
-    ExplicitTop = 660
     object RzPanel1: TRzPanel
       Left = 915
       Top = 0

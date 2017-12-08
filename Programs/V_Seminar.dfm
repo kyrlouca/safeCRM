@@ -110,7 +110,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 919
       Height = 689
       Hint = ''
-      ActivePage = ReminderTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -119,15 +119,15 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 4
+      TabIndex = 0
       TabOrder = 0
       OnChanging = PageControlPCChanging
-      ExplicitLeft = -19
-      ExplicitTop = -206
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
+        ExplicitLeft = 2
+        ExplicitTop = 22
         object SecondGRP: TRzGroupBox
           Left = 404
           Top = 23
@@ -733,7 +733,6 @@ object V_SeminarFRM: TV_SeminarFRM
               'NATIONAL_ID'#9'20'#9#913#961'. '#917#947#947#961#945#966#942#962#9'F')
             DataField = 'FK_COMPANY_PERSON_SERIAL'
             DataSource = SeminarSRC
-            LookupTable = CompanySQL
             LookupField = 'SERIAL_NUMBER'
             Options = [loRowLines, loTitles]
             TabOrder = 7
@@ -2733,7 +2732,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800C80210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800CC0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4093,79 +4092,6 @@ object V_SeminarFRM: TV_SeminarFRM
       Visible = False
     end
   end
-  object CompanySQL: TIBCQuery
-    SQLInsert.Strings = (
-      'INSERT INTO PERSON'
-      '  (SERIAL_NUMBER, NATIONAL_ID, FIRST_NAME, LAST_NAME)'
-      'VALUES'
-      '  (:SERIAL_NUMBER, :NATIONAL_ID, :FIRST_NAME, :LAST_NAME)')
-    SQLDelete.Strings = (
-      'DELETE FROM PERSON'
-      'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
-    SQLUpdate.Strings = (
-      'UPDATE PERSON'
-      'SET'
-      
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, NATIONAL_ID = :NATIONAL_ID, FI' +
-        'RST_NAME = :FIRST_NAME, LAST_NAME = :LAST_NAME'
-      'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
-    SQLRefresh.Strings = (
-      
-        'SELECT SERIAL_NUMBER, NATIONAL_ID, FIRST_NAME, LAST_NAME FROM PE' +
-        'RSON'
-      'WHERE'
-      '  SERIAL_NUMBER = :SERIAL_NUMBER')
-    SQLLock.Strings = (
-      'SELECT NULL FROM PERSON'
-      'WHERE'
-      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
-      'FOR UPDATE WITH LOCK')
-    SQLRecCount.Strings = (
-      'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM PERSON'
-      ''
-      ') q')
-    Connection = U_databaseFRM.DataConnection
-    Transaction = ReadTrans
-    SQL.Strings = (
-      'select'
-      'per.serial_number, per.first_name,per.last_name ,per.national_id'
-      'from'
-      'person per'
-      'where'
-      'per.is_company='#39'Y'#39)
-    ReadOnly = True
-    Left = 483
-    Top = 509
-    object CompanySQLLAST_NAME: TWideStringField
-      DisplayLabel = #908#957#959#956#945' '#917#964#945#953#961#949#943#945#962
-      DisplayWidth = 15
-      FieldName = 'LAST_NAME'
-      FixedChar = True
-      Size = 30
-    end
-    object CompanySQLNATIONAL_ID: TWideStringField
-      DisplayLabel = #913#961'. '#917#947#947#961#945#966#942#962
-      DisplayWidth = 20
-      FieldName = 'NATIONAL_ID'
-      FixedChar = True
-    end
-    object CompanySQLFIRST_NAME: TWideStringField
-      DisplayWidth = 30
-      FieldName = 'FIRST_NAME'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object CompanySQLSERIAL_NUMBER: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'SERIAL_NUMBER'
-      Required = True
-      Visible = False
-    end
-  end
   object SeminarPictureSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
     KeyGenerator = 'GEN_SEMINAR_TYPE_PICTURES'
@@ -4340,5 +4266,9 @@ object V_SeminarFRM: TV_SeminarFRM
         OnClick = Certifcates1Click
       end
     end
+  end
+  object IBCSQLMonitor1: TIBCSQLMonitor
+    Left = 311
+    Top = 177
   end
 end

@@ -564,17 +564,16 @@ begin
           BlobField.Clear;
         end;
         qr.Post;
-        qr.close;
+//        qr.close; // do not close because it will free bs
 
       finally
-      //    BS.Free;
-      // somehow it is freed by itself and i get a runtime erro
+          BS.Free;
+
       end;
 
     end;
   finally
     qr.Free;
-//    BS.Free;
   end;
 
 end;
@@ -647,7 +646,7 @@ begin
             Img.Picture.LoadFromStream(bs)
           else
             Img.Picture:= nil;
-          qr.Close;
+//          qr.Close;
         finally
           bs.Free;
         end;
