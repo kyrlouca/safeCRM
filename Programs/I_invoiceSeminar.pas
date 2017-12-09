@@ -12,14 +12,11 @@ uses
   vcl.wwlocate, VirtualTable, Vcl.Menus;
 type
   TI_InvoiceSeminarFRM = class(TForm)
-    Panel1: TPanel;
     Panel4: TPanel;
-    Panel2: TPanel;
-    Panel3: TPanel;
+    BodyPanel: TRzPanel;
     Panel5: TPanel;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
-    Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
     PanelX: TRzPanel;
@@ -42,7 +39,6 @@ type
     Nav1Post: TwwNavButton;
     Nav1Cancel: TwwNavButton;
     InvoiceGRD: TwwDBGrid;
-    InvoiceBTN: TRzBitBtn;
     personSQL: TIBCQuery;
     personSQLFIRST_NAME: TWideStringField;
     personSQLLAST_NAME: TWideStringField;
@@ -63,8 +59,8 @@ type
     AnadCheckFLD: TwwCheckBox;
     Read1: TIBCTransaction;
     write1: TIBCTransaction;
-    TableSQL: TIBCQuery;
-    TableSRC: TIBCDataSource;
+    SeminarSQL: TIBCQuery;
+    SeminarSRC: TIBCDataSource;
     MainMenu1: TMainMenu;
     Reports1: TMenuItem;
     N3: TMenuItem;
@@ -76,46 +72,56 @@ type
     Label1: TLabel;
     RzDBLabel1: TRzDBLabel;
     RzDBLabel2: TRzDBLabel;
-    Label6: TLabel;
-    Label7: TLabel;
     Companylbl: TLabel;
     RzDBLabel3: TRzDBLabel;
-    wwDBEdit1: TRzDBLabel;
-    wwDBEdit2: TRzDBLabel;
     Label9: TLabel;
     RzDBLabel4: TRzDBLabel;
     RzDBLabel5: TRzDBLabel;
     wwDBComboBox1: TwwDBComboBox;
-    TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLANAD_NUMBER: TWideStringField;
-    TableSQLFK_SEMINAR: TIntegerField;
-    TableSQLFK_INSTRUCTOR: TIntegerField;
-    TableSQLFK_EXAMINER: TIntegerField;
-    TableSQLFK_VENUE: TIntegerField;
-    TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLDATE_STARTED: TDateField;
-    TableSQLDATE_COMPLETED: TDateField;
-    TableSQLDURATION_DAYS: TIntegerField;
-    TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLFEE_ACTUAL: TFloatField;
-    TableSQLAMOUNT_ANAD: TFloatField;
-    TableSQLCOMMENTS: TWideStringField;
-    TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLFEE_ESTIMATE: TFloatField;
-    TableSQLSTATUS: TWideStringField;
-    TableSQLIS_INVOICED: TWideStringField;
-    TableSQLIS_CERTIFICATED: TWideStringField;
-    TableSQLMAX_CAPACITY: TIntegerField;
-    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
-    TableSQLHAS_EXPIRY: TWideStringField;
-    TableSQLEXPIRY_PERIOD: TIntegerField;
-    TableSQLTYPE_MONO_POLY: TWideStringField;
-    TableSQLSEM_CATEGORY: TWideStringField;
-    TableSQLLAST_NAME: TWideStringField;
+    SeminarSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSQLANAD_NUMBER: TWideStringField;
+    SeminarSQLFK_SEMINAR: TIntegerField;
+    SeminarSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSQLFK_EXAMINER: TIntegerField;
+    SeminarSQLFK_VENUE: TIntegerField;
+    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    SeminarSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQLDATE_STARTED: TDateField;
+    SeminarSQLDATE_COMPLETED: TDateField;
+    SeminarSQLDURATION_DAYS: TIntegerField;
+    SeminarSQLDURATION_HOURS: TIntegerField;
+    SeminarSQLFEE_ACTUAL: TFloatField;
+    SeminarSQLAMOUNT_ANAD: TFloatField;
+    SeminarSQLCOMMENTS: TWideStringField;
+    SeminarSQLANAD_APPROVED: TWideStringField;
+    SeminarSQLFEE_ESTIMATE: TFloatField;
+    SeminarSQLSTATUS: TWideStringField;
+    SeminarSQLIS_INVOICED: TWideStringField;
+    SeminarSQLIS_CERTIFICATED: TWideStringField;
+    SeminarSQLMAX_CAPACITY: TIntegerField;
+    SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
+    SeminarSQLHAS_EXPIRY: TWideStringField;
+    SeminarSQLEXPIRY_PERIOD: TIntegerField;
+    SeminarSQLTYPE_MONO_POLY: TWideStringField;
+    SeminarSQLSEM_CATEGORY: TWideStringField;
+    SeminarSQLLAST_NAME: TWideStringField;
     InvoiceSQLLAST_NAME: TWideStringField;
     InvoiceSQLFIRST_NAME: TWideStringField;
     InvoiceSQLPERSON_NATIONAL_ID: TWideStringField;
+    GroupBox1: TGroupBox;
+    RzPanel7: TRzPanel;
+    wwDBGrid1: TwwDBGrid;
+    SeminarSubjectSQL: TIBCQuery;
+    SeminarSubjectSRC: TIBCDataSource;
+    SeminarSubjectSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSubjectSQLFK_SEMINAR_SERIAL: TIntegerField;
+    SeminarSubjectSQLSUBJECT: TWideStringField;
+    SeminarSubjectSQLFK_SUBJECT_TYPE_SERIAL: TIntegerField;
+    SeminarSubjectSQLFEE_NORMAL: TFloatField;
+    SeminarSubjectSQLFEE_REDUCED: TFloatField;
+    InvoiceBTN: TRzBitBtn;
+    Panel1: TRzPanel;
+    Panel2: TRzPanel;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -223,9 +229,9 @@ Var
 begin
 
     if (dataset.FieldByName('is_ANAD').AsString='Y') then begin
-      Dataset.FieldByName('amount_gross').AsFloat :=TableSQL.FieldByName('fee_with_ANAD_Sub').AsFloat;
+      Dataset.FieldByName('amount_gross').AsFloat :=SeminarSQL.FieldByName('fee_with_ANAD_Sub').AsFloat;
     end else begin
-      Dataset.FieldByName('amount_gross').AsFloat :=TableSQL.FieldByName('FEE_ACTUAL').AsFloat;
+      Dataset.FieldByName('amount_gross').AsFloat :=SeminarSQL.FieldByName('FEE_ACTUAL').AsFloat;
     end;
 
 
@@ -248,7 +254,7 @@ vAR
   seminarSerial:Integer;
 
 begin
-  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  seminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
 
   frm :=  TR_InvoicesFRM.Create(nil);
   frm.IN_SeminarSerial :=seminarSerial;
@@ -292,9 +298,11 @@ begin
   if not InvoiceSQL.UpdateTransaction.Active then
      InvoiceSQL.UpdateTransaction.StartTransaction;
 
-  TableSQL.Close;
-  TableSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
-  TableSQL.open;
+  SeminarSQL.Close;
+  SeminarSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+  SeminarSQL.open;
+
+  ksOpenTables([SEminarSubjectSQL]) ;
 
   InvoiceSQL.Close;
   InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
@@ -515,9 +523,9 @@ begin
 
     if (AnadCheckFLD.Checked) then begin
     //CHECK VALUE before the click
-      InvoiceSQL.FieldByName('amount_gross').AsFloat :=TableSQL.FieldByName('FEE_ACTUAL').AsFloat;
+      InvoiceSQL.FieldByName('amount_gross').AsFloat :=SeminarSQL.FieldByName('FEE_ACTUAL').AsFloat;
     end else begin
-      InvoiceSQL.FieldByName('amount_gross').AsFloat :=TableSQL.FieldByName('fee_with_ANAD_Sub').AsFloat;
+      InvoiceSQL.FieldByName('amount_gross').AsFloat :=SeminarSQL.FieldByName('fee_with_ANAD_Sub').AsFloat;
     end;
 
  end;

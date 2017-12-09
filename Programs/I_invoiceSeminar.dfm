@@ -2,8 +2,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 557
-  ClientWidth = 1059
+  ClientHeight = 597
+  ClientWidth = 1079
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,42 +19,15 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
-    Left = 0
-    Top = 0
-    Width = 1059
-    Height = 53
-    Align = alTop
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -27
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 0
-    object Label4: TLabel
-      AlignWithMargins = True
-      Left = 4
-      Top = 4
-      Width = 1051
-      Height = 45
-      Align = alClient
-      Alignment = taCenter
-      Caption = #932#953#956#959#955#972#947#951#963#951' '#931#949#956#953#957#945#961#943#959#965
-      Layout = tlCenter
-      ExplicitWidth = 309
-      ExplicitHeight = 32
-    end
-  end
   object Panel4: TPanel
     Left = 0
-    Top = 514
-    Width = 1059
+    Top = 554
+    Width = 1079
     Height = 43
     Align = alBottom
     TabOrder = 3
     object RzPanel1: TRzPanel
-      Left = 958
+      Left = 978
       Top = 1
       Width = 100
       Height = 41
@@ -137,31 +110,102 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Margin = -1
       end
     end
+    object InvoiceBTN: TRzBitBtn
+      Left = 4
+      Top = 3
+      Width = 164
+      Height = 34
+      Caption = 'Generate Invoices'
+      DoubleBuffered = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentDoubleBuffered = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = InvoiceBTNClick
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF05793AEDF8F2FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0E8245
+        63CE9D108447EFF9F3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFF0D844472D1A76DD0A466CE9F0F8747E8F4ECFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF0D864480D7B07ED5AE76D2A96DD0A465CD9F108947EBF6EEFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF04823D8FDAB98FDAB986D8B37DD5AE74D2A86ACF
+        A261CC9D0F8B48EEF7F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0C88469CDFC19FE0C398DDBF8EDBB8
+        85D7B27AD4AB6FD1A665CE9F5CCB9A0F8D4AEEF7F1FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF098C47A5E1C6ADE4CCA7
+        E2C89FDFC395DCBC8AD9B67ED6AE72D1A868CEA05ECB9A57C9970E904CCBE3CC
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF099048A7E2
+        C8B8E7D2B5E6D0AEE4CCA4E1C699DDBF26B46688D9B475D2A96ACFA260CC9B57
+        C99651C794048C41D5E9D6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        079347A1E1C4B8E7D2BEE9D6B7E7D3AFE5CDA3E0C60D964AFFFFFF1FAD5F83D7
+        B26BD0A260CC9C58C99651C89351C7930E974DDAECDBFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFF0291438FDBB9AEE4CCB4E6D0B8E7D2B5E6D0A7E2C80B974BFFFFFF
+        FFFFFFFFFFFF1FAD5F7CD5AD60CC9C57CA9651C89350C79251C7920E984EDDEE
+        DEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF19A359A0E0C3AEE4CCB0E4CDA4E1C51D
+        A35BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF23B16373D1A856C99650C7924FC791
+        4FC79251C791119C51DEEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1CA75C9DDF
+        C2A6E2C7109F51FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF23B1636B
+        D0A24FC7924FC79250C79250C79250C791139E53E3F2E5FFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF1AA85A16A557FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF24B36563CD9E50C7924FC79250C79250C79251C7920C9B4DFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20AF615FCC9A4FC79250C79251C8
+        93088D46FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1BAA5C
+        5ACA9853C8940A964BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF11A052139F53FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      Margin = -1
+    end
   end
-  object Panel2: TPanel
+  object BodyPanel: TRzPanel
     Left = 0
-    Top = 53
-    Width = 1059
-    Height = 39
-    Align = alTop
-    TabOrder = 1
-  end
-  object Panel3: TPanel
-    Left = 0
-    Top = 92
-    Width = 1059
-    Height = 422
+    Top = 65
+    Width = 1079
+    Height = 489
     Align = alClient
+    BorderOuter = fsFlatRounded
     TabOrder = 2
+    ExplicitTop = 92
+    ExplicitHeight = 462
     object Panel5: TPanel
-      Left = 305
-      Top = 1
+      Left = 421
+      Top = 2
       Width = 750
-      Height = 420
+      Height = 485
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 458
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -323,24 +367,24 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 377
+        Top = 442
         Width = 750
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
-        BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
+        ExplicitTop = 415
         object RzPanel6: TRzPanel
           Left = 649
-          Top = 0
+          Top = 1
           Width = 100
-          Height = 42
+          Height = 41
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
         end
         object SavePresBTN: TBitBtn
-          Left = 6
+          Left = 29
           Top = 4
           Width = 89
           Height = 34
@@ -412,7 +456,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           OnClick = SavePresBTNClick
         end
         object CanelBTN: TBitBtn
-          Left = 101
+          Left = 124
           Top = 4
           Width = 89
           Height = 34
@@ -488,19 +532,19 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Left = 6
         Top = 47
         Width = 723
-        Height = 313
+        Height = 338
         ControlType.Strings = (
           'IS_ANAD;CustomEdit;AnadCheckFLD;F')
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
           'FK_PERSON_SERIAL'#9'6'#9'P/P'
-          'LAST_NAME'#9'20'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'20'#9#908#957#959#956#945
-          'AMOUNT_GROSS'#9'9'#9'Charge'
-          'IS_ANAD'#9'1'#9#913#925#913#916
+          'LAST_NAME'#9'16'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945
+          'AMOUNT_GROSS'#9'9'#9#932#953#956#942
+          'IS_ANAD'#9'4'#9#913#925#913#916
           'DISCOUNT_CUSTOMER'#9'8'#9'Discount'
           'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'
-          'AMOUNT_VAT'#9'10'#9'VAT'
+          'AMOUNT_VAT'#9'8'#9'VAT'
           'AMOUNT_WITH_VAT'#9'10'#9'Total')
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
@@ -520,8 +564,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         OnCalcCellColors = InvoiceGRDCalcCellColors
         OnColEnter = InvoiceGRDColEnter
         object AnadCheckFLD: TwwCheckBox
-          Left = 72
-          Top = 128
+          Left = 360
+          Top = 48
           Width = 32
           Height = 16
           DisableThemes = False
@@ -540,17 +584,18 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
     end
     object PanelX: TRzPanel
-      Left = 1
-      Top = 1
-      Width = 304
-      Height = 420
+      Left = 2
+      Top = 2
+      Width = 419
+      Height = 485
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 458
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 304
+        Width = 419
         Height = 9
         Align = alTop
         BorderOuter = fsNone
@@ -558,93 +603,71 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 223
-        Width = 304
+        Top = 288
+        Width = 419
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        object InvoiceBTN: TRzBitBtn
-          Left = 29
-          Top = 158
-          Width = 164
-          Height = 34
-          Caption = 'Generate Invoices'
-          DoubleBuffered = True
+        ExplicitTop = 261
+        object GroupBox1: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 401
+          Height = 197
+          Align = alLeft
+          Caption = #920#941#956#945#964#945
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
+          Font.Height = -12
+          Font.Name = 'Tahoma'
           Font.Style = []
-          ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 0
-          OnClick = InvoiceBTNClick
-          Glyph.Data = {
-            F6060000424DF606000000000000360000002800000018000000180000000100
-            180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF05793AEDF8F2FFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0E8245
-            63CE9D108447EFF9F3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFF0D844472D1A76DD0A466CE9F0F8747E8F4ECFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFF0D864480D7B07ED5AE76D2A96DD0A465CD9F108947EBF6EEFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFF04823D8FDAB98FDAB986D8B37DD5AE74D2A86ACF
-            A261CC9D0F8B48EEF7F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0C88469CDFC19FE0C398DDBF8EDBB8
-            85D7B27AD4AB6FD1A665CE9F5CCB9A0F8D4AEEF7F1FFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF098C47A5E1C6ADE4CCA7
-            E2C89FDFC395DCBC8AD9B67ED6AE72D1A868CEA05ECB9A57C9970E904CCBE3CC
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF099048A7E2
-            C8B8E7D2B5E6D0AEE4CCA4E1C699DDBF26B46688D9B475D2A96ACFA260CC9B57
-            C99651C794048C41D5E9D6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            079347A1E1C4B8E7D2BEE9D6B7E7D3AFE5CDA3E0C60D964AFFFFFF1FAD5F83D7
-            B26BD0A260CC9C58C99651C89351C7930E974DDAECDBFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFF0291438FDBB9AEE4CCB4E6D0B8E7D2B5E6D0A7E2C80B974BFFFFFF
-            FFFFFFFFFFFF1FAD5F7CD5AD60CC9C57CA9651C89350C79251C7920E984EDDEE
-            DEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF19A359A0E0C3AEE4CCB0E4CDA4E1C51D
-            A35BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF23B16373D1A856C99650C7924FC791
-            4FC79251C791119C51DEEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1CA75C9DDF
-            C2A6E2C7109F51FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF23B1636B
-            D0A24FC7924FC79250C79250C79250C791139E53E3F2E5FFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFF1AA85A16A557FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFF24B36563CD9E50C7924FC79250C79250C79251C7920C9B4DFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF20AF615FCC9A4FC79250C79251C8
-            93088D46FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1BAA5C
-            5ACA9853C8940A964BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFF11A052139F53FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-          Margin = -1
+          object RzPanel7: TRzPanel
+            Left = 2
+            Top = 16
+            Width = 397
+            Height = 9
+            Align = alTop
+            BorderOuter = fsNone
+            TabOrder = 0
+          end
+          object wwDBGrid1: TwwDBGrid
+            Left = 2
+            Top = 25
+            Width = 397
+            Height = 170
+            Selected.Strings = (
+              'SERIAL_NUMBER'#9'6'#9'A/A'
+              'SUBJECT'#9'20'#9#920#941#956#945
+              'FEE_NORMAL'#9'10'#9#932#953#956#942' '#922#945#957#959#957#953#954#942
+              'FEE_REDUCED'#9'10'#9#932#953#956#942' '#913#925#913#916)
+            IniAttributes.Delimiter = ';;'
+            IniAttributes.UnicodeIniFile = False
+            TitleColor = clBtnFace
+            FixedCols = 1
+            ShowHorzScrollBar = True
+            Align = alClient
+            DataSource = SeminarSubjectSRC
+            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+            TabOrder = 1
+            TitleAlignment = taLeftJustify
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            TitleLines = 1
+            TitleButtons = False
+          end
         end
       end
       object FirstGRP: TGroupBox
-        Left = 3
-        Top = 34
-        Width = 273
-        Height = 319
+        Left = 15
+        Top = 15
+        Width = 398
+        Height = 215
         Caption = #931#949#956#953#957#940#961#953#959
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -687,7 +710,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           BorderOuter = fsFlat
           BorderWidth = 1
           DataField = 'ANAD_NUMBER'
-          DataSource = TableSRC
+          DataSource = SeminarSRC
         end
         object Label5: TLabel
           Left = 6
@@ -723,7 +746,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           BorderOuter = fsFlat
           BorderWidth = 1
           DataField = 'DATE_STARTED'
-          DataSource = TableSRC
+          DataSource = SeminarSRC
         end
         object RzDBLabel2: TRzDBLabel
           Left = 176
@@ -733,33 +756,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           BorderOuter = fsFlat
           BorderWidth = 1
           DataField = 'DATE_COMPLETED'
-          DataSource = TableSRC
-        end
-        object Label6: TLabel
-          Left = 41
-          Top = 226
-          Width = 131
-          Height = 14
-          Caption = #932#953#956#942' '#935#969#961#943#962' '#917#960#953#967#959#961#942#947#951#963#951
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label7: TLabel
-          Left = 60
-          Top = 252
-          Width = 112
-          Height = 14
-          Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
+          DataSource = SeminarSRC
         end
         object Companylbl: TLabel
           Left = 30
@@ -782,29 +779,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           ParentColor = False
           BorderOuter = fsFlat
           DataField = 'LAST_NAME'
-          DataSource = TableSRC
-        end
-        object wwDBEdit1: TRzDBLabel
-          Left = 178
-          Top = 251
-          Width = 80
-          Height = 20
-          Alignment = taRightJustify
-          ParentColor = False
-          BorderOuter = fsFlat
-          DataField = 'FEE_WITH_ANAD_SUB'
-          DataSource = TableSRC
-        end
-        object wwDBEdit2: TRzDBLabel
-          Left = 176
-          Top = 225
-          Width = 80
-          Height = 20
-          Alignment = taRightJustify
-          ParentColor = False
-          BorderOuter = fsFlat
-          DataField = 'FEE_ACTUAL'
-          DataSource = TableSRC
+          DataSource = SeminarSRC
         end
         object Label9: TLabel
           Left = 52
@@ -828,7 +803,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           BorderOuter = fsFlat
           BorderWidth = 1
           DataField = 'SERIAL_NUMBER'
-          DataSource = TableSRC
+          DataSource = SeminarSRC
         end
         object RzDBLabel5: TRzDBLabel
           Left = 79
@@ -838,7 +813,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           BorderOuter = fsFlat
           BorderWidth = 1
           DataField = 'SEMINAR_NAME'
-          DataSource = TableSRC
+          DataSource = SeminarSRC
         end
         object wwDBComboBox1: TwwDBComboBox
           Left = 79
@@ -851,7 +826,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           AllowClearKey = False
           AutoDropDown = True
           DataField = 'TYPE_MONO_POLY'
-          DataSource = TableSRC
+          DataSource = SeminarSRC
           DropDownCount = 8
           ItemHeight = 0
           Items.Strings = (
@@ -864,16 +839,41 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
     end
   end
+  object Panel1: TRzPanel
+    Left = 0
+    Top = 0
+    Width = 1079
+    Height = 53
+    Align = alTop
+    BorderOuter = fsFlatRounded
+    Caption = #932#953#956#959#955#972#947#951#963#951' '#931#949#956#953#957#945#961#943#959#965
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 3947580
+    Font.Height = -27
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Panel2: TRzPanel
+    Left = 0
+    Top = 53
+    Width = 1079
+    Height = 12
+    Align = alTop
+    BorderOuter = fsNone
+    TabOrder = 1
+  end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
-    Left = 105
-    Top = 517
+    Left = 145
+    Top = 445
   end
   object ReadTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
     IsolationLevel = iblReadOnlyReadCommitted
-    Left = 56
-    Top = 513
+    Left = 120
+    Top = 393
   end
   object InvoiceSQL: TIBCQuery
     SQLInsert.Strings = (
@@ -963,26 +963,26 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     end
     object InvoiceSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
-      DisplayWidth = 20
+      DisplayWidth = 16
       FieldName = 'LAST_NAME'
       FixedChar = True
       Size = 60
     end
     object InvoiceSQLFIRST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
-      DisplayWidth = 20
+      DisplayWidth = 16
       FieldName = 'FIRST_NAME'
       FixedChar = True
       Size = 60
     end
     object InvoiceSQLAMOUNT_GROSS: TFloatField
-      DisplayLabel = 'Charge'
+      DisplayLabel = #932#953#956#942
       DisplayWidth = 9
       FieldName = 'AMOUNT_GROSS'
     end
     object InvoiceSQLIS_ANAD: TWideStringField
       DisplayLabel = #913#925#913#916
-      DisplayWidth = 1
+      DisplayWidth = 4
       FieldName = 'IS_ANAD'
       Required = True
       FixedChar = True
@@ -1000,7 +1000,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     end
     object InvoiceSQLAMOUNT_VAT: TFloatField
       DisplayLabel = 'VAT'
-      DisplayWidth = 10
+      DisplayWidth = 8
       FieldName = 'AMOUNT_VAT'
       DisplayFormat = '0.00'
     end
@@ -1122,7 +1122,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 281
     Top = 13
   end
-  object TableSQL: TIBCQuery
+  object SeminarSQL: TIBCQuery
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
@@ -1206,120 +1206,149 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Name = 'SeminarSerial'
         Value = nil
       end>
-    object TableSQLSERIAL_NUMBER: TIntegerField
+    object SeminarSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 6
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
-    object TableSQLANAD_NUMBER: TWideStringField
+    object SeminarSQLANAD_NUMBER: TWideStringField
       FieldName = 'ANAD_NUMBER'
       Required = True
+      Visible = False
       FixedChar = True
       Size = 30
     end
-    object TableSQLFK_SEMINAR: TIntegerField
-      FieldName = 'FK_SEMINAR'
-    end
-    object TableSQLFK_INSTRUCTOR: TIntegerField
-      FieldName = 'FK_INSTRUCTOR'
-    end
-    object TableSQLFK_EXAMINER: TIntegerField
-      FieldName = 'FK_EXAMINER'
-    end
-    object TableSQLFK_VENUE: TIntegerField
-      FieldName = 'FK_VENUE'
-    end
-    object TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
-      FieldName = 'FK_COMPANY_PERSON_SERIAL'
-    end
-    object TableSQLSEMINAR_NAME: TWideStringField
-      FieldName = 'SEMINAR_NAME'
-      Size = 160
-    end
-    object TableSQLDATE_STARTED: TDateField
-      FieldName = 'DATE_STARTED'
-    end
-    object TableSQLDATE_COMPLETED: TDateField
-      FieldName = 'DATE_COMPLETED'
-    end
-    object TableSQLDURATION_DAYS: TIntegerField
-      FieldName = 'DURATION_DAYS'
-    end
-    object TableSQLDURATION_HOURS: TIntegerField
-      FieldName = 'DURATION_HOURS'
-    end
-    object TableSQLFEE_ACTUAL: TFloatField
-      FieldName = 'FEE_ACTUAL'
-    end
-    object TableSQLAMOUNT_ANAD: TFloatField
-      FieldName = 'AMOUNT_ANAD'
-    end
-    object TableSQLCOMMENTS: TWideStringField
-      FieldName = 'COMMENTS'
-      Size = 160
-    end
-    object TableSQLANAD_APPROVED: TWideStringField
-      FieldName = 'ANAD_APPROVED'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLFEE_ESTIMATE: TFloatField
-      FieldName = 'FEE_ESTIMATE'
-    end
-    object TableSQLSTATUS: TWideStringField
-      FieldName = 'STATUS'
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLIS_INVOICED: TWideStringField
-      FieldName = 'IS_INVOICED'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLIS_CERTIFICATED: TWideStringField
-      FieldName = 'IS_CERTIFICATED'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLMAX_CAPACITY: TIntegerField
-      FieldName = 'MAX_CAPACITY'
-      Required = True
-    end
-    object TableSQLFEE_WITH_ANAD_SUB: TFloatField
-      FieldName = 'FEE_WITH_ANAD_SUB'
-    end
-    object TableSQLHAS_EXPIRY: TWideStringField
-      FieldName = 'HAS_EXPIRY'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLEXPIRY_PERIOD: TIntegerField
-      FieldName = 'EXPIRY_PERIOD'
-    end
-    object TableSQLTYPE_MONO_POLY: TWideStringField
-      FieldName = 'TYPE_MONO_POLY'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLSEM_CATEGORY: TWideStringField
-      FieldName = 'SEM_CATEGORY'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object TableSQLLAST_NAME: TWideStringField
+    object SeminarSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 20
       FieldName = 'LAST_NAME'
       ReadOnly = True
       FixedChar = True
       Size = 30
     end
+    object SeminarSQLFK_SEMINAR: TIntegerField
+      FieldName = 'FK_SEMINAR'
+      Visible = False
+    end
+    object SeminarSQLFK_INSTRUCTOR: TIntegerField
+      FieldName = 'FK_INSTRUCTOR'
+      Visible = False
+    end
+    object SeminarSQLFK_EXAMINER: TIntegerField
+      FieldName = 'FK_EXAMINER'
+      Visible = False
+    end
+    object SeminarSQLFK_VENUE: TIntegerField
+      FieldName = 'FK_VENUE'
+      Visible = False
+    end
+    object SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_COMPANY_PERSON_SERIAL'
+      Visible = False
+    end
+    object SeminarSQLSEMINAR_NAME: TWideStringField
+      FieldName = 'SEMINAR_NAME'
+      Visible = False
+      Size = 160
+    end
+    object SeminarSQLDATE_STARTED: TDateField
+      FieldName = 'DATE_STARTED'
+      Visible = False
+    end
+    object SeminarSQLDATE_COMPLETED: TDateField
+      FieldName = 'DATE_COMPLETED'
+      Visible = False
+    end
+    object SeminarSQLDURATION_DAYS: TIntegerField
+      FieldName = 'DURATION_DAYS'
+      Visible = False
+    end
+    object SeminarSQLDURATION_HOURS: TIntegerField
+      FieldName = 'DURATION_HOURS'
+      Visible = False
+    end
+    object SeminarSQLFEE_ACTUAL: TFloatField
+      FieldName = 'FEE_ACTUAL'
+      Visible = False
+    end
+    object SeminarSQLAMOUNT_ANAD: TFloatField
+      FieldName = 'AMOUNT_ANAD'
+      Visible = False
+    end
+    object SeminarSQLCOMMENTS: TWideStringField
+      FieldName = 'COMMENTS'
+      Visible = False
+      Size = 160
+    end
+    object SeminarSQLANAD_APPROVED: TWideStringField
+      FieldName = 'ANAD_APPROVED'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLFEE_ESTIMATE: TFloatField
+      FieldName = 'FEE_ESTIMATE'
+      Visible = False
+    end
+    object SeminarSQLSTATUS: TWideStringField
+      FieldName = 'STATUS'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLIS_INVOICED: TWideStringField
+      FieldName = 'IS_INVOICED'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLIS_CERTIFICATED: TWideStringField
+      FieldName = 'IS_CERTIFICATED'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLMAX_CAPACITY: TIntegerField
+      FieldName = 'MAX_CAPACITY'
+      Required = True
+      Visible = False
+    end
+    object SeminarSQLFEE_WITH_ANAD_SUB: TFloatField
+      FieldName = 'FEE_WITH_ANAD_SUB'
+      Visible = False
+    end
+    object SeminarSQLHAS_EXPIRY: TWideStringField
+      FieldName = 'HAS_EXPIRY'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLEXPIRY_PERIOD: TIntegerField
+      FieldName = 'EXPIRY_PERIOD'
+      Visible = False
+    end
+    object SeminarSQLTYPE_MONO_POLY: TWideStringField
+      FieldName = 'TYPE_MONO_POLY'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLSEM_CATEGORY: TWideStringField
+      FieldName = 'SEM_CATEGORY'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
   end
-  object TableSRC: TIBCDataSource
-    DataSet = TableSQL
+  object SeminarSRC: TIBCDataSource
+    DataSet = SeminarSQL
     Left = 112
     Top = 9
   end
@@ -1332,5 +1361,102 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         OnClick = N3Click
       end
     end
+  end
+  object SeminarSubjectSQL: TIBCQuery
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR_SUBJECT'
+      
+        '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, SUBJECT, FK_SUBJECT_TYPE_SE' +
+        'RIAL, FEE_NORMAL, FEE_REDUCED)'
+      'VALUES'
+      
+        '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :SUBJECT, :FK_SUBJECT_TYP' +
+        'E_SERIAL, :FEE_NORMAL, :FEE_REDUCED)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR_SUBJECT'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR_SUBJECT'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR_SERIAL = :FK_SEMINA' +
+        'R_SERIAL, SUBJECT = :SUBJECT, FK_SUBJECT_TYPE_SERIAL = :FK_SUBJE' +
+        'CT_TYPE_SERIAL, FEE_NORMAL = :FEE_NORMAL, FEE_REDUCED = :FEE_RED' +
+        'UCED'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, SUBJECT, FK_SUBJECT_TYP' +
+        'E_SERIAL, FEE_NORMAL, FEE_REDUCED FROM SEMINAR_SUBJECT'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR_SUBJECT'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR_SUBJECT'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'Select * from seminar_subject')
+    MasterFields = 'SERIAL_NUMBER'
+    DetailFields = 'FK_SEMINAR_SERIAL'
+    MasterSource = SeminarSRC
+    ReadOnly = True
+    Active = True
+    Left = 457
+    Top = 237
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'SERIAL_NUMBER'
+        ParamType = ptInput
+        Value = nil
+      end>
+    object SeminarSubjectSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 6
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+    end
+    object SeminarSubjectSQLSUBJECT: TWideStringField
+      DisplayLabel = #920#941#956#945
+      DisplayWidth = 20
+      FieldName = 'SUBJECT'
+      FixedChar = True
+      Size = 60
+    end
+    object SeminarSubjectSQLFEE_NORMAL: TFloatField
+      DisplayLabel = #932#953#956#942' '#922#945#957#959#957#953#954#942
+      DisplayWidth = 10
+      FieldName = 'FEE_NORMAL'
+    end
+    object SeminarSubjectSQLFEE_REDUCED: TFloatField
+      DisplayLabel = #932#953#956#942' '#913#925#913#916
+      DisplayWidth = 10
+      FieldName = 'FEE_REDUCED'
+    end
+    object SeminarSubjectSQLFK_SEMINAR_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_SERIAL'
+      Required = True
+      Visible = False
+    end
+    object SeminarSubjectSQLFK_SUBJECT_TYPE_SERIAL: TIntegerField
+      FieldName = 'FK_SUBJECT_TYPE_SERIAL'
+      Visible = False
+    end
+  end
+  object SeminarSubjectSRC: TIBCDataSource
+    DataSet = SeminarSubjectSQL
+    Left = 552
+    Top = 241
   end
 end
