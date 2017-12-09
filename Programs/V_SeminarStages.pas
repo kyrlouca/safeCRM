@@ -107,7 +107,6 @@ type
     TableSQLFK_EXAMINER: TIntegerField;
     TableSQLTYPE_MONO_POLY: TWideStringField;
     GroupBox2: TGroupBox;
-    CategoryChangeFLD: TwwDBComboBox;
     TableSQLSEM_CATEGORY: TWideStringField;
     GroupBox3: TGroupBox;
     wwIncrementalSearch1: TwwIncrementalSearch;
@@ -122,7 +121,6 @@ type
     ReadTrans: TIBCTransaction;
     AcceptBTN: TBitBtn;
     CanelBTN: TBitBtn;
-    StatusChangeFLD: TwwDBComboBox;
     Panel5: TRzPanel;
     TitleLbl: TRzPanel;
     StatusFLD: TwwDBComboBox;
@@ -135,6 +133,8 @@ type
     wwDBNavigator1Post: TwwNavButton;
     wwDBNavigator1Cancel: TwwNavButton;
     wwDBNavigator1Refresh: TwwNavButton;
+    CategoryChangeFLD: TwwDBComboBox;
+    StatusChangeFLD: TwwDBComboBox;
     procedure AcceptBTNClick(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -146,6 +146,8 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure CanelBTNClick(Sender: TObject);
     procedure TableSQLAfterPost(DataSet: TDataSet);
+    procedure StatusChangeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure CategoryChangeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -250,6 +252,16 @@ begin
 
 end;
 
+procedure TV_SeminarStagesFRM.StatusChangeFLDCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+begin
+if not select then
+  exit;
+if TableSQL.State in [dsEdit] then
+  TableSQL.Post;
+
+end;
+
 procedure TV_SeminarStagesFRM.VtFilterRecord(DataSet: TDataSet;
   var Accept: Boolean);
 begin
@@ -269,6 +281,16 @@ begin
   if TableSQL.State in [dsEdit] then
     TableSQL.Cancel;
   close;
+
+end;
+
+procedure TV_SeminarStagesFRM.CategoryChangeFLDCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+begin
+if not select then
+  exit;
+if TableSQL.State in [dsEdit] then
+  TableSQL.Post;
 
 end;
 

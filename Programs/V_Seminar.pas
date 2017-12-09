@@ -77,7 +77,6 @@ type
     seminarSubjectSQL: TIBCQuery;
     SeminarSubjectSRC: TDataSource;
     RzPanel4: TRzPanel;
-    RzPanel7: TRzPanel;
     GroupBox2: TGroupBox;
     RzPanel8: TRzPanel;
     wwDBNavigator2: TwwDBNavigator;
@@ -252,14 +251,6 @@ type
     SeminarSQLSEM_CATEGORY: TWideStringField;
     GroupBox1: TGroupBox;
     RzPanel6: TRzPanel;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
     wwDBGrid1: TwwDBGrid;
     FirstGRP: TGroupBox;
     Label2: TLabel;
@@ -283,6 +274,30 @@ type
     RzBitBtn2: TRzBitBtn;
     Panel2: TRzPanel;
     SeminarReminderSQLIS_HIGH: TWideStringField;
+    RzPanel9: TRzPanel;
+    GroupBox6: TGroupBox;
+    Label23: TLabel;
+    Label24: TLabel;
+    RzDBLabel3: TRzDBLabel;
+    SubjectNameFLD: TwwDBEdit;
+    RzPanel15: TRzPanel;
+    RzPanel16: TRzPanel;
+    wwDBNavigator5: TwwDBNavigator;
+    wwNavButton23: TwwNavButton;
+    wwNavButton24: TwwNavButton;
+    wwNavButton25: TwwNavButton;
+    wwNavButton26: TwwNavButton;
+    wwNavButton27: TwwNavButton;
+    wwNavButton28: TwwNavButton;
+    wwNavButton29: TwwNavButton;
+    seminarSubjectSQLFK_SUBJECT_TYPE_SERIAL: TIntegerField;
+    seminarSubjectSQLFEE_NORMAL: TFloatField;
+    seminarSubjectSQLFEE_REDUCED: TFloatField;
+    RzPanel7: TRzPanel;
+    Label26: TLabel;
+    wwDBEdit7: TwwDBEdit;
+    Label25: TLabel;
+    wwDBEdit2: TwwDBEdit;
     procedure AcceptBTNClick(Sender: TObject);
     procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -326,6 +341,7 @@ type
     procedure SeminarDaySQLBeforeInsert(DataSet: TDataSet);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure HIghFLDClick(Sender: TObject);
+    procedure wwNavButton25Click(Sender: TObject);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -514,8 +530,9 @@ var
   fhours, fdays: integer;
   fName, fAnad: string;
   fcost: double;
-  FFeeActual: Double;
-  fFeeANad: double;
+//  FFeeActual: Double;
+//  fFeeANad: double;
+  feeNormal,FeeReduced:Double;
   fMaxCapacity: Integer;
   fexpiry: string;
   fexpiryMonths: Integer;
@@ -531,24 +548,24 @@ begin
     fname := qr.FieldByName('seminar_name').AsString;
     fAnad := qr.FieldByName('ANAD_APPROVED').AsString;
     fhours := qr.FieldByName('DURATION_HOURS').AsInteger;
-    ;
+
     fMaxCapacity := qr.FieldByName('Max_capacity').AsInteger;
 //   fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
     fCost := qr.FieldByName('SEMINAR_COST').AsFloat;
 
-    fFeeactual := qr.FieldByName('FEE_actual').AsFloat;
-    fFeeAnad := qr.FieldByName('FEE_with_anad_sub').AsFloat;
+//    fFeeactual := qr.FieldByName('FEE_actual').AsFloat;
+//    fFeeAnad := qr.FieldByName('FEE_with_anad_sub').AsFloat;
     fExpiry := qr.FieldByName('has_expiry').AsString;
     fExpiryMOnths := qr.FieldByName('expiry_period').AsInteger;
 
     str :=
       ' update seminar sem set'
-      + '    seminar_Name= :fname, anad_approved= :fAnad,Duration_hours = :fhours, max_capacity= :FMaxCapacity,   fee_actual= :fFeeActual,'
-      + '    sem.fee_with_anad_sub = :fFeeAnad,sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths'
+      + '    seminar_Name= :fname, anad_approved= :fAnad,Duration_hours = :fhours, max_capacity= :FMaxCapacity,  '
+      + '    sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths'
       + '  where  sem.serial_number= :fSerial';
 
     ksExecSQLVar(cn, str,
-      [fname, fAnad, fhours, fMaxCapacity, fFeeActual, fFeeAnad, fExpiry,
+      [fname, fAnad, fhours, fMaxCapacity, fExpiry,
         fExpiryMonths, seminarSerial]);
 
   finally
@@ -568,10 +585,12 @@ begin
     begin
       serial := ksGenerateSerial(cn, 'GEN_SEMINAR_SUBJECT');
       fname := qr.FieldByName('SUBJECT').AsString;
+      feeNormal := qr.FieldByName('FEE_NORMAL').AsFloat;
+      feeReduced := qr.FieldByName('FEE_REDUCED').AsFloat;
       subjectSerial := qr.FieldByName('serial_number').AsInteger;
       ksExecSQLVar(cn,
-        'INSERT INTO SEMINAR_SUBJECT (SERIAL_NUMBER, FK_SEMINAR_SERIAL,fk_subject_type_serial,SUBJECT) VALUES (:serial,:semSerial,:subjectSerial, :subject)',
-        [serial, seminarSerial, subjectSerial, fname]);
+        'INSERT INTO SEMINAR_SUBJECT (SERIAL_NUMBER, FK_SEMINAR_SERIAL,fk_subject_type_serial,SUBJECT ,fee_normal,fee_reduced) VALUES (:serial,:semSerial,:subjectSerial, :subject,:feeNorm,:feeRed)',
+        [serial, seminarSerial, subjectSerial, fname, feeNormal,feeReduced]);
       qr.Next;
     end;
 
@@ -817,6 +836,11 @@ end;
 procedure TV_SeminarFRM.wwNavButton19Click(Sender: TObject);
 begin
   REminderDescFLD.SetFocus;
+end;
+
+procedure TV_SeminarFRM.wwNavButton25Click(Sender: TObject);
+begin
+SubjectNameFLD.SetFocus;
 end;
 
 procedure TV_SeminarFRM.CostGRDUpdateFooter(Sender: TObject);
