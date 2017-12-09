@@ -231,7 +231,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           object Nav1Button: TwwNavButton
             Left = 0
             Top = 0
-            Width = 23
+            Width = 27
             Height = 26
             Hint = 'Move to first record'
             ImageIndex = -1
@@ -246,9 +246,9 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Style = nbsFirst
           end
           object wwNavButton4: TwwNavButton
-            Left = 23
+            Left = 27
             Top = 0
-            Width = 23
+            Width = 27
             Height = 26
             Hint = 'Move to prior record'
             ImageIndex = -1
@@ -263,9 +263,9 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Style = nbsPrior
           end
           object wwNavButton5: TwwNavButton
-            Left = 46
+            Left = 54
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Move to next record'
             ImageIndex = -1
@@ -280,9 +280,9 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Style = nbsNext
           end
           object wwNavButton6: TwwNavButton
-            Left = 69
+            Left = 80
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Move to last record'
             ImageIndex = -1
@@ -296,26 +296,10 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Index = 3
             Style = nbsLast
           end
-          object Nav1Insert: TwwNavButton
-            Left = 92
-            Top = 0
-            Width = 23
-            Height = 26
-            Hint = 'Insert new record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'Nav1Insert'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 4
-            Style = nbsInsert
-          end
           object Nav1Delete: TwwNavButton
-            Left = 115
+            Left = 106
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Delete current record'
             ImageIndex = -1
@@ -326,13 +310,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 5
+            Index = 4
             Style = nbsDelete
           end
           object Nav1Post: TwwNavButton
-            Left = 138
+            Left = 132
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Post changes of current record'
             ImageIndex = -1
@@ -343,13 +327,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 6
+            Index = 5
             Style = nbsPost
           end
           object Nav1Cancel: TwwNavButton
-            Left = 161
+            Left = 158
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Cancel changes made to current record'
             ImageIndex = -1
@@ -360,7 +344,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 7
+            Index = 6
             Style = nbsCancel
           end
         end
@@ -536,16 +520,16 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ControlType.Strings = (
           'IS_ANAD;CustomEdit;AnadCheckFLD;F')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'FK_PERSON_SERIAL'#9'6'#9'P/P'
-          'LAST_NAME'#9'16'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'16'#9#908#957#959#956#945
-          'AMOUNT_GROSS'#9'9'#9#932#953#956#942
-          'IS_ANAD'#9'4'#9#913#925#913#916
-          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'
-          'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'
-          'AMOUNT_VAT'#9'8'#9'VAT'
-          'AMOUNT_WITH_VAT'#9'10'#9'Total')
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'FK_PERSON_SERIAL'#9'6'#9'P/P'#9#9
+          'LAST_NAME'#9'16'#9#917#960#943#952#949#964#959#9#9
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945#9#9
+          'AMOUNT_GROSS'#9'9'#9#932#953#956#942#9#9
+          'IS_ANAD'#9'4'#9#913#925#913#916#9#9
+          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'#9#9
+          'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'#9#9
+          'AMOUNT_VAT'#9'8'#9'VAT'#9#9
+          'AMOUNT_WITH_VAT'#9'10'#9'Total'#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -579,7 +563,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           DataSource = InvoiceSRC
           ShowText = False
           TabOrder = 0
-          OnMouseDown = AnadCheckFLDMouseDown
+          OnClick = AnadCheckFLDClick
         end
       end
     end
@@ -639,10 +623,10 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Width = 397
             Height = 170
             Selected.Strings = (
-              'SERIAL_NUMBER'#9'6'#9'A/A'
-              'SUBJECT'#9'20'#9#920#941#956#945
-              'FEE_NORMAL'#9'10'#9#932#953#956#942' '#922#945#957#959#957#953#954#942
-              'FEE_REDUCED'#9'10'#9#932#953#956#942' '#913#925#913#916)
+              'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+              'SUBJECT'#9'20'#9#920#941#956#945#9#9
+              'FEE_NORMAL'#9'10'#9#932#953#956#942' '#922#945#957#959#957#953#954#942#9#9
+              'FEE_REDUCED'#9'10'#9#932#953#956#942' '#913#925#913#916#9#9)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -879,16 +863,16 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     SQLInsert.Strings = (
       'INSERT INTO INVOICE'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, INVOICE_S' +
-        'TATUS, DATE_INVOICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTO' +
-        'MER, AMOUNT_GROSS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_A' +
-        'NAD, LAST_NAME, FIRST_NAME, PERSON_NATIONAL_ID)'
+        '  (SERIAL_NUMBER, FK_PERSON_SERIAL, INVOICE_STATUS, DATE_INVOICE' +
+        'D, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER, AMOUNT_GROSS, ' +
+        'AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_ANAD, LAST_NAME, FIR' +
+        'ST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :INVOI' +
-        'CE_STATUS, :DATE_INVOICED, :VAT_RATE, :DISCOUNT_BY_SAFE, :DISCOU' +
-        'NT_CUSTOMER, :AMOUNT_GROSS, :AMOUNT_NET, :AMOUNT_VAT, :AMOUNT_WI' +
-        'TH_VAT, :IS_ANAD, :LAST_NAME, :FIRST_NAME, :PERSON_NATIONAL_ID)')
+        '  (:SERIAL_NUMBER, :FK_PERSON_SERIAL, :INVOICE_STATUS, :DATE_INV' +
+        'OICED, :VAT_RATE, :DISCOUNT_BY_SAFE, :DISCOUNT_CUSTOMER, :AMOUNT' +
+        '_GROSS, :AMOUNT_NET, :AMOUNT_VAT, :AMOUNT_WITH_VAT, :IS_ANAD, :L' +
+        'AST_NAME, :FIRST_NAME, :PERSON_NATIONAL_ID, :FK_SUBJECT_SERIAL)')
     SQLDelete.Strings = (
       'DELETE FROM INVOICE'
       'WHERE'
@@ -897,22 +881,22 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       'UPDATE INVOICE'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR_SERIAL = :FK_SEMINA' +
-        'R_SERIAL, FK_PERSON_SERIAL = :FK_PERSON_SERIAL, INVOICE_STATUS =' +
-        ' :INVOICE_STATUS, DATE_INVOICED = :DATE_INVOICED, VAT_RATE = :VA' +
-        'T_RATE, DISCOUNT_BY_SAFE = :DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER ' +
-        '= :DISCOUNT_CUSTOMER, AMOUNT_GROSS = :AMOUNT_GROSS, AMOUNT_NET =' +
-        ' :AMOUNT_NET, AMOUNT_VAT = :AMOUNT_VAT, AMOUNT_WITH_VAT = :AMOUN' +
-        'T_WITH_VAT, IS_ANAD = :IS_ANAD, LAST_NAME = :LAST_NAME, FIRST_NA' +
-        'ME = :FIRST_NAME, PERSON_NATIONAL_ID = :PERSON_NATIONAL_ID'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_PERSON_SERIAL = :FK_PERSON_' +
+        'SERIAL, INVOICE_STATUS = :INVOICE_STATUS, DATE_INVOICED = :DATE_' +
+        'INVOICED, VAT_RATE = :VAT_RATE, DISCOUNT_BY_SAFE = :DISCOUNT_BY_' +
+        'SAFE, DISCOUNT_CUSTOMER = :DISCOUNT_CUSTOMER, AMOUNT_GROSS = :AM' +
+        'OUNT_GROSS, AMOUNT_NET = :AMOUNT_NET, AMOUNT_VAT = :AMOUNT_VAT, ' +
+        'AMOUNT_WITH_VAT = :AMOUNT_WITH_VAT, IS_ANAD = :IS_ANAD, LAST_NAM' +
+        'E = :LAST_NAME, FIRST_NAME = :FIRST_NAME, PERSON_NATIONAL_ID = :' +
+        'PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL = :FK_SUBJECT_SERIAL'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, INVOI' +
-        'CE_STATUS, DATE_INVOICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_C' +
-        'USTOMER, AMOUNT_GROSS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, ' +
-        'IS_ANAD, LAST_NAME, FIRST_NAME, PERSON_NATIONAL_ID FROM INVOICE'
+        'SELECT SERIAL_NUMBER, FK_PERSON_SERIAL, INVOICE_STATUS, DATE_INV' +
+        'OICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER, AMOUNT_GRO' +
+        'SS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_ANAD, LAST_NAME,' +
+        ' FIRST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL FROM INVOICE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -933,7 +917,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       'inv.*'
       'from'
       'invoice  inv '
-      'where fk_seminar_serial = :seminarSerial'
+      'where fk_subject_serial = :subjectSerial'
       'Order by inv.last_name')
     CachedUpdates = True
     AutoCommit = False
@@ -941,12 +925,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Options.LocalMasterDetail = True
     Active = True
     BeforePost = InvoiceSQLBeforePost
-    Left = 145
-    Top = 77
+    Left = 569
+    Top = 157
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'seminarSerial'
+        Name = 'subjectSerial'
         Value = nil
       end>
     object InvoiceSQLSERIAL_NUMBER: TIntegerField
@@ -1016,11 +1000,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       FieldName = 'AMOUNT_NET'
       Visible = False
     end
-    object InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField
-      FieldName = 'FK_SEMINAR_SERIAL'
-      Required = True
-      Visible = False
-    end
     object InvoiceSQLINVOICE_STATUS: TWideStringField
       FieldName = 'INVOICE_STATUS'
       Visible = False
@@ -1041,75 +1020,16 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       FixedChar = True
       Size = 30
     end
+    object InvoiceSQLFK_SUBJECT_SERIAL: TIntegerField
+      FieldName = 'FK_SUBJECT_SERIAL'
+      Required = True
+      Visible = False
+    end
   end
   object InvoiceSRC: TIBCDataSource
     DataSet = InvoiceSQL
-    Left = 200
-    Top = 73
-  end
-  object personSQL: TIBCQuery
-    SQLInsert.Strings = (
-      'INSERT INTO PERSON'
-      '  (FIRST_NAME, LAST_NAME)'
-      'VALUES'
-      '  (:FIRST_NAME, :LAST_NAME)')
-    SQLDelete.Strings = (
-      'DELETE FROM PERSON'
-      'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
-    SQLUpdate.Strings = (
-      'UPDATE PERSON'
-      'SET'
-      '  FIRST_NAME = :FIRST_NAME, LAST_NAME = :LAST_NAME'
-      'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
-    SQLRefresh.Strings = (
-      'SELECT FIRST_NAME, LAST_NAME FROM PERSON'
-      'WHERE'
-      '  SERIAL_NUMBER = :SERIAL_NUMBER')
-    SQLLock.Strings = (
-      'SELECT NULL FROM PERSON'
-      'WHERE'
-      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
-      'FOR UPDATE WITH LOCK')
-    SQLRecCount.Strings = (
-      'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM PERSON'
-      ''
-      ') q')
-    Connection = U_databaseFRM.DataConnection
-    Transaction = ReadTrans
-    UpdateTransaction = WriteTrans
-    SQL.Strings = (
-      'select'
-      '    per.serial_number, per.first_name,per.last_name'
-      'from seminar_person  sp left outer join'
-      'person per on per.serial_number=sp.fk_person_serial'
-      'where sp.fk_seminar_serial= :seminarSerial')
-    ReadOnly = True
-    AutoCommit = False
-    Active = True
-    Left = 353
-    Top = 349
-    ParamData = <
-      item
-        DataType = ftUnknown
-        Name = 'seminarSerial'
-        Value = nil
-      end>
-    object personSQLFIRST_NAME: TWideStringField
-      FieldName = 'FIRST_NAME'
-      FixedChar = True
-      Size = 30
-    end
-    object personSQLLAST_NAME: TWideStringField
-      FieldName = 'LAST_NAME'
-      FixedChar = True
-      Size = 30
-    end
-    object personSQLSERIAL_NUMBER: TIntegerField
-      FieldName = 'SERIAL_NUMBER'
-    end
+    Left = 664
+    Top = 161
   end
   object Read1: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -1128,19 +1048,18 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       
         '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXA' +
         'MINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_ST' +
-        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL' +
-        ', AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS' +
-        '_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS' +
-        '_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY)'
+        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
+        'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
+        ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
+        'ATEGORY)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
         'K_EXAMINER, :FK_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME,' +
         ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
-        ', :FEE_ACTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_EST' +
-        'IMATE, :STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :' +
-        'FEE_WITH_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY,' +
-        ' :SEM_CATEGORY)')
+        ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
+        ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
+        ':TYPE_MONO_POLY, :SEM_CATEGORY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -1155,24 +1074,21 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'AL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_NAME, DA' +
         'TE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DU' +
         'RATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, ' +
-        'FEE_ACTUAL = :FEE_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS =' +
-        ' :COMMENTS, ANAD_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_' +
-        'ESTIMATE, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTI' +
-        'FICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WI' +
-        'TH_ANAD_SUB = :FEE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPI' +
-        'RY_PERIOD = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY, SE' +
-        'M_CATEGORY = :SEM_CATEGORY'
+        'AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED ' +
+        '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
+        'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
+        ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
         '_EXAMINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DAT' +
-        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_AC' +
-        'TUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS' +
-        ', IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB,' +
-        ' HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY FROM SE' +
-        'MINAR'
+        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
+        '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
+        'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
+        'EM_CATEGORY FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1197,7 +1113,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       'where '
       'se.serial_number= :SeminarSerial')
     ReadOnly = True
-    Active = True
     Left = 49
     Top = 5
     ParamData = <
@@ -1268,10 +1183,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       FieldName = 'DURATION_HOURS'
       Visible = False
     end
-    object SeminarSQLFEE_ACTUAL: TFloatField
-      FieldName = 'FEE_ACTUAL'
-      Visible = False
-    end
     object SeminarSQLAMOUNT_ANAD: TFloatField
       FieldName = 'AMOUNT_ANAD'
       Visible = False
@@ -1287,10 +1198,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Visible = False
       FixedChar = True
       Size = 1
-    end
-    object SeminarSQLFEE_ESTIMATE: TFloatField
-      FieldName = 'FEE_ESTIMATE'
-      Visible = False
     end
     object SeminarSQLSTATUS: TWideStringField
       FieldName = 'STATUS'
@@ -1315,10 +1222,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     object SeminarSQLMAX_CAPACITY: TIntegerField
       FieldName = 'MAX_CAPACITY'
       Required = True
-      Visible = False
-    end
-    object SeminarSQLFEE_WITH_ANAD_SUB: TFloatField
-      FieldName = 'FEE_WITH_ANAD_SUB'
       Visible = False
     end
     object SeminarSQLHAS_EXPIRY: TWideStringField
@@ -1353,7 +1256,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Top = 9
   end
   object MainMenu1: TMainMenu
-    Left = 224
+    Left = 272
+    Top = 65528
     object Reports1: TMenuItem
       Caption = #917#954#964#973#960#969#963#951
       object N3: TMenuItem
@@ -1412,6 +1316,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     MasterSource = SeminarSRC
     ReadOnly = True
     Active = True
+    AfterScroll = SeminarSubjectSQLAfterScroll
     Left = 457
     Top = 237
     ParamData = <

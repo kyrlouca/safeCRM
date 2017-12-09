@@ -33,17 +33,14 @@ type
     TableSQLDATE_COMPLETED: TDateField;
     TableSQLDURATION_DAYS: TIntegerField;
     TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLFEE_ACTUAL: TFloatField;
     TableSQLAMOUNT_ANAD: TFloatField;
     TableSQLCOMMENTS: TWideStringField;
     TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLFEE_ESTIMATE: TFloatField;
     TableSQLSTATUS: TWideStringField;
     TableSQLIS_INVOICED: TWideStringField;
     TableSQLIS_CERTIFICATED: TWideStringField;
     TableSQLMAX_CAPACITY: TIntegerField;
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     TableSQLLAST_NAME: TWideStringField;
     TableSRC: TIBCDataSource;
     FirstGRP: TGroupBox;
@@ -54,13 +51,9 @@ type
     Label4: TLabel;
     RzDBLabel1: TRzDBLabel;
     RzDBLabel2: TRzDBLabel;
-    Label6: TLabel;
-    Label7: TLabel;
     SeminarFLD: TRzDBLabel;
     Companylbl: TLabel;
     RzDBLabel3: TRzDBLabel;
-    wwDBEdit1: TRzDBLabel;
-    wwDBEdit2: TRzDBLabel;
     wwDBComboBox1: TwwDBComboBox;
     SeminarSQL: TIBCQuery;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
@@ -227,7 +220,8 @@ Var
   BtnArray : Array of TrzBitBTN;
   StArray : Array of TrzGlyphStatus;
   BoolArray : Array[0..4] of Boolean;
-  i:integer;
+    i:integer;
+    str:string;
 
 begin
   BtnArray :=[CreatedBTn,ApprovedBTN,CertifiedBTN,InvoicedBTN,CompletedBTN];
@@ -239,7 +233,13 @@ begin
   BoolArray[Ord(iCreated)]:= True;
   BoolArray[Ord(iApproved)]:= (status='A') or (status='F') ;
   BoolArray[Ord(iCertified)]:= ksCountRecVarSQL(cn,'select serial_number FROM seminar_certificate SEM where sem.fk_seminar_serial= :seminarSerial',[SeminarSerial])>0;
-  BoolArray[Ord(iInvoiced)]:=  ksCountRecVarSQL(cn,'select serial_number from invoice inv where inv.fk_seminar_serial = :seminarSerial',[SeminarSerial])>0;
+  str:=
+  '   select ss.serial_number from'
+  +'  invoice inv left outer join'
+  +'  seminar_subject ss on inv.fk_subject_serial= ss.serial_number'
+  +'  where ss.fk_seminar_serial = :seminarSerial';
+
+  BoolArray[Ord(iInvoiced)]:=  ksCountRecVarSQL(cn,str,[SeminarSerial])>0;
   BoolArray[Ord(iCompleted)]:= (status='F');
 
 

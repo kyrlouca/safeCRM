@@ -34,17 +34,11 @@ type
     wwNavButton4: TwwNavButton;
     wwNavButton5: TwwNavButton;
     wwNavButton6: TwwNavButton;
-    Nav1Insert: TwwNavButton;
     Nav1Delete: TwwNavButton;
     Nav1Post: TwwNavButton;
     Nav1Cancel: TwwNavButton;
     InvoiceGRD: TwwDBGrid;
-    personSQL: TIBCQuery;
-    personSQLFIRST_NAME: TWideStringField;
-    personSQLLAST_NAME: TWideStringField;
-    personSQLSERIAL_NUMBER: TIntegerField;
     InvoiceSQLSERIAL_NUMBER: TIntegerField;
-    InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField;
     InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
     InvoiceSQLINVOICE_STATUS: TWideStringField;
     InvoiceSQLDATE_INVOICED: TDateField;
@@ -90,16 +84,13 @@ type
     SeminarSQLDATE_COMPLETED: TDateField;
     SeminarSQLDURATION_DAYS: TIntegerField;
     SeminarSQLDURATION_HOURS: TIntegerField;
-    SeminarSQLFEE_ACTUAL: TFloatField;
     SeminarSQLAMOUNT_ANAD: TFloatField;
     SeminarSQLCOMMENTS: TWideStringField;
     SeminarSQLANAD_APPROVED: TWideStringField;
-    SeminarSQLFEE_ESTIMATE: TFloatField;
     SeminarSQLSTATUS: TWideStringField;
     SeminarSQLIS_INVOICED: TWideStringField;
     SeminarSQLIS_CERTIFICATED: TWideStringField;
     SeminarSQLMAX_CAPACITY: TIntegerField;
-    SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
     SeminarSQLHAS_EXPIRY: TWideStringField;
     SeminarSQLEXPIRY_PERIOD: TIntegerField;
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
@@ -122,6 +113,7 @@ type
     InvoiceBTN: TRzBitBtn;
     Panel1: TRzPanel;
     Panel2: TRzPanel;
+    InvoiceSQLFK_SUBJECT_SERIAL: TIntegerField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -140,13 +132,13 @@ type
     procedure InvoiceGRDCalcCellColors(Sender: TObject; Field: TField;
       State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
     procedure N3Click(Sender: TObject);
-    procedure AnadCheckFLDMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure SeminarSubjectSQLAfterScroll(DataSet: TDataSet);
+    procedure AnadCheckFLDClick(Sender: TObject);
   private
     { Private declarations }
     VatRate:Double;
     cn:TIBCConnection;
-    procedure GenerateInvoices(Const SeminarSerial:integer);
+    procedure GenerateInvoices(COnst seminarSubjectSerial:Integer);
     procedure GetInvoices();
   public
     { Public declarations }
@@ -177,18 +169,14 @@ end;
 
 procedure TI_InvoiceSeminarFRM.GetInvoices();
 var
-  SEminarSerial:Integer;
+  SubjectSerial:Integer;
 begin
 
-  SEminarSerial := IN_seminar_serial;
-  if personSQL.Active then
-    personSQL.Close;
-  personSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
-  personSQL.Open;
+  SubjectSerial := SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
 
   if invoiceSQL.Active then
     InvoiceSQL.Close;
-  InvoiceSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
+  InvoiceSQL.ParamByName('SubjectSerial').Value:=subjectSerial;
   InvoiceSQL.Open;
 
 
@@ -229,9 +217,9 @@ Var
 begin
 
     if (dataset.FieldByName('is_ANAD').AsString='Y') then begin
-      Dataset.FieldByName('amount_gross').AsFloat :=SeminarSQL.FieldByName('fee_with_ANAD_Sub').AsFloat;
+      Dataset.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('fee_Normal').AsFloat;
     end else begin
-      Dataset.FieldByName('amount_gross').AsFloat :=SeminarSQL.FieldByName('FEE_ACTUAL').AsFloat;
+      Dataset.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('FEE_Reduced').AsFloat;
     end;
 
 
@@ -290,10 +278,6 @@ var
   params:G_generalProcs.TParameterRecord;
 begin
 
-  personSQL.Close;
-  personSQL.ParamByName('SeminarSerial').Value:=IN_seminar_serial;
-  personSQL.Open;
-
 
   if not InvoiceSQL.UpdateTransaction.Active then
      InvoiceSQL.UpdateTransaction.StartTransaction;
@@ -305,7 +289,7 @@ begin
   ksOpenTables([SEminarSubjectSQL]) ;
 
   InvoiceSQL.Close;
-  InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+  InvoiceSQL.ParamByName('subjectSerial').Value:= SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
   InvoiceSQL.open;
 
 
@@ -358,11 +342,20 @@ end;
 
 
 
-procedure TI_InvoiceSeminarFRM.GenerateInvoices(Const SeminarSerial:integer);
+procedure TI_InvoiceSeminarFRM.SeminarSubjectSQLAfterScroll(DataSet: TDataSet);
+begin
+  InvoiceSQL.Close;
+  InvoiceSQL.ParamByName('subjectSerial').Value:= SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
+  InvoiceSQL.open;
+
+end;
+
+procedure TI_InvoiceSeminarFRM.GenerateInvoices(COnst seminarSubjectSerial:Integer);
 var
   qr:TksQuery;
   str:String;
   SerialNumber:integer;
+  SeminarSerial:Integer;
   isMono:Boolean;
   PriceNormal,PriceAnad,PriceUsed:Double;
 
@@ -384,13 +377,14 @@ begin
   invoiceSQL.Close;
   invoiceSQL.Open;
 
-  qr:= TksQuery.Create(cn,'select * from seminar where serial_number= :SeminarSerial');
+  qr:= TksQuery.Create(cn,'select * from seminar_subject where serial_number= :SsSerial');
   try
-    qr.ParamByName('seminarSerial').value:=SeminarSerial;
+    qr.ParamByName('SsSerial').value:=SeminarSubjectSerial;
     qr.open;
-    isMono:=qr.FieldByName('TYPE_MONO_POLY').Value='M';
-    PriceNormal:=qr.FieldByName('fee_actual').AsFloat;
-    PriceANAD:=qr.FieldByName('fee_with_ANAD_Sub').AsFloat;    //take this as default
+//    isMono:=qr.FieldByName('TYPE_MONO_POLY').Value='M';
+    PriceNormal:=qr.FieldByName('fee_normal').AsFloat;
+    PriceANAD:=qr.FieldByName('fee_reduced').AsFloat;    //take this as default
+    SeminarSerial:=qr.FieldByName('fk_seminar_serial').AsInteger;
   finally
     qr.Free;
   end;
@@ -430,7 +424,7 @@ begin
     while not qr.Eof do begin
 
         PersonSerial := qr.FieldByName('per_serial').AsInteger;
-        isFound:=ksCountRecVarSQL(cn,'select * from invoice where fk_seminar_serial=:Seminar and fk_person_serial= :person',[SeminarSerial,PersonSerial])>0;
+        isFound:=ksCountRecVarSQL(cn,'select * from invoice where fk_Subject_serial=:SSerial and fk_person_serial= :person',[SeminarSubjectSerial,PersonSerial])>0;
         if isFound then begin
           qr.Next;
           continue;
@@ -440,7 +434,7 @@ begin
 
         InvoiceSQL.Insert;
         InvoiceSQL.FieldByName('serial_number').Value:=SerialNumber;
-        InvoiceSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
+        InvoiceSQL.FieldByName('fk_Subject_serial').Value:=SEminarSubjectSerial;
         InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=qr.FieldByName('per_serial').AsInteger;
         InvoiceSQL.FieldByName('last_name').Value       :=qr.FieldByName('inv_last_name').AsString;
         InvoiceSQL.FieldByName('first_name').Value:=qr.FieldByName('inv_first_name').AsString;
@@ -475,6 +469,7 @@ end;
 procedure TI_InvoiceSeminarFRM.InvoiceBTNClick(Sender: TObject);
 var
   SeminarSerial:Integer;
+  seminarSubjectSerial:Integer;
 begin
 
   if InvoiceSQL.State in [dsEdit,dsInsert] then begin
@@ -488,7 +483,11 @@ begin
 
 
   SeminarSerial:=IN_seminar_serial;
-
+  SeminarSubjectSerial:=seminarSubjectSQL.FieldByName('serial_number').asInteger;
+  if seminarSubjectSerial <1 then begin
+    MessageDlg('Select SUBJECT first', mtError, [mbOK], 0);
+    exit;
+  end;
 
 
 //   if not InvoiceSQL.Connection.InTransaction then
@@ -498,12 +497,12 @@ begin
 
 
 
- personSQL.Close;
- personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;
- personSQL.Open;
+// personSQL.Close;
+// personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;
+// personSQL.Open;
 
 
-  GenerateInvoices(seminarSerial);
+  GenerateInvoices(seminarSubjectSerial);
 
   if InvoiceSQL.UpdateTransaction.Active then
       InvoiceSQL.UpdateTransaction.commit;
@@ -512,23 +511,23 @@ begin
 //    InvoiceSQL.Connection.Commit;
 end;
 
-procedure TI_InvoiceSeminarFRM.AnadCheckFLDMouseDown(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+procedure TI_InvoiceSeminarFRM.AnadCheckFLDClick(Sender: TObject);
 begin
-
-  if invoiceSQL.State in [dsBrowse] then
-    invoiceSQL.edit;
+  if TwwCheckBox(sender).Modified then begin
+    if invoiceSQL.State in [dsBrowse] then
+      invoiceSQL.edit;
 
 
 
     if (AnadCheckFLD.Checked) then begin
     //CHECK VALUE before the click
-      InvoiceSQL.FieldByName('amount_gross').AsFloat :=SeminarSQL.FieldByName('FEE_ACTUAL').AsFloat;
+      InvoiceSQL.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('fee_Reduced').AsFloat;
     end else begin
-      InvoiceSQL.FieldByName('amount_gross').AsFloat :=SeminarSQL.FieldByName('fee_with_ANAD_Sub').AsFloat;
+      InvoiceSQL.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('FEE_Normal').AsFloat;
     end;
 
- end;
+  end;
+end;
 
 procedure TI_InvoiceSeminarFRM.Button1Click(Sender: TObject);
 var

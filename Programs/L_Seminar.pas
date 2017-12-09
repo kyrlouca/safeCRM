@@ -49,11 +49,9 @@ type
     TableSQLDATE_COMPLETED: TDateField;
     TableSQLDURATION_DAYS: TIntegerField;
     TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLFEE_ACTUAL: TFloatField;
     TableSQLAMOUNT_ANAD: TFloatField;
     TableSQLCOMMENTS: TWideStringField;
     TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLFEE_ESTIMATE: TFloatField;
     TableSQLSTATUS: TWideStringField;
     TableSQLIS_INVOICED: TWideStringField;
     TableSQLIS_CERTIFICATED: TWideStringField;
@@ -66,7 +64,6 @@ type
     TableSQLANAD_NUMBER: TWideStringField;
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     TableSQLMAX_CAPACITY: TIntegerField;
-    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     TableSQLHAS_EXPIRY: TWideStringField;
     TableSQLEXPIRY_PERIOD: TIntegerField;
     TableSQLFK_EXAMINER: TIntegerField;

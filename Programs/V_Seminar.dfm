@@ -427,101 +427,6 @@
             UnboundDataType = wwDefault
           end
         end
-        object RzGroupBox3: TRzGroupBox
-          Left = 404
-          Top = 270
-          Width = 321
-          Height = 155
-          Caption = #932#953#956#941#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-          object Label1: TLabel
-            Left = 35
-            Top = 85
-            Width = 112
-            Height = 14
-            Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label6: TLabel
-            Left = 19
-            Top = 52
-            Width = 128
-            Height = 14
-            Caption = #932#953#956#942' '#967#969#961#943#962' '#949#960#953#967#959#961#942#947#951#963#951
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label19: TLabel
-            Left = 42
-            Top = 29
-            Width = 105
-            Height = 14
-            Caption = #917#960#953#967#959#961#942#947#951#963#951' '#913#925#913#916
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object wwCheckBox1: TwwCheckBox
-            AlignWithMargins = True
-            Left = 156
-            Top = 26
-            Width = 29
-            Height = 17
-            DisableThemes = False
-            AlwaysTransparent = False
-            ValueChecked = 'Y'
-            ValueUnchecked = 'N'
-            DisplayValueChecked = 'Y'
-            DisplayValueUnchecked = 'N'
-            NullAndBlankState = cbUnchecked
-            DataField = 'ANAD_APPROVED'
-            DataSource = SeminarSRC
-            ShowText = False
-            TabOrder = 0
-          end
-          object wwDBEdit3: TwwDBEdit
-            Left = 156
-            Top = 77
-            Width = 76
-            Height = 22
-            DataField = 'FEE_ACTUAL'
-            DataSource = SeminarSRC
-            TabOrder = 2
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit4: TwwDBEdit
-            Left = 156
-            Top = 49
-            Width = 76
-            Height = 22
-            DataField = 'FEE_WITH_ANAD_SUB'
-            DataSource = SeminarSRC
-            TabOrder = 1
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-        end
         object FirstGRP: TGroupBox
           Left = 28
           Top = 23
@@ -534,7 +439,7 @@
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 2
+          TabOrder = 1
           object Label2: TLabel
             Left = 49
             Top = 173
@@ -817,7 +722,7 @@
           LightTextStyle = True
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 2
           OnClick = RzBitBtn1Click
           Glyph.Data = {
             F6060000424DF606000000000000360000002800000018000000180000000100
@@ -1410,8 +1315,8 @@
             Width = 509
             Height = 587
             Selected.Strings = (
-              'SERIAL_NUMBER'#9'10'#9'A/A'
-              'SUBJECT'#9'55'#9#920#941#956#945)
+              'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
+              'SUBJECT'#9'55'#9#920#941#956#945#9#9)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -2706,19 +2611,18 @@
       
         '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXA' +
         'MINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_ST' +
-        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL' +
-        ', AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS' +
-        '_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS' +
-        '_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY)'
+        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
+        'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
+        ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
+        'ATEGORY)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
         'K_EXAMINER, :FK_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME,' +
         ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
-        ', :FEE_ACTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_EST' +
-        'IMATE, :STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :' +
-        'FEE_WITH_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY,' +
-        ' :SEM_CATEGORY)')
+        ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
+        ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
+        ':TYPE_MONO_POLY, :SEM_CATEGORY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -2733,24 +2637,21 @@
         'AL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_NAME, DA' +
         'TE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DU' +
         'RATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, ' +
-        'FEE_ACTUAL = :FEE_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS =' +
-        ' :COMMENTS, ANAD_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_' +
-        'ESTIMATE, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTI' +
-        'FICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WI' +
-        'TH_ANAD_SUB = :FEE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPI' +
-        'RY_PERIOD = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY, SE' +
-        'M_CATEGORY = :SEM_CATEGORY'
+        'AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED ' +
+        '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
+        'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
+        ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
         '_EXAMINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DAT' +
-        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_AC' +
-        'TUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS' +
-        ', IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB,' +
-        ' HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY FROM SE' +
-        'MINAR'
+        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
+        '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
+        'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
+        'EM_CATEGORY FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2812,9 +2713,6 @@
     object SeminarSQLDURATION_HOURS: TIntegerField
       FieldName = 'DURATION_HOURS'
     end
-    object SeminarSQLFEE_ACTUAL: TFloatField
-      FieldName = 'FEE_ACTUAL'
-    end
     object SeminarSQLAMOUNT_ANAD: TFloatField
       FieldName = 'AMOUNT_ANAD'
     end
@@ -2827,9 +2725,6 @@
       Required = True
       FixedChar = True
       Size = 1
-    end
-    object SeminarSQLFEE_ESTIMATE: TFloatField
-      FieldName = 'FEE_ESTIMATE'
     end
     object SeminarSQLSTATUS: TWideStringField
       FieldName = 'STATUS'
@@ -2854,9 +2749,6 @@
     end
     object SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
       FieldName = 'FK_COMPANY_PERSON_SERIAL'
-    end
-    object SeminarSQLFEE_WITH_ANAD_SUB: TFloatField
-      FieldName = 'FEE_WITH_ANAD_SUB'
     end
     object SeminarSQLHAS_EXPIRY: TWideStringField
       FieldName = 'HAS_EXPIRY'
@@ -4194,8 +4086,8 @@
     MasterSource = SeminarSRC
     Active = True
     OnNewRecord = SeminarReminderSQLNewRecord
-    Left = 89
-    Top = 541
+    Left = 81
+    Top = 557
     ParamData = <
       item
         DataType = ftInteger
