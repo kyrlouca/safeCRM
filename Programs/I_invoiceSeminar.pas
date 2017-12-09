@@ -134,6 +134,8 @@ type
     procedure N3Click(Sender: TObject);
     procedure SeminarSubjectSQLAfterScroll(DataSet: TDataSet);
     procedure AnadCheckFLDClick(Sender: TObject);
+    procedure SeminarSubjectSQLBeforeScroll(DataSet: TDataSet);
+    procedure InvoiceSQLNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     VatRate:Double;
@@ -216,14 +218,6 @@ Var
   PriceNormal,PriceANAD:Double;
 begin
 
-    if (dataset.FieldByName('is_ANAD').AsString='Y') then begin
-      Dataset.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('fee_Normal').AsFloat;
-    end else begin
-      Dataset.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('FEE_Reduced').AsFloat;
-    end;
-
-
-
   AmountForVat:=Dataset.FieldByName('amount_gross').AsFloat -Dataset.FieldByName('Discount_customer').AsFloat;
   VatAmount:=AmountForVat *Dataset.FieldByName('vat_rate').AsFloat/100.00;
   AmountCharged:= AmountForVat -Dataset.FieldByName('Discount_by_safe').AsFloat + VAtAmount;
@@ -233,6 +227,14 @@ begin
   Dataset.FieldByName('amount_vat').Value:=VatAmount;
   Dataset.FieldByName('amount_with_vat').Value:=AmountCharged;
 //
+
+end;
+
+procedure TI_InvoiceSeminarFRM.InvoiceSQLNewRecord(DataSet: TDataSet);
+begin
+
+    dataset.FieldByName('is_ANAD').AsString :='Y';
+    Dataset.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('FEE_Reduced').AsFloat;
 
 end;
 
@@ -347,6 +349,19 @@ begin
   InvoiceSQL.Close;
   InvoiceSQL.ParamByName('subjectSerial').Value:= SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
   InvoiceSQL.open;
+
+end;
+
+procedure TI_InvoiceSeminarFRM.SeminarSubjectSQLBeforeScroll(DataSet: TDataSet);
+var
+  CanClose:Boolean;
+
+begin
+  Canclose:= not InvoiceSQL.UpdatesPending;
+  if not CanClose then begin
+    showMessage('Save Or Cancel before Exit');
+    abort;
+  end;
 
 end;
 

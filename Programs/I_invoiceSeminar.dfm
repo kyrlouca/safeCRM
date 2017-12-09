@@ -549,7 +549,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         OnColEnter = InvoiceGRDColEnter
         object AnadCheckFLD: TwwCheckBox
           Left = 360
-          Top = 48
+          Top = 47
           Width = 32
           Height = 16
           DisableThemes = False
@@ -925,6 +925,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Options.LocalMasterDetail = True
     Active = True
     BeforePost = InvoiceSQLBeforePost
+    OnNewRecord = InvoiceSQLNewRecord
     Left = 569
     Top = 157
     ParamData = <
@@ -1316,6 +1317,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     MasterSource = SeminarSRC
     ReadOnly = True
     Active = True
+    BeforeScroll = SeminarSubjectSQLBeforeScroll
     AfterScroll = SeminarSubjectSQLAfterScroll
     Left = 457
     Top = 237
