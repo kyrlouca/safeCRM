@@ -69,7 +69,7 @@ procedure TP_MakePaymentFRM.BitBtn1Click(Sender: TObject);
 var
   PayAmount:Double;
   remainAmount:Double;
-
+  status:String;
 begin
 
   RemainAmount:=CheckAMount(IN_INVOICE_SERIAL);
@@ -80,8 +80,16 @@ begin
   end;
 
   IF PaymentSql.State in [dsInsert] then begin
+
     paymentSQL.Post;
-    UpdateInvoice(IN_InvoiCe_serial);
+
+    remainAmount:=CheckAMount(IN_Invoice_Serial);
+    if remainAmount=0 then
+      status:='P'
+    else
+      status:='U';
+    ksExecSQLVar(cn, 'update invoice  set invoice_status= :status where serial_number= :invoiceSerial',[status,IN_INVOICE_SERIAL]);
+
     close;
   end;
 
@@ -190,6 +198,9 @@ begin
 
 
 end;
+
+
+
 
 
 end.

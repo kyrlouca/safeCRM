@@ -70,6 +70,8 @@ type
     qrANAD_PICTURE: TBlobField;
     OpenPictureDialog1: TOpenPictureDialog;
     MainHelpRE: TwwDBRichEdit;
+    N6: TMenuItem;
+    N7: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -223,7 +225,7 @@ end;
 
 procedure TM_mainFRM.N7Click(Sender: TObject);
 begin
-  gpShowModal(TI_InvoiceSeminarFRM);
+  gpShowModal(TL_listInvoicesFRM);
 
 end;
 

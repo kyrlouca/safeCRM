@@ -186,7 +186,7 @@ object M_PaymentFRM: TM_PaymentFRM
       BorderOuter = fsNone
       TabOrder = 1
       object GroupBox1: TGroupBox
-        Left = 5
+        Left = 0
         Top = 18
         Width = 332
         Height = 303

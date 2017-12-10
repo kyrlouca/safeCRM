@@ -138,21 +138,10 @@ end;
 
 procedure TM_PaymentFRM.FormActivate(Sender: TObject);
 begin
-IN_Invoice_Serial:=264;
-IN_ACTION:='SHOW';
-
-  if IN_ACTION='INSERT' then begin
-//    CompanySQL.Insert;
-//    FirstFLD.SetFocus;
-
-  end else if IN_ACTION='SHOW' then begin
-
-     ShowPayment(IN_Invoice_Serial);
+  if IN_Invoice_Serial<1 then begin
+    close;
   end;
-
-
-
-
+     ShowPayment(IN_Invoice_Serial);
 end;
 
 Procedure TM_PaymentFRM.ShowPayment(Const Serial:integer);

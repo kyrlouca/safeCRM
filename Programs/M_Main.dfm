@@ -7472,6 +7472,13 @@ object M_mainFRM: TM_mainFRM
         OnClick = N9Click
       end
     end
+    object N6: TMenuItem
+      Caption = #932#953#956#959#955#972#947#953#945
+      object N7: TMenuItem
+        Caption = #932#953#956#959#955#972#947#953#945' '#954#945#953' '#928#955#951#961#969#956#941#962
+        OnClick = N7Click
+      end
+    end
     object ab1: TMenuItem
       Caption = 'Search'
       object Hawb1: TMenuItem
