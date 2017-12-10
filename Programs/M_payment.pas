@@ -18,8 +18,6 @@ type
     m: TIBCTransaction;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    BitBtn1: TBitBtn;
-    CanelBTN: TBitBtn;
     BodyPANEL: TRzPanel;
     InvoiceSQLSERIAL_NUMBER: TIntegerField;
     InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
@@ -190,8 +188,6 @@ procedure TM_PaymentFRM.CanelBTNClick(Sender: TObject);
 begin
   close;
 end;
-
-
 
 
 procedure TM_PaymentFRM.DeletehawbBTNClick(Sender: TObject);

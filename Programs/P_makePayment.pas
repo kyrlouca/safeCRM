@@ -2,7 +2,7 @@ unit P_makePayment;
 
 interface
 
-uses WinApi.Windows, System.SysUtils, System.Classes, Vcl.Graphics,
+uses WinApi.Windows,Dialogs, System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Forms, Vcl.Controls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, RzPanel,
   Data.DB, MemDS, DBAccess, IBC, vcl.Wwdotdot, vcl.Wwdbcomb,
   vcl.Wwdbdatetimepicker, vcl.wwcheckbox, Vcl.Mask, vcl.Wwdbedit, RzLabel,
@@ -25,7 +25,7 @@ type
     Label2: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    wwDBEdit2: TwwDBEdit;
+    AmountFLD: TwwDBEdit;
     wwDBDateTimePicker1: TwwDBDateTimePicker;
     PayTypeFLD: TwwDBComboBox;
     RzDBLabel1: TRzDBLabel;
@@ -45,6 +45,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure CanelBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -75,11 +76,12 @@ begin
   payAMount:=PaymentSql.FieldByName('amount_paid').AsFloat;
   if PayAmount > RemainAmount then begin
     MessageDlg('Το ποσό πληρωμής είναι μεγαλύτερο από το υπόλοιπο', mtError, [mbOK], 0);
-
+    abort;
   end;
 
   IF PaymentSql.State in [dsInsert] then begin
     paymentSQL.Post;
+    UpdateInvoice(IN_InvoiCe_serial);
     close;
   end;
 
@@ -97,6 +99,14 @@ begin
     close;
   end;
   MakePayment(IN_INVOICE_SERIAL);
+  AmountFLD.SetFocus;
+end;
+
+procedure TP_MakePaymentFRM.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+canClose:= PaymentSql.State <> dsInsert ;
+
 end;
 
 procedure TP_MakePaymentFRM.FormCreate(Sender: TObject);
@@ -170,6 +180,7 @@ begin
     PaymentSQL.FieldByName('DATE_PAYMENT').AsDateTime:=DATE;
     PaymentSQL.FieldByName('PAYMENT_METHOD').value:='C';
     PaymentSQL.FieldByName('amount_paid').value:=qr.FieldByName('AMOUNT_WITH_VAT').AsFloat;
+
 
 
   finally

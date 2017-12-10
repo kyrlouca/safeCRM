@@ -180,10 +180,6 @@
             <Form>M_companyNewFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="M_Student.pas">
-            <Form>M_StudentFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="R_expiry.pas">
             <Form>R_ExpiryFRM</Form>
             <FormType>dfm</FormType>
@@ -226,6 +222,10 @@
         </DCCReference>
         <DCCReference Include="P_makePayment.pas">
             <Form>P_MakePaymentFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="l_listInvoices.pas">
+            <Form>L_listInvoicesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

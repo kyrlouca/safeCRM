@@ -91,6 +91,7 @@ type
     procedure N11Click(Sender: TObject);
     procedure N12Click(Sender: TObject);
     procedure UserSecurity1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -109,7 +110,7 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
-  G_SFCommonProcs, SN_Login, SN_User, M_payment;
+  G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -124,6 +125,11 @@ var
 
 begin
   gpShowModal(TM_PaymentFRM);
+end;
+
+procedure TM_mainFRM.Button2Click(Sender: TObject);
+begin
+gpShowModal(TL_listInvoicesFRM);
 end;
 
 procedure TM_mainFRM.Countries2Click(Sender: TObject);

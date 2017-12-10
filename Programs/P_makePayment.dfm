@@ -14,6 +14,7 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
   OldCreateOrder = True
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -319,7 +320,7 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
         Font.Style = []
         ParentFont = False
       end
-      object wwDBEdit2: TwwDBEdit
+      object AmountFLD: TwwDBEdit
         Left = 81
         Top = 191
         Width = 90

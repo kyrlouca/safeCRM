@@ -27,7 +27,6 @@ uses
   G_DebugUnit in 'G_DebugUnit.pas',
   L_reminders in 'L_reminders.pas' {L_RemindersFRM},
   M_CompanyNew in 'M_CompanyNew.pas' {M_companyNewFRM},
-  M_Student in 'M_Student.pas' {M_StudentFRM},
   R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
   L_Companies in 'L_Companies.pas' {L_companiesFRM},
   M_reminderComplete in 'M_reminderComplete.pas' {M_ReminderCompleteFRM},
@@ -38,7 +37,8 @@ uses
   SN_AddUser in 'SN_AddUser.pas' {SN_AddUserFRM},
   R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
   M_payment in 'M_payment.pas' {M_PaymentFRM},
-  P_makePayment in 'P_makePayment.pas' {P_MakePaymentFRM};
+  P_makePayment in 'P_makePayment.pas' {P_MakePaymentFRM},
+  l_listInvoices in 'l_listInvoices.pas' {L_listInvoicesFRM};
 
 {$R *.res}
 
@@ -64,6 +64,7 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TR_remindersFRM, R_remindersFRM);
   Application.CreateForm(TM_PaymentFRM, M_PaymentFRM);
   Application.CreateForm(TP_MakePaymentFRM, P_MakePaymentFRM);
+  Application.CreateForm(TL_listInvoicesFRM, L_listInvoicesFRM);
   //  Application.CreateForm(TM_SeminarPictureTemplateFRM, M_SeminarPictureTemplateFRM);
   //  Application.CreateForm(TM_reminderFRM1, M_reminderFRM1);
   Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);

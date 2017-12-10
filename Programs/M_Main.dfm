@@ -7325,6 +7325,7 @@ object M_mainFRM: TM_mainFRM
       Height = 25
       Caption = 'Button2'
       TabOrder = 2
+      OnClick = Button2Click
     end
     object MainHelpRE: TwwDBRichEdit
       Left = 576
