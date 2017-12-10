@@ -78,6 +78,7 @@ type
     procedure InvoiceSQLNewRecord(DataSet: TDataSet);
     procedure BitBtn1Click(Sender: TObject);
     procedure InsertHawbBTNClick(Sender: TObject);
+    procedure DeletehawbBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -118,6 +119,7 @@ begin
 
     frm.IN_INVOICE_SERIAL:=invoiceSQL.FieldByName('serial_number').AsInteger;
     frm.ShowModal;
+    ksOpenTables([PaymentSQL])
   finally
     frm.Free;
   end;
@@ -165,6 +167,7 @@ Begin
     ParamByName('SerialNumber').value:=Serial;
     Open;
   end;
+  ksOpenTables([PaymentSQL])
 
 //  if FirstFLD.CanFocus then
 //  firstFLD.SetFocus;
@@ -190,5 +193,14 @@ end;
 
 
 
+
+procedure TM_PaymentFRM.DeletehawbBTNClick(Sender: TObject);
+var
+  PaySerial:Integer;
+begin
+  paySerial:=PaymentSql.FieldByName('serial_number').AsInteger;
+  ksExecSQLVar(cn,'delete from invoice_payment pay where pay.serial_number= :PaymentSerial',[PaySerial]);
+  ksOpenTables([PaymentSql]);
+end;
 
 End.

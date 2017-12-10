@@ -25,7 +25,6 @@ object M_PaymentFRM: TM_PaymentFRM
     Align = alBottom
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitWidth = 918
     object RzPanel1: TRzPanel
       Left = 946
       Top = 2
@@ -34,7 +33,6 @@ object M_PaymentFRM: TM_PaymentFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 816
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -264,8 +262,6 @@ object M_PaymentFRM: TM_PaymentFRM
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 3
-    ExplicitLeft = -23
-    ExplicitTop = 63
     object RzPanel2: TRzPanel
       Left = 401
       Top = 2
@@ -274,7 +270,6 @@ object M_PaymentFRM: TM_PaymentFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 417
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -283,7 +278,6 @@ object M_PaymentFRM: TM_PaymentFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 205
       end
       object Grid1: TwwDBGrid
         Left = 0
@@ -522,8 +516,6 @@ object M_PaymentFRM: TM_PaymentFRM
       Height = 454
       Align = alLeft
       TabOrder = 3
-      ExplicitLeft = 864
-      ExplicitTop = 0
       object InsertHawbBTN: TRzBitBtn
         Left = 26
         Top = 138
@@ -580,6 +572,7 @@ object M_PaymentFRM: TM_PaymentFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 1
+        OnClick = DeletehawbBTNClick
         Glyph.Data = {
           DE010000424DDE01000000000000760000002800000024000000120000000100
           0400000000006801000000000000000000001000000000000000000000000000
@@ -611,7 +604,6 @@ object M_PaymentFRM: TM_PaymentFRM
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 1
-    ExplicitWidth = 918
   end
   object Panel1: TRzPanel
     Left = 0
@@ -628,7 +620,6 @@ object M_PaymentFRM: TM_PaymentFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 918
   end
   object InvoiceSRC: TDataSource
     DataSet = InvoiceSQL
@@ -841,7 +832,7 @@ object M_PaymentFRM: TM_PaymentFRM
     Active = True
     OnNewRecord = InvoiceSQLNewRecord
     Left = 89
-    Top = 317
+    Top = 301
     ParamData = <
       item
         DataType = ftUnknown
@@ -887,7 +878,7 @@ object M_PaymentFRM: TM_PaymentFRM
   end
   object PaymentSrc: TDataSource
     DataSet = PaymentSql
-    Left = 152
-    Top = 313
+    Left = 144
+    Top = 297
   end
 end

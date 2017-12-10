@@ -3,7 +3,7 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
   Top = 108
   BorderStyle = bsDialog
   Caption = 'About'
-  ClientHeight = 317
+  ClientHeight = 363
   ClientWidth = 348
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,15 +19,13 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
   TextHeight = 13
   object Panel4: TRzPanel
     Left = 0
-    Top = 274
+    Top = 320
     Width = 348
     Height = 43
     Align = alBottom
     BorderOuter = fsFlatRounded
     TabOrder = 0
-    ExplicitLeft = -654
-    ExplicitTop = 210
-    ExplicitWidth = 1048
+    ExplicitTop = 274
     object RzPanel1: TRzPanel
       Left = 246
       Top = 2
@@ -36,7 +34,6 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 946
     end
     object BitBtn1: TBitBtn
       Left = 7
@@ -198,23 +195,21 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
-    ExplicitLeft = -654
-    ExplicitWidth = 1048
   end
   object RzPanel2: TRzPanel
     Left = 0
     Top = 53
     Width = 348
-    Height = 221
+    Height = 267
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitWidth = 369
+    ExplicitHeight = 268
     object SecondGRP: TRzGroupBox
       Left = 34
       Top = 21
       Width = 295
-      Height = 178
+      Height = 220
       Caption = #928#955#951#961#959#966#959#961#943#949#962
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -238,7 +233,7 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
       end
       object Label2: TLabel
         Left = 46
-        Top = 146
+        Top = 194
         Width = 29
         Height = 14
         Caption = #928#959#963#972
@@ -311,14 +306,27 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
         DataField = 'SERIAL_NUMBER'
         DataSource = PaymentSrc
       end
+      object Label6: TLabel
+        Left = 5
+        Top = 145
+        Width = 70
+        Height = 14
+        Caption = #913#961'. '#917#960#953#964#945#947#942#962
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
       object wwDBEdit2: TwwDBEdit
         Left = 81
-        Top = 143
+        Top = 191
         Width = 90
         Height = 22
         DataField = 'AMOUNT_PAID'
         DataSource = PaymentSrc
-        TabOrder = 0
+        TabOrder = 3
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
@@ -337,7 +345,7 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
         DataSource = PaymentSrc
         Epoch = 1950
         ShowButton = True
-        TabOrder = 1
+        TabOrder = 0
       end
       object PayTypeFLD: TwwDBComboBox
         Left = 81
@@ -363,11 +371,22 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
           'Cash'#9'C'
           'Cheque'#9'Q'
           'Visa'#9'Visa')
-        ItemIndex = 0
         ParentFont = False
         Sorted = False
+        TabOrder = 1
+        UnboundDataType = wwDefault
+      end
+      object wwDBEdit1: TwwDBEdit
+        Left = 81
+        Top = 143
+        Width = 208
+        Height = 22
+        DataField = 'CHEQUE_NUMBER'
+        DataSource = PaymentSrc
         TabOrder = 2
         UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
       end
     end
   end
@@ -378,12 +397,12 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
       'INSERT INTO INVOICE_PAYMENT'
       
         '  (SERIAL_NUMBER, FK_INVOICE_SERIAL, AMOUNT_PAID, PAYMENT_METHOD' +
-        ', DATE_PAYMENT, CHEQUE_NUMBER, FK_PAYMENT_PERSON, PERSON_NAME)'
+        ', DATE_PAYMENT, CHEQUE_NUMBER, PERSON_NAME, FK_PERSON_SERIAL)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_INVOICE_SERIAL, :AMOUNT_PAID, :PAYMENT_ME' +
-        'THOD, :DATE_PAYMENT, :CHEQUE_NUMBER, :FK_PAYMENT_PERSON, :PERSON' +
-        '_NAME)')
+        'THOD, :DATE_PAYMENT, :CHEQUE_NUMBER, :PERSON_NAME, :FK_PERSON_SE' +
+        'RIAL)')
     SQLDelete.Strings = (
       'DELETE FROM INVOICE_PAYMENT'
       'WHERE'
@@ -395,15 +414,15 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
         '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_INVOICE_SERIAL = :FK_INVOIC' +
         'E_SERIAL, AMOUNT_PAID = :AMOUNT_PAID, PAYMENT_METHOD = :PAYMENT_' +
         'METHOD, DATE_PAYMENT = :DATE_PAYMENT, CHEQUE_NUMBER = :CHEQUE_NU' +
-        'MBER, FK_PAYMENT_PERSON = :FK_PAYMENT_PERSON, PERSON_NAME = :PER' +
-        'SON_NAME'
+        'MBER, PERSON_NAME = :PERSON_NAME, FK_PERSON_SERIAL = :FK_PERSON_' +
+        'SERIAL'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, FK_INVOICE_SERIAL, AMOUNT_PAID, PAYMENT_ME' +
-        'THOD, DATE_PAYMENT, CHEQUE_NUMBER, FK_PAYMENT_PERSON, PERSON_NAM' +
-        'E FROM INVOICE_PAYMENT'
+        'THOD, DATE_PAYMENT, CHEQUE_NUMBER, PERSON_NAME, FK_PERSON_SERIAL' +
+        ' FROM INVOICE_PAYMENT'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -424,7 +443,7 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
     Options.AutoClose = True
     Active = True
     Left = 9
-    Top = 121
+    Top = 145
     ParamData = <
       item
         DataType = ftUnknown
@@ -433,7 +452,6 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
       end>
     object PaymentSqlSERIAL_NUMBER: TIntegerField
       FieldName = 'SERIAL_NUMBER'
-      Required = True
     end
     object PaymentSqlFK_INVOICE_SERIAL: TIntegerField
       FieldName = 'FK_INVOICE_SERIAL'
@@ -458,13 +476,13 @@ object P_MakePaymentFRM: TP_MakePaymentFRM
       FixedChar = True
       Size = 30
     end
-    object PaymentSqlFK_PAYMENT_PERSON: TIntegerField
-      FieldName = 'FK_PAYMENT_PERSON'
-      Required = True
-    end
     object PaymentSqlPERSON_NAME: TWideStringField
       FieldName = 'PERSON_NAME'
       Size = 80
+    end
+    object PaymentSqlFK_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_PERSON_SERIAL'
+      Required = True
     end
   end
   object PaymentSrc: TDataSource

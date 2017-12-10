@@ -35,10 +35,12 @@ type
     PaymentSqlPAYMENT_METHOD: TWideStringField;
     PaymentSqlDATE_PAYMENT: TDateField;
     PaymentSqlCHEQUE_NUMBER: TWideStringField;
-    PaymentSqlFK_PAYMENT_PERSON: TIntegerField;
     PaymentSqlPERSON_NAME: TWideStringField;
     Label3: TLabel;
     RzDBLabel2: TRzDBLabel;
+    PaymentSqlFK_PERSON_SERIAL: TIntegerField;
+    Label6: TLabel;
+    wwDBEdit1: TwwDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure CanelBTNClick(Sender: TObject);
@@ -47,6 +49,7 @@ type
     { Private declarations }
     cn:TIBCConnection;
   procedure MakePayment(const InvoiceSerial:Integer);
+  function CheckAMount(const InvoiceSerial:Integer):Double;
   public
     { Public declarations }
     IN_INVOICE_SERIAL:integer;
@@ -62,11 +65,23 @@ implementation
 uses U_Database, G_KyrSQL;
 
 procedure TP_MakePaymentFRM.BitBtn1Click(Sender: TObject);
+var
+  PayAmount:Double;
+  remainAmount:Double;
+
 begin
-IF PaymentSql.State in [dsInsert] then begin
-  paymentSQL.Post;
-  close;
-end;
+
+  RemainAmount:=CheckAMount(IN_INVOICE_SERIAL);
+  payAMount:=PaymentSql.FieldByName('amount_paid').AsFloat;
+  if PayAmount > RemainAmount then begin
+    MessageDlg('Το ποσό πληρωμής είναι μεγαλύτερο από το υπόλοιπο', mtError, [mbOK], 0);
+
+  end;
+
+  IF PaymentSql.State in [dsInsert] then begin
+    paymentSQL.Post;
+    close;
+  end;
 
 end;
 
@@ -90,6 +105,45 @@ begin
 
 end;
 
+function TP_MakePaymentFRM.CheckAMount(const InvoiceSerial:Integer):double;
+var
+  i:integer;
+  qr:TksQuery;
+  str:string;
+  TotalPay:Double;
+  InvAmount:double;
+
+begin
+  str:=
+  ' select inv.fk_person_serial ,inv.amount_with_vat, per.*'
+  +'  from'
+  +'  invoice inv left outer join'
+  +'  person_view per on inv.fk_person_serial= per.serial_number'
+  +' where inv.serial_number = :InvoiceSerial';
+
+  try
+    qr:=TksQuery.Create(cn,'select    sum(pay.amount_paid) as Total from invoice_payment pay where  pay.fk_invoice_serial= :InvoiceSerial');
+    qr.ParamByName('invoiceSerial').Value:=InvoiceSerial;
+    qr.Open;
+    totalPay:= qr.FieldByName('total').AsFloat;
+  finally
+    qr.Free;
+  end;
+
+  try
+    qr:=TksQuery.Create(cn,'select inv.amount_with_vat from invoice inv where inv.serial_number= :InvoiceSerial');
+    qr.ParamByName('invoiceSerial').Value:=InvoiceSerial;
+    qr.Open;
+    invAMount:= qr.FieldByName('amount_with_vat').AsFloat;
+  finally
+    qr.Free;
+  end;
+
+
+  result:=InvAmount-TotalPay;
+End;
+
+
 procedure TP_MakePaymentFRM.MakePayment(const InvoiceSerial:Integer);
 var
   i:integer;
@@ -97,10 +151,12 @@ var
   str:string;
 begin
   str:=
-  ' select inv.amount_with_vat, per.*'
+  ' select inv.fk_person_serial ,inv.amount_with_vat, per.*'
   +'  from'
   +'  invoice inv left outer join'
-  +'  person_view per on inv.fk_person_serial= per.serial_number';
+  +'  person_view per on inv.fk_person_serial= per.serial_number'
+  +' where inv.serial_number = :InvoiceSerial';
+
   try
     qr:=TksQuery.Create(cn,str);
     qr.ParamByName('invoiceSerial').Value:=InvoiceSerial;
@@ -109,8 +165,10 @@ begin
     PaymentSQL.Open;
     PaymentSQL.Insert;
     PaymentSQL.FieldByName('fk_invoice_serial').AsInteger:=IN_INVOICE_SERIAL;
-    PaymentSQL.FieldByName('DATE_PAYMENT').AsInteger:=DATE;
+    PaymentSQL.FieldByName('FK_PERSON_sERIAL').value:=qr.FieldByName('FK_PERSON_SERIAL').AsInteger;
     PaymentSQL.FieldByName('person_name').value:=qr.FieldByName('FIRST_last_name').AsString;
+    PaymentSQL.FieldByName('DATE_PAYMENT').AsDateTime:=DATE;
+    PaymentSQL.FieldByName('PAYMENT_METHOD').value:='C';
     PaymentSQL.FieldByName('amount_paid').value:=qr.FieldByName('AMOUNT_WITH_VAT').AsFloat;
 
 
