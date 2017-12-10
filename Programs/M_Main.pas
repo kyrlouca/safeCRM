@@ -109,7 +109,7 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
-  G_SFCommonProcs, SN_Login, SN_User;
+  G_SFCommonProcs, SN_Login, SN_User, M_payment;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -119,40 +119,11 @@ end;
 
 procedure TM_mainFRM.Button1Click(Sender: TObject);
 var
-  ch1,ch2:Char;
-  str1,str2:String;
-  alpha:Char;
   i:integer;
-  j:integer;
+ j:integer;
 
 begin
-
-  str1:='ÌÁrº¢';
-  str1:='náñ¼ßá';
-  If AllLower(str1) then
-    showMessage('all Upper');
-  exit;
-
-
-  STR2:=  G_SFCommonProcs.RemoveAccents(str1);
-  ShowMessage(str2);
-  exit;
-
-  alpha:='Á';
-//  ch:=chr(Ord(char('Á')));
-
-  ch1:=chr(Ord(char('Ù')));
-  ch2:=chr(Ord(char('¿')));
-
-
-
-  i:=Ord(ch1);
-  j:=Ord(ch2);
-  ShowMessage('diff='+intToStr(i-j));
-  str1:=IntToStr(i);
-  str2:=intTOStr(j);
-//  Str:=ch+'Â';
-  showMessage(str1+'-'+str2);
+  gpShowModal(TM_PaymentFRM);
 end;
 
 procedure TM_mainFRM.Countries2Click(Sender: TObject);
