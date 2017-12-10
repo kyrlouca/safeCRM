@@ -36,8 +36,7 @@ uses
   SN_SecurityAccess in 'SN_SecurityAccess.pas' {SN_SecurityAccessFRM},
   SN_AddUser in 'SN_AddUser.pas' {SN_AddUserFRM},
   R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
-  M_payment in 'M_payment.pas' {M_PaymentFRM},
-  P_makePayment in 'P_makePayment.pas' {P_MakePaymentFRM},
+  P_ViewPayment in 'P_ViewPayment.pas' {P_ViewPaymentFRM},
   l_listInvoices in 'l_listInvoices.pas' {L_listInvoicesFRM};
 
 {$R *.res}
@@ -62,8 +61,7 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TSN_SecurityAccessFRM, SN_SecurityAccessFRM);
   Application.CreateForm(TSN_AddUserFRM, SN_AddUserFRM);
   Application.CreateForm(TR_remindersFRM, R_remindersFRM);
-  Application.CreateForm(TM_PaymentFRM, M_PaymentFRM);
-  Application.CreateForm(TP_MakePaymentFRM, P_MakePaymentFRM);
+  Application.CreateForm(TP_ViewPaymentFRM, P_ViewPaymentFRM);
   Application.CreateForm(TL_listInvoicesFRM, L_listInvoicesFRM);
   //  Application.CreateForm(TM_SeminarPictureTemplateFRM, M_SeminarPictureTemplateFRM);
   //  Application.CreateForm(TM_reminderFRM1, M_reminderFRM1);

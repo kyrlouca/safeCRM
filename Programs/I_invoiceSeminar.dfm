@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 597
+  ClientHeight = 577
   ClientWidth = 1079
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 554
+    Top = 534
     Width = 1079
     Height = 43
     Align = alBottom
@@ -190,22 +190,19 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 65
     Width = 1079
-    Height = 489
+    Height = 469
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitTop = 92
-    ExplicitHeight = 462
     object Panel5: TPanel
       Left = 421
       Top = 2
       Width = 750
-      Height = 485
+      Height = 465
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 458
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -351,13 +348,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 442
+        Top = 422
         Width = 750
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         TabOrder = 1
-        ExplicitTop = 415
         object RzPanel6: TRzPanel
           Left = 649
           Top = 1
@@ -520,16 +516,16 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ControlType.Strings = (
           'IS_ANAD;CustomEdit;AnadCheckFLD;F')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'FK_PERSON_SERIAL'#9'6'#9'P/P'#9#9
-          'LAST_NAME'#9'16'#9#917#960#943#952#949#964#959#9#9
-          'FIRST_NAME'#9'16'#9#908#957#959#956#945#9#9
-          'AMOUNT_GROSS'#9'9'#9#932#953#956#942#9#9
-          'IS_ANAD'#9'4'#9#913#925#913#916#9#9
-          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'#9#9
-          'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'#9#9
-          'AMOUNT_VAT'#9'8'#9'VAT'#9#9
-          'AMOUNT_WITH_VAT'#9'10'#9'Total'#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'FK_PERSON_SERIAL'#9'6'#9'P/P'
+          'LAST_NAME'#9'16'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945
+          'AMOUNT_GROSS'#9'9'#9#932#953#956#942
+          'IS_ANAD'#9'4'#9#913#925#913#916
+          'DISCOUNT_CUSTOMER'#9'8'#9'Discount'
+          'DISCOUNT_BY_SAFE'#9'8'#9'Discount X'
+          'AMOUNT_VAT'#9'8'#9'VAT'
+          'AMOUNT_WITH_VAT'#9'10'#9'Total')
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -571,11 +567,10 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 419
-      Height = 485
+      Height = 465
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 458
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -587,13 +582,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 288
+        Top = 268
         Width = 419
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 261
         object GroupBox1: TGroupBox
           Left = 0
           Top = 0
@@ -623,10 +617,10 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Width = 397
             Height = 170
             Selected.Strings = (
-              'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-              'SUBJECT'#9'20'#9#920#941#956#945#9#9
-              'FEE_NORMAL'#9'10'#9#932#953#956#942' '#922#945#957#959#957#953#954#942#9#9
-              'FEE_REDUCED'#9'10'#9#932#953#956#942' '#913#925#913#916#9#9)
+              'SERIAL_NUMBER'#9'6'#9'A/A'
+              'SUBJECT'#9'20'#9#920#941#956#945
+              'FEE_NORMAL'#9'10'#9#932#953#956#942' '#922#945#957#959#957#953#954#942
+              'FEE_REDUCED'#9'10'#9#932#953#956#942' '#913#925#913#916)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -866,13 +860,14 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         '  (SERIAL_NUMBER, FK_PERSON_SERIAL, INVOICE_STATUS, DATE_INVOICE' +
         'D, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER, AMOUNT_GROSS, ' +
         'AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_ANAD, LAST_NAME, FIR' +
-        'ST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL)'
+        'ST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL, SUBJECT_NAME)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_PERSON_SERIAL, :INVOICE_STATUS, :DATE_INV' +
         'OICED, :VAT_RATE, :DISCOUNT_BY_SAFE, :DISCOUNT_CUSTOMER, :AMOUNT' +
         '_GROSS, :AMOUNT_NET, :AMOUNT_VAT, :AMOUNT_WITH_VAT, :IS_ANAD, :L' +
-        'AST_NAME, :FIRST_NAME, :PERSON_NATIONAL_ID, :FK_SUBJECT_SERIAL)')
+        'AST_NAME, :FIRST_NAME, :PERSON_NATIONAL_ID, :FK_SUBJECT_SERIAL, ' +
+        ':SUBJECT_NAME)')
     SQLDelete.Strings = (
       'DELETE FROM INVOICE'
       'WHERE'
@@ -888,7 +883,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'OUNT_GROSS, AMOUNT_NET = :AMOUNT_NET, AMOUNT_VAT = :AMOUNT_VAT, ' +
         'AMOUNT_WITH_VAT = :AMOUNT_WITH_VAT, IS_ANAD = :IS_ANAD, LAST_NAM' +
         'E = :LAST_NAME, FIRST_NAME = :FIRST_NAME, PERSON_NATIONAL_ID = :' +
-        'PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL = :FK_SUBJECT_SERIAL'
+        'PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL = :FK_SUBJECT_SERIAL, SUBJ' +
+        'ECT_NAME = :SUBJECT_NAME'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -896,7 +892,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'SELECT SERIAL_NUMBER, FK_PERSON_SERIAL, INVOICE_STATUS, DATE_INV' +
         'OICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER, AMOUNT_GRO' +
         'SS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_ANAD, LAST_NAME,' +
-        ' FIRST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL FROM INVOICE'
+        ' FIRST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL, SUBJECT_NAME' +
+        ' FROM INVOICE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1025,6 +1022,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       FieldName = 'FK_SUBJECT_SERIAL'
       Required = True
       Visible = False
+    end
+    object InvoiceSQLSUBJECT_NAME: TWideStringField
+      FieldName = 'SUBJECT_NAME'
+      Visible = False
+      FixedChar = True
+      Size = 60
     end
   end
   object InvoiceSRC: TIBCDataSource

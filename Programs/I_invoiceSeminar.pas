@@ -114,6 +114,7 @@ type
     Panel1: TRzPanel;
     Panel2: TRzPanel;
     InvoiceSQLFK_SUBJECT_SERIAL: TIntegerField;
+    InvoiceSQLSUBJECT_NAME: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -381,6 +382,7 @@ var
   DiscountSafe:Double;
   isFOund:Boolean;
   param:TParameterRecord;
+  SubjectName:string;
 
   vatRate:Double;
 begin
@@ -400,10 +402,15 @@ begin
     PriceNormal:=qr.FieldByName('fee_normal').AsFloat;
     PriceANAD:=qr.FieldByName('fee_reduced').AsFloat;    //take this as default
     SeminarSerial:=qr.FieldByName('fk_seminar_serial').AsInteger;
+    SubjectName:=qr.FieldByName('subject').AsString;
   finally
     qr.Free;
   end;
 
+  If (PriceANAD<=0) or (PriceNormal <=0) then begin
+    ShowMessage('Το Θέμα δεν έχει Χρεώσεις');
+    exit;
+  end;
   //////////////////////////////////////////////////////////////////
   ///
   if isMono then begin
@@ -450,6 +457,7 @@ begin
         InvoiceSQL.Insert;
         InvoiceSQL.FieldByName('serial_number').Value:=SerialNumber;
         InvoiceSQL.FieldByName('fk_Subject_serial').Value:=SEminarSubjectSerial;
+        InvoiceSQL.FieldByName('Subject_Name').Value:=SubjectName;
         InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=qr.FieldByName('per_serial').AsInteger;
         InvoiceSQL.FieldByName('last_name').Value       :=qr.FieldByName('inv_last_name').AsString;
         InvoiceSQL.FieldByName('first_name').Value:=qr.FieldByName('inv_first_name').AsString;
