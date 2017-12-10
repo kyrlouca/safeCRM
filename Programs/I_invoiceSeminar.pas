@@ -493,7 +493,13 @@ procedure TI_InvoiceSeminarFRM.InvoiceBTNClick(Sender: TObject);
 var
   SeminarSerial:Integer;
   seminarSubjectSerial:Integer;
+  SeminarStatus:String;
 begin
+  SeminarStatus:=SeminarSQL.FieldByName('status').AsString;
+  if SeminarStatus<>'F' then begin
+    MessageDlg('Το σεμινάριο  δεν μπορεί να τιμολογηθεί γιατί δεν είναι  ''ΟΛΟΚΛΗΡΩΜΕΝΟ'' ', mtWarning, [mbOK], 0);
+    abort;
+  end;
 
   if InvoiceSQL.State in [dsEdit,dsInsert] then begin
     InvoiceSQL.Post;
