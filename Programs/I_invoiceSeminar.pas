@@ -245,12 +245,10 @@ vAR
   seminarSubjectSerial:Integer;
 
 begin
-  seminarSubjectSerial:=SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
 
   frm :=  TR_InvoicesFRM.Create(nil);
-  frm.IN_SeminarSubjectSerial :=seminarSubjectSerial;
-//  frm.IN_Invoiceserial:=0;
-//  frm.IN_Day_Serial :=0;
+  frm.IN_SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+  frm.IN_SeminarSubjectSerial :=SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
   try
     frm.PrintSeminar();
   finally

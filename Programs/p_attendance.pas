@@ -209,7 +209,15 @@ procedure TP_attendanceFRM.DaySQLAfterScroll(DataSet: TDataSet);
 var
   daySerial:Integer;
   seminarSerial:Integer;
-begin
+    status:string;
+  Allow:Boolean;
+Begin
+
+  status:=TableSQL.FieldByName('status').AsString;
+  allow:= (Status='A');
+
+
+
   VpresenceSQL.close;
   VpresenceSQL.Open;
   SeminarSerial:=DaySQL.FieldByName('SeminarSerial').AsInteger;
@@ -220,6 +228,7 @@ begin
     exit;
   end;
   UpdatePresenceTable(seminarSerial,daySerial);
+//  VPresenceSQL.ReadOnly:= not allow;
 end;
 
 procedure TP_attendanceFRM.DaySQLBeforeScroll(DataSet: TDataSet);
@@ -230,9 +239,11 @@ end;
 
 procedure TP_attendanceFRM.TableSQLAfterScroll(DataSet: TDataSet);
 begin
+
   daySQL.Close;
   daySQL.ParamByName('SeminarSerial').Value:=Dataset.FieldByName('serial_number').AsInteger;
   daySQL.Open;
+
 
 end;
 

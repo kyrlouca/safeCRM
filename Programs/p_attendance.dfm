@@ -2,7 +2,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 606
+  ClientHeight = 546
   ClientWidth = 913
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,7 +54,7 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 563
+    Top = 503
     Width = 913
     Height = 43
     Align = alBottom
@@ -156,14 +156,14 @@ object P_attendanceFRM: TP_attendanceFRM
     Left = 0
     Top = 92
     Width = 913
-    Height = 471
+    Height = 411
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 457
       Top = 1
       Width = 416
-      Height = 469
+      Height = 409
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -172,16 +172,16 @@ object P_attendanceFRM: TP_attendanceFRM
         Left = 0
         Top = 36
         Width = 416
-        Height = 390
+        Height = 330
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
-          'PersonSerial'#9'4'#9'ps'
-          'DaySerial'#9'4'#9'ds'
-          'Last_name'#9'16'#9#917#960#943#952#949#964#959
-          'First_Name'#9'10'#9#908#957#959#956#945
-          'Is_Present'#9'7'#9#928#945#961#974#957
-          'Hours_Present'#9'6'#9'Hours')
+          'PersonSerial'#9'4'#9'ps'#9#9
+          'DaySerial'#9'4'#9'ds'#9#9
+          'Last_name'#9'16'#9#917#960#943#952#949#964#959#9#9
+          'First_Name'#9'10'#9#908#957#959#956#945#9#9
+          'Is_Present'#9'7'#9#928#945#961#974#957#9#9
+          'Hours_Present'#9'6'#9'Hours'#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -346,7 +346,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 426
+        Top = 366
         Width = 416
         Height = 43
         Align = alBottom
@@ -512,7 +512,7 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 456
-      Height = 469
+      Height = 409
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
@@ -527,7 +527,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 272
+        Top = 212
         Width = 456
         Height = 197
         Align = alBottom
@@ -539,7 +539,7 @@ object P_attendanceFRM: TP_attendanceFRM
           Width = 399
           Height = 197
           Selected.Strings = (
-            'DAYSERIAL'#9'10'#9'DAYSERIAL'
+            'DAYSERIAL'#9'6'#9'A/A'
             'SUBJECT'#9'23'#9#920#941#956#945
             'SEMINAR_DAY'#9'10'#9#924#941#961#945
             'DURATION_HOURS'#9'6'#9#911#961#949#962)
@@ -572,10 +572,10 @@ object P_attendanceFRM: TP_attendanceFRM
         end
       end
       object GroupBox1: TGroupBox
-        Left = 23
+        Left = 3
         Top = 5
         Width = 273
-        Height = 262
+        Height = 212
         Caption = #931#949#956#953#957#940#961#953#959
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -1014,7 +1014,8 @@ object P_attendanceFRM: TP_attendanceFRM
         Value = nil
       end>
     object DaySQLDAYSERIAL: TIntegerField
-      DisplayWidth = 10
+      DisplayLabel = 'A/A'
+      DisplayWidth = 6
       FieldName = 'DAYSERIAL'
       ReadOnly = True
     end

@@ -119,7 +119,7 @@ var
 implementation
 
 uses   U_Database, G_generalProcs, V_Seminar, I_certificates, p_attendance,
-  I_invoiceSeminar, R_Certificate;
+  I_invoiceSeminar, R_Certificate, R_invoices;
 
 
 {$R *.DFM}
@@ -375,19 +375,20 @@ end;
 
 procedure TL_SeminarFRM.N3Click(Sender: TObject);
 vAR
-  Frm:TI_InvoiceSeminarFRM;
-seminarSerial:Integer;
-SeminarStatus:string;
-begin
-//  seminarSubjectSerial:=SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
+  Frm:TR_InvoicesFRM;
+  seminarSerial:Integer;
 
-//  frm :=  TR_InvoicesFRM.Create(nil);
-//  frm.IN_SeminarSubjectSerial :=seminarSubjectSerial;
-//  try
-//    frm.PrintSeminar();
-//  finally
-//    frm.Free;
-//  end;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_InvoicesFRM.Create(nil);
+  frm.IN_SeminarSerial:=SeminarSerial;
+
+  try
+    frm.ShowModal();
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TL_SeminarFRM.Nav1InsertClick(Sender: TObject);

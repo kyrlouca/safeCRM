@@ -56,7 +56,7 @@ type
     ppLabel10: TppLabel;
     ppLabel11: TppLabel;
     ppLabel12: TppLabel;
-    SeminarSubjectSQL: TIBCQuery;
+    SelectSubjectSQL: TIBCQuery;
     SeminarSubjectSRC: TDataSource;
     SeminarPIP: TppDBPipeline;
     ppDBText7: TppDBText;
@@ -95,35 +95,55 @@ type
     RzDBLabel4: TRzDBLabel;
     RzDBLabel5: TRzDBLabel;
     wwDBComboBox1: TwwDBComboBox;
-    SeminarSubjectSQLSERIAL_NUMBER: TIntegerField;
-    SeminarSubjectSQLANAD_NUMBER: TWideStringField;
-    SeminarSubjectSQLFK_SEMINAR: TIntegerField;
-    SeminarSubjectSQLFK_INSTRUCTOR: TIntegerField;
-    SeminarSubjectSQLFK_EXAMINER: TIntegerField;
-    SeminarSubjectSQLFK_VENUE: TIntegerField;
-    SeminarSubjectSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    SeminarSubjectSQLSEMINAR_NAME: TWideStringField;
-    SeminarSubjectSQLDATE_STARTED: TDateField;
-    SeminarSubjectSQLDATE_COMPLETED: TDateField;
-    SeminarSubjectSQLDURATION_DAYS: TIntegerField;
-    SeminarSubjectSQLDURATION_HOURS: TIntegerField;
-    SeminarSubjectSQLAMOUNT_ANAD: TFloatField;
-    SeminarSubjectSQLCOMMENTS: TWideStringField;
-    SeminarSubjectSQLANAD_APPROVED: TWideStringField;
-    SeminarSubjectSQLSTATUS: TWideStringField;
-    SeminarSubjectSQLIS_INVOICED: TWideStringField;
-    SeminarSubjectSQLIS_CERTIFICATED: TWideStringField;
-    SeminarSubjectSQLMAX_CAPACITY: TIntegerField;
-    SeminarSubjectSQLHAS_EXPIRY: TWideStringField;
-    SeminarSubjectSQLEXPIRY_PERIOD: TIntegerField;
-    SeminarSubjectSQLTYPE_MONO_POLY: TWideStringField;
-    SeminarSubjectSQLSEM_CATEGORY: TWideStringField;
-    SeminarSubjectSQLSUBJECT_SERIAL: TIntegerField;
-    SeminarSubjectSQLSUBJECT: TWideStringField;
     InvoiceSQLFK_SUBJECT_SERIAL: TIntegerField;
     InvoiceSQLSUBJECT_NAME: TWideStringField;
     Label6: TLabel;
     RzDBLabel6: TRzDBLabel;
+    GroupBox1: TGroupBox;
+    RzPanel1: TRzPanel;
+    wwDBGrid1: TwwDBGrid;
+    SeminarSQL: TIBCQuery;
+    SeminarSRC: TDataSource;
+    SeminarSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSQLANAD_NUMBER: TWideStringField;
+    SeminarSQLFK_SEMINAR: TIntegerField;
+    SeminarSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSQLFK_EXAMINER: TIntegerField;
+    SeminarSQLFK_VENUE: TIntegerField;
+    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    SeminarSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQLDATE_STARTED: TDateField;
+    SeminarSQLDATE_COMPLETED: TDateField;
+    SeminarSQLDURATION_DAYS: TIntegerField;
+    SeminarSQLDURATION_HOURS: TIntegerField;
+    SeminarSQLAMOUNT_ANAD: TFloatField;
+    SeminarSQLCOMMENTS: TWideStringField;
+    SeminarSQLANAD_APPROVED: TWideStringField;
+    SeminarSQLSTATUS: TWideStringField;
+    SeminarSQLIS_INVOICED: TWideStringField;
+    SeminarSQLIS_CERTIFICATED: TWideStringField;
+    SeminarSQLMAX_CAPACITY: TIntegerField;
+    SeminarSQLHAS_EXPIRY: TWideStringField;
+    SeminarSQLEXPIRY_PERIOD: TIntegerField;
+    SeminarSQLTYPE_MONO_POLY: TWideStringField;
+    SeminarSQLSEM_CATEGORY: TWideStringField;
+    SelectSubjectSQLSERIAL_NUMBER: TIntegerField;
+    SelectSubjectSQLFK_SEMINAR_SERIAL: TIntegerField;
+    SelectSubjectSQLSUBJECT: TWideStringField;
+    SelectSubjectSQLFK_SUBJECT_TYPE_SERIAL: TIntegerField;
+    SelectSubjectSQLFEE_NORMAL: TFloatField;
+    SelectSubjectSQLFEE_REDUCED: TFloatField;
+    SeminarSubjectPIP: TppDBPipeline;
+    ppLabel13: TppLabel;
+    ppDBText12: TppDBText;
+    SelectSubjectSRC: TDataSource;
+    SeminarSubjectSQL: TIBCQuery;
+    IntegerField1: TIntegerField;
+    WideStringField1: TWideStringField;
+    IntegerField2: TIntegerField;
+    IntegerField3: TIntegerField;
+    FloatField1: TFloatField;
+    FloatField2: TFloatField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
@@ -138,10 +158,11 @@ type
     cn:TIBCConnection;
   Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   Function CalcDaysLeft():TReminderResult;
+  procedure PrintTheSeminar(const SeminarSerial, SeminarSubjectSerial:integer);
   public
     { Public declarations }
     IN_SeminarSubjectSerial:Integer;
-//    IN_InvoiceSerial:Integer;
+    IN_SeminarSerial:Integer;
   procedure PrintSeminar();
   end;
 
@@ -234,34 +255,47 @@ begin
 end;
 
 procedure TR_InvoicesFRM.PrintRBtnClick(Sender: TObject);
+var
+   SubjectSerial:Integer;
 begin
-  PrintSeminar();
+  subjectSerial:=SelectSubjectSQL.FieldByName('serial_number').AsInteger;
+  if SubjectSerial>0 then
+    PrintTheSeminar(IN_SeminarSerial,SubjectSerial);
 end;
 
 procedure TR_InvoicesFRM.PrintSeminar();
+begin
+  if (IN_SeminarSerial>0)  then
+    PrintTheSeminar(IN_SeminarSerial,IN_SeminarSubjectSerial);
+
+end;
+
+
+procedure TR_InvoicesFRM.PrintTheSeminar(const SeminarSerial, SeminarSubjectSerial:integer);
 
 Var
    FromDate:TDateTime;
    DaysLeft:integer;
-   SubjectSerial:Integer;
+
 begin
-  SubjectSerial:=IN_SeminarSubjectSerial;
-  if SubjectSerial<1 then begin
+
+  if SeminarSubjectSerial<1 then begin
     showMessage('Invalid Selected Seminar Subject');
     exit;
   end;
 
+  SeminarSQL.Close;
+  SeminarSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
+  SeminarSQL.Open;
 
   SeminarSubjectSQL.Close;
-  SeminarSubjectSQL.ParamByName('SubjectSerial').Value:=SubjectSerial;
+  SeminarSubjectSQL.ParamByName('SubjectSerial').Value:=SeminarSubjectSerial;
   SeminarSubjectSQL.Open;
 
   InvoiceSQL.Close;
-  InvoiceSQL.ParamByName('SubjectSerial').Value:=SubjectSerial;
+  InvoiceSQL.ParamByName('SubjectSerial').Value:=SeminarSubjectSerial;
   InvoiceSQL.Open;
 
-//  if InvoiceSQL.IsEmpty then
-//    showMessage('inv empty');
 
   PpReport1.Print;
 
@@ -269,7 +303,11 @@ end;
 
 procedure TR_InvoicesFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([SeminarSubjectSQL])
+SeminarSQL.Close;
+SeminarSQL.ParamByName('seminarSerial').Value:=IN_SeminarSerial;
+SeminarSQL.Open;
+
+ksOpenTables([ SelectSubjectSQL]);
 end;
 
 procedure TR_InvoicesFRM.FormCreate(Sender: TObject);

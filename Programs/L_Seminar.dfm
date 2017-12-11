@@ -1159,11 +1159,11 @@ object L_SeminarFRM: TL_SeminarFRM
   end
   object MainMenu1: TMainMenu
     Left = 272
-    Top = 65528
+    Top = 24
     object Reports1: TMenuItem
       Caption = #917#954#964#965#960#974#963#949#953#962
       object N3: TMenuItem
-        Caption = #917#954#964#973#960#969#963#951' '#923#943#963#964#945#962' '#932#953#956#959#955#959#947#943#969#957
+        Caption = #932#953#956#959#955#972#947#953#945
         OnClick = N3Click
       end
       object N1: TMenuItem
