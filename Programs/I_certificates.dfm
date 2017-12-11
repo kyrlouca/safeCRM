@@ -1029,6 +1029,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
+    Active = True
     Left = 137
     Top = 413
   end
@@ -1190,8 +1191,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'Select * from seminar_certificate where fk_seminar_serial= :Semi' +
         'narSerial'
       'order by last_name, first_name')
-    CachedUpdates = True
-    AutoCommit = False
     Active = True
     AutoCalcFields = False
     Left = 17
