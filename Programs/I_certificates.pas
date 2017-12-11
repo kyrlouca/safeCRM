@@ -62,11 +62,9 @@ type
     TableSQLDATE_COMPLETED: TDateField;
     TableSQLDURATION_DAYS: TIntegerField;
     TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLFEE_ACTUAL: TFloatField;
     TableSQLAMOUNT_ANAD: TFloatField;
     TableSQLCOMMENTS: TWideStringField;
     TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLFEE_ESTIMATE: TFloatField;
     TableSQLSTATUS: TWideStringField;
     TableSQLIS_INVOICED: TWideStringField;
     TableSQLIS_CERTIFICATED: TWideStringField;
@@ -75,15 +73,10 @@ type
     personSQLFIRST_NAME: TWideStringField;
     personSQLLAST_NAME: TWideStringField;
     personSQLSERIAL_NUMBER: TIntegerField;
-    Label6: TLabel;
-    Label7: TLabel;
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     Companylbl: TLabel;
     TableSQLLAST_NAME: TWideStringField;
     RzDBLabel3: TRzDBLabel;
-    wwDBEdit1: TRzDBLabel;
-    wwDBEdit2: TRzDBLabel;
     Read1: TIBCTransaction;
     write1: TIBCTransaction;
     wwDBGrid1: TwwDBGrid;
@@ -119,6 +112,7 @@ type
     Label9: TLabel;
     RzDBLabel4: TRzDBLabel;
     RzDBLabel5: TRzDBLabel;
+    TableSQLSEM_CATEGORY: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);

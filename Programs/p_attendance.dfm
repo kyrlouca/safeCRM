@@ -2,7 +2,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 626
+  ClientHeight = 606
   ClientWidth = 913
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -41,6 +41,12 @@ object P_attendanceFRM: TP_attendanceFRM
       Align = alClient
       Alignment = taCenter
       Caption = #928#945#961#959#965#963#953#959#955#972#947#953#959
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 3947580
+      Font.Height = -27
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
       Layout = tlCenter
       ExplicitWidth = 200
       ExplicitHeight = 32
@@ -48,7 +54,7 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 583
+    Top = 563
     Width = 913
     Height = 43
     Align = alBottom
@@ -150,14 +156,14 @@ object P_attendanceFRM: TP_attendanceFRM
     Left = 0
     Top = 92
     Width = 913
-    Height = 491
+    Height = 471
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 457
       Top = 1
       Width = 416
-      Height = 489
+      Height = 469
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -166,7 +172,7 @@ object P_attendanceFRM: TP_attendanceFRM
         Left = 0
         Top = 36
         Width = 416
-        Height = 410
+        Height = 390
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
@@ -340,7 +346,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 446
+        Top = 426
         Width = 416
         Height = 43
         Align = alBottom
@@ -506,7 +512,7 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 456
-      Height = 489
+      Height = 469
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
@@ -521,7 +527,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 292
+        Top = 272
         Width = 456
         Height = 197
         Align = alBottom
@@ -580,7 +586,7 @@ object P_attendanceFRM: TP_attendanceFRM
         TabOrder = 2
         object Label6: TLabel
           Left = 15
-          Top = 49
+          Top = 75
           Width = 58
           Height = 14
           Caption = #928#949#961#953#947#961#945#966#942
@@ -591,33 +597,9 @@ object P_attendanceFRM: TP_attendanceFRM
           Font.Style = []
           ParentFont = False
         end
-        object Label7: TLabel
-          Left = 52
-          Top = 24
-          Width = 21
-          Height = 14
-          Caption = #913'/'#913
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-        end
-        object RzDBLabel3: TRzDBLabel
-          Left = 79
-          Top = 20
-          Width = 75
-          Height = 20
-          Alignment = taRightJustify
-          BorderOuter = fsFlat
-          BorderWidth = 1
-          DataField = 'SERIAL_NUMBER'
-          DataSource = TableSRC
-        end
         object Label8: TLabel
           Left = 6
-          Top = 75
+          Top = 114
           Width = 67
           Height = 14
           Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
@@ -630,7 +612,7 @@ object P_attendanceFRM: TP_attendanceFRM
         end
         object Label9: TLabel
           Left = 25
-          Top = 101
+          Top = 140
           Width = 48
           Height = 14
           Caption = #928#949#961#943#959#948#959#962
@@ -643,7 +625,7 @@ object P_attendanceFRM: TP_attendanceFRM
         end
         object RzDBLabel4: TRzDBLabel
           Left = 79
-          Top = 99
+          Top = 138
           Width = 80
           Height = 20
           BorderOuter = fsFlat
@@ -653,7 +635,7 @@ object P_attendanceFRM: TP_attendanceFRM
         end
         object RzDBLabel5: TRzDBLabel
           Left = 176
-          Top = 99
+          Top = 138
           Width = 80
           Height = 20
           BorderOuter = fsFlat
@@ -661,35 +643,9 @@ object P_attendanceFRM: TP_attendanceFRM
           DataField = 'DATE_COMPLETED'
           DataSource = TableSRC
         end
-        object Label10: TLabel
-          Left = 41
-          Top = 202
-          Width = 131
-          Height = 14
-          Caption = #932#953#956#942' '#935#969#961#943#962' '#917#960#953#967#959#961#942#947#951#963#951
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label11: TLabel
-          Left = 60
-          Top = 228
-          Width = 112
-          Height = 14
-          Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-        end
         object RzDBLabel6: TRzDBLabel
           Left = 79
-          Top = 46
+          Top = 72
           Width = 178
           Height = 20
           ParentColor = False
@@ -699,7 +655,7 @@ object P_attendanceFRM: TP_attendanceFRM
         end
         object Companylbl: TLabel
           Left = 30
-          Top = 152
+          Top = 165
           Width = 43
           Height = 14
           Caption = #917#964#945#953#961#949#943#945
@@ -712,39 +668,64 @@ object P_attendanceFRM: TP_attendanceFRM
         end
         object RzDBLabel7: TRzDBLabel
           Left = 79
-          Top = 151
-          Width = 175
+          Top = 164
+          Width = 178
           Height = 20
           ParentColor = False
           BorderOuter = fsFlat
           DataField = 'LAST_NAME'
           DataSource = TableSRC
         end
-        object wwDBEdit1: TRzDBLabel
-          Left = 178
-          Top = 227
-          Width = 80
+        object Label2: TLabel
+          Left = 19
+          Top = 25
+          Width = 54
+          Height = 14
+          Caption = #913#961'. '#913#925#913#916
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object SerialFLD: TRzDBLabel
+          Left = 79
+          Top = 20
+          Width = 75
           Height = 20
-          Alignment = taRightJustify
-          ParentColor = False
           BorderOuter = fsFlat
-          DataField = 'FEE_WITH_ANAD_SUB'
+          BorderWidth = 1
+          DataField = 'ANAD_NUMBER'
           DataSource = TableSRC
         end
-        object wwDBEdit2: TRzDBLabel
-          Left = 176
-          Top = 201
-          Width = 80
+        object Label1: TLabel
+          Left = 52
+          Top = 48
+          Width = 21
+          Height = 14
+          Caption = #913'/'#913
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object RzDBLabel1: TRzDBLabel
+          Left = 79
+          Top = 46
+          Width = 75
           Height = 20
           Alignment = taRightJustify
-          ParentColor = False
           BorderOuter = fsFlat
-          DataField = 'FEE_ACTUAL'
+          BorderWidth = 1
+          DataField = 'SERIAL_NUMBER'
           DataSource = TableSRC
         end
         object wwDBComboBox2: TwwDBComboBox
           Left = 79
-          Top = 72
+          Top = 111
           Width = 80
           Height = 22
           ShowButton = False
@@ -772,20 +753,20 @@ object P_attendanceFRM: TP_attendanceFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VEN' +
-        'UE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_STARTED, DATE_C' +
-        'OMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_ANAD' +
-        ', COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOICED, IS' +
-        '_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY, EXPI' +
-        'RY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY)'
+        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXA' +
+        'MINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_ST' +
+        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
+        'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
+        ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
+        'ATEGORY)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
-        'K_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME, :DATE_STARTED' +
-        ', :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_ACTUAL,' +
-        ' :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :STATUS' +
-        ', :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH_ANAD_' +
-        'SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :FK_EXAMINER, :TYPE_MONO_POLY)')
+        'K_EXAMINER, :FK_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME,' +
+        ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
+        ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
+        ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
+        ':TYPE_MONO_POLY, :SEM_CATEGORY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -795,27 +776,26 @@ object P_attendanceFRM: TP_attendanceFRM
       'SET'
       
         '  SERIAL_NUMBER = :SERIAL_NUMBER, ANAD_NUMBER = :ANAD_NUMBER, FK' +
-        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE' +
-        ' = :FK_VENUE, FK_COMPANY_PERSON_SERIAL = :FK_COMPANY_PERSON_SERI' +
-        'AL, SEMINAR_NAME = :SEMINAR_NAME, DATE_STARTED = :DATE_STARTED, ' +
-        'DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :DURATION_DAYS' +
-        ', DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FEE_ACTUAL, AM' +
-        'OUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED = ' +
-        ':ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS = :STATUS, ' +
-        'IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CERTIFICATED, ' +
-        'MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :FEE_WITH_ANAD' +
-        '_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, ' +
-        'FK_EXAMINER = :FK_EXAMINER, TYPE_MONO_POLY = :TYPE_MONO_POLY'
+        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_EXAMI' +
+        'NER = :FK_EXAMINER, FK_VENUE = :FK_VENUE, FK_COMPANY_PERSON_SERI' +
+        'AL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_NAME, DA' +
+        'TE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DU' +
+        'RATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, ' +
+        'AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED ' +
+        '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
+        'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
+        ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
-        '_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_STARTED, DA' +
-        'TE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_' +
-        'ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOICED' +
-        ', IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY, ' +
-        'EXPIRY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY FROM SEMINAR'
+        '_EXAMINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DAT' +
+        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
+        '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
+        'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
+        'EM_CATEGORY FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -839,7 +819,6 @@ object P_attendanceFRM: TP_attendanceFRM
       '    person per on se.fk_company_person_serial =per.serial_number'
       'where '
       'se.serial_number= :SeminarSerial')
-    Active = True
     AfterScroll = TableSQLAfterScroll
     Left = 49
     Top = 5
@@ -880,9 +859,6 @@ object P_attendanceFRM: TP_attendanceFRM
     object TableSQLDURATION_HOURS: TIntegerField
       FieldName = 'DURATION_HOURS'
     end
-    object TableSQLFEE_ACTUAL: TFloatField
-      FieldName = 'FEE_ACTUAL'
-    end
     object TableSQLAMOUNT_ANAD: TFloatField
       FieldName = 'AMOUNT_ANAD'
     end
@@ -895,9 +871,6 @@ object P_attendanceFRM: TP_attendanceFRM
       Required = True
       FixedChar = True
       Size = 1
-    end
-    object TableSQLFEE_ESTIMATE: TFloatField
-      FieldName = 'FEE_ESTIMATE'
     end
     object TableSQLSTATUS: TWideStringField
       FieldName = 'STATUS'
@@ -919,9 +892,6 @@ object P_attendanceFRM: TP_attendanceFRM
     object TableSQLMAX_CAPACITY: TIntegerField
       FieldName = 'MAX_CAPACITY'
       Required = True
-    end
-    object TableSQLFEE_WITH_ANAD_SUB: TFloatField
-      FieldName = 'FEE_WITH_ANAD_SUB'
     end
     object TableSQLLAST_NAME: TWideStringField
       FieldName = 'LAST_NAME'
@@ -949,6 +919,12 @@ object P_attendanceFRM: TP_attendanceFRM
     end
     object TableSQLTYPE_MONO_POLY: TWideStringField
       FieldName = 'TYPE_MONO_POLY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLSEM_CATEGORY: TWideStringField
+      FieldName = 'SEM_CATEGORY'
       Required = True
       FixedChar = True
       Size = 1

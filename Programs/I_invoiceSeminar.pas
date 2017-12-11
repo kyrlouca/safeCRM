@@ -496,8 +496,8 @@ var
   SeminarStatus:String;
 begin
   SeminarStatus:=SeminarSQL.FieldByName('status').AsString;
-  if SeminarStatus<>'F' then begin
-    MessageDlg('Το σεμινάριο  δεν μπορεί να τιμολογηθεί γιατί δεν είναι  ''ΟΛΟΚΛΗΡΩΜΕΝΟ'' ', mtWarning, [mbOK], 0);
+  if SeminarStatus='P' then begin
+    MessageDlg('Το σεμινάριο  δεν μπορεί να τιμολογηθεί γιατί δεν έχει γίνει ''APPROVED'' ', mtWarning, [mbOK], 0);
     abort;
   end;
 

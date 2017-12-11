@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 601
+  ClientHeight = 581
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -41,6 +41,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Align = alClient
       Alignment = taCenter
       Caption = #904#954#948#959#963#951' '#916#953#960#955#969#956#940#964#969#957
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 3947580
+      Font.Height = -27
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
       Layout = tlCenter
       ExplicitWidth = 281
       ExplicitHeight = 32
@@ -48,12 +54,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 558
+    Top = 538
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 504
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -151,20 +156,18 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 466
+    Height = 446
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 412
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 464
+      Height = 444
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 410
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -326,14 +329,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 421
+        Top = 401
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsNone
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
-        ExplicitTop = 367
         object RzPanel6: TRzPanel
           Left = 571
           Top = 0
@@ -342,8 +344,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitLeft = 570
-          ExplicitHeight = 42
         end
         object SavePresBTN: TBitBtn
           Left = 6
@@ -529,11 +529,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 464
+      Height = 444
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 410
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -545,13 +544,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 267
+        Top = 247
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 213
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -680,7 +678,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object Label5: TLabel
         Left = 6
-        Top = 102
+        Top = 118
         Width = 67
         Height = 14
         Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
@@ -693,7 +691,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object Label1: TLabel
         Left = 25
-        Top = 128
+        Top = 144
         Width = 48
         Height = 14
         Caption = #928#949#961#943#959#948#959#962
@@ -706,7 +704,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzDBLabel1: TRzDBLabel
         Left = 79
-        Top = 126
+        Top = 142
         Width = 80
         Height = 20
         BorderOuter = fsFlat
@@ -716,7 +714,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzDBLabel2: TRzDBLabel
         Left = 176
-        Top = 126
+        Top = 142
         Width = 80
         Height = 20
         BorderOuter = fsFlat
@@ -724,35 +722,9 @@ object I_CertificatesFRM: TI_CertificatesFRM
         DataField = 'DATE_COMPLETED'
         DataSource = TableSRC
       end
-      object Label6: TLabel
-        Left = 41
-        Top = 226
-        Width = 131
-        Height = 14
-        Caption = #932#953#956#942' '#935#969#961#943#962' '#917#960#953#967#959#961#942#947#951#963#951
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label7: TLabel
-        Left = 60
-        Top = 252
-        Width = 112
-        Height = 14
-        Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
       object Companylbl: TLabel
         Left = 30
-        Top = 176
+        Top = 170
         Width = 43
         Height = 14
         Caption = #917#964#945#953#961#949#943#945
@@ -765,34 +737,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzDBLabel3: TRzDBLabel
         Left = 79
-        Top = 175
-        Width = 175
+        Top = 169
+        Width = 178
         Height = 20
         ParentColor = False
         BorderOuter = fsFlat
         DataField = 'LAST_NAME'
-        DataSource = TableSRC
-      end
-      object wwDBEdit1: TRzDBLabel
-        Left = 176
-        Top = 251
-        Width = 80
-        Height = 20
-        Alignment = taRightJustify
-        ParentColor = False
-        BorderOuter = fsFlat
-        DataField = 'FEE_WITH_ANAD_SUB'
-        DataSource = TableSRC
-      end
-      object wwDBEdit2: TRzDBLabel
-        Left = 176
-        Top = 225
-        Width = 80
-        Height = 20
-        Alignment = taRightJustify
-        ParentColor = False
-        BorderOuter = fsFlat
-        DataField = 'FEE_ACTUAL'
         DataSource = TableSRC
       end
       object Label9: TLabel
@@ -831,7 +781,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object wwDBComboBox1: TwwDBComboBox
         Left = 79
-        Top = 99
+        Top = 115
         Width = 80
         Height = 22
         ShowButton = False
@@ -856,20 +806,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR'
       
-        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_VEN' +
-        'UE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_STARTED, DATE_C' +
-        'OMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_ANAD' +
-        ', COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOICED, IS' +
-        '_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY, EXPI' +
-        'RY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY)'
+        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXA' +
+        'MINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_ST' +
+        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
+        'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
+        ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
+        'ATEGORY)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
-        'K_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME, :DATE_STARTED' +
-        ', :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS, :FEE_ACTUAL,' +
-        ' :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_ESTIMATE, :STATUS' +
-        ', :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :FEE_WITH_ANAD_' +
-        'SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :FK_EXAMINER, :TYPE_MONO_POLY)')
+        'K_EXAMINER, :FK_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME,' +
+        ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
+        ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
+        ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
+        ':TYPE_MONO_POLY, :SEM_CATEGORY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -879,27 +829,26 @@ object I_CertificatesFRM: TI_CertificatesFRM
       'SET'
       
         '  SERIAL_NUMBER = :SERIAL_NUMBER, ANAD_NUMBER = :ANAD_NUMBER, FK' +
-        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_VENUE' +
-        ' = :FK_VENUE, FK_COMPANY_PERSON_SERIAL = :FK_COMPANY_PERSON_SERI' +
-        'AL, SEMINAR_NAME = :SEMINAR_NAME, DATE_STARTED = :DATE_STARTED, ' +
-        'DATE_COMPLETED = :DATE_COMPLETED, DURATION_DAYS = :DURATION_DAYS' +
-        ', DURATION_HOURS = :DURATION_HOURS, FEE_ACTUAL = :FEE_ACTUAL, AM' +
-        'OUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED = ' +
-        ':ANAD_APPROVED, FEE_ESTIMATE = :FEE_ESTIMATE, STATUS = :STATUS, ' +
-        'IS_INVOICED = :IS_INVOICED, IS_CERTIFICATED = :IS_CERTIFICATED, ' +
-        'MAX_CAPACITY = :MAX_CAPACITY, FEE_WITH_ANAD_SUB = :FEE_WITH_ANAD' +
-        '_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, ' +
-        'FK_EXAMINER = :FK_EXAMINER, TYPE_MONO_POLY = :TYPE_MONO_POLY'
+        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_EXAMI' +
+        'NER = :FK_EXAMINER, FK_VENUE = :FK_VENUE, FK_COMPANY_PERSON_SERI' +
+        'AL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_NAME, DA' +
+        'TE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DU' +
+        'RATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, ' +
+        'AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED ' +
+        '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
+        'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
+        ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
-        '_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_STARTED, DA' +
-        'TE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL, AMOUNT_' +
-        'ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS_INVOICED' +
-        ', IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS_EXPIRY, ' +
-        'EXPIRY_PERIOD, FK_EXAMINER, TYPE_MONO_POLY FROM SEMINAR'
+        '_EXAMINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DAT' +
+        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
+        '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
+        'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
+        'EM_CATEGORY FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -924,7 +873,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
       'where '
       'se.serial_number= :SeminarSerial')
     ReadOnly = True
-    Active = True
     Left = 49
     Top = 5
     ParamData = <
@@ -981,12 +929,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FieldName = 'DURATION_HOURS'
       Visible = False
     end
-    object TableSQLFEE_ACTUAL: TFloatField
-      DisplayWidth = 10
-      FieldName = 'FEE_ACTUAL'
-      Visible = False
-      DisplayFormat = '0.00'
-    end
     object TableSQLAMOUNT_ANAD: TFloatField
       DisplayWidth = 10
       FieldName = 'AMOUNT_ANAD'
@@ -1005,11 +947,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Visible = False
       FixedChar = True
       Size = 1
-    end
-    object TableSQLFEE_ESTIMATE: TFloatField
-      DisplayWidth = 10
-      FieldName = 'FEE_ESTIMATE'
-      Visible = False
     end
     object TableSQLSTATUS: TWideStringField
       DisplayWidth = 1
@@ -1045,12 +982,6 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FieldName = 'FK_COMPANY_PERSON_SERIAL'
       Visible = False
     end
-    object TableSQLFEE_WITH_ANAD_SUB: TFloatField
-      DisplayWidth = 10
-      FieldName = 'FEE_WITH_ANAD_SUB'
-      Visible = False
-      DisplayFormat = '0.00'
-    end
     object TableSQLLAST_NAME: TWideStringField
       DisplayWidth = 30
       FieldName = 'LAST_NAME'
@@ -1079,6 +1010,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
     end
     object TableSQLTYPE_MONO_POLY: TWideStringField
       FieldName = 'TYPE_MONO_POLY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLSEM_CATEGORY: TWideStringField
+      FieldName = 'SEM_CATEGORY'
       Required = True
       FixedChar = True
       Size = 1
