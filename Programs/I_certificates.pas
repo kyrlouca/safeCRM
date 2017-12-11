@@ -42,7 +42,7 @@ type
     RzPanel6: TRzPanel;
     SavePresBTN: TBitBtn;
     CanelBTN: TBitBtn;
-    InvoiceSRC: TIBCDataSource;
+    CertificateSRC: TIBCDataSource;
     wwDBNavigator2: TwwDBNavigator;
     Nav1Button: TwwNavButton;
     wwNavButton4: TwwNavButton;
@@ -80,22 +80,22 @@ type
     Read1: TIBCTransaction;
     write1: TIBCTransaction;
     wwDBGrid1: TwwDBGrid;
-    InvoiceSQL: TIBCQuery;
-    InvoiceSQLSERIAL_NUMBER: TIntegerField;
-    InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField;
-    InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
-    InvoiceSQLDATE_ISSUED: TDateField;
-    InvoiceSQLHOURS_COMPLETED: TIntegerField;
-    InvoiceSQLPERCENTAGE_COMPLETED: TIntegerField;
-    InvoiceSQLIS_VALID: TWideStringField;
-    InvoiceSQLLAST_NAME: TWideStringField;
-    InvoiceSQLFIRST_NAME: TWideStringField;
-    InvoiceSQLNATIONAL_ID: TWideStringField;
-    InvoiceSQLSEMINAR_SUBJECT: TWideStringField;
-    InvoiceSQLSEMINAR_DURATION: TIntegerField;
-    InvoiceSQLINSTRUCTOR_NAME: TWideStringField;
-    InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
-    InvoiceSQLHAS_ANOTHER_DATE: TWideStringField;
+    CertificateSQL: TIBCQuery;
+    CertificateSQLSERIAL_NUMBER: TIntegerField;
+    CertificateSQLFK_SEMINAR_SERIAL: TIntegerField;
+    CertificateSQLFK_PERSON_SERIAL: TIntegerField;
+    CertificateSQLDATE_ISSUED: TDateField;
+    CertificateSQLHOURS_COMPLETED: TIntegerField;
+    CertificateSQLPERCENTAGE_COMPLETED: TIntegerField;
+    CertificateSQLIS_VALID: TWideStringField;
+    CertificateSQLLAST_NAME: TWideStringField;
+    CertificateSQLFIRST_NAME: TWideStringField;
+    CertificateSQLNATIONAL_ID: TWideStringField;
+    CertificateSQLSEMINAR_SUBJECT: TWideStringField;
+    CertificateSQLSEMINAR_DURATION: TIntegerField;
+    CertificateSQLINSTRUCTOR_NAME: TWideStringField;
+    CertificateSQLINSTRUCTOR_JOB_TITLE: TWideStringField;
+    CertificateSQLHAS_ANOTHER_DATE: TWideStringField;
     MainMenu1: TMainMenu;
     Reports1: TMenuItem;
     N3: TMenuItem;
@@ -104,15 +104,15 @@ type
     TableSQLEXPIRY_PERIOD: TIntegerField;
     TableSQLFK_EXAMINER: TIntegerField;
     TableSQLTYPE_MONO_POLY: TWideStringField;
-    InvoiceSQLSUBJECT_HOURS: TIntegerField;
-    InvoiceSQLSEMINAR_CERTIFICATE: TWideStringField;
-    InvoiceSQLSEX: TWideStringField;
-    InvoiceSQLANAD_NUMBER: TWideStringField;
+    CertificateSQLSUBJECT_HOURS: TIntegerField;
+    CertificateSQLSEMINAR_CERTIFICATE: TWideStringField;
+    CertificateSQLSEX: TWideStringField;
+    CertificateSQLANAD_NUMBER: TWideStringField;
     Label9: TLabel;
     RzDBLabel4: TRzDBLabel;
     RzDBLabel5: TRzDBLabel;
     TableSQLSEM_CATEGORY: TWideStringField;
-    InvoiceSQLDATE_CREATED: TDateField;
+    CertificateSQLDATE_CREATED: TDateField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -137,6 +137,7 @@ type
     procedure GenerateInvoices(Const SeminarSerial:integer);
     procedure GetInvoices();
     Function FindGuestHours(Const SeminarSerial, PersonSerial:Integer):integer;
+    procedure NewGenerateInvoices(Const SeminarSerial:integer);
   public
     { Public declarations }
     IN_ACTION:String;
@@ -165,10 +166,10 @@ begin
   personSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
   personSQL.Open;
 
-  if invoiceSQL.Active then
-    InvoiceSQL.Close;
-  InvoiceSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
-  InvoiceSQL.Open;
+  if CertificateSQL.Active then
+    CertificateSQL.Close;
+  CertificateSQL.ParamByName('SeminarSerial').Value:=seminarSerial;
+  CertificateSQL.Open;
 
 
 end;
@@ -215,7 +216,7 @@ vAR
   certSerial:Integer;
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
-  CertSerial:=INvoiceSQL.FieldByName('serial_number').AsInteger;
+  CertSerial:=CertificateSQL.FieldByName('serial_number').AsInteger;
 
   frm :=  TR_certificateFRM.Create(nil);
   frm.IN_seminar_serial :=seminarSerial;
@@ -280,18 +281,18 @@ begin
   TableSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
   TableSQL.open;
 
-  if not InvoiceSQL.UpdateTransaction.Active then
-   InvoiceSQL.UpdateTransaction.StartTransaction;
+  if not CertificateSQL.UpdateTransaction.Active then
+   CertificateSQL.UpdateTransaction.StartTransaction;
 
-  InvoiceSQL.Close;
-  InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
-  InvoiceSQL.open;
-//    if not InvoiceSQL.UpdateTransaction.Active then
-//      InvoiceSQL.UpdateTransaction.StartTransaction;
+  CertificateSQL.Close;
+  CertificateSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+  CertificateSQL.open;
+//    if not CertificateSQL.UpdateTransaction.Active then
+//      CertificateSQL.UpdateTransaction.StartTransaction;
 //
-//InvoiceSQL.Close;
-//InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
-//InvoiceSQL.open;
+//CertificateSQL.Close;
+//CertificateSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
+//CertificateSQL.open;
 
 
 end;
@@ -300,7 +301,7 @@ procedure TI_CertificatesFRM.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
 
-  Canclose:= not InvoiceSQL.UpdatesPending;
+  Canclose:= not CertificateSQL.UpdatesPending;
   if not CanClose then
     showMessage('Save Or Cancel before Exit');
 end;
@@ -318,24 +319,24 @@ VAR
   str:String;
 begin
 
-  if InvoiceSQL.State in [dsEdit,dsInsert] then begin
-    InvoiceSQL.Post;
+  if CertificateSQL.State in [dsEdit,dsInsert] then begin
+    CertificateSQL.Post;
   end;
 
-  if not InvoiceSQL.UpdatesPending then begin
+  if not CertificateSQL.UpdatesPending then begin
    showMessage('no updates');
    exit;
   end;
 
-  if not InvoiceSQL.UpdateTransaction.Active then
-    InvoiceSQL.UpdateTransaction.StartTransaction;
+  if not CertificateSQL.UpdateTransaction.Active then
+    CertificateSQL.UpdateTransaction.StartTransaction;
 
   try
-    InvoiceSQL.ApplyUpdates;
-    InvoiceSQL.UpdateTransaction.commit;
+    CertificateSQL.ApplyUpdates;
+    CertificateSQL.UpdateTransaction.commit;
   except
-    InvoiceSQL.UpdateTransaction.Rollback;
-    InvoiceSQL.RestoreUpdates;
+    CertificateSQL.UpdateTransaction.Rollback;
+    CertificateSQL.RestoreUpdates;
     raise;
   end;
 
@@ -431,15 +432,15 @@ begin
     +'  where'
     +'      ppv.seminar_serial= :seminarSerial'
     +'  group by ppv.person_serial';
-    //person_presence is created for all seminar Persons!!
+    //person_presence is created for all seminar Persons!!   even if they do not attend
 //   str:= 'select * from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial and sp.is_guest<>''Y'' ';
    qr:= TksQuery.Create(cn,str);
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
 
-    if not INvoiceSQL.Active then
-      InvoiceSql.Open;
+    if not CertificateSQL.Active then
+      CertificateSQL.Open;
 
     while not qr.Eof do begin
         PersonSerial:=qr.FieldByName('person_serial').AsInteger;
@@ -494,32 +495,32 @@ begin
 
         SerialNumber:=ksGenerateSerial(cn,'GEN_SEMINAR_CERTIFICATE');
 
-        InvoiceSQL.Insert;
-        InvoiceSQL.FieldByName('serial_number').Value:=SerialNumber;
-        InvoiceSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
-        InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
+        CertificateSQL.Insert;
+        CertificateSQL.FieldByName('serial_number').Value:=SerialNumber;
+        CertificateSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
+        CertificateSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
 
-        InvoiceSQL.FieldByName('first_name').Value:=person.FirstName;
-        InvoiceSQL.FieldByName('Last_name').Value:=Person.LastName;
-        InvoiceSQL.FieldByName('National_id').Value:=Person.NationalId;
-        InvoiceSQL.FieldByName('SEX').Value:=Person.Sex;
-        InvoiceSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
-        InvoiceSQL.FieldByName('seminar_duration').Value:=SeminarHours;
-        InvoiceSQL.FieldByName('ANAD_number').Value:=AnadNumber;
+        CertificateSQL.FieldByName('first_name').Value:=person.FirstName;
+        CertificateSQL.FieldByName('Last_name').Value:=Person.LastName;
+        CertificateSQL.FieldByName('National_id').Value:=Person.NationalId;
+        CertificateSQL.FieldByName('SEX').Value:=Person.Sex;
+        CertificateSQL.FieldByName('seminar_subject').Value:=SeminarSubject;
+        CertificateSQL.FieldByName('seminar_duration').Value:=SeminarHours;
+        CertificateSQL.FieldByName('ANAD_number').Value:=AnadNumber;
 
-        InvoiceSQL.FieldByName('instructor_name').Value:=InstName;
-        InvoiceSQL.FieldByName('instructor_job_title').Value:=InstJob;
+        CertificateSQL.FieldByName('instructor_name').Value:=InstName;
+        CertificateSQL.FieldByName('instructor_job_title').Value:=InstJob;
 
 
-        InvoiceSQL.FieldByName('is_valid').Value:='Y';
-        InvoiceSQL.FieldByName('hours_completed').Value:=HoursActual;
-        InvoiceSQL.FieldByName('percentage_completed').Value:=percentActual;
-        InvoiceSQL.FieldByName('DATE_Issued').AsDateTime:=SeminarDate;
-        InvoiceSQL.FieldByName('DATE_created').AsDateTime:=Date;
+        CertificateSQL.FieldByName('is_valid').Value:='Y';
+        CertificateSQL.FieldByName('hours_completed').Value:=HoursActual;
+        CertificateSQL.FieldByName('percentage_completed').Value:=percentActual;
+        CertificateSQL.FieldByName('DATE_Issued').AsDateTime:=SeminarDate;
+        CertificateSQL.FieldByName('DATE_created').AsDateTime:=Date;
 
-        InvoiceSQL.FieldByName('HAS_ANOTHER_DATE').AsString:= HasAnotherDate;
+        CertificateSQL.FieldByName('HAS_ANOTHER_DATE').AsString:= HasAnotherDate;
 
-        InvoiceSQL.Post;
+        CertificateSQL.Post;
         qr.Next;
     end;
   finally
@@ -541,15 +542,18 @@ begin
 
   SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
-//    if  InvoiceSQL.UpdateTransaction.Active then begin
+    NewGenerateInvoices(seminarSerial);
+    exit;
+
+//    if  CertificateSQL.UpdateTransaction.Active then begin
 //      ShowMessage('save or Cancel First');
 //      exit;
 //    end;
 
-//    if not InvoiceSQL.UpdateTransaction.Active then
-//      InvoiceSQL.UpdateTransaction.StartTransaction;
+//    if not CertificateSQL.UpdateTransaction.Active then
+//      CertificateSQL.UpdateTransaction.StartTransaction;
 
-//    invoiceSQL.Close;
+//    CertificateSQL.Close;
   SeminarStatus:=TableSQL.FieldByName('status').AsString;
 
   if SeminarStatus<>'F' then begin
@@ -565,8 +569,8 @@ begin
 
   GenerateInvoices(seminarSerial);
 
-//  if InvoiceSQL.UpdateTransaction.Active then
-//      InvoiceSQL.UpdateTransaction.commit;
+//  if CertificateSQL.UpdateTransaction.Active then
+//      CertificateSQL.UpdateTransaction.commit;
 
 end;
 
@@ -581,11 +585,11 @@ procedure TI_CertificatesFRM.CanelBTNClick(Sender: TObject);
 begin
 
 
-  InvoiceSQL.Cancel;
-  if  InvoiceSQL.UpdatesPending then begin
-    InvoiceSQL.CancelUpdates;
-//    if InvoiceSQL.Connection.InTransaction then  NO NEED FOR THIS
-//      INvoiceSQL.Connection.Rollback;
+  CertificateSQL.Cancel;
+  if  CertificateSQL.UpdatesPending then begin
+    CertificateSQL.CancelUpdates;
+//    if CertificateSQL.Connection.InTransaction then  NO NEED FOR THIS
+//      CertificateSQL.Connection.Rollback;
 
   end;
 
@@ -669,6 +673,154 @@ GuestSubjectStr:=
 //  ShowMessage(IntToStr(sumHours));
 
 end;
+
+
+
+procedure TI_CertificatesFRM.NewGenerateInvoices(Const SeminarSerial:integer);
+type
+  Tperson=record
+    FirstName:String;
+    LastName:String;
+    NationalId:string;
+    Sex:String;
+  end;
+
+var
+  qr,PersonQr:TksQuery;
+  subjectQr:TksQuery;
+  hoursQr:TksQuery;
+
+  str:String;
+  SerialNumber:integer;
+  SubjectSerial:Integer;
+  isMono:Boolean;
+  PriceNormal,PriceAnad,PriceUsed:Double;
+  SeminarDate:TDate;
+  SeminarSubject:String;
+  SeminarHours:Integer;
+  SeminarType:Integer;
+  ANadNumber:String;
+
+  PersonSerial:Integer;
+
+  InstName:String;
+  InstJob:String;
+
+  isFOund:Boolean;
+  isGuest,isPresent:boolean;
+  isPass:Boolean;
+  isAbsent:boolean;
+
+
+
+  AdditionalHours:integer;
+  HasAnotherDate:String;
+
+  PercentPass:Integer;
+  HoursActual:Integer;
+  percentActual:Double;
+  person:  TPerson;
+
+  xAllSubsOK:Boolean;
+  xSeminarHours:Integer;
+
+begin
+
+
+  percentPass:=gpGetGeneralParam(cn,'T00' ).P_Integer1;
+
+  str:= ' select'
+  +' sem.*, inst.first_name,inst.last_name, inst.job_title'
+  +'  from'
+  +'  seminar sem left outer join'
+  +'  instructor inst on inst.serial_number=sem.fk_instructor'
+  +'  where sem.serial_number= :SeminarSerial';
+  qr:= TksQuery.Create(cn,str);
+  try
+    qr.ParamByName('seminarSerial').value:=SeminarSerial;
+    qr.open;
+    seminarType:=qr.FieldByName('fk_seminar').AsInteger;
+    SeminarSubject:=qr.FieldByName('seminar_name').asString;
+    SeminarDate:=qr.FieldByName('Date_completed').AsDateTime;
+    AnadNumber:=qr.FieldByName('ANad_number').asString;
+    InstName:=trim(qr.FieldByName('first_name').asString)+' '+trim(qr.FieldByName('Last_name').asString);
+    InstJob:=qr.FieldByName('job_title').asString;
+  finally
+    qr.Free;
+  end;
+
+
+  str:= ' Select sum(sday.duration_hours) as Seminar_hours'
+  +'  from seminar_day_view sday where'
+  +'  sday.seminar_serial= :SeminarSerial';
+   qr:= TksQuery.Create(cn,str);
+  try
+    qr.ParamByName('seminarSerial').value:=SeminarSerial;
+    qr.open;
+    SeminarHours:=qr.FieldByName('SEMINAR_Hours').asInteger;
+  finally
+    qr.Free;
+  end;
+
+  ////////////////////////////////////////////////
+  subjectQR:=TksQuery.Create(cn, 'select serial_number from seminar_subject ss where ss.fk_seminar_serial= :SeminarSerial');
+
+  str:=
+    'select sum(pv.present_hours) as Total_hours, min(pv.present_ispresent) as isPresent '
+    +' from person_presence_view pv '
+    +' where pv.person_serial = :PersonSerial and pv.subject_serial = :subjectSerial ';
+  hoursQr:=TksQuery.Create(cn,str);
+
+  str:=
+    ' select spv.fk_person_serial from'
+    +'  seminar_person spv where'
+    +'  spv.is_guest<>''Y'' and spv.fk_seminar_serial= :SeminarSerial';
+  qr:= TksQuery.Create(cn,str);
+  ////////////////////////////////////////////////
+
+  try
+   qr.ParamByName('seminarSerial').value:=SeminarSerial;
+   qr.open;
+
+    while not qr.Eof do begin
+        //for each seminar person
+        PersonSerial:=qr.FieldByName('fk_person_serial').AsInteger;
+        xSeminarHours:=0;
+        xAllSubsOK:=true;
+
+        subjectQR.Close;
+        subjectQR.ParamByName('SeminarSerial').Value:=SeminarSerial;
+        SubjectQr.open;
+        SubjectQR.First;
+        while not SubjectQR.Eof do begin
+        //for each subject
+          SubjectSerial:=subjectQR.FieldByName('serial_number').AsInteger;
+
+          hoursQr.Close;
+          hoursQr.ParamByName('PersonSerial').Value:=Personserial;
+          hoursQr.ParamByName('SubjectSerial').Value:=Subjectserial;
+          hoursQr.Open;
+            //check in another seminar
+          xSeminarHours:=xSeminarHours+hoursQr.FieldByName('Total_hours').AsInteger;
+          isAbsent:= hoursQr.IsEmpty or (hoursqr.FieldByName('isPresent').AsString='N') ;
+          xAllSubsOK:= xAllSubsOK and not isAbsent;
+
+          subjectQR.Next;
+        end;
+
+       qr.Next;
+    end;
+
+
+  finally
+      qr.Free;
+      hoursQr.Free;
+      SubjectQr.Free;
+  end;
+
+  end;
+
+
 
 
 End.

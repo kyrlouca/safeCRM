@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 561
+  ClientHeight = 582
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,11 +54,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 518
+    Top = 539
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 498
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -156,18 +157,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 426
+    Height = 447
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 406
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 424
+      Height = 445
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 404
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -182,7 +185,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
           Width = 184
           Height = 26
           AutosizeStyle = asSizeNavButtons
-          DataSource = InvoiceSRC
+          DataSource = CertificateSRC
           RepeatInterval.InitialDelay = 500
           RepeatInterval.Interval = 100
           Font.Charset = DEFAULT_CHARSET
@@ -329,13 +332,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 381
+        Top = 402
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsNone
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
+        ExplicitTop = 361
         object RzPanel6: TRzPanel
           Left = 571
           Top = 0
@@ -499,20 +503,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
           'IS_VALID;CheckBox;Y;N'
           'HAS_ANOTHER_DATE;CheckBox;Y;N')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'FK_PERSON_SERIAL'#9'4'#9'PS/N'#9#9
-          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959#9#9
-          'FIRST_NAME'#9'16'#9#908#957#959#956#945#9#9
-          'HOURS_COMPLETED'#9'6'#9#937#961#949#962#9#9
-          'HAS_ANOTHER_DATE'#9'1'#9'*Date*'#9#9
-          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957#9#9
-          'IS_VALID'#9'7'#9#904#947#954#965#961#959#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'FK_PERSON_SERIAL'#9'4'#9'PS/N'
+          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945
+          'HOURS_COMPLETED'#9'6'#9#937#961#949#962
+          'HAS_ANOTHER_DATE'#9'1'#9'*Date*'
+          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
+          'IS_VALID'#9'7'#9#904#947#954#965#961#959)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
         FixedCols = 5
         ShowHorzScrollBar = True
-        DataSource = InvoiceSRC
+        DataSource = CertificateSRC
         Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         TabOrder = 2
         TitleAlignment = taLeftJustify
@@ -529,10 +533,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 424
+      Height = 445
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 404
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -544,12 +549,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 227
+        Top = 248
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 207
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -1037,8 +1043,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 112
     Top = 9
   end
-  object InvoiceSRC: TIBCDataSource
-    DataSet = InvoiceSQL
+  object CertificateSRC: TIBCDataSource
+    DataSet = CertificateSQL
     Left = 24
     Top = 281
   end
@@ -1118,7 +1124,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 281
     Top = 13
   end
-  object InvoiceSQL: TIBCQuery
+  object CertificateSQL: TIBCQuery
     SQLInsert.Strings = (
       'INSERT INTO SEMINAR_CERTIFICATE'
       
@@ -1196,38 +1202,38 @@ object I_CertificatesFRM: TI_CertificatesFRM
         Name = 'SeminarSerial'
         Value = nil
       end>
-    object InvoiceSQLSERIAL_NUMBER: TIntegerField
+    object CertificateSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
       DisplayWidth = 6
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
-    object InvoiceSQLFK_PERSON_SERIAL: TIntegerField
+    object CertificateSQLFK_PERSON_SERIAL: TIntegerField
       DisplayLabel = 'PS/N'
       DisplayWidth = 4
       FieldName = 'FK_PERSON_SERIAL'
       Required = True
     end
-    object InvoiceSQLLAST_NAME: TWideStringField
+    object CertificateSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
       DisplayWidth = 18
       FieldName = 'LAST_NAME'
       FixedChar = True
       Size = 30
     end
-    object InvoiceSQLFIRST_NAME: TWideStringField
+    object CertificateSQLFIRST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
       DisplayWidth = 16
       FieldName = 'FIRST_NAME'
       FixedChar = True
       Size = 30
     end
-    object InvoiceSQLHOURS_COMPLETED: TIntegerField
+    object CertificateSQLHOURS_COMPLETED: TIntegerField
       DisplayLabel = #937#961#949#962
       DisplayWidth = 6
       FieldName = 'HOURS_COMPLETED'
     end
-    object InvoiceSQLHAS_ANOTHER_DATE: TWideStringField
+    object CertificateSQLHAS_ANOTHER_DATE: TWideStringField
       DisplayLabel = '*Date*'
       DisplayWidth = 1
       FieldName = 'HAS_ANOTHER_DATE'
@@ -1235,12 +1241,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FixedChar = True
       Size = 1
     end
-    object InvoiceSQLPERCENTAGE_COMPLETED: TIntegerField
+    object CertificateSQLPERCENTAGE_COMPLETED: TIntegerField
       DisplayLabel = '% '#937#961#974#957
       DisplayWidth = 9
       FieldName = 'PERCENTAGE_COMPLETED'
     end
-    object InvoiceSQLIS_VALID: TWideStringField
+    object CertificateSQLIS_VALID: TWideStringField
       DisplayLabel = #904#947#954#965#961#959
       DisplayWidth = 7
       FieldName = 'IS_VALID'
@@ -1248,65 +1254,65 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FixedChar = True
       Size = 1
     end
-    object InvoiceSQLDATE_ISSUED: TDateField
+    object CertificateSQLDATE_ISSUED: TDateField
       DisplayLabel = 'Date'
       DisplayWidth = 12
       FieldName = 'DATE_ISSUED'
       Visible = False
     end
-    object InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField
+    object CertificateSQLFK_SEMINAR_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SERIAL'
       Required = True
       Visible = False
     end
-    object InvoiceSQLNATIONAL_ID: TWideStringField
+    object CertificateSQLNATIONAL_ID: TWideStringField
       FieldName = 'NATIONAL_ID'
       Visible = False
       FixedChar = True
     end
-    object InvoiceSQLSEMINAR_SUBJECT: TWideStringField
+    object CertificateSQLSEMINAR_SUBJECT: TWideStringField
       FieldName = 'SEMINAR_SUBJECT'
       Visible = False
       Size = 160
     end
-    object InvoiceSQLSEMINAR_DURATION: TIntegerField
+    object CertificateSQLSEMINAR_DURATION: TIntegerField
       FieldName = 'SEMINAR_DURATION'
       Visible = False
     end
-    object InvoiceSQLINSTRUCTOR_NAME: TWideStringField
+    object CertificateSQLINSTRUCTOR_NAME: TWideStringField
       FieldName = 'INSTRUCTOR_NAME'
       Visible = False
       Size = 160
     end
-    object InvoiceSQLINSTRUCTOR_JOB_TITLE: TWideStringField
+    object CertificateSQLINSTRUCTOR_JOB_TITLE: TWideStringField
       FieldName = 'INSTRUCTOR_JOB_TITLE'
       Visible = False
       Size = 160
     end
-    object InvoiceSQLSUBJECT_HOURS: TIntegerField
+    object CertificateSQLSUBJECT_HOURS: TIntegerField
       FieldName = 'SUBJECT_HOURS'
       Visible = False
     end
-    object InvoiceSQLSEMINAR_CERTIFICATE: TWideStringField
+    object CertificateSQLSEMINAR_CERTIFICATE: TWideStringField
       FieldName = 'SEMINAR_CERTIFICATE'
       Visible = False
       FixedChar = True
       Size = 30
     end
-    object InvoiceSQLSEX: TWideStringField
+    object CertificateSQLSEX: TWideStringField
       FieldName = 'SEX'
       Required = True
       Visible = False
       FixedChar = True
       Size = 1
     end
-    object InvoiceSQLANAD_NUMBER: TWideStringField
+    object CertificateSQLANAD_NUMBER: TWideStringField
       FieldName = 'ANAD_NUMBER'
       Visible = False
       FixedChar = True
       Size = 30
     end
-    object InvoiceSQLDATE_CREATED: TDateField
+    object CertificateSQLDATE_CREATED: TDateField
       FieldName = 'DATE_CREATED'
       Visible = False
     end
