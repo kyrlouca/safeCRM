@@ -209,34 +209,10 @@ type
     SeminarSQLFK_EXAMINER: TIntegerField;
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
     RzDBLabel2: TRzDBLabel;
-    SeminarPictureSQL÷÷÷÷: TIBCQuery;
-    SeminarPictureSRC: TDataSource;
     OpenPictureDialog1: TOpenPictureDialog;
-    SeminarPictureSQL÷÷÷÷SERIAL_NUMBER: TIntegerField;
-    SeminarPictureSQL÷÷÷÷PICTURE_SEMINAR: TBlobField;
-    SeminarPictureSQL÷÷÷÷LINE_A1: TWideStringField;
-    SeminarPictureSQL÷÷÷÷LINE_A2: TWideStringField;
-    SeminarPictureSQL÷÷÷÷LINE_B1: TWideStringField;
-    SeminarPictureSQL÷÷÷÷LINE_B2: TWideStringField;
-    SeminarPictureSQL÷÷÷÷LINE_B3: TWideStringField;
-    SeminarPictureSQL÷÷÷÷FK_SEMINAR_SERIAL: TIntegerField;
-    SeminarPictureSQL÷÷÷÷LANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
-    SeminarPictureSQL÷÷÷÷LINE_C1: TWideStringField;
     MainMenu1: TMainMenu;
     Help1: TMenuItem;
     Certifcates1: TMenuItem;
-    SeminarPictureSQL÷÷÷÷PICTURE_TOP_L1: TBlobField;
-    SeminarPictureSQL÷÷÷÷PICTURE_TOP_R1: TBlobField;
-    SeminarPictureSQL÷÷÷÷PICTURE_BOT_L1: TBlobField;
-    SeminarPictureSQL÷÷÷÷PICTURE_BOT_R1: TBlobField;
-    SeminarPictureSQL÷÷÷÷TL_X: TIntegerField;
-    SeminarPictureSQL÷÷÷÷TL_Y: TIntegerField;
-    SeminarPictureSQL÷÷÷÷TR_X: TIntegerField;
-    SeminarPictureSQL÷÷÷÷TR_Y: TIntegerField;
-    SeminarPictureSQL÷÷÷÷BL_X: TIntegerField;
-    SeminarPictureSQL÷÷÷÷BL_Y: TIntegerField;
-    SeminarPictureSQL÷÷÷÷BR_X: TIntegerField;
-    SeminarPictureSQL÷÷÷÷BR_Y: TIntegerField;
     StatusFLD: TwwDBComboBox;
     SeminarSQLSEM_CATEGORY: TWideStringField;
     GroupBox1: TGroupBox;
@@ -332,6 +308,7 @@ type
     procedure RzBitBtn1Click(Sender: TObject);
     procedure HIghFLDClick(Sender: TObject);
     procedure wwNavButton25Click(Sender: TObject);
+    procedure wwNavButton26Click(Sender: TObject);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -481,6 +458,7 @@ procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
 begin
 
   AnadFLD.SetFocus;
+
 end;
 
 procedure TV_SeminarFRM.SeminarTypeFLDCloseUp(Sender: TwwDBComboBox;
@@ -831,6 +809,24 @@ end;
 procedure TV_SeminarFRM.wwNavButton25Click(Sender: TObject);
 begin
 SubjectNameFLD.SetFocus;
+end;
+
+procedure TV_SeminarFRM.wwNavButton26Click(Sender: TObject);
+var
+  cnt:integer;
+  SubjectSerial:Integer;
+begin
+   subjectSerial:= seminarSubjectSQL.FieldByName('serial_number').AsInteger;
+  cnt:=ksCountRecVarSQL(cn,'select inv.* from invoice inv  where inv.fk_subject_serial = :SubjectSerial',[SUbjectSerial]);
+  if cnt>0 then begin
+    if MessageDlg('INVOICES exists and will be DELETED!!'+#13+#10+'Proceed?', mtWarning, [mbOK, mbCancel], 0)<> mrOK then begin
+          abort;
+    end;
+  end;
+  ksExecSQLVar(cn,'delete from invoice where fk_subject_serial= :SubjectSerial',[SubjectSerial]);
+  ksExecSQLVar(cn,'delete from seminar_subject where serial_number= :SubjectSerial',[SubjectSerial]);
+  ksOpenTables([seminarSubjectSQL]);
+  abort;
 end;
 
 procedure TV_SeminarFRM.CostGRDUpdateFooter(Sender: TObject);

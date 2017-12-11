@@ -1,4 +1,4 @@
-﻿object V_SeminarFRM: TV_SeminarFRM
+object V_SeminarFRM: TV_SeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
@@ -33,7 +33,6 @@
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 923
     object TitleLbl: TRzPanel
       AlignWithMargins = True
       Left = 4
@@ -54,7 +53,6 @@
       TabOrder = 0
       Transparent = True
       WordWrap = False
-      ExplicitWidth = 915
       object RzDBLabel2: TRzDBLabel
         Left = 2
         Top = 2
@@ -89,7 +87,6 @@
         TabOrder = 0
         UnboundDataType = wwDefault
         Align = alRight
-        ExplicitLeft = 747
         ExplicitHeight = 38
       end
     end
@@ -102,14 +99,13 @@
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitWidth = 923
     object PageControlPC: TRzPageControl
       Left = 2
       Top = 2
       Width = 1026
       Height = 689
       Hint = ''
-      ActivePage = SubjectTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -118,15 +114,15 @@
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 0
       OnChanging = PageControlPCChanging
-      ExplicitWidth = 919
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
         OnShow = SeminarTSShow
         Caption = #931#949#956#953#957#940#961#953#959
-        ExplicitWidth = 915
+        ExplicitLeft = 2
+        ExplicitTop = 25
         object SecondGRP: TRzGroupBox
           Left = 404
           Top = 23
@@ -797,12 +793,11 @@
         object RzPanel5: TRzPanel
           Left = 0
           Top = 0
-          Width = 944
+          Width = 1022
           Height = 25
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 915
         end
         object RzPanel4: TRzPanel
           Left = 545
@@ -812,7 +807,6 @@
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 1
-          ExplicitLeft = 648
           object GroupBox2: TGroupBox
             Left = 14
             Top = 213
@@ -834,7 +828,6 @@
               Align = alTop
               BorderOuter = fsNone
               TabOrder = 0
-              ExplicitWidth = 477
               object wwDBNavigator2: TwwDBNavigator
                 Left = 0
                 Top = 0
@@ -990,9 +983,6 @@
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
-              ExplicitLeft = 3
-              ExplicitTop = 47
-              ExplicitHeight = 273
               object SeminarDayFLD: TwwDBDateTimePicker
                 Left = 40
                 Top = 168
@@ -1140,7 +1130,6 @@
               Align = alTop
               BorderOuter = fsNone
               TabOrder = 1
-              ExplicitWidth = 344
               object RzPanel16: TRzPanel
                 Left = 175
                 Top = 0
@@ -1149,7 +1138,6 @@
                 Align = alLeft
                 BorderOuter = fsNone
                 TabOrder = 0
-                ExplicitLeft = 184
               end
               object wwDBNavigator5: TwwDBNavigator
                 Left = 0
@@ -1160,7 +1148,6 @@
                 RepeatInterval.InitialDelay = 500
                 RepeatInterval.Interval = 100
                 Align = alLeft
-                ExplicitLeft = 8
                 object wwNavButton23: TwwNavButton
                   Left = 0
                   Top = 0
@@ -1226,6 +1213,7 @@
                   Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
+                  OnClick = wwNavButton26Click
                   Index = 3
                   Style = nbsDelete
                 end
@@ -1305,9 +1293,6 @@
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitLeft = -2
-            ExplicitTop = 20
-            ExplicitWidth = 333
           end
           object wwDBGrid1: TwwDBGrid
             Left = 2
@@ -1315,8 +1300,8 @@
             Width = 509
             Height = 587
             Selected.Strings = (
-              'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
-              'SUBJECT'#9'55'#9#920#941#956#945#9#9)
+              'SERIAL_NUMBER'#9'10'#9'A/A'
+              'SUBJECT'#9'55'#9#920#941#956#945)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
@@ -1334,7 +1319,6 @@
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitWidth = 329
           end
         end
         object RzPanel7: TRzPanel
@@ -1350,7 +1334,6 @@
       object StudentsTS: TRzTabSheet
         OnShow = StudentsTSShow
         Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#953
-        ExplicitWidth = 915
         object RzPanel2: TRzPanel
           Left = 0
           Top = 0
@@ -1359,7 +1342,6 @@
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 915
         end
         object RzGroupBox1: TRzGroupBox
           Left = 0
@@ -1651,7 +1633,6 @@
       object CostTS: TRzTabSheet
         OnShow = CostTSShow
         Caption = #922#972#963#964#959#962
-        ExplicitWidth = 915
         object RzPanel10: TRzPanel
           Left = 0
           Top = 0
@@ -1660,7 +1641,6 @@
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitWidth = 915
         end
         object GroupBox3: TGroupBox
           Left = 0
@@ -1872,7 +1852,6 @@
       object ReminderTS: TRzTabSheet
         OnShow = ReminderTSShow
         Caption = #917#961#947#945#963#943#949#962
-        ExplicitWidth = 915
         object GroupBox4: TGroupBox
           Left = 0
           Top = 25
@@ -1889,7 +1868,6 @@
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          ExplicitWidth = 915
           object RzPanel12: TRzPanel
             Left = 1
             Top = 15
@@ -1898,7 +1876,6 @@
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitWidth = 913
           end
           object wwDBGrid3: TwwDBGrid
             Left = 1
@@ -2343,7 +2320,6 @@
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 3
-          ExplicitWidth = 915
         end
       end
     end
@@ -2355,7 +2331,6 @@
       Align = alBottom
       BorderOuter = fsFlatRounded
       TabOrder = 1
-      ExplicitWidth = 919
       object RzPanel1: TRzPanel
         Left = 924
         Top = 2
@@ -2364,7 +2339,6 @@
         Align = alRight
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitLeft = 817
         object CLoseBTN: TRzBitBtn
           Left = 6
           Top = 3
@@ -2595,7 +2569,6 @@
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 1
-    ExplicitWidth = 923
   end
   object SeminarSRC: TDataSource
     DataSet = SeminarSQL
@@ -2796,7 +2769,7 @@
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800D80210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800DC0210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3770,6 +3743,7 @@
       DisplayLabel = #920#941#956#945
       DisplayWidth = 55
       FieldName = 'SUBJECT'
+      Required = True
       FixedChar = True
       Size = 60
     end
@@ -3783,11 +3757,15 @@
       Visible = False
     end
     object seminarSubjectSQLFEE_NORMAL: TFloatField
+      DisplayLabel = #932#953#956#942' '#922#945#957#959#957#953#954#942
       FieldName = 'FEE_NORMAL'
+      Required = True
       Visible = False
     end
     object seminarSubjectSQLFEE_REDUCED: TFloatField
+      DisplayLabel = #932#953#956#942' '#956#949' '#917#960#953#967#959#961#942#947#951#963#951
       FieldName = 'FEE_REDUCED'
+      Required = True
       Visible = False
     end
   end
@@ -3868,11 +3846,13 @@
       DisplayLabel = #919#956#949#961#959#956#951#957#943#945
       DisplayWidth = 15
       FieldName = 'SEMINAR_DAY'
+      Required = True
     end
     object SeminarDaySQLDURATION_HOURS: TIntegerField
       DisplayLabel = #916#953#940#961#954#949#953#945' ('#974#961#949#962')'
       DisplayWidth = 10
       FieldName = 'DURATION_HOURS'
+      Required = True
     end
     object SeminarDaySQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SUBJECT_SERIAL'
@@ -4180,166 +4160,6 @@
       FixedChar = True
       Size = 1
     end
-  end
-  object SeminarPictureSQLχχχχ: TIBCQuery
-    KeyFields = 'SERIAL_NUMBER'
-    KeyGenerator = 'GEN_SEMINAR_TYPE_PICTURES'
-    SQLInsert.Strings = (
-      'INSERT INTO SEMINAR_PICTURES'
-      
-        '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLISH, ' +
-        'PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3, LI' +
-        'NE_C1, PICTURE_TOP_L1, PICTURE_TOP_R1, PICTURE_BOT_L1, PICTURE_B' +
-        'OT_R1, TL_X, TL_Y, TR_X, TR_Y, BL_X, BL_Y, BR_X, BR_Y)'
-      'VALUES'
-      
-        '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :LANGUAGE_GREEK_OR_ENGLIS' +
-        'H, :PICTURE_SEMINAR, :LINE_A1, :LINE_A2, :LINE_B1, :LINE_B2, :LI' +
-        'NE_B3, :LINE_C1, :PICTURE_TOP_L1, :PICTURE_TOP_R1, :PICTURE_BOT_' +
-        'L1, :PICTURE_BOT_R1, :TL_X, :TL_Y, :TR_X, :TR_Y, :BL_X, :BL_Y, :' +
-        'BR_X, :BR_Y)')
-    SQLDelete.Strings = (
-      'DELETE FROM SEMINAR_PICTURES'
-      'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
-    SQLUpdate.Strings = (
-      'UPDATE SEMINAR_PICTURES'
-      'SET'
-      
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR_SERIAL = :FK_SEMINA' +
-        'R_SERIAL, LANGUAGE_GREEK_OR_ENGLISH = :LANGUAGE_GREEK_OR_ENGLISH' +
-        ', PICTURE_SEMINAR = :PICTURE_SEMINAR, LINE_A1 = :LINE_A1, LINE_A' +
-        '2 = :LINE_A2, LINE_B1 = :LINE_B1, LINE_B2 = :LINE_B2, LINE_B3 = ' +
-        ':LINE_B3, LINE_C1 = :LINE_C1, PICTURE_TOP_L1 = :PICTURE_TOP_L1, ' +
-        'PICTURE_TOP_R1 = :PICTURE_TOP_R1, PICTURE_BOT_L1 = :PICTURE_BOT_' +
-        'L1, PICTURE_BOT_R1 = :PICTURE_BOT_R1, TL_X = :TL_X, TL_Y = :TL_Y' +
-        ', TR_X = :TR_X, TR_Y = :TR_Y, BL_X = :BL_X, BL_Y = :BL_Y, BR_X =' +
-        ' :BR_X, BR_Y = :BR_Y'
-      'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
-    SQLRefresh.Strings = (
-      
-        'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, LANGUAGE_GREEK_OR_ENGLI' +
-        'SH, PICTURE_SEMINAR, LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3' +
-        ', LINE_C1, PICTURE_TOP_L1, PICTURE_TOP_R1, PICTURE_BOT_L1, PICTU' +
-        'RE_BOT_R1, TL_X, TL_Y, TR_X, TR_Y, BL_X, BL_Y, BR_X, BR_Y FROM S' +
-        'EMINAR_PICTURES'
-      'WHERE'
-      '  SERIAL_NUMBER = :SERIAL_NUMBER')
-    SQLLock.Strings = (
-      'SELECT NULL FROM SEMINAR_PICTURES'
-      'WHERE'
-      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
-      'FOR UPDATE WITH LOCK')
-    SQLRecCount.Strings = (
-      'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM SEMINAR_PICTURES'
-      ''
-      ') q')
-    Connection = U_databaseFRM.DataConnection
-    Transaction = ReadTrans
-    UpdateTransaction = WriteTrans
-    SQL.Strings = (
-      'SELECT STP.* '
-      'FROM '
-      'seminar_pictures STP'
-      
-        'where stp.FK_SEMINAR_SERIAL = :SeminarSerial  and stp.LANGUAGE_G' +
-        'REEK_OR_ENGLISH = :language')
-    Left = 369
-    Top = 265
-    ParamData = <
-      item
-        DataType = ftUnknown
-        Name = 'SeminarSerial'
-        Value = nil
-      end
-      item
-        DataType = ftUnknown
-        Name = 'language'
-        Value = nil
-      end>
-    object SeminarPictureSQLχχχχSERIAL_NUMBER: TIntegerField
-      FieldName = 'SERIAL_NUMBER'
-      Required = True
-    end
-    object SeminarPictureSQLχχχχPICTURE_SEMINAR: TBlobField
-      FieldName = 'PICTURE_SEMINAR'
-    end
-    object SeminarPictureSQLχχχχLINE_A1: TWideStringField
-      FieldName = 'LINE_A1'
-      Size = 1500
-    end
-    object SeminarPictureSQLχχχχLINE_A2: TWideStringField
-      FieldName = 'LINE_A2'
-      Size = 1500
-    end
-    object SeminarPictureSQLχχχχLINE_B1: TWideStringField
-      FieldName = 'LINE_B1'
-      Size = 1500
-    end
-    object SeminarPictureSQLχχχχLINE_B2: TWideStringField
-      FieldName = 'LINE_B2'
-      Size = 1500
-    end
-    object SeminarPictureSQLχχχχLINE_B3: TWideStringField
-      FieldName = 'LINE_B3'
-      Size = 1500
-    end
-    object SeminarPictureSQLχχχχFK_SEMINAR_SERIAL: TIntegerField
-      FieldName = 'FK_SEMINAR_SERIAL'
-      Required = True
-    end
-    object SeminarPictureSQLχχχχLANGUAGE_GREEK_OR_ENGLISH: TWideStringField
-      FieldName = 'LANGUAGE_GREEK_OR_ENGLISH'
-      FixedChar = True
-      Size = 1
-    end
-    object SeminarPictureSQLχχχχLINE_C1: TWideStringField
-      FieldName = 'LINE_C1'
-      Size = 1500
-    end
-    object SeminarPictureSQLχχχχPICTURE_TOP_L1: TBlobField
-      FieldName = 'PICTURE_TOP_L1'
-    end
-    object SeminarPictureSQLχχχχPICTURE_TOP_R1: TBlobField
-      FieldName = 'PICTURE_TOP_R1'
-    end
-    object SeminarPictureSQLχχχχPICTURE_BOT_L1: TBlobField
-      FieldName = 'PICTURE_BOT_L1'
-    end
-    object SeminarPictureSQLχχχχPICTURE_BOT_R1: TBlobField
-      FieldName = 'PICTURE_BOT_R1'
-    end
-    object SeminarPictureSQLχχχχTL_X: TIntegerField
-      FieldName = 'TL_X'
-    end
-    object SeminarPictureSQLχχχχTL_Y: TIntegerField
-      FieldName = 'TL_Y'
-    end
-    object SeminarPictureSQLχχχχTR_X: TIntegerField
-      FieldName = 'TR_X'
-    end
-    object SeminarPictureSQLχχχχTR_Y: TIntegerField
-      FieldName = 'TR_Y'
-    end
-    object SeminarPictureSQLχχχχBL_X: TIntegerField
-      FieldName = 'BL_X'
-    end
-    object SeminarPictureSQLχχχχBL_Y: TIntegerField
-      FieldName = 'BL_Y'
-    end
-    object SeminarPictureSQLχχχχBR_X: TIntegerField
-      FieldName = 'BR_X'
-    end
-    object SeminarPictureSQLχχχχBR_Y: TIntegerField
-      FieldName = 'BR_Y'
-    end
-  end
-  object SeminarPictureSRC: TDataSource
-    DataSet = SeminarPictureSQLχχχχ
-    Left = 952
-    Top = 217
   end
   object OpenPictureDialog1: TOpenPictureDialog
     Left = 360
