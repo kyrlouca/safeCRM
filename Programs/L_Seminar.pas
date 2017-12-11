@@ -172,8 +172,16 @@ procedure TL_SeminarFRM.RzBitBtn3Click(Sender: TObject);
 vAR
   Frm:TP_attendanceFRM;
 seminarSerial:Integer;
+seminarStatus:string;
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  SeminarStatus:=TableSQL.FieldByName('status').AsString;
+  if SeminarStatus<>'A' then begin
+    MessageDlg('Δεν γίνεται να καταγραφούν παρουσίες γιατί το Σεμινάριο δεν είναι σε στάδιο ''APPROVED'' ', mtWarning, [mbOK], 0);
+    abort;
+  end;
+
 
   frm :=  TP_attendanceFRM.Create(nil);
   frm.IN_ACTION :='INSERT';

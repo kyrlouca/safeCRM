@@ -40,15 +40,6 @@ type
     StudentsTS: TRzTabSheet;
     CostTS: TRzTabSheet;
     SubjectTS: TRzTabSheet;
-    SecondGRP: TRzGroupBox;
-    Label5: TLabel;
-    Label10: TLabel;
-    wwDBEdit1: TwwDBEdit;
-    InstructorFLD: TwwDBComboBox;
-    VenueFLD: TwwDBComboBox;
-    Label11: TLabel;
-    InstructorBTN: TSpeedButton;
-    VenueBTN: TSpeedButton;
     ReminderTS: TRzTabSheet;
     AttendingSQL: TIBCQuery;
     AttendingSRC: TDataSource;
@@ -161,8 +152,6 @@ type
     SeminarSQLSTATUS: TWideStringField;
     SeminarSQLIS_INVOICED: TWideStringField;
     SeminarSQLIS_CERTIFICATED: TWideStringField;
-    Label22: TLabel;
-    wwDBEdit5: TwwDBEdit;
     SeminarSQLMAX_CAPACITY: TIntegerField;
     AttendingSQLIS_GUEST: TWideStringField;
     wwDBGrid4: TwwDBGrid;
@@ -195,16 +184,9 @@ type
     wwNavButton21: TwwNavButton;
     wwNavButton22: TwwNavButton;
     wwIncrementalSearch1: TwwIncrementalSearch;
-    Label20: TLabel;
-    CompletedFLD: TwwCheckBox;
-    Label21: TLabel;
-    wwDBEdit6: TwwDBEdit;
     SeminarSQLHAS_EXPIRY: TWideStringField;
     SeminarSQLEXPIRY_PERIOD: TIntegerField;
     RzPanel14: TRzPanel;
-    Label9: TLabel;
-    wwDBComboBox2: TwwDBComboBox;
-    SpeedButton1: TSpeedButton;
     SeminarSQLANAD_NUMBER: TWideStringField;
     SeminarSQLFK_EXAMINER: TIntegerField;
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
@@ -218,26 +200,7 @@ type
     GroupBox1: TGroupBox;
     RzPanel6: TRzPanel;
     wwDBGrid1: TwwDBGrid;
-    FirstGRP: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    SerialFLD: TRzDBLabel;
-    Label4: TLabel;
-    Label12: TLabel;
-    Companylbl: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label13: TLabel;
-    DescFLD: TwwDBEdit;
-    SeminarTypeFLD: TwwDBComboBox;
-    RzDBRichEdit1: TRzDBRichEdit;
-    MonoRGP: TwwRadioGroup;
-    CompanyFLD: TwwDBLookupCombo;
-    StartDateFLD: TwwDBDateTimePicker;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
-    AnadFLD: TwwDBEdit;
     IBCSQLMonitor1: TIBCSQLMonitor;
-    RzBitBtn2: TRzBitBtn;
     Panel2: TRzPanel;
     SeminarReminderSQLIS_HIGH: TWideStringField;
     RzPanel9: TRzPanel;
@@ -264,8 +227,78 @@ type
     wwDBEdit7: TwwDBEdit;
     Label25: TLabel;
     wwDBEdit2: TwwDBEdit;
+    RzPanel17: TRzPanel;
+    RzBitBtn1: TRzBitBtn;
+    FirstGRP: TRzGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    SerialFLD: TRzDBLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Companylbl: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    DescFLD: TwwDBEdit;
+    SeminarTypeFLD: TwwDBComboBox;
+    RzDBRichEdit1: TRzDBRichEdit;
+    MonoRGP: TwwRadioGroup;
+    CompanyFLD: TwwDBLookupCombo;
+    StartDateFLD: TwwDBDateTimePicker;
+    wwDBDateTimePicker1: TwwDBDateTimePicker;
+    AnadFLD: TwwDBEdit;
+    SecondGRP: TRzGroupBox;
+    Label5: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    InstructorBTN: TSpeedButton;
+    VenueBTN: TSpeedButton;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label19: TLabel;
+    Label9: TLabel;
+    SpeedButton1: TSpeedButton;
+    wwDBEdit1: TwwDBEdit;
+    InstructorFLD: TwwDBComboBox;
+    VenueFLD: TwwDBComboBox;
+    wwDBEdit3: TwwDBEdit;
+    CompletedFLD: TwwCheckBox;
+    wwDBEdit4: TwwDBEdit;
+    wwDBComboBox1: TwwDBComboBox;
+    CompanySQL: TIBCQuery;
+    CompanySQLSERIAL_NUMBER: TIntegerField;
+    CompanySQLFK_COMPANY_SERIAL: TIntegerField;
+    CompanySQLLAST_NAME: TWideStringField;
+    CompanySQLFIRST_NAME: TWideStringField;
+    CompanySQLNATIONAL_ID: TWideStringField;
+    CompanySQLNICKNAME: TWideStringField;
+    CompanySQLOCCUPATION: TWideStringField;
+    CompanySQLPHONE_MOBILE: TWideStringField;
+    CompanySQLPHONE_FIXED: TWideStringField;
+    CompanySQLPHONE_ALTERNATE: TWideStringField;
+    CompanySQLFAX: TWideStringField;
+    CompanySQLEMAIL: TWideStringField;
+    CompanySQLEMAIL_2: TSmallintField;
+    CompanySQLADDRESS: TWideStringField;
+    CompanySQLADDRESS_STREET: TWideStringField;
+    CompanySQLADDRESS_POST_CODE: TWideStringField;
+    CompanySQLADDRESS_CITY: TWideStringField;
+    CompanySQLADDRESS_DISTRICT: TWideStringField;
+    CompanySQLDATE_STARTED: TDateField;
+    CompanySQLDATE_BIRTH: TDateField;
+    CompanySQLDATE_USER: TDateField;
+    CompanySQLLIST_SOURCE: TWideStringField;
+    CompanySQLFACEBOOK: TWideStringField;
+    CompanySQLWEBSITE: TWideStringField;
+    CompanySQLTWITTER: TWideStringField;
+    CompanySQLSTATUS_ACTIVE: TWideStringField;
+    CompanySQLSEX: TWideStringField;
+    CompanySQLIS_COMPANY: TWideStringField;
+    CompanySQLCOMPANY_OWNER: TWideStringField;
+    CompanySQLCOMPANY_CONTACT: TWideStringField;
+    CompanySQLCOMPANY_REGISTRATION_DATE: TDateField;
+    CompanySQLPHONE_CONTACT: TWideStringField;
     procedure AcceptBTNClick(Sender: TObject);
-    procedure SeminarSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
@@ -437,27 +470,18 @@ begin
 
 end;
 
-procedure TV_SeminarFRM.SeminarSRCStateChange(Sender: TObject);
-begin
-
-  with SeminarSQL do
-  begin
-    if State <> dsInsert then
-    begin
-//         StationIDFLD.Enabled:=false;
-    end
-    else
-    begin
-//         StationIDFLD.Enabled:=true;
-    end;
-  end; //with
-
-end;
-
 procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
 begin
+  try
+    SeminarSQL.DisableControls;
+    ksOpenTables([CompanySQL]);
+    ksOpenTables([seminarSubjectSQL, SeminarDaySQL]);
+    AnadFLD.SetFocus;
 
-  AnadFLD.SetFocus;
+  finally
+    SeminarSQL.EnableControls;
+
+  end;
 
 end;
 
@@ -1203,7 +1227,7 @@ var
   st: string;
 begin
   st := SeminarSQL.FieldByName('status').AsString;
-  result := (St = 'P') or (St = 'N') or (St = 'W');
+  result := (St = 'P');
 
 end;
 end.

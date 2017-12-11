@@ -237,6 +237,10 @@ begin
 end;
 
 procedure TP_attendanceFRM.FormActivate(Sender: TObject);
+var
+  allowModify: boolean;
+  st:string;
+
 begin
 // personSQL.Close;
 // personSQL.ParamByName('seminarSerial').Value:=IN_seminar_serial;
@@ -250,11 +254,6 @@ begin
   daySQL.Close;
   daySQL.ParamByName('SeminarSerial').Value:=TableSQL.FieldByName('serial_number').AsInteger;
   daySQL.Open;
-
-
-//  InvoiceSQL.Close;
-//  InvoiceSQL.ParamByName('seminarSerial').Value:= IN_seminar_serial;
-//  InvoiceSQL.open;
 
 
 
@@ -549,5 +548,6 @@ begin
   daySerial:=DaySQL.FieldByName('Dayserial').AsInteger;
    UpdatePresenceTable(seminarSerial,daySerial);
 end;
+
 
 End.

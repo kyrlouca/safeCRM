@@ -536,6 +536,7 @@ end;
 procedure TI_CertificatesFRM.InvoiceBTNClick(Sender: TObject);
 var
   SeminarSerial:Integer;
+  SeminarStatus:string;
 begin
 
   SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
@@ -549,6 +550,13 @@ begin
 //      InvoiceSQL.UpdateTransaction.StartTransaction;
 
 //    invoiceSQL.Close;
+  SeminarStatus:=TableSQL.FieldByName('status').AsString;
+
+  if SeminarStatus<>'F' then begin
+    MessageDlg('Δεν εκδίδονται πιστοιητικά γιατί το σεμινάριο δεν έχει γίνει ''COMPLETED'' ', mtWarning, [mbOK], 0);
+    abort;
+  end;
+
 
     personSQL.Close;
     personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;

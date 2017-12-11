@@ -260,8 +260,8 @@ begin
   InvoiceSQL.ParamByName('SubjectSerial').Value:=SubjectSerial;
   InvoiceSQL.Open;
 
-  if InvoiceSQL.IsEmpty then
-    showMessage('inv empty');
+//  if InvoiceSQL.IsEmpty then
+//    showMessage('inv empty');
 
   PpReport1.Print;
 
