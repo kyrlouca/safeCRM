@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  Vcl.WinXCtrls;
+  Vcl.WinXCtrls, Vcl.Menus;
 type
   TL_SeminarFRM = class(TForm)
     Panel1: TPanel;
@@ -73,6 +73,10 @@ type
     Label1: TLabel;
     CategoryFLD: TwwDBComboBox;
     TableSQLSEM_CATEGORY: TWideStringField;
+    MainMenu1: TMainMenu;
+    Reports1: TMenuItem;
+    N3: TMenuItem;
+    N1: TMenuItem;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -94,6 +98,8 @@ type
       Shift: TShiftState);
     procedure StatusFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
     procedure CategoryFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure N3Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -113,7 +119,7 @@ var
 implementation
 
 uses   U_Database, G_generalProcs, V_Seminar, I_certificates, p_attendance,
-  I_invoiceSeminar;
+  I_invoiceSeminar, R_Certificate;
 
 
 {$R *.DFM}
@@ -177,10 +183,10 @@ begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
   SeminarStatus:=TableSQL.FieldByName('status').AsString;
-  if SeminarStatus<>'A' then begin
-    MessageDlg('Δεν γίνεται να καταγραφούν παρουσίες γιατί το Σεμινάριο δεν είναι σε στάδιο ''APPROVED'' ', mtWarning, [mbOK], 0);
-    abort;
-  end;
+//  if SeminarStatus<>'A' then begin
+//    MessageDlg('Δεν γίνεται να καταγραφούν παρουσίες γιατί το Σεμινάριο δεν είναι σε στάδιο ''APPROVED'' ', mtWarning, [mbOK], 0);
+//    abort;
+//  end;
 
 
   frm :=  TP_attendanceFRM.Create(nil);
@@ -324,8 +330,16 @@ procedure TL_SeminarFRM.InvoiceBTNClick(Sender: TObject);
 vAR
   Frm:TI_InvoiceSeminarFRM;
 seminarSerial:Integer;
+SeminarStatus:string;
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+//  SeminarStatus:=TableSQL.FieldByName('status').AsString;
+//  if SeminarStatus='P' then begin
+//    MessageDlg('Δεν εκδίδονται Τιμολόγια γιατί το Σεμινάριο δεν έχει γίνει ''APPROVED'' ', mtWarning, [mbOK], 0);
+//    abort;
+//  end;
+
 
   frm :=  TI_InvoiceSeminarFRM.Create(nil);
   frm.IN_ACTION :='INSERT';
@@ -336,6 +350,44 @@ begin
     frm.Free;
   end;
 
+end;
+
+procedure TL_SeminarFRM.N1Click(Sender: TObject);
+vAR
+  Frm:TR_certificateFRM;
+  seminarSerial:Integer;
+
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_certificateFRM.Create(nil);
+  frm.IN_seminar_serial :=seminarSerial;
+  frm.IN_certificate_serial:=0;
+//  frm.IN_Day_Serial :=0;
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+end;
+
+
+
+procedure TL_SeminarFRM.N3Click(Sender: TObject);
+vAR
+  Frm:TI_InvoiceSeminarFRM;
+seminarSerial:Integer;
+SeminarStatus:string;
+begin
+//  seminarSubjectSerial:=SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
+
+//  frm :=  TR_InvoicesFRM.Create(nil);
+//  frm.IN_SeminarSubjectSerial :=seminarSubjectSerial;
+//  try
+//    frm.PrintSeminar();
+//  finally
+//    frm.Free;
+//  end;
 end;
 
 procedure TL_SeminarFRM.Nav1InsertClick(Sender: TObject);
@@ -373,8 +425,16 @@ procedure TL_SeminarFRM.CertificatesBTNClick(Sender: TObject);
 vAR
   Frm:TI_CertificatesFRM;
 seminarSerial:Integer;
+SeminarStatus:String;
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  SeminarStatus:=TableSQL.FieldByName('status').AsString;
+//  if SeminarStatus<>'F' then begin
+//    MessageDlg('Δεν εκδίδονται πιστοιητικά γιατί το σεμινάριο δεν έχει γίνει ''COMPLETED'' ', mtWarning, [mbOK], 0);
+//    abort;
+//  end;
+
 
   frm :=  TI_CertificatesFRM.Create(nil);
   frm.IN_ACTION :='INSERT';

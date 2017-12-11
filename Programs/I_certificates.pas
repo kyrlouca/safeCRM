@@ -99,7 +99,6 @@ type
     MainMenu1: TMainMenu;
     Reports1: TMenuItem;
     N3: TMenuItem;
-    N1: TMenuItem;
     TableSQLANAD_NUMBER: TWideStringField;
     TableSQLHAS_EXPIRY: TWideStringField;
     TableSQLEXPIRY_PERIOD: TIntegerField;
@@ -113,6 +112,7 @@ type
     RzDBLabel4: TRzDBLabel;
     RzDBLabel5: TRzDBLabel;
     TableSQLSEM_CATEGORY: TWideStringField;
+    InvoiceSQLDATE_CREATED: TDateField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);

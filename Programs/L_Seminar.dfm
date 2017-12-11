@@ -3,7 +3,7 @@ object L_SeminarFRM: TL_SeminarFRM
   Top = 153
   Align = alClient
   Caption = '--'
-  ClientHeight = 558
+  ClientHeight = 538
   ClientWidth = 1053
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,6 +12,7 @@ object L_SeminarFRM: TL_SeminarFRM
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
@@ -56,11 +57,12 @@ object L_SeminarFRM: TL_SeminarFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 515
+    Top = 495
     Width = 1053
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 952
       Top = 1
@@ -274,18 +276,20 @@ object L_SeminarFRM: TL_SeminarFRM
     Left = 0
     Top = 153
     Width = 1053
-    Height = 362
+    Height = 342
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 362
     object Panel5: TPanel
       Left = 833
       Top = 1
       Width = 224
-      Height = 360
+      Height = 340
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 360
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -681,10 +685,11 @@ object L_SeminarFRM: TL_SeminarFRM
       Left = 57
       Top = 1
       Width = 776
-      Height = 360
+      Height = 340
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 360
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -829,7 +834,7 @@ object L_SeminarFRM: TL_SeminarFRM
         Left = 0
         Top = 33
         Width = 745
-        Height = 327
+        Height = 307
         ControlType.Strings = (
           'SEMINAR_CORP_TYPE;CustomEdit;wwDBComboBox1;F'
           'TYPE_MONO_POLY;CheckBox;M;P'
@@ -872,6 +877,7 @@ object L_SeminarFRM: TL_SeminarFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
+        ExplicitHeight = 327
         object StatusShowFLD: TwwDBComboBox
           Left = 304
           Top = 176
@@ -897,11 +903,12 @@ object L_SeminarFRM: TL_SeminarFRM
       Left = 1
       Top = 1
       Width = 56
-      Height = 360
+      Height = 340
       Align = alLeft
       Alignment = taLeftJustify
       BorderOuter = fsNone
       TabOrder = 2
+      ExplicitHeight = 360
     end
   end
   object TableSRC: TDataSource
@@ -1149,5 +1156,20 @@ object L_SeminarFRM: TL_SeminarFRM
     IsolationLevel = iblReadOnlyReadCommitted
     Left = 280
     Top = 65521
+  end
+  object MainMenu1: TMainMenu
+    Left = 272
+    Top = 65528
+    object Reports1: TMenuItem
+      Caption = #917#954#964#965#960#974#963#949#953#962
+      object N3: TMenuItem
+        Caption = #917#954#964#973#960#969#963#951' '#923#943#963#964#945#962' '#932#953#956#959#955#959#947#943#969#957
+        OnClick = N3Click
+      end
+      object N1: TMenuItem
+        Caption = #928#953#963#964#959#960#959#953#951#964#953#954#940
+        OnClick = N1Click
+      end
+    end
   end
 end

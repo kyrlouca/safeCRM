@@ -11,7 +11,8 @@ uses
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
   RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox, vcl.wwclearbuttongroup,
   vcl.wwradiogroup, ppStrtch, ppRichTx, Vcl.ComCtrls, vcl.wwriched,ClipBrd,
-  Vcl.DBCtrls, RzDBEdit;
+  Vcl.DBCtrls, RzDBEdit, vcl.wwclearpanel, vcl.Wwdotdot, vcl.Wwdbcomb, RzLabel,
+  RzDBLbl;
 
 type
   TReminderResult= Record
@@ -36,7 +37,7 @@ type
     Panel3: TPanel;
     Panel4: TPanel;
     CertificatePIP: TppDBPipeline;
-    PrintRBtn: TBitBtn;
+    PrintAllxBtn: TBitBtn;
     Panel11: TRzPanel;
     BitBtn1: TBitBtn;
     ppReport1: TppReport;
@@ -124,6 +125,59 @@ type
     CertificateSQLANAD_NUMBER: TWideStringField;
     ppDBImage4: TppDBImage;
     wwMemo: TwwDBRichEdit;
+    FirstGRP: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    SerialFLD: TRzDBLabel;
+    Label1: TLabel;
+    RzDBLabel1: TRzDBLabel;
+    RzDBLabel2: TRzDBLabel;
+    Companylbl: TLabel;
+    RzDBLabel3: TRzDBLabel;
+    Label5: TLabel;
+    RzDBLabel4: TRzDBLabel;
+    RzDBLabel5: TRzDBLabel;
+    Panel2: TPanel;
+    RzPanel1: TRzPanel;
+    wwDBNavigator1: TwwDBNavigator;
+    Nav1Button: TwwNavButton;
+    wwNavButton1: TwwNavButton;
+    wwNavButton2: TwwNavButton;
+    wwNavButton3: TwwNavButton;
+    Nav1Insert: TwwNavButton;
+    Nav1Delete: TwwNavButton;
+    Nav1Post: TwwNavButton;
+    Nav1Cancel: TwwNavButton;
+    RzPanel2: TRzPanel;
+    RzPanel3: TRzPanel;
+    TableSQL: TIBCQuery;
+    TableSQLSEMINAR_NAME: TWideStringField;
+    TableSQLSERIAL_NUMBER: TIntegerField;
+    TableSQLDATE_STARTED: TDateField;
+    TableSQLFK_SEMINAR: TIntegerField;
+    TableSQLFK_INSTRUCTOR: TIntegerField;
+    TableSQLFK_VENUE: TIntegerField;
+    TableSQLDATE_COMPLETED: TDateField;
+    TableSQLDURATION_DAYS: TIntegerField;
+    TableSQLDURATION_HOURS: TIntegerField;
+    TableSQLAMOUNT_ANAD: TFloatField;
+    TableSQLCOMMENTS: TWideStringField;
+    TableSQLANAD_APPROVED: TWideStringField;
+    TableSQLSTATUS: TWideStringField;
+    TableSQLIS_INVOICED: TWideStringField;
+    TableSQLIS_CERTIFICATED: TWideStringField;
+    TableSQLMAX_CAPACITY: TIntegerField;
+    TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    TableSQLLAST_NAME: TWideStringField;
+    TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLHAS_EXPIRY: TWideStringField;
+    TableSQLEXPIRY_PERIOD: TIntegerField;
+    TableSQLFK_EXAMINER: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
+    TableSQLSEM_CATEGORY: TWideStringField;
+    TableSRC: TIBCDataSource;
+    PrintOnexBTN: TBitBtn;
+    Grid1: TwwDBGrid;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -132,7 +186,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
     procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
-    procedure PrintRBtnClick(Sender: TObject);
+    procedure PrintAllxBtnClick(Sender: TObject);
     procedure NameFLDCalc(Sender: TObject; var Value: Variant);
     procedure IdFLDCalc(Sender: TObject; var Value: Variant);
     procedure DurationFLDCalc(Sender: TObject; var Value: Variant);
@@ -142,6 +196,7 @@ type
     procedure PICTURE_TOP_L1Print(Sender: TObject);
     procedure TopFldGetRichText(Sender: TObject; var Text: string);
     procedure ppReport1BeforePrint(Sender: TObject);
+    procedure PrintOnexBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -303,11 +358,27 @@ begin
 end;
 
 
-procedure TR_certificateFRM.PrintRBtnClick(Sender: TObject);
+procedure TR_certificateFRM.PrintAllxBtnClick(Sender: TObject);
+VAR
+language:String;
+
 begin
-  PrintTheSeminar();
+  Language:=LanguageRGP.Values[LanguageRGP.ItemIndex];
+  PrintSeminar(IN_Seminar_Serial,0,Language);
+
 end;
 
+
+procedure TR_certificateFRM.PrintOnexBTNClick(Sender: TObject);
+var
+CertSerial:integer;
+language:string;
+begin
+  certSerial:=CertificateSQL.FieldByName('serial_number').AsInteger;
+  Language:=LanguageRGP.Values[LanguageRGP.ItemIndex];
+  PrintSeminar(IN_Seminar_Serial,certSerial,Language);
+
+end;
 
 procedure TR_certificateFRM.PrintTheSeminar();
 var
@@ -357,6 +428,13 @@ end;
 procedure TR_certificateFRM.FormActivate(Sender: TObject);
 begin
 LanguageRGP.ItemIndex:=0;
+TableSQL.Close;
+TableSQL.ParamByName('seminarSerial').Value:=IN_Seminar_Serial;
+TableSQL.Open;
+
+CertificateSQL.Close;
+CertificateSQL.ParamByName('seminarSerial').Value:=IN_Seminar_Serial;
+CertificateSQL.Open;
 
 end;
 

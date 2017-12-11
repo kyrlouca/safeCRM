@@ -499,14 +499,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
           'IS_VALID;CheckBox;Y;N'
           'HAS_ANOTHER_DATE;CheckBox;Y;N')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'FK_PERSON_SERIAL'#9'4'#9'PS/N'
-          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'16'#9#908#957#959#956#945
-          'HOURS_COMPLETED'#9'6'#9#937#961#949#962
-          'HAS_ANOTHER_DATE'#9'1'#9'*Date*'
-          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
-          'IS_VALID'#9'7'#9#904#947#954#965#961#959)
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'FK_PERSON_SERIAL'#9'4'#9'PS/N'#9#9
+          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959#9#9
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945#9#9
+          'HOURS_COMPLETED'#9'6'#9#937#961#949#962#9#9
+          'HAS_ANOTHER_DATE'#9'1'#9'*Date*'#9#9
+          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957#9#9
+          'IS_VALID'#9'7'#9#904#947#954#965#961#959#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -781,7 +781,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object wwDBComboBox1: TwwDBComboBox
         Left = 79
-        Top = 115
+        Top = 116
         Width = 80
         Height = 22
         ShowButton = False
@@ -1126,14 +1126,15 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'ED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NAME, ' +
         'FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, INST' +
         'RUCTOR_NAME, INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE, SUBJECT_HOU' +
-        'RS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER)'
+        'RS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER, DATE_CREATED)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :DATE_' +
         'ISSUED, :HOURS_COMPLETED, :PERCENTAGE_COMPLETED, :IS_VALID, :LAS' +
         'T_NAME, :FIRST_NAME, :NATIONAL_ID, :SEMINAR_SUBJECT, :SEMINAR_DU' +
         'RATION, :INSTRUCTOR_NAME, :INSTRUCTOR_JOB_TITLE, :HAS_ANOTHER_DA' +
-        'TE, :SUBJECT_HOURS, :SEMINAR_CERTIFICATE, :SEX, :ANAD_NUMBER)')
+        'TE, :SUBJECT_HOURS, :SEMINAR_CERTIFICATE, :SEX, :ANAD_NUMBER, :D' +
+        'ATE_CREATED)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_CERTIFICATE'
       'WHERE'
@@ -1151,7 +1152,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'R_DURATION, INSTRUCTOR_NAME = :INSTRUCTOR_NAME, INSTRUCTOR_JOB_T' +
         'ITLE = :INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE = :HAS_ANOTHER_DA' +
         'TE, SUBJECT_HOURS = :SUBJECT_HOURS, SEMINAR_CERTIFICATE = :SEMIN' +
-        'AR_CERTIFICATE, SEX = :SEX, ANAD_NUMBER = :ANAD_NUMBER'
+        'AR_CERTIFICATE, SEX = :SEX, ANAD_NUMBER = :ANAD_NUMBER, DATE_CRE' +
+        'ATED = :DATE_CREATED'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1160,8 +1162,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'ISSUED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NA' +
         'ME, FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, ' +
         'INSTRUCTOR_NAME, INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE, SUBJECT' +
-        '_HOURS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER FROM SEMINAR_CERTI' +
-        'FICATE'
+        '_HOURS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER, DATE_CREATED FROM' +
+        ' SEMINAR_CERTIFICATE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1304,18 +1306,18 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FixedChar = True
       Size = 30
     end
+    object InvoiceSQLDATE_CREATED: TDateField
+      FieldName = 'DATE_CREATED'
+      Visible = False
+    end
   end
   object MainMenu1: TMainMenu
     Left = 224
     object Reports1: TMenuItem
       Caption = #917#954#964#973#960#969#963#951
       object N3: TMenuItem
-        Caption = #917#954#964#973#960#969#963#951' '#908#955#969#957' '
+        Caption = #917#954#964#973#960#969#963#951' '#928#953#963#964#959#960#959#953#951#964#953#954#974#957
         OnClick = N3Click
-      end
-      object N1: TMenuItem
-        Caption = #917#954#964#973#960#969#963#951' '#917#960#953#955#949#947#956#941#957#959#965
-        OnClick = N1Click
       end
     end
   end
