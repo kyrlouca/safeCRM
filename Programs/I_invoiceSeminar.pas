@@ -242,14 +242,14 @@ end;
 procedure TI_InvoiceSeminarFRM.N3Click(Sender: TObject);
 vAR
   Frm:TR_InvoicesFRM;
-  seminarSerial:Integer;
+  seminarSubjectSerial:Integer;
 
 begin
-  seminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+  seminarSubjectSerial:=SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
 
   frm :=  TR_InvoicesFRM.Create(nil);
-  frm.IN_SeminarSerial :=seminarSerial;
-  frm.IN_Invoiceserial:=0;
+  frm.IN_SeminarSubjectSerial :=seminarSubjectSerial;
+//  frm.IN_Invoiceserial:=0;
 //  frm.IN_Day_Serial :=0;
   try
     frm.PrintSeminar();

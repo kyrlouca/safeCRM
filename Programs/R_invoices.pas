@@ -56,45 +56,8 @@ type
     ppLabel10: TppLabel;
     ppLabel11: TppLabel;
     ppLabel12: TppLabel;
-    TableSQL: TIBCQuery;
-    TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLFK_SEMINAR: TIntegerField;
-    TableSQLSEMINAR_NAME: TWideStringField;
-    TableSQLFK_INSTRUCTOR: TIntegerField;
-    TableSQLFK_VENUE: TIntegerField;
-    TableSQLDATE_STARTED: TDateField;
-    TableSQLDATE_COMPLETED: TDateField;
-    TableSQLDURATION_DAYS: TIntegerField;
-    TableSQLDURATION_HOURS: TIntegerField;
-    TableSQLAMOUNT_ANAD: TFloatField;
-    TableSQLCOMMENTS: TWideStringField;
-    TableSQLANAD_APPROVED: TWideStringField;
-    TableSQLSTATUS: TWideStringField;
-    TableSQLIS_INVOICED: TWideStringField;
-    TableSQLIS_CERTIFICATED: TWideStringField;
-    TableSQLMAX_CAPACITY: TIntegerField;
-    TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    TableSQLLAST_NAME: TWideStringField;
-    TableSRC: TIBCDataSource;
-    SeminarSQL: TIBCQuery;
-    SeminarSQLSERIAL_NUMBER: TIntegerField;
-    SeminarSQLFK_SEMINAR: TIntegerField;
-    SeminarSQLFK_INSTRUCTOR: TIntegerField;
-    SeminarSQLFK_VENUE: TIntegerField;
-    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLDATE_STARTED: TDateField;
-    SeminarSQLDATE_COMPLETED: TDateField;
-    SeminarSQLDURATION_DAYS: TIntegerField;
-    SeminarSQLDURATION_HOURS: TIntegerField;
-    SeminarSQLAMOUNT_ANAD: TFloatField;
-    SeminarSQLCOMMENTS: TWideStringField;
-    SeminarSQLANAD_APPROVED: TWideStringField;
-    SeminarSQLSTATUS: TWideStringField;
-    SeminarSQLIS_INVOICED: TWideStringField;
-    SeminarSQLIS_CERTIFICATED: TWideStringField;
-    SeminarSQLMAX_CAPACITY: TIntegerField;
-    SeminarSRC: TDataSource;
+    SeminarSubjectSQL: TIBCQuery;
+    SeminarSubjectSRC: TDataSource;
     SeminarPIP: TppDBPipeline;
     ppDBText7: TppDBText;
     ppDBText8: TppDBText;
@@ -103,22 +66,9 @@ type
     ppDBText9: TppDBText;
     ppDBText10: TppDBText;
     ppLabel7: TppLabel;
-    TableSQLANAD_NUMBER: TWideStringField;
-    TableSQLFK_EXAMINER: TIntegerField;
-    TableSQLHAS_EXPIRY: TWideStringField;
-    TableSQLEXPIRY_PERIOD: TIntegerField;
-    TableSQLTYPE_MONO_POLY: TWideStringField;
-    TableSQLSEM_CATEGORY: TWideStringField;
-    SeminarSQLANAD_NUMBER: TWideStringField;
-    SeminarSQLFK_EXAMINER: TIntegerField;
-    SeminarSQLHAS_EXPIRY: TWideStringField;
-    SeminarSQLEXPIRY_PERIOD: TIntegerField;
-    SeminarSQLTYPE_MONO_POLY: TWideStringField;
-    SeminarSQLSEM_CATEGORY: TWideStringField;
     ppLabel9: TppLabel;
     ppDBText11: TppDBText;
     InvoiceSQLSERIAL_NUMBER: TIntegerField;
-    InvoiceSQLFK_SEMINAR_SERIAL: TIntegerField;
     InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
     InvoiceSQLINVOICE_STATUS: TWideStringField;
     InvoiceSQLDATE_INVOICED: TDateField;
@@ -141,12 +91,39 @@ type
     Label1: TLabel;
     RzDBLabel1: TRzDBLabel;
     RzDBLabel2: TRzDBLabel;
-    Companylbl: TLabel;
-    RzDBLabel3: TRzDBLabel;
     Label5: TLabel;
     RzDBLabel4: TRzDBLabel;
     RzDBLabel5: TRzDBLabel;
     wwDBComboBox1: TwwDBComboBox;
+    SeminarSubjectSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSubjectSQLANAD_NUMBER: TWideStringField;
+    SeminarSubjectSQLFK_SEMINAR: TIntegerField;
+    SeminarSubjectSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSubjectSQLFK_EXAMINER: TIntegerField;
+    SeminarSubjectSQLFK_VENUE: TIntegerField;
+    SeminarSubjectSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    SeminarSubjectSQLSEMINAR_NAME: TWideStringField;
+    SeminarSubjectSQLDATE_STARTED: TDateField;
+    SeminarSubjectSQLDATE_COMPLETED: TDateField;
+    SeminarSubjectSQLDURATION_DAYS: TIntegerField;
+    SeminarSubjectSQLDURATION_HOURS: TIntegerField;
+    SeminarSubjectSQLAMOUNT_ANAD: TFloatField;
+    SeminarSubjectSQLCOMMENTS: TWideStringField;
+    SeminarSubjectSQLANAD_APPROVED: TWideStringField;
+    SeminarSubjectSQLSTATUS: TWideStringField;
+    SeminarSubjectSQLIS_INVOICED: TWideStringField;
+    SeminarSubjectSQLIS_CERTIFICATED: TWideStringField;
+    SeminarSubjectSQLMAX_CAPACITY: TIntegerField;
+    SeminarSubjectSQLHAS_EXPIRY: TWideStringField;
+    SeminarSubjectSQLEXPIRY_PERIOD: TIntegerField;
+    SeminarSubjectSQLTYPE_MONO_POLY: TWideStringField;
+    SeminarSubjectSQLSEM_CATEGORY: TWideStringField;
+    SeminarSubjectSQLSUBJECT_SERIAL: TIntegerField;
+    SeminarSubjectSQLSUBJECT: TWideStringField;
+    InvoiceSQLFK_SUBJECT_SERIAL: TIntegerField;
+    InvoiceSQLSUBJECT_NAME: TWideStringField;
+    Label6: TLabel;
+    RzDBLabel6: TRzDBLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
@@ -163,8 +140,8 @@ type
   Function CalcDaysLeft():TReminderResult;
   public
     { Public declarations }
-    IN_SeminarSerial:Integer;
-    IN_InvoiceSerial:Integer;
+    IN_SeminarSubjectSerial:Integer;
+//    IN_InvoiceSerial:Integer;
   procedure PrintSeminar();
   end;
 
@@ -266,21 +243,25 @@ procedure TR_InvoicesFRM.PrintSeminar();
 Var
    FromDate:TDateTime;
    DaysLeft:integer;
-   SeminarSerial:Integer;
+   SubjectSerial:Integer;
 begin
-  SeminarSerial:=IN_SeminarSerial;
-  if SeminarSerial<1 then begin
-    showMessage('Invalid Selected Seminar');
+  SubjectSerial:=IN_SeminarSubjectSerial;
+  if SubjectSerial<1 then begin
+    showMessage('Invalid Selected Seminar Subject');
     exit;
   end;
 
 
-  SeminarSQL.Close;
-  SeminarSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
-  SeminarSQL.Open;
+  SeminarSubjectSQL.Close;
+  SeminarSubjectSQL.ParamByName('SubjectSerial').Value:=SubjectSerial;
+  SeminarSubjectSQL.Open;
 
   InvoiceSQL.Close;
+  InvoiceSQL.ParamByName('SubjectSerial').Value:=SubjectSerial;
   InvoiceSQL.Open;
+
+  if InvoiceSQL.IsEmpty then
+    showMessage('inv empty');
 
   PpReport1.Print;
 
@@ -288,7 +269,7 @@ end;
 
 procedure TR_InvoicesFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL])
+ksOpenTables([SeminarSubjectSQL])
 end;
 
 procedure TR_InvoicesFRM.FormCreate(Sender: TObject);
