@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 562
+  ClientHeight = 542
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,7 +54,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 519
+    Top = 499
     Width = 1004
     Height = 43
     Align = alBottom
@@ -156,14 +156,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 427
+    Height = 407
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 425
+      Height = 405
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -313,7 +313,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 382
+        Top = 362
         Width = 671
         Height = 43
         Align = alBottom
@@ -513,7 +513,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 425
+      Height = 405
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -528,7 +528,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 228
+        Top = 208
         Width = 328
         Height = 197
         Align = alBottom

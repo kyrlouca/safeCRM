@@ -227,7 +227,7 @@ begin
   frm :=  TR_CertificateDatesFRM.Create(nil);
   frm.IN_SeminarSerial :=seminarSerial;
   try
-    frm.ShowModal;
+    frm.PrintTheSeminar;
   finally
     frm.Free;
   end;

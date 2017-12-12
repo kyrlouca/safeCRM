@@ -164,6 +164,10 @@ gpShowModal(TSN_LoginFRm);
 //TODO  Certificates
 //TODO certificates when present as quest in another seminar check 4 months before or after
 //TODO   seminar-tabsheets save aux tables with ACCEPT button. Save on Close
+//TODO   invoices on Planned, invoice company on Outsourced
+//TODO   No Certificates on planned
+//TODO
+
 end;
 
 procedure TM_mainFRM.N10Click(Sender: TObject);

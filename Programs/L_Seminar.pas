@@ -77,6 +77,7 @@ type
     Reports1: TMenuItem;
     N3: TMenuItem;
     N1: TMenuItem;
+    N2: TMenuItem;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -100,6 +101,7 @@ type
     procedure CategoryFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
     procedure N3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -119,7 +121,7 @@ var
 implementation
 
 uses   U_Database, G_generalProcs, V_Seminar, I_certificates, p_attendance,
-  I_invoiceSeminar, R_Certificate, R_invoices;
+  I_invoiceSeminar, R_Certificate, R_invoices, r_certificateDates;
 
 
 {$R *.DFM}
@@ -372,6 +374,23 @@ begin
 end;
 
 
+
+procedure TL_SeminarFRM.N2Click(Sender: TObject);
+vAR
+  Frm:TR_CertificateDatesFRM;
+  seminarSerial:Integer;
+
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_CertificateDatesFRM.Create(nil);
+  frm.IN_SeminarSerial :=seminarSerial;
+  try
+    frm.PrintTheSeminar;
+  finally
+    frm.Free;
+  end;
+end;
 
 procedure TL_SeminarFRM.N3Click(Sender: TObject);
 vAR
