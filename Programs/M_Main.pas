@@ -1,4 +1,17 @@
 unit M_Main;
+////////////////////////////////////////////////////
+/// three types of seminars : normal, planned, commisioned, outsourced ,tracking
+///
+///  for normal: we conduct the course, invoice the students (or the company) and issue the certificates
+///  planned   :are just there to check if there is interest
+///  commisioned seminars are for somebody else, but SafePartners does the lectures and takes a commision
+///     for commisioned seminars, somebody else is responsible for issuing the certificates, and ANAD papers
+///     no invoices, no certificates
+///  outsourced : Safe partners does all the work but takes an agreed fee from the company
+///      outsource may be treated as MONOEpihirisiaka where we invoice the company!!
+///
+///
+/// //////////////////////////////////////////////////
 
 interface
 

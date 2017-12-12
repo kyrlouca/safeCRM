@@ -322,6 +322,16 @@ end;
 
 procedure TR_ExpiryFRM.PrintRBtnClick(Sender: TObject);
 begin
+// working with person_seminar (the record of each person attending a seminar)
+//for each person take the LATEST of each seminar type
+// how to do that ? join two tables
+// ---the first table is per person grouped by seminar type to get the latest date
+// -- however, this table does not provide the individual SERIAL NUMBER of the seminar type- only the latest date of the groop
+// therefore  we join the first table with another table (without the grouping)
+// the join is performed on the person and the seminar type AND The DATE
+// As a result, we get the indiviual MAX record of each in the table!!
+// in this case, for each person, we get the latest of each seminar type
+// add to that date the number of months after the date completed to find the expiry date!
 
 PrintTheSeminar;
 
