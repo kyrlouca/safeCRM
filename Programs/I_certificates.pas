@@ -738,6 +738,7 @@ var
   xSubjectSerial:Integer;
   xIsPresent:String;
   isValidCert:boolean;
+  isValidstr:String;
 
 begin
 
@@ -778,7 +779,7 @@ begin
   end;
 
   ////////////////////////////////////////////////
-  subjectQR:=TksQuery.Create(cn, 'select serial_number from seminar_subject ss where ss.fk_seminar_serial= :SeminarSerial');
+  subjectQR:=TksQuery.Create(cn, 'select serial_number,FK_SUBJECT_TYPE_SERIAL from seminar_subject ss where ss.fk_seminar_serial= :SeminarSerial');
 
   str:=
     'select sum(pv.present_hours) as Total_hours, max(pv.present_ispresent) as isPresent,  max(pv.day_date) as maxDate '
@@ -801,8 +802,10 @@ begin
         //for each seminar person
         PersonSerial:=qr.FieldByName('Person_serial').AsInteger;
         isFound:=ksCountRecVarSQL(cn,'select * from seminar_certificate where fk_seminar_serial=:Seminar and fk_person_serial= :person',[SeminarSerial,PersonSerial])>0;
-        if isFound then
-          continue;
+        if isFound then begin
+           qr.Next;
+           continue;
+        end;
 
         xSeminarHours:=0;
         IsValidCert:=true;
@@ -874,7 +877,6 @@ begin
           else
             xIsPresent:='Y';
 
-          isValidCert:= isValidCert and not isAbsent;
 
           str:=
           ' INSERT INTO SEMINAR_CERTIFICATE_SUBJECT'
@@ -884,7 +886,14 @@ begin
 
           subjectQR.Next;
         end;
-        ksExecSQLVar(cn,'update seminar_certificate set is_valid= :isValid',[isValidCert]);
+
+        isValidCert:= isValidCert and not isAbsent;
+        if isValidCert then
+          isValidStr:='Y'
+        else
+          isValidStr:='N';
+
+        ksExecSQLVar(cn,'update seminar_certificate set is_valid= :isValid',[isValidstr]);
 
        qr.Next;
     end;
