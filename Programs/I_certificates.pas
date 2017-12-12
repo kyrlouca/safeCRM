@@ -16,6 +16,7 @@ type
     SubjectSerial:Integer;
     Hours:integer;
     maxdate:Tdate;
+    isPresent:boolean;
   End;
   TI_CertificatesFRM = class(TForm)
     Panel1: TPanel;
@@ -698,12 +699,10 @@ var
   hoursQr:TksQuery;
 
   str:String;
-  SerialNumber:integer;
+  CertificateSerial:integer;
   SubjectSerial:Integer;
   SubjectTypeSerial:Integer;
-  CertificateSerial:integer;
-  isMono:Boolean;
-  PresentStr:String;
+//  isMono:Boolean;
   PriceNormal,PriceAnad,PriceUsed:Double;
   SeminarDate:TDate;
   SeminarSubject:String;
@@ -717,8 +716,8 @@ var
   InstJob:String;
 
   isFOund:Boolean;
-  isGuest,isPresent:boolean;
-  isPass:Boolean;
+  isGuest:boolean;
+//  isPass:Boolean;
   isAbsent:boolean;
 
 
@@ -736,6 +735,9 @@ var
   xDateLast:TDate;
   xTypeSerial:Integer;
   xGuestHours:THoursRec;
+  xSubjectSerial:Integer;
+  xIsPresent:String;
+  isValidCert:boolean;
 
 begin
 
@@ -798,12 +800,12 @@ begin
     while not qr.Eof do begin
         //for each seminar person
         PersonSerial:=qr.FieldByName('Person_serial').AsInteger;
-        xSeminarHours:=0;
-        xAllSubsOK:=true;
-
         isFound:=ksCountRecVarSQL(cn,'select * from seminar_certificate where fk_seminar_serial=:Seminar and fk_person_serial= :person',[SeminarSerial,PersonSerial])>0;
         if isFound then
           continue;
+
+        xSeminarHours:=0;
+        IsValidCert:=true;
 
         try
 
@@ -827,13 +829,11 @@ begin
         CertificateSQL.FieldByName('instructor_name').Value:=InstName;
         CertificateSQL.FieldByName('instructor_job_title').Value:=InstJob;
 
-
         CertificateSQL.FieldByName('is_valid').Value:='Y';
 //        CertificateSQL.FieldByName('hours_completed').Value:=xSeminarHours;
 //        CertificateSQL.FieldByName('percentage_completed').Value:=xSeminarHours/SeminarHours * 100;
         CertificateSQL.FieldByName('DATE_Issued').AsDateTime:=SeminarDate;
         CertificateSQL.FieldByName('DATE_created').AsDateTime:=Date;
-
         CertificateSQL.FieldByName('HAS_ANOTHER_DATE').AsString:= 'N';
 
         CertificateSQL.Post;
@@ -858,26 +858,33 @@ begin
             //check in another seminar
           xSeminarHours:=xSeminarHours+hoursQr.FieldByName('Total_hours').AsInteger;
           xDateLast:=hoursQr.FieldByName('maxDate').AsDateTime;
+          xSubjectSerial:=SubjectSerial;
 
           isAbsent:= hoursQr.IsEmpty or (hoursqr.FieldByName('isPresent').AsString='N') ;
           if isAbsent then  begin
-            PresentStr:='N'
+//            PresentStr:='N';
             xGuestHours:=NewFindGuestHours(SubjectSerial,SubjectTypeSerial,PersonSerial);
-          end else begin
-            PresentStr:='Y'
+            xSeminarHours:=xGuestHours.Hours;
+            xDateLast:=xGuestHours.maxdate;
+            xSubjectSerial:=xGuestHours.SubjectSerial;
+            isAbsent:= not xGuestHours.isPresent;
           end;
+          if isAbsent then
+            xIsPresent:='N'
+          else
+            xIsPresent:='Y';
 
-          xAllSubsOK:= xAllSubsOK and not isAbsent;
-
+          isValidCert:= isValidCert and not isAbsent;
 
           str:=
           ' INSERT INTO SEMINAR_CERTIFICATE_SUBJECT'
           +'  (FK_SEMINAR_CERTIFICATE_SERIAL, FK_SEMINAR_SUBJECT_SERIAL, HOURS, IS_PRESENT,date_last)'
           +'   VALUES ( :cert,:subject,:HOURS,:IS_PRESENT,:lDate)';
-          ksExecSQLVar(cn,str,[CertificateSerial,SubjectSerial,xSeminarHours,PresentStr,xDateLast]);
+          ksExecSQLVar(cn,str,[CertificateSerial,SubjectSerial,xSeminarHours,xIsPresent,xDateLast]);
 
           subjectQR.Next;
         end;
+        ksExecSQLVar(cn,'update seminar_certificate set is_valid= :isValid',[isValidCert]);
 
        qr.Next;
     end;
