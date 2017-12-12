@@ -118,6 +118,7 @@ type
     RzDBLabel5: TRzDBLabel;
     TableSQLSEM_CATEGORY: TWideStringField;
     CertificateSQLDATE_CREATED: TDateField;
+    N1: TMenuItem;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -154,7 +155,8 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, R_Certificate, G_SFCommonProcs;
+uses   U_Database, G_generalProcs, R_Certificate, G_SFCommonProcs,
+  r_certificateDates;
 
 
 {$R *.DFM}
@@ -215,16 +217,15 @@ end;
 
 procedure TI_CertificatesFRM.N1Click(Sender: TObject);
 vAR
-  Frm:TR_certificateFRM;
+  Frm:TR_CertificateDatesFRM;
   seminarSerial:Integer;
-  certSerial:Integer;
-begin
-  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
-  CertSerial:=CertificateSQL.FieldByName('serial_number').AsInteger;
 
-  frm :=  TR_certificateFRM.Create(nil);
-  frm.IN_seminar_serial :=seminarSerial;
-  frm.IN_certificate_serial:=CertSerial;
+begin
+
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_CertificateDatesFRM.Create(nil);
+  frm.IN_SeminarSerial :=seminarSerial;
   try
     frm.ShowModal;
   finally

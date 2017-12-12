@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 582
+  ClientHeight = 562
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,12 +54,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 539
+    Top = 519
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 498
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -157,20 +156,18 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 447
+    Height = 427
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 406
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 445
+      Height = 425
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 404
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -316,14 +313,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 402
+        Top = 382
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsNone
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
-        ExplicitTop = 361
         object RzPanel6: TRzPanel
           Left = 571
           Top = 0
@@ -487,18 +483,18 @@ object I_CertificatesFRM: TI_CertificatesFRM
           'IS_VALID;CheckBox;Y;N'
           'HAS_ANOTHER_DATE;CheckBox;Y;N')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'FK_PERSON_SERIAL'#9'4'#9'PS/N'#9#9
-          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959#9#9
-          'FIRST_NAME'#9'16'#9#908#957#959#956#945#9#9
-          'HOURS_COMPLETED'#9'6'#9#937#961#949#962#9#9
-          'HAS_ANOTHER_DATE'#9'1'#9'*Date*'#9#9
-          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957#9#9
-          'IS_VALID'#9'7'#9#904#947#954#965#961#959#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'FK_PERSON_SERIAL'#9'4'#9'PS/N'
+          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945
+          'HOURS_COMPLETED'#9'6'#9#937#961#949#962
+          'HAS_ANOTHER_DATE'#9'1'#9'*'#931#965#956#960#955#951#961#969#956#945'*'
+          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
+          'IS_VALID'#9'7'#9#904#947#954#965#961#959)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
-        FixedCols = 5
+        FixedCols = 7
         ShowHorzScrollBar = True
         DataSource = CertificateSRC
         Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
@@ -517,11 +513,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 445
+      Height = 425
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 404
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -533,13 +528,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 248
+        Top = 228
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 207
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -1217,7 +1211,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       FieldName = 'HOURS_COMPLETED'
     end
     object CertificateSQLHAS_ANOTHER_DATE: TWideStringField
-      DisplayLabel = '*Date*'
+      DisplayLabel = '*'#931#965#956#960#955#951#961#969#956#945'*'
       DisplayWidth = 1
       FieldName = 'HAS_ANOTHER_DATE'
       Required = True
@@ -1307,6 +1301,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
       object N3: TMenuItem
         Caption = #917#954#964#973#960#969#963#951' '#928#953#963#964#959#960#959#953#951#964#953#954#974#957
         OnClick = N3Click
+      end
+      object N1: TMenuItem
+        Caption = #917#954#964#973#960#969#963#951' '#923#943#963#964#945#962
+        OnClick = N1Click
       end
     end
   end

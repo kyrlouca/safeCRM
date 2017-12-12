@@ -162,12 +162,8 @@ procedure TM_mainFRM.LoginBTNClick(Sender: TObject);
 begin
 gpShowModal(TSN_LoginFRm);
 //TODO  Certificates
-//TODO  seminar has Status (intial, planned,ARCHIVED (for expiry) ,completed, etc,)
+//TODO certificates when present as quest in another seminar check 4 months before or after
 //TODO   seminar-tabsheets save aux tables with ACCEPT button. Save on Close
-//TODO  system->allow delete an invoice!
-//TODO Cannot delete seminar if approved --> system change status
-//TODO sort customer by last name in certificates, invoices, reports, list
-//TODO select customer ONLY when is_company='Y'
 end;
 
 procedure TM_mainFRM.N10Click(Sender: TObject);

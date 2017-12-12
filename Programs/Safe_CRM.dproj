@@ -212,10 +212,6 @@
             <Form>SN_AddUserFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_Reminders.pas">
-            <Form>R_remindersFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="P_ViewPayment.pas">
             <Form>P_ViewPaymentFRM</Form>
             <FormType>dfm</FormType>
@@ -223,6 +219,9 @@
         <DCCReference Include="l_listInvoices.pas">
             <Form>L_listInvoicesFRM</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="r_certificateDates.pas">
+            <Form>R_CertificateDatesFRM</Form>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

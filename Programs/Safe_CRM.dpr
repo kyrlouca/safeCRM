@@ -1,5 +1,7 @@
 program Safe_CRM;
 
+
+
 uses
   Vcl.Forms,
   CodeSiteLogging,
@@ -35,9 +37,11 @@ uses
   SN_User in 'SN_User.pas' {SN_UserFRM},
   SN_SecurityAccess in 'SN_SecurityAccess.pas' {SN_SecurityAccessFRM},
   SN_AddUser in 'SN_AddUser.pas' {SN_AddUserFRM},
-  R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
   P_ViewPayment in 'P_ViewPayment.pas' {P_ViewPaymentFRM},
-  l_listInvoices in 'l_listInvoices.pas' {L_listInvoicesFRM};
+  l_listInvoices in 'l_listInvoices.pas' {L_listInvoicesFRM},
+  r_certificateDates in 'r_certificateDates.pas' {R_CertificateDatesFRM};
+
+//  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
 {$R *.res}
 
@@ -60,11 +64,9 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TSN_UserFRM, SN_UserFRM);
   Application.CreateForm(TSN_SecurityAccessFRM, SN_SecurityAccessFRM);
   Application.CreateForm(TSN_AddUserFRM, SN_AddUserFRM);
-  Application.CreateForm(TR_remindersFRM, R_remindersFRM);
   Application.CreateForm(TP_ViewPaymentFRM, P_ViewPaymentFRM);
   Application.CreateForm(TL_listInvoicesFRM, L_listInvoicesFRM);
-  //  Application.CreateForm(TM_SeminarPictureTemplateFRM, M_SeminarPictureTemplateFRM);
-  //  Application.CreateForm(TM_reminderFRM1, M_reminderFRM1);
+  Application.CreateForm(TR_CertificateDatesFRM, R_CertificateDatesFRM);
   Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);
   Application.Run;
 end.
