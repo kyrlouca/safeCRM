@@ -196,7 +196,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
           object Nav1Button: TwwNavButton
             Left = 0
             Top = 0
-            Width = 23
+            Width = 27
             Height = 26
             Hint = 'Move to first record'
             ImageIndex = -1
@@ -211,9 +211,9 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Style = nbsFirst
           end
           object wwNavButton4: TwwNavButton
-            Left = 23
+            Left = 27
             Top = 0
-            Width = 23
+            Width = 27
             Height = 26
             Hint = 'Move to prior record'
             ImageIndex = -1
@@ -228,9 +228,9 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Style = nbsPrior
           end
           object wwNavButton5: TwwNavButton
-            Left = 46
+            Left = 54
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Move to next record'
             ImageIndex = -1
@@ -245,9 +245,9 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Style = nbsNext
           end
           object wwNavButton6: TwwNavButton
-            Left = 69
+            Left = 80
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Move to last record'
             ImageIndex = -1
@@ -261,26 +261,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Index = 3
             Style = nbsLast
           end
-          object Nav1Insert: TwwNavButton
-            Left = 92
-            Top = 0
-            Width = 23
-            Height = 26
-            Hint = 'Insert new record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'Nav1Insert'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 4
-            Style = nbsInsert
-          end
           object Nav1Delete: TwwNavButton
-            Left = 115
+            Left = 106
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Delete current record'
             ImageIndex = -1
@@ -291,13 +275,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 5
+            Index = 4
             Style = nbsDelete
           end
           object Nav1Post: TwwNavButton
-            Left = 138
+            Left = 132
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Post changes of current record'
             ImageIndex = -1
@@ -308,13 +292,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 6
+            Index = 5
             Style = nbsPost
           end
           object Nav1Cancel: TwwNavButton
-            Left = 161
+            Left = 158
             Top = 0
-            Width = 23
+            Width = 26
             Height = 26
             Hint = 'Cancel changes made to current record'
             ImageIndex = -1
@@ -325,7 +309,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
             Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 7
+            Index = 6
             Style = nbsCancel
           end
         end
@@ -503,14 +487,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
           'IS_VALID;CheckBox;Y;N'
           'HAS_ANOTHER_DATE;CheckBox;Y;N')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'FK_PERSON_SERIAL'#9'4'#9'PS/N'
-          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'16'#9#908#957#959#956#945
-          'HOURS_COMPLETED'#9'6'#9#937#961#949#962
-          'HAS_ANOTHER_DATE'#9'1'#9'*Date*'
-          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
-          'IS_VALID'#9'7'#9#904#947#954#965#961#959)
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'FK_PERSON_SERIAL'#9'4'#9'PS/N'#9#9
+          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959#9#9
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945#9#9
+          'HOURS_COMPLETED'#9'6'#9#937#961#949#962#9#9
+          'HAS_ANOTHER_DATE'#9'1'#9'*Date*'#9#9
+          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957#9#9
+          'IS_VALID'#9'7'#9#904#947#954#965#961#959#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace

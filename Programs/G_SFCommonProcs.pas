@@ -21,6 +21,7 @@ Function RemoveAccents(Const val:String):string;
 function AllUpper (val:string):Boolean;
 function AllLower (val:string):Boolean;
 Procedure CopyDataRecord(SourceDataset,DestDataset:TDataSet);
+Function G_Boolean(bool :Boolean):string;
 
 
 implementation
@@ -171,6 +172,13 @@ end;
 
 
 
+Function G_Boolean(bool :Boolean):string;
+begin
+  if bool then
+    result:='Y'
+  else
+    result:='N';
+end;
 
 
 end.
