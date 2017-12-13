@@ -41,7 +41,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Width = 1017
       Height = 666
       Hint = ''
-      ActivePage = SubjectTS
+      ActivePage = SeminarTS
       ActivePageDefault = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
@@ -50,7 +50,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 0
       FixedDimension = 22
       object SeminarTS: TRzTabSheet
@@ -595,8 +595,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       object SubjectTS: TRzTabSheet
         OnShow = SubjectTSShow
         Caption = #920#941#956#945#964#945
-        ExplicitLeft = -19
-        ExplicitTop = 31
         object RzPanel20: TRzPanel
           Left = 0
           Top = 17
@@ -627,9 +625,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Align = alTop
               BorderOuter = fsNone
               TabOrder = 0
-              ExplicitLeft = 3
-              ExplicitTop = 0
-              ExplicitWidth = 486
             end
             object wwDBGrid1: TwwDBGrid
               Left = 2
@@ -660,8 +655,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
-              ExplicitLeft = 3
-              ExplicitTop = 55
             end
           end
         end
@@ -673,7 +666,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 1
-          ExplicitLeft = 537
           object GroupBox5: TGroupBox
             Left = 6
             Top = 29
@@ -745,7 +737,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 1
-            ExplicitWidth = 461
             object SubjectNAV: TwwDBNavigator
               Left = 0
               Top = 0
@@ -761,7 +752,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Font.Height = -12
               Font.Name = 'Arial'
               Font.Style = []
-              ExplicitLeft = 6
               object wwNavButton17: TwwNavButton
                 Left = 0
                 Top = 0
@@ -897,7 +887,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
             end
             object RzPanel23: TRzPanel
-              Left = 0
+              Left = 184
               Top = 0
               Width = 0
               Height = 23
@@ -979,7 +969,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 2
-          ExplicitTop = 9
         end
         object RzPanel25: TRzPanel
           Left = 537
@@ -3110,15 +3099,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       'INSERT INTO SEMINAR_TYPE'
       
         '  (SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED, SEM' +
-        'INAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, FEE_ESTI' +
-        'MATE, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, FEE_ACTUAL, FEE_W' +
-        'ITH_ANAD_SUB, TYPE_MONO_POLY)'
+        'INAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, MAX_CAPA' +
+        'CITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :SEMINAR_NAME, :SEMINAR_COST, :ANAD_APPROVED,' +
         ' :SEMINAR_CATEGORY, :DURATION_HOURS, :DURATION_DAYS, :COMMENTS, ' +
-        ':FEE_ESTIMATE, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, :FEE_' +
-        'ACTUAL, :FEE_WITH_ANAD_SUB, :TYPE_MONO_POLY)')
+        ':MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE'
       'WHERE'
@@ -3130,19 +3117,17 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         '  SERIAL_NUMBER = :SERIAL_NUMBER, SEMINAR_NAME = :SEMINAR_NAME, ' +
         'SEMINAR_COST = :SEMINAR_COST, ANAD_APPROVED = :ANAD_APPROVED, SE' +
         'MINAR_CATEGORY = :SEMINAR_CATEGORY, DURATION_HOURS = :DURATION_H' +
-        'OURS, DURATION_DAYS = :DURATION_DAYS, COMMENTS = :COMMENTS, FEE_' +
-        'ESTIMATE = :FEE_ESTIMATE, MAX_CAPACITY = :MAX_CAPACITY, HAS_EXPI' +
-        'RY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, FEE_ACTUAL = :' +
-        'FEE_ACTUAL, FEE_WITH_ANAD_SUB = :FEE_WITH_ANAD_SUB, TYPE_MONO_PO' +
-        'LY = :TYPE_MONO_POLY'
+        'OURS, DURATION_DAYS = :DURATION_DAYS, COMMENTS = :COMMENTS, MAX_' +
+        'CAPACITY = :MAX_CAPACITY, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIO' +
+        'D = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED,' +
-        ' SEMINAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, FEE_' +
-        'ESTIMATE, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, FEE_ACTUAL, F' +
-        'EE_WITH_ANAD_SUB, TYPE_MONO_POLY FROM SEMINAR_TYPE'
+        ' SEMINAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, MAX_' +
+        'CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY FROM SEMINAR' +
+        '_TYPE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -3225,10 +3210,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Visible = False
       Size = 160
     end
-    object TableSQLFEE_ESTIMATE: TFloatField
-      FieldName = 'FEE_ESTIMATE'
-      Visible = False
-    end
     object TableSQLMAX_CAPACITY: TIntegerField
       FieldName = 'MAX_CAPACITY'
       Required = True
@@ -3243,14 +3224,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     end
     object TableSQLEXPIRY_PERIOD: TIntegerField
       FieldName = 'EXPIRY_PERIOD'
-      Visible = False
-    end
-    object TableSQLFEE_ACTUAL: TFloatField
-      FieldName = 'FEE_ACTUAL'
-      Visible = False
-    end
-    object TableSQLFEE_WITH_ANAD_SUB: TFloatField
-      FieldName = 'FEE_WITH_ANAD_SUB'
       Visible = False
     end
   end
@@ -3676,8 +3649,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     Top = 31
   end
   object MainMenu1: TMainMenu
-    Left = 36
-    Top = 20
+    Left = 196
+    Top = 65524
     object Help1: TMenuItem
       Caption = 'Help'
       object Certifcates1: TMenuItem

@@ -179,7 +179,10 @@ gpShowModal(TSN_LoginFRm);
 //TODO   seminar-tabsheets save aux tables with ACCEPT button. Save on Close
 //TODO   invoices on Planned, invoice company on Outsourced
 //TODO   No Certificates on planned
-//TODO
+//TODO    database backup/restore
+//TODO    expenses/revenue report
+//TODO    invoice company instead of students
+
 
 end;
 

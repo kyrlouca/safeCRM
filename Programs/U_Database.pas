@@ -17,6 +17,7 @@ type
     { Private declarations }
     procedure CheckStatusActivity();
     procedure CheckStatusNormal();
+    procedure CheckSemCategory();
   public
     { Public declarations }
      cn:TIBCConnection;
@@ -80,8 +81,12 @@ end;
 
 procedure TU_databaseFRM.DataModuleCreate(Sender: TObject);
 begin
+  ConnectToDatabase;
+  cn:=DataConnection;
+
  CheckStatusActivity();
  CheckStatusNormal();
+ CheckSemCategory();
 end;
 
 
@@ -106,26 +111,40 @@ begin
 
 end;
 
-procedure TU_databaseFRM.CheckStatusNormal();
+
+procedure TU_databaseFRM.CheckSemCategory();
 begin
   ConnectToDatabase;
   cn:=DataConnection;
 
-   if ksCountRecSQL(cn,'select nt.CATEGORY_CODE from SEM_CATEGORY nt where nt.CATEGORY_CODE= ''N'' ',[])=0 then begin
-      ksExecSQLVar(cn,'INSERT INTO SEM_CATEGORY (CATEGORY_CODE,ORDER_NUMBER, DESCRIPTION, DESCRIPTION_GREEK) VALUES (:T,:o,:D,:DG)',['N',0,'Normal','Κανονικό']);
+   if ksCountRecSQL(cn,'select sta.CATEGORY_CODE from sem_category sta where sta.CATEGORY_CODE= :seminarType',['N'])=0 then begin
+      ksExecSQLVar(cn,'INSERT INTO sem_category (Category_code, TYPE_DESC_GR, TYPE_DESC_EN, IS_INVOICE, IS_CERTIFICATE,INVOICE_COMPANY,ORder_number) VALUES ( :S1, :S2,:S3, :S4, :S5,:s6,:s7)',
+      ['N','Κανονικό','Normal','Y','Y','N',1]);
    end;
 
-   if ksCountRecSQL(cn,'select nt.CATEGORY_CODE from SEM_CATEGORY nt where nt.CATEGORY_CODE= ''F'' ',[])=0 then begin
-      ksExecSQLVar(cn,'INSERT INTO SEM_CATEGORY (CATEGORY_CODE,ORDER_NUMBER, DESCRIPTION, DESCRIPTION_GREEK) VALUES (:T,:O,:D,:DG)',['F',1,'Future','Μελλοντικό']);
+   if ksCountRecSQL(cn,'select sta.CATEGORY_CODE from sem_category sta where sta.CATEGORY_CODE= :seminarType',['P'])=0 then begin
+      ksExecSQLVar(cn,'INSERT INTO sem_category (Category_code, TYPE_DESC_GR, TYPE_DESC_EN, IS_INVOICE, IS_CERTIFICATE,INVOICE_COMPANY,ORder_number) VALUES ( :S1, :S2,:S3, :S4, :S5,:s6,:s7)',
+      ['P','Μελλοντικό','Planned','N','N','N',2]);
    end;
 
-   if ksCountRecSQL(cn,'select nt.CATEGORY_CODE from SEM_CATEGORY nt where nt.CATEGORY_CODE= ''M'' ',[])=0 then begin
-      ksExecSQLVar(cn,'INSERT INTO SEM_CATEGORY (CATEGORY_CODE,ORDER_NUMBER, DESCRIPTION, DESCRIPTION_GREEK) VALUES (:T,:o,:D,:DG)',['M',2,'Monitor','Παρακολούθηση']);
+   if ksCountRecSQL(cn,'select sta.CATEGORY_CODE from sem_category sta where sta.CATEGORY_CODE= :seminarType',['M'])=0 then begin
+      ksExecSQLVar(cn,'INSERT INTO sem_category (Category_code, TYPE_DESC_GR, TYPE_DESC_EN, IS_INVOICE, IS_CERTIFICATE,INVOICE_COMPANY,ORder_number) VALUES ( :S1, :S2,:S3, :S4, :S5,:s6,:s7)',
+      ['M','Παρακολούθηση','Monitor','N','N','N',3]);
+   end;
+
+   if ksCountRecSQL(cn,'select sta.CATEGORY_CODE from sem_category sta where sta.CATEGORY_CODE= :seminarType',['C'])=0 then begin
+      ksExecSQLVar(cn,'INSERT INTO sem_category (Category_code, TYPE_DESC_GR, TYPE_DESC_EN, IS_INVOICE, IS_CERTIFICATE,INVOICE_COMPANY,ORder_number) VALUES ( :S1, :S2,:S3, :S4, :S5,:s6,:s7)',
+      ['C','Υπεργολαβία','Commission','Y','Y','Y',4]);
    end;
 
 
+end;
 
 
+
+
+procedure TU_databaseFRM.CheckStatusNormal();
+begin
 end;
 
 

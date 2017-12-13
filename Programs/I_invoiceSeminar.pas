@@ -492,11 +492,24 @@ var
   SeminarSerial:Integer;
   seminarSubjectSerial:Integer;
   SeminarStatus:String;
+  SeminarCategory:String;
+  str:string;
 begin
   SeminarStatus:=SeminarSQL.FieldByName('status').AsString;
   if SeminarStatus='P' then begin
     MessageDlg('Το σεμινάριο  δεν μπορεί να τιμολογηθεί γιατί δεν έχει γίνει ''APPROVED'' ', mtWarning, [mbOK], 0);
     abort;
+  end;
+
+  SeminarCategory:=SeminarSQL.FieldByName('sem_category').AsString;
+  SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+  str:= 'select sc.category_code,sc.is_invoice from'
+      +' seminar sem        left outer join '
+      +' sem_category sc    on sem.sem_category=sc.category_code'
+      +' where  sem.serial_number = :SeminarSerial and sc.is_invoice=''Y'' ';
+  if ksCountRecVarSQL(cn,str,[SeminarSerial])=0 then begin
+    MessageDlg('Seminar Type '+ SeminarCategory +' cannot be Invoiced', mtWarning, [mbOK], 0);
+    exit;
   end;
 
   if InvoiceSQL.State in [dsEdit,dsInsert] then begin

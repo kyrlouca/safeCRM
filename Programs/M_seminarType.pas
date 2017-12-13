@@ -65,12 +65,9 @@ type
     AfterFLD: TwwDBComboBox;
     NamePersonFLD: TwwDBComboBox;
     StartEndLD: TwwDBComboBox;
-    TableSQLFEE_ESTIMATE: TFloatField;
     TableSQLMAX_CAPACITY: TIntegerField;
     TableSQLHAS_EXPIRY: TWideStringField;
     TableSQLEXPIRY_PERIOD: TIntegerField;
-    TableSQLFEE_ACTUAL: TFloatField;
-    TableSQLFEE_WITH_ANAD_SUB: TFloatField;
     TitlePNL: TRzPanel;
     RzPanel8: TRzPanel;
     TableSQLTYPE_MONO_POLY: TWideStringField;

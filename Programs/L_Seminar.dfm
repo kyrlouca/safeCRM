@@ -151,14 +151,14 @@ object L_SeminarFRM: TL_SeminarFRM
     Left = 0
     Top = 53
     Width = 1053
-    Height = 100
+    Height = 92
     Align = alTop
     TabOrder = 1
     object RzGroupBox1: TRzGroupBox
       Left = 5
-      Top = 2
+      Top = 6
       Width = 237
-      Height = 97
+      Height = 83
       Caption = 'Filter Seminars'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -183,11 +183,11 @@ object L_SeminarFRM: TL_SeminarFRM
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 11
+        Left = 33
         Top = 53
-        Width = 56
+        Width = 34
         Height = 15
-        Caption = #922#945#964#951#947#959#961#943#945
+        Caption = #932#973#960#959#962
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -273,20 +273,23 @@ object L_SeminarFRM: TL_SeminarFRM
   end
   object Panel3: TPanel
     Left = 0
-    Top = 153
+    Top = 145
     Width = 1053
-    Height = 342
+    Height = 350
     Align = alClient
     TabOrder = 2
+    ExplicitTop = 153
+    ExplicitHeight = 342
     object Panel5: TPanel
       Left = 833
       Top = 1
       Width = 224
-      Height = 340
+      Height = 348
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 340
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -679,21 +682,23 @@ object L_SeminarFRM: TL_SeminarFRM
       end
     end
     object RzPanel2: TRzPanel
-      Left = 57
+      Left = 25
       Top = 1
-      Width = 776
-      Height = 340
+      Width = 808
+      Height = 348
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 340
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 776
+        Width = 808
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 776
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -829,22 +834,24 @@ object L_SeminarFRM: TL_SeminarFRM
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 745
-        Height = 307
+        Width = 808
+        Height = 315
         ControlType.Strings = (
           'SEMINAR_CORP_TYPE;CustomEdit;wwDBComboBox1;F'
           'TYPE_MONO_POLY;CheckBox;M;P'
-          'STATUS;CustomEdit;StatusShowFLD;T')
+          'STATUS;CustomEdit;StatusShowFLD;T'
+          'SEM_CATEGORY;CustomEdit;CategoryShowFLD;F')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'5'#9'A/A'
-          'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942
-          'ANAD_NUMBER'#9'13'#9#913#925#913#916' '
-          'STATUS'#9'11'#9#931#964#940#948#953#959
-          'TYPE_MONO_POLY'#9'9'#9#924#972#957#959'-'#917#960#967
-          'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945
-          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
-          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
-          'DURATION_HOURS'#9'6'#9#911#961#949#962)
+          'SERIAL_NUMBER'#9'5'#9'A/A'#9#9
+          'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942#9#9
+          'ANAD_NUMBER'#9'13'#9#913#925#913#916' '#9#9
+          'STATUS'#9'11'#9#931#964#940#948#953#959#9#9
+          'SEM_CATEGORY'#9'15'#9#932#973#960#959#962#9#9
+          'TYPE_MONO_POLY'#9'9'#9#924#972#957#959'-'#917#960#967#9#9
+          'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945#9#9
+          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951#9#9
+          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962#9#9
+          'DURATION_HOURS'#9'6'#9#911#961#949#962#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -873,6 +880,7 @@ object L_SeminarFRM: TL_SeminarFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
+        ExplicitHeight = 307
         object StatusShowFLD: TwwDBComboBox
           Left = 304
           Top = 176
@@ -892,17 +900,37 @@ object L_SeminarFRM: TL_SeminarFRM
           TabOrder = 0
           UnboundDataType = wwDefault
         end
+        object CategoryShowFLD: TwwDBComboBox
+          Left = 448
+          Top = 168
+          Width = 70
+          Height = 17
+          ShowButton = False
+          Style = csDropDown
+          MapList = False
+          AllowClearKey = False
+          ButtonStyle = cbsCustom
+          DataField = 'SEM_CATEGORY'
+          DataSource = TableSRC
+          DisableDropDownList = True
+          DropDownCount = 8
+          ItemHeight = 0
+          Sorted = False
+          TabOrder = 1
+          UnboundDataType = wwDefault
+        end
       end
     end
     object RzPanel4: TRzPanel
       Left = 1
       Top = 1
-      Width = 56
-      Height = 340
+      Width = 24
+      Height = 348
       Align = alLeft
       Alignment = taLeftJustify
       BorderOuter = fsNone
       TabOrder = 2
+      ExplicitHeight = 340
     end
   end
   object TableSRC: TDataSource
@@ -1014,6 +1042,14 @@ object L_SeminarFRM: TL_SeminarFRM
       DisplayLabel = #931#964#940#948#953#959
       DisplayWidth = 11
       FieldName = 'STATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLSEM_CATEGORY: TWideStringField
+      DisplayLabel = #932#973#960#959#962
+      DisplayWidth = 15
+      FieldName = 'SEM_CATEGORY'
+      Required = True
       FixedChar = True
       Size = 1
     end
@@ -1131,13 +1167,6 @@ object L_SeminarFRM: TL_SeminarFRM
     object TableSQLFK_EXAMINER: TIntegerField
       FieldName = 'FK_EXAMINER'
       Visible = False
-    end
-    object TableSQLSEM_CATEGORY: TWideStringField
-      FieldName = 'SEM_CATEGORY'
-      Required = True
-      Visible = False
-      FixedChar = True
-      Size = 1
     end
   end
   object WriteTrans: TIBCTransaction

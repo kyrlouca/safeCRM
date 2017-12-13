@@ -88,7 +88,6 @@ object V_SeminarFRM: TV_SeminarFRM
         TabOrder = 0
         UnboundDataType = wwDefault
         Align = alRight
-        ExplicitHeight = 38
       end
     end
   end
@@ -2796,7 +2795,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800F00210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800F40210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3587,8 +3586,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object AttendingSRC: TDataSource
     DataSet = AttendingSQL
-    Left = 152
-    Top = 153
+    Left = 312
+    Top = 137
   end
   object NonAttendSQL: TIBCQuery
     UpdatingTable = 'person'
@@ -3945,8 +3944,8 @@ object V_SeminarFRM: TV_SeminarFRM
     Active = True
     OnCalcFields = SeminarCostItemSQLCalcFields
     OnNewRecord = SeminarCostItemSQLNewRecord
-    Left = 121
-    Top = 293
+    Left = 265
+    Top = 221
     ParamData = <
       item
         DataType = ftInteger

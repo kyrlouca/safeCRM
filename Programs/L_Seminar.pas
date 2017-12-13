@@ -78,6 +78,7 @@ type
     N3: TMenuItem;
     N1: TMenuItem;
     N2: TMenuItem;
+    CategoryShowFLD: TwwDBComboBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -181,6 +182,8 @@ vAR
   Frm:TP_attendanceFRM;
 seminarSerial:Integer;
 seminarStatus:string;
+SeminarCategory:string;
+str:string;
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
@@ -189,6 +192,19 @@ begin
 //    MessageDlg('Δεν γίνεται να καταγραφούν παρουσίες γιατί το Σεμινάριο δεν είναι σε στάδιο ''APPROVED'' ', mtWarning, [mbOK], 0);
 //    abort;
 //  end;
+
+  SeminarCategory:= CategorySHowFLD.Text;
+  SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  str:= 'select sc.category_code,sc.is_invoice from'
+      +' seminar sem        left outer join '
+      +' sem_category sc    on sem.sem_category=sc.category_code'
+      +' where  sem.serial_number = :SeminarSerial and sc.is_CERTIFICATE=''Y'' ';
+  if ksCountRecVarSQL(cn,str,[SeminarSerial])=0 then begin
+    MessageDlg('Για Σεμινάρια του τύπου: '+ SeminarCategory +' δεν παίρνονται Παρουσίες', mtWarning, [mbOK], 0);
+    exit;
+  end;
+
+
 
 
   frm :=  TP_attendanceFRM.Create(nil);
@@ -221,9 +237,9 @@ end;
 procedure TL_SeminarFRM.FormActivate(Sender: TObject);
 begin
 ksfillComboF1(cn,StatusFLD, 'status_activity','status','description_greek','',false,True);
-ksfillComboF1(cn,CategoryFLD,'sem_category','Category_code','description_greek','',false,True);
-
+ksfillComboF1(cn,CategoryFLD,'sem_category','Category_code','TYPE_DESC_GR','',false,True);
 ksfillComboF1(cn,StatusShowFLD, 'status_activity','status','description_greek');
+ksfillComboF1(cn,CategoryShowFLD,'sem_category','Category_code','TYPE_DESC_GR','',false,True);
 
 statusFLD.ItemIndex:=0;
 //tableSQL.AddWhere('sem.status = '''' ');
@@ -333,14 +349,28 @@ vAR
   Frm:TI_InvoiceSeminarFRM;
 seminarSerial:Integer;
 SeminarStatus:string;
+SeminarCategory:String;
+str:string;
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
-//  SeminarStatus:=TableSQL.FieldByName('status').AsString;
+  //Let it be so user can see invoices
+  //  SeminarStatus:=TableSQL.FieldByName('status').AsString;
 //  if SeminarStatus='P' then begin
 //    MessageDlg('Δεν εκδίδονται Τιμολόγια γιατί το Σεμινάριο δεν έχει γίνει ''APPROVED'' ', mtWarning, [mbOK], 0);
 //    abort;
 //  end;
+
+  SeminarCategory:=CategorySHowFLD.Text;
+  SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  str:= 'select sc.category_code,sc.is_invoice from'
+      +' seminar sem        left outer join '
+      +' sem_category sc    on sem.sem_category=sc.category_code'
+      +' where  sem.serial_number = :SeminarSerial and sc.is_invoice=''Y'' ';
+  if ksCountRecVarSQL(cn,str,[SeminarSerial])=0 then begin
+    MessageDlg('Σεμινάρια του τύπου: '+ SeminarCategory +' δεν τιμολογούνται', mtWarning, [mbOK], 0);
+    exit;
+  end;
 
 
   frm :=  TI_InvoiceSeminarFRM.Create(nil);
@@ -446,7 +476,10 @@ vAR
   Frm:TI_CertificatesFRM;
 seminarSerial:Integer;
 SeminarStatus:String;
+SeminarCategory:string;
+  str:String;
 begin
+
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
   SeminarStatus:=TableSQL.FieldByName('status').AsString;
@@ -454,6 +487,19 @@ begin
 //    MessageDlg('Δεν εκδίδονται πιστοιητικά γιατί το σεμινάριο δεν έχει γίνει ''COMPLETED'' ', mtWarning, [mbOK], 0);
 //    abort;
 //  end;
+
+  SeminarCategory:= CategorySHowFLD.Text;
+  SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  str:= 'select sc.category_code,sc.is_invoice from'
+      +' seminar sem        left outer join '
+      +' sem_category sc    on sem.sem_category=sc.category_code'
+      +' where  sem.serial_number = :SeminarSerial and sc.is_CERTIFICATE=''Y'' ';
+  if ksCountRecVarSQL(cn,str,[SeminarSerial])=0 then begin
+    MessageDlg('Για Σεμινάρια του τύπου: '+ SeminarCategory +' δεν εκδίδονται Πιστοποιητικά', mtWarning, [mbOK], 0);
+    exit;
+  end;
+
+
 
 
   frm :=  TI_CertificatesFRM.Create(nil);

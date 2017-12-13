@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 577
+  ClientHeight = 517
   ClientWidth = 1079
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 534
+    Top = 474
     Width = 1079
     Height = 43
     Align = alBottom
@@ -190,7 +190,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 65
     Width = 1079
-    Height = 469
+    Height = 409
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
@@ -198,7 +198,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 421
       Top = 2
       Width = 750
-      Height = 465
+      Height = 405
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -348,12 +348,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 422
+        Top = 362
         Width = 750
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         TabOrder = 1
+        ExplicitLeft = 6
         object RzPanel6: TRzPanel
           Left = 649
           Top = 1
@@ -512,7 +513,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Left = 6
         Top = 47
         Width = 723
-        Height = 338
+        Height = 298
         ControlType.Strings = (
           'IS_ANAD;CustomEdit;AnadCheckFLD;F')
         Selected.Strings = (
@@ -567,7 +568,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 419
-      Height = 465
+      Height = 405
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -582,7 +583,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 268
+        Top = 208
         Width = 419
         Height = 197
         Align = alBottom
