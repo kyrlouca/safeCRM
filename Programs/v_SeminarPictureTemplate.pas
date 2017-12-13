@@ -13,7 +13,7 @@ uses
     CodeSiteMessage, Vcl.ExtDlgs, Vcl.Menus;
 type
   TV_SeminarPictureTemplateFRM = class(TForm)
-    Panel4: TPanel;
+    Panel4: TRzPanel;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     RzPanel1: TRzPanel;
@@ -47,8 +47,14 @@ type
     SeminarPictureSQLBR_Y: TIntegerField;
     OpenPictureDialog1: TOpenPictureDialog;
     RzPanel2: TRzPanel;
-    RzPageControl1: TRzPageControl;
-    TabSheet1: TRzTabSheet;
+    MainMenu1: TMainMenu;
+    Help1: TMenuItem;
+    Certifcates1: TMenuItem;
+    PageCtl: TPageControl;
+    PictTS: TTabSheet;
+    RzPanel7: TRzPanel;
+    LanguageRGP: TwwRadioGroup;
+    certificatesHelpRE: TwwDBRichEdit;
     PictureGRP: TRzGroupBox;
     SelTopLeftBTN: TRzBitBtn;
     ClearTopLeftBTN: TRzBitBtn;
@@ -74,16 +80,11 @@ type
     wwDBEdit6: TwwDBEdit;
     wwDBEdit7: TwwDBEdit;
     wwDBEdit8: TwwDBEdit;
-    LanguageRGP: TwwRadioGroup;
-    certificatesHelpRE: TwwDBRichEdit;
-    MainMenu1: TMainMenu;
-    Help1: TMenuItem;
-    Certifcates1: TMenuItem;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure CloseBTNClick(Sender: TObject);
-    procedure TabSheet1Show(Sender: TObject);
+    procedure PictTSShow(Sender: TObject);
     procedure LanguageRGPChange(Sender: TObject);
     procedure PictureGRPExit(Sender: TObject);
     procedure PICTURE_TOP_L1DblClick(Sender: TObject);
@@ -131,7 +132,7 @@ begin
 end;
 
 
-procedure TV_SeminarPictureTemplateFRM.TabSheet1Show(Sender: TObject);
+procedure TV_SeminarPictureTemplateFRM.PictTSShow(Sender: TObject);
 var
   allowModify: boolean;
 SeminarSerial:Integer;
