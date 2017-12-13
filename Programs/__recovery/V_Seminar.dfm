@@ -1535,6 +1535,8 @@ object V_SeminarFRM: TV_SeminarFRM
               Align = alTop
               BorderOuter = fsNone
               TabOrder = 0
+              ExplicitLeft = 4
+              ExplicitTop = 10
             end
             object wwDBGrid1: TwwDBGrid
               Left = 2
