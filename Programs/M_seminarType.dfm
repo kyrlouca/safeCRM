@@ -35,2788 +35,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     ParentFont = False
     TabOrder = 0
     VisualStyle = vsClassic
-    object SeminarPC: TRzPageControl
-      Left = 0
-      Top = 67
-      Width = 1017
-      Height = 666
-      Hint = ''
-      ActivePage = SeminarTS
-      ActivePageDefault = SeminarTS
-      Align = alClient
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Arial'
-      Font.Style = []
-      ParentFont = False
-      TabIndex = 0
-      TabOrder = 0
-      FixedDimension = 22
-      object SeminarTS: TRzTabSheet
-        Caption = #931#949#956#953#957#940#961#953#945
-        object RzPanel2: TRzPanel
-          Left = 0
-          Top = 39
-          Width = 361
-          Height = 601
-          Align = alLeft
-          BorderOuter = fsNone
-          TabOrder = 1
-          object RzPanel3: TRzPanel
-            Left = 0
-            Top = 0
-            Width = 361
-            Height = 17
-            Align = alTop
-            BorderOuter = fsNone
-            TabOrder = 0
-          end
-          object Grid1: TwwDBGrid
-            Left = 0
-            Top = 17
-            Width = 361
-            Height = 584
-            ControlType.Strings = (
-              'ANAD_APPROVED;CheckBox;Y;N'
-              'TYPE_MONO_POLY;CheckBox;P;M')
-            Selected.Strings = (
-              'SERIAL_NUMBER'#9'4'#9'A/A'
-              'SEMINAR_NAME'#9'28'#9#928#949#961#953#947#961#945#966#942
-              'ANAD_APPROVED'#9'6'#9#913#925#913#916
-              'TYPE_MONO_POLY'#9'9'#9#928#959#955#965#917#960#967)
-            IniAttributes.Delimiter = ';;'
-            IniAttributes.UnicodeIniFile = False
-            TitleColor = clBtnFace
-            FixedCols = 0
-            ShowHorzScrollBar = True
-            Align = alLeft
-            BorderStyle = bsNone
-            Color = 12713983
-            DataSource = TableSRC
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            KeyOptions = []
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
-            ParentFont = False
-            ReadOnly = True
-            TabOrder = 1
-            TitleAlignment = taLeftJustify
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -13
-            TitleFont.Name = 'Arial'
-            TitleFont.Style = []
-            TitleLines = 1
-            TitleButtons = True
-            OnTitleButtonClick = Grid1TitleButtonClick
-          end
-        end
-        object Panel5: TRzPanel
-          Left = 0
-          Top = 0
-          Width = 1013
-          Height = 39
-          Align = alTop
-          BorderOuter = fsFlatRounded
-          BorderSides = [sdRight, sdBottom]
-          TabOrder = 0
-          object wwIncrementalSearch1: TwwIncrementalSearch
-            Left = 15
-            Top = 11
-            Width = 128
-            Height = 22
-            DataSource = TableSRC
-            ShowMatchText = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-          end
-        end
-        object RzPanel12: TRzPanel
-          Left = 361
-          Top = 39
-          Width = 652
-          Height = 601
-          Align = alClient
-          TabOrder = 2
-          object GroupBox1: TGroupBox
-            Left = 31
-            Top = 31
-            Width = 349
-            Height = 188
-            Caption = #928#955#951#961#959#966#959#961#943#949#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-            object Label2: TLabel
-              Left = 54
-              Top = 46
-              Width = 58
-              Height = 14
-              Caption = #928#949#961#953#947#961#945#966#942
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label3: TLabel
-              Left = 91
-              Top = 21
-              Width = 21
-              Height = 14
-              Caption = #913'/'#913
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object SerialFLD: TRzDBLabel
-              Left = 119
-              Top = 19
-              Width = 75
-              Height = 20
-              Alignment = taRightJustify
-              BorderOuter = fsFlat
-              BorderWidth = 1
-              DataField = 'SERIAL_NUMBER'
-              DataSource = TableSRC
-            end
-            object Label7: TLabel
-              Left = 77
-              Top = 101
-              Width = 35
-              Height = 14
-              Caption = #931#967#972#955#953#945
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label18: TLabel
-              Left = 60
-              Top = 81
-              Width = 52
-              Height = 14
-              Caption = #928#959#955#965'-'#917#960#967
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label5: TLabel
-              Left = 3
-              Top = 157
-              Width = 105
-              Height = 14
-              Caption = #917#960#953#967#959#961#942#947#951#963#951' '#913#925#913#916
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object FirstFLD: TwwDBEdit
-              Left = 119
-              Top = 43
-              Width = 219
-              Height = 22
-              DataField = 'SEMINAR_NAME'
-              DataSource = TableSRC
-              TabOrder = 0
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-            object RzDBRichEdit1: TRzDBRichEdit
-              Left = 118
-              Top = 101
-              Width = 219
-              Height = 49
-              DataField = 'COMMENTS'
-              DataSource = TableSRC
-              Font.Charset = GREEK_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              TabOrder = 1
-              Zoom = 100
-            end
-            object wwCheckBox1: TwwCheckBox
-              AlignWithMargins = True
-              Left = 119
-              Top = 78
-              Width = 29
-              Height = 17
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = 'Y'
-              ValueUnchecked = 'N'
-              DisplayValueChecked = 'P'
-              DisplayValueUnchecked = 'M'
-              NullAndBlankState = cbUnchecked
-              DataField = 'TYPE_MONO_POLY'
-              DataSource = TableSRC
-              ShowText = False
-              TabOrder = 2
-            end
-            object wwCheckBox4: TwwCheckBox
-              AlignWithMargins = True
-              Left = 121
-              Top = 156
-              Width = 29
-              Height = 17
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = 'Y'
-              ValueUnchecked = 'N'
-              DisplayValueChecked = 'Y'
-              DisplayValueUnchecked = 'N'
-              NullAndBlankState = cbUnchecked
-              Checked = True
-              DataField = 'ANAD_APPROVED'
-              DataSource = TableSRC
-              ShowText = False
-              State = cbChecked
-              TabOrder = 3
-            end
-          end
-          object SecondGRP: TRzGroupBox
-            Left = 31
-            Top = 225
-            Width = 349
-            Height = 160
-            Caption = #916#953#940#961#954#949#953#945
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            object Label19: TLabel
-              Left = 58
-              Top = 21
-              Width = 74
-              Height = 14
-              Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label21: TLabel
-              Left = 8
-              Top = 49
-              Width = 124
-              Height = 14
-              Caption = #924#941#947#953#963#964#959#962' '#913#961'. '#924#945#952#951#964#974#957
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label1: TLabel
-              Left = 59
-              Top = 87
-              Width = 73
-              Height = 14
-              Caption = #933#960#940#961#967#949#953' '#923#942#958#951
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label8: TLabel
-              Left = 53
-              Top = 113
-              Width = 79
-              Height = 14
-              Caption = #923#942#958#951' '#963#949' '#924#942#957#949#962
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object wwDBEdit9: TwwDBEdit
-              Left = 138
-              Top = 18
-              Width = 90
-              Height = 22
-              DataField = 'DURATION_HOURS'
-              DataSource = TableSRC
-              TabOrder = 0
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-            object wwDBEdit10: TwwDBEdit
-              Left = 138
-              Top = 46
-              Width = 90
-              Height = 22
-              DataField = 'MAX_CAPACITY'
-              DataSource = TableSRC
-              TabOrder = 1
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-            object CompletedFLD: TwwCheckBox
-              Left = 138
-              Top = 86
-              Width = 37
-              Height = 18
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = 'Y'
-              ValueUnchecked = 'N'
-              DisplayValueChecked = 'Y'
-              DisplayValueUnchecked = 'N'
-              NullAndBlankState = cbUnchecked
-              Checked = True
-              DataField = 'HAS_EXPIRY'
-              DataSource = TableSRC
-              ShowText = False
-              State = cbChecked
-              TabOrder = 2
-            end
-            object wwDBEdit2: TwwDBEdit
-              Left = 138
-              Top = 110
-              Width = 75
-              Height = 22
-              DataField = 'EXPIRY_PERIOD'
-              DataSource = TableSRC
-              TabOrder = 3
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-          end
-          object RzPanel13: TRzPanel
-            Left = 2
-            Top = 2
-            Width = 648
-            Height = 23
-            Align = alTop
-            BorderOuter = fsNone
-            TabOrder = 2
-            object wwDBNavigator2: TwwDBNavigator
-              Left = 23
-              Top = 0
-              Width = 207
-              Height = 23
-              AutosizeStyle = asSizeNavButtons
-              DataSource = TableSRC
-              RepeatInterval.InitialDelay = 500
-              RepeatInterval.Interval = 100
-              Align = alLeft
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Arial'
-              Font.Style = []
-              object wwNavButton1: TwwNavButton
-                Left = 0
-                Top = 0
-                Width = 26
-                Height = 23
-                Hint = 'Move to first record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Button'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 0
-                Style = nbsFirst
-              end
-              object wwNavButton2: TwwNavButton
-                Left = 26
-                Top = 0
-                Width = 26
-                Height = 23
-                Hint = 'Move to prior record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Prior'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 1
-                Style = nbsPrior
-              end
-              object wwNavButton3: TwwNavButton
-                Left = 52
-                Top = 0
-                Width = 26
-                Height = 23
-                Hint = 'Move to next record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Next'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 2
-                Style = nbsNext
-              end
-              object wwNavButton4: TwwNavButton
-                Left = 78
-                Top = 0
-                Width = 26
-                Height = 23
-                Hint = 'Move to last record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Button1'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 3
-                Style = nbsLast
-              end
-              object wwNavButton5: TwwNavButton
-                Left = 104
-                Top = 0
-                Width = 26
-                Height = 23
-                Hint = 'Insert new record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Insert'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                OnClick = wwNavButton5Click
-                Index = 4
-                Style = nbsInsert
-              end
-              object wwNavButton6: TwwNavButton
-                Left = 130
-                Top = 0
-                Width = 26
-                Height = 23
-                Hint = 'Delete current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Delete'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 5
-                Style = nbsDelete
-              end
-              object wwNavButton7: TwwNavButton
-                Left = 156
-                Top = 0
-                Width = 26
-                Height = 23
-                Hint = 'Post changes of current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Post'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 6
-                Style = nbsPost
-              end
-              object wwNavButton8: TwwNavButton
-                Left = 182
-                Top = 0
-                Width = 25
-                Height = 23
-                Hint = 'Cancel changes made to current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Cancel'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 7
-                Style = nbsCancel
-              end
-            end
-            object RzPanel14: TRzPanel
-              Left = 0
-              Top = 0
-              Width = 23
-              Height = 23
-              Align = alLeft
-              BorderOuter = fsNone
-              TabOrder = 1
-            end
-          end
-        end
-      end
-      object SubjectTS: TRzTabSheet
-        OnShow = SubjectTSShow
-        Caption = #920#941#956#945#964#945
-        object RzPanel20: TRzPanel
-          Left = 0
-          Top = 17
-          Width = 537
-          Height = 623
-          Align = alLeft
-          BorderOuter = fsNone
-          TabOrder = 0
-          object GroupBox2: TGroupBox
-            Left = 0
-            Top = 0
-            Width = 537
-            Height = 233
-            Align = alTop
-            Caption = #920#941#956#945#964#945
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-            object RzPanel4: TRzPanel
-              Left = 2
-              Top = 16
-              Width = 533
-              Height = 33
-              Align = alTop
-              BorderOuter = fsNone
-              TabOrder = 0
-            end
-            object wwDBGrid1: TwwDBGrid
-              Left = 2
-              Top = 49
-              Width = 533
-              Height = 182
-              Selected.Strings = (
-                'SERIAL_NUMBER'#9'10'#9'A/A'
-                'SUBJECT'#9'30'#9#920#941#956#945
-                'FEE_NORMAL'#9'10'#9#932#953#956#942' '#954#945#957#959#957#953#954#942
-                'FEE_REDUCED'#9'10'#9#932#953#956#942' '#913#925#913#916)
-              IniAttributes.Delimiter = ';;'
-              IniAttributes.UnicodeIniFile = False
-              TitleColor = clBtnFace
-              FixedCols = 1
-              ShowHorzScrollBar = True
-              Align = alClient
-              Color = 12713983
-              DataSource = SeminarSubjectSRC
-              Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
-              ReadOnly = True
-              TabOrder = 1
-              TitleAlignment = taLeftJustify
-              TitleFont.Charset = DEFAULT_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -12
-              TitleFont.Name = 'Tahoma'
-              TitleFont.Style = []
-              TitleLines = 1
-              TitleButtons = False
-            end
-          end
-        end
-        object RzPanel19: TRzPanel
-          Left = 593
-          Top = 17
-          Width = 344
-          Height = 623
-          Align = alLeft
-          BorderOuter = fsNone
-          TabOrder = 1
-          object GroupBox5: TGroupBox
-            Left = 6
-            Top = 29
-            Width = 338
-            Height = 92
-            Caption = #928#955#951#961#959#966#959#961#943#949#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-            object Label22: TLabel
-              Left = 43
-              Top = 46
-              Width = 58
-              Height = 14
-              Caption = #928#949#961#953#947#961#945#966#942
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label23: TLabel
-              Left = 80
-              Top = 21
-              Width = 21
-              Height = 14
-              Caption = #913'/'#913
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object RzDBLabel2: TRzDBLabel
-              Left = 107
-              Top = 17
-              Width = 75
-              Height = 20
-              Alignment = taRightJustify
-              BorderOuter = fsFlat
-              BorderWidth = 1
-              DataField = 'SERIAL_NUMBER'
-              DataSource = SeminarSubjectSRC
-            end
-            object SubjectDescFLD: TwwDBEdit
-              Left = 108
-              Top = 43
-              Width = 219
-              Height = 22
-              DataField = 'SUBJECT'
-              DataSource = SeminarSubjectSRC
-              TabOrder = 0
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-          end
-          object RzPanel21: TRzPanel
-            Left = 0
-            Top = 0
-            Width = 344
-            Height = 23
-            Align = alTop
-            BorderOuter = fsNone
-            TabOrder = 1
-            object SubjectNAV: TwwDBNavigator
-              Left = 0
-              Top = 0
-              Width = 184
-              Height = 23
-              AutosizeStyle = asSizeNavButtons
-              DataSource = SeminarSubjectSRC
-              RepeatInterval.InitialDelay = 500
-              RepeatInterval.Interval = 100
-              Align = alLeft
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Arial'
-              Font.Style = []
-              object wwNavButton17: TwwNavButton
-                Left = 0
-                Top = 0
-                Width = 23
-                Height = 23
-                Hint = 'Move to first record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Button'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 0
-                Style = nbsFirst
-              end
-              object wwNavButton18: TwwNavButton
-                Left = 23
-                Top = 0
-                Width = 23
-                Height = 23
-                Hint = 'Move to prior record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Prior'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 1
-                Style = nbsPrior
-              end
-              object wwNavButton19: TwwNavButton
-                Left = 46
-                Top = 0
-                Width = 23
-                Height = 23
-                Hint = 'Move to next record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Next'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 2
-                Style = nbsNext
-              end
-              object wwNavButton20: TwwNavButton
-                Left = 69
-                Top = 0
-                Width = 23
-                Height = 23
-                Hint = 'Move to last record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Button1'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 3
-                Style = nbsLast
-              end
-              object wwNavButton21: TwwNavButton
-                Left = 92
-                Top = 0
-                Width = 23
-                Height = 23
-                Hint = 'Insert new record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Insert'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                OnClick = Nav1InsertClick
-                Index = 4
-                Style = nbsInsert
-              end
-              object wwNavButton22: TwwNavButton
-                Left = 115
-                Top = 0
-                Width = 23
-                Height = 23
-                Hint = 'Delete current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Delete'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 5
-                Style = nbsDelete
-              end
-              object wwNavButton23: TwwNavButton
-                Left = 138
-                Top = 0
-                Width = 23
-                Height = 23
-                Hint = 'Post changes of current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Post'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 6
-                Style = nbsPost
-              end
-              object wwNavButton24: TwwNavButton
-                Left = 161
-                Top = 0
-                Width = 23
-                Height = 23
-                Hint = 'Cancel changes made to current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Cancel'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 7
-                Style = nbsCancel
-              end
-            end
-            object RzPanel23: TRzPanel
-              Left = 184
-              Top = 0
-              Width = 0
-              Height = 23
-              Align = alLeft
-              BorderOuter = fsNone
-              TabOrder = 1
-            end
-          end
-          object RzGroupBox1: TRzGroupBox
-            Left = 6
-            Top = 135
-            Width = 349
-            Height = 98
-            Caption = #932#953#956#941#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 2
-            object Label4: TLabel
-              Left = 27
-              Top = 56
-              Width = 112
-              Height = 14
-              Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label6: TLabel
-              Left = 11
-              Top = 28
-              Width = 128
-              Height = 14
-              Caption = #932#953#956#942' '#967#969#961#943#962' '#949#960#953#967#959#961#942#947#951#963#951
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object wwDBEdit1: TwwDBEdit
-              Left = 145
-              Top = 53
-              Width = 76
-              Height = 22
-              DataField = 'FEE_REDUCED'
-              DataSource = SeminarSubjectSRC
-              TabOrder = 1
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-            object wwDBEdit3: TwwDBEdit
-              Left = 145
-              Top = 25
-              Width = 76
-              Height = 22
-              DataField = 'FEE_NORMAL'
-              DataSource = SeminarSubjectSRC
-              TabOrder = 0
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-          end
-        end
-        object RzPanel24: TRzPanel
-          Left = 0
-          Top = 0
-          Width = 1013
-          Height = 17
-          Align = alTop
-          BorderOuter = fsNone
-          TabOrder = 2
-        end
-        object RzPanel25: TRzPanel
-          Left = 537
-          Top = 17
-          Width = 56
-          Height = 623
-          Align = alLeft
-          BorderOuter = fsNone
-          TabOrder = 3
-        end
-      end
-      object ReminderTS: TRzTabSheet
-        OnShow = ReminderTSShow
-        Caption = #917#961#947#945#963#943#949#962
-        object RzPanel6: TRzPanel
-          Left = 0
-          Top = 0
-          Width = 1013
-          Height = 39
-          Align = alTop
-          BorderOuter = fsFlatRounded
-          BorderSides = [sdRight, sdBottom]
-          TabOrder = 0
-          object wwIncrementalSearch2: TwwIncrementalSearch
-            Left = 15
-            Top = 11
-            Width = 218
-            Height = 22
-            DataSource = SeminarReminderSRC
-            SearchField = 'Description'
-            ShowMatchText = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-          end
-        end
-        object GroupBox3: TGroupBox
-          Left = 0
-          Top = 39
-          Width = 469
-          Height = 601
-          Align = alLeft
-          Caption = #933#960#949#957#952#965#956#943#963#949#953#962
-          Ctl3D = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentCtl3D = False
-          ParentFont = False
-          TabOrder = 1
-          object RzPanel5: TRzPanel
-            Left = 1
-            Top = 15
-            Width = 467
-            Height = 18
-            Align = alTop
-            BorderOuter = fsNone
-            TabOrder = 0
-          end
-          object wwDBGrid2: TwwDBGrid
-            Left = 1
-            Top = 33
-            Width = 467
-            Height = 567
-            ControlType.Strings = (
-              'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
-              'DAYS_OR_MONTHS;CustomEdit;NamePersonFLD;F'
-              'START_OR_END;CustomEdit;StartEndLD;F')
-            Selected.Strings = (
-              'SERIAL_NUMBER'#9'3'#9'A/A'
-              'DESCRIPTION'#9'10'#9#928#949#961#953#947#961#945#966#942
-              'NUMBER_OF_DAYS_MONTHS'#9'5'#9#931#949
-              'DAYS_OR_MONTHS'#9'10'#9#919#956#941#961#949#962'/'#924#942#957#949#962
-              'AFTER_OR_BEFORE'#9'8'#9#928#961#953#957'/'#924#949#964#940
-              'START_OR_END'#9'16'#9#919#956#949#961#959#956#951#957#943#945)
-            IniAttributes.Delimiter = ';;'
-            IniAttributes.UnicodeIniFile = False
-            TitleColor = clBtnFace
-            FixedCols = 1
-            ShowHorzScrollBar = True
-            Align = alClient
-            Color = 12713983
-            DataSource = SeminarReminderSRC
-            Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
-            ReadOnly = True
-            TabOrder = 1
-            TitleAlignment = taLeftJustify
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -12
-            TitleFont.Name = 'Tahoma'
-            TitleFont.Style = []
-            TitleLines = 1
-            TitleButtons = False
-            object AfterFLD: TwwDBComboBox
-              Left = 94
-              Top = 81
-              Width = 76
-              Height = 20
-              ShowButton = True
-              Style = csDropDownList
-              MapList = True
-              AllowClearKey = False
-              AutoDropDown = True
-              DataField = 'AFTER_OR_BEFORE'
-              DataSource = SeminarReminderSRC
-              DropDownCount = 8
-              ItemHeight = 0
-              Items.Strings = (
-                #924#949#964#940#9'A'
-                #928#961#953#957#9'B')
-              ItemIndex = 0
-              Sorted = False
-              TabOrder = 0
-              UnboundDataType = wwDefault
-            end
-            object NamePersonFLD: TwwDBComboBox
-              Left = 94
-              Top = 137
-              Width = 76
-              Height = 20
-              ShowButton = True
-              Style = csDropDownList
-              MapList = True
-              AllowClearKey = False
-              AutoDropDown = True
-              DataField = 'DAYS_OR_MONTHS'
-              DataSource = SeminarReminderSRC
-              DropDownCount = 8
-              ItemHeight = 0
-              Items.Strings = (
-                #924#941#961#949#962#9'D'
-                #924#942#957#949#962#9'M')
-              ItemIndex = 0
-              Sorted = False
-              TabOrder = 1
-              UnboundDataType = wwDefault
-            end
-            object StartEndLD: TwwDBComboBox
-              Left = 198
-              Top = 233
-              Width = 76
-              Height = 20
-              ShowButton = True
-              Style = csDropDownList
-              MapList = True
-              AllowClearKey = False
-              AutoDropDown = True
-              DataField = 'START_OR_END'
-              DataSource = SeminarReminderSRC
-              DropDownCount = 8
-              ItemHeight = 0
-              Items.Strings = (
-                #913#960#972' '#964#951#957' '#904#957#945#961#958#951#9'S'
-                #913#960#972' '#964#959' '#932#941#955#959#962#9'E')
-              ItemIndex = 0
-              Sorted = False
-              TabOrder = 2
-              UnboundDataType = wwDefault
-            end
-          end
-        end
-        object RzPanel17: TRzPanel
-          Left = 469
-          Top = 39
-          Width = 461
-          Height = 601
-          Align = alLeft
-          BorderOuter = fsNone
-          TabOrder = 2
-          object GroupBox4: TGroupBox
-            Left = 31
-            Top = 31
-            Width = 338
-            Height = 482
-            Caption = #928#955#951#961#959#966#959#961#943#949#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-            object Label9: TLabel
-              Left = 43
-              Top = 46
-              Width = 58
-              Height = 14
-              Caption = #928#949#961#953#947#961#945#966#942
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label10: TLabel
-              Left = 80
-              Top = 21
-              Width = 21
-              Height = 14
-              Caption = #913'/'#913
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object RzDBLabel1: TRzDBLabel
-              Left = 107
-              Top = 17
-              Width = 75
-              Height = 20
-              Alignment = taRightJustify
-              BorderOuter = fsFlat
-              BorderWidth = 1
-              DataField = 'SERIAL_NUMBER'
-              DataSource = SeminarReminderSRC
-            end
-            object Label15: TLabel
-              Left = 20
-              Top = 423
-              Width = 80
-              Height = 14
-              Caption = #931#949' '#956#942#957#949#962'/'#956#941#961#949#962
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label16: TLabel
-              Left = 58
-              Top = 71
-              Width = 43
-              Height = 14
-              Caption = #924#942#957#965#956#945
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label12: TLabel
-              Left = 28
-              Top = 212
-              Width = 73
-              Height = 14
-              Caption = #925#945' '#945#960#959#963#964#945#955#949#943
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              WordWrap = True
-            end
-            object Label13: TLabel
-              Left = 63
-              Top = 149
-              Width = 38
-              Height = 14
-              Caption = #913#966#959#961#940
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label11: TLabel
-              Left = 33
-              Top = 279
-              Width = 68
-              Height = 28
-              Alignment = taRightJustify
-              Caption = #919#956#949#961#959#956#951#956#943#945' '#913#957#945#966#959#961#940#962
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              WordWrap = True
-            end
-            object Label14: TLabel
-              Left = 7
-              Top = 345
-              Width = 94
-              Height = 22
-              AutoSize = False
-              Caption = #924#941#964#961#951#963#951' '#935#961#972#957#959#965
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              WordWrap = True
-            end
-            object Label20: TLabel
-              Left = 46
-              Top = 118
-              Width = 55
-              Height = 14
-              Caption = #931#951#956#945#957#964#953#954#972
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object REminderDescFLD: TwwDBEdit
-              Left = 108
-              Top = 43
-              Width = 219
-              Height = 22
-              DataField = 'DESCRIPTION'
-              DataSource = SeminarReminderSRC
-              TabOrder = 0
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-            object wwDBEdit8: TwwDBEdit
-              Left = 108
-              Top = 419
-              Width = 75
-              Height = 22
-              DataField = 'NUMBER_OF_DAYS_MONTHS'
-              DataSource = SeminarReminderSRC
-              TabOrder = 6
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-            object RzDBRichEdit2: TRzDBRichEdit
-              Left = 107
-              Top = 71
-              Width = 219
-              Height = 41
-              DataField = 'REMINDER_MESSAGE'
-              DataSource = SeminarReminderSRC
-              Font.Charset = GREEK_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              TabOrder = 1
-              Zoom = 100
-            end
-            object RzDBRadioGroup2: TRzDBRadioGroup
-              Left = 108
-              Top = 212
-              Width = 125
-              Height = 60
-              DataField = 'AFTER_OR_BEFORE'
-              DataSource = SeminarReminderSRC
-              Items.Strings = (
-                #924#949#964#940' '#964#959' '#931#949#956#953#957#940#961#953#959
-                #928#961#943#957' '#964#959' '#931#949#956#953#957#940#961#953#959)
-              Values.Strings = (
-                'A'
-                'B')
-              Caption = #913#960#959#963#964#959#955#942
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Arial'
-              Font.Style = []
-              ItemHeight = 14
-              ParentFont = False
-              SpaceEvenly = True
-              TabOrder = 3
-              VisualStyle = vsGradient
-            end
-            object RzDBRadioGroup3: TRzDBRadioGroup
-              Left = 108
-              Top = 279
-              Width = 125
-              Height = 60
-              DataField = 'START_OR_END'
-              DataSource = SeminarReminderSRC
-              Items.Strings = (
-                #904#957#945#961#958#951' '#931#949#956#953#957#945#961#943#959#965
-                #932#941#955#959#962' '#931#949#956#953#957#945#961#943#959#965)
-              Values.Strings = (
-                'S'
-                'E')
-              Caption = #931#951#956#945#957#964#953#954#942' '#919#956#949#961#959#956#951#957#943#945
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Arial'
-              Font.Style = []
-              ItemHeight = 14
-              ParentFont = False
-              SpaceEvenly = True
-              TabOrder = 4
-              VisualStyle = vsGradient
-            end
-            object RzDBRadioGroup4: TRzDBRadioGroup
-              Left = 108
-              Top = 345
-              Width = 125
-              Height = 60
-              DataField = 'DAYS_OR_MONTHS'
-              DataSource = SeminarReminderSRC
-              Items.Strings = (
-                #924#942#957#949#962
-                #919#956#941#961#949#962)
-              Values.Strings = (
-                'M'
-                'D')
-              Caption = #924#959#957#940#948#945' '#935#961#972#957#959#965
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Arial'
-              Font.Style = []
-              ItemHeight = 14
-              ParentFont = False
-              SpaceEvenly = True
-              TabOrder = 5
-              VisualStyle = vsGradient
-            end
-            object RzDBRadioGroup1: TRzDBRadioGroup
-              Left = 107
-              Top = 146
-              Width = 125
-              Height = 60
-              DataField = 'PERSON_OR_SEMINAR'
-              DataSource = SeminarReminderSRC
-              Items.Strings = (
-                #931#949#956#953#957#940#961#953#959
-                #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962)
-              Values.Strings = (
-                'S'
-                'P')
-              Caption = #928#945#961#945#955#942#960#964#951#962
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Arial'
-              Font.Style = []
-              ItemHeight = 14
-              ParentFont = False
-              SpaceEvenly = True
-              TabOrder = 2
-              VisualStyle = vsGradient
-            end
-            object wwCheckBox3: TwwCheckBox
-              Left = 107
-              Top = 118
-              Width = 37
-              Height = 18
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = 'Y'
-              ValueUnchecked = 'N'
-              DisplayValueChecked = 'Y'
-              DisplayValueUnchecked = 'N'
-              NullAndBlankState = cbUnchecked
-              DataField = 'IS_HIGH'
-              DataSource = SeminarReminderSRC
-              ShowText = False
-              TabOrder = 7
-            end
-          end
-          object RzPanel15: TRzPanel
-            Left = 0
-            Top = 0
-            Width = 461
-            Height = 23
-            Align = alTop
-            BorderOuter = fsNone
-            TabOrder = 1
-            object RzPanel16: TRzPanel
-              Left = 23
-              Top = 0
-              Width = 23
-              Height = 23
-              Align = alLeft
-              BorderOuter = fsNone
-              TabOrder = 0
-            end
-            object wwDBNavigator3: TwwDBNavigator
-              Left = 1
-              Top = -3
-              Width = 184
-              Height = 26
-              AutosizeStyle = asSizeNavButtons
-              DataSource = SeminarReminderSRC
-              RepeatInterval.InitialDelay = 500
-              RepeatInterval.Interval = 100
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Arial'
-              Font.Style = []
-              object wwNavButton9: TwwNavButton
-                Left = 0
-                Top = 0
-                Width = 23
-                Height = 26
-                Hint = 'Move to first record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Button'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 0
-                Style = nbsFirst
-              end
-              object wwNavButton10: TwwNavButton
-                Left = 23
-                Top = 0
-                Width = 23
-                Height = 26
-                Hint = 'Move to prior record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Prior'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 1
-                Style = nbsPrior
-              end
-              object wwNavButton11: TwwNavButton
-                Left = 46
-                Top = 0
-                Width = 23
-                Height = 26
-                Hint = 'Move to next record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Next'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 2
-                Style = nbsNext
-              end
-              object wwNavButton12: TwwNavButton
-                Left = 69
-                Top = 0
-                Width = 23
-                Height = 26
-                Hint = 'Move to last record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Button1'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 3
-                Style = nbsLast
-              end
-              object wwNavButton13: TwwNavButton
-                Left = 92
-                Top = 0
-                Width = 23
-                Height = 26
-                Hint = 'Insert new record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Insert'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                OnClick = Nav1InsertClick
-                Index = 4
-                Style = nbsInsert
-              end
-              object wwNavButton14: TwwNavButton
-                Left = 115
-                Top = 0
-                Width = 23
-                Height = 26
-                Hint = 'Delete current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Delete'
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 5
-                Style = nbsDelete
-              end
-              object wwNavButton15: TwwNavButton
-                Left = 138
-                Top = 0
-                Width = 23
-                Height = 26
-                Hint = 'Post changes of current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Post'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 6
-                Style = nbsPost
-              end
-              object wwNavButton16: TwwNavButton
-                Left = 161
-                Top = 0
-                Width = 23
-                Height = 26
-                Hint = 'Cancel changes made to current record'
-                ImageIndex = -1
-                NumGlyphs = 2
-                Spacing = 4
-                Transparent = False
-                Caption = 'Nav1Cancel'
-                Enabled = False
-                DisabledTextColors.ShadeColor = clGray
-                DisabledTextColors.HighlightColor = clBtnHighlight
-                Index = 7
-                Style = nbsCancel
-              end
-            end
-            object RzPanel18: TRzPanel
-              Left = 0
-              Top = 0
-              Width = 23
-              Height = 23
-              Align = alLeft
-              BorderOuter = fsNone
-              TabOrder = 2
-            end
-          end
-        end
-      end
-      object CertificationTS: TRzTabSheet
-        OnShow = CertificationTSShow
-        Caption = #928#953#963#964#959#960#959#953#951#964#951#954#940
-        OnExit = CertificationTSExit
-        object LanguageRGP: TwwRadioGroup
-          Left = 23
-          Top = 3
-          Width = 162
-          Height = 62
-          DisableThemes = False
-          ItemIndex = 0
-          Caption = #915#955#974#963#963#945
-          DataField = 'TYPE_MONO_POLY'
-          Items.Strings = (
-            #917#955#955#951#957#953#954#940
-            'English')
-          TabOrder = 0
-          Values.Strings = (
-            'G'
-            'E')
-          OnChange = LanguageRGPChange
-        end
-        object RzGroupBox2: TRzGroupBox
-          Left = 23
-          Top = 71
-          Width = 1002
-          Height = 554
-          Caption = #928#955#951#961#959#966#959#961#943#949#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-          object SelTopLeftBTN: TRzBitBtn
-            Left = 21
-            Top = 100
-            Width = 121
-            Height = 37
-            Caption = 'Select Picture'
-            DoubleBuffered = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentDoubleBuffered = False
-            ParentFont = False
-            TabOrder = 0
-            Visible = False
-            Glyph.Data = {
-              F6060000424DF606000000000000360000002800000018000000180000000100
-              180000000000C006000000000000000000000000000000000000CAC8C77D7877
-              95918F938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F
-              8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D94908E85817EB7
-              B4B37E7979DFDCDBDFDDDCE2DFDFE3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0
-              E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E2E0
-              DFE0DDDCE4E2E18A858486807DDFDDDBC9C6C58C8986918D8A918D8A918D8A91
-              8D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A
-              918D8A918D8A8E8B87B7B4B0DDDCD99C99968B8683ECECECE1DFDECCCACACECC
-              CCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCE
-              CCCCCECCCCCECCCCCFCDCCD2CECFD0CDCDDCDAD9EBEBEAA5A29F918D88F6F6F5
-              EFEEEDF0EFEEF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0
-              EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF8F3F6D1DCCED0D9CCF1EEEEF6F4F4AF
-              ABA9999390FDFEFDF5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4
-              F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F8F6F7DBE6DB0693260EAB
-              388DB687FFFFFFB7B6B29F9A96FFFFFFFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFA
-              FAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFDFBFD
-              E2EFE432BF601ECA6C9AC79AFFFFFFBEBBBAA7A29FFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFBAE5C6A6DCB2F0F6F1FFFFFFC8C4C2C4C0BED5D3D1
-              E5E5E4E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4
-              E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E5E5E4EAE6E8EBE7E9E7E6E6E2E0E0B5
-              B0AEFFFFFFDDDBDAD8D6D4D8D6D4D8D6D4DAD7D6E0DCDDE1DDDEDAD7D6D8D6D4
-              D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6
-              D4D8D6D4D7D5D3FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
-              4C00004A00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFF0C530A41853C25882B0D4F0AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFF185E173D85388FE3A92BBF4C25882B1B5819FFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFF185E173E893B8EE3AC28BF4E2DBE4F2FC04F
-              25882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C6D1E3F903E8EE4AE28C1522B
-              BE522EBF532FBE522FC25225882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1E7A24409842A0E7
-              BD28C4582BC0562EC1572EC0562DBF542EC2542DBD4D25882B1F5F1CFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF238A2D
-              38983FA2EFCA33D17024C4562CC45C2DC25B2DC25A2EC1572FC3582ECA5B2EC0
-              4E25882B1F621CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFF259131259131359C3F288B2E177518A9E7C525C45B2DC55E2DC45D2DC35C
-              2AB1491F5E191F631D20661F20631F20631FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1A8222A2E8C522C7602D
-              C7642DC6612DC7622BB64F216C21FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C8B
-              26A2E8C822C9652CCA6A2CC9672EC8682BB953227122FFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFF1D942AA2EAC921CB6C2BCC6F2CCB6E2CCB6B2BBD59237925FFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A2EACC21CD722BCE752BCD722BCD73
-              2BBF5E237925FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A3EDD51DD37C26
-              D37D26D17927D27A27C46425882BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF26AC
-              3C58CC785AC9795AC6775AC47558C0725BC07225882BFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            Margin = -1
-          end
-          object ClearTopLeftBTN: TRzBitBtn
-            Left = 21
-            Top = 143
-            Width = 121
-            Height = 37
-            Caption = 'Clear Picture'
-            DoubleBuffered = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentDoubleBuffered = False
-            ParentFont = False
-            TabOrder = 1
-            Visible = False
-            Glyph.Data = {
-              F6060000424DF606000000000000360000002800000018000000180000000100
-              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-              FFFFFFCACAE0DEDEEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC1C1DA0B08C05F5FA6FFFFFFFF
-              FFFFFFFFFFFFFFFF2120A70C0AD40B08C44747A2FFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF121297120E
-              F5363688FFFFFFFFFFFFFFFFFF5A5AA7110CF4100DF40F0DF40D0BF0333384FF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              7070AA0D0AE70E0BE75C5C9DFFFFFFFFFFFFFFFFFF0D0B900F0EF50E0CEE0D0C
-              ED0E0CF00B09CCA8A8C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFE3E3EE0706A1100EF50B08BCA6A6CAFFFFFFFFFFFFFFFFFF100D93
-              1C1BF50E0DEE0F0DED0E0DED0F0EF5131295FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFF26259F100FF5100FF5070696F1F1F7FFFFFFFF
-              FFFFFFFFFF3737953333F60D0DEF0F0FEF0E0EEF0E0FF00F0EE88282B9FFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5C5CAE0F0FE81010F40F0FEB4A4A
-              9BFFFFFFFFFFFFFFFFFFFFFFFFA6A6D7201EC12122F60F10EF1011EF1011EF11
-              13F50B0BB9F6F6FBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFABAAD91010DA1214F5
-              1214F50B09ACCECDE7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3434A13739EA1619
-              F41112EF1214EF1215F11216F43937B6FFFFFFFFFFFFFFFFFFFFFFFFA9A9DE10
-              12D41518F51417F11315EE3837A6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFF07069A4953F71216EF1317F01518F0161BF41416E29695DAFFFFFFFFFF
-              FFE5E4F71418DD191EF5171DF3171DF50C0AB6CECEEDFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFD1D1EF110FBA4E5BF8161EF3171FF31821F31A23F5
-              1214D3FDFDFFE8E7F91418D91C26F61A24F41A23F5151AE27372D1FFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8482DB2120D04B5AF716
-              22F31A26F41D29F51E2BF62723CF1D23E71F2CF61E2BF41E2BF51C2AF61511C1
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FF615FD63C41EC4D5EF81B2AF41F31F42133F52030F32234F52133F42033F422
-              35F61110D3D1D0F5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFF2624CF464FF15467F82032F52435F52438F52438
-              F52435F52539F6181CE18884E6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2321D74955F43246F6
-              273BF5273BF5273BF5283DF61E28EB534EE2FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B78EE22
-              2FEF2940F62A3EF62A40F62A40F62A40F62B43F6191BE5DFDEFBFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFADAB
-              F61E24EB2C46F62C46F62D45F62D44F62B43F63750F73650F72A43F62E49F61C
-              20E9E5E4FCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              D0CEFB4A4BF12C42F5314DF6314CF6304AF62F4AF62D48F63B58F77183F9869D
-              FA435DF72C47F6314FF6232DF2BFBDF9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFF7775F62A3BF53656F73452F7334FF6334FF6324EF62F4CF6516FF8
-              515CF82822EC1C19F17D90F96C88F9324EF63352F62735F59A97F7FFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFF918EF8334BF63957F73754F73754F73753F73653F733
-              4FF66987F94F59F82825F0FFFFFFD6D5FC140DEF4B55F78DA8FA506FF83352F6
-              3148F65754F5FFFFFFFFFFFFFFFFFFFFFFFF2328F43C60F73B5CF73B5CF73A5B
-              F73959F74160F77492F93737F7625FF6FFFFFFFFFFFFFFFFFFFFFFFF504CF526
-              24F57788F989A5FA5674F83656F7242BF5ADABFAFFFFFFFFFFFF4144F75878F8
-              3A58F73B59F73958F75A7AF87489F91F1CF49B98FAFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFD1D0FD2B27F23636F77A8CF98EA8FA6D8EF94358F7494BF7E7
-              E7FE2C25F47183F987A2FA7C9BF98FABFA5258F82019F3D2D1FDFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFABA8FB2C28F21F1CF45258
-              F86D80F9A3C0FB3A3BF7E5E5FE3D39F3201DF42927F5130CF2615DF6FFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFE1E0FE8784F83F3BF3413DF45551F5FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            Margin = -1
-          end
-          object TopFLD: TwwDBRichEdit
-            Left = 226
-            Top = 21
-            Width = 600
-            Height = 52
-            AutoURLDetect = False
-            DataField = 'LINE_A1'
-            DataSource = SeminarPictureSRC
-            Font.Charset = GREEK_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            GutterWidth = 3
-            HideSelection = False
-            ParentFont = False
-            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-            TabOrder = 2
-            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
-            EditorCaption = 'Edit Rich Text'
-            EditorPosition.Left = 0
-            EditorPosition.Top = 0
-            EditorPosition.Width = 0
-            EditorPosition.Height = 0
-            MeasurementUnits = muInches
-            PrintMargins.Top = 1.000000000000000000
-            PrintMargins.Bottom = 1.000000000000000000
-            PrintMargins.Left = 1.000000000000000000
-            PrintMargins.Right = 1.000000000000000000
-            PrintHeader.VertMargin = 0.500000000000000000
-            PrintHeader.Font.Charset = DEFAULT_CHARSET
-            PrintHeader.Font.Color = clWindowText
-            PrintHeader.Font.Height = -11
-            PrintHeader.Font.Name = 'Tahoma'
-            PrintHeader.Font.Style = []
-            PrintFooter.VertMargin = 0.500000000000000000
-            PrintFooter.Font.Charset = DEFAULT_CHARSET
-            PrintFooter.Font.Color = clWindowText
-            PrintFooter.Font.Height = -11
-            PrintFooter.Font.Name = 'Tahoma'
-            PrintFooter.Font.Style = []
-            DoubleBuffered = False
-            ParentDoubleBuffered = False
-            RichEditVersion = 2
-            Data = {
-              7F0000007B5C727466315C616E73695C616E7369637067313235335C64656666
-              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
-              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
-              345C7563315C706172645C66305C6673313820546F70464C445C7061720D0A7D
-              0D0A00}
-          end
-          object MiddleFLD: TwwDBRichEdit
-            Left = 229
-            Top = 197
-            Width = 599
-            Height = 140
-            AutoURLDetect = False
-            DataField = 'LINE_A2'
-            DataSource = SeminarPictureSRC
-            Font.Charset = GREEK_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            GutterWidth = 3
-            HideSelection = False
-            ParentFont = False
-            Title = 'PICTURE_TOP_L1'
-            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-            TabOrder = 3
-            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
-            EditorCaption = 'Edit Rich Text'
-            EditorPosition.Left = 0
-            EditorPosition.Top = 0
-            EditorPosition.Width = 0
-            EditorPosition.Height = 0
-            MeasurementUnits = muInches
-            PrintMargins.Top = 1.000000000000000000
-            PrintMargins.Bottom = 1.000000000000000000
-            PrintMargins.Left = 1.000000000000000000
-            PrintMargins.Right = 1.000000000000000000
-            PrintHeader.VertMargin = 0.500000000000000000
-            PrintHeader.Font.Charset = DEFAULT_CHARSET
-            PrintHeader.Font.Color = clWindowText
-            PrintHeader.Font.Height = -11
-            PrintHeader.Font.Name = 'Tahoma'
-            PrintHeader.Font.Style = []
-            PrintFooter.VertMargin = 0.500000000000000000
-            PrintFooter.Font.Charset = DEFAULT_CHARSET
-            PrintFooter.Font.Color = clWindowText
-            PrintFooter.Font.Height = -11
-            PrintFooter.Font.Name = 'Tahoma'
-            PrintFooter.Font.Style = []
-            DoubleBuffered = False
-            ParentDoubleBuffered = False
-            RichEditVersion = 2
-            Data = {
-              820000007B5C727466315C616E73695C616E7369637067313235335C64656666
-              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
-              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
-              345C7563315C706172645C66305C66733138204D6964646C65464C445C706172
-              0D0A7D0D0A00}
-          end
-          object CertDirectorFLD: TwwDBRichEdit
-            Left = 620
-            Top = 352
-            Width = 208
-            Height = 84
-            AutoURLDetect = False
-            DataField = 'LINE_B2'
-            DataSource = SeminarPictureSRC
-            Font.Charset = GREEK_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            GutterWidth = 3
-            HideSelection = False
-            ParentFont = False
-            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-            TabOrder = 4
-            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
-            EditorCaption = 'Edit Rich Text'
-            EditorPosition.Left = 0
-            EditorPosition.Top = 0
-            EditorPosition.Width = 0
-            EditorPosition.Height = 0
-            MeasurementUnits = muInches
-            PrintMargins.Top = 1.000000000000000000
-            PrintMargins.Bottom = 1.000000000000000000
-            PrintMargins.Left = 1.000000000000000000
-            PrintMargins.Right = 1.000000000000000000
-            PrintHeader.VertMargin = 0.500000000000000000
-            PrintHeader.Font.Charset = DEFAULT_CHARSET
-            PrintHeader.Font.Color = clWindowText
-            PrintHeader.Font.Height = -11
-            PrintHeader.Font.Name = 'Tahoma'
-            PrintHeader.Font.Style = []
-            PrintFooter.VertMargin = 0.500000000000000000
-            PrintFooter.Font.Charset = DEFAULT_CHARSET
-            PrintFooter.Font.Color = clWindowText
-            PrintFooter.Font.Height = -11
-            PrintFooter.Font.Name = 'Tahoma'
-            PrintFooter.Font.Style = []
-            DoubleBuffered = False
-            ParentDoubleBuffered = False
-            RichEditVersion = 2
-            Data = {
-              880000007B5C727466315C616E73695C616E7369637067313235335C64656666
-              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
-              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
-              345C7563315C706172645C66305C6673313820436572744469726563746F7246
-              4C445C7061720D0A7D0D0A00}
-          end
-          object CertInstructorFLD: TwwDBRichEdit
-            Left = 228
-            Top = 349
-            Width = 208
-            Height = 84
-            AutoURLDetect = False
-            DataField = 'LINE_B1'
-            DataSource = SeminarPictureSRC
-            Font.Charset = GREEK_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            GutterWidth = 3
-            HideSelection = False
-            ParentFont = False
-            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-            TabOrder = 5
-            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
-            EditorCaption = 'Edit Rich Text'
-            EditorPosition.Left = 0
-            EditorPosition.Top = 0
-            EditorPosition.Width = 0
-            EditorPosition.Height = 0
-            MeasurementUnits = muInches
-            PrintMargins.Top = 1.000000000000000000
-            PrintMargins.Bottom = 1.000000000000000000
-            PrintMargins.Left = 1.000000000000000000
-            PrintMargins.Right = 1.000000000000000000
-            PrintHeader.VertMargin = 0.500000000000000000
-            PrintHeader.Font.Charset = DEFAULT_CHARSET
-            PrintHeader.Font.Color = clWindowText
-            PrintHeader.Font.Height = -11
-            PrintHeader.Font.Name = 'Tahoma'
-            PrintHeader.Font.Style = []
-            PrintFooter.VertMargin = 0.500000000000000000
-            PrintFooter.Font.Charset = DEFAULT_CHARSET
-            PrintFooter.Font.Color = clWindowText
-            PrintFooter.Font.Height = -11
-            PrintFooter.Font.Name = 'Tahoma'
-            PrintFooter.Font.Style = []
-            DoubleBuffered = False
-            ParentDoubleBuffered = False
-            RichEditVersion = 2
-            Data = {
-              8A0000007B5C727466315C616E73695C616E7369637067313235335C64656666
-              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
-              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
-              345C7563315C706172645C66305C667331382043657274496E7374727563746F
-              72464C445C7061720D0A7D0D0A00}
-          end
-          object BottomFLD: TwwDBRichEdit
-            Left = 229
-            Top = 476
-            Width = 597
-            Height = 42
-            AutoURLDetect = False
-            DataField = 'LINE_B3'
-            DataSource = SeminarPictureSRC
-            Font.Charset = GREEK_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            GutterWidth = 3
-            HideSelection = False
-            ParentFont = False
-            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-            TabOrder = 6
-            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
-            EditorCaption = 'Edit Rich Text'
-            EditorPosition.Left = 0
-            EditorPosition.Top = 0
-            EditorPosition.Width = 0
-            EditorPosition.Height = 0
-            MeasurementUnits = muInches
-            PrintMargins.Top = 1.000000000000000000
-            PrintMargins.Bottom = 1.000000000000000000
-            PrintMargins.Left = 1.000000000000000000
-            PrintMargins.Right = 1.000000000000000000
-            PrintHeader.VertMargin = 0.500000000000000000
-            PrintHeader.Font.Charset = DEFAULT_CHARSET
-            PrintHeader.Font.Color = clWindowText
-            PrintHeader.Font.Height = -11
-            PrintHeader.Font.Name = 'Tahoma'
-            PrintHeader.Font.Style = []
-            PrintFooter.VertMargin = 0.500000000000000000
-            PrintFooter.Font.Charset = DEFAULT_CHARSET
-            PrintFooter.Font.Color = clWindowText
-            PrintFooter.Font.Height = -11
-            PrintFooter.Font.Name = 'Tahoma'
-            PrintFooter.Font.Style = []
-            DoubleBuffered = False
-            ParentDoubleBuffered = False
-            RichEditVersion = 2
-            Data = {
-              820000007B5C727466315C616E73695C616E7369637067313235335C64656666
-              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
-              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
-              345C7563315C706172645C66305C6673313820426F74746F6D464C445C706172
-              0D0A7D0D0A00}
-          end
-          object BottomLeftFLD: TwwDBRichEdit
-            Left = 47
-            Top = 351
-            Width = 146
-            Height = 80
-            AutoURLDetect = False
-            DataField = 'LINE_C1'
-            DataSource = SeminarPictureSRC
-            Font.Charset = GREEK_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            GutterWidth = 3
-            HideSelection = False
-            ParentFont = False
-            PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-            TabOrder = 7
-            EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
-            EditorCaption = 'Edit Rich Text'
-            EditorPosition.Left = 0
-            EditorPosition.Top = 0
-            EditorPosition.Width = 0
-            EditorPosition.Height = 0
-            MeasurementUnits = muInches
-            PrintMargins.Top = 1.000000000000000000
-            PrintMargins.Bottom = 1.000000000000000000
-            PrintMargins.Left = 1.000000000000000000
-            PrintMargins.Right = 1.000000000000000000
-            PrintHeader.VertMargin = 0.500000000000000000
-            PrintHeader.Font.Charset = DEFAULT_CHARSET
-            PrintHeader.Font.Color = clWindowText
-            PrintHeader.Font.Height = -11
-            PrintHeader.Font.Name = 'Tahoma'
-            PrintHeader.Font.Style = []
-            PrintFooter.VertMargin = 0.500000000000000000
-            PrintFooter.Font.Charset = DEFAULT_CHARSET
-            PrintFooter.Font.Color = clWindowText
-            PrintFooter.Font.Height = -11
-            PrintFooter.Font.Name = 'Tahoma'
-            PrintFooter.Font.Style = []
-            DoubleBuffered = False
-            ParentDoubleBuffered = False
-            RichEditVersion = 2
-            Data = {
-              860000007B5C727466315C616E73695C616E7369637067313235335C64656666
-              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
-              6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
-              345C7563315C706172645C66305C6673313820426F74746F6D4C656674464C44
-              5C7061720D0A7D0D0A00}
-          end
-          object RzPanel7: TRzPanel
-            Left = 403
-            Top = 79
-            Width = 82
-            Height = 79
-            BorderOuter = fsGroove
-            TabOrder = 8
-            object PICTURE_TOP_L1: TImage
-              Left = 2
-              Top = 2
-              Width = 78
-              Height = 75
-              ParentCustomHint = False
-              Align = alClient
-              Center = True
-              Proportional = True
-              Stretch = True
-              OnDblClick = PICTURE_TOP_L1DblClick
-              OnMouseDown = PICTURE_TOP_L1MouseDown
-              ExplicitLeft = 0
-              ExplicitTop = 4
-            end
-          end
-          object RzPanel9: TRzPanel
-            Left = 545
-            Top = 79
-            Width = 82
-            Height = 79
-            BorderOuter = fsGroove
-            TabOrder = 9
-            object PICTURE_TOP_R1: TImage
-              Left = 2
-              Top = 2
-              Width = 78
-              Height = 75
-              ParentCustomHint = False
-              Align = alClient
-              Center = True
-              Proportional = True
-              Stretch = True
-              OnDblClick = PICTURE_TOP_L1DblClick
-              OnMouseDown = PICTURE_TOP_L1MouseDown
-              ExplicitTop = 0
-            end
-          end
-          object RzPanel10: TRzPanel
-            Left = 47
-            Top = 437
-            Width = 82
-            Height = 79
-            BorderOuter = fsGroove
-            TabOrder = 10
-            object PICTURE_BOT_L1: TImage
-              Left = 2
-              Top = 2
-              Width = 78
-              Height = 75
-              ParentCustomHint = False
-              Align = alClient
-              Center = True
-              Proportional = True
-              Stretch = True
-              OnDblClick = PICTURE_TOP_L1DblClick
-              OnMouseDown = PICTURE_TOP_L1MouseDown
-              ExplicitLeft = 14
-              ExplicitTop = 4
-            end
-          end
-          object RzPanel11: TRzPanel
-            Left = 864
-            Top = 440
-            Width = 82
-            Height = 79
-            BorderOuter = fsGroove
-            TabOrder = 11
-            object PICTURE_BOT_R1: TImage
-              Left = 2
-              Top = 2
-              Width = 78
-              Height = 75
-              ParentCustomHint = False
-              Align = alClient
-              Center = True
-              Proportional = True
-              Stretch = True
-              OnDblClick = PICTURE_TOP_L1DblClick
-              OnMouseDown = PICTURE_TOP_L1MouseDown
-              ExplicitLeft = 10
-              ExplicitTop = 4
-            end
-          end
-          object wwDBEdit5: TwwDBEdit
-            Left = 516
-            Top = 79
-            Width = 25
-            Height = 22
-            DataField = 'TR_Y'
-            DataSource = SeminarPictureSRC
-            TabOrder = 12
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit6: TwwDBEdit
-            Left = 547
-            Top = 162
-            Width = 25
-            Height = 22
-            DataField = 'TR_X'
-            DataSource = SeminarPictureSRC
-            TabOrder = 13
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit7: TwwDBEdit
-            Left = 372
-            Top = 79
-            Width = 25
-            Height = 22
-            DataField = 'TL_Y'
-            DataSource = SeminarPictureSRC
-            TabOrder = 14
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit11: TwwDBEdit
-            Left = 405
-            Top = 164
-            Width = 25
-            Height = 22
-            DataField = 'TL_X'
-            DataSource = SeminarPictureSRC
-            TabOrder = 15
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit12: TwwDBEdit
-            Left = 16
-            Top = 442
-            Width = 25
-            Height = 22
-            DataField = 'BL_Y'
-            DataSource = SeminarPictureSRC
-            TabOrder = 16
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit13: TwwDBEdit
-            Left = 50
-            Top = 520
-            Width = 25
-            Height = 22
-            DataField = 'BL_X'
-            DataSource = SeminarPictureSRC
-            TabOrder = 17
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit14: TwwDBEdit
-            Left = 833
-            Top = 442
-            Width = 25
-            Height = 22
-            DisableThemes = True
-            DataField = 'BR_Y'
-            DataSource = SeminarPictureSRC
-            TabOrder = 18
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit15: TwwDBEdit
-            Left = 866
-            Top = 523
-            Width = 25
-            Height = 22
-            DataField = 'BR_X'
-            DataSource = SeminarPictureSRC
-            TabOrder = 19
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-        end
-        object CopyDefaultBTN: TRzBitBtn
-          Left = 205
-          Top = 28
-          Width = 148
-          Height = 37
-          Caption = 'Copy From Default'
-          DoubleBuffered = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentDoubleBuffered = False
-          ParentFont = False
-          TabOrder = 2
-          OnClick = CopyDefaultBTNClick
-          Glyph.Data = {
-            F6060000424DF606000000000000360000002800000018000000180000000100
-            180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF926544926544926644926644926643
-            9265449266449266449265439266439265439266449265439266449266439266
-            43926643926643FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF946744E3CAACE4
-            CAACE3CBACE3CBACE3CBACE4CAADE3CAADE4CAADE4CBACE4CAADE4CAACE4CBAC
-            E3CBACE4CAACE3CAACE3CAAC936644FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FF956845E5CCAFE4CCAFE4CCAFE5CCAFE5CCAFE4CCAEE4CCAFE4CCAFE4CCAFE4
-            CCAFE4CCAFE4CDAFE4CDAFE4CCAFE4CDAFE4CCAF956845FFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFF330F0A804B19804A1944110B44110B44110B804B194411
-            0B44110B44110B44110B44110B44110B44110B44110BE5CEB2E5CEB2976945FF
-            FFFFFFFFFF926544926544926644926644926643926544926644926644926543
-            926643926543926644926543926644926643926643926643926643814C1CE6D1
-            B5E6D0B6996A46FFFFFFFFFFFF946744E3CAACE4CAACE3CBACE3CBACE3CBACE4
-            CAADE3CAADE4CAADE4CBACE4CAADE4CAACE4CBACE3CBACE4CAACE3CAACE3CAAC
-            936644824F21E7D3BAE7D3B99B6C47FFFFFFFFFFFF956845E5CCAFE4CCAFE4CC
-            AFE5CCAFE5CCAFE4CCAEE4CCAFE4CCAFE4CCAFE4CCAFE4CCAFE4CDAFE4CDAFE4
-            CCAFE4CDAFE4CCAF95684544110BE8D6BEE8D5BE9D6C48FFFFFFFFFFFF976945
-            E5CFB2E5CEB2A8744DA8744DA8744DE5CFB2A8744DA8744DA8744DA8744DA874
-            4DA8744DA8744DA8744DE5CEB2E5CEB297694584552AE9D9C3E9D8C39F6E48FF
-            FFFFFFFFFF996A46E6D1B6E6D1B5E6D1B6E6D0B6E6D0B6E6D1B6E6D0B6E6D0B6
-            E6D0B5E6D0B6E6D0B6E6D0B6E6D1B6E6D0B5E6D1B5E6D0B6996A4686582EEBDC
-            C9EBDCC9A27049FFFFFFFFFFFF9A6C47E7D3BAE7D3BAE7D3B9E7D3BAE7D3BAE7
-            D3BAE7D3B9E7D3BAE7D4BAE7D3B9E7D3BAE7D3BAE7D3B9E7D3BAE7D3BAE7D3B9
-            9B6C4744110BEBDECDECDECDA4714AFFFFFFFFFFFF9D6D48E8D6BEE8D6BEA874
-            4DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8
-            744DE8D6BEE8D5BE9D6C48875D37EDE2D1ECE2D1A6724BFFFFFFFFFFFF9F6E49
-            E9D9C3E9D9C2E9D9C3E9D9C3E9D9C3E9D9C3EAD9C3E9D8C3E9D8C2E9D8C3E9D9
-            C2E9D8C2EAD9C3E9D9C3E9D9C3E9D8C39F6E4888603BEEE4D6EEE4D6A8754CFF
-            FFFFFFFFFFA1704AEBDBC8EBDCC9EADBC8EADCC8EBDBC9EADCC8EADBC8EBDBC8
-            EBDCC8EADCC8EADBC8EADCC8EADCC9EBDCC8EBDCC9EBDCC9A2704944110BEFE7
-            DAEFE7DAAB764DFFFFFFFFFFFFA3724AEBDECDEBDECDA8744DA8744DA8744DA8
-            744DA8744DA8744DA8744DA8744DA8744DECDFCDA8744DA8744DEBDECDECDECD
-            A4714A8B6544F0E9DFF0EADEAD774EFFFFFFFFFFFFA6734BEDE1D2EDE1D1ECE1
-            D1EDE1D2EDE1D1EDE2D1EDE1D1ECE2D2ECE1D1ECE1D1EDE1D1EDE2D2EDE2D1EC
-            E1D1EDE2D1ECE2D1A6724B8C6848F1ECE2F1EBE2AE794FFFFFFFFFFFFFA8744C
-            EEE5D6EEE4D6EEE4D6EEE4D6EEE4D6EEE5D6EEE5D6EEE4D6EEE5D6EEE4D6EEE4
-            D6EEE4D6EEE5D6EDE4D5EEE4D6EEE4D6A8754C44110BF1EEE5F2EEE6B07950FF
-            FFFFFFFFFFAA764DEFE7DAEFE7DAA8744DA8744DA8744DA8744DA8744DA8744D
-            A8744DA8744DA8744DA8744DA8744DA8744DEFE7DAEFE7DAAB764D8E6C4DF3F0
-            E8F3F0E8B17A50FFFFFFFFFFFFAD774EF0EADEF0EADEF0E9DEF0E9DEF0E9DEF0
-            EADFF0EADEF0EADEF0EADFF0E9DEF0EADEF0E9DEF0E9DEF0E9DEF0E9DFF0EADE
-            AD774E8E6D50F3F1EAF3F1EAB37B50FFFFFFFFFFFFAE794FF1ECE1F1ECE2A874
-            4DA8744DA8744DF1ECE2F1ECE2F0EBE2F1ECE2F1ECE2F1ECE2F1ECE1F1EBE2F1
-            ECE2F1ECE2F1EBE2AE794F50120CB47C51B47C51B47C51FFFFFFFFFFFFB07A50
-            F1EEE6F2EEE5A8744DA8744DA8744DF1EEE5F2EEE5A8744DA8744DA8744DA874
-            4DA8744DA8744DA8744DF1EEE5F2EEE6B07950FFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFB17B50F3EFE7F3F0E8F2EFE8F2F0E8F3EFE8F2F0E8F2EFE7F3EFE8
-            F3F0E8F2F0E8F2EFE8F2F0E7F2F0E8F3F0E7F3F0E8F3F0E8B17A50FFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFB37C51F3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3
-            F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EA
-            B37B50FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB47C51B47C51B47C51B47C
-            51B47C51B47D51B47C51B47C51B47C51B47C51B47C51B47C51B47C51B47C51B4
-            7C51B47C51B47C51B47C51FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-          Margin = -1
-        end
-        object SaveDefaultBTN: TRzBitBtn
-          Left = 539
-          Top = 28
-          Width = 132
-          Height = 37
-          Caption = 'Save as Default '
-          DoubleBuffered = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentDoubleBuffered = False
-          ParentFont = False
-          TabOrder = 3
-          OnClick = SaveDefaultBTNClick
-          Glyph.Data = {
-            F6060000424DF606000000000000360000002800000018000000180000000100
-            180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFF4646463D3D3D4141416B6B6BA5A5A5ADADADA9
-            A9A9A8A8A8A6A6A6A4A4A4A2A2A2A0A0A09E9E9E9D9D9D9A9A9A9999999A9A9A
-            9191916363633D3D3D353535414141FFFFFFFFFFFF4040409494944B4B4B8888
-            88128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF312
-            8BF3128BF3128BF3128BF37878787F7F7F505050343434FFFFFFFFFFFF454545
-            AEAEAE99999985858525A5F725A5F725A5F725A5F725A5F725A5F725A5F725A5
-            F725A5F725A5F725A5F725A5F725A5F725A5F7777777929292A4A4A4353535FF
-            FFFFFFFFFF4747473E3E3E414141868686F0F0F0FFFFFFFFFFFFFDFDFDFAFAFA
-            F6F6F6F3F3F3F0F0F0EEEEEEEAEAEAE7E7E7E4E4E4E7E7E7D5D5D57979793030
-            30212121353535FFFFFFFFFFFF4A4A4A424242444444878787EFEFEFFFFFFFFF
-            FFFFFFFFFFFEFEFEFBFBFBF8F8F8F5F5F5F3F3F3EFEFEFECECECE9E9E9ECECEC
-            D9D9D9797979303030212121353535FFFFFFFFFFFF4D4D4D4747474747478787
-            87EFEFEFCEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CE
-            BDB5CEBDB5CEBDB5DEDEDE7B7B7B2F2F2F212121353535FFFFFFFFFFFF4F4F4F
-            4C4C4C4B4B4B878787EFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFE
-            FEFCFCFCF8F8F8F5F5F5F1F1F1F5F5F5E2E2E27D7D7D2F2F2F212121353535FF
-            FFFFFFFFFF5353535151514E4E4E888888EFEFEFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFDFDFDFAFAFAF6F6F6FBFBFBE6E6E67D7D7D2F2F
-            2F212121353535FFFFFFFFFFFF575757575757515151898989EFEFEFCEBDB5CE
-            BDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5
-            ECECEC8080802F2F2F212121353535FFFFFFFFFFFF5959595B5B5B5555558B8B
-            8BF0F0F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFF0F0F08484842F2F2F212121353535FFFFFFFFFFFF5B5B5B
-            606060595959888888E9E9E9FCFCFCF5F5F5F4F4F4F4F4F4F4F4F4F5F5F5F5F5
-            F5F5F5F5F5F5F5F5F5F5F6F6F6FFFFFFEAEAEA808080313131222222353535FF
-            FFFFFFFFFF5E5E5E6767676060606767678787878C8C8C888888868686848484
-            8282828282828181818181818181817F7F7F8080808181817979794F4F4F3232
-            32272727373737FFFFFFFFFFFF6262626B6B6B6A6A6A65656562626260606056
-            56564E4E4E4A4A4A4747474545454242424040403D3D3D3A3A3A393939373737
-            3737373737373434342D2D2D3A3A3AFFFFFFFFFFFF6868687070706A6A6A6464
-            645E5E5E5A5A5A5B5B5B6060606161615C5C5C5959595555555353535353534F
-            4F4F4848484242423B3B3B3838383838383333333D3D3DFFFFFFFFFFFF6F6F6F
-            7373735454544747474848483E3E3E797979B9B9B9BFBFBFB1B1B1ADADADA8A8
-            A8A4A4A4A1A1A19C9C9C9898988C8C8C6B6B6B4141413C3C3C383838404040FF
-            FFFFFFFFFF7575757575754141412C2C2C303030202020909090FFFFFFFFFFFF
-            F1F1F1ECECECEAEAEAD5D5D5B1B1B1B3B3B3CECECEC7C7C78D8D8D4848484040
-            403D3D3D434343FFFFFFFFFFFF7A7A7A7A7A7A4444443030303434342525258E
-            8E8EF7F7F7FAFAFAE7E7E7E3E3E3E6E6E6B9B9B95D5D5D707070BDBDBDC3C3C3
-            8989894C4C4C444444414141464646FFFFFFFFFFFF7E7E7E7D7D7D4747473131
-            313535352626268D8D8DF6F6F6FAFAFAE6E6E6E2E2E2E7E7E7B5B5B54A4A4A62
-            6262BABABAC3C3C38B8B8B505050484848454545494949FFFFFFFFFFFF838383
-            8282824848483131313434342727278E8E8EF5F5F5FAFAFAE6E6E6E2E2E2E6E6
-            E6B6B6B6515151676767BABABAC2C2C28C8C8C5353534C4C4C4A4A4A4D4D4DFF
-            FFFFFFFFFF8A8A8A8888884545452B2B2B2F2F2F212121919191FFFFFFFFFFFF
-            F0F0F0ECECECEAEAEAD0D0D09B9B9BA2A2A2C9C9C9C6C6C69393935858585050
-            504E4E4E797979FFFFFFFFFFFF8686868484845B5B5B4B4B4B4E4E4E45454585
-            8585C5C5C5C7C7C7BABABAB6B6B6B3B3B3AEAEAEA5A5A5A2A2A2A3A3A39C9C9C
-            8080805F5F5F5A5A5A797979FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-          Margin = -1
-        end
-        object certificatesHelpRE: TwwDBRichEdit
-          Left = 734
-          Top = -17
-          Width = 121
-          Height = 49
-          AutoURLDetect = False
-          Font.Charset = GREEK_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -10
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          GutterWidth = 3
-          HideSelection = False
-          ParentFont = False
-          PrintJobName = 'TariffsProject - RAD Studio 10.2 - LN_ListDutyEntries2 [Built]'
-          ReadOnly = True
-          TabOrder = 4
-          Visible = False
-          EditorOptions = [reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
-          EditorCaption = 'Edit Rich Text'
-          EditorPosition.Left = 0
-          EditorPosition.Top = 0
-          EditorPosition.Width = 0
-          EditorPosition.Height = 0
-          MeasurementUnits = muInches
-          PrintMargins.Top = 1.000000000000000000
-          PrintMargins.Bottom = 1.000000000000000000
-          PrintMargins.Left = 1.000000000000000000
-          PrintMargins.Right = 1.000000000000000000
-          PrintHeader.VertMargin = 0.500000000000000000
-          PrintHeader.Font.Charset = DEFAULT_CHARSET
-          PrintHeader.Font.Color = clWindowText
-          PrintHeader.Font.Height = -11
-          PrintHeader.Font.Name = 'Tahoma'
-          PrintHeader.Font.Style = []
-          PrintFooter.VertMargin = 0.500000000000000000
-          PrintFooter.Font.Charset = DEFAULT_CHARSET
-          PrintFooter.Font.Color = clWindowText
-          PrintFooter.Font.Height = -11
-          PrintFooter.Font.Name = 'Tahoma'
-          PrintFooter.Font.Style = []
-          DoubleBuffered = False
-          ParentDoubleBuffered = False
-          RichEditVersion = 2
-          Data = {
-            291400007B5C727466315C616E73695C616E7369637067313235335C64656666
-            305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
-            666368617273657430205461686F6D613B7D7B5C66315C666E696C5C66636861
-            72736574313631205461686F6D613B7D7B5C66325C6673776973735C66636861
-            727365743020417269616C3B7D7B5C66335C666E696C5C666368617273657432
-            2053796D626F6C3B7D7D0D0A5C766965776B696E64345C7563315C706172645C
-            6C616E67313033335C625C66305C6673323420485C6C616E67313033325C6631
-            20205C2765355C2765615C2766345C2766645C2766305C2766395C2766335C27
-            6537205C2766345C2766395C276564205C2764305C2765395C2766335C276634
-            5C2765665C2766305C2765665C2765395C2765375C2766345C2765395C276561
-            5C2766655C2765645C6C616E67313033335C663020205C6C616E67313033325C
-            66315C2766375C2766315C2765375C2766335C2765395C2765635C2766305C27
-            65665C2765395C2765355C276466205C6C616E67313033335C663020544F4B45
-            4E535C6C616E67313033325C663120205C2766345C276531205C2765665C2766
-            305C2765665C2764665C276531205C2765315C2765645C2766345C2765395C27
-            65615C2765315C2765385C2765395C2766335C2766345C2765665C2766645C27
-            65645C2766345C276535205C2765635C276535205C2766345C2765395C276563
-            5C2764645C276632205C2765315C2766305C276663205C2766345C276566205C
-            2764305C2765395C2766335C2766345C2765665C2766305C2765665C2765395C
-            2765375C2766345C2765395C2765615C2766635C6C616E67313033335C663020
-            205C6C616E67313033325C66315C2766305C2765665C276635205C2765355C27
-            65615C2766345C2766355C2766305C2766655C2765645C2765355C2766345C27
-            65315C2765395C6C616E67313033335C663020205C7061720D0A5C62305C6632
-            5C667331365C7061720D0A5C7061720D0A5C6C616E67313033325C66315C6673
-            32345C2764345C276531205C2766305C2765395C276566205C2765615C276463
-            5C2766345C276639205C6C616E67313033335C663020546F6B656E73205C6C61
-            6E67313033325C66315C2765385C276531205C2765315C2765645C2766345C27
-            65395C2765615C2765315C2766345C2765315C2766335C2766345C2765315C27
-            65385C2765665C2766645C276564205C2765315C2766355C2766345C2766635C
-            2765635C2765315C2766345C276531205C2765635C276535205C2766345C2765
-            395C276632205C2766345C2765395C2765635C2764645C276632205C2766305C
-            2765665C276635205C2766365C2765315C2764665C2765645C2765665C276564
-            5C2766345C2765315C276539205C2765345C2764665C2766305C2765625C2765
-            315C6C616E67313033335C66305C7061720D0A5C706172647B5C706E74657874
-            5C66335C2742375C7461627D7B5C2A5C706E5C706E6C766C626C745C706E6633
-            5C706E696E64656E74307B5C706E747874625C2742377D7D5C66692D3732305C
-            6C69373230205B4E616D655D205C6C616E67313033325C663120202D205C2766
-            635C2765645C2765665C2765635C276531205C2763355C2765615C2766305C27
-            65315C2765395C2765345C2765355C2766355C2766635C2765635C2765355C27
-            65645C2765665C2766355C6C616E67313033335C66305C7061720D0A5C706172
-            647B5C706E746578745C66335C2742375C7461627D7B5C2A5C706E5C706E6C76
-            6C626C745C706E66335C706E696E64656E74307B5C706E747874625C2742377D
-            7D5C66692D3730355C6C69373035205B49645D205C6C616E67313033325C6631
-            5C746162202020202D205C2764345C2765315C2766355C2766345C2766635C27
-            66345C2765375C2766345C276531205C2765355C2765615C2766305C2765315C
-            2765395C2765345C2765355C2766355C2766635C2765635C2765355C2765645C
-            2765665C2766355C6C616E67313033335C66305C7061720D0A5C706172647B5C
-            706E746578745C66335C2742375C7461627D7B5C2A5C706E5C706E6C766C626C
-            745C706E66335C706E696E64656E74307B5C706E747874625C2742377D7D5C66
-            692D3732305C6C69373230205B446174655D205C6C616E67313033325C663120
-            20205C6C616E67313033335C663020205C6C616E67313033325C6631202D2020
-            5C2763375C2765635C2765355C2766315C2765665C2765635C2765375C276564
-            5C2764665C276531205C2762385C2765615C2765345C2765665C2766335C2765
-            375C276632205C2766345C2765665C276635205C2766305C2765395C2766335C
-            2766345C2765665C2766305C2765665C2765395C2765375C2766345C2765395C
-            2765615C2765665C2766645C6C616E67313033335C663020205C7061720D0A7B
-            5C706E746578745C66335C2742375C7461627D5B5345585D20202020202D205C
-            6C616E67313033325C66315C2764365C2766645C2765625C276566205C276535
-            5C2765615C2766305C2765315C2765395C2765345C2765355C2766355C276663
-            5C2765635C2765355C2765645C2765665C2766355C6C616E67313033335C6630
-            5C7061720D0A5C6C616E67313033325C66317B5C706E746578745C66335C2742
-            375C7461627D5B5C6C616E67313033335C663020486F7572735C6C616E673130
-            33325C6631205D5C6C616E67313033335C66302020202D205C6C616E67313033
-            325C66315C2762665C2766315C2765355C276632205C2766345C2765665C2766
-            35205C2764335C2765355C2765635C2765395C2765645C2765315C2766315C27
-            64665C2765665C2766355C6C616E67313033335C66305C7061720D0A7B5C706E
-            746578745C66335C2742375C7461627D5B416E61645D2020202D205C6C616E67
-            313033325C66315C2763315C2766315C2765395C2765385C2765635C2766635C
-            276632205C2763315C2763645C2763315C2763345C6C616E67313033335C6630
-            5C7061720D0A5C706172645C7061720D0A5C6C616E67313033325C66315C2763
-            665C276539205C2765315C2765645C2766345C2764665C2766335C2766345C27
-            65665C2765395C2766375C2765355C276632205C2766345C2765395C2765635C
-            2764645C276632205C2766345C2766395C276564205C6C616E67313033335C66
-            3020546F6B656E73205C6C616E67313033325C66315C2765335C2766315C2764
-            635C2766365C2765665C2765645C2766345C2765315C276539205C2765315C27
-            65645C2765315C2765625C2766635C2765335C2766395C276632205C2765635C
-            276535205C2765615C2765355C2766365C2765315C2765625C2765315C276466
-            5C276531205C276465205C2765635C2765395C2765615C2766315C276463205C
-            2765335C2766315C2764635C2765635C2765635C2765315C2766345C27653120
-            5C2765315C2765615C2765665C2765625C2765665C2766355C2765385C276665
-            5C2765645C2766345C2765315C276632205C2766345C2765665C2766355C2766
-            32205C2766305C2765395C276566205C2765615C2764635C2766345C27663920
-            5C2765615C2765315C2765645C2766635C2765645C2765355C2766325C706172
-            0D0A5C7061720D0A5C2763355C2764635C276564205C2766345C276566205C6C
-            616E67313033335C663020746F6B656E205C6C616E67313033325C66315C2765
-            335C2766315C2765315C2766365C2766345C2765355C276466205C7061720D0A
-            5C2765635C276535205C2766635C2765625C276531205C2765615C2765355C27
-            66365C2765315C2765625C2765315C2764665C276531205C2766345C2766635C
-            2766345C276535205C2765615C2765315C276539205C2766345C276566205C27
-            65315C2765645C2766345C2764665C2766335C2766345C2765665C2765395C27
-            66375C276566205C2766305C2765355C2765345C2764665C276566205C276538
-            5C276531205C2765335C2766315C2765315C2766365C2766345C2764645C2765
-            39205C2765635C276535205C2765615C2765355C2766365C2765315C2765625C
-            2765315C2764665C2765315C7061720D0A5C2765635C276535205C2766635C27
-            65625C276531205C2765635C2765395C2765615C2766315C276463205C276634
-            5C2766635C2766345C276535205C2766345C276566205C2765315C2765645C27
-            66345C2764665C2766335C2766345C2765665C2765395C2766375C276566205C
-            2766305C2765355C2765345C2764665C276566205C2765385C276531205C2765
-            335C2766315C2765315C2766365C2766345C2765355C276466205C2765635C27
-            6535205C2765635C2765395C2765615C2766315C2764635C7061720D0A5C2765
-            635C276535205C2765635C2765355C2766315C2765395C2765615C276463205C
-            2765615C2765355C2766365C2765315C2765625C2765315C2764665C27653120
-            5C2765615C2765315C276539205C2765635C2765355C2766315C2765395C2765
-            615C276463205C2765635C2765395C2765615C2766315C276463205C2766345C
-            2766635C2766345C276535205C2765385C276531205C2765335C2766315C2765
-            315C2766365C2766345C2765355C276466205C2766635C2766305C2766395C27
-            6632205C2765355C2764665C2765645C2765315C2765395C7061720D0A5C7061
-            720D0A5C2763335C2765395C276531205C2766305C2765315C2766315C276463
-            5C2765345C2765355C2765395C2765335C2765635C276531205C2765315C2765
-            64205C2766345C276566205C2766635C2765645C2765665C2765635C27653120
-            5C2766345C2765665C276635205C2765355C2765615C2766305C2765315C2765
-            395C2765345C2765355C2766355C2766635C2765635C2765355C2765645C2765
-            665C276635205C2765355C2764665C2765645C2765315C276539205C2763335C
-            2765395C2766655C2766315C2765335C2765665C276632205C2763335C276535
-            5C2766395C2766315C2765335C2764665C2765665C276635205C2766345C2766
-            635C2766345C2765355C7061720D0A5C6C616E67313033335C6630205B5C6C61
-            6E67313033325C66315C2763645C2763315C2763635C2763355C6C616E673130
-            33335C6630205D5C6C616E67313033325C663120203D205C2763335C2763395C
-            2764395C2764315C2763335C2763665C276433205C2763335C2763355C276439
-            5C2763335C2763395C2763665C2764355C7061720D0A5C6C616E67313033335C
-            6630205B6E616D655D5C6C616E67313033325C663120205C6C616E6731303333
-            5C663020205C6C616E67313033325C6631203D5C6C616E67313033335C663020
-            205C6C616E67313033325C66315C2765335C2765395C2766655C2766315C2765
-            335C2765665C276632205C2765335C2765355C2766395C2766315C2765335C27
-            64665C2765665C2766355C7061720D0A5C6C616E67313033335C6630205B5C6C
-            616E67313033325C66315C2763645C6C616E67313033335C663020616D655D5C
-            6C616E67313033325C663120205C6C616E67313033335C663020205C6C616E67
-            313033325C6631203D205C2763335C2765395C2766655C2766315C2765335C27
-            65665C276632205C2763335C2765355C2766395C2766315C2765335C2764665C
-            2765665C2766355C7061720D0A5C7061720D0A5C625C2763355C2765395C2765
-            615C2766635C2765645C2765355C2766325C7061720D0A5C706172647B5C706E
-            746578745C66335C2742375C7461627D7B5C2A5C706E5C706E6C766C626C745C
-            706E66335C706E696E64656E74307B5C706E747874625C2742377D7D5C66692D
-            3732305C6C693732305C6C616E67313033335C62305C663020446F75626C6520
-            436C69636B205C6C616E67313033325C663120205C2766305C2764635C276564
-            5C276639205C2766335C2766345C2765375C276564205C2765355C2765395C27
-            65615C2766635C2765645C276531205C6C616E67313033335C6630202D205C6C
-            616E67313033325C66315C2763355C2766305C2765395C2765625C2765665C27
-            65335C276465205C2763355C2765395C2765615C2766635C2765645C2765355C
-            2766325C7061720D0A5C6C616E67313033335C66307B5C706E746578745C6633
-            5C2742375C7461627D436F6E74726F6C20436C69636B205C6C616E6731303332
-            5C66315C2766305C2764635C2765645C276639205C2766335C2766345C276537
-            5C276564205C2765355C2765395C2765615C2766635C2765645C276531202D20
-            5C2763345C2765395C2765315C2765335C2766315C2765315C2766365C276465
-            205C2763355C2765395C2765615C2766635C2765645C2765315C276632205C70
-            61720D0A5C706172645C625C7061720D0A5C2763385C2764645C2766335C2765
-            37205C2763355C2765395C2765615C2766635C2765645C2765315C2766325C62
-            305C7061720D0A5C276337205C2765385C2764645C2766335C276537205C2765
-            615C2765315C2765385C276535205C2765355C2765395C2765615C2766635C27
-            65645C2765315C276632205C2765615C2765315C2765385C2765665C2766315C
-            2764665C2765365C2765355C2766345C2765315C276539205C2766335C276535
-            205C6C616E67313033335C6630206D6D205C6C616E67313033325C66315C2766
-            305C2765665C276635205C2765315C2765645C2766345C2765395C2766335C27
-            66345C2765665C2765395C2766375C2765665C2766645C276564205C2766335C
-            2766345C2765665C276564205C2764355C6C616E67313033335C663020617869
-            73205C6C616E67313033325C66315C2765615C2765315C276539205C27643720
-            5C6C616E67313033335C663020617869205C6C616E67313033325C66315C2766
-            335C2766345C276531205C2766345C2765355C2766345C2766315C2765315C27
-            65335C2766395C2765645C2764635C2765615C2765395C276531205C2765345C
-            2764665C2766305C2765625C276531205C2765315C2766305C276663205C2766
-            345C2765375C276564205C2765355C2765395C2765615C2766635C2765645C27
-            65312E5C7061720D0A7D0D0A00}
-        end
-        object CopyHardBTN: TRzBitBtn
-          Left = 359
-          Top = 28
-          Width = 148
-          Height = 37
-          Caption = 'Copy From Hard C'
-          DoubleBuffered = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentDoubleBuffered = False
-          ParentFont = False
-          TabOrder = 5
-          OnClick = CopyHardBTNClick
-          Glyph.Data = {
-            F6060000424DF606000000000000360000002800000018000000180000000100
-            180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF926544926544926644926644926643
-            9265449266449266449265439266439265439266449265439266449266439266
-            43926643926643FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF946744E3CAACE4
-            CAACE3CBACE3CBACE3CBACE4CAADE3CAADE4CAADE4CBACE4CAADE4CAACE4CBAC
-            E3CBACE4CAACE3CAACE3CAAC936644FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FF956845E5CCAFE4CCAFE4CCAFE5CCAFE5CCAFE4CCAEE4CCAFE4CCAFE4CCAFE4
-            CCAFE4CCAFE4CDAFE4CDAFE4CCAFE4CDAFE4CCAF956845FFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFF330F0A804B19804A1944110B44110B44110B804B194411
-            0B44110B44110B44110B44110B44110B44110B44110BE5CEB2E5CEB2976945FF
-            FFFFFFFFFF926544926544926644926644926643926544926644926644926543
-            926643926543926644926543926644926643926643926643926643814C1CE6D1
-            B5E6D0B6996A46FFFFFFFFFFFF946744E3CAACE4CAACE3CBACE3CBACE3CBACE4
-            CAADE3CAADE4CAADE4CBACE4CAADE4CAACE4CBACE3CBACE4CAACE3CAACE3CAAC
-            936644824F21E7D3BAE7D3B99B6C47FFFFFFFFFFFF956845E5CCAFE4CCAFE4CC
-            AFE5CCAFE5CCAFE4CCAEE4CCAFE4CCAFE4CCAFE4CCAFE4CCAFE4CDAFE4CDAFE4
-            CCAFE4CDAFE4CCAF95684544110BE8D6BEE8D5BE9D6C48FFFFFFFFFFFF976945
-            E5CFB2E5CEB2A8744DA8744DA8744DE5CFB2A8744DA8744DA8744DA8744DA874
-            4DA8744DA8744DA8744DE5CEB2E5CEB297694584552AE9D9C3E9D8C39F6E48FF
-            FFFFFFFFFF996A46E6D1B6E6D1B5E6D1B6E6D0B6E6D0B6E6D1B6E6D0B6E6D0B6
-            E6D0B5E6D0B6E6D0B6E6D0B6E6D1B6E6D0B5E6D1B5E6D0B6996A4686582EEBDC
-            C9EBDCC9A27049FFFFFFFFFFFF9A6C47E7D3BAE7D3BAE7D3B9E7D3BAE7D3BAE7
-            D3BAE7D3B9E7D3BAE7D4BAE7D3B9E7D3BAE7D3BAE7D3B9E7D3BAE7D3BAE7D3B9
-            9B6C4744110BEBDECDECDECDA4714AFFFFFFFFFFFF9D6D48E8D6BEE8D6BEA874
-            4DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8
-            744DE8D6BEE8D5BE9D6C48875D37EDE2D1ECE2D1A6724BFFFFFFFFFFFF9F6E49
-            E9D9C3E9D9C2E9D9C3E9D9C3E9D9C3E9D9C3EAD9C3E9D8C3E9D8C2E9D8C3E9D9
-            C2E9D8C2EAD9C3E9D9C3E9D9C3E9D8C39F6E4888603BEEE4D6EEE4D6A8754CFF
-            FFFFFFFFFFA1704AEBDBC8EBDCC9EADBC8EADCC8EBDBC9EADCC8EADBC8EBDBC8
-            EBDCC8EADCC8EADBC8EADCC8EADCC9EBDCC8EBDCC9EBDCC9A2704944110BEFE7
-            DAEFE7DAAB764DFFFFFFFFFFFFA3724AEBDECDEBDECDA8744DA8744DA8744DA8
-            744DA8744DA8744DA8744DA8744DA8744DECDFCDA8744DA8744DEBDECDECDECD
-            A4714A8B6544F0E9DFF0EADEAD774EFFFFFFFFFFFFA6734BEDE1D2EDE1D1ECE1
-            D1EDE1D2EDE1D1EDE2D1EDE1D1ECE2D2ECE1D1ECE1D1EDE1D1EDE2D2EDE2D1EC
-            E1D1EDE2D1ECE2D1A6724B8C6848F1ECE2F1EBE2AE794FFFFFFFFFFFFFA8744C
-            EEE5D6EEE4D6EEE4D6EEE4D6EEE4D6EEE5D6EEE5D6EEE4D6EEE5D6EEE4D6EEE4
-            D6EEE4D6EEE5D6EDE4D5EEE4D6EEE4D6A8754C44110BF1EEE5F2EEE6B07950FF
-            FFFFFFFFFFAA764DEFE7DAEFE7DAA8744DA8744DA8744DA8744DA8744DA8744D
-            A8744DA8744DA8744DA8744DA8744DA8744DEFE7DAEFE7DAAB764D8E6C4DF3F0
-            E8F3F0E8B17A50FFFFFFFFFFFFAD774EF0EADEF0EADEF0E9DEF0E9DEF0E9DEF0
-            EADFF0EADEF0EADEF0EADFF0E9DEF0EADEF0E9DEF0E9DEF0E9DEF0E9DFF0EADE
-            AD774E8E6D50F3F1EAF3F1EAB37B50FFFFFFFFFFFFAE794FF1ECE1F1ECE2A874
-            4DA8744DA8744DF1ECE2F1ECE2F0EBE2F1ECE2F1ECE2F1ECE2F1ECE1F1EBE2F1
-            ECE2F1ECE2F1EBE2AE794F50120CB47C51B47C51B47C51FFFFFFFFFFFFB07A50
-            F1EEE6F2EEE5A8744DA8744DA8744DF1EEE5F2EEE5A8744DA8744DA8744DA874
-            4DA8744DA8744DA8744DF1EEE5F2EEE6B07950FFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFB17B50F3EFE7F3F0E8F2EFE8F2F0E8F3EFE8F2F0E8F2EFE7F3EFE8
-            F3F0E8F2F0E8F2EFE8F2F0E7F2F0E8F3F0E7F3F0E8F3F0E8B17A50FFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFB37C51F3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3
-            F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EA
-            B37B50FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB47C51B47C51B47C51B47C
-            51B47C51B47D51B47C51B47C51B47C51B47C51B47C51B47C51B47C51B47C51B4
-            7C51B47C51B47C51B47C51FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-          Margin = -1
-        end
-        object SaveHardBTN: TRzBitBtn
-          Left = 861
-          Top = 28
-          Width = 132
-          Height = 37
-          Caption = 'Save to Hard Copy'
-          DoubleBuffered = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          ParentDoubleBuffered = False
-          ParentFont = False
-          TabOrder = 6
-          Visible = False
-          OnClick = SaveHardBTNClick
-          Glyph.Data = {
-            F6060000424DF606000000000000360000002800000018000000180000000100
-            180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFF4646463D3D3D4141416B6B6BA5A5A5ADADADA9
-            A9A9A8A8A8A6A6A6A4A4A4A2A2A2A0A0A09E9E9E9D9D9D9A9A9A9999999A9A9A
-            9191916363633D3D3D353535414141FFFFFFFFFFFF4040409494944B4B4B8888
-            88128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF312
-            8BF3128BF3128BF3128BF37878787F7F7F505050343434FFFFFFFFFFFF454545
-            AEAEAE99999985858525A5F725A5F725A5F725A5F725A5F725A5F725A5F725A5
-            F725A5F725A5F725A5F725A5F725A5F725A5F7777777929292A4A4A4353535FF
-            FFFFFFFFFF4747473E3E3E414141868686F0F0F0FFFFFFFFFFFFFDFDFDFAFAFA
-            F6F6F6F3F3F3F0F0F0EEEEEEEAEAEAE7E7E7E4E4E4E7E7E7D5D5D57979793030
-            30212121353535FFFFFFFFFFFF4A4A4A424242444444878787EFEFEFFFFFFFFF
-            FFFFFFFFFFFEFEFEFBFBFBF8F8F8F5F5F5F3F3F3EFEFEFECECECE9E9E9ECECEC
-            D9D9D9797979303030212121353535FFFFFFFFFFFF4D4D4D4747474747478787
-            87EFEFEFCEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CE
-            BDB5CEBDB5CEBDB5DEDEDE7B7B7B2F2F2F212121353535FFFFFFFFFFFF4F4F4F
-            4C4C4C4B4B4B878787EFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFE
-            FEFCFCFCF8F8F8F5F5F5F1F1F1F5F5F5E2E2E27D7D7D2F2F2F212121353535FF
-            FFFFFFFFFF5353535151514E4E4E888888EFEFEFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFDFDFDFAFAFAF6F6F6FBFBFBE6E6E67D7D7D2F2F
-            2F212121353535FFFFFFFFFFFF575757575757515151898989EFEFEFCEBDB5CE
-            BDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5
-            ECECEC8080802F2F2F212121353535FFFFFFFFFFFF5959595B5B5B5555558B8B
-            8BF0F0F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFF0F0F08484842F2F2F212121353535FFFFFFFFFFFF5B5B5B
-            606060595959888888E9E9E9FCFCFCF5F5F5F4F4F4F4F4F4F4F4F4F5F5F5F5F5
-            F5F5F5F5F5F5F5F5F5F5F6F6F6FFFFFFEAEAEA808080313131222222353535FF
-            FFFFFFFFFF5E5E5E6767676060606767678787878C8C8C888888868686848484
-            8282828282828181818181818181817F7F7F8080808181817979794F4F4F3232
-            32272727373737FFFFFFFFFFFF6262626B6B6B6A6A6A65656562626260606056
-            56564E4E4E4A4A4A4747474545454242424040403D3D3D3A3A3A393939373737
-            3737373737373434342D2D2D3A3A3AFFFFFFFFFFFF6868687070706A6A6A6464
-            645E5E5E5A5A5A5B5B5B6060606161615C5C5C5959595555555353535353534F
-            4F4F4848484242423B3B3B3838383838383333333D3D3DFFFFFFFFFFFF6F6F6F
-            7373735454544747474848483E3E3E797979B9B9B9BFBFBFB1B1B1ADADADA8A8
-            A8A4A4A4A1A1A19C9C9C9898988C8C8C6B6B6B4141413C3C3C383838404040FF
-            FFFFFFFFFF7575757575754141412C2C2C303030202020909090FFFFFFFFFFFF
-            F1F1F1ECECECEAEAEAD5D5D5B1B1B1B3B3B3CECECEC7C7C78D8D8D4848484040
-            403D3D3D434343FFFFFFFFFFFF7A7A7A7A7A7A4444443030303434342525258E
-            8E8EF7F7F7FAFAFAE7E7E7E3E3E3E6E6E6B9B9B95D5D5D707070BDBDBDC3C3C3
-            8989894C4C4C444444414141464646FFFFFFFFFFFF7E7E7E7D7D7D4747473131
-            313535352626268D8D8DF6F6F6FAFAFAE6E6E6E2E2E2E7E7E7B5B5B54A4A4A62
-            6262BABABAC3C3C38B8B8B505050484848454545494949FFFFFFFFFFFF838383
-            8282824848483131313434342727278E8E8EF5F5F5FAFAFAE6E6E6E2E2E2E6E6
-            E6B6B6B6515151676767BABABAC2C2C28C8C8C5353534C4C4C4A4A4A4D4D4DFF
-            FFFFFFFFFF8A8A8A8888884545452B2B2B2F2F2F212121919191FFFFFFFFFFFF
-            F0F0F0ECECECEAEAEAD0D0D09B9B9BA2A2A2C9C9C9C6C6C69393935858585050
-            504E4E4E797979FFFFFFFFFFFF8686868484845B5B5B4B4B4B4E4E4E45454585
-            8585C5C5C5C7C7C7BABABAB6B6B6B3B3B3AEAEAEA5A5A5A2A2A2A3A3A39C9C9C
-            8080805F5F5F5A5A5A797979FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-          Margin = -1
-        end
-      end
-    end
     object TitlePNL: TRzPanel
       AlignWithMargins = True
       Left = 3
@@ -2833,7 +51,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Style = [fsBold]
       ParentColor = True
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
       Transparent = True
       VisualStyle = vsClassic
       WordWrap = False
@@ -2845,7 +63,2922 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Height = 13
       Align = alTop
       BorderOuter = fsNone
+      TabOrder = 1
+    end
+    object PageControlPC: TPageControl
+      Left = 0
+      Top = 67
+      Width = 1017
+      Height = 666
+      ActivePage = SeminarTS
+      Align = alClient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 2
+      object SeminarTS: TTabSheet
+        Caption = #931#949#956#953#957#940#961#953#959
+        ExplicitTop = 47
+        ExplicitWidth = 281
+        ExplicitHeight = 142
+        object RzPanel22: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 1009
+          Height = 635
+          Align = alClient
+          BorderOuter = fsNone
+          TabOrder = 0
+          ExplicitLeft = 3
+          ExplicitWidth = 657
+          ExplicitHeight = 162
+          object Panel5: TRzPanel
+            Left = 0
+            Top = 0
+            Width = 1009
+            Height = 39
+            Align = alTop
+            BorderOuter = fsFlatRounded
+            BorderSides = [sdRight, sdBottom]
+            TabOrder = 0
+            ExplicitTop = 8
+            ExplicitWidth = 657
+            object wwIncrementalSearch1: TwwIncrementalSearch
+              Left = 15
+              Top = 11
+              Width = 128
+              Height = 22
+              DataSource = TableSRC
+              ShowMatchText = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+            end
+          end
+          object RzPanel2: TRzPanel
+            Left = 0
+            Top = 51
+            Width = 361
+            Height = 584
+            Align = alLeft
+            BorderOuter = fsNone
+            TabOrder = 1
+            ExplicitLeft = 8
+            ExplicitTop = 39
+            ExplicitHeight = 123
+            object RzPanel3: TRzPanel
+              Left = 0
+              Top = 0
+              Width = 361
+              Height = 17
+              Align = alTop
+              BorderOuter = fsNone
+              TabOrder = 0
+            end
+            object Grid1: TwwDBGrid
+              Left = 0
+              Top = 17
+              Width = 361
+              Height = 567
+              ControlType.Strings = (
+                'ANAD_APPROVED;CheckBox;Y;N'
+                'TYPE_MONO_POLY;CheckBox;P;M')
+              Selected.Strings = (
+                'SERIAL_NUMBER'#9'4'#9'A/A'
+                'SEMINAR_NAME'#9'28'#9#928#949#961#953#947#961#945#966#942
+                'ANAD_APPROVED'#9'6'#9#913#925#913#916
+                'TYPE_MONO_POLY'#9'9'#9#928#959#955#965#917#960#967)
+              IniAttributes.Delimiter = ';;'
+              IniAttributes.UnicodeIniFile = False
+              TitleColor = clBtnFace
+              FixedCols = 0
+              ShowHorzScrollBar = True
+              Align = alLeft
+              BorderStyle = bsNone
+              Color = 12713983
+              DataSource = TableSRC
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Arial'
+              Font.Style = []
+              KeyOptions = []
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 1
+              TitleAlignment = taLeftJustify
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -13
+              TitleFont.Name = 'Arial'
+              TitleFont.Style = []
+              TitleLines = 1
+              TitleButtons = True
+              OnTitleButtonClick = Grid1TitleButtonClick
+              ExplicitLeft = -4
+              ExplicitTop = 16
+              ExplicitHeight = 579
+            end
+          end
+          object RzPanel12: TRzPanel
+            Left = 393
+            Top = 51
+            Width = 616
+            Height = 584
+            Align = alClient
+            TabOrder = 2
+            ExplicitLeft = 361
+            ExplicitTop = 39
+            ExplicitWidth = 652
+            ExplicitHeight = 601
+            object GroupBox1: TGroupBox
+              Left = 31
+              Top = 31
+              Width = 349
+              Height = 188
+              Caption = #928#955#951#961#959#966#959#961#943#949#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              object Label2: TLabel
+                Left = 54
+                Top = 46
+                Width = 58
+                Height = 14
+                Caption = #928#949#961#953#947#961#945#966#942
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label3: TLabel
+                Left = 91
+                Top = 21
+                Width = 21
+                Height = 14
+                Caption = #913'/'#913
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object SerialFLD: TRzDBLabel
+                Left = 119
+                Top = 19
+                Width = 75
+                Height = 20
+                Alignment = taRightJustify
+                BorderOuter = fsFlat
+                BorderWidth = 1
+                DataField = 'SERIAL_NUMBER'
+                DataSource = TableSRC
+              end
+              object Label7: TLabel
+                Left = 77
+                Top = 101
+                Width = 35
+                Height = 14
+                Caption = #931#967#972#955#953#945
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label17: TLabel
+                Left = 60
+                Top = 81
+                Width = 52
+                Height = 14
+                Caption = #928#959#955#965'-'#917#960#967
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label5: TLabel
+                Left = 3
+                Top = 157
+                Width = 105
+                Height = 14
+                Caption = #917#960#953#967#959#961#942#947#951#963#951' '#913#925#913#916
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object FirstFLD: TwwDBEdit
+                Left = 119
+                Top = 43
+                Width = 219
+                Height = 22
+                DataField = 'SEMINAR_NAME'
+                DataSource = TableSRC
+                TabOrder = 0
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+              object RzDBRichEdit1: TRzDBRichEdit
+                Left = 118
+                Top = 101
+                Width = 219
+                Height = 49
+                DataField = 'COMMENTS'
+                DataSource = TableSRC
+                Font.Charset = GREEK_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                TabOrder = 1
+                Zoom = 100
+              end
+              object wwCheckBox1: TwwCheckBox
+                AlignWithMargins = True
+                Left = 119
+                Top = 78
+                Width = 29
+                Height = 17
+                DisableThemes = False
+                AlwaysTransparent = False
+                ValueChecked = 'Y'
+                ValueUnchecked = 'N'
+                DisplayValueChecked = 'P'
+                DisplayValueUnchecked = 'M'
+                NullAndBlankState = cbUnchecked
+                DataField = 'TYPE_MONO_POLY'
+                DataSource = TableSRC
+                ShowText = False
+                TabOrder = 2
+              end
+              object wwCheckBox2: TwwCheckBox
+                AlignWithMargins = True
+                Left = 121
+                Top = 156
+                Width = 29
+                Height = 17
+                DisableThemes = False
+                AlwaysTransparent = False
+                ValueChecked = 'Y'
+                ValueUnchecked = 'N'
+                DisplayValueChecked = 'Y'
+                DisplayValueUnchecked = 'N'
+                NullAndBlankState = cbUnchecked
+                Checked = True
+                DataField = 'ANAD_APPROVED'
+                DataSource = TableSRC
+                ShowText = False
+                State = cbChecked
+                TabOrder = 3
+              end
+            end
+            object SecondGRP: TRzGroupBox
+              Left = 31
+              Top = 225
+              Width = 349
+              Height = 160
+              Caption = #916#953#940#961#954#949#953#945
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 1
+              object Label18: TLabel
+                Left = 58
+                Top = 21
+                Width = 74
+                Height = 14
+                Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label19: TLabel
+                Left = 8
+                Top = 49
+                Width = 124
+                Height = 14
+                Caption = #924#941#947#953#963#964#959#962' '#913#961'. '#924#945#952#951#964#974#957
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label1: TLabel
+                Left = 59
+                Top = 87
+                Width = 73
+                Height = 14
+                Caption = #933#960#940#961#967#949#953' '#923#942#958#951
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label8: TLabel
+                Left = 53
+                Top = 113
+                Width = 79
+                Height = 14
+                Caption = #923#942#958#951' '#963#949' '#924#942#957#949#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object wwDBEdit4: TwwDBEdit
+                Left = 138
+                Top = 18
+                Width = 90
+                Height = 22
+                DataField = 'DURATION_HOURS'
+                DataSource = TableSRC
+                TabOrder = 0
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+              object wwDBEdit9: TwwDBEdit
+                Left = 138
+                Top = 46
+                Width = 90
+                Height = 22
+                DataField = 'MAX_CAPACITY'
+                DataSource = TableSRC
+                TabOrder = 1
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+              object CompletedFLD: TwwCheckBox
+                Left = 138
+                Top = 86
+                Width = 37
+                Height = 18
+                DisableThemes = False
+                AlwaysTransparent = False
+                ValueChecked = 'Y'
+                ValueUnchecked = 'N'
+                DisplayValueChecked = 'Y'
+                DisplayValueUnchecked = 'N'
+                NullAndBlankState = cbUnchecked
+                Checked = True
+                DataField = 'HAS_EXPIRY'
+                DataSource = TableSRC
+                ShowText = False
+                State = cbChecked
+                TabOrder = 2
+              end
+              object wwDBEdit2: TwwDBEdit
+                Left = 138
+                Top = 110
+                Width = 75
+                Height = 22
+                DataField = 'EXPIRY_PERIOD'
+                DataSource = TableSRC
+                TabOrder = 3
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+            end
+            object RzPanel13: TRzPanel
+              Left = 2
+              Top = 2
+              Width = 612
+              Height = 23
+              Align = alTop
+              BorderOuter = fsNone
+              TabOrder = 2
+              ExplicitWidth = 292
+              object wwDBNavigator1: TwwDBNavigator
+                Left = 23
+                Top = 0
+                Width = 207
+                Height = 23
+                AutosizeStyle = asSizeNavButtons
+                DataSource = TableSRC
+                RepeatInterval.InitialDelay = 500
+                RepeatInterval.Interval = 100
+                Align = alLeft
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Arial'
+                Font.Style = []
+                object wwNavButton1: TwwNavButton
+                  Left = 0
+                  Top = 0
+                  Width = 26
+                  Height = 23
+                  Hint = 'Move to first record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Button'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 0
+                  Style = nbsFirst
+                end
+                object wwNavButton2: TwwNavButton
+                  Left = 26
+                  Top = 0
+                  Width = 26
+                  Height = 23
+                  Hint = 'Move to prior record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Prior'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 1
+                  Style = nbsPrior
+                end
+                object wwNavButton3: TwwNavButton
+                  Left = 52
+                  Top = 0
+                  Width = 26
+                  Height = 23
+                  Hint = 'Move to next record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Next'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 2
+                  Style = nbsNext
+                end
+                object wwNavButton4: TwwNavButton
+                  Left = 78
+                  Top = 0
+                  Width = 26
+                  Height = 23
+                  Hint = 'Move to last record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Button1'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 3
+                  Style = nbsLast
+                end
+                object wwNavButton5: TwwNavButton
+                  Left = 104
+                  Top = 0
+                  Width = 26
+                  Height = 23
+                  Hint = 'Insert new record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Insert'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  OnClick = wwNavButton5Click
+                  Index = 4
+                  Style = nbsInsert
+                end
+                object wwNavButton6: TwwNavButton
+                  Left = 130
+                  Top = 0
+                  Width = 26
+                  Height = 23
+                  Hint = 'Delete current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Delete'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 5
+                  Style = nbsDelete
+                end
+                object wwNavButton7: TwwNavButton
+                  Left = 156
+                  Top = 0
+                  Width = 26
+                  Height = 23
+                  Hint = 'Post changes of current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Post'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 6
+                  Style = nbsPost
+                end
+                object wwNavButton8: TwwNavButton
+                  Left = 182
+                  Top = 0
+                  Width = 25
+                  Height = 23
+                  Hint = 'Cancel changes made to current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Cancel'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 7
+                  Style = nbsCancel
+                end
+              end
+              object RzPanel14: TRzPanel
+                Left = 0
+                Top = 0
+                Width = 23
+                Height = 23
+                Align = alLeft
+                BorderOuter = fsNone
+                TabOrder = 1
+              end
+            end
+          end
+          object RzPanel24: TRzPanel
+            Left = 0
+            Top = 39
+            Width = 1009
+            Height = 12
+            Align = alTop
+            BorderOuter = fsNone
+            TabOrder = 3
+            ExplicitLeft = -1
+            ExplicitTop = 57
+          end
+          object RzPanel30: TRzPanel
+            Left = 361
+            Top = 51
+            Width = 32
+            Height = 584
+            Align = alLeft
+            BorderOuter = fsNone
+            TabOrder = 4
+            ExplicitLeft = 577
+            ExplicitTop = 17
+            ExplicitHeight = 640
+          end
+        end
+      end
+      object SubjectTS: TTabSheet
+        Caption = #920#941#956#945#964#945
+        ImageIndex = 1
+        OnShow = SubjectTSShow
+        ExplicitWidth = 657
+        ExplicitHeight = 326
+        object RzPanel26: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 1009
+          Height = 635
+          Align = alClient
+          BorderOuter = fsNone
+          TabOrder = 0
+          ExplicitTop = -3
+          ExplicitWidth = 657
+          ExplicitHeight = 326
+          object RzPanel20: TRzPanel
+            Left = 0
+            Top = 12
+            Width = 473
+            Height = 623
+            Align = alLeft
+            BorderOuter = fsNone
+            TabOrder = 0
+            ExplicitTop = 15
+            object GroupBox2: TGroupBox
+              Left = 0
+              Top = 0
+              Width = 473
+              Height = 233
+              Align = alTop
+              Caption = #920#941#956#945#964#945
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              ExplicitWidth = 537
+              object RzPanel4: TRzPanel
+                Left = 2
+                Top = 16
+                Width = 469
+                Height = 33
+                Align = alTop
+                BorderOuter = fsNone
+                TabOrder = 0
+                ExplicitWidth = 533
+              end
+              object wwDBGrid1: TwwDBGrid
+                Left = 2
+                Top = 49
+                Width = 469
+                Height = 182
+                Selected.Strings = (
+                  'SERIAL_NUMBER'#9'10'#9'A/A'
+                  'SUBJECT'#9'21'#9#920#941#956#945
+                  'FEE_NORMAL'#9'10'#9#932#953#956#942' '#954#945#957#959#957#953#954#942
+                  'FEE_REDUCED'#9'10'#9#932#953#956#942' '#913#925#913#916)
+                IniAttributes.Delimiter = ';;'
+                IniAttributes.UnicodeIniFile = False
+                TitleColor = clBtnFace
+                FixedCols = 1
+                ShowHorzScrollBar = True
+                Align = alClient
+                Color = 12713983
+                DataSource = SeminarSubjectSRC
+                Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+                ReadOnly = True
+                TabOrder = 1
+                TitleAlignment = taLeftJustify
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -12
+                TitleFont.Name = 'Tahoma'
+                TitleFont.Style = []
+                TitleLines = 1
+                TitleButtons = False
+                ExplicitWidth = 463
+              end
+            end
+          end
+          object RzPanel25: TRzPanel
+            Left = 473
+            Top = 12
+            Width = 56
+            Height = 623
+            Align = alLeft
+            BorderOuter = fsNone
+            TabOrder = 1
+            ExplicitLeft = 508
+            ExplicitTop = 18
+          end
+          object RzPanel19: TRzPanel
+            Left = 529
+            Top = 12
+            Width = 369
+            Height = 623
+            Align = alLeft
+            BorderOuter = fsNone
+            TabOrder = 2
+            ExplicitLeft = 0
+            ExplicitTop = -1
+            ExplicitHeight = 635
+            object GroupBox5: TGroupBox
+              Left = 6
+              Top = 29
+              Width = 349
+              Height = 92
+              Caption = #928#955#951#961#959#966#959#961#943#949#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              object Label21: TLabel
+                Left = 43
+                Top = 46
+                Width = 58
+                Height = 14
+                Caption = #928#949#961#953#947#961#945#966#942
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label22: TLabel
+                Left = 80
+                Top = 21
+                Width = 21
+                Height = 14
+                Caption = #913'/'#913
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object RzDBLabel2: TRzDBLabel
+                Left = 107
+                Top = 17
+                Width = 75
+                Height = 20
+                Alignment = taRightJustify
+                BorderOuter = fsFlat
+                BorderWidth = 1
+                DataField = 'SERIAL_NUMBER'
+                DataSource = SeminarSubjectSRC
+              end
+              object SubjectDescFLD: TwwDBEdit
+                Left = 108
+                Top = 43
+                Width = 219
+                Height = 22
+                DataField = 'SUBJECT'
+                DataSource = SeminarSubjectSRC
+                TabOrder = 0
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+            end
+            object RzPanel21: TRzPanel
+              Left = 0
+              Top = 0
+              Width = 369
+              Height = 23
+              Align = alTop
+              BorderOuter = fsNone
+              TabOrder = 1
+              ExplicitWidth = 344
+              object SubjectNAV: TwwDBNavigator
+                Left = 0
+                Top = 0
+                Width = 184
+                Height = 23
+                AutosizeStyle = asSizeNavButtons
+                DataSource = SeminarSubjectSRC
+                RepeatInterval.InitialDelay = 500
+                RepeatInterval.Interval = 100
+                Align = alLeft
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Arial'
+                Font.Style = []
+                object wwNavButton17: TwwNavButton
+                  Left = 0
+                  Top = 0
+                  Width = 23
+                  Height = 23
+                  Hint = 'Move to first record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Button'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 0
+                  Style = nbsFirst
+                end
+                object wwNavButton18: TwwNavButton
+                  Left = 23
+                  Top = 0
+                  Width = 23
+                  Height = 23
+                  Hint = 'Move to prior record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Prior'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 1
+                  Style = nbsPrior
+                end
+                object wwNavButton19: TwwNavButton
+                  Left = 46
+                  Top = 0
+                  Width = 23
+                  Height = 23
+                  Hint = 'Move to next record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Next'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 2
+                  Style = nbsNext
+                end
+                object wwNavButton20: TwwNavButton
+                  Left = 69
+                  Top = 0
+                  Width = 23
+                  Height = 23
+                  Hint = 'Move to last record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Button1'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 3
+                  Style = nbsLast
+                end
+                object wwNavButton21: TwwNavButton
+                  Left = 92
+                  Top = 0
+                  Width = 23
+                  Height = 23
+                  Hint = 'Insert new record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Insert'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  OnClick = Nav1InsertClick
+                  Index = 4
+                  Style = nbsInsert
+                end
+                object wwNavButton22: TwwNavButton
+                  Left = 115
+                  Top = 0
+                  Width = 23
+                  Height = 23
+                  Hint = 'Delete current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Delete'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 5
+                  Style = nbsDelete
+                end
+                object wwNavButton23: TwwNavButton
+                  Left = 138
+                  Top = 0
+                  Width = 23
+                  Height = 23
+                  Hint = 'Post changes of current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Post'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 6
+                  Style = nbsPost
+                end
+                object wwNavButton24: TwwNavButton
+                  Left = 161
+                  Top = 0
+                  Width = 23
+                  Height = 23
+                  Hint = 'Cancel changes made to current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Cancel'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 7
+                  Style = nbsCancel
+                end
+              end
+              object RzPanel23: TRzPanel
+                Left = 184
+                Top = 0
+                Width = 0
+                Height = 23
+                Align = alLeft
+                BorderOuter = fsNone
+                TabOrder = 1
+              end
+            end
+            object RzGroupBox1: TRzGroupBox
+              Left = 6
+              Top = 135
+              Width = 349
+              Height = 98
+              Caption = #932#953#956#941#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 2
+              object Label4: TLabel
+                Left = 27
+                Top = 56
+                Width = 112
+                Height = 14
+                Caption = #932#953#956#942' '#956#949' '#949#960#953#967#959#961#942#947#951#963#951
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label6: TLabel
+                Left = 11
+                Top = 28
+                Width = 128
+                Height = 14
+                Caption = #932#953#956#942' '#967#969#961#943#962' '#949#960#953#967#959#961#942#947#951#963#951
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object wwDBEdit1: TwwDBEdit
+                Left = 145
+                Top = 53
+                Width = 76
+                Height = 22
+                DataField = 'FEE_REDUCED'
+                DataSource = SeminarSubjectSRC
+                TabOrder = 1
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+              object wwDBEdit3: TwwDBEdit
+                Left = 145
+                Top = 25
+                Width = 76
+                Height = 22
+                DataField = 'FEE_NORMAL'
+                DataSource = SeminarSubjectSRC
+                TabOrder = 0
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+            end
+          end
+          object Panel2: TRzPanel
+            Left = 0
+            Top = 0
+            Width = 1009
+            Height = 12
+            Align = alTop
+            BorderOuter = fsNone
+            TabOrder = 3
+            ExplicitTop = 8
+          end
+        end
+      end
+      object ReminderTS: TTabSheet
+        Caption = #917#961#947#945#963#943#949#962
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = #917#961#947
+        Font.Style = []
+        ImageIndex = 2
+        ParentFont = False
+        OnShow = ReminderTSShow
+        ExplicitWidth = 281
+        ExplicitHeight = 162
+        object RzPanel27: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 1009
+          Height = 635
+          Align = alClient
+          BorderOuter = fsNone
+          TabOrder = 0
+          ExplicitLeft = 1
+          ExplicitWidth = 938
+          ExplicitHeight = 326
+          object RzPanel6: TRzPanel
+            Left = 0
+            Top = 0
+            Width = 1009
+            Height = 39
+            Align = alTop
+            BorderOuter = fsFlatRounded
+            BorderSides = [sdRight, sdBottom]
+            TabOrder = 0
+            ExplicitTop = 8
+            ExplicitWidth = 938
+            object wwIncrementalSearch2: TwwIncrementalSearch
+              Left = 15
+              Top = 11
+              Width = 218
+              Height = 22
+              DataSource = SeminarReminderSRC
+              SearchField = 'Description'
+              ShowMatchText = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+            end
+          end
+          object GroupBox3: TGroupBox
+            Left = 461
+            Top = 56
+            Width = 469
+            Height = 579
+            Align = alLeft
+            Caption = #933#960#949#957#952#965#956#943#963#949#953#962
+            Ctl3D = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentCtl3D = False
+            ParentFont = False
+            TabOrder = 1
+            ExplicitLeft = 8
+            ExplicitTop = 39
+            ExplicitHeight = 287
+            object RzPanel5: TRzPanel
+              Left = 1
+              Top = 15
+              Width = 467
+              Height = 18
+              Align = alTop
+              BorderOuter = fsNone
+              TabOrder = 0
+            end
+            object wwDBGrid2: TwwDBGrid
+              Left = 1
+              Top = 33
+              Width = 467
+              Height = 545
+              ControlType.Strings = (
+                'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
+                'DAYS_OR_MONTHS;CustomEdit;NamePersonFLD;F'
+                'START_OR_END;CustomEdit;StartEndLD;F')
+              Selected.Strings = (
+                'SERIAL_NUMBER'#9'3'#9'A/A'
+                'DESCRIPTION'#9'10'#9#928#949#961#953#947#961#945#966#942
+                'NUMBER_OF_DAYS_MONTHS'#9'5'#9#931#949
+                'DAYS_OR_MONTHS'#9'10'#9#919#956#941#961#949#962'/'#924#942#957#949#962
+                'AFTER_OR_BEFORE'#9'8'#9#928#961#953#957'/'#924#949#964#940
+                'START_OR_END'#9'16'#9#919#956#949#961#959#956#951#957#943#945)
+              IniAttributes.Delimiter = ';;'
+              IniAttributes.UnicodeIniFile = False
+              TitleColor = clBtnFace
+              FixedCols = 1
+              ShowHorzScrollBar = True
+              Align = alClient
+              Color = 12713983
+              DataSource = SeminarReminderSRC
+              Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+              ReadOnly = True
+              TabOrder = 1
+              TitleAlignment = taLeftJustify
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -12
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+              TitleLines = 1
+              TitleButtons = False
+              ExplicitHeight = 253
+              object AfterFLD: TwwDBComboBox
+                Left = 94
+                Top = 81
+                Width = 76
+                Height = 20
+                ShowButton = True
+                Style = csDropDownList
+                MapList = True
+                AllowClearKey = False
+                AutoDropDown = True
+                DataField = 'AFTER_OR_BEFORE'
+                DataSource = SeminarReminderSRC
+                DropDownCount = 8
+                ItemHeight = 0
+                Items.Strings = (
+                  #924#949#964#940#9'A'
+                  #928#961#953#957#9'B')
+                ItemIndex = 0
+                Sorted = False
+                TabOrder = 0
+                UnboundDataType = wwDefault
+              end
+              object NamePersonFLD: TwwDBComboBox
+                Left = 94
+                Top = 137
+                Width = 76
+                Height = 20
+                ShowButton = True
+                Style = csDropDownList
+                MapList = True
+                AllowClearKey = False
+                AutoDropDown = True
+                DataField = 'DAYS_OR_MONTHS'
+                DataSource = SeminarReminderSRC
+                DropDownCount = 8
+                ItemHeight = 0
+                Items.Strings = (
+                  #924#941#961#949#962#9'D'
+                  #924#942#957#949#962#9'M')
+                ItemIndex = 1
+                Sorted = False
+                TabOrder = 1
+                UnboundDataType = wwDefault
+              end
+              object StartEndLD: TwwDBComboBox
+                Left = 198
+                Top = 233
+                Width = 76
+                Height = 20
+                ShowButton = True
+                Style = csDropDownList
+                MapList = True
+                AllowClearKey = False
+                AutoDropDown = True
+                DataField = 'START_OR_END'
+                DataSource = SeminarReminderSRC
+                DropDownCount = 8
+                ItemHeight = 0
+                Items.Strings = (
+                  #913#960#972' '#964#951#957' '#904#957#945#961#958#951#9'S'
+                  #913#960#972' '#964#959' '#932#941#955#959#962#9'E')
+                ItemIndex = 0
+                Sorted = False
+                TabOrder = 2
+                UnboundDataType = wwDefault
+              end
+            end
+          end
+          object RzPanel17: TRzPanel
+            Left = 0
+            Top = 56
+            Width = 461
+            Height = 579
+            Align = alLeft
+            BorderOuter = fsNone
+            TabOrder = 2
+            ExplicitLeft = 8
+            ExplicitTop = 39
+            ExplicitHeight = 287
+            object GroupBox4: TGroupBox
+              Left = 31
+              Top = 29
+              Width = 338
+              Height = 482
+              Caption = #928#955#951#961#959#966#959#961#943#949#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              object Label9: TLabel
+                Left = 43
+                Top = 46
+                Width = 58
+                Height = 14
+                Caption = #928#949#961#953#947#961#945#966#942
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label10: TLabel
+                Left = 80
+                Top = 21
+                Width = 21
+                Height = 14
+                Caption = #913'/'#913
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object RzDBLabel1: TRzDBLabel
+                Left = 107
+                Top = 17
+                Width = 75
+                Height = 20
+                Alignment = taRightJustify
+                BorderOuter = fsFlat
+                BorderWidth = 1
+                DataField = 'SERIAL_NUMBER'
+                DataSource = SeminarReminderSRC
+              end
+              object Label15: TLabel
+                Left = 20
+                Top = 423
+                Width = 80
+                Height = 14
+                Caption = #931#949' '#956#942#957#949#962'/'#956#941#961#949#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label16: TLabel
+                Left = 58
+                Top = 71
+                Width = 43
+                Height = 14
+                Caption = #924#942#957#965#956#945
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label12: TLabel
+                Left = 28
+                Top = 212
+                Width = 73
+                Height = 14
+                Caption = #925#945' '#945#960#959#963#964#945#955#949#943
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                WordWrap = True
+              end
+              object Label13: TLabel
+                Left = 63
+                Top = 149
+                Width = 38
+                Height = 14
+                Caption = #913#966#959#961#940
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label11: TLabel
+                Left = 33
+                Top = 279
+                Width = 68
+                Height = 28
+                Alignment = taRightJustify
+                Caption = #919#956#949#961#959#956#951#956#943#945' '#913#957#945#966#959#961#940#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                WordWrap = True
+              end
+              object Label14: TLabel
+                Left = 7
+                Top = 345
+                Width = 94
+                Height = 22
+                AutoSize = False
+                Caption = #924#941#964#961#951#963#951' '#935#961#972#957#959#965
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                WordWrap = True
+              end
+              object Label20: TLabel
+                Left = 46
+                Top = 118
+                Width = 55
+                Height = 14
+                Caption = #931#951#956#945#957#964#953#954#972
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object REminderDescFLD: TwwDBEdit
+                Left = 108
+                Top = 43
+                Width = 219
+                Height = 22
+                DataField = 'DESCRIPTION'
+                DataSource = SeminarReminderSRC
+                TabOrder = 0
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+              object wwDBEdit8: TwwDBEdit
+                Left = 108
+                Top = 419
+                Width = 75
+                Height = 22
+                DataField = 'NUMBER_OF_DAYS_MONTHS'
+                DataSource = SeminarReminderSRC
+                TabOrder = 6
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+              object RzDBRichEdit2: TRzDBRichEdit
+                Left = 107
+                Top = 71
+                Width = 219
+                Height = 41
+                DataField = 'REMINDER_MESSAGE'
+                DataSource = SeminarReminderSRC
+                Font.Charset = GREEK_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                TabOrder = 1
+                Zoom = 100
+              end
+              object RzDBRadioGroup2: TRzDBRadioGroup
+                Left = 108
+                Top = 212
+                Width = 125
+                Height = 60
+                DataField = 'AFTER_OR_BEFORE'
+                DataSource = SeminarReminderSRC
+                Items.Strings = (
+                  #924#949#964#940' '#964#959' '#931#949#956#953#957#940#961#953#959
+                  #928#961#943#957' '#964#959' '#931#949#956#953#957#940#961#953#959)
+                Values.Strings = (
+                  'A'
+                  'B')
+                Caption = #913#960#959#963#964#959#955#942
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = []
+                ItemHeight = 14
+                ParentFont = False
+                SpaceEvenly = True
+                TabOrder = 3
+                VisualStyle = vsGradient
+              end
+              object RzDBRadioGroup3: TRzDBRadioGroup
+                Left = 108
+                Top = 279
+                Width = 125
+                Height = 60
+                DataField = 'START_OR_END'
+                DataSource = SeminarReminderSRC
+                Items.Strings = (
+                  #904#957#945#961#958#951' '#931#949#956#953#957#945#961#943#959#965
+                  #932#941#955#959#962' '#931#949#956#953#957#945#961#943#959#965)
+                Values.Strings = (
+                  'S'
+                  'E')
+                Caption = #931#951#956#945#957#964#953#954#942' '#919#956#949#961#959#956#951#957#943#945
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = []
+                ItemHeight = 14
+                ParentFont = False
+                SpaceEvenly = True
+                TabOrder = 4
+                VisualStyle = vsGradient
+              end
+              object RzDBRadioGroup4: TRzDBRadioGroup
+                Left = 108
+                Top = 345
+                Width = 125
+                Height = 60
+                DataField = 'DAYS_OR_MONTHS'
+                DataSource = SeminarReminderSRC
+                Items.Strings = (
+                  #924#942#957#949#962
+                  #919#956#941#961#949#962)
+                Values.Strings = (
+                  'M'
+                  'D')
+                Caption = #924#959#957#940#948#945' '#935#961#972#957#959#965
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = []
+                ItemHeight = 14
+                ParentFont = False
+                SpaceEvenly = True
+                TabOrder = 5
+                VisualStyle = vsGradient
+              end
+              object RzDBRadioGroup1: TRzDBRadioGroup
+                Left = 107
+                Top = 146
+                Width = 125
+                Height = 60
+                DataField = 'PERSON_OR_SEMINAR'
+                DataSource = SeminarReminderSRC
+                Items.Strings = (
+                  #931#949#956#953#957#940#961#953#959
+                  #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962)
+                Values.Strings = (
+                  'S'
+                  'P')
+                Caption = #928#945#961#945#955#942#960#964#951#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = []
+                ItemHeight = 14
+                ParentFont = False
+                SpaceEvenly = True
+                TabOrder = 2
+                VisualStyle = vsGradient
+              end
+              object wwCheckBox3: TwwCheckBox
+                Left = 107
+                Top = 118
+                Width = 37
+                Height = 18
+                DisableThemes = False
+                AlwaysTransparent = False
+                ValueChecked = 'Y'
+                ValueUnchecked = 'N'
+                DisplayValueChecked = 'Y'
+                DisplayValueUnchecked = 'N'
+                NullAndBlankState = cbUnchecked
+                DataField = 'IS_HIGH'
+                DataSource = SeminarReminderSRC
+                ShowText = False
+                TabOrder = 7
+              end
+            end
+            object RzPanel15: TRzPanel
+              Left = 0
+              Top = 0
+              Width = 461
+              Height = 23
+              Align = alTop
+              BorderOuter = fsNone
+              TabOrder = 1
+              object RzPanel16: TRzPanel
+                Left = 23
+                Top = 0
+                Width = 23
+                Height = 23
+                Align = alLeft
+                BorderOuter = fsNone
+                TabOrder = 0
+              end
+              object wwDBNavigator2: TwwDBNavigator
+                Left = 1
+                Top = -3
+                Width = 184
+                Height = 26
+                AutosizeStyle = asSizeNavButtons
+                DataSource = SeminarReminderSRC
+                RepeatInterval.InitialDelay = 500
+                RepeatInterval.Interval = 100
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Arial'
+                Font.Style = []
+                object wwNavButton9: TwwNavButton
+                  Left = 0
+                  Top = 0
+                  Width = 23
+                  Height = 26
+                  Hint = 'Move to first record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Button'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 0
+                  Style = nbsFirst
+                end
+                object wwNavButton10: TwwNavButton
+                  Left = 23
+                  Top = 0
+                  Width = 23
+                  Height = 26
+                  Hint = 'Move to prior record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Prior'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 1
+                  Style = nbsPrior
+                end
+                object wwNavButton11: TwwNavButton
+                  Left = 46
+                  Top = 0
+                  Width = 23
+                  Height = 26
+                  Hint = 'Move to next record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Next'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 2
+                  Style = nbsNext
+                end
+                object wwNavButton12: TwwNavButton
+                  Left = 69
+                  Top = 0
+                  Width = 23
+                  Height = 26
+                  Hint = 'Move to last record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Button1'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 3
+                  Style = nbsLast
+                end
+                object wwNavButton13: TwwNavButton
+                  Left = 92
+                  Top = 0
+                  Width = 23
+                  Height = 26
+                  Hint = 'Insert new record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Insert'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  OnClick = Nav1InsertClick
+                  Index = 4
+                  Style = nbsInsert
+                end
+                object wwNavButton14: TwwNavButton
+                  Left = 115
+                  Top = 0
+                  Width = 23
+                  Height = 26
+                  Hint = 'Delete current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Delete'
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 5
+                  Style = nbsDelete
+                end
+                object wwNavButton15: TwwNavButton
+                  Left = 138
+                  Top = 0
+                  Width = 23
+                  Height = 26
+                  Hint = 'Post changes of current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Post'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 6
+                  Style = nbsPost
+                end
+                object wwNavButton16: TwwNavButton
+                  Left = 161
+                  Top = 0
+                  Width = 23
+                  Height = 26
+                  Hint = 'Cancel changes made to current record'
+                  ImageIndex = -1
+                  NumGlyphs = 2
+                  Spacing = 4
+                  Transparent = False
+                  Caption = 'Nav1Cancel'
+                  Enabled = False
+                  DisabledTextColors.ShadeColor = clGray
+                  DisabledTextColors.HighlightColor = clBtnHighlight
+                  Index = 7
+                  Style = nbsCancel
+                end
+              end
+              object RzPanel18: TRzPanel
+                Left = 0
+                Top = 0
+                Width = 23
+                Height = 23
+                Align = alLeft
+                BorderOuter = fsNone
+                TabOrder = 2
+              end
+            end
+          end
+          object RzPanel29: TRzPanel
+            Left = 0
+            Top = 39
+            Width = 1009
+            Height = 17
+            Align = alTop
+            BorderOuter = fsNone
+            TabOrder = 3
+            ExplicitLeft = 1
+            ExplicitTop = 48
+            ExplicitWidth = 938
+          end
+        end
+      end
+      object CertificationTS: TTabSheet
+        Caption = #928#953#963#964#959#960#959#953#951#964#953#954#940
+        ImageIndex = 3
+        OnExit = CertificationTSExit
+        OnShow = CertificationTSShow
+        ExplicitLeft = -99
+        ExplicitTop = 11
+        ExplicitWidth = 281
+        ExplicitHeight = 162
+        object RzPanel28: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 1009
+          Height = 635
+          Align = alClient
+          BorderOuter = fsNone
+          TabOrder = 0
+          ExplicitLeft = 200
+          ExplicitTop = -40
+          ExplicitWidth = 657
+          ExplicitHeight = 326
+          object LanguageRGP: TwwRadioGroup
+            Left = 23
+            Top = 3
+            Width = 162
+            Height = 62
+            DisableThemes = False
+            ItemIndex = 0
+            Caption = #915#955#974#963#963#945
+            DataField = 'TYPE_MONO_POLY'
+            Items.Strings = (
+              #917#955#955#951#957#953#954#940
+              'English')
+            TabOrder = 0
+            Values.Strings = (
+              'G'
+              'E')
+            OnChange = LanguageRGPChange
+          end
+          object CopyDefaultBTN: TRzBitBtn
+            Left = 205
+            Top = 28
+            Width = 148
+            Height = 37
+            Caption = 'Copy From Default'
+            DoubleBuffered = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentDoubleBuffered = False
+            ParentFont = False
+            TabOrder = 1
+            OnClick = CopyDefaultBTNClick
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF926544926544926644926644926643
+              9265449266449266449265439266439265439266449265439266449266439266
+              43926643926643FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF946744E3CAACE4
+              CAACE3CBACE3CBACE3CBACE4CAADE3CAADE4CAADE4CBACE4CAADE4CAACE4CBAC
+              E3CBACE4CAACE3CAACE3CAAC936644FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FF956845E5CCAFE4CCAFE4CCAFE5CCAFE5CCAFE4CCAEE4CCAFE4CCAFE4CCAFE4
+              CCAFE4CCAFE4CDAFE4CDAFE4CCAFE4CDAFE4CCAF956845FFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFF330F0A804B19804A1944110B44110B44110B804B194411
+              0B44110B44110B44110B44110B44110B44110B44110BE5CEB2E5CEB2976945FF
+              FFFFFFFFFF926544926544926644926644926643926544926644926644926543
+              926643926543926644926543926644926643926643926643926643814C1CE6D1
+              B5E6D0B6996A46FFFFFFFFFFFF946744E3CAACE4CAACE3CBACE3CBACE3CBACE4
+              CAADE3CAADE4CAADE4CBACE4CAADE4CAACE4CBACE3CBACE4CAACE3CAACE3CAAC
+              936644824F21E7D3BAE7D3B99B6C47FFFFFFFFFFFF956845E5CCAFE4CCAFE4CC
+              AFE5CCAFE5CCAFE4CCAEE4CCAFE4CCAFE4CCAFE4CCAFE4CCAFE4CDAFE4CDAFE4
+              CCAFE4CDAFE4CCAF95684544110BE8D6BEE8D5BE9D6C48FFFFFFFFFFFF976945
+              E5CFB2E5CEB2A8744DA8744DA8744DE5CFB2A8744DA8744DA8744DA8744DA874
+              4DA8744DA8744DA8744DE5CEB2E5CEB297694584552AE9D9C3E9D8C39F6E48FF
+              FFFFFFFFFF996A46E6D1B6E6D1B5E6D1B6E6D0B6E6D0B6E6D1B6E6D0B6E6D0B6
+              E6D0B5E6D0B6E6D0B6E6D0B6E6D1B6E6D0B5E6D1B5E6D0B6996A4686582EEBDC
+              C9EBDCC9A27049FFFFFFFFFFFF9A6C47E7D3BAE7D3BAE7D3B9E7D3BAE7D3BAE7
+              D3BAE7D3B9E7D3BAE7D4BAE7D3B9E7D3BAE7D3BAE7D3B9E7D3BAE7D3BAE7D3B9
+              9B6C4744110BEBDECDECDECDA4714AFFFFFFFFFFFF9D6D48E8D6BEE8D6BEA874
+              4DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8
+              744DE8D6BEE8D5BE9D6C48875D37EDE2D1ECE2D1A6724BFFFFFFFFFFFF9F6E49
+              E9D9C3E9D9C2E9D9C3E9D9C3E9D9C3E9D9C3EAD9C3E9D8C3E9D8C2E9D8C3E9D9
+              C2E9D8C2EAD9C3E9D9C3E9D9C3E9D8C39F6E4888603BEEE4D6EEE4D6A8754CFF
+              FFFFFFFFFFA1704AEBDBC8EBDCC9EADBC8EADCC8EBDBC9EADCC8EADBC8EBDBC8
+              EBDCC8EADCC8EADBC8EADCC8EADCC9EBDCC8EBDCC9EBDCC9A2704944110BEFE7
+              DAEFE7DAAB764DFFFFFFFFFFFFA3724AEBDECDEBDECDA8744DA8744DA8744DA8
+              744DA8744DA8744DA8744DA8744DA8744DECDFCDA8744DA8744DEBDECDECDECD
+              A4714A8B6544F0E9DFF0EADEAD774EFFFFFFFFFFFFA6734BEDE1D2EDE1D1ECE1
+              D1EDE1D2EDE1D1EDE2D1EDE1D1ECE2D2ECE1D1ECE1D1EDE1D1EDE2D2EDE2D1EC
+              E1D1EDE2D1ECE2D1A6724B8C6848F1ECE2F1EBE2AE794FFFFFFFFFFFFFA8744C
+              EEE5D6EEE4D6EEE4D6EEE4D6EEE4D6EEE5D6EEE5D6EEE4D6EEE5D6EEE4D6EEE4
+              D6EEE4D6EEE5D6EDE4D5EEE4D6EEE4D6A8754C44110BF1EEE5F2EEE6B07950FF
+              FFFFFFFFFFAA764DEFE7DAEFE7DAA8744DA8744DA8744DA8744DA8744DA8744D
+              A8744DA8744DA8744DA8744DA8744DA8744DEFE7DAEFE7DAAB764D8E6C4DF3F0
+              E8F3F0E8B17A50FFFFFFFFFFFFAD774EF0EADEF0EADEF0E9DEF0E9DEF0E9DEF0
+              EADFF0EADEF0EADEF0EADFF0E9DEF0EADEF0E9DEF0E9DEF0E9DEF0E9DFF0EADE
+              AD774E8E6D50F3F1EAF3F1EAB37B50FFFFFFFFFFFFAE794FF1ECE1F1ECE2A874
+              4DA8744DA8744DF1ECE2F1ECE2F0EBE2F1ECE2F1ECE2F1ECE2F1ECE1F1EBE2F1
+              ECE2F1ECE2F1EBE2AE794F50120CB47C51B47C51B47C51FFFFFFFFFFFFB07A50
+              F1EEE6F2EEE5A8744DA8744DA8744DF1EEE5F2EEE5A8744DA8744DA8744DA874
+              4DA8744DA8744DA8744DF1EEE5F2EEE6B07950FFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFB17B50F3EFE7F3F0E8F2EFE8F2F0E8F3EFE8F2F0E8F2EFE7F3EFE8
+              F3F0E8F2F0E8F2EFE8F2F0E7F2F0E8F3F0E7F3F0E8F3F0E8B17A50FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFB37C51F3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3
+              F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EA
+              B37B50FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB47C51B47C51B47C51B47C
+              51B47C51B47D51B47C51B47C51B47C51B47C51B47C51B47C51B47C51B47C51B4
+              7C51B47C51B47C51B47C51FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            Margin = -1
+          end
+          object CopyHardBTN: TRzBitBtn
+            Left = 359
+            Top = 28
+            Width = 148
+            Height = 37
+            Caption = 'Copy From Hard C'
+            DoubleBuffered = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentDoubleBuffered = False
+            ParentFont = False
+            TabOrder = 2
+            OnClick = CopyHardBTNClick
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF926544926544926644926644926643
+              9265449266449266449265439266439265439266449265439266449266439266
+              43926643926643FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF946744E3CAACE4
+              CAACE3CBACE3CBACE3CBACE4CAADE3CAADE4CAADE4CBACE4CAADE4CAACE4CBAC
+              E3CBACE4CAACE3CAACE3CAAC936644FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FF956845E5CCAFE4CCAFE4CCAFE5CCAFE5CCAFE4CCAEE4CCAFE4CCAFE4CCAFE4
+              CCAFE4CCAFE4CDAFE4CDAFE4CCAFE4CDAFE4CCAF956845FFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFF330F0A804B19804A1944110B44110B44110B804B194411
+              0B44110B44110B44110B44110B44110B44110B44110BE5CEB2E5CEB2976945FF
+              FFFFFFFFFF926544926544926644926644926643926544926644926644926543
+              926643926543926644926543926644926643926643926643926643814C1CE6D1
+              B5E6D0B6996A46FFFFFFFFFFFF946744E3CAACE4CAACE3CBACE3CBACE3CBACE4
+              CAADE3CAADE4CAADE4CBACE4CAADE4CAACE4CBACE3CBACE4CAACE3CAACE3CAAC
+              936644824F21E7D3BAE7D3B99B6C47FFFFFFFFFFFF956845E5CCAFE4CCAFE4CC
+              AFE5CCAFE5CCAFE4CCAEE4CCAFE4CCAFE4CCAFE4CCAFE4CCAFE4CDAFE4CDAFE4
+              CCAFE4CDAFE4CCAF95684544110BE8D6BEE8D5BE9D6C48FFFFFFFFFFFF976945
+              E5CFB2E5CEB2A8744DA8744DA8744DE5CFB2A8744DA8744DA8744DA8744DA874
+              4DA8744DA8744DA8744DE5CEB2E5CEB297694584552AE9D9C3E9D8C39F6E48FF
+              FFFFFFFFFF996A46E6D1B6E6D1B5E6D1B6E6D0B6E6D0B6E6D1B6E6D0B6E6D0B6
+              E6D0B5E6D0B6E6D0B6E6D0B6E6D1B6E6D0B5E6D1B5E6D0B6996A4686582EEBDC
+              C9EBDCC9A27049FFFFFFFFFFFF9A6C47E7D3BAE7D3BAE7D3B9E7D3BAE7D3BAE7
+              D3BAE7D3B9E7D3BAE7D4BAE7D3B9E7D3BAE7D3BAE7D3B9E7D3BAE7D3BAE7D3B9
+              9B6C4744110BEBDECDECDECDA4714AFFFFFFFFFFFF9D6D48E8D6BEE8D6BEA874
+              4DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8744DA8
+              744DE8D6BEE8D5BE9D6C48875D37EDE2D1ECE2D1A6724BFFFFFFFFFFFF9F6E49
+              E9D9C3E9D9C2E9D9C3E9D9C3E9D9C3E9D9C3EAD9C3E9D8C3E9D8C2E9D8C3E9D9
+              C2E9D8C2EAD9C3E9D9C3E9D9C3E9D8C39F6E4888603BEEE4D6EEE4D6A8754CFF
+              FFFFFFFFFFA1704AEBDBC8EBDCC9EADBC8EADCC8EBDBC9EADCC8EADBC8EBDBC8
+              EBDCC8EADCC8EADBC8EADCC8EADCC9EBDCC8EBDCC9EBDCC9A2704944110BEFE7
+              DAEFE7DAAB764DFFFFFFFFFFFFA3724AEBDECDEBDECDA8744DA8744DA8744DA8
+              744DA8744DA8744DA8744DA8744DA8744DECDFCDA8744DA8744DEBDECDECDECD
+              A4714A8B6544F0E9DFF0EADEAD774EFFFFFFFFFFFFA6734BEDE1D2EDE1D1ECE1
+              D1EDE1D2EDE1D1EDE2D1EDE1D1ECE2D2ECE1D1ECE1D1EDE1D1EDE2D2EDE2D1EC
+              E1D1EDE2D1ECE2D1A6724B8C6848F1ECE2F1EBE2AE794FFFFFFFFFFFFFA8744C
+              EEE5D6EEE4D6EEE4D6EEE4D6EEE4D6EEE5D6EEE5D6EEE4D6EEE5D6EEE4D6EEE4
+              D6EEE4D6EEE5D6EDE4D5EEE4D6EEE4D6A8754C44110BF1EEE5F2EEE6B07950FF
+              FFFFFFFFFFAA764DEFE7DAEFE7DAA8744DA8744DA8744DA8744DA8744DA8744D
+              A8744DA8744DA8744DA8744DA8744DA8744DEFE7DAEFE7DAAB764D8E6C4DF3F0
+              E8F3F0E8B17A50FFFFFFFFFFFFAD774EF0EADEF0EADEF0E9DEF0E9DEF0E9DEF0
+              EADFF0EADEF0EADEF0EADFF0E9DEF0EADEF0E9DEF0E9DEF0E9DEF0E9DFF0EADE
+              AD774E8E6D50F3F1EAF3F1EAB37B50FFFFFFFFFFFFAE794FF1ECE1F1ECE2A874
+              4DA8744DA8744DF1ECE2F1ECE2F0EBE2F1ECE2F1ECE2F1ECE2F1ECE1F1EBE2F1
+              ECE2F1ECE2F1EBE2AE794F50120CB47C51B47C51B47C51FFFFFFFFFFFFB07A50
+              F1EEE6F2EEE5A8744DA8744DA8744DF1EEE5F2EEE5A8744DA8744DA8744DA874
+              4DA8744DA8744DA8744DF1EEE5F2EEE6B07950FFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFB17B50F3EFE7F3F0E8F2EFE8F2F0E8F3EFE8F2F0E8F2EFE7F3EFE8
+              F3F0E8F2F0E8F2EFE8F2F0E7F2F0E8F3F0E7F3F0E8F3F0E8B17A50FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFB37C51F3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3
+              F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EAF3F1EA
+              B37B50FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB47C51B47C51B47C51B47C
+              51B47C51B47D51B47C51B47C51B47C51B47C51B47C51B47C51B47C51B47C51B4
+              7C51B47C51B47C51B47C51FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            Margin = -1
+          end
+          object SaveDefaultBTN: TRzBitBtn
+            Left = 539
+            Top = 28
+            Width = 132
+            Height = 37
+            Caption = 'Save as Default '
+            DoubleBuffered = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentDoubleBuffered = False
+            ParentFont = False
+            TabOrder = 3
+            OnClick = SaveDefaultBTNClick
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFF4646463D3D3D4141416B6B6BA5A5A5ADADADA9
+              A9A9A8A8A8A6A6A6A4A4A4A2A2A2A0A0A09E9E9E9D9D9D9A9A9A9999999A9A9A
+              9191916363633D3D3D353535414141FFFFFFFFFFFF4040409494944B4B4B8888
+              88128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF312
+              8BF3128BF3128BF3128BF37878787F7F7F505050343434FFFFFFFFFFFF454545
+              AEAEAE99999985858525A5F725A5F725A5F725A5F725A5F725A5F725A5F725A5
+              F725A5F725A5F725A5F725A5F725A5F725A5F7777777929292A4A4A4353535FF
+              FFFFFFFFFF4747473E3E3E414141868686F0F0F0FFFFFFFFFFFFFDFDFDFAFAFA
+              F6F6F6F3F3F3F0F0F0EEEEEEEAEAEAE7E7E7E4E4E4E7E7E7D5D5D57979793030
+              30212121353535FFFFFFFFFFFF4A4A4A424242444444878787EFEFEFFFFFFFFF
+              FFFFFFFFFFFEFEFEFBFBFBF8F8F8F5F5F5F3F3F3EFEFEFECECECE9E9E9ECECEC
+              D9D9D9797979303030212121353535FFFFFFFFFFFF4D4D4D4747474747478787
+              87EFEFEFCEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CE
+              BDB5CEBDB5CEBDB5DEDEDE7B7B7B2F2F2F212121353535FFFFFFFFFFFF4F4F4F
+              4C4C4C4B4B4B878787EFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFE
+              FEFCFCFCF8F8F8F5F5F5F1F1F1F5F5F5E2E2E27D7D7D2F2F2F212121353535FF
+              FFFFFFFFFF5353535151514E4E4E888888EFEFEFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFDFDFDFAFAFAF6F6F6FBFBFBE6E6E67D7D7D2F2F
+              2F212121353535FFFFFFFFFFFF575757575757515151898989EFEFEFCEBDB5CE
+              BDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5
+              ECECEC8080802F2F2F212121353535FFFFFFFFFFFF5959595B5B5B5555558B8B
+              8BF0F0F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFF0F0F08484842F2F2F212121353535FFFFFFFFFFFF5B5B5B
+              606060595959888888E9E9E9FCFCFCF5F5F5F4F4F4F4F4F4F4F4F4F5F5F5F5F5
+              F5F5F5F5F5F5F5F5F5F5F6F6F6FFFFFFEAEAEA808080313131222222353535FF
+              FFFFFFFFFF5E5E5E6767676060606767678787878C8C8C888888868686848484
+              8282828282828181818181818181817F7F7F8080808181817979794F4F4F3232
+              32272727373737FFFFFFFFFFFF6262626B6B6B6A6A6A65656562626260606056
+              56564E4E4E4A4A4A4747474545454242424040403D3D3D3A3A3A393939373737
+              3737373737373434342D2D2D3A3A3AFFFFFFFFFFFF6868687070706A6A6A6464
+              645E5E5E5A5A5A5B5B5B6060606161615C5C5C5959595555555353535353534F
+              4F4F4848484242423B3B3B3838383838383333333D3D3DFFFFFFFFFFFF6F6F6F
+              7373735454544747474848483E3E3E797979B9B9B9BFBFBFB1B1B1ADADADA8A8
+              A8A4A4A4A1A1A19C9C9C9898988C8C8C6B6B6B4141413C3C3C383838404040FF
+              FFFFFFFFFF7575757575754141412C2C2C303030202020909090FFFFFFFFFFFF
+              F1F1F1ECECECEAEAEAD5D5D5B1B1B1B3B3B3CECECEC7C7C78D8D8D4848484040
+              403D3D3D434343FFFFFFFFFFFF7A7A7A7A7A7A4444443030303434342525258E
+              8E8EF7F7F7FAFAFAE7E7E7E3E3E3E6E6E6B9B9B95D5D5D707070BDBDBDC3C3C3
+              8989894C4C4C444444414141464646FFFFFFFFFFFF7E7E7E7D7D7D4747473131
+              313535352626268D8D8DF6F6F6FAFAFAE6E6E6E2E2E2E7E7E7B5B5B54A4A4A62
+              6262BABABAC3C3C38B8B8B505050484848454545494949FFFFFFFFFFFF838383
+              8282824848483131313434342727278E8E8EF5F5F5FAFAFAE6E6E6E2E2E2E6E6
+              E6B6B6B6515151676767BABABAC2C2C28C8C8C5353534C4C4C4A4A4A4D4D4DFF
+              FFFFFFFFFF8A8A8A8888884545452B2B2B2F2F2F212121919191FFFFFFFFFFFF
+              F0F0F0ECECECEAEAEAD0D0D09B9B9BA2A2A2C9C9C9C6C6C69393935858585050
+              504E4E4E797979FFFFFFFFFFFF8686868484845B5B5B4B4B4B4E4E4E45454585
+              8585C5C5C5C7C7C7BABABAB6B6B6B3B3B3AEAEAEA5A5A5A2A2A2A3A3A39C9C9C
+              8080805F5F5F5A5A5A797979FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            Margin = -1
+          end
+          object certificatesHelpRE: TwwDBRichEdit
+            Left = 702
+            Top = 31
+            Width = 121
+            Height = 49
+            AutoURLDetect = False
+            Font.Charset = GREEK_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -10
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            GutterWidth = 3
+            HideSelection = False
+            ParentFont = False
+            PrintJobName = 'TariffsProject - RAD Studio 10.2 - LN_ListDutyEntries2 [Built]'
+            ReadOnly = True
+            TabOrder = 4
+            Visible = False
+            EditorOptions = [reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+            EditorCaption = 'Edit Rich Text'
+            EditorPosition.Left = 0
+            EditorPosition.Top = 0
+            EditorPosition.Width = 0
+            EditorPosition.Height = 0
+            MeasurementUnits = muInches
+            PrintMargins.Top = 1.000000000000000000
+            PrintMargins.Bottom = 1.000000000000000000
+            PrintMargins.Left = 1.000000000000000000
+            PrintMargins.Right = 1.000000000000000000
+            PrintHeader.VertMargin = 0.500000000000000000
+            PrintHeader.Font.Charset = DEFAULT_CHARSET
+            PrintHeader.Font.Color = clWindowText
+            PrintHeader.Font.Height = -11
+            PrintHeader.Font.Name = 'Tahoma'
+            PrintHeader.Font.Style = []
+            PrintFooter.VertMargin = 0.500000000000000000
+            PrintFooter.Font.Charset = DEFAULT_CHARSET
+            PrintFooter.Font.Color = clWindowText
+            PrintFooter.Font.Height = -11
+            PrintFooter.Font.Name = 'Tahoma'
+            PrintFooter.Font.Style = []
+            DoubleBuffered = False
+            ParentDoubleBuffered = False
+            RichEditVersion = 2
+            Data = {
+              291400007B5C727466315C616E73695C616E7369637067313235335C64656666
+              305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+              666368617273657430205461686F6D613B7D7B5C66315C666E696C5C66636861
+              72736574313631205461686F6D613B7D7B5C66325C6673776973735C66636861
+              727365743020417269616C3B7D7B5C66335C666E696C5C666368617273657432
+              2053796D626F6C3B7D7D0D0A5C766965776B696E64345C7563315C706172645C
+              6C616E67313033335C625C66305C6673323420485C6C616E67313033325C6631
+              20205C2765355C2765615C2766345C2766645C2766305C2766395C2766335C27
+              6537205C2766345C2766395C276564205C2764305C2765395C2766335C276634
+              5C2765665C2766305C2765665C2765395C2765375C2766345C2765395C276561
+              5C2766655C2765645C6C616E67313033335C663020205C6C616E67313033325C
+              66315C2766375C2766315C2765375C2766335C2765395C2765635C2766305C27
+              65665C2765395C2765355C276466205C6C616E67313033335C663020544F4B45
+              4E535C6C616E67313033325C663120205C2766345C276531205C2765665C2766
+              305C2765665C2764665C276531205C2765315C2765645C2766345C2765395C27
+              65615C2765315C2765385C2765395C2766335C2766345C2765665C2766645C27
+              65645C2766345C276535205C2765635C276535205C2766345C2765395C276563
+              5C2764645C276632205C2765315C2766305C276663205C2766345C276566205C
+              2764305C2765395C2766335C2766345C2765665C2766305C2765665C2765395C
+              2765375C2766345C2765395C2765615C2766635C6C616E67313033335C663020
+              205C6C616E67313033325C66315C2766305C2765665C276635205C2765355C27
+              65615C2766345C2766355C2766305C2766655C2765645C2765355C2766345C27
+              65315C2765395C6C616E67313033335C663020205C7061720D0A5C62305C6632
+              5C667331365C7061720D0A5C7061720D0A5C6C616E67313033325C66315C6673
+              32345C2764345C276531205C2766305C2765395C276566205C2765615C276463
+              5C2766345C276639205C6C616E67313033335C663020546F6B656E73205C6C61
+              6E67313033325C66315C2765385C276531205C2765315C2765645C2766345C27
+              65395C2765615C2765315C2766345C2765315C2766335C2766345C2765315C27
+              65385C2765665C2766645C276564205C2765315C2766355C2766345C2766635C
+              2765635C2765315C2766345C276531205C2765635C276535205C2766345C2765
+              395C276632205C2766345C2765395C2765635C2764645C276632205C2766305C
+              2765665C276635205C2766365C2765315C2764665C2765645C2765665C276564
+              5C2766345C2765315C276539205C2765345C2764665C2766305C2765625C2765
+              315C6C616E67313033335C66305C7061720D0A5C706172647B5C706E74657874
+              5C66335C2742375C7461627D7B5C2A5C706E5C706E6C766C626C745C706E6633
+              5C706E696E64656E74307B5C706E747874625C2742377D7D5C66692D3732305C
+              6C69373230205B4E616D655D205C6C616E67313033325C663120202D205C2766
+              635C2765645C2765665C2765635C276531205C2763355C2765615C2766305C27
+              65315C2765395C2765345C2765355C2766355C2766635C2765635C2765355C27
+              65645C2765665C2766355C6C616E67313033335C66305C7061720D0A5C706172
+              647B5C706E746578745C66335C2742375C7461627D7B5C2A5C706E5C706E6C76
+              6C626C745C706E66335C706E696E64656E74307B5C706E747874625C2742377D
+              7D5C66692D3730355C6C69373035205B49645D205C6C616E67313033325C6631
+              5C746162202020202D205C2764345C2765315C2766355C2766345C2766635C27
+              66345C2765375C2766345C276531205C2765355C2765615C2766305C2765315C
+              2765395C2765345C2765355C2766355C2766635C2765635C2765355C2765645C
+              2765665C2766355C6C616E67313033335C66305C7061720D0A5C706172647B5C
+              706E746578745C66335C2742375C7461627D7B5C2A5C706E5C706E6C766C626C
+              745C706E66335C706E696E64656E74307B5C706E747874625C2742377D7D5C66
+              692D3732305C6C69373230205B446174655D205C6C616E67313033325C663120
+              20205C6C616E67313033335C663020205C6C616E67313033325C6631202D2020
+              5C2763375C2765635C2765355C2766315C2765665C2765635C2765375C276564
+              5C2764665C276531205C2762385C2765615C2765345C2765665C2766335C2765
+              375C276632205C2766345C2765665C276635205C2766305C2765395C2766335C
+              2766345C2765665C2766305C2765665C2765395C2765375C2766345C2765395C
+              2765615C2765665C2766645C6C616E67313033335C663020205C7061720D0A7B
+              5C706E746578745C66335C2742375C7461627D5B5345585D20202020202D205C
+              6C616E67313033325C66315C2764365C2766645C2765625C276566205C276535
+              5C2765615C2766305C2765315C2765395C2765345C2765355C2766355C276663
+              5C2765635C2765355C2765645C2765665C2766355C6C616E67313033335C6630
+              5C7061720D0A5C6C616E67313033325C66317B5C706E746578745C66335C2742
+              375C7461627D5B5C6C616E67313033335C663020486F7572735C6C616E673130
+              33325C6631205D5C6C616E67313033335C66302020202D205C6C616E67313033
+              325C66315C2762665C2766315C2765355C276632205C2766345C2765665C2766
+              35205C2764335C2765355C2765635C2765395C2765645C2765315C2766315C27
+              64665C2765665C2766355C6C616E67313033335C66305C7061720D0A7B5C706E
+              746578745C66335C2742375C7461627D5B416E61645D2020202D205C6C616E67
+              313033325C66315C2763315C2766315C2765395C2765385C2765635C2766635C
+              276632205C2763315C2763645C2763315C2763345C6C616E67313033335C6630
+              5C7061720D0A5C706172645C7061720D0A5C6C616E67313033325C66315C2763
+              665C276539205C2765315C2765645C2766345C2764665C2766335C2766345C27
+              65665C2765395C2766375C2765355C276632205C2766345C2765395C2765635C
+              2764645C276632205C2766345C2766395C276564205C6C616E67313033335C66
+              3020546F6B656E73205C6C616E67313033325C66315C2765335C2766315C2764
+              635C2766365C2765665C2765645C2766345C2765315C276539205C2765315C27
+              65645C2765315C2765625C2766635C2765335C2766395C276632205C2765635C
+              276535205C2765615C2765355C2766365C2765315C2765625C2765315C276466
+              5C276531205C276465205C2765635C2765395C2765615C2766315C276463205C
+              2765335C2766315C2764635C2765635C2765635C2765315C2766345C27653120
+              5C2765315C2765615C2765665C2765625C2765665C2766355C2765385C276665
+              5C2765645C2766345C2765315C276632205C2766345C2765665C2766355C2766
+              32205C2766305C2765395C276566205C2765615C2764635C2766345C27663920
+              5C2765615C2765315C2765645C2766635C2765645C2765355C2766325C706172
+              0D0A5C7061720D0A5C2763355C2764635C276564205C2766345C276566205C6C
+              616E67313033335C663020746F6B656E205C6C616E67313033325C66315C2765
+              335C2766315C2765315C2766365C2766345C2765355C276466205C7061720D0A
+              5C2765635C276535205C2766635C2765625C276531205C2765615C2765355C27
+              66365C2765315C2765625C2765315C2764665C276531205C2766345C2766635C
+              2766345C276535205C2765615C2765315C276539205C2766345C276566205C27
+              65315C2765645C2766345C2764665C2766335C2766345C2765665C2765395C27
+              66375C276566205C2766305C2765355C2765345C2764665C276566205C276538
+              5C276531205C2765335C2766315C2765315C2766365C2766345C2764645C2765
+              39205C2765635C276535205C2765615C2765355C2766365C2765315C2765625C
+              2765315C2764665C2765315C7061720D0A5C2765635C276535205C2766635C27
+              65625C276531205C2765635C2765395C2765615C2766315C276463205C276634
+              5C2766635C2766345C276535205C2766345C276566205C2765315C2765645C27
+              66345C2764665C2766335C2766345C2765665C2765395C2766375C276566205C
+              2766305C2765355C2765345C2764665C276566205C2765385C276531205C2765
+              335C2766315C2765315C2766365C2766345C2765355C276466205C2765635C27
+              6535205C2765635C2765395C2765615C2766315C2764635C7061720D0A5C2765
+              635C276535205C2765635C2765355C2766315C2765395C2765615C276463205C
+              2765615C2765355C2766365C2765315C2765625C2765315C2764665C27653120
+              5C2765615C2765315C276539205C2765635C2765355C2766315C2765395C2765
+              615C276463205C2765635C2765395C2765615C2766315C276463205C2766345C
+              2766635C2766345C276535205C2765385C276531205C2765335C2766315C2765
+              315C2766365C2766345C2765355C276466205C2766635C2766305C2766395C27
+              6632205C2765355C2764665C2765645C2765315C2765395C7061720D0A5C7061
+              720D0A5C2763335C2765395C276531205C2766305C2765315C2766315C276463
+              5C2765345C2765355C2765395C2765335C2765635C276531205C2765315C2765
+              64205C2766345C276566205C2766635C2765645C2765665C2765635C27653120
+              5C2766345C2765665C276635205C2765355C2765615C2766305C2765315C2765
+              395C2765345C2765355C2766355C2766635C2765635C2765355C2765645C2765
+              665C276635205C2765355C2764665C2765645C2765315C276539205C2763335C
+              2765395C2766655C2766315C2765335C2765665C276632205C2763335C276535
+              5C2766395C2766315C2765335C2764665C2765665C276635205C2766345C2766
+              635C2766345C2765355C7061720D0A5C6C616E67313033335C6630205B5C6C61
+              6E67313033325C66315C2763645C2763315C2763635C2763355C6C616E673130
+              33335C6630205D5C6C616E67313033325C663120203D205C2763335C2763395C
+              2764395C2764315C2763335C2763665C276433205C2763335C2763355C276439
+              5C2763335C2763395C2763665C2764355C7061720D0A5C6C616E67313033335C
+              6630205B6E616D655D5C6C616E67313033325C663120205C6C616E6731303333
+              5C663020205C6C616E67313033325C6631203D5C6C616E67313033335C663020
+              205C6C616E67313033325C66315C2765335C2765395C2766655C2766315C2765
+              335C2765665C276632205C2765335C2765355C2766395C2766315C2765335C27
+              64665C2765665C2766355C7061720D0A5C6C616E67313033335C6630205B5C6C
+              616E67313033325C66315C2763645C6C616E67313033335C663020616D655D5C
+              6C616E67313033325C663120205C6C616E67313033335C663020205C6C616E67
+              313033325C6631203D205C2763335C2765395C2766655C2766315C2765335C27
+              65665C276632205C2763335C2765355C2766395C2766315C2765335C2764665C
+              2765665C2766355C7061720D0A5C7061720D0A5C625C2763355C2765395C2765
+              615C2766635C2765645C2765355C2766325C7061720D0A5C706172647B5C706E
+              746578745C66335C2742375C7461627D7B5C2A5C706E5C706E6C766C626C745C
+              706E66335C706E696E64656E74307B5C706E747874625C2742377D7D5C66692D
+              3732305C6C693732305C6C616E67313033335C62305C663020446F75626C6520
+              436C69636B205C6C616E67313033325C663120205C2766305C2764635C276564
+              5C276639205C2766335C2766345C2765375C276564205C2765355C2765395C27
+              65615C2766635C2765645C276531205C6C616E67313033335C6630202D205C6C
+              616E67313033325C66315C2763355C2766305C2765395C2765625C2765665C27
+              65335C276465205C2763355C2765395C2765615C2766635C2765645C2765355C
+              2766325C7061720D0A5C6C616E67313033335C66307B5C706E746578745C6633
+              5C2742375C7461627D436F6E74726F6C20436C69636B205C6C616E6731303332
+              5C66315C2766305C2764635C2765645C276639205C2766335C2766345C276537
+              5C276564205C2765355C2765395C2765615C2766635C2765645C276531202D20
+              5C2763345C2765395C2765315C2765335C2766315C2765315C2766365C276465
+              205C2763355C2765395C2765615C2766635C2765645C2765315C276632205C70
+              61720D0A5C706172645C625C7061720D0A5C2763385C2764645C2766335C2765
+              37205C2763355C2765395C2765615C2766635C2765645C2765315C2766325C62
+              305C7061720D0A5C276337205C2765385C2764645C2766335C276537205C2765
+              615C2765315C2765385C276535205C2765355C2765395C2765615C2766635C27
+              65645C2765315C276632205C2765615C2765315C2765385C2765665C2766315C
+              2764665C2765365C2765355C2766345C2765315C276539205C2766335C276535
+              205C6C616E67313033335C6630206D6D205C6C616E67313033325C66315C2766
+              305C2765665C276635205C2765315C2765645C2766345C2765395C2766335C27
+              66345C2765665C2765395C2766375C2765665C2766645C276564205C2766335C
+              2766345C2765665C276564205C2764355C6C616E67313033335C663020617869
+              73205C6C616E67313033325C66315C2765615C2765315C276539205C27643720
+              5C6C616E67313033335C663020617869205C6C616E67313033325C66315C2766
+              335C2766345C276531205C2766345C2765355C2766345C2766315C2765315C27
+              65335C2766395C2765645C2764635C2765615C2765395C276531205C2765345C
+              2764665C2766305C2765625C276531205C2765315C2766305C276663205C2766
+              345C2765375C276564205C2765355C2765395C2765615C2766635C2765645C27
+              65312E5C7061720D0A7D0D0A00}
+          end
+          object SaveHardBTN: TRzBitBtn
+            Left = 806
+            Top = 28
+            Width = 132
+            Height = 37
+            Caption = 'Save to Hard Copy'
+            DoubleBuffered = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentDoubleBuffered = False
+            ParentFont = False
+            TabOrder = 5
+            Visible = False
+            OnClick = SaveHardBTNClick
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFF4646463D3D3D4141416B6B6BA5A5A5ADADADA9
+              A9A9A8A8A8A6A6A6A4A4A4A2A2A2A0A0A09E9E9E9D9D9D9A9A9A9999999A9A9A
+              9191916363633D3D3D353535414141FFFFFFFFFFFF4040409494944B4B4B8888
+              88128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF3128BF312
+              8BF3128BF3128BF3128BF37878787F7F7F505050343434FFFFFFFFFFFF454545
+              AEAEAE99999985858525A5F725A5F725A5F725A5F725A5F725A5F725A5F725A5
+              F725A5F725A5F725A5F725A5F725A5F725A5F7777777929292A4A4A4353535FF
+              FFFFFFFFFF4747473E3E3E414141868686F0F0F0FFFFFFFFFFFFFDFDFDFAFAFA
+              F6F6F6F3F3F3F0F0F0EEEEEEEAEAEAE7E7E7E4E4E4E7E7E7D5D5D57979793030
+              30212121353535FFFFFFFFFFFF4A4A4A424242444444878787EFEFEFFFFFFFFF
+              FFFFFFFFFFFEFEFEFBFBFBF8F8F8F5F5F5F3F3F3EFEFEFECECECE9E9E9ECECEC
+              D9D9D9797979303030212121353535FFFFFFFFFFFF4D4D4D4747474747478787
+              87EFEFEFCEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CE
+              BDB5CEBDB5CEBDB5DEDEDE7B7B7B2F2F2F212121353535FFFFFFFFFFFF4F4F4F
+              4C4C4C4B4B4B878787EFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFE
+              FEFCFCFCF8F8F8F5F5F5F1F1F1F5F5F5E2E2E27D7D7D2F2F2F212121353535FF
+              FFFFFFFFFF5353535151514E4E4E888888EFEFEFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFDFDFDFAFAFAF6F6F6FBFBFBE6E6E67D7D7D2F2F
+              2F212121353535FFFFFFFFFFFF575757575757515151898989EFEFEFCEBDB5CE
+              BDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5CEBDB5
+              ECECEC8080802F2F2F212121353535FFFFFFFFFFFF5959595B5B5B5555558B8B
+              8BF0F0F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFF0F0F08484842F2F2F212121353535FFFFFFFFFFFF5B5B5B
+              606060595959888888E9E9E9FCFCFCF5F5F5F4F4F4F4F4F4F4F4F4F5F5F5F5F5
+              F5F5F5F5F5F5F5F5F5F5F6F6F6FFFFFFEAEAEA808080313131222222353535FF
+              FFFFFFFFFF5E5E5E6767676060606767678787878C8C8C888888868686848484
+              8282828282828181818181818181817F7F7F8080808181817979794F4F4F3232
+              32272727373737FFFFFFFFFFFF6262626B6B6B6A6A6A65656562626260606056
+              56564E4E4E4A4A4A4747474545454242424040403D3D3D3A3A3A393939373737
+              3737373737373434342D2D2D3A3A3AFFFFFFFFFFFF6868687070706A6A6A6464
+              645E5E5E5A5A5A5B5B5B6060606161615C5C5C5959595555555353535353534F
+              4F4F4848484242423B3B3B3838383838383333333D3D3DFFFFFFFFFFFF6F6F6F
+              7373735454544747474848483E3E3E797979B9B9B9BFBFBFB1B1B1ADADADA8A8
+              A8A4A4A4A1A1A19C9C9C9898988C8C8C6B6B6B4141413C3C3C383838404040FF
+              FFFFFFFFFF7575757575754141412C2C2C303030202020909090FFFFFFFFFFFF
+              F1F1F1ECECECEAEAEAD5D5D5B1B1B1B3B3B3CECECEC7C7C78D8D8D4848484040
+              403D3D3D434343FFFFFFFFFFFF7A7A7A7A7A7A4444443030303434342525258E
+              8E8EF7F7F7FAFAFAE7E7E7E3E3E3E6E6E6B9B9B95D5D5D707070BDBDBDC3C3C3
+              8989894C4C4C444444414141464646FFFFFFFFFFFF7E7E7E7D7D7D4747473131
+              313535352626268D8D8DF6F6F6FAFAFAE6E6E6E2E2E2E7E7E7B5B5B54A4A4A62
+              6262BABABAC3C3C38B8B8B505050484848454545494949FFFFFFFFFFFF838383
+              8282824848483131313434342727278E8E8EF5F5F5FAFAFAE6E6E6E2E2E2E6E6
+              E6B6B6B6515151676767BABABAC2C2C28C8C8C5353534C4C4C4A4A4A4D4D4DFF
+              FFFFFFFFFF8A8A8A8888884545452B2B2B2F2F2F212121919191FFFFFFFFFFFF
+              F0F0F0ECECECEAEAEAD0D0D09B9B9BA2A2A2C9C9C9C6C6C69393935858585050
+              504E4E4E797979FFFFFFFFFFFF8686868484845B5B5B4B4B4B4E4E4E45454585
+              8585C5C5C5C7C7C7BABABAB6B6B6B3B3B3AEAEAEA5A5A5A2A2A2A3A3A39C9C9C
+              8080805F5F5F5A5A5A797979FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            Margin = -1
+          end
+          object RzGroupBox2: TRzGroupBox
+            Left = 23
+            Top = 71
+            Width = 1002
+            Height = 554
+            Caption = #928#955#951#961#959#966#959#961#943#949#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 6
+            object SelTopLeftBTN: TRzBitBtn
+              Left = 21
+              Top = 100
+              Width = 121
+              Height = 37
+              Caption = 'Select Picture'
+              DoubleBuffered = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentDoubleBuffered = False
+              ParentFont = False
+              TabOrder = 0
+              Visible = False
+              Glyph.Data = {
+                F6060000424DF606000000000000360000002800000018000000180000000100
+                180000000000C006000000000000000000000000000000000000CAC8C77D7877
+                95918F938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F
+                8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D94908E85817EB7
+                B4B37E7979DFDCDBDFDDDCE2DFDFE3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0
+                E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E2E0
+                DFE0DDDCE4E2E18A858486807DDFDDDBC9C6C58C8986918D8A918D8A918D8A91
+                8D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A
+                918D8A918D8A8E8B87B7B4B0DDDCD99C99968B8683ECECECE1DFDECCCACACECC
+                CCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCE
+                CCCCCECCCCCECCCCCFCDCCD2CECFD0CDCDDCDAD9EBEBEAA5A29F918D88F6F6F5
+                EFEEEDF0EFEEF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0
+                EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF8F3F6D1DCCED0D9CCF1EEEEF6F4F4AF
+                ABA9999390FDFEFDF5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4
+                F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F8F6F7DBE6DB0693260EAB
+                388DB687FFFFFFB7B6B29F9A96FFFFFFFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFA
+                FAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFDFBFD
+                E2EFE432BF601ECA6C9AC79AFFFFFFBEBBBAA7A29FFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFBAE5C6A6DCB2F0F6F1FFFFFFC8C4C2C4C0BED5D3D1
+                E5E5E4E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4
+                E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E5E5E4EAE6E8EBE7E9E7E6E6E2E0E0B5
+                B0AEFFFFFFDDDBDAD8D6D4D8D6D4D8D6D4DAD7D6E0DCDDE1DDDEDAD7D6D8D6D4
+                D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6
+                D4D8D6D4D7D5D3FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
+                4C00004A00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFF0C530A41853C25882B0D4F0AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFF185E173D85388FE3A92BBF4C25882B1B5819FFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFF185E173E893B8EE3AC28BF4E2DBE4F2FC04F
+                25882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C6D1E3F903E8EE4AE28C1522B
+                BE522EBF532FBE522FC25225882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1E7A24409842A0E7
+                BD28C4582BC0562EC1572EC0562DBF542EC2542DBD4D25882B1F5F1CFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF238A2D
+                38983FA2EFCA33D17024C4562CC45C2DC25B2DC25A2EC1572FC3582ECA5B2EC0
+                4E25882B1F621CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFF259131259131359C3F288B2E177518A9E7C525C45B2DC55E2DC45D2DC35C
+                2AB1491F5E191F631D20661F20631F20631FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1A8222A2E8C522C7602D
+                C7642DC6612DC7622BB64F216C21FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C8B
+                26A2E8C822C9652CCA6A2CC9672EC8682BB953227122FFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFF1D942AA2EAC921CB6C2BCC6F2CCB6E2CCB6B2BBD59237925FFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A2EACC21CD722BCE752BCD722BCD73
+                2BBF5E237925FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A3EDD51DD37C26
+                D37D26D17927D27A27C46425882BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF26AC
+                3C58CC785AC9795AC6775AC47558C0725BC07225882BFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              Margin = -1
+            end
+            object ClearTopLeftBTN: TRzBitBtn
+              Left = 21
+              Top = 143
+              Width = 121
+              Height = 37
+              Caption = 'Clear Picture'
+              DoubleBuffered = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentDoubleBuffered = False
+              ParentFont = False
+              TabOrder = 1
+              Visible = False
+              Glyph.Data = {
+                F6060000424DF606000000000000360000002800000018000000180000000100
+                180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+                FFFFFFCACAE0DEDEEBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC1C1DA0B08C05F5FA6FFFFFFFF
+                FFFFFFFFFFFFFFFF2120A70C0AD40B08C44747A2FFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF121297120E
+                F5363688FFFFFFFFFFFFFFFFFF5A5AA7110CF4100DF40F0DF40D0BF0333384FF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                7070AA0D0AE70E0BE75C5C9DFFFFFFFFFFFFFFFFFF0D0B900F0EF50E0CEE0D0C
+                ED0E0CF00B09CCA8A8C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFE3E3EE0706A1100EF50B08BCA6A6CAFFFFFFFFFFFFFFFFFF100D93
+                1C1BF50E0DEE0F0DED0E0DED0F0EF5131295FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFF26259F100FF5100FF5070696F1F1F7FFFFFFFF
+                FFFFFFFFFF3737953333F60D0DEF0F0FEF0E0EEF0E0FF00F0EE88282B9FFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5C5CAE0F0FE81010F40F0FEB4A4A
+                9BFFFFFFFFFFFFFFFFFFFFFFFFA6A6D7201EC12122F60F10EF1011EF1011EF11
+                13F50B0BB9F6F6FBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFABAAD91010DA1214F5
+                1214F50B09ACCECDE7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3434A13739EA1619
+                F41112EF1214EF1215F11216F43937B6FFFFFFFFFFFFFFFFFFFFFFFFA9A9DE10
+                12D41518F51417F11315EE3837A6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFF07069A4953F71216EF1317F01518F0161BF41416E29695DAFFFFFFFFFF
+                FFE5E4F71418DD191EF5171DF3171DF50C0AB6CECEEDFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFD1D1EF110FBA4E5BF8161EF3171FF31821F31A23F5
+                1214D3FDFDFFE8E7F91418D91C26F61A24F41A23F5151AE27372D1FFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8482DB2120D04B5AF716
+                22F31A26F41D29F51E2BF62723CF1D23E71F2CF61E2BF41E2BF51C2AF61511C1
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FF615FD63C41EC4D5EF81B2AF41F31F42133F52030F32234F52133F42033F422
+                35F61110D3D1D0F5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFF2624CF464FF15467F82032F52435F52438F52438
+                F52435F52539F6181CE18884E6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2321D74955F43246F6
+                273BF5273BF5273BF5283DF61E28EB534EE2FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B78EE22
+                2FEF2940F62A3EF62A40F62A40F62A40F62B43F6191BE5DFDEFBFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFADAB
+                F61E24EB2C46F62C46F62D45F62D44F62B43F63750F73650F72A43F62E49F61C
+                20E9E5E4FCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                D0CEFB4A4BF12C42F5314DF6314CF6304AF62F4AF62D48F63B58F77183F9869D
+                FA435DF72C47F6314FF6232DF2BFBDF9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFF7775F62A3BF53656F73452F7334FF6334FF6324EF62F4CF6516FF8
+                515CF82822EC1C19F17D90F96C88F9324EF63352F62735F59A97F7FFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFF918EF8334BF63957F73754F73754F73753F73653F733
+                4FF66987F94F59F82825F0FFFFFFD6D5FC140DEF4B55F78DA8FA506FF83352F6
+                3148F65754F5FFFFFFFFFFFFFFFFFFFFFFFF2328F43C60F73B5CF73B5CF73A5B
+                F73959F74160F77492F93737F7625FF6FFFFFFFFFFFFFFFFFFFFFFFF504CF526
+                24F57788F989A5FA5674F83656F7242BF5ADABFAFFFFFFFFFFFF4144F75878F8
+                3A58F73B59F73958F75A7AF87489F91F1CF49B98FAFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFD1D0FD2B27F23636F77A8CF98EA8FA6D8EF94358F7494BF7E7
+                E7FE2C25F47183F987A2FA7C9BF98FABFA5258F82019F3D2D1FDFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFABA8FB2C28F21F1CF45258
+                F86D80F9A3C0FB3A3BF7E5E5FE3D39F3201DF42927F5130CF2615DF6FFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFE1E0FE8784F83F3BF3413DF45551F5FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              Margin = -1
+            end
+            object TopFLD: TwwDBRichEdit
+              Left = 226
+              Top = 21
+              Width = 600
+              Height = 52
+              AutoURLDetect = False
+              DataField = 'LINE_A1'
+              DataSource = SeminarPictureSRC
+              Font.Charset = GREEK_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              GutterWidth = 3
+              HideSelection = False
+              ParentFont = False
+              PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+              TabOrder = 2
+              EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+              EditorCaption = 'Edit Rich Text'
+              EditorPosition.Left = 0
+              EditorPosition.Top = 0
+              EditorPosition.Width = 0
+              EditorPosition.Height = 0
+              MeasurementUnits = muInches
+              PrintMargins.Top = 1.000000000000000000
+              PrintMargins.Bottom = 1.000000000000000000
+              PrintMargins.Left = 1.000000000000000000
+              PrintMargins.Right = 1.000000000000000000
+              PrintHeader.VertMargin = 0.500000000000000000
+              PrintHeader.Font.Charset = DEFAULT_CHARSET
+              PrintHeader.Font.Color = clWindowText
+              PrintHeader.Font.Height = -11
+              PrintHeader.Font.Name = 'Tahoma'
+              PrintHeader.Font.Style = []
+              PrintFooter.VertMargin = 0.500000000000000000
+              PrintFooter.Font.Charset = DEFAULT_CHARSET
+              PrintFooter.Font.Color = clWindowText
+              PrintFooter.Font.Height = -11
+              PrintFooter.Font.Name = 'Tahoma'
+              PrintFooter.Font.Style = []
+              DoubleBuffered = False
+              ParentDoubleBuffered = False
+              RichEditVersion = 2
+              Data = {
+                7F0000007B5C727466315C616E73695C616E7369637067313235335C64656666
+                305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+                6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+                345C7563315C706172645C66305C6673313820546F70464C445C7061720D0A7D
+                0D0A00}
+            end
+            object MiddleFLD: TwwDBRichEdit
+              Left = 229
+              Top = 197
+              Width = 599
+              Height = 140
+              AutoURLDetect = False
+              DataField = 'LINE_A2'
+              DataSource = SeminarPictureSRC
+              Font.Charset = GREEK_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              GutterWidth = 3
+              HideSelection = False
+              ParentFont = False
+              Title = 'PICTURE_TOP_L1'
+              PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+              TabOrder = 3
+              EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+              EditorCaption = 'Edit Rich Text'
+              EditorPosition.Left = 0
+              EditorPosition.Top = 0
+              EditorPosition.Width = 0
+              EditorPosition.Height = 0
+              MeasurementUnits = muInches
+              PrintMargins.Top = 1.000000000000000000
+              PrintMargins.Bottom = 1.000000000000000000
+              PrintMargins.Left = 1.000000000000000000
+              PrintMargins.Right = 1.000000000000000000
+              PrintHeader.VertMargin = 0.500000000000000000
+              PrintHeader.Font.Charset = DEFAULT_CHARSET
+              PrintHeader.Font.Color = clWindowText
+              PrintHeader.Font.Height = -11
+              PrintHeader.Font.Name = 'Tahoma'
+              PrintHeader.Font.Style = []
+              PrintFooter.VertMargin = 0.500000000000000000
+              PrintFooter.Font.Charset = DEFAULT_CHARSET
+              PrintFooter.Font.Color = clWindowText
+              PrintFooter.Font.Height = -11
+              PrintFooter.Font.Name = 'Tahoma'
+              PrintFooter.Font.Style = []
+              DoubleBuffered = False
+              ParentDoubleBuffered = False
+              RichEditVersion = 2
+              Data = {
+                820000007B5C727466315C616E73695C616E7369637067313235335C64656666
+                305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+                6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+                345C7563315C706172645C66305C66733138204D6964646C65464C445C706172
+                0D0A7D0D0A00}
+            end
+            object CertDirectorFLD: TwwDBRichEdit
+              Left = 620
+              Top = 352
+              Width = 208
+              Height = 84
+              AutoURLDetect = False
+              DataField = 'LINE_B2'
+              DataSource = SeminarPictureSRC
+              Font.Charset = GREEK_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              GutterWidth = 3
+              HideSelection = False
+              ParentFont = False
+              PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+              TabOrder = 4
+              EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+              EditorCaption = 'Edit Rich Text'
+              EditorPosition.Left = 0
+              EditorPosition.Top = 0
+              EditorPosition.Width = 0
+              EditorPosition.Height = 0
+              MeasurementUnits = muInches
+              PrintMargins.Top = 1.000000000000000000
+              PrintMargins.Bottom = 1.000000000000000000
+              PrintMargins.Left = 1.000000000000000000
+              PrintMargins.Right = 1.000000000000000000
+              PrintHeader.VertMargin = 0.500000000000000000
+              PrintHeader.Font.Charset = DEFAULT_CHARSET
+              PrintHeader.Font.Color = clWindowText
+              PrintHeader.Font.Height = -11
+              PrintHeader.Font.Name = 'Tahoma'
+              PrintHeader.Font.Style = []
+              PrintFooter.VertMargin = 0.500000000000000000
+              PrintFooter.Font.Charset = DEFAULT_CHARSET
+              PrintFooter.Font.Color = clWindowText
+              PrintFooter.Font.Height = -11
+              PrintFooter.Font.Name = 'Tahoma'
+              PrintFooter.Font.Style = []
+              DoubleBuffered = False
+              ParentDoubleBuffered = False
+              RichEditVersion = 2
+              Data = {
+                880000007B5C727466315C616E73695C616E7369637067313235335C64656666
+                305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+                6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+                345C7563315C706172645C66305C6673313820436572744469726563746F7246
+                4C445C7061720D0A7D0D0A00}
+            end
+            object CertInstructorFLD: TwwDBRichEdit
+              Left = 228
+              Top = 349
+              Width = 208
+              Height = 84
+              AutoURLDetect = False
+              DataField = 'LINE_B1'
+              DataSource = SeminarPictureSRC
+              Font.Charset = GREEK_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              GutterWidth = 3
+              HideSelection = False
+              ParentFont = False
+              PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+              TabOrder = 5
+              EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+              EditorCaption = 'Edit Rich Text'
+              EditorPosition.Left = 0
+              EditorPosition.Top = 0
+              EditorPosition.Width = 0
+              EditorPosition.Height = 0
+              MeasurementUnits = muInches
+              PrintMargins.Top = 1.000000000000000000
+              PrintMargins.Bottom = 1.000000000000000000
+              PrintMargins.Left = 1.000000000000000000
+              PrintMargins.Right = 1.000000000000000000
+              PrintHeader.VertMargin = 0.500000000000000000
+              PrintHeader.Font.Charset = DEFAULT_CHARSET
+              PrintHeader.Font.Color = clWindowText
+              PrintHeader.Font.Height = -11
+              PrintHeader.Font.Name = 'Tahoma'
+              PrintHeader.Font.Style = []
+              PrintFooter.VertMargin = 0.500000000000000000
+              PrintFooter.Font.Charset = DEFAULT_CHARSET
+              PrintFooter.Font.Color = clWindowText
+              PrintFooter.Font.Height = -11
+              PrintFooter.Font.Name = 'Tahoma'
+              PrintFooter.Font.Style = []
+              DoubleBuffered = False
+              ParentDoubleBuffered = False
+              RichEditVersion = 2
+              Data = {
+                8A0000007B5C727466315C616E73695C616E7369637067313235335C64656666
+                305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+                6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+                345C7563315C706172645C66305C667331382043657274496E7374727563746F
+                72464C445C7061720D0A7D0D0A00}
+            end
+            object BottomFLD: TwwDBRichEdit
+              Left = 229
+              Top = 476
+              Width = 597
+              Height = 42
+              AutoURLDetect = False
+              DataField = 'LINE_B3'
+              DataSource = SeminarPictureSRC
+              Font.Charset = GREEK_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              GutterWidth = 3
+              HideSelection = False
+              ParentFont = False
+              PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+              TabOrder = 6
+              EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+              EditorCaption = 'Edit Rich Text'
+              EditorPosition.Left = 0
+              EditorPosition.Top = 0
+              EditorPosition.Width = 0
+              EditorPosition.Height = 0
+              MeasurementUnits = muInches
+              PrintMargins.Top = 1.000000000000000000
+              PrintMargins.Bottom = 1.000000000000000000
+              PrintMargins.Left = 1.000000000000000000
+              PrintMargins.Right = 1.000000000000000000
+              PrintHeader.VertMargin = 0.500000000000000000
+              PrintHeader.Font.Charset = DEFAULT_CHARSET
+              PrintHeader.Font.Color = clWindowText
+              PrintHeader.Font.Height = -11
+              PrintHeader.Font.Name = 'Tahoma'
+              PrintHeader.Font.Style = []
+              PrintFooter.VertMargin = 0.500000000000000000
+              PrintFooter.Font.Charset = DEFAULT_CHARSET
+              PrintFooter.Font.Color = clWindowText
+              PrintFooter.Font.Height = -11
+              PrintFooter.Font.Name = 'Tahoma'
+              PrintFooter.Font.Style = []
+              DoubleBuffered = False
+              ParentDoubleBuffered = False
+              RichEditVersion = 2
+              Data = {
+                820000007B5C727466315C616E73695C616E7369637067313235335C64656666
+                305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+                6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+                345C7563315C706172645C66305C6673313820426F74746F6D464C445C706172
+                0D0A7D0D0A00}
+            end
+            object BottomLeftFLD: TwwDBRichEdit
+              Left = 47
+              Top = 351
+              Width = 146
+              Height = 80
+              AutoURLDetect = False
+              DataField = 'LINE_C1'
+              DataSource = SeminarPictureSRC
+              Font.Charset = GREEK_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              GutterWidth = 3
+              HideSelection = False
+              ParentFont = False
+              PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
+              TabOrder = 7
+              EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
+              EditorCaption = 'Edit Rich Text'
+              EditorPosition.Left = 0
+              EditorPosition.Top = 0
+              EditorPosition.Width = 0
+              EditorPosition.Height = 0
+              MeasurementUnits = muInches
+              PrintMargins.Top = 1.000000000000000000
+              PrintMargins.Bottom = 1.000000000000000000
+              PrintMargins.Left = 1.000000000000000000
+              PrintMargins.Right = 1.000000000000000000
+              PrintHeader.VertMargin = 0.500000000000000000
+              PrintHeader.Font.Charset = DEFAULT_CHARSET
+              PrintHeader.Font.Color = clWindowText
+              PrintHeader.Font.Height = -11
+              PrintHeader.Font.Name = 'Tahoma'
+              PrintHeader.Font.Style = []
+              PrintFooter.VertMargin = 0.500000000000000000
+              PrintFooter.Font.Charset = DEFAULT_CHARSET
+              PrintFooter.Font.Color = clWindowText
+              PrintFooter.Font.Height = -11
+              PrintFooter.Font.Name = 'Tahoma'
+              PrintFooter.Font.Style = []
+              DoubleBuffered = False
+              ParentDoubleBuffered = False
+              RichEditVersion = 2
+              Data = {
+                860000007B5C727466315C616E73695C616E7369637067313235335C64656666
+                305C6465666C616E67313033327B5C666F6E7474626C7B5C66305C666E696C5C
+                6663686172736574313631205461686F6D613B7D7D0D0A5C766965776B696E64
+                345C7563315C706172645C66305C6673313820426F74746F6D4C656674464C44
+                5C7061720D0A7D0D0A00}
+            end
+            object RzPanel7: TRzPanel
+              Left = 403
+              Top = 79
+              Width = 82
+              Height = 79
+              BorderOuter = fsGroove
+              TabOrder = 8
+              object PICTURE_TOP_L1: TImage
+                Left = 2
+                Top = 2
+                Width = 78
+                Height = 75
+                ParentCustomHint = False
+                Align = alClient
+                Center = True
+                Proportional = True
+                Stretch = True
+                OnDblClick = PICTURE_TOP_L1DblClick
+                OnMouseDown = PICTURE_TOP_L1MouseDown
+                ExplicitLeft = 0
+                ExplicitTop = 4
+              end
+            end
+            object RzPanel9: TRzPanel
+              Left = 545
+              Top = 79
+              Width = 82
+              Height = 79
+              BorderOuter = fsGroove
+              TabOrder = 9
+              object PICTURE_TOP_R1: TImage
+                Left = 2
+                Top = 2
+                Width = 78
+                Height = 75
+                ParentCustomHint = False
+                Align = alClient
+                Center = True
+                Proportional = True
+                Stretch = True
+                OnDblClick = PICTURE_TOP_L1DblClick
+                OnMouseDown = PICTURE_TOP_L1MouseDown
+                ExplicitTop = 0
+              end
+            end
+            object RzPanel10: TRzPanel
+              Left = 47
+              Top = 437
+              Width = 82
+              Height = 79
+              BorderOuter = fsGroove
+              TabOrder = 10
+              object PICTURE_BOT_L1: TImage
+                Left = 2
+                Top = 2
+                Width = 78
+                Height = 75
+                ParentCustomHint = False
+                Align = alClient
+                Center = True
+                Proportional = True
+                Stretch = True
+                OnDblClick = PICTURE_TOP_L1DblClick
+                OnMouseDown = PICTURE_TOP_L1MouseDown
+                ExplicitLeft = 14
+                ExplicitTop = 4
+              end
+            end
+            object RzPanel11: TRzPanel
+              Left = 864
+              Top = 440
+              Width = 82
+              Height = 79
+              BorderOuter = fsGroove
+              TabOrder = 11
+              object PICTURE_BOT_R1: TImage
+                Left = 2
+                Top = 2
+                Width = 78
+                Height = 75
+                ParentCustomHint = False
+                Align = alClient
+                Center = True
+                Proportional = True
+                Stretch = True
+                OnDblClick = PICTURE_TOP_L1DblClick
+                OnMouseDown = PICTURE_TOP_L1MouseDown
+                ExplicitLeft = 10
+                ExplicitTop = 4
+              end
+            end
+            object wwDBEdit5: TwwDBEdit
+              Left = 516
+              Top = 79
+              Width = 25
+              Height = 22
+              DataField = 'TR_Y'
+              DataSource = SeminarPictureSRC
+              TabOrder = 12
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit6: TwwDBEdit
+              Left = 547
+              Top = 162
+              Width = 25
+              Height = 22
+              DataField = 'TR_X'
+              DataSource = SeminarPictureSRC
+              TabOrder = 13
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit7: TwwDBEdit
+              Left = 372
+              Top = 79
+              Width = 25
+              Height = 22
+              DataField = 'TL_Y'
+              DataSource = SeminarPictureSRC
+              TabOrder = 14
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit10: TwwDBEdit
+              Left = 405
+              Top = 164
+              Width = 25
+              Height = 22
+              DataField = 'TL_X'
+              DataSource = SeminarPictureSRC
+              TabOrder = 15
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit11: TwwDBEdit
+              Left = 16
+              Top = 442
+              Width = 25
+              Height = 22
+              DataField = 'BL_Y'
+              DataSource = SeminarPictureSRC
+              TabOrder = 16
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit12: TwwDBEdit
+              Left = 50
+              Top = 520
+              Width = 25
+              Height = 22
+              DataField = 'BL_X'
+              DataSource = SeminarPictureSRC
+              TabOrder = 17
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit13: TwwDBEdit
+              Left = 833
+              Top = 442
+              Width = 25
+              Height = 22
+              DisableThemes = True
+              DataField = 'BR_Y'
+              DataSource = SeminarPictureSRC
+              TabOrder = 18
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit14: TwwDBEdit
+              Left = 866
+              Top = 523
+              Width = 25
+              Height = 22
+              DataField = 'BR_X'
+              DataSource = SeminarPictureSRC
+              TabOrder = 19
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+          end
+        end
+      end
     end
   end
   object Panel4: TRzPanel
@@ -3299,7 +3432,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 3
+        Value = 2
       end>
     object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
@@ -3308,7 +3441,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     end
     object seminarSubjectSQLSUBJECT: TWideStringField
       DisplayLabel = #920#941#956#945
-      DisplayWidth = 30
+      DisplayWidth = 21
       FieldName = 'SUBJECT'
       FixedChar = True
       Size = 60
@@ -3410,7 +3543,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 3
+        Value = 2
       end>
     object SeminarReminderSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
