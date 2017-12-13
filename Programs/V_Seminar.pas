@@ -124,7 +124,6 @@ type
     StatusFLD: TwwDBComboBox;
     SeminarSQLSEM_CATEGORY: TWideStringField;
     IBCSQLMonitor1: TIBCSQLMonitor;
-    Panel2: TRzPanel;
     SeminarReminderSQLIS_HIGH: TWideStringField;
     seminarSubjectSQLFK_SUBJECT_TYPE_SERIAL: TIntegerField;
     seminarSubjectSQLFEE_NORMAL: TFloatField;
@@ -296,6 +295,10 @@ type
     AllPersonsGRD: TwwDBGrid;
     RzSizePanel1: TRzSizePanel;
     SearchPersonFLD: TwwIncrementalSearch;
+    RzPanel2: TRzPanel;
+    RzPanel5: TRzPanel;
+    RzPanel7: TRzPanel;
+    Panel2: TRzPanel;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
