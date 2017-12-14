@@ -79,6 +79,8 @@ type
     N1: TMenuItem;
     N2: TMenuItem;
     CategoryShowFLD: TwwDBComboBox;
+    N4: TMenuItem;
+    N5: TMenuItem;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -103,6 +105,7 @@ type
     procedure N3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
+    procedure N5Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -122,7 +125,8 @@ var
 implementation
 
 uses   U_Database, G_generalProcs, V_Seminar, I_certificates, p_attendance,
-  I_invoiceSeminar, R_Certificate, R_invoices, r_certificateDates;
+  I_invoiceSeminar, R_Certificate, R_invoices, r_certificateDates,
+  R_SeminarRevenues;
 
 
 {$R *.DFM}
@@ -431,6 +435,24 @@ begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
   frm :=  TR_InvoicesFRM.Create(nil);
+  frm.IN_SeminarSerial:=SeminarSerial;
+
+  try
+    frm.ShowModal();
+  finally
+    frm.Free;
+  end;
+end;
+
+procedure TL_SeminarFRM.N5Click(Sender: TObject);
+vAR
+  Frm:TR_SeminarRevenuesFRM;
+  seminarSerial:Integer;
+
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_SeminarRevenuesFRM.Create(nil);
   frm.IN_SeminarSerial:=SeminarSerial;
 
   try

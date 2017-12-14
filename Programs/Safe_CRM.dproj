@@ -155,10 +155,6 @@
             <Form>I_InvoiceSeminarFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_invoices.pas">
-            <Form>R_InvoicesFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="R_PresenceTotal.pas">
             <Form>R_presenceTotalFRM</Form>
             <FormType>dfm</FormType>
@@ -222,6 +218,10 @@
         </DCCReference>
         <DCCReference Include="r_certificateDates.pas">
             <Form>R_CertificateDatesFRM</Form>
+        </DCCReference>
+        <DCCReference Include="R_SeminarRevenues.pas">
+            <Form>R_SeminarRevenuesFRM</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

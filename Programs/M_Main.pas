@@ -182,6 +182,7 @@ gpShowModal(TSN_LoginFRm);
 //TODO    database backup/restore
 //TODO    expenses/revenue report
 //TODO    invoice company instead of students
+//TODO approve should check for instructor, examiner, dates, subject, etc
 
 
 end;

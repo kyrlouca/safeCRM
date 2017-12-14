@@ -43,11 +43,6 @@ type
     NonAttendSQLLAST_NAME: TWideStringField;
     NonAttendSQLFIRST_NAME: TWideStringField;
     NonAttendSQLNATIONAL_ID: TWideStringField;
-    Panel4: TRzPanel;
-    RzPanel1: TRzPanel;
-    CLoseBTN: TRzBitBtn;
-    AcceptBTN: TBitBtn;
-    CanelBTN: TBitBtn;
     seminarSubjectSQL: TIBCQuery;
     SeminarSubjectSRC: TDataSource;
     SeminarDaySQL: TIBCQuery;
@@ -161,15 +156,11 @@ type
     CompanySQLCOMPANY_CONTACT: TWideStringField;
     CompanySQLCOMPANY_REGISTRATION_DATE: TDateField;
     CompanySQLPHONE_CONTACT: TWideStringField;
+    RzPanel7: TRzPanel;
+    AttendingSQLNATIONAL_ID: TWideStringField;
     PageControlPC: TPageControl;
     SeminarTS: TTabSheet;
-    SubjectTS: TTabSheet;
-    CostTS: TTabSheet;
-    ReminderTS: TTabSheet;
     RzPanel18: TRzPanel;
-    RzPanel19: TRzPanel;
-    aaa: TRzPanel;
-    RzPanel21: TRzPanel;
     FirstGRP: TRzGroupBox;
     Label1: TLabel;
     Label2: TLabel;
@@ -207,6 +198,8 @@ type
     wwDBEdit4: TwwDBEdit;
     wwDBComboBox1: TwwDBComboBox;
     RzBitBtn1: TRzBitBtn;
+    SubjectTS: TTabSheet;
+    RzPanel19: TRzPanel;
     RzPanel4: TRzPanel;
     GroupBox2: TGroupBox;
     RzPanel8: TRzPanel;
@@ -243,6 +236,23 @@ type
     GroupBox1: TGroupBox;
     RzPanel6: TRzPanel;
     wwDBGrid1: TwwDBGrid;
+    RzPanel2: TRzPanel;
+    RzPanel5: TRzPanel;
+    StudentsTS: TTabSheet;
+    RzPanel20: TRzPanel;
+    RzGroupBox1: TRzGroupBox;
+    RzSizePanel2: TRzSizePanel;
+    AttendGRD: TwwDBGrid;
+    RzPanel3: TRzPanel;
+    ToRightBTN: TBitBtn;
+    ToLeftBTN: TBitBtn;
+    RzGroupBox2: TRzGroupBox;
+    AllPersonsGRD: TwwDBGrid;
+    RzSizePanel1: TRzSizePanel;
+    SearchPersonFLD: TwwIncrementalSearch;
+    Panel2: TRzPanel;
+    CostTS: TTabSheet;
+    aaa: TRzPanel;
     GroupBox3: TGroupBox;
     RzPanel11: TRzPanel;
     wwDBNavigator3: TwwDBNavigator;
@@ -255,28 +265,15 @@ type
     wwNavButton14: TwwNavButton;
     CostGRD: TwwDBGrid;
     CostTypeFLD: TwwDBLookupCombo;
+    RzPanel13: TRzPanel;
+    ReminderTS: TTabSheet;
+    RzPanel21: TRzPanel;
     GroupBox4: TGroupBox;
     RzPanel12: TRzPanel;
     wwDBGrid3: TwwDBGrid;
     AfterFLD: TwwDBComboBox;
     NamePersonFLD: TwwDBComboBox;
     StartEndLD: TwwDBComboBox;
-    StudentsTS: TTabSheet;
-    RzPanel22: TRzPanel;
-    RzGroupBox3: TRzGroupBox;
-    RzSizePanel3: TRzSizePanel;
-    wwDBGrid5: TwwDBGrid;
-    RzPanel3: TRzPanel;
-    ToRightBTN: TBitBtn;
-    ToLeftBTN: TBitBtn;
-    RzGroupBox2: TRzGroupBox;
-    AllPersonsGRD: TwwDBGrid;
-    RzSizePanel1: TRzSizePanel;
-    SearchPersonFLD: TwwIncrementalSearch;
-    RzPanel2: TRzPanel;
-    RzPanel5: TRzPanel;
-    RzPanel7: TRzPanel;
-    Panel2: TRzPanel;
     GroupBox5: TGroupBox;
     Label14: TLabel;
     Label15: TLabel;
@@ -299,9 +296,17 @@ type
     wwNavButton21: TwwNavButton;
     wwNavButton22: TwwNavButton;
     wwIncrementalSearch1: TwwIncrementalSearch;
-    RzPanel13: TRzPanel;
     RzPanel14: TRzPanel;
     RzPanel17: TRzPanel;
+    Panel4: TRzPanel;
+    RzPanel1: TRzPanel;
+    CLoseBTN: TRzBitBtn;
+    AcceptBTN: TBitBtn;
+    CanelBTN: TBitBtn;
+    RzPanel22: TRzPanel;
+    TabSheet1: TTabSheet;
+    RzPanel23: TRzPanel;
+    RzBitBtn2: TRzBitBtn;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -346,6 +351,9 @@ type
     procedure HIghFLDClick(Sender: TObject);
     procedure wwNavButton25Click(Sender: TObject);
     procedure wwNavButton26Click(Sender: TObject);
+    procedure AllPersonsGRDTitleButtonClick(Sender: TObject;
+      AFieldName: string);
+    procedure AttendGRDTitleButtonClick(Sender: TObject; AFieldName: string);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -829,6 +837,19 @@ begin
   end;
 end;
 
+procedure TV_SeminarFRM.AttendGRDTitleButtonClick(Sender: TObject;
+  AFieldName: string);
+  var
+         sortInfoHawb:TSOrtInfo;
+         Table:TIBCQuery;
+
+
+  begin
+        Table:=TIbcQuery(AttendGRD.DataSource.DataSet);
+        SortInfoHawb.Table:=Table;
+        G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
+end;
+
 procedure TV_SeminarFRM.wwNavButton19Click(Sender: TObject);
 begin
   REminderDescFLD.SetFocus;
@@ -927,6 +948,20 @@ begin
   begin
     InsertPerson();
   end;
+
+end;
+
+procedure TV_SeminarFRM.AllPersonsGRDTitleButtonClick(Sender: TObject;
+  AFieldName: string);
+  var
+         sortInfoHawb:TSOrtInfo;
+         Table:TIBCQuery;
+
+
+  begin
+        Table:=TIbcQuery(AllPersonsGRD.DataSource.DataSet);
+        SortInfoHawb.Table:=Table;
+        G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 
 end;
 

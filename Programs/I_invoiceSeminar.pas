@@ -115,6 +115,7 @@ type
     Panel2: TRzPanel;
     InvoiceSQLFK_SUBJECT_SERIAL: TIntegerField;
     InvoiceSQLSUBJECT_NAME: TWideStringField;
+    InvoiceSQLFULL_NAME: TWideStringField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -459,7 +460,9 @@ begin
         InvoiceSQL.FieldByName('fk_PERSON_serial').Value:=qr.FieldByName('per_serial').AsInteger;
         InvoiceSQL.FieldByName('last_name').Value       :=qr.FieldByName('inv_last_name').AsString;
         InvoiceSQL.FieldByName('first_name').Value:=qr.FieldByName('inv_first_name').AsString;
-        InvoiceSQL.FieldByName('PERSON_NATIONAL_ID').Value:=qr.FieldByName('national_id').AsString;
+        InvoiceSQL.FieldByName('FUll_name').Value:=qr.FieldByName('inv_first_name').AsString;
+        InvoiceSQL.FieldByName('PERSON_NATIONAL_ID').Value:=Trim(qr.FieldByName('national_id').AsString)
+        +' '+Trim(qr.FieldByName('inv_last_name').AsString);
 
 
         InvoiceSQL.FieldByName('AMOUNT_GROSS').Value:=PriceAnad;

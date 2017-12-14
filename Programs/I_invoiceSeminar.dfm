@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 517
+  ClientHeight = 497
   ClientWidth = 1079
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 474
+    Top = 454
     Width = 1079
     Height = 43
     Align = alBottom
@@ -190,7 +190,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 65
     Width = 1079
-    Height = 409
+    Height = 389
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
@@ -198,7 +198,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 421
       Top = 2
       Width = 750
-      Height = 405
+      Height = 385
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -348,13 +348,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 362
+        Top = 342
         Width = 750
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         TabOrder = 1
-        ExplicitLeft = 6
         object RzPanel6: TRzPanel
           Left = 649
           Top = 1
@@ -568,7 +567,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 419
-      Height = 405
+      Height = 385
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -583,7 +582,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 208
+        Top = 188
         Width = 419
         Height = 197
         Align = alBottom
@@ -861,14 +860,15 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         '  (SERIAL_NUMBER, FK_PERSON_SERIAL, INVOICE_STATUS, DATE_INVOICE' +
         'D, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER, AMOUNT_GROSS, ' +
         'AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_ANAD, LAST_NAME, FIR' +
-        'ST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL, SUBJECT_NAME)'
+        'ST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL, SUBJECT_NAME, FU' +
+        'LL_NAME)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_PERSON_SERIAL, :INVOICE_STATUS, :DATE_INV' +
         'OICED, :VAT_RATE, :DISCOUNT_BY_SAFE, :DISCOUNT_CUSTOMER, :AMOUNT' +
         '_GROSS, :AMOUNT_NET, :AMOUNT_VAT, :AMOUNT_WITH_VAT, :IS_ANAD, :L' +
         'AST_NAME, :FIRST_NAME, :PERSON_NATIONAL_ID, :FK_SUBJECT_SERIAL, ' +
-        ':SUBJECT_NAME)')
+        ':SUBJECT_NAME, :FULL_NAME)')
     SQLDelete.Strings = (
       'DELETE FROM INVOICE'
       'WHERE'
@@ -885,7 +885,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'AMOUNT_WITH_VAT = :AMOUNT_WITH_VAT, IS_ANAD = :IS_ANAD, LAST_NAM' +
         'E = :LAST_NAME, FIRST_NAME = :FIRST_NAME, PERSON_NATIONAL_ID = :' +
         'PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL = :FK_SUBJECT_SERIAL, SUBJ' +
-        'ECT_NAME = :SUBJECT_NAME'
+        'ECT_NAME = :SUBJECT_NAME, FULL_NAME = :FULL_NAME'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -894,7 +894,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'OICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER, AMOUNT_GRO' +
         'SS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_ANAD, LAST_NAME,' +
         ' FIRST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL, SUBJECT_NAME' +
-        ' FROM INVOICE'
+        ', FULL_NAME FROM INVOICE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1029,6 +1029,11 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Visible = False
       FixedChar = True
       Size = 60
+    end
+    object InvoiceSQLFULL_NAME: TWideStringField
+      FieldName = 'FULL_NAME'
+      Visible = False
+      Size = 80
     end
   end
   object InvoiceSRC: TIBCDataSource
