@@ -133,8 +133,15 @@ begin
    end;
 
    if ksCountRecSQL(cn,'select sta.CATEGORY_CODE from sem_category sta where sta.CATEGORY_CODE= :seminarType',['C'])=0 then begin
+      //αλλή εταιρεία διοργανώνει σεμινάριο, η SafeP  απλώς το κάνει και παίρνει προμήθεια (No certificates, inv the company)
       ksExecSQLVar(cn,'INSERT INTO sem_category (Category_code, TYPE_DESC_GR, TYPE_DESC_EN, IS_INVOICE, IS_CERTIFICATE,INVOICE_COMPANY,ORder_number) VALUES ( :S1, :S2,:S3, :S4, :S5,:s6,:s7)',
-      ['C','Υπεργολαβία','Commission','Y','Y','Y',4]);
+      ['C','Μόνο Προμήθεια','Commission','Y','N','Y',4]);
+   end;
+
+   if ksCountRecSQL(cn,'select sta.CATEGORY_CODE from sem_category sta where sta.CATEGORY_CODE= :seminarType',['O'])=0 then begin
+      //Το σεμινάριο διοργανώθηκε από SAFE αλλά κάποιος άλλος κανει το σεμινάριο,  (ΥΕΣ certificates, Yes invoice, inv the company)
+      ksExecSQLVar(cn,'INSERT INTO sem_category (Category_code, TYPE_DESC_GR, TYPE_DESC_EN, IS_INVOICE, IS_CERTIFICATE,INVOICE_COMPANY,ORder_number) VALUES ( :S1, :S2,:S3, :S4, :S5,:s6,:s7)',
+      ['O','Ανάθεση σε Άλλο','Outsourced','Y','Y','Y',4]);
    end;
 
 

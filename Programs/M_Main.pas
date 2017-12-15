@@ -4,11 +4,13 @@ unit M_Main;
 ///
 ///  for normal: we conduct the course, invoice the students (or the company) and issue the certificates
 ///  planned   :are just there to check if there is interest
-///  commisioned seminars are for somebody else, but SafePartners does the lectures and takes a commision
+///  commisioned seminars are for somebody else, but SafePartners does the lectures and takes Προμήθεια
 ///     for commisioned seminars, somebody else is responsible for issuing the certificates, and ANAD papers
-///     no invoices, no certificates
-///  outsourced : Safe partners does all the work but takes an agreed fee from the company
+///     and thereis NO certificates but you do Invoice the company (you may also write down the students)
+///   Invoice yes, certificates NO, invoice COMPANY not the students
+///  outsourced : Safe partners does all the work but invoices and takes an agreed fee from the company
 ///      outsource may be treated as MONOEpihirisiaka where we invoice the company!!
+///       invoice yes, certificates yes, invoice the COMPANY not the students
 ///
 ///
 /// //////////////////////////////////////////////////
@@ -85,6 +87,7 @@ type
     MainHelpRE: TwwDBRichEdit;
     N6: TMenuItem;
     N7: TMenuItem;
+    N10: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -125,7 +128,8 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   U_Database, M_CostType, L_Seminar, M_Instructor, V_Seminar, M_Instruct,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
-  G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices;
+  G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices,
+  v_SeminarPictureTemplate, R_SeminarListingRevenues;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -189,7 +193,7 @@ end;
 
 procedure TM_mainFRM.N10Click(Sender: TObject);
 begin
-gpShowModal(TR_InvoicesFRM);
+gpShowModal(TR_SeminarListingRevenuesFRM);
 end;
 
 procedure TM_mainFRM.N11Click(Sender: TObject);

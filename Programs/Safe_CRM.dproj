@@ -176,10 +176,6 @@
             <Form>M_companyNewFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_expiry.pas">
-            <Form>R_ExpiryFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="L_Companies.pas">
             <Form>L_companiesFRM</Form>
             <FormType>dfm</FormType>
@@ -218,6 +214,18 @@
         </DCCReference>
         <DCCReference Include="r_certificateDates.pas">
             <Form>R_CertificateDatesFRM</Form>
+        </DCCReference>
+        <DCCReference Include="R_SeminarListingRevenues.pas">
+            <Form>R_SeminarListingRevenuesFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="R_expiry.pas">
+            <Form>R_ExpiryFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="R_invoices.pas">
+            <Form>R_InvoicesFRM</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="R_SeminarRevenues.pas">
             <Form>R_SeminarRevenuesFRM</Form>

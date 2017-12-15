@@ -1,4 +1,4 @@
-unit R_SeminarRevenues;
+unit R_SeminarListingRevenues;
 
 interface
 
@@ -18,7 +18,7 @@ type
     DateFinal:Tdate;
   End;
 
-  TR_SeminarRevenuesFRM = class(TForm)
+  TR_SeminarListingRevenuesFRM = class(TForm)
     Panel1: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -38,34 +38,9 @@ type
     ppSystemVariable6: TppSystemVariable;
     ppDesignLayers3: TppDesignLayers;
     ppDesignLayer3: TppDesignLayer;
-    ppShape1: TppShape;
-    ppLabel10: TppLabel;
     CostSRC: TDataSource;
     SeminarPIP: TppDBPipeline;
-    ppDBText7: TppDBText;
-    ppLabel2: TppLabel;
-    ppDBText9: TppDBText;
-    ppDBText10: TppDBText;
-    ppLabel7: TppLabel;
-    ppLabel9: TppLabel;
-    ppDBText11: TppDBText;
     FirstGRP: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    SerialFLD: TRzDBLabel;
-    Label4: TLabel;
-    Label1: TLabel;
-    RzDBLabel1: TRzDBLabel;
-    RzDBLabel2: TRzDBLabel;
-    Label5: TLabel;
-    RzDBLabel4: TRzDBLabel;
-    RzDBLabel5: TRzDBLabel;
-    wwDBComboBox1: TwwDBComboBox;
-    Label6: TLabel;
-    RzDBLabel6: TRzDBLabel;
-    GroupBox1: TGroupBox;
-    RzPanel1: TRzPanel;
-    wwDBGrid1: TwwDBGrid;
     SeminarSQL: TIBCQuery;
     SeminarSRC: TDataSource;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
@@ -93,93 +68,44 @@ type
     SeminarSQLSEM_CATEGORY: TWideStringField;
     CostPiP: TppDBPipeline;
     CostSQL: TIBCQuery;
-    CostSQLSERIAL_NUMBER: TIntegerField;
-    CostSQLFK_COST_ITEM: TIntegerField;
-    CostSQLAMOUNT_PER_ITEM: TFloatField;
-    CostSQLNUMBER_OF_ITEMS: TIntegerField;
-    CostSQLFK_SEMINAR_SERIAL: TIntegerField;
-    CostSQLCOST_NAME: TWideStringField;
-    CostSQLITEM_AMOUNT: TFloatField;
     ppSummaryBand1: TppSummaryBand;
     RevenueSQL: TIBCQuery;
     RevenueSRC: TDataSource;
     RevenuePIP: TppDBPipeline;
-    RevenueSQLSERIAL_NUMBER: TIntegerField;
-    RevenueSQLFK_PERSON_SERIAL: TIntegerField;
-    RevenueSQLINVOICE_STATUS: TWideStringField;
-    RevenueSQLDATE_INVOICED: TDateField;
-    RevenueSQLVAT_RATE: TFloatField;
-    RevenueSQLDISCOUNT_BY_SAFE: TFloatField;
-    RevenueSQLDISCOUNT_CUSTOMER: TFloatField;
-    RevenueSQLAMOUNT_GROSS: TFloatField;
-    RevenueSQLAMOUNT_NET: TFloatField;
-    RevenueSQLAMOUNT_VAT: TFloatField;
-    RevenueSQLAMOUNT_WITH_VAT: TFloatField;
-    RevenueSQLIS_ANAD: TWideStringField;
-    RevenueSQLLAST_NAME: TWideStringField;
-    RevenueSQLFIRST_NAME: TWideStringField;
-    RevenueSQLPERSON_NATIONAL_ID: TWideStringField;
-    RevenueSQLFK_SUBJECT_SERIAL: TIntegerField;
-    RevenueSQLSUBJECT_NAME: TWideStringField;
+    Label1: TLabel;
+    Label2: TLabel;
+    FromDateFLD: TwwDBDateTimePicker;
+    ToDateFLD: TwwDBDateTimePicker;
+    ppLabel14: TppLabel;
+    ppLabel15: TppLabel;
+    ppLabel16: TppLabel;
+    ppLabel17: TppLabel;
+    ppDBText15: TppDBText;
+    ppLabel18: TppLabel;
+    ppLine3: TppLine;
+    ppDBText1: TppDBText;
+    ppShape1: TppShape;
+    ppLabel1: TppLabel;
+    ppLabel5: TppLabel;
+    ppLabel2: TppLabel;
+    CostSQLFK_SEMINAR_SERIAL: TIntegerField;
+    CostSQLCOST_AMOUNT: TFloatField;
+    RevenueSQLA_VAT: TFloatField;
+    RevenueSQLA_NET: TFloatField;
+    RevenueSQLA_TOTAL: TFloatField;
     RevenueSQLSUBJECT_SERIAL: TIntegerField;
     RevenueSQLSUBJECT: TWideStringField;
-    RevSub: TppSubReport;
-    ppChildReport1: TppChildReport;
-    CostSub: TppSubReport;
-    ppChildReport2: TppChildReport;
-    ppDesignLayers1: TppDesignLayers;
-    ppDesignLayer1: TppDesignLayer;
-    ppTitleBand1: TppTitleBand;
-    ppDetailBand1: TppDetailBand;
-    ppSummaryBand2: TppSummaryBand;
-    ppLine2: TppLine;
-    ppLabel5: TppLabel;
-    ppLabel1: TppLabel;
-    ppLabel3: TppLabel;
-    ppLabel6: TppLabel;
-    ppLabel8: TppLabel;
-    ppLabel11: TppLabel;
-    ppLabel12: TppLabel;
-    ppDBText4: TppDBText;
-    ppDBText1: TppDBText;
+    RevenueSQLFK_SEMINAR_SERIAL: TIntegerField;
     ppDBText2: TppDBText;
     ppDBText3: TppDBText;
     ppDBText5: TppDBText;
-    TotalCostFLD: TppDBCalc;
-    ppLine1: TppLine;
-    ppDesignLayers2: TppDesignLayers;
-    ppDesignLayer2: TppDesignLayer;
-    ppTitleBand2: TppTitleBand;
-    ppDetailBand2: TppDetailBand;
-    ppSummaryBand3: TppSummaryBand;
-    ppLabel13: TppLabel;
-    ppLabel14: TppLabel;
-    ppLabel15: TppLabel;
-    ppLabel17: TppLabel;
-    ppLabel18: TppLabel;
-    ppLabel19: TppLabel;
     ppDBText6: TppDBText;
+    ppDBText7: TppDBText;
     ppDBText8: TppDBText;
-    ppDBText12: TppDBText;
-    ppDBText13: TppDBText;
-    ppDBText14: TppDBText;
-    ppDBText15: TppDBText;
+    ppDBCalc1: TppDBCalc;
     ppDBCalc2: TppDBCalc;
-    ppLine3: TppLine;
-    ppDBText16: TppDBText;
-    ppDBText17: TppDBText;
-    RevenueSQLFULL_NAME: TWideStringField;
-    ppLine4: TppLine;
-    TotalRevFLD: TppDBCalc;
-    ppLabel16: TppLabel;
-    ppDBText18: TppDBText;
+    ppDBCalc3: TppDBCalc;
     ppDBCalc4: TppDBCalc;
-    ppGroup1: TppGroup;
-    ppGroupHeaderBand1: TppGroupHeaderBand;
-    ppGroupFooterBand1: TppGroupFooterBand;
-    ppDBText19: TppDBText;
-    TotalProfFLD: TppVariable;
-    RevCalc: TppVariable;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
@@ -205,7 +131,7 @@ type
   end;
 
 var
-  R_SeminarRevenuesFRM: TR_SeminarRevenuesFRM;
+  R_SeminarListingRevenuesFRM: TR_SeminarListingRevenuesFRM;
 
 implementation
 
@@ -218,12 +144,12 @@ uses U_Database, G_SFCommonProcs, G_KyrSQL;
 
 
 
-procedure TR_SeminarRevenuesFRM.BitBtn1Click(Sender: TObject);
+procedure TR_SeminarListingRevenuesFRM.BitBtn1Click(Sender: TObject);
 begin
 close;
 end;
 
-procedure TR_SeminarRevenuesFRM.BitBtn2Click(Sender: TObject);
+procedure TR_SeminarListingRevenuesFRM.BitBtn2Click(Sender: TObject);
 begin
 close;
 
@@ -232,7 +158,7 @@ end;
 
 
 
-procedure TR_SeminarRevenuesFRM.ppReport1PreviewFormCreate(
+procedure TR_SeminarListingRevenuesFRM.ppReport1PreviewFormCreate(
   Sender: TObject);
 begin
   (sender as TppReport).PreviewForm.WindowState := wsMaximized;
@@ -241,12 +167,12 @@ begin
 end;
 
 
-procedure TR_SeminarRevenuesFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
+procedure TR_SeminarListingRevenuesFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
 begin
 //   value:=FromDateFLD.Date;
 end;
 
-procedure TR_SeminarRevenuesFRM.RzBitBtn1Click(Sender: TObject);
+procedure TR_SeminarListingRevenuesFRM.RzBitBtn1Click(Sender: TObject);
 begin
   close;
 end;
@@ -254,24 +180,24 @@ end;
 
 
 
-procedure TR_SeminarRevenuesFRM.TotalProfFLDCalc(Sender: TObject;
+procedure TR_SeminarListingRevenuesFRM.TotalProfFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
-  Value:=RevCalc.Value;
+//  Value:=RevCalc.Value;
 end;
 
-procedure TR_SeminarRevenuesFRM.TotalRevFLDCalc(Sender: TObject);
+procedure TR_SeminarListingRevenuesFRM.TotalRevFLDCalc(Sender: TObject);
 begin
-  RevCalc.Value :=TotalRevFLD.Value;
+//  RevCalc.Value :=TotalRevFLD.Value;
 end;
 
-procedure TR_SeminarRevenuesFRM.VtFilterRecord(DataSet: TDataSet;
+procedure TR_SeminarListingRevenuesFRM.VtFilterRecord(DataSet: TDataSet;
   var Accept: Boolean);
 begin
   accept := Dataset.FieldByName('DaysCalc').asInteger >= 0;
 end;
 
-Function TR_SeminarRevenuesFRM.CalcDaysLeft():TReminderResult;
+Function TR_SeminarListingRevenuesFRM.CalcDaysLeft():TReminderResult;
 begin
 
 
@@ -279,7 +205,7 @@ end;
 
 
 
-Function TR_SeminarRevenuesFRM.FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
+Function TR_SeminarListingRevenuesFRM.FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
 var
   mySign:Integer;
   DateReminder:TDate;
@@ -303,7 +229,7 @@ begin
 
 end;
 
-procedure TR_SeminarRevenuesFRM.PrintRBtnClick(Sender: TObject);
+procedure TR_SeminarListingRevenuesFRM.PrintRBtnClick(Sender: TObject);
 var
    SeminarSerial:Integer;
 begin
@@ -312,7 +238,7 @@ begin
     PrintTheSeminar(IN_SeminarSerial,0);
 end;
 
-procedure TR_SeminarRevenuesFRM.PrintSeminar();
+procedure TR_SeminarListingRevenuesFRM.PrintSeminar();
 begin
   if (IN_SeminarSerial>0)  then
     PrintTheSeminar(IN_SeminarSerial,IN_SeminarSubjectSerial);
@@ -320,7 +246,7 @@ begin
 end;
 
 
-procedure TR_SeminarRevenuesFRM.PrintTheSeminar(const SeminarSerial, SeminarSubjectSerial:integer);
+procedure TR_SeminarListingRevenuesFRM.PrintTheSeminar(const SeminarSerial, SeminarSubjectSerial:integer);
 
 Var
    FromDate:TDateTime;
@@ -353,7 +279,7 @@ begin
 
 end;
 
-procedure TR_SeminarRevenuesFRM.FormActivate(Sender: TObject);
+procedure TR_SeminarListingRevenuesFRM.FormActivate(Sender: TObject);
 begin
 SeminarSQL.Close;
 SeminarSQL.ParamByName('seminarSerial').Value:=IN_SeminarSerial;
@@ -362,7 +288,7 @@ SeminarSQL.Open;
 ksOpenTables([ CostSQL]);
 end;
 
-procedure TR_SeminarRevenuesFRM.FormCreate(Sender: TObject);
+procedure TR_SeminarListingRevenuesFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
 end;

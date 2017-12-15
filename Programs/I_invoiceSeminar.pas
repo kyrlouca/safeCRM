@@ -217,17 +217,22 @@ Var
   vatAMount,AmountForVat:Double;
   Gross,DiscountCust,DiscountSafe:Double;
   AmountCharged:DOuble;
+  AmountNEt:Double;
   PriceNormal,PriceANAD:Double;
 begin
 
   AmountForVat:=Dataset.FieldByName('amount_gross').AsFloat -Dataset.FieldByName('Discount_customer').AsFloat;
   VatAmount:=AmountForVat *Dataset.FieldByName('vat_rate').AsFloat/100.00;
   AmountCharged:= AmountForVat -Dataset.FieldByName('Discount_by_safe').AsFloat + VAtAmount;
+  AmountNet:= Dataset.FieldByName('amount_gross').AsFloat
+       -Dataset.FieldByName('Discount_by_safe').AsFloat
+       -Dataset.FieldByName('Discount_Customer').AsFloat;
 
   VatAmount:=Max(0,VatAmount);
   AmountCharged:=Max(0,AmountCharged);
   Dataset.FieldByName('amount_vat').Value:=VatAmount;
   Dataset.FieldByName('amount_with_vat').Value:=AmountCharged;
+  Dataset.FieldByName('amount_net').Value:=AmountNet;
 //
 
 end;
@@ -464,11 +469,9 @@ begin
         InvoiceSQL.FieldByName('PERSON_NATIONAL_ID').Value:=Trim(qr.FieldByName('national_id').AsString)
         +' '+Trim(qr.FieldByName('inv_last_name').AsString);
 
-
-        InvoiceSQL.FieldByName('AMOUNT_GROSS').Value:=PriceAnad;
-
         InvoiceSQL.FieldByName('Discount_Customer').Value:=0; //will change in beforePost
         InvoiceSQL.FieldByName('Discount_by_safe').Value:=0;
+        InvoiceSQL.FieldByName('AMOUNT_NET').AsFloat:=0;
 
         InvoiceSQL.FieldByName('AMOUNT_GROSS').AsFloat:=PriceAnad;
         InvoiceSQL.FieldByName('VAT_RATE').AsFloat:=VatRate;

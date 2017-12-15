@@ -7498,6 +7498,10 @@ object M_mainFRM: TM_mainFRM
         Caption = #923#942#958#949#953#962
         OnClick = N12Click
       end
+      object N10: TMenuItem
+        Caption = #904#963#959#948#945' '#931#949#956#953#957#945#961#943#969#957
+        OnClick = N10Click
+      end
     end
     object User1: TMenuItem
       Caption = 'User'

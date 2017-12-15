@@ -10,7 +10,8 @@ uses
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
   RzPanel, Vcl.Imaging.pngimage, VirtualTable, vcl.Wwdotdot, vcl.Wwdbcomb,
-  RzLabel, RzDBLbl, vcl.wwdblook, vcl.wwclearpanel, RzStatus,G_KyrSQL,G_kyriacosTypes;
+  RzLabel, RzDBLbl, vcl.wwdblook, vcl.wwclearpanel, RzStatus,G_KyrSQL,G_kyriacosTypes,
+  Vcl.Menus, Vcl.ComCtrls, vcl.wwriched;
 
 type
   TReminderResult= Record
@@ -122,6 +123,10 @@ type
     CertifiedBTN: TRzBitBtn;
     InvoicedST: TRzGlyphStatus;
     CertifiedST: TRzGlyphStatus;
+    MainHelpRE: TwwDBRichEdit;
+    MainMenu1: TMainMenu;
+    Help1: TMenuItem;
+    Certifcates1: TMenuItem;
     procedure AcceptBTNClick(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -135,6 +140,7 @@ type
     procedure TableSQLAfterPost(DataSet: TDataSet);
     procedure StatusChangeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
     procedure CategoryChangeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure Certifcates1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -150,7 +156,7 @@ var
 
 implementation
 
-uses U_Database, G_SFCommonProcs,  G_generalProcs;
+uses U_Database, G_SFCommonProcs,  G_generalProcs, H_Help;
 
 
 {$R *.DFM}
@@ -286,6 +292,19 @@ if not select then
 if TableSQL.State in [dsEdit] then
   TableSQL.Post;
 
+end;
+
+procedure TV_SeminarStagesFRM.Certifcates1Click(Sender: TObject);
+vAR
+  Frm:TH_HelpFRM;
+begin
+  frm := TH_HelpFRM.Create(nil);
+  try
+    frm.IN_RichEdit:=MainHelpRE;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 Function TV_SeminarStagesFRM.FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
