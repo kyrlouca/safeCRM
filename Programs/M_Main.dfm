@@ -7310,8 +7310,8 @@ object M_mainFRM: TM_mainFRM
       Margin = -1
     end
     object Button1: TButton
-      Left = 272
-      Top = 54
+      Left = 27
+      Top = 81
       Width = 75
       Height = 25
       Caption = 'Button1'
@@ -7319,7 +7319,7 @@ object M_mainFRM: TM_mainFRM
       OnClick = Button1Click
     end
     object Button2: TButton
-      Left = 272
+      Left = 27
       Top = 112
       Width = 75
       Height = 25

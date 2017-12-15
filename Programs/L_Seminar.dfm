@@ -1182,6 +1182,9 @@ object L_SeminarFRM: TL_SeminarFRM
         Caption = #932#953#956#959#955#972#947#953#945
         OnClick = N3Click
       end
+      object N5: TMenuItem
+        Caption = '-'
+      end
       object N1: TMenuItem
         Caption = #928#953#963#964#959#960#959#953#951#964#953#954#940
         OnClick = N1Click
@@ -1190,12 +1193,12 @@ object L_SeminarFRM: TL_SeminarFRM
         Caption = #923#943#963#964#945' '#928#953#963#964#959#960#959#953#951#964#953#954#974#957
         OnClick = N2Click
       end
-    end
-    object N4: TMenuItem
-      Caption = #922#959#963#964#959#955#959#947#953#954#940
-      object N5: TMenuItem
-        Caption = #922#972#963#964#959#962' '#931#949#956#953#957#945#961#943#959#965
-        OnClick = N5Click
+      object N4: TMenuItem
+        Caption = '-'
+      end
+      object N6: TMenuItem
+        Caption = #904#963#959#948#945'/'#904#958#959#948#945
+        OnClick = N6Click
       end
     end
   end

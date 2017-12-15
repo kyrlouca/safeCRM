@@ -106,6 +106,12 @@ type
     ppDBCalc2: TppDBCalc;
     ppDBCalc3: TppDBCalc;
     ppDBCalc4: TppDBCalc;
+    ProfitVar: TppVariable;
+    TotalProfVar: TppVariable;
+    ppLine1: TppLine;
+    ppLabel3: TppLabel;
+    ppVariable1: TppVariable;
+    ppVariable2: TppVariable;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
@@ -114,15 +120,18 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
     procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
-    procedure FormActivate(Sender: TObject);
     procedure TotalRevFLDCalc(Sender: TObject);
     procedure TotalProfFLDCalc(Sender: TObject; var Value: Variant);
+    procedure ProfitVarCalc(Sender: TObject; var Value: Variant);
+    procedure TotalProfVarCalc(Sender: TObject; var Value: Variant);
+    procedure ppVariable1Calc(Sender: TObject; var Value: Variant);
+    procedure ppVariable2Calc(Sender: TObject; var Value: Variant);
   private
     { Private declarations }
     cn:TIBCConnection;
   Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   Function CalcDaysLeft():TReminderResult;
-  procedure PrintTheSeminar(const SeminarSerial, SeminarSubjectSerial:integer);
+  procedure PrintTheSeminar(const FromDate, ToDate:TDate);
   public
     { Public declarations }
     IN_SeminarSubjectSerial:Integer;
@@ -167,6 +176,18 @@ begin
 end;
 
 
+procedure TR_SeminarListingRevenuesFRM.ppVariable1Calc(Sender: TObject;
+  var Value: Variant);
+begin
+   value:=FromDateFLD.Date;
+end;
+
+procedure TR_SeminarListingRevenuesFRM.ppVariable2Calc(Sender: TObject;
+  var Value: Variant);
+begin
+    value:=TODateFLD.Date;
+end;
+
 procedure TR_SeminarListingRevenuesFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
 begin
 //   value:=FromDateFLD.Date;
@@ -184,6 +205,12 @@ procedure TR_SeminarListingRevenuesFRM.TotalProfFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
 //  Value:=RevCalc.Value;
+end;
+
+procedure TR_SeminarListingRevenuesFRM.TotalProfVarCalc(Sender: TObject;
+  var Value: Variant);
+begin
+value:=value+RevenueSQL.FieldByName('a_net').AsFloat - CostSQL.FieldByName('COST_AMOUNT').AsFloat;
 end;
 
 procedure TR_SeminarListingRevenuesFRM.TotalRevFLDCalc(Sender: TObject);
@@ -206,36 +233,32 @@ end;
 
 
 Function TR_SeminarListingRevenuesFRM.FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
-var
-  mySign:Integer;
-  DateReminder:TDate;
 begin
-  if isAfter then
-    mySign:=1
-  else
-    mySign:=-1;
-
-  try
-    if IsDayUnit then
-      DateReminder:= IncDay( DateSeminar, mySign * NumberOfUnits)
-    else
-      DateReminder:= IncMonth( DateSeminar, mySign * NumberOFUnits);
-
-    Result:=Trunc( DateREminder);
-  except
-    result:=EncodeDate(1900,01,01);
-  end;
-
-
 end;
 
 procedure TR_SeminarListingRevenuesFRM.PrintRBtnClick(Sender: TObject);
 var
    SeminarSerial:Integer;
+   fromDate:TDate;
+   ToDate:Tdate;
 begin
 //  SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
-  if IN_SeminarSerial>0 then
-    PrintTheSeminar(IN_SeminarSerial,0);
+  fromDate:=FRomDateFLD.Date;
+  toDate:=ToDateFLD.Date;
+
+
+
+  if (FromDate<1) Or (ToDate<1)  then begin
+    MessageDlg('Please specify From Date and To Date', mtError, [mbOK], 0);
+    abort;
+  end;
+
+  if (ToDate < FromDate)  then begin
+    MessageDlg('From Date is GREATER than To Date', mtError, [mbOK], 0);
+    abort;
+  end;
+
+    PrintTheSeminar(FromDate,ToDate);
 end;
 
 procedure TR_SeminarListingRevenuesFRM.PrintSeminar();
@@ -246,46 +269,41 @@ begin
 end;
 
 
-procedure TR_SeminarListingRevenuesFRM.PrintTheSeminar(const SeminarSerial, SeminarSubjectSerial:integer);
-
+procedure TR_SeminarListingRevenuesFRM.PrintTheSeminar(const FromDate, ToDate:TDate);
 Var
-   FromDate:TDateTime;
-   DaysLeft:integer;
-
+I:Integer;
 begin
 
-  if SeminarSerial<1 then begin
-    showMessage('Invalid Selected Seminar Subject');
+  if fromdate< Date-1000 then begin
+    showMessage('Invalid From Date');
     exit;
   end;
 
+    if (Todate > (Todate+1)) or (ToDate<FromDate)  then begin
+    showMessage('Invalid To Date');
+    exit;
+  end;
+
+
   SeminarSQL.Close;
-  SeminarSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
+  SeminarSQL.ParamByName('FromDate').AsDate:=FromDate;
+  SeminarSQL.ParamByName('ToDate').AsDate:=ToDate;
   SeminarSQL.Open;
 
-//  SeminarSubjectSQL.Close;
-//  SeminarSubjectSQL.ParamByName('SubjectSerial').Value:=SeminarSubjectSerial;
-//  SeminarSubjectSQL.Open;
-
   CostSQL.Close;
-  CostSQL.ParamByName('SEMINARSerial').Value:=SeminarSerial;
   CostSQL.Open;
 
   RevenueSQL.Close;
-  RevenueSQL.ParamByName('SEMINARSerial').Value:=SeminarSerial;
   RevenueSQL.Open;
 
   PpReport1.Print;
 
 end;
 
-procedure TR_SeminarListingRevenuesFRM.FormActivate(Sender: TObject);
+procedure TR_SeminarListingRevenuesFRM.ProfitVarCalc(Sender: TObject;
+  var Value: Variant);
 begin
-SeminarSQL.Close;
-SeminarSQL.ParamByName('seminarSerial').Value:=IN_SeminarSerial;
-SeminarSQL.Open;
-
-ksOpenTables([ CostSQL]);
+ value:=RevenueSQL.FieldByName('a_net').AsFloat - CostSQL.FieldByName('COST_AMOUNT').AsFloat;
 end;
 
 procedure TR_SeminarListingRevenuesFRM.FormCreate(Sender: TObject);

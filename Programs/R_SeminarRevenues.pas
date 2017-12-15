@@ -137,7 +137,6 @@ type
     ppLabel1: TppLabel;
     ppLabel3: TppLabel;
     ppLabel6: TppLabel;
-    ppLabel8: TppLabel;
     ppLabel11: TppLabel;
     ppLabel12: TppLabel;
     ppDBText4: TppDBText;
@@ -166,7 +165,6 @@ type
     ppDBText15: TppDBText;
     ppDBCalc2: TppDBCalc;
     ppLine3: TppLine;
-    ppDBText16: TppDBText;
     ppDBText17: TppDBText;
     RevenueSQLFULL_NAME: TWideStringField;
     ppLine4: TppLine;
@@ -178,8 +176,12 @@ type
     ppGroupHeaderBand1: TppGroupHeaderBand;
     ppGroupFooterBand1: TppGroupFooterBand;
     ppDBText19: TppDBText;
-    TotalProfFLD: TppVariable;
+    ppLine5: TppLine;
     RevCalc: TppVariable;
+    CostCalc: TppVariable;
+    TotalCalc: TppVariable;
+    ppLine8: TppLine;
+    ppLabel20: TppLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
@@ -189,12 +191,13 @@ type
     procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
     procedure VtFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure FormActivate(Sender: TObject);
-    procedure TotalRevFLDCalc(Sender: TObject);
     procedure TotalProfFLDCalc(Sender: TObject; var Value: Variant);
+    procedure RevCalcCalc(Sender: TObject; var Value: Variant);
+    procedure CostCalcCalc(Sender: TObject; var Value: Variant);
+    procedure TotalCalcCalc(Sender: TObject; var Value: Variant);
   private
     { Private declarations }
     cn:TIBCConnection;
-  Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
   Function CalcDaysLeft():TReminderResult;
   procedure PrintTheSeminar(const SeminarSerial, SeminarSubjectSerial:integer);
   public
@@ -243,8 +246,9 @@ end;
 
 procedure TR_SeminarRevenuesFRM.ppVariable3Calc(Sender: TObject; var Value: Variant);
 begin
-//   value:=FromDateFLD.Date;
+//   value := FromDateFLD.Date;
 end;
+
 
 procedure TR_SeminarRevenuesFRM.RzBitBtn1Click(Sender: TObject);
 begin
@@ -254,16 +258,32 @@ end;
 
 
 
+procedure TR_SeminarRevenuesFRM.TotalCalcCalc(Sender: TObject;
+  var Value: Variant);
+begin
+ //nothing to caclculate here. calculations where made during RevenueSQL and Cost traversals
+end;
+
 procedure TR_SeminarRevenuesFRM.TotalProfFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
-  Value:=RevCalc.Value;
+//  Value:= Value+
+//          RevenueSQL.FieldByName('amount_net').AsFloat - CostSQL.FieldByName('item_AMOUNT').AsFloat;
+
 end;
 
-procedure TR_SeminarRevenuesFRM.TotalRevFLDCalc(Sender: TObject);
+
+procedure TR_SeminarRevenuesFRM.CostCalcCalc(Sender: TObject;  var Value: Variant);
 begin
-  RevCalc.Value :=TotalRevFLD.Value;
+    TotalCalc.Value := TotalCalc.Value - CostSQL.FieldByName('item_amount').AsFloat;
 end;
+
+procedure TR_SeminarRevenuesFRM.RevCalcCalc(Sender: TObject;
+  var Value: Variant);
+begin
+    TotalCalc.Value :=TotalCalc.Value + RevenueSQL.FieldByName('amount_net').AsFloat;
+end;
+
 
 procedure TR_SeminarRevenuesFRM.VtFilterRecord(DataSet: TDataSet;
   var Accept: Boolean);
@@ -279,29 +299,7 @@ end;
 
 
 
-Function TR_SeminarRevenuesFRM.FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
-var
-  mySign:Integer;
-  DateReminder:TDate;
-begin
-  if isAfter then
-    mySign:=1
-  else
-    mySign:=-1;
 
-  try
-    if IsDayUnit then
-      DateReminder:= IncDay( DateSeminar, mySign * NumberOfUnits)
-    else
-      DateReminder:= IncMonth( DateSeminar, mySign * NumberOFUnits);
-
-    Result:=Trunc( DateREminder);
-  except
-    result:=EncodeDate(1900,01,01);
-  end;
-
-
-end;
 
 procedure TR_SeminarRevenuesFRM.PrintRBtnClick(Sender: TObject);
 var

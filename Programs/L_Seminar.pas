@@ -79,6 +79,7 @@ type
     N1: TMenuItem;
     N2: TMenuItem;
     CategoryShowFLD: TwwDBComboBox;
+    N6: TMenuItem;
     N4: TMenuItem;
     N5: TMenuItem;
     procedure BitBtn2Click(Sender: TObject);
@@ -105,7 +106,7 @@ type
     procedure N3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
-    procedure N5Click(Sender: TObject);
+    procedure N6Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -444,7 +445,7 @@ begin
   end;
 end;
 
-procedure TL_SeminarFRM.N5Click(Sender: TObject);
+procedure TL_SeminarFRM.N6Click(Sender: TObject);
 vAR
   Frm:TR_SeminarRevenuesFRM;
   seminarSerial:Integer;
