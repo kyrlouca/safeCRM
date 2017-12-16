@@ -24,7 +24,6 @@ type
     vt1: TVirtualTable;
     Vt1SRC: TDataSource;
     d: TwwDBGrid;
-    BitBtn1: TBitBtn;
     vtpip: TppDBPipeline;
     ppReport1: TppReport;
     ppTitleBand1: TppTitleBand;
@@ -51,6 +50,10 @@ type
   private
     { Private declarations }
     cn:TIBCConnection;
+  procedure CreateTable();
+  procedure PopulateTable(Const SeminarSerial:Integer);
+  procedure AddReportFields();
+
   function GetDayFromSerial(Const DaySerial:Integer):TDate;
   function GetNameFromSerial(Const PersonSerial:Integer):String;
   public
@@ -66,12 +69,17 @@ implementation
 
 uses G_KyrSQL, G_generalProcs, U_Database;
 
+
 procedure TT_test2FRM.BitBtn1Click(Sender: TObject);
+begin
+  PopulateTable(94);
+end;
+
+procedure TT_test2FRM.PopulateTable(Const SeminarSerial:Integer);
 var
   PersonQR:TksQuery;
   PresenceQR:TksQuery;
   str:String;
-  seminarSerial:Integer;
   PersonSerial:Integer;
   DaySerial:integer;
   fSubject:Integer;
@@ -79,16 +87,12 @@ var
   fname:String;
   I:Integer;
   vfield:TField;
-  RField1: TppDBText;
-  lbl1:TppLabel;
-  RfPos:Integer;
+
 begin
 // POPULATE Fields
 //
 
-  seminarSerial:=94;
   vt1.Close;
-
 
   str:='select  sp.fk_person_serial from seminar_person sp where sp.fk_seminar_serial= :seminarSerial';
   Personqr:=TksQuery.Create(cn,str);
@@ -132,6 +136,17 @@ begin
   end;
 
 
+end;
+
+procedure TT_test2FRM.AddReportFields();
+var
+  RfPos:Integer;
+  I:Integer;
+  vfield:TField;
+    RField1: TppDBText;
+    lbl1:TppLabel;
+begin
+
     rfPos:=0;
     For I:=0 to vt1.FieldCount-1 do begin
      vField:=vt1.Fields[i];
@@ -148,11 +163,9 @@ begin
 
       end;
 
-
-
 //    ppReport1.DetailBand.f
-     RField1:= TppDBText.Create(self);
-     RField1.Band := ppReport1.DetailBand;
+      RField1:= TppDBText.Create(self);
+      RField1.Band := ppReport1.DetailBand;
       RField1.spLeft := rfPos + I* 100;
       RField1.spTop := 3;
       RField1.DataPipeline := ppReport1.DataPipeline;
@@ -160,8 +173,9 @@ begin
 
   end;
 
-  ppReport1.print;
+
 end;
+
 
 procedure TT_test2FRM.FormCreate(Sender: TObject);
 begin
@@ -169,6 +183,15 @@ begin
 end;
 
 procedure TT_test2FRM.PrintRBtnClick(Sender: TObject);
+begin
+  CreateTable();
+  PopulateTable(94);
+  AddReportFields();
+  ppReport1.Print;
+end;
+
+
+procedure TT_test2FRM.CreateTable();
 var
   qr:TksQuery;
   str:String;
@@ -186,6 +209,8 @@ begin
 
   try
     vt1.AddField('Person_Serial',ftinteger);
+    vt1.AddField('Person_Name',ftString);
+
     vt1.AddField('Percent',ftFloat);
     qr.ParamByName('SeminarSerial').Value:=seminarSerial;
     qr.Open;
