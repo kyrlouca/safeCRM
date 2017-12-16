@@ -50,7 +50,7 @@ type
   private
     { Private declarations }
     cn:TIBCConnection;
-  procedure CreateTable();
+  procedure CreateTable(Const SeminarSerial:Integer);
   procedure PopulateTable(Const SeminarSerial:Integer);
   procedure AddReportFields();
 
@@ -70,6 +70,22 @@ implementation
 uses G_KyrSQL, G_generalProcs, U_Database;
 
 
+
+procedure TT_test2FRM.FormCreate(Sender: TObject);
+begin
+  cn:=U_databaseFRM.DataConnection;
+end;
+
+procedure TT_test2FRM.PrintRBtnClick(Sender: TObject);
+begin
+  CreateTable(94);
+  PopulateTable(94);
+  AddReportFields();
+  ppReport1.Print;
+end;
+
+
+
 procedure TT_test2FRM.BitBtn1Click(Sender: TObject);
 begin
   PopulateTable(94);
@@ -81,12 +97,7 @@ var
   PresenceQR:TksQuery;
   str:String;
   PersonSerial:Integer;
-  DaySerial:integer;
-  fSubject:Integer;
-  fdate:TDate;
-  fname:String;
-  I:Integer;
-  vfield:TField;
+
 
 begin
 // POPULATE Fields
@@ -109,19 +120,23 @@ begin
     personQR.ParamByName('SeminarSerial').Value:=SeminarSerial;
     personQR.Open;
     while not PersonQR.Eof do begin
-    //for every person
+    //for every PERSON
       vt1.insert;
       PersonSerial:=PersonQR.FieldByName('fk_person_serial').AsInteger;
       vt1.fieldbyName('Person_serial').value:=PersonSerial;
+      vt1.fieldbyName('Person_Name').value:= GetNameFromSerial(PersonSerial);
 
       PresenceQR.Close;
       presenceQR.ParamByName('SeminarSerial').value:=SeminarSerial;
       presenceQR.ParamByName('PersonSerial').value:= PersonSerial;
       presenceQR.Open;
       while not PresenceQR.Eof do begin
+      //get values for FIelds from PresenceTable (transpose)
+
 
         vt1.FieldByName(PresenceQR.FieldByName('day_serial').AsString).Value:=
           PresenceQR.FieldByName('present_hours').AsInteger;
+
 
         PresenceQR.Next;
       end;
@@ -177,31 +192,16 @@ begin
 end;
 
 
-procedure TT_test2FRM.FormCreate(Sender: TObject);
-begin
-  cn:=U_databaseFRM.DataConnection;
-end;
-
-procedure TT_test2FRM.PrintRBtnClick(Sender: TObject);
-begin
-  CreateTable();
-  PopulateTable(94);
-  AddReportFields();
-  ppReport1.Print;
-end;
-
-
-procedure TT_test2FRM.CreateTable();
+procedure TT_test2FRM.CreateTable(Const SeminarSerial:Integer);
 var
   qr:TksQuery;
   str:String;
-  seminarSerial:Integer;
   fSubject:Integer;
   fday:Integer;
   fname:String;
 begin
-  seminarSerial:=94;
   vt1.Close;
+  vt1.DeleteFields;
 
   str:='select ssv.daySerial from seminar_day_view ssv '
     +' where  ssv.seminar_serial= :SeminarSerial ';
