@@ -219,10 +219,24 @@ object T_test2FRM: TT_test2FRM
     Top = 12
   end
   object vt1: TVirtualTable
+    Options = [voPersistentData, voStored, voSetEmptyStrToNull, voSkipUnSupportedFieldTypes]
     Active = True
+    FieldDefs = <
+      item
+        Name = 'vt1Field1'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'af'
+        DataType = ftString
+        Size = 20
+      end>
     Left = 288
     Top = 40
-    Data = {04000000000000000000}
+    Data = {
+      0400020009007674314669656C64310100140000000000020061660100140000
+      000000000000000000}
   end
   object Vt1SRC: TDataSource
     DataSet = vt1
@@ -235,6 +249,20 @@ object T_test2FRM: TT_test2FRM
     UserName = 'vtpip'
     Left = 344
     Top = 288
+    object vtpipppField1: TppField
+      FieldAlias = 'vt1Field1'
+      FieldName = 'vt1Field1'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 0
+    end
+    object vtpipppField2: TppField
+      FieldAlias = 'af'
+      FieldName = 'af'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 1
+    end
   end
   object ppReport1: TppReport
     AutoStop = False
@@ -1355,9 +1383,9 @@ object T_test2FRM: TT_test2FRM
         Font.Style = []
         Transparent = True
         mmHeight = 5027
-        mmLeft = 51329
-        mmTop = 15346
-        mmWidth = 16934
+        mmLeft = 49477
+        mmTop = 15875
+        mmWidth = 16933
         BandType = 1
         LayerName = BandLayer3
       end
@@ -1438,7 +1466,7 @@ object T_test2FRM: TT_test2FRM
       Background1.Brush.Style = bsClear
       Background2.Brush.Style = bsClear
       mmBottomOffset = 0
-      mmHeight = 5556
+      mmHeight = 7938
       mmPrintPosition = 0
     end
     object ppFooterBand1: TppFooterBand

@@ -42,7 +42,8 @@ uses
   R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
   R_invoices in 'R_invoices.pas' {R_InvoicesFRM},
   R_SeminarRevenues in 'R_SeminarRevenues.pas' {R_SeminarRevenuesFRM},
-  t_test2 in 't_test2.pas' {T_test2FRM};
+  t_test2 in 't_test2.pas' {T_test2FRM},
+  M_Student in 'M_Student.pas' {M_StudentFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -76,5 +77,6 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TR_InvoicesFRM, R_InvoicesFRM);
   Application.CreateForm(TR_SeminarRevenuesFRM, R_SeminarRevenuesFRM);
   Application.CreateForm(TT_test2FRM, T_test2FRM);
+  Application.CreateForm(TM_StudentFRM, M_StudentFRM);
   Application.Run;
 end.

@@ -91,13 +91,50 @@ begin
   PopulateTable(94);
 end;
 
+
+procedure TT_test2FRM.CreateTable(Const SeminarSerial:Integer);
+var
+  qr:TksQuery;
+  str:String;
+  fSubject:Integer;
+  fday:Integer;
+  fname:String;
+begin
+  vt1.Close;
+  vt1.DeleteFields;
+
+  str:='select ssv.daySerial from seminar_day_view ssv '
+    +' where  ssv.seminar_serial= :SeminarSerial ';
+  qr:=TksQuery.Create(cn,str);
+
+  try
+    vt1.AddField('Person_Serial',ftinteger);
+    vt1.AddField('person_name',ftString,40);
+    vt1.AddField('Percent',ftFloat);
+
+    qr.ParamByName('SeminarSerial').Value:=seminarSerial;
+    qr.Open;
+    while not qr.Eof do begin
+      fday:=qr.fieldByName('daySerial').AsInteger;
+      vt1.AddField(IntToStr(fday),ftInteger);
+      qr.Next;
+    end;
+  finally
+    qr.Free;
+end;
+
+end;
+
+
+
 procedure TT_test2FRM.PopulateTable(Const SeminarSerial:Integer);
 var
   PersonQR:TksQuery;
   PresenceQR:TksQuery;
   str:String;
   PersonSerial:Integer;
-
+  fname:string;
+  left:integer;
 
 begin
 // POPULATE Fields
@@ -124,7 +161,8 @@ begin
       vt1.insert;
       PersonSerial:=PersonQR.FieldByName('fk_person_serial').AsInteger;
       vt1.fieldbyName('Person_serial').value:=PersonSerial;
-      vt1.fieldbyName('Person_Name').value:= GetNameFromSerial(PersonSerial);
+      vt1.fieldbyName('percent').value:=33;
+      vt1.fieldbyName('person_name').AsString:= GetNameFromSerial(PersonSerial);
 
       PresenceQR.Close;
       presenceQR.ParamByName('SeminarSerial').value:=SeminarSerial;
@@ -133,10 +171,11 @@ begin
       while not PresenceQR.Eof do begin
       //get values for FIelds from PresenceTable (transpose)
 
-
-        vt1.FieldByName(PresenceQR.FieldByName('day_serial').AsString).Value:=
-          PresenceQR.FieldByName('present_hours').AsInteger;
-
+        fname:=PresenceQR.FieldByName('day_serial').AsString;
+        if vt1.FindField(fname)<> nil then   begin
+          vt1.FieldByName(fname).Value:=
+            PresenceQR.FieldByName('present_hours').AsInteger;
+        end;
 
         PresenceQR.Next;
       end;
@@ -155,11 +194,13 @@ end;
 
 procedure TT_test2FRM.AddReportFields();
 var
-  RfPos:Integer;
+  RfPos:double;
   I:Integer;
   vfield:TField;
     RField1: TppDBText;
     lbl1:TppLabel;
+    rfWidth:double;
+    dist:Double;
 begin
 
     rfPos:=0;
@@ -168,8 +209,20 @@ begin
 //     ShowMessage(vField.FieldName);
       lbl1 := TppLabel.Create(Self);
       lbl1.Band := ppReport1.HeaderBand;
-      lbl1.spLeft := rfPos+ I*100;
-      lbl1.spTop := 2;
+      case I of
+        0: begin  rfPos:=0.1; rfwidth:=0.5; end;
+        1: begin  rfPos:=1; rfwidth:=2; end;
+        else begin
+           rfPos:=rfPos+ I*0.2; rfwidth:=0.2;
+        end;
+      end;
+
+
+      lbl1.Left := rfPos;
+      lbl1.Width:=rfWidth;
+      lbl1.Top := 0.1;
+      lbl1.Font.Name:='Arial';
+      lbl1.Font.Size:=11;
 
       if StrToIntDef( vField.FieldName,0)>0 then begin
         lbl1.Caption := FormatDateTime('dd/mm/yyyy', GetDayFromSerial (StrToInt(vField.FieldName)));
@@ -179,51 +232,35 @@ begin
       end;
 
 //    ppReport1.DetailBand.f
+      case I of
+        0: begin  dist:=0.1; rfwidth:= 0.6; end;
+        1: begin  dist:=0.2; rfwidth:=1.5;  end;
+        2: begin  dist:=0.2; rfwidth:=0.6;  end;
+        3: begin  dist:=0.2; rfwidth:=0.6;  end;
+        4: begin  dist:=0.2; rfwidth:=0.6;  end;
+        5: begin  dist:=0.2; rfwidth:=0.6;  end;
+        else begin
+           rfPos:=rfPos+ I*1; rfwidth:=1;
+        end;
+      end;
+      rfPos:=RfPos+Dist;
+
       RField1:= TppDBText.Create(self);
       RField1.Band := ppReport1.DetailBand;
-      RField1.spLeft := rfPos + I* 100;
-      RField1.spTop := 3;
+      RField1.AutoSize:=false;
+      RField1.Left := rfPos;
+      RField1.Width := rfWidth;
+      RField1.Top := 5;
+      RField1.Font.Name:='Arial';
+      RField1.Font.Size:=11;
+//      RField1.TextAlignment:=taLeftJustify;
+
       RField1.DataPipeline := ppReport1.DataPipeline;
       RField1.DataField := vField.FieldName;
 
+
   end;
 
-
-end;
-
-
-procedure TT_test2FRM.CreateTable(Const SeminarSerial:Integer);
-var
-  qr:TksQuery;
-  str:String;
-  fSubject:Integer;
-  fday:Integer;
-  fname:String;
-begin
-  vt1.Close;
-  vt1.DeleteFields;
-
-  str:='select ssv.daySerial from seminar_day_view ssv '
-    +' where  ssv.seminar_serial= :SeminarSerial ';
-  qr:=TksQuery.Create(cn,str);
-
-  try
-    vt1.AddField('Person_Serial',ftinteger);
-    vt1.AddField('Person_Name',ftString);
-
-    vt1.AddField('Percent',ftFloat);
-    qr.ParamByName('SeminarSerial').Value:=seminarSerial;
-    qr.Open;
-    while not qr.Eof do begin
-      fday:=qr.fieldByName('daySerial').AsInteger;
-      vt1.AddField(IntToStr(fday),ftInteger);
-      qr.Next;
-    end;
-    vt1.Open;
-
-  finally
-    qr.Free;
-end;
 
 end;
 
