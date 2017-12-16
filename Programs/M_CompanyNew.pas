@@ -8,13 +8,12 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  vcl.wwcheckbox, RzTabs, RzSplit;
+  vcl.wwcheckbox, RzTabs, RzSplit, Vcl.ComCtrls;
 type
   TM_companyNewFRM = class(TForm)
     Panel1: TPanel;
     Panel4: TPanel;
     Panel2: TPanel;
-    Panel3: TPanel;
     CompanySRC: TDataSource;
     CompanySQL: TIBCQuery;
     WriteTrans: TIBCTransaction;
@@ -22,23 +21,6 @@ type
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    CompanyGRP: TGroupBox;
-    Label18: TLabel;
-    Label20: TLabel;
-    Label21: TLabel;
-    Label22: TLabel;
-    wwDBEdit7: TwwDBEdit;
-    wwDBEdit14: TwwDBEdit;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
-    wwCheckBox1: TwwCheckBox;
-    Label19: TLabel;
-    wwDBEdit15: TwwDBEdit;
-    RzPageControl1: TRzPageControl;
-    PageControlPC: TRzPageControl;
-    EmpolyeesTS: TRzTabSheet;
-    RzGroupBox2: TRzGroupBox;
-    AllPersonsGRD: TwwDBGrid;
-    RzSizePanel2: TRzSizePanel;
     CompanySQLSERIAL_NUMBER: TIntegerField;
     CompanySQLNATIONAL_ID: TWideStringField;
     CompanySQLFK_COMPANY_SERIAL: TIntegerField;
@@ -70,41 +52,6 @@ type
     CompanySQLCOMPANY_OWNER: TWideStringField;
     CompanySQLCOMPANY_CONTACT: TWideStringField;
     CompanySQLCOMPANY_REGISTRATION_DATE: TDateField;
-    InfoTS: TRzTabSheet;
-    GroupBox2: TGroupBox;
-    Label10: TLabel;
-    Label11: TLabel;
-    Label12: TLabel;
-    Label13: TLabel;
-    Label14: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    wwDBEdit8: TwwDBEdit;
-    wwDBEdit9: TwwDBEdit;
-    wwDBEdit10: TwwDBEdit;
-    wwDBEdit11: TwwDBEdit;
-    wwDBEdit12: TwwDBEdit;
-    wwDBEdit3: TwwDBEdit;
-    wwDBEdit4: TwwDBEdit;
-    wwDBEdit5: TwwDBEdit;
-    wwDBEdit6: TwwDBEdit;
-    GroupBox1: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label1: TLabel;
-    Label5: TLabel;
-    SerialFLD: TRzDBLabel;
-    Label16: TLabel;
-    Label15: TLabel;
-    FirstFLD: TwwDBEdit;
-    wwDBEdit1: TwwDBEdit;
-    wwDBEdit2: TwwDBEdit;
-    DatePassedFLD: TwwDBDateTimePicker;
-    wwDBEdit13: TwwDBEdit;
-    Label17: TLabel;
-    wwDBEdit16: TwwDBEdit;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
     IncludedPersonsSQL: TIBCQuery;
@@ -115,14 +62,6 @@ type
     ExcludedPersonsSQLFIRST_NAME: TWideStringField;
     ExcludedPersonsSQLNATIONAL_ID: TWideStringField;
     ExcludedPersonsSRC: TDataSource;
-    RzPanel2: TRzPanel;
-    ToLeftBTN: TBitBtn;
-    ToRightBTN: TBitBtn;
-    PersonSearchFLD: TwwIncrementalSearch;
-    RzPanel3: TRzPanel;
-    RzGroupBox1: TRzGroupBox;
-    RzSizePanel1: TRzSizePanel;
-    Grid1: TwwDBGrid;
     ExcludedPersonsSQLPHONE_MOBILE: TWideStringField;
     IncludedPersonsSQLSERIAL_NUMBER: TIntegerField;
     IncludedPersonsSQLFIRST_NAME: TWideStringField;
@@ -132,7 +71,6 @@ type
     IncludedPersonsSQLCOMP_SERIAL: TIntegerField;
     IncludedPersonsSQLCOMP_REG: TWideStringField;
     IncludedPersonsSQLPHONE_MOBILE: TWideStringField;
-    PictureTS: TRzTabSheet;
     CompanySQLPHONE_CONTACT: TWideStringField;
     CompanySQLCOMPANY_CONTACT_FIRST: TWideStringField;
     CompanySQLCOMPANY_CONTACT_LAST: TWideStringField;
@@ -141,6 +79,47 @@ type
     CompanySQLCOMPANY_CONTACT_EMAIL: TWideStringField;
     CompanySQLCOMPANY_CONTACT_FAX: TWideStringField;
     CompanySQLCOMPANY_SOCIAL_SEC: TWideStringField;
+    PageControlPC: TPageControl;
+    InfoTS: TTabSheet;
+    EmployeesTS: TTabSheet;
+    RzPanel4: TRzPanel;
+    RzPanel5: TRzPanel;
+    GroupBox1: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label1: TLabel;
+    Label5: TLabel;
+    SerialFLD: TRzDBLabel;
+    Label16: TLabel;
+    Label15: TLabel;
+    Label28: TLabel;
+    FirstFLD: TwwDBEdit;
+    wwDBEdit1: TwwDBEdit;
+    wwDBEdit2: TwwDBEdit;
+    DatePassedFLD: TwwDBDateTimePicker;
+    wwDBEdit13: TwwDBEdit;
+    wwDBEdit22: TwwDBEdit;
+    GroupBox2: TGroupBox;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label17: TLabel;
+    wwDBEdit8: TwwDBEdit;
+    wwDBEdit9: TwwDBEdit;
+    wwDBEdit10: TwwDBEdit;
+    wwDBEdit11: TwwDBEdit;
+    wwDBEdit12: TwwDBEdit;
+    wwDBEdit3: TwwDBEdit;
+    wwDBEdit4: TwwDBEdit;
+    wwDBEdit5: TwwDBEdit;
+    wwDBEdit6: TwwDBEdit;
+    wwDBEdit16: TwwDBEdit;
     GroupBox3: TGroupBox;
     Label23: TLabel;
     Label24: TLabel;
@@ -152,11 +131,19 @@ type
     wwDBEdit19: TwwDBEdit;
     wwDBEdit20: TwwDBEdit;
     wwDBEdit21: TwwDBEdit;
-    Label28: TLabel;
-    wwDBEdit22: TwwDBEdit;
+    RzGroupBox1: TRzGroupBox;
+    RzSizePanel1: TRzSizePanel;
+    Grid1: TwwDBGrid;
+    RzPanel3: TRzPanel;
+    RzPanel2: TRzPanel;
+    ToLeftBTN: TBitBtn;
+    ToRightBTN: TBitBtn;
+    RzGroupBox2: TRzGroupBox;
+    AllPersonsGRD: TwwDBGrid;
+    RzSizePanel2: TRzSizePanel;
+    PersonSearchFLD: TwwIncrementalSearch;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
-    procedure CompanySRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
@@ -172,8 +159,6 @@ type
       Shift: TShiftState);
     procedure PersonSearchFLDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure PageControlPCChanging(Sender: TObject; NewIndex: Integer;
-      var AllowChange: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -234,20 +219,6 @@ Dataset.FieldByName('is_company').Value:='Y';
 
 end;
 
-procedure TM_companyNewFRM.CompanySRCStateChange(Sender: TObject);
-begin
-
-
-  with CompanySQL do begin
-     If State<>dsInsert then begin
-//         StationIDFLD.Enabled:=false;
-     end  else begin
-//         StationIDFLD.Enabled:=true;
-     end;
-  end;//with
-
-end;
-
 procedure TM_companyNewFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
@@ -262,6 +233,7 @@ ksOpenTables([CompanySQL]);
      EditCompany(IN_Company_Serial);
   end;
 
+//PageControlPC.ActivePageIndex:=0;
 PageControlPC.ActivePageIndex:=0;
 
 
@@ -331,19 +303,6 @@ begin
   FirstFLD.SetFocus;
 end;
 
-procedure TM_companyNewFRM.PageControlPCChanging(Sender: TObject;
-  NewIndex: Integer; var AllowChange: Boolean);
-begin
-  try
-    if CompanySQL.State in [dsInsert,dsEdit] then
-      CompanySQL.Post;
-  except
-    allowChange:= false;
-    exit;
-  end;
-  allowChange:=  (CompanySQL.FieldByName('serial_number').AsInteger >0);
-
-end;
 
 procedure TM_companyNewFRM.PersonSearchFLDKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);

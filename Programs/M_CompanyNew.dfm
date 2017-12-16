@@ -2,7 +2,7 @@ object M_companyNewFRM: TM_companyNewFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 558
+  ClientHeight = 639
   ClientWidth = 1096
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -47,11 +47,12 @@ object M_companyNewFRM: TM_companyNewFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 515
+    Top = 596
     Width = 1096
     Height = 43
     Align = alBottom
-    TabOrder = 3
+    TabOrder = 2
+    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 995
       Top = 1
@@ -287,204 +288,229 @@ object M_companyNewFRM: TM_companyNewFRM
     Height = 39
     Align = alTop
     TabOrder = 1
+    ExplicitLeft = 8
   end
-  object Panel3: TPanel
+  object PageControlPC: TPageControl
     Left = 0
     Top = 92
     Width = 1096
-    Height = 423
+    Height = 504
+    ActivePage = EmployeesTS
     Align = alClient
-    TabOrder = 2
-    object CompanyGRP: TGroupBox
-      Left = 48
-      Top = 260
-      Width = 274
-      Height = 126
+    MultiLine = True
+    TabOrder = 3
+    object InfoTS: TTabSheet
       Caption = #917#964#945#953#961#949#943#945
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      object Label18: TLabel
-        Left = 37
-        Top = 40
-        Width = 57
-        Height = 14
-        Caption = #921#948#953#959#954#964#942#964#951#962
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label20: TLabel
-        Left = 5
-        Top = 90
-        Width = 89
-        Height = 14
-        Caption = #919#956#949#961'. '#917#947#947#961#945#966#942#962
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label21: TLabel
-        Left = 18
-        Top = 65
-        Width = 76
-        Height = 14
-        Caption = #917#960#953#954#959#953#957#969#957#943#945' '#956#949
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label22: TLabel
-        Left = 43
-        Top = 95
-        Width = 4
-        Height = 14
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label19: TLabel
-        Left = 54
-        Top = 16
-        Width = 37
-        Height = 14
-        Caption = #908#957#959#956#945
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object wwDBEdit7: TwwDBEdit
-        Left = 100
-        Top = 37
-        Width = 161
-        Height = 22
-        DataField = 'COMPANY_OWNER'
-        DataSource = CompanySRC
-        TabOrder = 1
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit14: TwwDBEdit
-        Left = 100
-        Top = 62
-        Width = 161
-        Height = 22
-        DataField = 'COMPANY_CONTACT'
-        DataSource = CompanySRC
-        TabOrder = 2
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 100
-        Top = 87
-        Width = 98
-        Height = 23
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'Arial'
-        CalendarAttributes.Font.Style = []
-        DataField = 'COMPANY_REGISTRATION_DATE'
-        DataSource = CompanySRC
-        Epoch = 1950
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ShowButton = True
-        TabOrder = 3
-        DisplayFormat = 'dd/mm/yyyy'
-      end
-      object wwDBEdit15: TwwDBEdit
-        Left = 100
-        Top = 12
-        Width = 161
-        Height = 22
-        DataField = 'LAST_NAME'
-        DataSource = CompanySRC
+      object RzPanel4: TRzPanel
+        Left = 0
+        Top = 0
+        Width = 1088
+        Height = 476
+        Align = alClient
+        BorderOuter = fsNone
         TabOrder = 0
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object RzPageControl1: TRzPageControl
-        Left = -16
-        Top = -8
-        Width = 300
-        Height = 150
-        Hint = ''
-        TabOrder = 4
-        FixedDimension = 20
-      end
-    end
-    object wwCheckBox1: TwwCheckBox
-      Left = 440
-      Top = 390
-      Width = 67
-      Height = 17
-      TabStop = False
-      DisableThemes = False
-      AlwaysTransparent = False
-      ValueChecked = 'Y'
-      ValueUnchecked = 'N'
-      DisplayValueChecked = 'Y'
-      DisplayValueUnchecked = 'N'
-      NullAndBlankState = cbUnchecked
-      Alignment = taLeftJustify
-      Caption = #917#957#949#961#947#972#962
-      DataField = 'STATUS_ACTIVE'
-      DataSource = CompanySRC
-      TabOrder = 1
-    end
-    object PageControlPC: TRzPageControl
-      Left = 1
-      Top = 1
-      Width = 1094
-      Height = 421
-      Hint = ''
-      ActivePage = InfoTS
-      Align = alClient
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Arial'
-      Font.Style = []
-      ParentFont = False
-      TabIndex = 0
-      TabOrder = 2
-      OnChanging = PageControlPCChanging
-      FixedDimension = 22
-      object InfoTS: TRzTabSheet
-        Caption = #917#964#945#953#961#949#943#945
-        ExplicitLeft = -17
-        ExplicitTop = 5
+        object GroupBox1: TGroupBox
+          Left = 3
+          Top = 16
+          Width = 309
+          Height = 331
+          Caption = #928#955#951#961#959#966#959#961#943#949#962
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          object Label2: TLabel
+            Left = 67
+            Top = 46
+            Width = 37
+            Height = 14
+            Caption = #908#957#959#956#945
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label3: TLabel
+            Left = 83
+            Top = 21
+            Width = 21
+            Height = 14
+            Caption = #913'/'#913
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label1: TLabel
+            Left = 15
+            Top = 148
+            Width = 89
+            Height = 14
+            Caption = #919#956#949#961'. '#917#947#947#961#945#966#942#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label5: TLabel
+            Left = 53
+            Top = 71
+            Width = 51
+            Height = 14
+            Caption = #921#948#953#959#954#942#964#951#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object SerialFLD: TRzDBLabel
+            Left = 112
+            Top = 19
+            Width = 115
+            Height = 20
+            Alignment = taRightJustify
+            BorderOuter = fsFlat
+            BorderWidth = 1
+            DataField = 'SERIAL_NUMBER'
+            DataSource = CompanySRC
+          end
+          object Label16: TLabel
+            Left = 61
+            Top = 97
+            Width = 43
+            Height = 14
+            Caption = 'Contact'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label15: TLabel
+            Left = 27
+            Top = 122
+            Width = 77
+            Height = 14
+            Caption = #913#961'. '#917#947#947#961#945#966#942#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label28: TLabel
+            Left = 9
+            Top = 174
+            Width = 95
+            Height = 14
+            Caption = #913#961'. '#922#959#953#957#969#957'. '#913#963#966'.'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object FirstFLD: TwwDBEdit
+            Left = 111
+            Top = 45
+            Width = 161
+            Height = 22
+            DataField = 'LAST_NAME'
+            DataSource = CompanySRC
+            TabOrder = 0
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit1: TwwDBEdit
+            Left = 112
+            Top = 70
+            Width = 161
+            Height = 22
+            DataField = 'COMPANY_OWNER'
+            DataSource = CompanySRC
+            TabOrder = 1
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit2: TwwDBEdit
+            Left = 112
+            Top = 95
+            Width = 161
+            Height = 22
+            DataField = 'COMPANY_CONTACT'
+            DataSource = CompanySRC
+            TabOrder = 2
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object DatePassedFLD: TwwDBDateTimePicker
+            Left = 112
+            Top = 145
+            Width = 115
+            Height = 23
+            CalendarAttributes.Font.Charset = DEFAULT_CHARSET
+            CalendarAttributes.Font.Color = clWindowText
+            CalendarAttributes.Font.Height = -11
+            CalendarAttributes.Font.Name = 'Arial'
+            CalendarAttributes.Font.Style = []
+            DataField = 'COMPANY_REGISTRATION_DATE'
+            DataSource = CompanySRC
+            Epoch = 1950
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            ShowButton = True
+            TabOrder = 4
+            DisplayFormat = 'dd/mm/yyyy'
+          end
+          object wwDBEdit13: TwwDBEdit
+            Left = 112
+            Top = 120
+            Width = 115
+            Height = 22
+            DataField = 'NATIONAL_ID'
+            DataSource = CompanySRC
+            TabOrder = 3
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit22: TwwDBEdit
+            Left = 112
+            Top = 171
+            Width = 115
+            Height = 22
+            DataField = 'COMPANY_SOCIAL_SEC'
+            DataSource = CompanySRC
+            TabOrder = 5
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+        end
         object GroupBox2: TGroupBox
-          Left = 361
-          Top = 8
+          Left = 337
+          Top = 16
           Width = 304
           Height = 355
           Caption = #917#960#953#954#959#953#957#969#957#943#945
@@ -494,7 +520,7 @@ object M_companyNewFRM: TM_companyNewFRM
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 0
+          TabOrder = 1
           object Label10: TLabel
             Left = 52
             Top = 21
@@ -746,208 +772,9 @@ object M_companyNewFRM: TM_companyNewFRM
             WordWrap = False
           end
         end
-        object GroupBox1: TGroupBox
-          Left = 19
-          Top = 3
-          Width = 309
-          Height = 331
-          Caption = #928#955#951#961#959#966#959#961#943#949#962
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-          object Label2: TLabel
-            Left = 67
-            Top = 46
-            Width = 37
-            Height = 14
-            Caption = #908#957#959#956#945
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label3: TLabel
-            Left = 83
-            Top = 21
-            Width = 21
-            Height = 14
-            Caption = #913'/'#913
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label1: TLabel
-            Left = 15
-            Top = 148
-            Width = 89
-            Height = 14
-            Caption = #919#956#949#961'. '#917#947#947#961#945#966#942#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label5: TLabel
-            Left = 53
-            Top = 71
-            Width = 51
-            Height = 14
-            Caption = #921#948#953#959#954#942#964#951#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object SerialFLD: TRzDBLabel
-            Left = 112
-            Top = 19
-            Width = 115
-            Height = 20
-            Alignment = taRightJustify
-            BorderOuter = fsFlat
-            BorderWidth = 1
-            DataField = 'SERIAL_NUMBER'
-            DataSource = CompanySRC
-          end
-          object Label16: TLabel
-            Left = 61
-            Top = 97
-            Width = 43
-            Height = 14
-            Caption = 'Contact'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label15: TLabel
-            Left = 27
-            Top = 122
-            Width = 77
-            Height = 14
-            Caption = #913#961'. '#917#947#947#961#945#966#942#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label28: TLabel
-            Left = 9
-            Top = 174
-            Width = 95
-            Height = 14
-            Caption = #913#961'. '#922#959#953#957#969#957'. '#913#963#966'.'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object FirstFLD: TwwDBEdit
-            Left = 111
-            Top = 45
-            Width = 161
-            Height = 22
-            DataField = 'LAST_NAME'
-            DataSource = CompanySRC
-            TabOrder = 0
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit1: TwwDBEdit
-            Left = 112
-            Top = 70
-            Width = 161
-            Height = 22
-            DataField = 'COMPANY_OWNER'
-            DataSource = CompanySRC
-            TabOrder = 1
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit2: TwwDBEdit
-            Left = 112
-            Top = 95
-            Width = 161
-            Height = 22
-            DataField = 'COMPANY_CONTACT'
-            DataSource = CompanySRC
-            TabOrder = 2
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object DatePassedFLD: TwwDBDateTimePicker
-            Left = 112
-            Top = 145
-            Width = 115
-            Height = 23
-            CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-            CalendarAttributes.Font.Color = clWindowText
-            CalendarAttributes.Font.Height = -11
-            CalendarAttributes.Font.Name = 'Arial'
-            CalendarAttributes.Font.Style = []
-            DataField = 'COMPANY_REGISTRATION_DATE'
-            DataSource = CompanySRC
-            Epoch = 1950
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentFont = False
-            ShowButton = True
-            TabOrder = 4
-            DisplayFormat = 'dd/mm/yyyy'
-          end
-          object wwDBEdit13: TwwDBEdit
-            Left = 112
-            Top = 120
-            Width = 115
-            Height = 22
-            DataField = 'NATIONAL_ID'
-            DataSource = CompanySRC
-            TabOrder = 3
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit22: TwwDBEdit
-            Left = 112
-            Top = 171
-            Width = 115
-            Height = 22
-            DataField = 'COMPANY_SOCIAL_SEC'
-            DataSource = CompanySRC
-            TabOrder = 5
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-        end
         object GroupBox3: TGroupBox
-          Left = 681
-          Top = 3
+          Left = 665
+          Top = 19
           Width = 272
           Height = 159
           Caption = #913#961#956#972#948#953#959#962' '#917#960#953#954#959#953#957#969#957#943#945#962
@@ -1085,22 +912,25 @@ object M_companyNewFRM: TM_companyNewFRM
           end
         end
       end
-      object EmpolyeesTS: TRzTabSheet
-        OnShow = EmpolyeesTSShow
-        Caption = #933#960#940#955#955#951#955#959#953
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        object RzGroupBox2: TRzGroupBox
-          Left = 679
+    end
+    object EmployeesTS: TTabSheet
+      Caption = #933#960#940#955#955#951#955#959#953
+      ImageIndex = 1
+      object RzPanel5: TRzPanel
+        Left = 0
+        Top = 0
+        Width = 1088
+        Height = 476
+        Align = alClient
+        BorderOuter = fsNone
+        TabOrder = 0
+        object RzGroupBox1: TRzGroupBox
+          Left = 664
           Top = 17
-          Width = 578
-          Height = 378
+          Width = 593
+          Height = 459
           Align = alLeft
-          Caption = #922#945#964#940#955#959#947#959#962
+          Caption = #933#960#940#955#955#951#955#959#953
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1108,26 +938,33 @@ object M_companyNewFRM: TM_companyNewFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          object AllPersonsGRD: TwwDBGrid
+          object RzSizePanel1: TRzSizePanel
             Left = 1
-            Top = 57
-            Width = 576
-            Height = 320
+            Top = 15
+            Width = 591
+            Height = 29
+            Align = alTop
+            TabOrder = 0
+          end
+          object Grid1: TwwDBGrid
+            Left = 1
+            Top = 44
+            Width = 568
+            Height = 414
             Selected.Strings = (
               'SERIAL_NUMBER'#9'6'#9'A/A'
-              'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
-              'FIRST_NAME'#9'10'#9#908#957#959#956#945
-              'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945
-              'PHONE_MOBILE'#9'13'#9#922#953#957#951#964#972)
+              'LAST_NAME'#9'23'#9#917#960#943#952#949#964#959
+              'FIRST_NAME'#9'20'#9#168#927#957#959#956#945
+              'NATIONAL_ID'#9'17'#9#932#945#965#964#972#964#951#964#945
+              'PHONE_MOBILE'#9'15'#9#954#953#957#951#964#972)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
             FixedCols = 0
             ShowHorzScrollBar = True
-            Align = alClient
-            BorderStyle = bsNone
-            Color = clBtnFace
-            DataSource = ExcludedPersonsSRC
+            Align = alLeft
+            Color = 12713983
+            DataSource = IncludedPersonsSRC
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1137,7 +974,7 @@ object M_companyNewFRM: TM_companyNewFRM
             Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
             ParentFont = False
             ReadOnly = True
-            TabOrder = 0
+            TabOrder = 1
             TitleAlignment = taLeftJustify
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -1146,36 +983,25 @@ object M_companyNewFRM: TM_companyNewFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = True
-            OnKeyDown = AllPersonsGRDKeyDown
-          end
-          object RzSizePanel2: TRzSizePanel
-            Left = 1
-            Top = 15
-            Width = 576
-            Height = 42
-            Align = alTop
-            TabOrder = 1
-            object PersonSearchFLD: TwwIncrementalSearch
-              Left = 5
-              Top = 14
-              Width = 121
-              Height = 22
-              DataSource = ExcludedPersonsSRC
-              SearchField = 'LAST_NAME'
-              ShowMatchText = True
-              TabOrder = 0
-              OnKeyDown = PersonSearchFLDKeyDown
-            end
           end
         end
-        object RzPanel2: TRzPanel
-          Left = 593
-          Top = 17
-          Width = 86
-          Height = 378
-          Align = alLeft
+        object RzPanel3: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 1088
+          Height = 17
+          Align = alTop
           BorderOuter = fsNone
           TabOrder = 1
+        end
+        object RzPanel2: TRzPanel
+          Left = 578
+          Top = 17
+          Width = 86
+          Height = 459
+          Align = alLeft
+          BorderOuter = fsNone
+          TabOrder = 2
           object ToLeftBTN: TBitBtn
             Left = 42
             Top = 219
@@ -1321,22 +1147,13 @@ object M_companyNewFRM: TM_companyNewFRM
             OnClick = ToRightBTNClick
           end
         end
-        object RzPanel3: TRzPanel
-          Left = 0
-          Top = 0
-          Width = 1090
-          Height = 17
-          Align = alTop
-          BorderOuter = fsNone
-          TabOrder = 2
-        end
-        object RzGroupBox1: TRzGroupBox
+        object RzGroupBox2: TRzGroupBox
           Left = 0
           Top = 17
-          Width = 593
-          Height = 378
+          Width = 578
+          Height = 459
           Align = alLeft
-          Caption = #933#960#940#955#955#951#955#959#953
+          Caption = #922#945#964#940#955#959#947#959#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1344,33 +1161,26 @@ object M_companyNewFRM: TM_companyNewFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 3
-          object RzSizePanel1: TRzSizePanel
+          object AllPersonsGRD: TwwDBGrid
             Left = 1
-            Top = 15
-            Width = 591
-            Height = 29
-            Align = alTop
-            TabOrder = 0
-          end
-          object Grid1: TwwDBGrid
-            Left = 1
-            Top = 44
-            Width = 568
-            Height = 333
+            Top = 57
+            Width = 576
+            Height = 401
             Selected.Strings = (
               'SERIAL_NUMBER'#9'6'#9'A/A'
-              'LAST_NAME'#9'23'#9#917#960#943#952#949#964#959
-              'FIRST_NAME'#9'20'#9#168#927#957#959#956#945
-              'NATIONAL_ID'#9'17'#9#932#945#965#964#972#964#951#964#945
-              'PHONE_MOBILE'#9'15'#9#954#953#957#951#964#972)
+              'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
+              'FIRST_NAME'#9'10'#9#908#957#959#956#945
+              'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945
+              'PHONE_MOBILE'#9'13'#9#922#953#957#951#964#972)
             IniAttributes.Delimiter = ';;'
             IniAttributes.UnicodeIniFile = False
             TitleColor = clBtnFace
             FixedCols = 0
             ShowHorzScrollBar = True
-            Align = alLeft
-            Color = 12713983
-            DataSource = IncludedPersonsSRC
+            Align = alClient
+            BorderStyle = bsNone
+            Color = clBtnFace
+            DataSource = ExcludedPersonsSRC
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1380,7 +1190,7 @@ object M_companyNewFRM: TM_companyNewFRM
             Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
             ParentFont = False
             ReadOnly = True
-            TabOrder = 1
+            TabOrder = 0
             TitleAlignment = taLeftJustify
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -1389,17 +1199,33 @@ object M_companyNewFRM: TM_companyNewFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = True
+            OnKeyDown = AllPersonsGRDKeyDown
+          end
+          object RzSizePanel2: TRzSizePanel
+            Left = 1
+            Top = 15
+            Width = 576
+            Height = 42
+            Align = alTop
+            TabOrder = 1
+            object PersonSearchFLD: TwwIncrementalSearch
+              Left = 5
+              Top = 14
+              Width = 121
+              Height = 22
+              DataSource = ExcludedPersonsSRC
+              SearchField = 'LAST_NAME'
+              ShowMatchText = True
+              TabOrder = 0
+              OnKeyDown = PersonSearchFLDKeyDown
+            end
           end
         end
-      end
-      object PictureTS: TRzTabSheet
-        Caption = #917#953#954#972#957#949#962
       end
     end
   end
   object CompanySRC: TDataSource
     DataSet = CompanySQL
-    OnStateChange = CompanySRCStateChange
     Left = 112
     Top = 9
   end
