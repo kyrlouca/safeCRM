@@ -52,7 +52,6 @@ object M_companyNewFRM: TM_companyNewFRM
     Height = 43
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 995
       Top = 1
@@ -288,7 +287,6 @@ object M_companyNewFRM: TM_companyNewFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = 8
   end
   object PageControlPC: TPageControl
     Left = 0
@@ -916,6 +914,7 @@ object M_companyNewFRM: TM_companyNewFRM
     object EmployeesTS: TTabSheet
       Caption = #933#960#940#955#955#951#955#959#953
       ImageIndex = 1
+      OnShow = EmployeesTSShow
       object RzPanel5: TRzPanel
         Left = 0
         Top = 0
@@ -925,7 +924,7 @@ object M_companyNewFRM: TM_companyNewFRM
         BorderOuter = fsNone
         TabOrder = 0
         object RzGroupBox1: TRzGroupBox
-          Left = 664
+          Left = 0
           Top = 17
           Width = 593
           Height = 459
@@ -938,6 +937,8 @@ object M_companyNewFRM: TM_companyNewFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          ExplicitLeft = -64
+          ExplicitTop = 32
           object RzSizePanel1: TRzSizePanel
             Left = 1
             Top = 15
@@ -945,6 +946,8 @@ object M_companyNewFRM: TM_companyNewFRM
             Height = 29
             Align = alTop
             TabOrder = 0
+            ExplicitLeft = 41
+            ExplicitTop = 21
           end
           object Grid1: TwwDBGrid
             Left = 1
@@ -995,13 +998,15 @@ object M_companyNewFRM: TM_companyNewFRM
           TabOrder = 1
         end
         object RzPanel2: TRzPanel
-          Left = 578
+          Left = 593
           Top = 17
           Width = 86
           Height = 459
           Align = alLeft
           BorderOuter = fsNone
           TabOrder = 2
+          ExplicitLeft = -30
+          ExplicitTop = 8
           object ToLeftBTN: TBitBtn
             Left = 42
             Top = 219
@@ -1148,7 +1153,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
         end
         object RzGroupBox2: TRzGroupBox
-          Left = 0
+          Left = 679
           Top = 17
           Width = 578
           Height = 459
@@ -1161,6 +1166,7 @@ object M_companyNewFRM: TM_companyNewFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 3
+          ExplicitLeft = 0
           object AllPersonsGRD: TwwDBGrid
             Left = 1
             Top = 57

@@ -153,12 +153,12 @@ type
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
     procedure CompanySQLNewRecord(DataSet: TDataSet);
     procedure ToRightBTNClick(Sender: TObject);
-    procedure EmpolyeesTSShow(Sender: TObject);
     procedure ToLeftBTNClick(Sender: TObject);
     procedure AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure PersonSearchFLDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure EmployeesTSShow(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -258,9 +258,8 @@ End;
 
 
 
-procedure TM_companyNewFRM.EmpolyeesTSShow(Sender: TObject);
+procedure TM_companyNewFRM.EmployeesTSShow(Sender: TObject);
 begin
-
   IncludedPersonsSQL.Close;
   IncludedPersonsSQL.ParamByName('CompanySerial').Value:=CompanySQL.FieldByName('serial_number').AsInteger;
   IncludedPersonsSQL.Open;
