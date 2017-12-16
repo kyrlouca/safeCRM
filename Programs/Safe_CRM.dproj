@@ -231,6 +231,10 @@
             <Form>R_SeminarRevenuesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="t_test2.pas">
+            <Form>T_test2FRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
