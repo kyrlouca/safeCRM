@@ -373,7 +373,7 @@ object L_RemindersFRM: TL_RemindersFRM
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
-      Left = 921
+      Left = 966
       Top = 1
       Width = 155
       Height = 267
@@ -381,6 +381,7 @@ object L_RemindersFRM: TL_RemindersFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 921
       object InsertHawbBTN: TRzBitBtn
         Left = 2
         Top = 32
@@ -620,7 +621,7 @@ object L_RemindersFRM: TL_RemindersFRM
     object RzPanel2: TRzPanel
       Left = 41
       Top = 1
-      Width = 880
+      Width = 925
       Height = 267
       Align = alLeft
       BorderOuter = fsNone
@@ -628,11 +629,12 @@ object L_RemindersFRM: TL_RemindersFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 880
+        Width = 925
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 880
         object wwIncrementalSearch1: TwwIncrementalSearch
           Left = 119
           Top = 4
@@ -669,7 +671,6 @@ object L_RemindersFRM: TL_RemindersFRM
             Spacing = 4
             Transparent = False
             Caption = 'wwDBNavigator1First'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 0
@@ -686,7 +687,6 @@ object L_RemindersFRM: TL_RemindersFRM
             Spacing = 4
             Transparent = False
             Caption = 'wwDBNavigator1Prior'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -729,22 +729,24 @@ object L_RemindersFRM: TL_RemindersFRM
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 865
+        Width = 919
         Height = 234
         ControlType.Strings = (
           'IS_COMPLETED;CustomEdit;CompletedFLD;F'
-          'IS_HIGH;CustomEdit;HighFLD;F')
+          'IS_HIGH;CustomEdit;HighFLD;F'
+          'IS_INTERNAL;CheckBox;Y;N')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'DESCRIPTION'#9'23'#9#928#949#961#953#947#961#945#966#942
-          'IS_HIGH'#9'8'#9#931#951#956#945#957#964#953#954#972
-          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945
-          'ANAD_NUMBER'#9'10'#9#913#925#913#916
-          'SEMINAR_NAME'#9'15'#9#931#949#956#953#957#940#961#953#959
-          'DATE_TARGETED'#9'11'#9#916#961#940#963#951
-          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951
-          'IS_COMPLETED'#9'4'#9#932#941#955#959#962
-          'DAYSLEFT'#9'5'#9#924#941#961#949#962)
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'DESCRIPTION'#9'20'#9#928#949#961#953#947#961#945#966#942#9#9
+          'IS_HIGH'#9'8'#9#931#951#956#945#957#964#953#954#972#9#9
+          'IS_INTERNAL'#9'7'#9#917#964#945#953#961#941#953#945#962#9#9
+          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945#9#9
+          'ANAD_NUMBER'#9'10'#9#913#925#913#916#9#9
+          'SEMINAR_NAME'#9'15'#9#931#949#956#953#957#940#961#953#959#9#9
+          'DATE_TARGETED'#9'11'#9#916#961#940#963#951#9#9
+          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951#9#9
+          'IS_COMPLETED'#9'4'#9#932#941#955#959#962#9#9
+          'DAYSLEFT'#9'5'#9#924#941#961#949#962#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -798,7 +800,7 @@ object L_RemindersFRM: TL_RemindersFRM
           TabOrder = 0
         end
         object HighFLD: TwwCheckBox
-          Left = 73
+          Left = 117
           Top = 209
           Width = 61
           Height = 18
@@ -862,13 +864,13 @@ object L_RemindersFRM: TL_RemindersFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_MESSA' +
         'GE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_OR_MO' +
         'NTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DATE_T' +
-        'ARGETED, DATE_COMPLETED, IS_HIGH)'
+        'ARGETED, DATE_COMPLETED, IS_HIGH, IS_INTERNAL)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :DESCRIPTION, :REMINDER_M' +
         'ESSAGE, :AFTER_OR_BEFORE, :PERSON_OR_SEMINAR, :START_OR_END, :DA' +
         'YS_OR_MONTHS, :NUMBER_OF_DAYS_MONTHS, :REMINDER_TYPE, :IS_COMPLE' +
-        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH)')
+        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH, :IS_INTERNAL)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_REMINDER'
       'WHERE'
@@ -884,7 +886,7 @@ object L_RemindersFRM: TL_RemindersFRM
         'NTHS = :DAYS_OR_MONTHS, NUMBER_OF_DAYS_MONTHS = :NUMBER_OF_DAYS_' +
         'MONTHS, REMINDER_TYPE = :REMINDER_TYPE, IS_COMPLETED = :IS_COMPL' +
         'ETED, DATE_TARGETED = :DATE_TARGETED, DATE_COMPLETED = :DATE_COM' +
-        'PLETED, IS_HIGH = :IS_HIGH'
+        'PLETED, IS_HIGH = :IS_HIGH, IS_INTERNAL = :IS_INTERNAL'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -892,7 +894,8 @@ object L_RemindersFRM: TL_RemindersFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_M' +
         'ESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_O' +
         'R_MONTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DA' +
-        'TE_TARGETED, DATE_COMPLETED, IS_HIGH FROM SEMINAR_REMINDER'
+        'TE_TARGETED, DATE_COMPLETED, IS_HIGH, IS_INTERNAL FROM SEMINAR_R' +
+        'EMINDER'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -939,7 +942,7 @@ object L_RemindersFRM: TL_RemindersFRM
     end
     object TableSQLDESCRIPTION: TWideStringField
       DisplayLabel = #928#949#961#953#947#961#945#966#942
-      DisplayWidth = 23
+      DisplayWidth = 20
       FieldName = 'DESCRIPTION'
       Required = True
       Size = 160
@@ -948,6 +951,14 @@ object L_RemindersFRM: TL_RemindersFRM
       DisplayLabel = #931#951#956#945#957#964#953#954#972
       DisplayWidth = 8
       FieldName = 'IS_HIGH'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLIS_INTERNAL: TWideStringField
+      DisplayLabel = #917#964#945#953#961#941#953#945#962
+      DisplayWidth = 7
+      FieldName = 'IS_INTERNAL'
       Required = True
       FixedChar = True
       Size = 1

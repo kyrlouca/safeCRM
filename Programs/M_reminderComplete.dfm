@@ -299,7 +299,7 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
     TabOrder = 3
     object GroupBox1: TGroupBox
       Left = 24
-      Top = 18
+      Top = 6
       Width = 353
       Height = 239
       Caption = #917#961#947#945#963#943#945
@@ -339,7 +339,7 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
       end
       object Label1: TLabel
         Left = 21
-        Top = 143
+        Top = 99
         Width = 75
         Height = 14
         Caption = #919#956#949#961'. '#916#961#940#963#951#962
@@ -386,32 +386,6 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
         Font.Style = []
         ParentFont = False
       end
-      object Label6: TLabel
-        Left = 7
-        Top = 196
-        Width = 89
-        Height = 14
-        Caption = #919#956#949#961'. '#917#954#964#941#955#949#963#951#962
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label7: TLabel
-        Left = 37
-        Top = 167
-        Width = 59
-        Height = 14
-        Caption = #932#949#955#949#953#969#956#941#957#951
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
       object RzDBLabel1: TRzDBLabel
         Left = 110
         Top = 47
@@ -434,7 +408,7 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
       end
       object RzDBLabel3: TRzDBLabel
         Left = 110
-        Top = 143
+        Top = 99
         Width = 110
         Height = 20
         BorderOuter = fsFlat
@@ -442,51 +416,10 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
         DataField = 'DATE_TARGETED'
         DataSource = CompanySRC
       end
-      object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 110
-        Top = 193
-        Width = 115
-        Height = 23
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'Arial'
-        CalendarAttributes.Font.Style = []
-        DataField = 'DATE_COMPLETED'
-        DataSource = CompanySRC
-        Epoch = 1950
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        ShowButton = True
-        TabOrder = 0
-        DisplayFormat = 'dd/mm/yyyy'
-      end
-      object CompletedFLD: TwwCheckBox
-        Left = 110
-        Top = 169
-        Width = 37
-        Height = 18
-        DisableThemes = False
-        AlwaysTransparent = False
-        ValueChecked = 'Y'
-        ValueUnchecked = 'N'
-        DisplayValueChecked = 'Y'
-        DisplayValueUnchecked = 'N'
-        NullAndBlankState = cbUnchecked
-        DataField = 'IS_COMPLETED'
-        DataSource = CompanySRC
-        ShowText = False
-        TabOrder = 1
-        OnClick = CompletedFLDClick
-      end
     end
     object GroupBox2: TGroupBox
       Left = 395
-      Top = 18
+      Top = 6
       Width = 334
       Height = 113
       Caption = #931#949#956#953#957#940#961#953#959
@@ -597,6 +530,99 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
         ShowButton = True
         TabOrder = 2
         DisplayFormat = 'dd/mm/yyyy'
+      end
+    end
+    object GroupBox3: TGroupBox
+      Left = 24
+      Top = 251
+      Width = 353
+      Height = 87
+      Caption = #927#955#959#954#955#942#961#969#963#951
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      object Label9: TLabel
+        Left = 18
+        Top = 120
+        Width = 4
+        Height = 14
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 7
+        Top = 46
+        Width = 89
+        Height = 14
+        Caption = #919#956#949#961'. '#917#954#964#941#955#949#963#951#962
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 37
+        Top = 26
+        Width = 59
+        Height = 14
+        Caption = #932#949#955#949#953#969#956#941#957#951
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object wwDBDateTimePicker1: TwwDBDateTimePicker
+        Left = 110
+        Top = 46
+        Width = 115
+        Height = 23
+        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
+        CalendarAttributes.Font.Color = clWindowText
+        CalendarAttributes.Font.Height = -11
+        CalendarAttributes.Font.Name = 'Arial'
+        CalendarAttributes.Font.Style = []
+        DataField = 'DATE_COMPLETED'
+        DataSource = CompanySRC
+        Epoch = 1950
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        ShowButton = True
+        TabOrder = 0
+        DisplayFormat = 'dd/mm/yyyy'
+      end
+      object CompletedFLD: TwwCheckBox
+        Left = 110
+        Top = 22
+        Width = 37
+        Height = 18
+        DisableThemes = False
+        AlwaysTransparent = False
+        ValueChecked = 'Y'
+        ValueUnchecked = 'N'
+        DisplayValueChecked = 'Y'
+        DisplayValueUnchecked = 'N'
+        NullAndBlankState = cbUnchecked
+        DataField = 'IS_COMPLETED'
+        DataSource = CompanySRC
+        ShowText = False
+        TabOrder = 1
+        OnClick = CompletedFLDClick
       end
     end
   end

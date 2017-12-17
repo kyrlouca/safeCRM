@@ -373,8 +373,14 @@ procedure TR_certificateFRM.PrintOnexBTNClick(Sender: TObject);
 var
 CertSerial:integer;
 language:string;
+isValid:Boolean;
 begin
   certSerial:=CertificateSQL.FieldByName('serial_number').AsInteger;
+  isValid:=CertificateSQL.FieldByName('is_valid').AsString='Y';
+  if Not IsValid then begin
+    MessageDlg('Certificate is NOT valid. Canot be printed', mtWarning, [mbOK], 0);
+    exit;
+  end;
   Language:=LanguageRGP.Values[LanguageRGP.ItemIndex];
   PrintSeminar(IN_Seminar_Serial,certSerial,Language);
 

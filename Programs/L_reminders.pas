@@ -88,6 +88,7 @@ type
     TableSQLSEMINAR_NAME: TWideStringField;
     TableSQLSEMINAR_SERIAL: TIntegerField;
     TableSQLANAD_NUMBER: TWideStringField;
+    TableSQLIS_INTERNAL: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

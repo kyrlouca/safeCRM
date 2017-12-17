@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 497
+  ClientHeight = 598
   ClientWidth = 1079
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,11 +21,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 454
+    Top = 555
     Width = 1079
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 434
     object RzPanel1: TRzPanel
       Left = 978
       Top = 1
@@ -190,19 +191,21 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 65
     Width = 1079
-    Height = 389
+    Height = 490
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
+    ExplicitHeight = 369
     object Panel5: TPanel
       Left = 421
       Top = 2
       Width = 750
-      Height = 385
+      Height = 486
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 365
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -348,12 +351,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 342
+        Top = 443
         Width = 750
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         TabOrder = 1
+        ExplicitTop = 322
         object RzPanel6: TRzPanel
           Left = 649
           Top = 1
@@ -512,7 +516,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Left = 6
         Top = 47
         Width = 723
-        Height = 298
+        Height = 362
         ControlType.Strings = (
           'IS_ANAD;CustomEdit;AnadCheckFLD;F')
         Selected.Strings = (
@@ -567,10 +571,11 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 419
-      Height = 385
+      Height = 486
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 365
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -582,9 +587,9 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 188
+        Top = 248
         Width = 419
-        Height = 197
+        Height = 238
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
@@ -592,7 +597,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           Left = 0
           Top = 0
           Width = 401
-          Height = 197
+          Height = 238
           Align = alLeft
           Caption = #920#941#956#945#964#945
           Font.Charset = DEFAULT_CHARSET
@@ -602,6 +607,9 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          ExplicitLeft = -2
+          ExplicitTop = -1
+          ExplicitHeight = 197
           object RzPanel7: TRzPanel
             Left = 2
             Top = 16
@@ -615,7 +623,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Left = 2
             Top = 25
             Width = 397
-            Height = 170
+            Height = 211
             Selected.Strings = (
               'SERIAL_NUMBER'#9'6'#9'A/A'
               'SUBJECT'#9'20'#9#920#941#956#945
@@ -638,6 +646,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
+            ExplicitHeight = 170
           end
         end
       end

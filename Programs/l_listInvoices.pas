@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  vcl.wwcheckbox;
+  vcl.wwcheckbox, Vcl.Menus;
 type
   TL_listInvoicesFRM = class(TForm)
     Panel1: TPanel;
@@ -57,6 +57,10 @@ type
     RzGroupBox1: TRzGroupBox;
     Label2: TLabel;
     PayStatusFLD: TwwDBComboBox;
+    PrintRBtn: TBitBtn;
+    MainMenu1: TMainMenu;
+    Reports1: TMenuItem;
+    N3: TMenuItem;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -69,6 +73,8 @@ type
     procedure TableSQLNewRecord(DataSet: TDataSet);
     procedure Grid1DblClick(Sender: TObject);
     procedure PayStatusFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure PrintRBtnClick(Sender: TObject);
+    procedure N3Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -85,7 +91,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, M_payment, P_ViewPayment;
+uses   U_Database, G_generalProcs, M_payment, P_ViewPayment, R_InvoicesUnpaid;
 
 
 {$R *.DFM}
@@ -95,6 +101,21 @@ procedure TL_listInvoicesFRM.PayStatusFLDCloseUp(Sender: TwwDBComboBox;
 begin
 DisplayFIlter();
 
+end;
+
+procedure TL_listInvoicesFRM.PrintRBtnClick(Sender: TObject);
+var
+  Frm: TP_ViewPaymentFRM;
+begin
+  frm := TP_ViewPaymentFRM.Create(nil);
+  try
+
+    frm.IN_Invoice_Serial:=TableSQL.FieldByName('serial_number').AsInteger;
+    frm.ShowModal;
+    ksOpenTables([TableSQL])
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TL_listInvoicesFRM.BitBtn2Click(Sender: TObject);
@@ -183,6 +204,24 @@ procedure TL_listInvoicesFRM.Grid1TitleButtonClick(Sender: TObject;
         SortInfoHawb.Table:=Table;
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 
+end;
+
+procedure TL_listInvoicesFRM.N3Click(Sender: TObject);
+vAR
+  Frm:TR_invoicesUnpaidFRM;
+  seminarSerial:Integer;
+
+begin
+//  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_invoicesUnpaidFRM.Create(nil);
+//  frm.IN_certificate_serial:=0;
+//  frm.IN_Day_Serial :=0;
+  try
+    frm.PrintSeminar;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TL_listInvoicesFRM.CanelBTNClick(Sender: TObject);

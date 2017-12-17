@@ -44,10 +44,6 @@ type
     Label5: TLabel;
     SerialFLD: TRzDBLabel;
     Label10: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
-    CompletedFLD: TwwCheckBox;
     CompanySQLSEMINAR_NAME: TWideStringField;
     CompanySQLSEMINAR_SERIAL: TIntegerField;
     GroupBox2: TGroupBox;
@@ -62,6 +58,12 @@ type
     RzDBLabel1: TRzDBLabel;
     RzDBLabel2: TRzDBLabel;
     RzDBLabel3: TRzDBLabel;
+    GroupBox3: TGroupBox;
+    Label9: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    wwDBDateTimePicker1: TwwDBDateTimePicker;
+    CompletedFLD: TwwCheckBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure CompanySRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

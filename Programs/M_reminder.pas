@@ -63,6 +63,9 @@ type
     Label8: TLabel;
     wwCheckBox1: TwwCheckBox;
     CompanySQLIS_HIGH: TWideStringField;
+    Label7: TLabel;
+    wwCheckBox2: TwwCheckBox;
+    CompanySQLIS_INTERNAL: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure CompanySRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);

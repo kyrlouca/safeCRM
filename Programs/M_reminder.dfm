@@ -301,7 +301,7 @@ object M_reminderFRM: TM_reminderFRM
       Left = 7
       Top = 18
       Width = 353
-      Height = 303
+      Height = 271
       Caption = #917#961#947#945#963#943#945
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -413,6 +413,19 @@ object M_reminderFRM: TM_reminderFRM
         Font.Style = []
         ParentFont = False
       end
+      object Label7: TLabel
+        Left = 54
+        Top = 230
+        Width = 48
+        Height = 14
+        Caption = #917#964#945#953#961#949#943#945#962
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
       object FirstFLD: TwwDBEdit
         Left = 117
         Top = 45
@@ -505,6 +518,23 @@ object M_reminderFRM: TM_reminderFRM
         DataSource = CompanySRC
         ShowText = False
         TabOrder = 4
+      end
+      object wwCheckBox2: TwwCheckBox
+        Left = 117
+        Top = 227
+        Width = 37
+        Height = 18
+        DisableThemes = False
+        AlwaysTransparent = False
+        ValueChecked = 'Y'
+        ValueUnchecked = 'N'
+        DisplayValueChecked = 'Y'
+        DisplayValueUnchecked = 'N'
+        NullAndBlankState = cbUnchecked
+        DataField = 'IS_INTERNAL'
+        DataSource = CompanySRC
+        ShowText = False
+        TabOrder = 5
       end
     end
     object GroupBox2: TGroupBox
@@ -638,13 +668,13 @@ object M_reminderFRM: TM_reminderFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_MESSA' +
         'GE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_OR_MO' +
         'NTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DATE_T' +
-        'ARGETED, DATE_COMPLETED, IS_HIGH)'
+        'ARGETED, DATE_COMPLETED, IS_HIGH, IS_INTERNAL)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :DESCRIPTION, :REMINDER_M' +
         'ESSAGE, :AFTER_OR_BEFORE, :PERSON_OR_SEMINAR, :START_OR_END, :DA' +
         'YS_OR_MONTHS, :NUMBER_OF_DAYS_MONTHS, :REMINDER_TYPE, :IS_COMPLE' +
-        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH)')
+        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH, :IS_INTERNAL)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_REMINDER'
       'WHERE'
@@ -660,7 +690,7 @@ object M_reminderFRM: TM_reminderFRM
         'NTHS = :DAYS_OR_MONTHS, NUMBER_OF_DAYS_MONTHS = :NUMBER_OF_DAYS_' +
         'MONTHS, REMINDER_TYPE = :REMINDER_TYPE, IS_COMPLETED = :IS_COMPL' +
         'ETED, DATE_TARGETED = :DATE_TARGETED, DATE_COMPLETED = :DATE_COM' +
-        'PLETED, IS_HIGH = :IS_HIGH'
+        'PLETED, IS_HIGH = :IS_HIGH, IS_INTERNAL = :IS_INTERNAL'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -668,7 +698,8 @@ object M_reminderFRM: TM_reminderFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_M' +
         'ESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_O' +
         'R_MONTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DA' +
-        'TE_TARGETED, DATE_COMPLETED, IS_HIGH FROM SEMINAR_REMINDER'
+        'TE_TARGETED, DATE_COMPLETED, IS_HIGH, IS_INTERNAL FROM SEMINAR_R' +
+        'EMINDER'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -779,6 +810,12 @@ object M_reminderFRM: TM_reminderFRM
     end
     object CompanySQLIS_HIGH: TWideStringField
       FieldName = 'IS_HIGH'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object CompanySQLIS_INTERNAL: TWideStringField
+      FieldName = 'IS_INTERNAL'
       Required = True
       FixedChar = True
       Size = 1

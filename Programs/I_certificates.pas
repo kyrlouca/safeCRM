@@ -9,7 +9,7 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   RzPopups, vcl.wwcheckbox, vcl.wwDialog, vcl.wwIDlg, vcl.wwmonthcalendar,
-  vcl.wwlocate, VirtualTable, Vcl.Menus;
+  vcl.wwlocate, VirtualTable, Vcl.Menus, Vcl.ComCtrls, vcl.wwriched;
 type
 
   THoursRec= REcord
@@ -119,6 +119,9 @@ type
     TableSQLSEM_CATEGORY: TWideStringField;
     CertificateSQLDATE_CREATED: TDateField;
     N1: TMenuItem;
+    MainHelpRE: TwwDBRichEdit;
+    Help1: TMenuItem;
+    N2: TMenuItem;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -135,6 +138,7 @@ type
       State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
     procedure N3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
   private
     { Private declarations }
     VatRate:Double;
@@ -156,7 +160,7 @@ var
 implementation
 
 uses   U_Database, G_generalProcs, R_Certificate, G_SFCommonProcs,
-  r_certificateDates;
+  r_certificateDates, H_Help;
 
 
 {$R *.DFM}
@@ -228,6 +232,19 @@ begin
   frm.IN_SeminarSerial :=seminarSerial;
   try
     frm.PrintTheSeminar;
+  finally
+    frm.Free;
+  end;
+end;
+
+procedure TI_CertificatesFRM.N2Click(Sender: TObject);
+vAR
+  Frm:TH_HelpFRM;
+begin
+  frm := TH_HelpFRM.Create(nil);
+  try
+    frm.IN_RichEdit:=MainHelpRE;
+    frm.ShowModal;
   finally
     frm.Free;
   end;
