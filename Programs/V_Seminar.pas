@@ -115,7 +115,6 @@ type
     OpenPictureDialog1: TOpenPictureDialog;
     MainMenu1: TMainMenu;
     Help1: TMenuItem;
-    Certifcates1: TMenuItem;
     StatusFLD: TwwDBComboBox;
     SeminarSQLSEM_CATEGORY: TWideStringField;
     IBCSQLMonitor1: TIBCSQLMonitor;

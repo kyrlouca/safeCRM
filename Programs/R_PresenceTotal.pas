@@ -59,7 +59,6 @@ type
     SeminarSQL: TIBCQuery;
     SeminarSRC: TDataSource;
     SeminarPIP: TppDBPipeline;
-    ppDBText6: TppDBText;
     SeminarPresenceSQLPERSON_SERIAL: TIntegerField;
     SeminarPresenceSQLLAST_FIRST_NAME: TWideStringField;
     SeminarPresenceSQLHOURS: TLargeintField;
@@ -80,6 +79,37 @@ type
     ppLabel11: TppLabel;
     ppLabel12: TppLabel;
     PassFLD: TmyCheckBox;
+    SeminarOnlySQL: TIBCQuery;
+    SeminarOnlySRC: TDataSource;
+    SeminarOnlyPIP: TppDBPipeline;
+    SeminarOnlySQLSERIAL_NUMBER: TIntegerField;
+    SeminarOnlySQLANAD_NUMBER: TWideStringField;
+    SeminarOnlySQLFK_SEMINAR: TIntegerField;
+    SeminarOnlySQLFK_INSTRUCTOR: TIntegerField;
+    SeminarOnlySQLFK_EXAMINER: TIntegerField;
+    SeminarOnlySQLFK_VENUE: TIntegerField;
+    SeminarOnlySQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    SeminarOnlySQLSEMINAR_NAME: TWideStringField;
+    SeminarOnlySQLDATE_STARTED: TDateField;
+    SeminarOnlySQLDATE_COMPLETED: TDateField;
+    SeminarOnlySQLDURATION_DAYS: TIntegerField;
+    SeminarOnlySQLDURATION_HOURS: TIntegerField;
+    SeminarOnlySQLAMOUNT_ANAD: TFloatField;
+    SeminarOnlySQLCOMMENTS: TWideStringField;
+    SeminarOnlySQLANAD_APPROVED: TWideStringField;
+    SeminarOnlySQLSTATUS: TWideStringField;
+    SeminarOnlySQLIS_INVOICED: TWideStringField;
+    SeminarOnlySQLIS_CERTIFICATED: TWideStringField;
+    SeminarOnlySQLMAX_CAPACITY: TIntegerField;
+    SeminarOnlySQLHAS_EXPIRY: TWideStringField;
+    SeminarOnlySQLEXPIRY_PERIOD: TIntegerField;
+    SeminarOnlySQLTYPE_MONO_POLY: TWideStringField;
+    SeminarOnlySQLSEM_CATEGORY: TWideStringField;
+    SeminarOnlySQLFK_COMPANY_INVOICED: TIntegerField;
+    SeminarOnlySQLPASS_PERCENTAGE: TIntegerField;
+    ppLabel13: TppLabel;
+    ppDBText8: TppDBText;
+    ppDBText9: TppDBText;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -140,12 +170,15 @@ var
   PercentPass:Integer;
   isPresent:Boolean;
   isGuest:boolean;
+  qr:TksQuery;
+  SeminarSerial:Integer;
 
 begin
   TotalHours:= SeminarSQL.FieldByName('TOTALHours').AsInteger;
   Hours:= SeminarPresenceSQL.FieldByName('Hours').AsInteger;
   isPresent:= SeminarPresenceSQL.FieldByName('always_present').AsString='Y';
   isGuest:= SeminarPresenceSQL.FieldByName('is_guest').AsString='Y';
+  seminarSerial:=SeminarSQL.FieldByName('SeminarSerial').AsInteger;
 
   if TotalHours=0 then begin
     PercentActual:=0;
@@ -153,7 +186,17 @@ begin
     PercentActual:= Hours/ TotalHours * 100.0;
   end;
 
-  percentPass:=gpGetGeneralParam(cn,'Ô00').P_Integer1;
+  qr:=TksQuery.Create(cn,'select pass_Percentage from seminar where serial_number= :seminarSerial');
+  try
+    qr.ParamByName('seminarSerial').Value:=SeminarSerial;
+    qr.Open;
+    percentPass:=qr.FieldByName('pass_percentage').AsInteger;
+  finally
+    qr.Free;
+
+  end;
+
+//  percentPass:=gpGetGeneralParam(cn,'Ô00').P_Integer1;
 
   PassFLD.Checked:= (percentActual>= PercentPass) and isPresent and (not IsGuest);
 
@@ -235,6 +278,13 @@ Var
    FromDate:TDateTime;
    DaysLeft:integer;
 begin
+  with SeminarOnlySQL do begin
+     Close;
+     SeminarOnlySQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
+     Open ;
+  end;
+
+
   with SeminarSQL do begin
      Close;
      SeminarSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;

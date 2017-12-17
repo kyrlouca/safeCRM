@@ -4283,9 +4283,6 @@ object V_SeminarFRM: TV_SeminarFRM
     Top = 12
     object Help1: TMenuItem
       Caption = 'Help'
-      object Certifcates1: TMenuItem
-        Caption = 'Certifcates'
-      end
     end
   end
   object IBCSQLMonitor1: TIBCSQLMonitor

@@ -820,6 +820,7 @@ object P_attendanceFRM: TP_attendanceFRM
       '    person per on se.fk_company_person_serial =per.serial_number'
       'where '
       'se.serial_number= :SeminarSerial')
+    Active = True
     AfterScroll = TableSQLAfterScroll
     Left = 49
     Top = 5
