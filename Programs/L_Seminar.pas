@@ -303,9 +303,40 @@ procedure TL_SeminarFRM.DeleteSeminar();
 vAR
   serial:Integer;
   Frm:TV_SeminarFRM;
+  str:String;
 begin
   SERIAL:=TableSQL.FieldByName('serial_number').AsInteger;
   if serial<1 then exit;
+  str:=
+ '   select sub.fk_seminar_serial'
+  +'    from'
+  +'    invoice inv left outer join'
+  +'    seminar_subject sub on inv.fk_subject_serial= sub.serial_number'
+  +'    where sub.fk_seminar_serial = :seminarSerial';
+
+
+  if ksCountRecVarSQL(cn,str,[serial])>0 then begin
+   if MessageDlg('Seminar Has INVOICES (and maybe Payments) that will be DELETED!'+#13+#10+'DELETE ?', mtWarning, [mbOK, mbCancel], 0)<> mrOk then begin
+      abort;
+   end;
+
+  end;
+
+  str:=
+'   delete'
+  +'    from'
+  +'    invoice inv where'
+  +'    exists'
+  +'    ('
+  +'      select * from'
+  +'    seminar_subject sub'
+  +'      where'
+  +'      inv.fk_subject_serial= sub.serial_number'
+  +'      and sub.fk_seminar_serial = :seminarSerial'
+  +'    )';
+
+  ksExecSQLVar(cn,str,[serial]);
+
   ksExecSQLVar(cn,'delete from seminar where serial_number= :serial',[serial]);
   ksOpenTables([TableSQL])
 

@@ -7479,15 +7479,6 @@ object M_mainFRM: TM_mainFRM
         OnClick = N7Click
       end
     end
-    object ab1: TMenuItem
-      Caption = 'Search'
-      object Hawb1: TMenuItem
-        Caption = #931#949#956#953#957#940#961#953#945
-      end
-      object Customers2: TMenuItem
-        Caption = #917#954#960#945#953#948#949#965#972#956#949#957#959#965#962
-      end
-    end
     object Reports1: TMenuItem
       Caption = 'Reports'
       object Reminders1: TMenuItem

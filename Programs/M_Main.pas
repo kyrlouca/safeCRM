@@ -37,9 +37,6 @@ type
     LoginBTN: TRzBitBtn;
     Button1: TButton;
     MainMenu1: TMainMenu;
-    ab1: TMenuItem;
-    Hawb1: TMenuItem;
-    Customers2: TMenuItem;
     ables1: TMenuItem;
     ExchangeRates1: TMenuItem;
     User1: TMenuItem;

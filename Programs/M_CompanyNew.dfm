@@ -293,7 +293,7 @@ object M_companyNewFRM: TM_companyNewFRM
     Top = 92
     Width = 1096
     Height = 504
-    ActivePage = EmployeesTS
+    ActivePage = InfoTS
     Align = alClient
     MultiLine = True
     TabOrder = 3
@@ -309,9 +309,9 @@ object M_companyNewFRM: TM_companyNewFRM
         TabOrder = 0
         object GroupBox1: TGroupBox
           Left = 3
-          Top = 16
+          Top = 20
           Width = 309
-          Height = 331
+          Height = 333
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -508,9 +508,9 @@ object M_companyNewFRM: TM_companyNewFRM
         end
         object GroupBox2: TGroupBox
           Left = 337
-          Top = 16
+          Top = 19
           Width = 304
-          Height = 355
+          Height = 177
           Caption = #917#960#953#954#959#953#957#969#957#943#945
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -584,58 +584,6 @@ object M_companyNewFRM: TM_companyNewFRM
             Font.Style = []
             ParentFont = False
           end
-          object Label6: TLabel
-            Left = 53
-            Top = 209
-            Width = 55
-            Height = 14
-            Caption = #916#953#949#973#952#965#957#963#951
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label7: TLabel
-            Left = 80
-            Top = 234
-            Width = 28
-            Height = 14
-            Caption = #927#948#972#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label8: TLabel
-            Left = 37
-            Top = 259
-            Width = 71
-            Height = 14
-            Caption = #932#945#967'. '#922#974#948#953#954#945#962
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label9: TLabel
-            Left = 80
-            Top = 284
-            Width = 28
-            Height = 14
-            Caption = #928#972#955#951
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-          end
           object Label17: TLabel
             Left = 14
             Top = 70
@@ -680,7 +628,7 @@ object M_companyNewFRM: TM_companyNewFRM
             Height = 22
             DataField = 'FAX'
             DataSource = CompanySRC
-            TabOrder = 2
+            TabOrder = 3
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -692,7 +640,7 @@ object M_companyNewFRM: TM_companyNewFRM
             Height = 22
             DataField = 'EMAIL'
             DataSource = CompanySRC
-            TabOrder = 3
+            TabOrder = 4
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -704,55 +652,7 @@ object M_companyNewFRM: TM_companyNewFRM
             Height = 22
             DataField = 'WEBSITE'
             DataSource = CompanySRC
-            TabOrder = 4
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit3: TwwDBEdit
-            Left = 113
-            Top = 206
-            Width = 161
-            Height = 22
-            DataField = 'ADDRESS'
-            DataSource = CompanySRC
             TabOrder = 5
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit4: TwwDBEdit
-            Left = 113
-            Top = 231
-            Width = 161
-            Height = 22
-            DataField = 'ADDRESS_STREET'
-            DataSource = CompanySRC
-            TabOrder = 6
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit5: TwwDBEdit
-            Left = 113
-            Top = 256
-            Width = 161
-            Height = 22
-            DataField = 'ADDRESS_POST_CODE'
-            DataSource = CompanySRC
-            TabOrder = 7
-            UnboundDataType = wwDefault
-            WantReturns = False
-            WordWrap = False
-          end
-          object wwDBEdit6: TwwDBEdit
-            Left = 114
-            Top = 284
-            Width = 161
-            Height = 22
-            DataField = 'ADDRESS_CITY'
-            DataSource = CompanySRC
-            TabOrder = 8
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -764,7 +664,7 @@ object M_companyNewFRM: TM_companyNewFRM
             Height = 22
             DataField = 'PHONE_ALTERNATE'
             DataSource = CompanySRC
-            TabOrder = 9
+            TabOrder = 2
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -772,9 +672,9 @@ object M_companyNewFRM: TM_companyNewFRM
         end
         object GroupBox3: TGroupBox
           Left = 665
-          Top = 19
+          Top = 20
           Width = 272
-          Height = 159
+          Height = 176
           Caption = #913#961#956#972#948#953#959#962' '#917#960#953#954#959#953#957#969#957#943#945#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -782,7 +682,7 @@ object M_companyNewFRM: TM_companyNewFRM
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 2
+          TabOrder = 3
           object Label23: TLabel
             Left = 61
             Top = 21
@@ -891,7 +791,7 @@ object M_companyNewFRM: TM_companyNewFRM
             Height = 22
             DataField = 'COMPANY_CONTACT_EMAIL'
             DataSource = CompanySRC
-            TabOrder = 3
+            TabOrder = 4
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -903,7 +803,121 @@ object M_companyNewFRM: TM_companyNewFRM
             Height = 22
             DataField = 'COMPANY_CONTACT_FAX'
             DataSource = CompanySRC
-            TabOrder = 4
+            TabOrder = 3
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+        end
+        object GroupBox4: TGroupBox
+          Left = 337
+          Top = 202
+          Width = 304
+          Height = 151
+          Caption = #916#953#949#973#952#965#957#963#951
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          object Label29: TLabel
+            Left = 29
+            Top = 25
+            Width = 55
+            Height = 14
+            Caption = #916#953#949#973#952#965#957#963#951
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label30: TLabel
+            Left = 56
+            Top = 50
+            Width = 28
+            Height = 14
+            Caption = #927#948#972#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label31: TLabel
+            Left = 13
+            Top = 75
+            Width = 71
+            Height = 14
+            Caption = #932#945#967'. '#922#974#948#953#954#945#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label32: TLabel
+            Left = 56
+            Top = 100
+            Width = 28
+            Height = 14
+            Caption = #928#972#955#951
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object wwDBEdit25: TwwDBEdit
+            Left = 89
+            Top = 22
+            Width = 161
+            Height = 22
+            DataField = 'ADDRESS'
+            DataSource = CompanySRC
+            TabOrder = 0
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit26: TwwDBEdit
+            Left = 89
+            Top = 47
+            Width = 161
+            Height = 22
+            DataField = 'ADDRESS_STREET'
+            DataSource = CompanySRC
+            TabOrder = 1
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit27: TwwDBEdit
+            Left = 89
+            Top = 72
+            Width = 161
+            Height = 22
+            DataField = 'ADDRESS_POST_CODE'
+            DataSource = CompanySRC
+            TabOrder = 2
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit28: TwwDBEdit
+            Left = 90
+            Top = 100
+            Width = 161
+            Height = 22
+            DataField = 'ADDRESS_CITY'
+            DataSource = CompanySRC
+            TabOrder = 3
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
