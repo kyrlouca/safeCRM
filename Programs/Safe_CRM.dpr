@@ -40,11 +40,12 @@ uses
   r_certificateDates in 'r_certificateDates.pas' {R_CertificateDatesFRM},
   R_SeminarListingRevenues in 'R_SeminarListingRevenues.pas' {R_SeminarListingRevenuesFRM},
   R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
-  R_invoices in 'R_invoices.pas' {R_InvoicesFRM},
   R_SeminarRevenues in 'R_SeminarRevenues.pas' {R_SeminarRevenuesFRM},
   M_Student in 'M_Student.pas' {M_StudentFRM},
   R_presencePerDay in 'R_presencePerDay.pas' {R_presencePErDayFRM},
-  SN_ModifyPassword in 'SN_ModifyPassword.pas' {SN_ModifyPasswordFRM};
+  SN_ModifyPassword in 'SN_ModifyPassword.pas' {SN_ModifyPasswordFRM},
+  R_seminarAttend in 'R_seminarAttend.pas' {R_seminarsAttendFRM},
+  M_Instructor in 'M_Instructor.pas' {M_InstructorFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -75,11 +76,12 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);
   Application.CreateForm(TR_SeminarListingRevenuesFRM, R_SeminarListingRevenuesFRM);
   Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
-  Application.CreateForm(TR_InvoicesFRM, R_InvoicesFRM);
   Application.CreateForm(TR_SeminarRevenuesFRM, R_SeminarRevenuesFRM);
   Application.CreateForm(TR_presencePErDayFRM, R_presencePErDayFRM);
   Application.CreateForm(TM_StudentFRM, M_StudentFRM);
   Application.CreateForm(TR_presencePErDayFRM, R_presencePErDayFRM);
   Application.CreateForm(TSN_ModifyPasswordFRM, SN_ModifyPasswordFRM);
+  Application.CreateForm(TR_seminarsAttendFRM, R_seminarsAttendFRM);
+  Application.CreateForm(TM_InstructorFRM, M_InstructorFRM);
   Application.Run;
 end.

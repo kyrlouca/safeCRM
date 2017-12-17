@@ -464,7 +464,7 @@ var
 begin
 
 
-  percentPass:=gpGetGeneralParam(cn,'T00' ).P_Integer1;
+//  percentPass:=gpGetGeneralParam(cn,'T00' ).P_Integer1;
 
   str:= ' select'
   +' sem.*, inst.first_name,inst.last_name, inst.job_title'
@@ -479,6 +479,8 @@ begin
     seminarType:=qr.FieldByName('fk_seminar').AsInteger;
     SeminarSubject:=qr.FieldByName('seminar_name').asString;
     SeminarDate:=qr.FieldByName('Date_completed').AsDateTime;
+    percentPass:=qr.FieldByName('pass_percentage').AsInteger;
+
     AnadNumber:=qr.FieldByName('ANad_number').asString;
     InstName:=trim(qr.FieldByName('first_name').asString)+' '+trim(qr.FieldByName('Last_name').asString);
     InstJob:=qr.FieldByName('job_title').asString;

@@ -113,6 +113,7 @@ type
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N6Click(Sender: TObject);
+    procedure MonoFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -424,6 +425,20 @@ begin
     frm.Free;
   end;
 
+end;
+
+procedure TL_SeminarFRM.MonoFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+var
+  val:string;
+begin
+if not select then exit;
+  TableSQL.close;
+  TableSQL.RestoreSQL;
+    if (Sender.Value>'') And (sender.Value <>'A') then begin
+      TableSQL.AddWhere('sem.type_mono_poly = :mono');
+      TableSQL.ParamByName('mono').Value:=Sender.Value;
+    end;
+  TableSQL.Open;
 end;
 
 procedure TL_SeminarFRM.N1Click(Sender: TObject);

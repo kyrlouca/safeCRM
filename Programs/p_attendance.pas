@@ -132,6 +132,8 @@ type
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure N4Click(Sender: TObject);
+    procedure wwDBGrid1Exit(Sender: TObject);
+    procedure Reports1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -176,6 +178,15 @@ begin
 
 end;
 
+procedure TP_attendanceFRM.wwDBGrid1Exit(Sender: TObject);
+BEGIN
+  if TableSQL.State in [dsInsert, dsEdit] then
+   TableSQL.Post;
+  SavePresenceTable();
+
+END;
+
+
 procedure TP_attendanceFRM.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
   FillTable: TDataSet; modified: Boolean);
 var
@@ -185,6 +196,14 @@ var
 
 //  showMessage(IntToStr(serial));
 
+
+end;
+
+procedure TP_attendanceFRM.Reports1Click(Sender: TObject);
+begin
+  if TableSQL.State in [dsInsert, dsEdit] then
+   TableSQL.Post;
+  SavePresenceTable();
 
 end;
 

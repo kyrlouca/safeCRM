@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 560
+  ClientHeight = 540
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,12 +54,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 517
+    Top = 497
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 185
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -157,20 +156,18 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 425
+    Height = 405
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 93
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 423
+      Height = 403
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 91
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -316,14 +313,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 380
+        Top = 360
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsNone
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
-        ExplicitTop = 48
         object RzPanel6: TRzPanel
           Left = 571
           Top = 0
@@ -517,11 +513,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 423
+      Height = 403
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 91
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -533,13 +528,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 226
+        Top = 206
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = -106
         object InvoiceBTN: TRzBitBtn
           Left = 29
           Top = 158

@@ -223,10 +223,6 @@
             <Form>R_ExpiryFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_invoices.pas">
-            <Form>R_InvoicesFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="R_SeminarRevenues.pas">
             <Form>R_SeminarRevenuesFRM</Form>
             <FormType>dfm</FormType>
@@ -240,6 +236,14 @@
         </DCCReference>
         <DCCReference Include="SN_ModifyPassword.pas">
             <Form>SN_ModifyPasswordFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="R_seminarAttend.pas">
+            <Form>R_seminarsAttendFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="M_Instructor.pas">
+            <Form>M_InstructorFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

@@ -189,7 +189,7 @@ type
     Label13: TLabel;
     Label19: TLabel;
     Label9: TLabel;
-    SpeedButton1: TSpeedButton;
+    ExaminerBTN: TSpeedButton;
     wwDBEdit1: TwwDBEdit;
     InstructorFLD: TwwDBComboBox;
     VenueFLD: TwwDBComboBox;
@@ -309,7 +309,7 @@ type
     Label24: TLabel;
     wwDBEdit6: TwwDBEdit;
     SeminarSQLFK_COMPANY_INVOICED: TIntegerField;
-    SeminarSQLATTENDANCE_PERCENTAGE: TIntegerField;
+    SeminarSQLPASS_PERCENTAGE: TIntegerField;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -357,6 +357,8 @@ type
     procedure AllPersonsGRDTitleButtonClick(Sender: TObject;
       AFieldName: string);
     procedure AttendGRDTitleButtonClick(Sender: TObject; AFieldName: string);
+    procedure AttendGRDUpdateFooter(Sender: TObject);
+    procedure ExaminerBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -376,6 +378,7 @@ type
     procedure GetTemplatePIctures(const SeminarSerial, TypeSerial: Integer);
 
     function UpdateCostFooter(const SeminarSerial: Integer): Double;
+    procedure UPdateAttendFooter();
 
   public
     { Public declarations }
@@ -427,11 +430,13 @@ end;
 procedure TV_SeminarFRM.ToLeftBTNClick(Sender: TObject);
 begin
   InsertPerson();
+    UPdateAttendFooter();
 end;
 
 procedure TV_SeminarFRM.ToRightBTNClick(Sender: TObject);
 begin
   RemovePerson();
+  UPdateAttendFooter();
 end;
 
 procedure TV_SeminarFRM.SeminarCostItemSQLCalcFields(DataSet: TDataSet);
@@ -556,7 +561,7 @@ begin
     fname := qr.FieldByName('seminar_name').AsString;
     fAnad := qr.FieldByName('ANAD_APPROVED').AsString;
     fhours := qr.FieldByName('DURATION_HOURS').AsInteger;
-    fpercent := qr.FieldByName('ATTENDANCE_PERCENTAGE').AsInteger;
+    fpercent := qr.FieldByName('pass_PERCENTAGE').AsInteger;
 
     fMaxCapacity := qr.FieldByName('Max_capacity').AsInteger;
 //   fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
@@ -570,7 +575,7 @@ begin
     str :=
       ' update seminar sem set'
       + '    seminar_Name= :fname, anad_approved= :fAnad,Duration_hours = :fhours, max_capacity= :FMaxCapacity,  '
-      + '    sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths, sem.ATTENDANCE_PERCENTAGE = :aper'
+      + '    sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths, sem.pass_PERCENTAGE = :aper'
       + '  where  sem.serial_number= :fSerial';
 
     ksExecSQLVar(cn, str,
@@ -833,7 +838,7 @@ begin
   if Serial < 1 then
     exit;
   frm := TM_venuFRM.Create(nil);
-  frm.IN_ACTION := 'EDIT';
+  frm.IN_ACTION := 'DISPLAY';
   frm.in_SERIAL := Serial;
   try
     frm.ShowModal;
@@ -853,6 +858,23 @@ procedure TV_SeminarFRM.AttendGRDTitleButtonClick(Sender: TObject;
         Table:=TIbcQuery(AttendGRD.DataSource.DataSet);
         SortInfoHawb.Table:=Table;
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
+end;
+
+procedure TV_SeminarFRM.UPdateAttendFooter();
+var
+  Count:Integer;
+  SeminarSErial: Integer;
+begin
+
+  SeminarSErial := seminarSQL.FieldByName('Serial_number').AsInteger;
+   count:=ksCountRecVarSQL(cn,'select * from seminar_person sp where sp.fk_seminar_serial= :seminarSerial',[SeminarSerial]);
+    AttendGRD.ColumnByName('serial_number').FooterValue := IntToStr(Count);
+end;
+
+
+procedure TV_SeminarFRM.AttendGRDUpdateFooter(Sender: TObject);
+begin
+  UPdateAttendFooter();
 end;
 
 procedure TV_SeminarFRM.wwNavButton19Click(Sender: TObject);
@@ -1165,6 +1187,27 @@ begin
     AnadFLD.SetFocus;
   TitleLBL.Caption := Trim(SeminarSQL.FieldByName('seminar_name').AsString);
 
+end;
+
+procedure TV_SeminarFRM.ExaminerBTNClick(Sender: TObject);
+var
+
+  Frm: TM_InstructorFRM;
+  Serial: Integer;
+begin
+  if seminarSQL.State in [dsEdit] then
+    SeminarSQL.Post;
+  serial := strToIntdef(ExaminerFLD.Value, 0);
+  if Serial < 1 then
+    exit;
+  frm := TM_InstructorFRM.Create(nil);
+  frm.IN_ACTION := 'DISPLAY';
+  frm.in_INSTRUCTOR_SERIAL := Serial;
+  try
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TV_SeminarFRM.StartSeminar(const SeminarSerial: integer);

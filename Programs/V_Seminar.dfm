@@ -468,7 +468,7 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentFont = False
             end
             object InstructorBTN: TSpeedButton
-              Left = 257
+              Left = 258
               Top = 18
               Width = 21
               Height = 19
@@ -563,7 +563,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Font.Style = []
               ParentFont = False
             end
-            object SpeedButton1: TSpeedButton
+            object ExaminerBTN: TSpeedButton
               Left = 257
               Top = 43
               Width = 21
@@ -583,7 +583,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
               Layout = blGlyphBottom
               ParentFont = False
-              OnClick = InstructorBTNClick
+              OnClick = ExaminerBTNClick
             end
             object Label24: TLabel
               Left = 4
@@ -732,7 +732,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Top = 161
               Width = 59
               Height = 22
-              DataField = 'ATTENDANCE_PERCENTAGE'
+              DataField = 'PASS_PERCENTAGE'
               DataSource = SeminarSRC
               TabOrder = 5
               UnboundDataType = wwDefault
@@ -1340,11 +1340,11 @@ object V_SeminarFRM: TV_SeminarFRM
               ControlType.Strings = (
                 'IS_GUEST;CheckBox;Y;N')
               Selected.Strings = (
-                'SERIAL_NUMBER'#9'8'#9'A/A'
-                'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
-                'FIRST_NAME'#9'15'#9#908#957#959#956#945
-                'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945
-                'IS_GUEST'#9'7'#9#917#954#964#945#954#964#959#962)
+                'SERIAL_NUMBER'#9'8'#9'A/A'#9#9
+                'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959#9#9
+                'FIRST_NAME'#9'15'#9#908#957#959#956#945#9#9
+                'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945#9#9
+                'IS_GUEST'#9'7'#9#917#954#964#945#954#964#959#962#9#9)
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
@@ -1353,6 +1353,8 @@ object V_SeminarFRM: TV_SeminarFRM
               Align = alClient
               BorderStyle = bsNone
               DataSource = AttendingSRC
+              KeyOptions = []
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter]
               TabOrder = 1
               TitleAlignment = taLeftJustify
               TitleFont.Charset = DEFAULT_CHARSET
@@ -1363,6 +1365,7 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleLines = 1
               TitleButtons = False
               OnTitleButtonClick = AttendGRDTitleButtonClick
+              OnUpdateFooter = AttendGRDUpdateFooter
             end
           end
           object RzPanel3: TRzPanel
@@ -2679,7 +2682,7 @@ object V_SeminarFRM: TV_SeminarFRM
         'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
         'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
         ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
-        'ATEGORY, FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE)'
+        'ATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
@@ -2687,8 +2690,8 @@ object V_SeminarFRM: TV_SeminarFRM
         ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
         ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
         ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
-        ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED, :ATTENDANC' +
-        'E_PERCENTAGE)')
+        ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED, :PASS_PERC' +
+        'ENTAGE)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -2708,8 +2711,8 @@ object V_SeminarFRM: TV_SeminarFRM
         'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
         ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
         '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY, FK_C' +
-        'OMPANY_INVOICED = :FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE = ' +
-        ':ATTENDANCE_PERCENTAGE'
+        'OMPANY_INVOICED = :FK_COMPANY_INVOICED, PASS_PERCENTAGE = :PASS_' +
+        'PERCENTAGE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -2719,8 +2722,7 @@ object V_SeminarFRM: TV_SeminarFRM
         'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
         '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
         'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
-        'EM_CATEGORY, FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE FROM SEM' +
-        'INAR'
+        'EM_CATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2744,7 +2746,6 @@ object V_SeminarFRM: TV_SeminarFRM
       'where '
       ' serial_number= :SerialNumber'
       '')
-    Active = True
     OnNewRecord = SeminarSQLNewRecord
     Left = 89
     Top = 5
@@ -2852,8 +2853,8 @@ object V_SeminarFRM: TV_SeminarFRM
     object SeminarSQLFK_COMPANY_INVOICED: TIntegerField
       FieldName = 'FK_COMPANY_INVOICED'
     end
-    object SeminarSQLATTENDANCE_PERCENTAGE: TIntegerField
-      FieldName = 'ATTENDANCE_PERCENTAGE'
+    object SeminarSQLPASS_PERCENTAGE: TIntegerField
+      FieldName = 'PASS_PERCENTAGE'
     end
   end
   object WriteTrans: TIBCTransaction
@@ -2871,7 +2872,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C0101100088000C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800100310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -235,7 +235,7 @@ type
     RzPanel30: TRzPanel;
     Label23: TLabel;
     wwDBEdit15: TwwDBEdit;
-    TableSQLATTENDANCE_PERCENTAGE: TIntegerField;
+    TableSQLPASS_PERCENTAGE: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

@@ -143,6 +143,8 @@ type
     wwDBEdit26: TwwDBEdit;
     wwDBEdit27: TwwDBEdit;
     wwDBEdit28: TwwDBEdit;
+    CompanySQLSAFE_SERIAL: TIntegerField;
+    CompanySQLCOMPANY_EMPLOYEES: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);

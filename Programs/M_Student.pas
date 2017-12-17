@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  vcl.wwcheckbox;
+  vcl.wwcheckbox, Vcl.Menus;
 type
   TM_StudentFRM = class(TForm)
     Panel1: TPanel;
@@ -112,6 +112,9 @@ type
     wwDBEdit3: TwwDBEdit;
     Label6: TLabel;
     TableSQLSAFE_SERIAL: TIntegerField;
+    MainMenu1: TMainMenu;
+    Reports1: TMenuItem;
+    N3: TMenuItem;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -123,6 +126,7 @@ type
     procedure Nav1InsertClick(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
     procedure TableSQLNewRecord(DataSet: TDataSet);
+    procedure N3Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -138,7 +142,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, R_seminarAttend;
 
 
 {$R *.DFM}
@@ -214,6 +218,24 @@ procedure TM_StudentFRM.Grid1TitleButtonClick(Sender: TObject;
         SortInfoHawb.Table:=Table;
         G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
 
+end;
+
+procedure TM_StudentFRM.N3Click(Sender: TObject);
+vAR
+  Frm:TR_seminarsAttendFRM;
+  PersonSerial:Integer;
+
+begin
+  personSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_seminarsAttendFRM.Create(nil);
+  frm.IN_PersonSerial:=PersonSerial;
+
+  try
+    frm.PrintSeminar;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TM_StudentFRM.Nav1InsertClick(Sender: TObject);

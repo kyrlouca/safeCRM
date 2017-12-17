@@ -328,11 +328,9 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 DisplayValueChecked = 'Y'
                 DisplayValueUnchecked = 'N'
                 NullAndBlankState = cbUnchecked
-                Checked = True
                 DataField = 'ANAD_APPROVED'
                 DataSource = TableSRC
                 ShowText = False
-                State = cbChecked
                 TabOrder = 3
               end
             end
@@ -450,11 +448,9 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 DisplayValueChecked = 'Y'
                 DisplayValueUnchecked = 'N'
                 NullAndBlankState = cbUnchecked
-                Checked = True
                 DataField = 'HAS_EXPIRY'
                 DataSource = TableSRC
                 ShowText = False
-                State = cbChecked
                 TabOrder = 2
               end
               object wwDBEdit2: TwwDBEdit
@@ -474,7 +470,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 Top = 75
                 Width = 59
                 Height = 22
-                DataField = 'ATTENDANCE_PERCENTAGE'
+                DataField = 'PASS_PERCENTAGE'
                 DataSource = TableSRC
                 TabOrder = 4
                 UnboundDataType = wwDefault
@@ -550,6 +546,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Next'
+                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 2
@@ -566,6 +563,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Button1'
+                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 3
@@ -582,6 +580,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Insert'
+                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   OnClick = wwNavButton5Click
@@ -599,6 +598,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Delete'
+                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 5
@@ -3193,14 +3193,14 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       
         '  (SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED, SEM' +
         'INAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, MAX_CAPA' +
-        'CITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, ATTENDANCE_PERC' +
-        'ENTAGE)'
+        'CITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, PASS_PERCENTAGE' +
+        ')'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :SEMINAR_NAME, :SEMINAR_COST, :ANAD_APPROVED,' +
         ' :SEMINAR_CATEGORY, :DURATION_HOURS, :DURATION_DAYS, :COMMENTS, ' +
-        ':MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY, :AT' +
-        'TENDANCE_PERCENTAGE)')
+        ':MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY, :PA' +
+        'SS_PERCENTAGE)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE'
       'WHERE'
@@ -3214,16 +3214,16 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         'MINAR_CATEGORY = :SEMINAR_CATEGORY, DURATION_HOURS = :DURATION_H' +
         'OURS, DURATION_DAYS = :DURATION_DAYS, COMMENTS = :COMMENTS, MAX_' +
         'CAPACITY = :MAX_CAPACITY, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIO' +
-        'D = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY, ATTENDANCE' +
-        '_PERCENTAGE = :ATTENDANCE_PERCENTAGE'
+        'D = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY, PASS_PERCE' +
+        'NTAGE = :PASS_PERCENTAGE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED,' +
         ' SEMINAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, MAX_' +
-        'CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, ATTENDANCE_' +
-        'PERCENTAGE FROM SEMINAR_TYPE'
+        'CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, PASS_PERCEN' +
+        'TAGE FROM SEMINAR_TYPE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -3244,7 +3244,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       '*'
       'FROM'
       'SEMINAR_type ORDER BY SEMINAR_NAME')
-    Active = True
     AfterScroll = TableSQLAfterScroll
     OnNewRecord = TableSQLNewRecord
     Left = 49
@@ -3322,9 +3321,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       FieldName = 'EXPIRY_PERIOD'
       Visible = False
     end
-    object TableSQLATTENDANCE_PERCENTAGE: TIntegerField
-      FieldName = 'ATTENDANCE_PERCENTAGE'
-      Visible = False
+    object TableSQLPASS_PERCENTAGE: TIntegerField
+      FieldName = 'PASS_PERCENTAGE'
     end
   end
   object WriteTrans: TIBCTransaction

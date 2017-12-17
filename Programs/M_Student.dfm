@@ -2,7 +2,7 @@ object M_StudentFRM: TM_StudentFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 787
+  ClientHeight = 767
   ClientWidth = 1155
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object M_StudentFRM: TM_StudentFRM
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
@@ -47,12 +48,12 @@ object M_StudentFRM: TM_StudentFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 744
+    Top = 724
     Width = 1155
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 680
+    ExplicitTop = 744
     object RzPanel1: TRzPanel
       Left = 1054
       Top = 1
@@ -237,19 +238,19 @@ object M_StudentFRM: TM_StudentFRM
     Left = 0
     Top = 163
     Width = 1155
-    Height = 581
+    Height = 561
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 517
+    ExplicitHeight = 581
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
       Width = 528
-      Height = 579
+      Height = 559
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 515
+      ExplicitHeight = 579
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -263,7 +264,7 @@ object M_StudentFRM: TM_StudentFRM
         Left = 0
         Top = 9
         Width = 528
-        Height = 570
+        Height = 550
         ControlType.Strings = (
           'IS_COMPANY;CheckBox;Y;N')
         Selected.Strings = (
@@ -300,16 +301,17 @@ object M_StudentFRM: TM_StudentFRM
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
+        ExplicitHeight = 570
       end
     end
     object RzPanel4: TRzPanel
       Left = 529
       Top = 1
       Width = 625
-      Height = 579
+      Height = 559
       Align = alClient
       TabOrder = 1
-      ExplicitHeight = 515
+      ExplicitHeight = 579
       object GroupBox1: TGroupBox
         Left = 6
         Top = 49
@@ -1269,5 +1271,15 @@ object M_StudentFRM: TM_StudentFRM
     IsolationLevel = iblReadOnlyReadCommitted
     Left = 200
     Top = 209
+  end
+  object MainMenu1: TMainMenu
+    Left = 232
+    object Reports1: TMenuItem
+      Caption = #917#954#964#965#960#974#963#949#953#962
+      object N3: TMenuItem
+        Caption = #931#949#956#953#957#940#961#953#945' '#960#959#965' '#960#945#961#945#954#959#955#959#973#952#951#963#949
+        OnClick = N3Click
+      end
+    end
   end
 end

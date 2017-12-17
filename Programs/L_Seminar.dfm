@@ -304,7 +304,7 @@ object L_SeminarFRM: TL_SeminarFRM
         Font.Style = []
         ItemHeight = 0
         Items.Strings = (
-          'All'#9'All'
+          'All'#9'A'
           #924#959#957#959'-'#917#960#953#967#949#953#961#953#963#953#945#954#940#9'M'
           #928#972#955#965'- '#917#960#953#967#949#953#961#953#963#953#945#954#940#9'P')
         ParentCtl3D = False
@@ -314,7 +314,7 @@ object L_SeminarFRM: TL_SeminarFRM
         Sorted = False
         TabOrder = 2
         UnboundDataType = wwDefault
-        OnCloseUp = CategoryFLDCloseUp
+        OnCloseUp = MonoFLDCloseUp
         DoubleBuffered = False
         ParentDoubleBuffered = False
       end

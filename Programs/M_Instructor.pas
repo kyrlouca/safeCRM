@@ -187,6 +187,8 @@ end else if IN_ACTION='EDIT' then begin
 end else if IN_ACTION='DISPLAY' then begin
    TableSQL.Close;
    TableSQL.RestoreSQL;
+   tABLESQL.AddWhere('serial_number = :serial');
+   TableSQL.ParamByName('serial').Value:=in_INSTRUCTOR_SERIAL;
    TableSQL.ReadOnly:=true;
    TableSQL.Open;
 end else begin

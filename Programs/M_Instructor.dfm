@@ -375,7 +375,8 @@ object M_InstructorFRM: TM_InstructorFRM
           BevelOuter = bvNone
           Locked = True
           TabOrder = 0
-          ExplicitLeft = 8
+          ExplicitLeft = 48
+          ExplicitTop = 135
         end
       end
     end
@@ -388,7 +389,6 @@ object M_InstructorFRM: TM_InstructorFRM
       BorderOuter = fsNone
       TabOrder = 1
       VisualStyle = vsClassic
-      ExplicitTop = 6
       object GroupBox1: TGroupBox
         Left = 6
         Top = 50
@@ -638,6 +638,7 @@ object M_InstructorFRM: TM_InstructorFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 0
@@ -654,6 +655,7 @@ object M_InstructorFRM: TM_InstructorFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Prior'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
