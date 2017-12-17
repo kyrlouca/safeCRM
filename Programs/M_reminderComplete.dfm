@@ -417,7 +417,6 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
         Top = 47
         Width = 215
         Height = 20
-        Alignment = taRightJustify
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'DESCRIPTION'
@@ -428,7 +427,6 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
         Top = 73
         Width = 215
         Height = 20
-        Alignment = taRightJustify
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'REMINDER_MESSAGE'
@@ -439,7 +437,6 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
         Top = 143
         Width = 110
         Height = 20
-        Alignment = taRightJustify
         BorderOuter = fsFlat
         BorderWidth = 1
         DataField = 'DATE_TARGETED'
@@ -676,6 +673,7 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
         'umber'
       'where sr.serial_number= :SerialNumber')
     Options.AutoClose = True
+    Active = True
     OnNewRecord = CompanySQLNewRecord
     Left = 49
     Top = 13
@@ -687,7 +685,6 @@ object M_ReminderCompleteFRM: TM_ReminderCompleteFRM
       end>
     object CompanySQLSERIAL_NUMBER: TIntegerField
       FieldName = 'SERIAL_NUMBER'
-      Required = True
     end
     object CompanySQLFK_SEMINAR_SERIAL: TIntegerField
       FieldName = 'FK_SEMINAR_SERIAL'

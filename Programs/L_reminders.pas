@@ -51,16 +51,13 @@ type
     SeminarSQLDATE_COMPLETED: TDateField;
     SeminarSQLDURATION_DAYS: TIntegerField;
     SeminarSQLDURATION_HOURS: TIntegerField;
-    SeminarSQLFEE_ACTUAL: TFloatField;
     SeminarSQLAMOUNT_ANAD: TFloatField;
     SeminarSQLCOMMENTS: TWideStringField;
     SeminarSQLANAD_APPROVED: TWideStringField;
-    SeminarSQLFEE_ESTIMATE: TFloatField;
     SeminarSQLSTATUS: TWideStringField;
     SeminarSQLIS_INVOICED: TWideStringField;
     SeminarSQLIS_CERTIFICATED: TWideStringField;
     SeminarSQLMAX_CAPACITY: TIntegerField;
-    SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
     SeminarSRC: TDataSource;
     SeminarSFLD: TwwDBLookupCombo;
     Label1: TLabel;

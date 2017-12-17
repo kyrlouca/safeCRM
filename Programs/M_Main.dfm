@@ -15,9 +15,10 @@ object M_mainFRM: TM_mainFRM
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
-  object RzSizePanel1: TRzSizePanel
+  object PanelButtonsPNL: TRzSizePanel
     Left = 0
     Top = 0
     Width = 789
@@ -7498,6 +7499,7 @@ object M_mainFRM: TM_mainFRM
       Caption = 'User'
       object ChangePassword1: TMenuItem
         Caption = 'Change Password'
+        OnClick = ChangePassword1Click
       end
     end
     object System1: TMenuItem

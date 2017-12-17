@@ -43,7 +43,8 @@ uses
   R_invoices in 'R_invoices.pas' {R_InvoicesFRM},
   R_SeminarRevenues in 'R_SeminarRevenues.pas' {R_SeminarRevenuesFRM},
   M_Student in 'M_Student.pas' {M_StudentFRM},
-  R_presencePerDay in 'R_presencePerDay.pas' {R_presencePErDayFRM};
+  R_presencePerDay in 'R_presencePerDay.pas' {R_presencePErDayFRM},
+  SN_ModifyPassword in 'SN_ModifyPassword.pas' {SN_ModifyPasswordFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -79,5 +80,6 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TR_presencePErDayFRM, R_presencePErDayFRM);
   Application.CreateForm(TM_StudentFRM, M_StudentFRM);
   Application.CreateForm(TR_presencePErDayFRM, R_presencePErDayFRM);
+  Application.CreateForm(TSN_ModifyPasswordFRM, SN_ModifyPasswordFRM);
   Application.Run;
 end.

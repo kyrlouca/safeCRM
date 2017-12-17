@@ -196,8 +196,7 @@ type
     wwDBEdit3: TwwDBEdit;
     CompletedFLD: TwwCheckBox;
     wwDBEdit4: TwwDBEdit;
-    wwDBComboBox1: TwwDBComboBox;
-    RzBitBtn1: TRzBitBtn;
+    ExaminerFLD: TwwDBComboBox;
     SubjectTS: TTabSheet;
     RzPanel19: TRzPanel;
     RzPanel4: TRzPanel;
@@ -307,6 +306,10 @@ type
     TabSheet1: TTabSheet;
     RzPanel23: TRzPanel;
     RzBitBtn2: TRzBitBtn;
+    Label24: TLabel;
+    wwDBEdit6: TwwDBEdit;
+    SeminarSQLFK_COMPANY_INVOICED: TIntegerField;
+    SeminarSQLATTENDANCE_PERCENTAGE: TIntegerField;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -540,6 +543,7 @@ var
   fMaxCapacity: Integer;
   fexpiry: string;
   fexpiryMonths: Integer;
+  fpercent:integer;
   str: string;
 begin
 
@@ -552,6 +556,7 @@ begin
     fname := qr.FieldByName('seminar_name').AsString;
     fAnad := qr.FieldByName('ANAD_APPROVED').AsString;
     fhours := qr.FieldByName('DURATION_HOURS').AsInteger;
+    fpercent := qr.FieldByName('ATTENDANCE_PERCENTAGE').AsInteger;
 
     fMaxCapacity := qr.FieldByName('Max_capacity').AsInteger;
 //   fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
@@ -565,12 +570,12 @@ begin
     str :=
       ' update seminar sem set'
       + '    seminar_Name= :fname, anad_approved= :fAnad,Duration_hours = :fhours, max_capacity= :FMaxCapacity,  '
-      + '    sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths'
+      + '    sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths, sem.ATTENDANCE_PERCENTAGE = :aper'
       + '  where  sem.serial_number= :fSerial';
 
     ksExecSQLVar(cn, str,
       [fname, fAnad, fhours, fMaxCapacity, fExpiry,
-        fExpiryMonths, seminarSerial]);
+        fExpiryMonths, fpercent,seminarSerial]);
 
   finally
     qr.Free;
@@ -997,12 +1002,10 @@ end;
 
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
 begin
-  ksfillComboF1(cn, SeminarTYpeFLD, 'SEMINAR_TYPE', 'SERIAL_NUMBER',
-    'SEMINAR_NAME', 'SEMINAR_NAME');
-  ksfillComboF1(cn, InstructorFLD, 'INSTRUCTOR', 'SERIAL_NUMBER', 'Last_NAME',
-    'last_NAME');
-  ksfillComboF1(cn, VenueFLD, 'VENUE', 'SERIAL_NUMBER', 'VENUE_NAME',
-    'VENUE_NAME');
+  ksfillComboF1(cn, SeminarTYpeFLD, 'SEMINAR_TYPE', 'SERIAL_NUMBER',    'SEMINAR_NAME', 'SEMINAR_NAME');
+  ksfillComboF1(cn, InstructorFLD, 'INSTRUCTOR', 'SERIAL_NUMBER', 'Last_NAME',    'last_NAME');
+  ksfillComboF1(cn, ExaminerFLD, 'INSTRUCTOR', 'SERIAL_NUMBER', 'Last_NAME',    'last_NAME');
+  ksfillComboF1(cn, VenueFLD, 'VENUE', 'SERIAL_NUMBER', 'VENUE_NAME','VENUE_NAME');
   ksfillComboF1(cn, StatusFLD, 'status_activity', 'status', 'description');
   ksOpenTables([SeminarSQL]);
   if IN_ACTION = 'INSERT' then

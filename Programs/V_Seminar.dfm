@@ -150,7 +150,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TabOrder = 0
             object Label1: TLabel
               Left = 49
-              Top = 173
+              Top = 177
               Width = 58
               Height = 14
               Caption = #928#949#961#953#947#961#945#966#942
@@ -200,7 +200,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label4: TLabel
               Left = 72
-              Top = 195
+              Top = 199
               Width = 35
               Height = 14
               Caption = #931#967#972#955#953#945
@@ -239,7 +239,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label7: TLabel
               Left = 37
-              Top = 113
+              Top = 115
               Width = 70
               Height = 14
               Caption = #927#955#959#954#955#942#961#969#963#951
@@ -265,7 +265,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object DescFLD: TwwDBEdit
               Left = 113
-              Top = 167
+              Top = 171
               Width = 252
               Height = 22
               DataField = 'SEMINAR_NAME'
@@ -303,7 +303,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object RzDBRichEdit1: TRzDBRichEdit
               Left = 113
-              Top = 195
+              Top = 199
               Width = 252
               Height = 49
               DataField = 'COMMENTS'
@@ -380,7 +380,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object wwDBDateTimePicker1: TwwDBDateTimePicker
               Left = 113
-              Top = 110
+              Top = 112
               Width = 90
               Height = 23
               CalendarAttributes.Font.Charset = DEFAULT_CHARSET
@@ -419,7 +419,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 408
             Top = 24
             Width = 321
-            Height = 241
+            Height = 265
             Caption = #928#955#951#961#959#966#959#961#943#949#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -526,7 +526,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label13: TLabel
               Left = 24
-              Top = 164
+              Top = 194
               Width = 73
               Height = 14
               Caption = #933#960#940#961#967#949#953' '#923#942#958#951
@@ -539,7 +539,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label19: TLabel
               Left = 53
-              Top = 192
+              Top = 218
               Width = 48
               Height = 14
               Caption = #931#949' '#924#942#957#949#962
@@ -584,6 +584,19 @@ object V_SeminarFRM: TV_SeminarFRM
               Layout = blGlyphBottom
               ParentFont = False
               OnClick = InstructorBTNClick
+            end
+            object Label24: TLabel
+              Left = 4
+              Top = 164
+              Width = 97
+              Height = 14
+              Caption = #917#955#940#967#953#963#964#959' %'#937#961#974#957' '
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
             end
             object wwDBEdit1: TwwDBEdit
               Left = 108
@@ -662,7 +675,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object CompletedFLD: TwwCheckBox
               Left = 108
-              Top = 163
+              Top = 193
               Width = 37
               Height = 18
               DisableThemes = False
@@ -675,21 +688,21 @@ object V_SeminarFRM: TV_SeminarFRM
               DataField = 'HAS_EXPIRY'
               DataSource = SeminarSRC
               ShowText = False
-              TabOrder = 5
+              TabOrder = 6
             end
             object wwDBEdit4: TwwDBEdit
-              Left = 108
-              Top = 187
+              Left = 107
+              Top = 217
               Width = 75
               Height = 22
               DataField = 'EXPIRY_PERIOD'
               DataSource = SeminarSRC
-              TabOrder = 6
+              TabOrder = 7
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
             end
-            object wwDBComboBox1: TwwDBComboBox
+            object ExaminerFLD: TwwDBComboBox
               Left = 108
               Top = 42
               Width = 144
@@ -700,7 +713,7 @@ object V_SeminarFRM: TV_SeminarFRM
               AllowClearKey = False
               AutoDropDown = True
               ShowMatchText = True
-              DataField = 'FK_INSTRUCTOR'
+              DataField = 'FK_EXAMINER'
               DataSource = SeminarSRC
               DropDownCount = 8
               Font.Charset = DEFAULT_CHARSET
@@ -714,84 +727,18 @@ object V_SeminarFRM: TV_SeminarFRM
               TabOrder = 1
               UnboundDataType = wwDefault
             end
-          end
-          object RzBitBtn1: TRzBitBtn
-            Left = 443
-            Top = 304
-            Width = 125
-            Height = 37
-            Alignment = taLeftJustify
-            Caption = 'Edit Certificate Template'
-            DoubleBuffered = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Arial'
-            Font.Style = []
-            LightTextStyle = True
-            ParentDoubleBuffered = False
-            ParentFont = False
-            TabOrder = 2
-            OnClick = RzBitBtn1Click
-            Glyph.Data = {
-              F6060000424DF606000000000000360000002800000018000000180000000100
-              180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFBC8A57BC8A57BC8A57BC8A57BC8A57BC8A57BC8A57BC8A57BC8A57
-              BC8A57BC8A57BC8A57BC8A57BC8A57BC8A57BC8A57BC8A57BC8A57BC8A57BC8A
-              57BC8A57BC8A57FFFFFFBC8A57BC8A57BC8B58BC8B58BC8B58BC8B58BC8B58BC
-              8B58BC8B58BC8B58BD8B58BD8C59BD8C59BD8C59BD8C59BD8C59BD8C59BD8C59
-              BD8C59BD8C59BD8C58BC8B57BC8B57BC8A57B8844CDAC2A8F6F6F3F6F6F3F6F6
-              F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6
-              F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3DECBB5B8844CBA8750E0CDB8
-              F6F6F3F6F6F3F6F8F6F6F8F5F6F8F6F6F6F3F6F6F3F6F6F3949190DCDBDCFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F3E6D8C8BA
-              8750BB8851DDCAB3F6F6F3F6F6F38A56308A56308A56308A5630F6F6F3F6F6F3
-              949190D9D6D6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFF6F6F3E3D4C3BB8851BB8853DDC9B3F6F6F3F6F6F38A56308A56308A56308A
-              5630F6F6F3F6F6F3949190DBD9D9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFF6F6F3E3D6C4BB8853BB8B54DFCBB6F6F6F3F6F6F3F4F3
-              F0F4F3F0F4F3F0F3F2EEF6F6F3F6F6F394919094919096949296939296949296
-              9492969492969492969492928F8E949190F6F6F3E4D6C4BB8B54BC8C56DFCCB6
-              F5F7F6F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F39491909491909491
-              90949190949190949190949190949190949190949190949190F6F6F3E4D6C5BC
-              8C56BE8D58DFCCB6F3F1ECF6F6F3F3F1ECF3F1ECF3F1ECF6F6F3F6F6F3F6F6F3
-              F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6
-              F3F6F6F3E3D6C4BE8D58BE8F59DECDB7F3F1ECF6F6F3F6F6F3F6F6F3F6F6F3F6
-              F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3
-              F6F6F3F6F6F3F6F6F3F6F6F3E4D7C5BE8F59BF905ADFCEB8F6F6F3F6F6F3F6F6
-              F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3949190DCDBDCFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F3E5D8C6BF905AC0915CDFCDB7
-              F6F6F3F6F6F38A56308A56308A56308A5630F6F6F3F6F6F3949190D9D6D6FFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F3E5D7C7C0
-              915CC0915EDECCB7F6F6F3F6F6F38A56308A56308A56308A5630F6F6F3F6F6F3
-              949190DBD9D9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFF6F6F3E5D8C7C0915EC1925FDFCEB9F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6
-              F6F3F6F6F3F6F6F3949190949190949190949190949190949190949190949190
-              949190949190949190F6F6F3E5D7C7C1925FC29461E0CEB9F6F6F3F6F6F3F6F6
-              F3F6F6F3F6F6F3F6F6F3F4F2EEF6F6F394919094919094919094919094919094
-              9190949190949190949190949190949190F6F6F3E5D7C6C29461C29461E3D4C1
-              F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6
-              F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3F6F6F3E8DECFC2
-              9461C79D6ED4B797E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7
-              E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8C7E5D8
-              C7E5D8C7D7BC9DC79D6EC8A377D5AF86E0BD97DDBA94DEBB95DEBB95DEBB95DE
-              BB95DEBB95DEBB95DEBB95DEBB95DEBB95DEBB95DEBB95DEBB95DEBB95DEBB95
-              DEBB95DEBB95DDBA94E0BD97D5AF85C8A377C9A479D5AF84DDB992DCB890DCB8
-              90DCB890DCB890DCB890DCB890DCB890DCB890DCB890DCB890DCB890DCB890DC
-              B890DCB890DCB890DCB890DCB890DCB890DEBA93D4AE84C9A479C7A275D5AF84
-              DFBB95DDB991DEBA93DEBA93DEBA93DEBA93DEBA93DEBA93DEBA93DEBA93DEBA
-              93DEBA93DEBA93DEBA93DEBA93DEBA93DEBA93DEBA93DDB991E0BC97D4AF84C7
-              A275CDA679CFA97DD3AE82D3AE82D2AD81D3AD82D3AD82D3AD82D3AD82D3AD82
-              D3AD82D3AD82D3AD82D3AD82D3AD82D3AD82D3AD82D3AD82D3AD82D2AD81D3AE
-              82D4AE83CDA87BCDA679FFFFFFC6A172CBA87DCCAA80CCA97ECCA97ECCA97ECC
-              A97ECCA97ECCA97ECCA97ECCA97ECCA97ECCA97ECCA97ECCA97ECCA97ECCA97E
-              CCA97ECCA97ECCAA80CBA87CD4B792FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            Margin = -1
-            Spacing = 8
+            object wwDBEdit6: TwwDBEdit
+              Left = 108
+              Top = 161
+              Width = 59
+              Height = 22
+              DataField = 'ATTENDANCE_PERCENTAGE'
+              DataSource = SeminarSRC
+              TabOrder = 5
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
           end
         end
       end
@@ -2377,7 +2324,7 @@ object V_SeminarFRM: TV_SeminarFRM
         end
       end
       object TabSheet1: TTabSheet
-        Caption = #917#953#954#972#957#949#962
+        Caption = #922#949#943#956#949#957#959'/'#917#953#954#972#957#949#962
         ImageIndex = 5
         object RzPanel23: TRzPanel
           Left = 0
@@ -2732,7 +2679,7 @@ object V_SeminarFRM: TV_SeminarFRM
         'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
         'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
         ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
-        'ATEGORY)'
+        'ATEGORY, FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
@@ -2740,7 +2687,8 @@ object V_SeminarFRM: TV_SeminarFRM
         ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
         ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
         ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
-        ':TYPE_MONO_POLY, :SEM_CATEGORY)')
+        ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED, :ATTENDANC' +
+        'E_PERCENTAGE)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -2759,7 +2707,9 @@ object V_SeminarFRM: TV_SeminarFRM
         '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
         'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
         ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
-        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY'
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY, FK_C' +
+        'OMPANY_INVOICED = :FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE = ' +
+        ':ATTENDANCE_PERCENTAGE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -2769,7 +2719,8 @@ object V_SeminarFRM: TV_SeminarFRM
         'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
         '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
         'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
-        'EM_CATEGORY FROM SEMINAR'
+        'EM_CATEGORY, FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE FROM SEM' +
+        'INAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2898,6 +2849,12 @@ object V_SeminarFRM: TV_SeminarFRM
       FixedChar = True
       Size = 1
     end
+    object SeminarSQLFK_COMPANY_INVOICED: TIntegerField
+      FieldName = 'FK_COMPANY_INVOICED'
+    end
+    object SeminarSQLATTENDANCE_PERCENTAGE: TIntegerField
+      FieldName = 'ATTENDANCE_PERCENTAGE'
+    end
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -2914,7 +2871,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800040310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088000C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

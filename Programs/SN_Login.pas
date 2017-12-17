@@ -102,7 +102,8 @@ begin
 
 //  IsLoginButtonPressed:=True; // to prevent user from closing before login. Otherwise menu is enabled.
   TheMainForm:=M_MainFRM;
-//  M_mainFRM.Global_UserID:='';
+
+  M_mainFRM.Global_UserID:='';
 //  LoginUserID:='';
 
   IsValid:=False;

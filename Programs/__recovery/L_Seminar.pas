@@ -113,6 +113,8 @@ type
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N6Click(Sender: TObject);
+    procedure MonoFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure MonoFLDChange(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -200,7 +202,7 @@ begin
 
   SeminarStatus:=TableSQL.FieldByName('status').AsString;
 //  if SeminarStatus<>'A' then begin
-//    MessageDlg('Δεν γίνεται να καταγραφούν παρουσίες γιατί το Σεμινάριο δεν είναι σε στάδιο ''APPROVED'' ', mtWarning, [mbOK], 0);
+//    MessageDlg('Ξ”ΞµΞ½ Ξ³Ξ―Ξ½ΞµΟ„Ξ±ΞΉ Ξ½Ξ± ΞΊΞ±Ο„Ξ±Ξ³ΟΞ±Ο†ΞΏΟΞ½ Ο€Ξ±ΟΞΏΟ…ΟƒΞ―ΞµΟ‚ Ξ³ΞΉΞ±Ο„Ξ― Ο„ΞΏ Ξ£ΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞΏ Ξ΄ΞµΞ½ ΞµΞ―Ξ½Ξ±ΞΉ ΟƒΞµ ΟƒΟ„Ξ¬Ξ΄ΞΉΞΏ ''APPROVED'' ', mtWarning, [mbOK], 0);
 //    abort;
 //  end;
 
@@ -211,7 +213,7 @@ begin
       +' sem_category sc    on sem.sem_category=sc.category_code'
       +' where  sem.serial_number = :SeminarSerial and sc.is_CERTIFICATE=''Y'' ';
   if ksCountRecVarSQL(cn,str,[SeminarSerial])=0 then begin
-    MessageDlg('Για Σεμινάρια του τύπου: '+ SeminarCategory +' δεν παίρνονται Παρουσίες', mtWarning, [mbOK], 0);
+    MessageDlg('Ξ“ΞΉΞ± Ξ£ΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞ± Ο„ΞΏΟ… Ο„ΟΟ€ΞΏΟ…: '+ SeminarCategory +' Ξ΄ΞµΞ½ Ο€Ξ±Ξ―ΟΞ½ΞΏΞ½Ο„Ξ±ΞΉ Ξ Ξ±ΟΞΏΟ…ΟƒΞ―ΞµΟ‚', mtWarning, [mbOK], 0);
     exit;
   end;
 
@@ -399,7 +401,7 @@ begin
   //Let it be so user can see invoices
   //  SeminarStatus:=TableSQL.FieldByName('status').AsString;
 //  if SeminarStatus='P' then begin
-//    MessageDlg('Δεν εκδίδονται Τιμολόγια γιατί το Σεμινάριο δεν έχει γίνει ''APPROVED'' ', mtWarning, [mbOK], 0);
+//    MessageDlg('Ξ”ΞµΞ½ ΞµΞΊΞ΄Ξ―Ξ΄ΞΏΞ½Ο„Ξ±ΞΉ Ξ¤ΞΉΞΌΞΏΞ»ΟΞ³ΞΉΞ± Ξ³ΞΉΞ±Ο„Ξ― Ο„ΞΏ Ξ£ΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞΏ Ξ΄ΞµΞ½ Ξ­Ο‡ΞµΞΉ Ξ³Ξ―Ξ½ΞµΞΉ ''APPROVED'' ', mtWarning, [mbOK], 0);
 //    abort;
 //  end;
 
@@ -410,7 +412,7 @@ begin
       +' sem_category sc    on sem.sem_category=sc.category_code'
       +' where  sem.serial_number = :SeminarSerial and sc.is_invoice=''Y'' ';
   if ksCountRecVarSQL(cn,str,[SeminarSerial])=0 then begin
-    MessageDlg('Σεμινάρια του τύπου: '+ SeminarCategory +' δεν τιμολογούνται', mtWarning, [mbOK], 0);
+    MessageDlg('Ξ£ΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞ± Ο„ΞΏΟ… Ο„ΟΟ€ΞΏΟ…: '+ SeminarCategory +' Ξ΄ΞµΞ½ Ο„ΞΉΞΌΞΏΞ»ΞΏΞ³ΞΏΟΞ½Ο„Ξ±ΞΉ', mtWarning, [mbOK], 0);
     exit;
   end;
 
@@ -424,6 +426,25 @@ begin
     frm.Free;
   end;
 
+end;
+
+procedure TL_SeminarFRM.MonoFLDChange(Sender: TObject);
+begin
+
+end;
+
+procedure TL_SeminarFRM.MonoFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+var
+  val:string;
+begin
+if not select then exit;
+  TableSQL.close;
+  TableSQL.RestoreSQL;
+    if (Sender.Value>'') And (sender.Value <>'A') then begin
+      TableSQL.AddWhere('sem.type_mono_poly = :mono');
+      TableSQL.ParamByName('mono').Value:=Sender.Value;
+    end;
+  TableSQL.Open;
 end;
 
 procedure TL_SeminarFRM.N1Click(Sender: TObject);
@@ -544,7 +565,7 @@ begin
 
   SeminarStatus:=TableSQL.FieldByName('status').AsString;
 //  if SeminarStatus<>'F' then begin
-//    MessageDlg('Δεν εκδίδονται πιστοιητικά γιατί το σεμινάριο δεν έχει γίνει ''COMPLETED'' ', mtWarning, [mbOK], 0);
+//    MessageDlg('Ξ”ΞµΞ½ ΞµΞΊΞ΄Ξ―Ξ΄ΞΏΞ½Ο„Ξ±ΞΉ Ο€ΞΉΟƒΟ„ΞΏΞΉΞ·Ο„ΞΉΞΊΞ¬ Ξ³ΞΉΞ±Ο„Ξ― Ο„ΞΏ ΟƒΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞΏ Ξ΄ΞµΞ½ Ξ­Ο‡ΞµΞΉ Ξ³Ξ―Ξ½ΞµΞΉ ''COMPLETED'' ', mtWarning, [mbOK], 0);
 //    abort;
 //  end;
 
@@ -555,7 +576,7 @@ begin
       +' sem_category sc    on sem.sem_category=sc.category_code'
       +' where  sem.serial_number = :SeminarSerial and sc.is_CERTIFICATE=''Y'' ';
   if ksCountRecVarSQL(cn,str,[SeminarSerial])=0 then begin
-    MessageDlg('Για Σεμινάρια του τύπου: '+ SeminarCategory +' δεν εκδίδονται Πιστοποιητικά', mtWarning, [mbOK], 0);
+    MessageDlg('Ξ“ΞΉΞ± Ξ£ΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞ± Ο„ΞΏΟ… Ο„ΟΟ€ΞΏΟ…: '+ SeminarCategory +' Ξ΄ΞµΞ½ ΞµΞΊΞ΄Ξ―Ξ΄ΞΏΞ½Ο„Ξ±ΞΉ Ξ ΞΉΟƒΟ„ΞΏΟ€ΞΏΞΉΞ·Ο„ΞΉΞΊΞ¬', mtWarning, [mbOK], 0);
     exit;
   end;
 

@@ -26,7 +26,7 @@ uses
 
 type
   TM_mainFRM = class(TForm)
-    RzSizePanel1: TRzSizePanel;
+    PanelButtonsPNL: TRzSizePanel;
     PanelButtonsBTN: TPanel;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
@@ -107,6 +107,8 @@ type
     procedure N12Click(Sender: TObject);
     procedure UserSecurity1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure ChangePassword1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -126,7 +128,8 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
   G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices,
-  v_SeminarPictureTemplate, R_SeminarListingRevenues, t_test2, R_presencePerDay;
+  v_SeminarPictureTemplate, R_SeminarListingRevenues, t_test2, R_presencePerDay,
+  SN_ModifyPassword;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -148,6 +151,11 @@ begin
 gpShowModal(TL_listInvoicesFRM);
 end;
 
+procedure TM_mainFRM.ChangePassword1Click(Sender: TObject);
+begin
+  gpShowModal(TSN_ModifyPasswordFRM);
+end;
+
 procedure TM_mainFRM.Countries2Click(Sender: TObject);
 begin
 //gpShowModal(TM_CompanyFRM);
@@ -157,6 +165,18 @@ end;
 procedure TM_mainFRM.ExchangeRates1Click(Sender: TObject);
 begin
   gpShowModal(TL_SeminarFRM);
+end;
+
+procedure TM_mainFRM.FormActivate(Sender: TObject);
+begin
+  if Global_UserID='' then begin
+    self.Menu:=nil;
+//    PanelButtonsPNL.Enabled:=false;
+    exit;
+  end;
+
+  LoginBTN.SetFocus;
+
 end;
 
 procedure TM_mainFRM.HelpFile1Click(Sender: TObject);

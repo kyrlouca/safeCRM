@@ -238,6 +238,10 @@
             <Form>R_presencePErDayFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="SN_ModifyPassword.pas">
+            <Form>SN_ModifyPasswordFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

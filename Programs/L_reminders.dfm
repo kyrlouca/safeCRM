@@ -33,7 +33,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1059
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -55,8 +54,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitLeft = 91
-    ExplicitTop = 487
     object RzPanel1: TRzPanel
       Left = 966
       Top = 1
@@ -65,7 +62,6 @@ object L_RemindersFRM: TL_RemindersFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 958
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -150,8 +146,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Height = 173
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = -1
-    ExplicitTop = 47
     object RzGroupBox1: TRzGroupBox
       Left = 4
       Top = 6
@@ -378,7 +372,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Height = 269
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 1059
     object Panel5: TPanel
       Left = 921
       Top = 1
@@ -388,7 +381,6 @@ object L_RemindersFRM: TL_RemindersFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 880
       object InsertHawbBTN: TRzBitBtn
         Left = 2
         Top = 32
@@ -641,9 +633,6 @@ object L_RemindersFRM: TL_RemindersFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitLeft = -4
-        ExplicitTop = 5
-        ExplicitWidth = 792
         object wwIncrementalSearch1: TwwIncrementalSearch
           Left = 119
           Top = 4
@@ -746,16 +735,16 @@ object L_RemindersFRM: TL_RemindersFRM
           'IS_COMPLETED;CustomEdit;CompletedFLD;F'
           'IS_HIGH;CustomEdit;HighFLD;F')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'DESCRIPTION'#9'23'#9#928#949#961#953#947#961#945#966#942#9#9
-          'IS_HIGH'#9'8'#9#931#951#956#945#957#964#953#954#972#9#9
-          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945#9#9
-          'ANAD_NUMBER'#9'10'#9#913#925#913#916#9#9
-          'SEMINAR_NAME'#9'15'#9#931#949#956#953#957#940#961#953#959#9#9
-          'DATE_TARGETED'#9'11'#9#916#961#940#963#951#9#9
-          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951#9#9
-          'IS_COMPLETED'#9'4'#9#932#941#955#959#962#9#9
-          'DaysLeft'#9'5'#9#924#941#961#949#962#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'DESCRIPTION'#9'23'#9#928#949#961#953#947#961#945#966#942
+          'IS_HIGH'#9'8'#9#931#951#956#945#957#964#953#954#972
+          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945
+          'ANAD_NUMBER'#9'10'#9#913#925#913#916
+          'SEMINAR_NAME'#9'15'#9#931#949#956#953#957#940#961#953#959
+          'DATE_TARGETED'#9'11'#9#916#961#940#963#951
+          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951
+          'IS_COMPLETED'#9'4'#9#932#941#955#959#962
+          'DAYSLEFT'#9'5'#9#924#941#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -1061,19 +1050,19 @@ object L_RemindersFRM: TL_RemindersFRM
       
         '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXA' +
         'MINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_ST' +
-        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_ACTUAL' +
-        ', AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS, IS' +
-        '_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB, HAS' +
-        '_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY)'
+        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
+        'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
+        ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
+        'ATEGORY, FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
         'K_EXAMINER, :FK_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME,' +
         ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
-        ', :FEE_ACTUAL, :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :FEE_EST' +
-        'IMATE, :STATUS, :IS_INVOICED, :IS_CERTIFICATED, :MAX_CAPACITY, :' +
-        'FEE_WITH_ANAD_SUB, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY,' +
-        ' :SEM_CATEGORY)')
+        ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
+        ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
+        ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED, :ATTENDANC' +
+        'E_PERCENTAGE)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -1088,24 +1077,24 @@ object L_RemindersFRM: TL_RemindersFRM
         'AL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_NAME, DA' +
         'TE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DU' +
         'RATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, ' +
-        'FEE_ACTUAL = :FEE_ACTUAL, AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS =' +
-        ' :COMMENTS, ANAD_APPROVED = :ANAD_APPROVED, FEE_ESTIMATE = :FEE_' +
-        'ESTIMATE, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, IS_CERTI' +
-        'FICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY, FEE_WI' +
-        'TH_ANAD_SUB = :FEE_WITH_ANAD_SUB, HAS_EXPIRY = :HAS_EXPIRY, EXPI' +
-        'RY_PERIOD = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY, SE' +
-        'M_CATEGORY = :SEM_CATEGORY'
+        'AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED ' +
+        '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
+        'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
+        ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY, FK_C' +
+        'OMPANY_INVOICED = :FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE = ' +
+        ':ATTENDANCE_PERCENTAGE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
         '_EXAMINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DAT' +
-        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, FEE_AC' +
-        'TUAL, AMOUNT_ANAD, COMMENTS, ANAD_APPROVED, FEE_ESTIMATE, STATUS' +
-        ', IS_INVOICED, IS_CERTIFICATED, MAX_CAPACITY, FEE_WITH_ANAD_SUB,' +
-        ' HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CATEGORY FROM SE' +
-        'MINAR'
+        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
+        '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
+        'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
+        'EM_CATEGORY, FK_COMPANY_INVOICED, ATTENDANCE_PERCENTAGE FROM SEM' +
+        'INAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1123,6 +1112,7 @@ object L_RemindersFRM: TL_RemindersFRM
     SQL.Strings = (
       'SELECT * from seminar ')
     ReadOnly = True
+    Active = True
     Left = 649
     Top = 53
     object SeminarSQLSERIAL_NUMBER: TIntegerField
@@ -1158,9 +1148,6 @@ object L_RemindersFRM: TL_RemindersFRM
     object SeminarSQLDURATION_HOURS: TIntegerField
       FieldName = 'DURATION_HOURS'
     end
-    object SeminarSQLFEE_ACTUAL: TFloatField
-      FieldName = 'FEE_ACTUAL'
-    end
     object SeminarSQLAMOUNT_ANAD: TFloatField
       FieldName = 'AMOUNT_ANAD'
     end
@@ -1173,9 +1160,6 @@ object L_RemindersFRM: TL_RemindersFRM
       Required = True
       FixedChar = True
       Size = 1
-    end
-    object SeminarSQLFEE_ESTIMATE: TFloatField
-      FieldName = 'FEE_ESTIMATE'
     end
     object SeminarSQLSTATUS: TWideStringField
       FieldName = 'STATUS'
@@ -1197,9 +1181,6 @@ object L_RemindersFRM: TL_RemindersFRM
     object SeminarSQLMAX_CAPACITY: TIntegerField
       FieldName = 'MAX_CAPACITY'
       Required = True
-    end
-    object SeminarSQLFEE_WITH_ANAD_SUB: TFloatField
-      FieldName = 'FEE_WITH_ANAD_SUB'
     end
     object SeminarSQLTYPE_MONO_POLY: TWideStringField
       FieldName = 'TYPE_MONO_POLY'
