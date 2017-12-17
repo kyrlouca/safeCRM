@@ -137,6 +137,7 @@ begin
      IsValid:=True;
      IsSystemAdministrator:=True;
      M_MainFRM.Global_UserID:='SYS';
+     TheUserId:='SYS';
     end;
  {$ELSE}
  {$ENDIF}
@@ -152,6 +153,7 @@ begin
    M_MainFRM.Global_UserID := TheUserID;
    AccessBTN.Click;
    M_MainFRM.Menu:=M_MainFRM.MainMenu1;
+    M_mainFRM.PanelButtonsPNL.Enabled:=true;
 
   end else begin
    M_MainFRM.Global_UserID:='';

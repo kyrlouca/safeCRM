@@ -171,7 +171,7 @@ procedure TM_mainFRM.FormActivate(Sender: TObject);
 begin
   if Global_UserID='' then begin
     self.Menu:=nil;
-//    PanelButtonsPNL.Enabled:=false;
+   PanelButtonsPNL.Enabled:=false;
     exit;
   end;
 
