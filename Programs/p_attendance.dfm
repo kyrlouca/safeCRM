@@ -2,7 +2,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 546
+  ClientHeight = 593
   ClientWidth = 913
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,11 +54,12 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 503
+    Top = 550
     Width = 913
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 483
     object RzPanel1: TRzPanel
       Left = 812
       Top = 1
@@ -156,32 +157,34 @@ object P_attendanceFRM: TP_attendanceFRM
     Left = 0
     Top = 92
     Width = 913
-    Height = 411
+    Height = 458
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 391
     object Panel5: TPanel
       Left = 457
       Top = 1
       Width = 416
-      Height = 409
+      Height = 456
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 0
+      ExplicitHeight = 389
       object wwDBGrid1: TwwDBGrid
         Left = 0
         Top = 36
         Width = 416
-        Height = 330
+        Height = 377
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
-          'PersonSerial'#9'4'#9'ps'#9#9
-          'DaySerial'#9'4'#9'ds'#9#9
-          'Last_name'#9'16'#9#917#960#943#952#949#964#959#9#9
-          'First_Name'#9'10'#9#908#957#959#956#945#9#9
-          'Is_Present'#9'7'#9#928#945#961#974#957#9#9
-          'Hours_Present'#9'6'#9'Hours'#9#9)
+          'PersonSerial'#9'4'#9'ps'
+          'DaySerial'#9'4'#9'ds'
+          'Last_name'#9'16'#9#917#960#943#952#949#964#959
+          'First_Name'#9'10'#9#908#957#959#956#945
+          'Is_Present'#9'7'#9#928#945#961#974#957
+          'Hours_Present'#9'6'#9'Hours')
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -198,6 +201,7 @@ object P_attendanceFRM: TP_attendanceFRM
         TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
+        ExplicitHeight = 310
         object PresentFLD: TwwCheckBox
           Left = 72
           Top = 62
@@ -346,13 +350,14 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 366
+        Top = 413
         Width = 416
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 2
+        ExplicitTop = 346
         object RzPanel6: TRzPanel
           Left = 315
           Top = 0
@@ -512,10 +517,11 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 456
-      Height = 409
+      Height = 456
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
+      ExplicitHeight = 389
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -527,12 +533,13 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 212
+        Top = 259
         Width = 456
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 192
         object Grid1: TwwDBGrid
           Left = 0
           Top = 0
@@ -569,6 +576,8 @@ object P_attendanceFRM: TP_attendanceFRM
           TitleFont.Style = []
           TitleLines = 1
           TitleButtons = True
+          ExplicitLeft = 3
+          ExplicitTop = -24
         end
       end
       object GroupBox1: TGroupBox
@@ -1179,12 +1188,16 @@ object P_attendanceFRM: TP_attendanceFRM
         Caption = #928#945#961#959#965#963#943#949#962' '#919#956#941#961#945#962
         OnClick = N3Click
       end
+      object N4: TMenuItem
+        Caption = #928#945#961#959#965#963#943#949#962' '#913#957#940' '#919#956#941#961#945
+        OnClick = N4Click
+      end
       object N1: TMenuItem
         Caption = #928#945#961#959#965#963#943#949#962' '#908#955#949#962' '#964#953#962' '#919#956#941#961#949#962
         OnClick = N1Click
       end
       object N2: TMenuItem
-        Caption = #928#959#963#959#963#964#940' '#931#965#956#956#949#964#959#967#942#962
+        Caption = #928#959#963#959#963#964#940' '#931#965#957#959#955#953#954#942#962' '#931#965#956#956#949#964#959#967#942#962
         OnClick = N2Click
       end
     end

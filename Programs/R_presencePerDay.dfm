@@ -1,7 +1,7 @@
-object T_test2FRM: TT_test2FRM
+object R_presencePErDayFRM: TR_presencePErDayFRM
   Left = 0
   Top = 0
-  Caption = 'T_test2FRM'
+  Caption = 'R_presencePErDayFRM'
   ClientHeight = 494
   ClientWidth = 852
   Color = clBtnFace
@@ -178,6 +178,7 @@ object T_test2FRM: TT_test2FRM
       '         spv.fk_seminar_serial= :SeminarSerial'
       '         order by'
       '            ssd.serial_number, spv.last_first_name')
+    Active = True
     Filtered = True
     Left = 64
     Top = 8
@@ -218,8 +219,9 @@ object T_test2FRM: TT_test2FRM
     end
   end
   object SeminarSRC: TDataSource
-    Left = 152
-    Top = 12
+    DataSet = SeminarSQL
+    Left = 112
+    Top = 300
   end
   object vt1: TVirtualTable
     Options = [voPersistentData, voStored, voSetEmptyStrToNull, voSkipUnSupportedFieldTypes]
@@ -250,8 +252,8 @@ object T_test2FRM: TT_test2FRM
     DataSource = Vt1SRC
     OpenDataSource = False
     UserName = 'vtpip'
-    Left = 344
-    Top = 288
+    Left = 408
+    Top = 40
     object vtpipppField1: TppField
       FieldAlias = 'vt1Field1'
       FieldName = 'vt1Field1'
@@ -274,6 +276,7 @@ object T_test2FRM: TT_test2FRM
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -281,8 +284,8 @@ object T_test2FRM: TT_test2FRM
     PrinterSetup.mmMarginLeft = 6350
     PrinterSetup.mmMarginRight = 6350
     PrinterSetup.mmMarginTop = 2540
-    PrinterSetup.mmPaperHeight = 297000
-    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.mmPaperHeight = 210000
+    PrinterSetup.mmPaperWidth = 297000
     PrinterSetup.PaperSize = 9
     Template.FileName = 'C:\Users\KyrLouca\Desktop\SafeTEmplate1.rtm'
     ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
@@ -324,8 +327,8 @@ object T_test2FRM: TT_test2FRM
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
     XLSSettings.WorksheetName = 'Report'
-    Left = 240
-    Top = 281
+    Left = 288
+    Top = 313
     Version = '18.01'
     mmColumnWidth = 0
     DataPipelineName = 'vtpip'
@@ -338,7 +341,7 @@ object T_test2FRM: TT_test2FRM
         DesignLayer = ppDesignLayer1
         UserName = 'Label2'
         AutoSize = False
-        Caption = #928#945#961#959#965#963#953#959#955#972#947#953#959' '#931#949#956#953#957#945#961#943#959#965
+        Caption = #928#945#961#959#965#963#953#959#955#972#947#953#959' '#913#957#940' '#924#941#961#945
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Name = 'TIMES NEW ROMAN'
@@ -349,7 +352,7 @@ object T_test2FRM: TT_test2FRM
         mmHeight = 10583
         mmLeft = 529
         mmTop = 4233
-        mmWidth = 195263
+        mmWidth = 274285
         BandType = 1
         LayerName = BandLayer3
       end
@@ -1370,7 +1373,7 @@ object T_test2FRM: TT_test2FRM
         Shape = stRoundRect
         mmHeight = 14817
         mmLeft = 46567
-        mmTop = 16140
+        mmTop = 15845
         mmWidth = 74348
         BandType = 1
         LayerName = BandLayer3
@@ -1386,8 +1389,8 @@ object T_test2FRM: TT_test2FRM
         Font.Style = []
         Transparent = True
         mmHeight = 5027
-        mmLeft = 49477
-        mmTop = 15875
+        mmLeft = 54197
+        mmTop = 17645
         mmWidth = 16933
         BandType = 1
         LayerName = BandLayer3
@@ -1396,6 +1399,7 @@ object T_test2FRM: TT_test2FRM
         DesignLayer = ppDesignLayer1
         UserName = 'DBText6'
         DataField = 'SEMINAR_NAME'
+        DataPipeline = SeminarPip
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'TIMES NEW ROMAN'
@@ -1403,9 +1407,10 @@ object T_test2FRM: TT_test2FRM
         Font.Style = []
         ParentDataPipeline = False
         Transparent = True
+        DataPipelineName = 'SeminarPip'
         mmHeight = 4498
-        mmLeft = 71702
-        mmTop = 15875
+        mmLeft = 76422
+        mmTop = 17645
         mmWidth = 49389
         BandType = 1
         LayerName = BandLayer3
@@ -1413,17 +1418,20 @@ object T_test2FRM: TT_test2FRM
       object ppDBText9: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText7'
-        DataField = 'SEMINAR_DAY'
-        DisplayFormat = 'dd-mm-yyyy'
+        DataField = 'DATE_STARTED'
+        DataPipeline = SeminarPip
+        DisplayFormat = 'dd/mm/yyyy'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'TIMES NEW ROMAN'
         Font.Size = 12
         Font.Style = []
+        ParentDataPipeline = False
         Transparent = True
+        DataPipelineName = 'SeminarPip'
         mmHeight = 4498
-        mmLeft = 71967
-        mmTop = 21960
+        mmLeft = 76687
+        mmTop = 23730
         mmWidth = 26458
         BandType = 1
         LayerName = BandLayer3
@@ -1439,8 +1447,8 @@ object T_test2FRM: TT_test2FRM
         Font.Style = []
         Transparent = True
         mmHeight = 5027
-        mmLeft = 51329
-        mmTop = 21431
+        mmLeft = 58166
+        mmTop = 23201
         mmWidth = 12964
         BandType = 1
         LayerName = BandLayer3
@@ -1460,7 +1468,7 @@ object T_test2FRM: TT_test2FRM
         mmHeight = 2168
         mmLeft = 2025
         mmTop = 11785
-        mmWidth = 192079
+        mmWidth = 275015
         BandType = 0
         LayerName = BandLayer3
       end
@@ -1469,7 +1477,7 @@ object T_test2FRM: TT_test2FRM
       Background1.Brush.Style = bsClear
       Background2.Brush.Style = bsClear
       mmBottomOffset = 0
-      mmHeight = 7938
+      mmHeight = 4763
       mmPrintPosition = 0
     end
     object ppFooterBand1: TppFooterBand
@@ -1486,7 +1494,7 @@ object T_test2FRM: TT_test2FRM
         mmHeight = 529
         mmLeft = 1323
         mmTop = 0
-        mmWidth = 194734
+        mmWidth = 275015
         BandType = 8
         LayerName = BandLayer3
       end
@@ -1521,7 +1529,7 @@ object T_test2FRM: TT_test2FRM
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4233
-        mmLeft = 172773
+        mmLeft = 259773
         mmTop = 2381
         mmWidth = 16933
         BandType = 8
@@ -1536,6 +1544,391 @@ object T_test2FRM: TT_test2FRM
       end
     end
     object ppParameterList1: TppParameterList
+    end
+  end
+  object SeminarSQL: TIBCQuery
+    DMLRefresh = True
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR'
+      
+        '  (SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXA' +
+        'MINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_ST' +
+        'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
+        'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
+        ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
+        'ATEGORY, FK_COMPANY_INVOICED)'
+      'VALUES'
+      
+        '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
+        'K_EXAMINER, :FK_VENUE, :FK_COMPANY_PERSON_SERIAL, :SEMINAR_NAME,' +
+        ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
+        ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
+        ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
+        ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED)'
+      'RETURNING '
+      
+        '  SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK_EXAM' +
+        'INER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DATE_STA' +
+        'RTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANAD' +
+        ', COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED,' +
+        ' MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_CA' +
+        'TEGORY, FK_COMPANY_INVOICED')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, ANAD_NUMBER = :ANAD_NUMBER, FK' +
+        '_SEMINAR = :FK_SEMINAR, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_EXAMI' +
+        'NER = :FK_EXAMINER, FK_VENUE = :FK_VENUE, FK_COMPANY_PERSON_SERI' +
+        'AL = :FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME = :SEMINAR_NAME, DA' +
+        'TE_STARTED = :DATE_STARTED, DATE_COMPLETED = :DATE_COMPLETED, DU' +
+        'RATION_DAYS = :DURATION_DAYS, DURATION_HOURS = :DURATION_HOURS, ' +
+        'AMOUNT_ANAD = :AMOUNT_ANAD, COMMENTS = :COMMENTS, ANAD_APPROVED ' +
+        '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
+        'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
+        ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY, FK_C' +
+        'OMPANY_INVOICED = :FK_COMPANY_INVOICED'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, ANAD_NUMBER, FK_SEMINAR, FK_INSTRUCTOR, FK' +
+        '_EXAMINER, FK_VENUE, FK_COMPANY_PERSON_SERIAL, SEMINAR_NAME, DAT' +
+        'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
+        '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
+        'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
+        'EM_CATEGORY, FK_COMPANY_INVOICED FROM SEMINAR'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM SEMINAR'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    SQL.Strings = (
+      
+        '     SELECT * from seminar sem where sem.serial_number= :Seminar' +
+        'SErial'
+      '  ')
+    Active = True
+    Filtered = True
+    Left = 48
+    Top = 304
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'seminarSerial'
+        Value = nil
+      end>
+    object SeminarSQLSERIAL_NUMBER: TIntegerField
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+    end
+    object SeminarSQLANAD_NUMBER: TWideStringField
+      FieldName = 'ANAD_NUMBER'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
+    object SeminarSQLFK_SEMINAR: TIntegerField
+      FieldName = 'FK_SEMINAR'
+    end
+    object SeminarSQLFK_INSTRUCTOR: TIntegerField
+      FieldName = 'FK_INSTRUCTOR'
+    end
+    object SeminarSQLFK_EXAMINER: TIntegerField
+      FieldName = 'FK_EXAMINER'
+    end
+    object SeminarSQLFK_VENUE: TIntegerField
+      FieldName = 'FK_VENUE'
+    end
+    object SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_COMPANY_PERSON_SERIAL'
+    end
+    object SeminarSQLSEMINAR_NAME: TWideStringField
+      FieldName = 'SEMINAR_NAME'
+      Size = 160
+    end
+    object SeminarSQLDATE_STARTED: TDateField
+      FieldName = 'DATE_STARTED'
+    end
+    object SeminarSQLDATE_COMPLETED: TDateField
+      FieldName = 'DATE_COMPLETED'
+    end
+    object SeminarSQLDURATION_DAYS: TIntegerField
+      FieldName = 'DURATION_DAYS'
+    end
+    object SeminarSQLDURATION_HOURS: TIntegerField
+      FieldName = 'DURATION_HOURS'
+    end
+    object SeminarSQLAMOUNT_ANAD: TFloatField
+      FieldName = 'AMOUNT_ANAD'
+    end
+    object SeminarSQLCOMMENTS: TWideStringField
+      FieldName = 'COMMENTS'
+      Size = 160
+    end
+    object SeminarSQLANAD_APPROVED: TWideStringField
+      FieldName = 'ANAD_APPROVED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLSTATUS: TWideStringField
+      FieldName = 'STATUS'
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLIS_INVOICED: TWideStringField
+      FieldName = 'IS_INVOICED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLIS_CERTIFICATED: TWideStringField
+      FieldName = 'IS_CERTIFICATED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLMAX_CAPACITY: TIntegerField
+      FieldName = 'MAX_CAPACITY'
+      Required = True
+    end
+    object SeminarSQLHAS_EXPIRY: TWideStringField
+      FieldName = 'HAS_EXPIRY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLEXPIRY_PERIOD: TIntegerField
+      FieldName = 'EXPIRY_PERIOD'
+    end
+    object SeminarSQLTYPE_MONO_POLY: TWideStringField
+      FieldName = 'TYPE_MONO_POLY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLSEM_CATEGORY: TWideStringField
+      FieldName = 'SEM_CATEGORY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSQLFK_COMPANY_INVOICED: TIntegerField
+      FieldName = 'FK_COMPANY_INVOICED'
+    end
+  end
+  object SeminarPip: TppDBPipeline
+    DataSource = SeminarSRC
+    UserName = 'SeminarPip'
+    Left = 176
+    Top = 328
+    object SeminarPipppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SERIAL_NUMBER'
+      FieldName = 'SERIAL_NUMBER'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 0
+    end
+    object SeminarPipppField2: TppField
+      FieldAlias = 'ANAD_NUMBER'
+      FieldName = 'ANAD_NUMBER'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 1
+    end
+    object SeminarPipppField3: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FK_SEMINAR'
+      FieldName = 'FK_SEMINAR'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 2
+    end
+    object SeminarPipppField4: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FK_INSTRUCTOR'
+      FieldName = 'FK_INSTRUCTOR'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 3
+    end
+    object SeminarPipppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FK_EXAMINER'
+      FieldName = 'FK_EXAMINER'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 4
+    end
+    object SeminarPipppField6: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FK_VENUE'
+      FieldName = 'FK_VENUE'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 5
+    end
+    object SeminarPipppField7: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FK_COMPANY_PERSON_SERIAL'
+      FieldName = 'FK_COMPANY_PERSON_SERIAL'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 6
+    end
+    object SeminarPipppField8: TppField
+      FieldAlias = 'SEMINAR_NAME'
+      FieldName = 'SEMINAR_NAME'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 7
+    end
+    object SeminarPipppField9: TppField
+      FieldAlias = 'DATE_STARTED'
+      FieldName = 'DATE_STARTED'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 8
+    end
+    object SeminarPipppField10: TppField
+      FieldAlias = 'DATE_COMPLETED'
+      FieldName = 'DATE_COMPLETED'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 9
+    end
+    object SeminarPipppField11: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'DURATION_DAYS'
+      FieldName = 'DURATION_DAYS'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 10
+    end
+    object SeminarPipppField12: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'DURATION_HOURS'
+      FieldName = 'DURATION_HOURS'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 11
+    end
+    object SeminarPipppField13: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'AMOUNT_ANAD'
+      FieldName = 'AMOUNT_ANAD'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 12
+    end
+    object SeminarPipppField14: TppField
+      FieldAlias = 'COMMENTS'
+      FieldName = 'COMMENTS'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 13
+    end
+    object SeminarPipppField15: TppField
+      FieldAlias = 'ANAD_APPROVED'
+      FieldName = 'ANAD_APPROVED'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 14
+    end
+    object SeminarPipppField16: TppField
+      FieldAlias = 'STATUS'
+      FieldName = 'STATUS'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 15
+    end
+    object SeminarPipppField17: TppField
+      FieldAlias = 'IS_INVOICED'
+      FieldName = 'IS_INVOICED'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 16
+    end
+    object SeminarPipppField18: TppField
+      FieldAlias = 'IS_CERTIFICATED'
+      FieldName = 'IS_CERTIFICATED'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 17
+    end
+    object SeminarPipppField19: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'MAX_CAPACITY'
+      FieldName = 'MAX_CAPACITY'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 18
+    end
+    object SeminarPipppField20: TppField
+      FieldAlias = 'HAS_EXPIRY'
+      FieldName = 'HAS_EXPIRY'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 19
+    end
+    object SeminarPipppField21: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'EXPIRY_PERIOD'
+      FieldName = 'EXPIRY_PERIOD'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 20
+    end
+    object SeminarPipppField22: TppField
+      FieldAlias = 'TYPE_MONO_POLY'
+      FieldName = 'TYPE_MONO_POLY'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 21
+    end
+    object SeminarPipppField23: TppField
+      FieldAlias = 'SEM_CATEGORY'
+      FieldName = 'SEM_CATEGORY'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 22
+    end
+    object SeminarPipppField24: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FK_COMPANY_INVOICED'
+      FieldName = 'FK_COMPANY_INVOICED'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 23
     end
   end
 end

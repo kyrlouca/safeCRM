@@ -107,6 +107,7 @@ type
     SerialFLD: TRzDBLabel;
     Label1: TLabel;
     RzDBLabel1: TRzDBLabel;
+    N4: TMenuItem;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -130,6 +131,7 @@ type
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -147,7 +149,8 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, R_Presence, R_PresenceTotal;
+uses   U_Database, G_generalProcs, R_Presence, R_PresenceTotal,
+  R_presencePerDay;
 
 
 {$R *.DFM}
@@ -321,6 +324,22 @@ begin
   frm.IN_Day_Serial:=DaySerial;
   try
     frm.PrintTheSeminar();
+  finally
+    frm.Free;
+  end;
+end;
+
+procedure TP_attendanceFRM.N4Click(Sender: TObject);
+vAR
+  Frm:TR_presencePErDayFRM;
+  seminarSerial:Integer;
+begin
+  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+
+  frm :=  TR_presencePErDayFRM.Create(nil);
+  frm.IN_SeminarSerial :=seminarSerial;
+  try
+     frm.PrintTheReport;
   finally
     frm.Free;
   end;

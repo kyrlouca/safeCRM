@@ -231,12 +231,11 @@
             <Form>R_SeminarRevenuesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="t_test2.pas">
-            <Form>T_test2FRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="M_Student.pas">
             <Form>M_StudentFRM</Form>
+        </DCCReference>
+        <DCCReference Include="R_presencePerDay.pas">
+            <Form>R_presencePErDayFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

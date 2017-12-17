@@ -129,7 +129,7 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   p_attendance, H_Help, R_Reminders, I_invoiceSeminar, M_CompanyNew,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
   G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices,
-  v_SeminarPictureTemplate, R_SeminarListingRevenues, t_test2;
+  v_SeminarPictureTemplate, R_SeminarListingRevenues, t_test2, R_presencePerDay;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -143,7 +143,7 @@ var
  j:integer;
 
 begin
-  gpShowModal(TT_test2FRM);
+  gpShowModal(TR_presencePErDayFRM);
 end;
 
 procedure TM_mainFRM.Button2Click(Sender: TObject);

@@ -329,7 +329,7 @@ var
 begin
   PersonSerial:=IncludedPersonsSQL.FieldByName('serial_number').AsInteger;
   if (Personserial<1) then exit;
-  str:='update person set fk_company_serial = null where serial_number PersonSerial';
+  str:='update person set fk_company_serial = null where serial_number = :PersonSerial';
   ksExecSQLVar(cn,str,[Personserial]);
 
   IncludedPersonsSQL.Refresh;
