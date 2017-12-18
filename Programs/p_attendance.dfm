@@ -2,8 +2,8 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 573
-  ClientWidth = 913
+  ClientHeight = 562
+  ClientWidth = 1002
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object P_attendanceFRM: TP_attendanceFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 913
+    Width = 1002
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -36,7 +36,7 @@ object P_attendanceFRM: TP_attendanceFRM
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 905
+      Width = 994
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -54,13 +54,13 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 530
-    Width = 913
+    Top = 519
+    Width = 1002
     Height = 43
     Align = alBottom
     TabOrder = 3
     object RzPanel1: TRzPanel
-      Left = 812
+      Left = 901
       Top = 1
       Width = 100
       Height = 41
@@ -147,7 +147,7 @@ object P_attendanceFRM: TP_attendanceFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 913
+    Width = 1002
     Height = 39
     Align = alTop
     TabOrder = 1
@@ -155,15 +155,15 @@ object P_attendanceFRM: TP_attendanceFRM
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 913
-    Height = 438
+    Width = 1002
+    Height = 427
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 457
       Top = 1
       Width = 416
-      Height = 436
+      Height = 425
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -172,7 +172,7 @@ object P_attendanceFRM: TP_attendanceFRM
         Left = 0
         Top = 36
         Width = 416
-        Height = 357
+        Height = 346
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
@@ -347,7 +347,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 393
+        Top = 382
         Width = 416
         Height = 43
         Align = alBottom
@@ -513,7 +513,7 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 456
-      Height = 436
+      Height = 425
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
@@ -528,7 +528,7 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 239
+        Top = 228
         Width = 456
         Height = 197
         Align = alBottom

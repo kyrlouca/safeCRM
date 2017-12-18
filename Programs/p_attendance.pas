@@ -249,8 +249,13 @@ Begin
     VpresenceSQL.OPen;
     exit;
   end;
-  UpdatePresenceTable(seminarSerial,daySerial);
-//  VPresenceSQL.ReadOnly:= not allow;
+
+  if allow then begin
+    UpdatePresenceTable(seminarSerial,daySerial);
+  end else begin
+      SHowMessage('Το σεμινάριο δεν είναι σε στάδιο ΕΓΚΡΙΣΗ. Χρησιμοποιείστε τα Reports');
+  end;
+  VPresenceSQL.ReadOnly:= not allow;
 end;
 
 procedure TP_attendanceFRM.DaySQLBeforeScroll(DataSet: TDataSet);

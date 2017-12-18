@@ -375,9 +375,18 @@ begin
 
   SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
+  SeminarStatus:=TableSQL.FieldByName('status').AsString;
+
+  if SeminarStatus<>'F' then begin
+    MessageDlg('Δεν εκδίδονται πιστοιητικά γιατί το σεμινάριο δεν έχει γίνει ''COMPLETED'' ', mtWarning, [mbOK], 0);
+    abort;
+  end;
+
+
+
     NewGenerateInvoices(seminarSerial);
     ksOpenTables([CertificateSQL]);
-    exit;
+//    exit;
 
 //    if  CertificateSQL.UpdateTransaction.Active then begin
 //      ShowMessage('save or Cancel First');
@@ -388,12 +397,6 @@ begin
 //      CertificateSQL.UpdateTransaction.StartTransaction;
 
 //    CertificateSQL.Close;
-  SeminarStatus:=TableSQL.FieldByName('status').AsString;
-
-  if SeminarStatus<>'F' then begin
-    MessageDlg('Δεν εκδίδονται πιστοιητικά γιατί το σεμινάριο δεν έχει γίνει ''COMPLETED'' ', mtWarning, [mbOK], 0);
-    abort;
-  end;
 
 
     personSQL.Close;
