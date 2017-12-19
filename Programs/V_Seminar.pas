@@ -641,8 +641,8 @@ begin
 
   str :=
     ' INSERT INTO SEMINAR_REMINDER'
-    + '  (SERIAL_NUMBER,fk_seminar_serial, description,reminder_message,after_or_before,person_or_seminar,number_of_days_months,start_or_end,days_or_months,reminder_type,is_completed,date_targeted)'
-    + '  VALUES (:serial,:seminarSerial, :a3,:A4, :a5, :A6,:A7,:a8,:A9,:a10,:a11,:a12)';
+    + '  (SERIAL_NUMBER,fk_seminar_serial, description,reminder_message,after_or_before,person_or_seminar,number_of_days_months,start_or_end,days_or_months,reminder_type,is_completed,date_targeted,Is_internal)'
+    + '  VALUES (:serial,:seminarSerial, :a3,:A4, :a5, :A6,:A7,:a8,:A9,:a10,:a11,:a12,:a13)';
 
   qr := TksQuery.Create(cn,
     'select * from seminar_type_reminder where fk_seminar_type_serial= :Typeserial');
@@ -671,7 +671,7 @@ begin
       G_DebugUnit.TRecViewer<TActionDateREc>.GetFields(ActionDateRec);
       ActionDate := FindActionDate(ActionDateRec);
       ksExecSQLVar(cn, str, [serial, SeminarSerial, fdesc, fmessage, fafter,
-        fperson, fnumber_of_days, fstart, fdays, 'S', 'N', ActionDate]);
+        fperson, fnumber_of_days, fstart, fdays, 'S', 'N', ActionDate,'N']);
       qr.Next;
 
     end;

@@ -2,7 +2,7 @@ object V_SeminarFRM: TV_SeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 801
+  ClientHeight = 729
   ClientWidth = 1073
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -96,7 +96,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 0
     Top = 53
     Width = 1073
-    Height = 700
+    Height = 628
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 1
@@ -113,9 +113,9 @@ object V_SeminarFRM: TV_SeminarFRM
       Left = 0
       Top = 17
       Width = 1073
-      Height = 683
+      Height = 611
       Margins.Left = 30
-      ActivePage = SeminarTS
+      ActivePage = TabSheet1
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -131,13 +131,13 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 0
           Width = 1065
-          Height = 652
+          Height = 580
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
           object FirstGRP: TRzGroupBox
             Left = 20
-            Top = 16
+            Top = 24
             Width = 370
             Height = 402
             Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -750,7 +750,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 0
           Width = 1065
-          Height = 652
+          Height = 580
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
@@ -758,7 +758,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 585
             Top = 17
             Width = 384
-            Height = 635
+            Height = 563
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 3
@@ -1231,7 +1231,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 0
             Top = 17
             Width = 537
-            Height = 635
+            Height = 563
             Align = alLeft
             Caption = #920#941#956#945#964#945
             Font.Charset = DEFAULT_CHARSET
@@ -1254,7 +1254,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 2
               Top = 49
               Width = 533
-              Height = 584
+              Height = 512
               Selected.Strings = (
                 'SERIAL_NUMBER'#9'10'#9'A/A'
                 'SUBJECT'#9'55'#9#920#941#956#945)
@@ -1290,7 +1290,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 537
             Top = 17
             Width = 48
-            Height = 635
+            Height = 563
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 2
@@ -1305,7 +1305,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 0
           Width = 1065
-          Height = 652
+          Height = 580
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
@@ -1313,7 +1313,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 0
             Top = 12
             Width = 489
-            Height = 640
+            Height = 568
             Align = alLeft
             BorderSides = [sdLeft, sdTop, sdRight]
             Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
@@ -1336,15 +1336,15 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 1
               Top = 44
               Width = 487
-              Height = 595
+              Height = 523
               ControlType.Strings = (
                 'IS_GUEST;CheckBox;Y;N')
               Selected.Strings = (
-                'SERIAL_NUMBER'#9'8'#9'A/A'#9#9
-                'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959#9#9
-                'FIRST_NAME'#9'15'#9#908#957#959#956#945#9#9
-                'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945#9#9
-                'IS_GUEST'#9'7'#9#917#954#964#945#954#964#959#962#9#9)
+                'SERIAL_NUMBER'#9'8'#9'A/A'
+                'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
+                'FIRST_NAME'#9'15'#9#908#957#959#956#945
+                'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945
+                'IS_GUEST'#9'7'#9#917#954#964#945#954#964#959#962)
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
@@ -1372,7 +1372,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 489
             Top = 12
             Width = 94
-            Height = 640
+            Height = 568
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 2
@@ -1525,7 +1525,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 583
             Top = 12
             Width = 391
-            Height = 640
+            Height = 568
             Align = alLeft
             Caption = #922#945#964#940#955#959#947#959#962
             Font.Charset = DEFAULT_CHARSET
@@ -1539,7 +1539,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 1
               Top = 57
               Width = 389
-              Height = 582
+              Height = 510
               Selected.Strings = (
                 'SERIAL_NUMBER'#9'10'#9'A/A'
                 'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959
@@ -1621,7 +1621,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 0
           Width = 1065
-          Height = 652
+          Height = 580
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
@@ -1629,7 +1629,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 0
             Top = 17
             Width = 593
-            Height = 635
+            Height = 563
             Align = alLeft
             Caption = #922#972#963#964#959#962
             Font.Charset = DEFAULT_CHARSET
@@ -1849,7 +1849,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 0
           Width = 1065
-          Height = 652
+          Height = 580
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
@@ -1857,7 +1857,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 0
             Top = 17
             Width = 577
-            Height = 635
+            Height = 563
             Align = alLeft
             Caption = #933#960#949#957#952#965#956#943#963#949#953#962
             Ctl3D = False
@@ -1882,7 +1882,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 1
               Top = 25
               Width = 552
-              Height = 609
+              Height = 537
               ControlType.Strings = (
                 'AFTER_OR_BEFORE;CustomEdit;AfterFLD;F'
                 'DAYS_OR_MONTHS;CustomEdit;NamePersonFLD;F'
@@ -1983,7 +1983,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 609
             Top = 17
             Width = 338
-            Height = 635
+            Height = 563
             Align = alLeft
             Caption = #928#955#951#961#959#966#959#961#943#949#962
             Font.Charset = DEFAULT_CHARSET
@@ -2319,7 +2319,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 577
             Top = 17
             Width = 32
-            Height = 635
+            Height = 563
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 2
@@ -2333,7 +2333,7 @@ object V_SeminarFRM: TV_SeminarFRM
           Left = 0
           Top = 0
           Width = 1065
-          Height = 652
+          Height = 580
           Align = alClient
           TabOrder = 0
           object RzBitBtn2: TRzBitBtn
@@ -2420,7 +2420,7 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object Panel4: TRzPanel
     Left = 0
-    Top = 758
+    Top = 686
     Width = 1073
     Height = 43
     Align = alBottom
@@ -2658,7 +2658,7 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object RzPanel22: TRzPanel
     Left = 0
-    Top = 753
+    Top = 681
     Width = 1073
     Height = 5
     Align = alBottom
@@ -2872,7 +2872,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800100310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800180310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

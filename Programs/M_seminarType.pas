@@ -10,7 +10,7 @@ uses
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
   vcl.wwcheckbox, Vcl.ComCtrls, RzDBEdit, RzTabs, RzRadGrp, RzDBRGrp,
   Vcl.ExtDlgs, vcl.wwclearbuttongroup, vcl.wwradiogroup, vcl.wwriched,codeSiteLogging,CodeSiteMessage,
-  Vcl.Menus
+  Vcl.Menus, RzSplit
 ;
 type
   TM_SeminarTypeFRM = class(TForm)
@@ -53,7 +53,6 @@ type
     TableSQLEXPIRY_PERIOD: TIntegerField;
     TitlePNL: TRzPanel;
     RzPanel8: TRzPanel;
-    TableSQLTYPE_MONO_POLY: TWideStringField;
     SeminarReminderSQLIS_HIGH: TWideStringField;
     SeminarPictureSQL: TIBCQuery;
     SeminarPictureSRC: TDataSource;
@@ -236,9 +235,74 @@ type
     Label23: TLabel;
     wwDBEdit15: TwwDBEdit;
     TableSQLPASS_PERCENTAGE: TIntegerField;
+    TableSQLTYPE_MONO_POLY: TWideStringField;
+    InstructTS: TTabSheet;
+    RzPanel31: TRzPanel;
+    RzPanel32: TRzPanel;
+    RzGroupBox3: TRzGroupBox;
+    RzSizePanel1: TRzSizePanel;
+    AttendGRD: TwwDBGrid;
+    middlePNL: TRzPanel;
+    ToRightBTN: TBitBtn;
+    ToLeftBTN: TBitBtn;
+    RzGroupBox4: TRzGroupBox;
+    AllPersonsGRD: TwwDBGrid;
+    RzSizePanel2: TRzSizePanel;
+    SearchPersonFLD: TwwIncrementalSearch;
+    insSemInstructorsSQL: TIBCQuery;
+    insSemInstructorsSRC: TDataSource;
+    insSeminarSubjectSQL: TIBCQuery;
+    insSeminarSubjectSRC: TDataSource;
+    insSeminarSubjectSQLSERIAL_NUMBER: TIntegerField;
+    insSeminarSubjectSQLSUBJECT: TWideStringField;
+    insSeminarSubjectSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField;
+    insSeminarSubjectSQLFEE_NORMAL: TFloatField;
+    insSeminarSubjectSQLFEE_REDUCED: TFloatField;
+    RzPanel34: TRzPanel;
+    RzGroupBox5: TRzGroupBox;
+    RzSizePanel3: TRzSizePanel;
+    wwDBGrid3: TwwDBGrid;
+    insSemInstructorsSQLFK_INSTRUCTOR_SERIAL: TIntegerField;
+    insSemInstructorsSQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
+    insSemInstructorsSQLLAST_NAME: TWideStringField;
+    insSemInstructorsSQLFIRST_NAME: TWideStringField;
+    insSemInstructorsSQLNATIONAL_ID: TWideStringField;
+    insSeminarAllInstructorsSQL: TIBCQuery;
+    insSeminarAllInstructorsSRC: TDataSource;
+    insSeminarAllInstructorsSQLSERIAL_NUMBER: TIntegerField;
+    insSeminarAllInstructorsSQLANAD_NUMBER: TWideStringField;
+    insSeminarAllInstructorsSQLNATIONAL_ID: TWideStringField;
+    insSeminarAllInstructorsSQLFK_COMPANY_SERIAL: TIntegerField;
+    insSeminarAllInstructorsSQLFIRST_NAME: TWideStringField;
+    insSeminarAllInstructorsSQLLAST_NAME: TWideStringField;
+    insSeminarAllInstructorsSQLNICKNAME: TWideStringField;
+    insSeminarAllInstructorsSQLSTATUS: TWideStringField;
+    insSeminarAllInstructorsSQLOCCUPATION: TWideStringField;
+    insSeminarAllInstructorsSQLPHONE_MOBILE: TWideStringField;
+    insSeminarAllInstructorsSQLPHONE_FIXED: TWideStringField;
+    insSeminarAllInstructorsSQLPHONE_ALTERNATE: TWideStringField;
+    insSeminarAllInstructorsSQLFAX: TWideStringField;
+    insSeminarAllInstructorsSQLEMAIL: TWideStringField;
+    insSeminarAllInstructorsSQLEMAIL_2: TSmallintField;
+    insSeminarAllInstructorsSQLADDRESS: TWideStringField;
+    insSeminarAllInstructorsSQLADDRESS_STREET: TWideStringField;
+    insSeminarAllInstructorsSQLADDRESS_POST_CODE: TWideStringField;
+    insSeminarAllInstructorsSQLADDRESS_CITY: TWideStringField;
+    insSeminarAllInstructorsSQLADDRESS_DISTRICT: TWideStringField;
+    insSeminarAllInstructorsSQLDATE_STARTED: TDateField;
+    insSeminarAllInstructorsSQLDATE_BIRTH: TDateField;
+    insSeminarAllInstructorsSQLDATE_USER: TDateField;
+    insSeminarAllInstructorsSQLLIST_SOURCE: TWideStringField;
+    insSeminarAllInstructorsSQLFACEBOOK: TWideStringField;
+    insSeminarAllInstructorsSQLWEBSITE: TWideStringField;
+    insSeminarAllInstructorsSQLTWITTER: TWideStringField;
+    insSeminarAllInstructorsSQLSTATUS_ACTIVE: TWideStringField;
+    insSeminarAllInstructorsSQLCERTIFIED_ANAD: TWideStringField;
+    insSeminarAllInstructorsSQLJOB_TITLE: TWideStringField;
+    insSeminarAllInstructorsSQLFK_INSTRUCTOR_SERIAL: TIntegerField;
+    insSeminarAllInstructorsSQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
-    procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
@@ -262,6 +326,10 @@ type
     procedure Certifcates1Click(Sender: TObject);
     procedure CopyHardBTNClick(Sender: TObject);
     procedure SaveHardBTNClick(Sender: TObject);
+    procedure InstructTSShow(Sender: TObject);
+    procedure ToLeftBTNClick(Sender: TObject);
+    procedure ToRightBTNClick(Sender: TObject);
+    procedure insSeminarSubjectSQLAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -279,6 +347,10 @@ type
 
   procedure CopyFromDefault(Const PictureSerial:Integer;Const DefaultPicSerial:Integer; Const Language:String);
   procedure SaveToDefault(Const PictureSerial:Integer;Const DefaultPicSerial:integer;Const Language:String);
+
+  procedure RemoveInstructor();
+  procedure InsertInstructor();
+
 
   public
     { Public declarations }
@@ -319,21 +391,35 @@ end;
 procedure TM_SeminarTypeFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
 Dataset.FieldByName('ANAD_APPROVED').value:='Y';
-Dataset.FieldByName('SEMINAR_CORP_TYPE').value:='M';
+Dataset.FieldByName('type_mono_poly').value:='M';
 
 end;
 
-procedure TM_SeminarTypeFRM.TableSRCStateChange(Sender: TObject);
+procedure TM_SeminarTypeFRM.ToLeftBTNClick(Sender: TObject);
 begin
+InsertInstructor();
+end;
 
+procedure TM_SeminarTypeFRM.ToRightBTNClick(Sender: TObject);
+begin
+Removeinstructor();
+end;
 
-  with TableSQL do begin
-     If State<>dsInsert then begin
-//         StationIDFLD.Enabled:=false;
-     end  else begin
-//         StationIDFLD.Enabled:=true;
-     end;
-  end;//with
+procedure TM_SeminarTypeFRM.InstructTSShow(Sender: TObject);
+var
+  subjectSerial:Integer;
+begin
+  subjectSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+insSeminarSubjectSQL.Close;
+insSeminarSubjectSQL.ParamByName('SubjectSerial').Value:=subjectSerial;
+insSeminarSubjectSQL.Open;
+
+ksOpenTables([insSemInstructorsSQL]);
+
+insSeminarAllInstructorsSQL.Close;
+insSeminarAllInstructorsSQL.ParamByName('SubjectSerial').Value:=subjectSerial;
+insSeminarAllInstructorsSQL.Open;
+
 
 end;
 
@@ -841,4 +927,59 @@ begin
 end;
 
 //////////////////////////////////////////
+///
+///
+///
+procedure TM_SeminarTypeFRM.RemoveInstructor();
+var
+  qr: TksQuery;
+  Instrserial: Integer;
+  subjectSerial: Integer;
+  str: string;
+  st: string;
+
+begin
+  InstrSerial := insSemInstructorsSQL.FieldByName('FK_INSTRUCTOR_SERIAL').AsInteger;
+  subjectSerial := insSemInstructorsSQL.FieldByName('FK_SEMINAR_SUBJECT_SERIAL').AsInteger;
+  if (InstrSerial < 1) or (subjectSerial < 1) then
+    exit;
+  str :=
+    ' delete from SEMINAR_TYPE_SUB_INSTRUCTORS where FK_INSTRUCTOR_SERIAL= :instrSerial and FK_SEMINAR_SUBJECT_SERIAL= :subjectSerial';
+  ksExecSQLVar(cn, str, [InstrSerial, subjectSerial]);
+
+  insSemInstructorsSQL.Refresh;
+  insSeminarAllInstructorsSQL.Refresh;
+end;
+
+
+procedure TM_SeminarTypeFRM.InsertInstructor();
+var
+  qr: TksQuery;
+  Instrserial: Integer;
+  subjectSerial: Integer;
+  str: string;
+begin
+
+  InstrSerial := insSeminarAllInstructorsSQL.FieldByName('serial_number').AsInteger;
+  subjectSerial := insSeminarSubjectSQL.FieldByName('serial_number').AsInteger;
+
+  if InstrSerial < 1 then
+    exit;
+  str := ' insert into SEMINAR_TYPE_SUB_INSTRUCTORS  (FK_INSTRUCTOR_SERIAL,FK_SEMINAR_SUBJECT_SERIAL) values(:a,:b)';
+  ksExecSQLVar(cn, str, [InstrSerial, subjectSerial]);
+
+  insSemInstructorsSQL.Refresh;
+  insSeminarAllInstructorsSQL.Refresh;
+
+end;
+
+
+
+procedure TM_SeminarTypeFRM.insSeminarSubjectSQLAfterScroll(DataSet: TDataSet);
+begin
+  insSeminarAllInstructorsSQL.Close;
+  insSeminarAllInstructorsSQL.ParamByName('SubjectSerial').Value:=Dataset.FieldByName('serial_number').AsInteger;
+  insSeminarAllInstructorsSQL.Open;
+end;
+
 End.
