@@ -373,7 +373,7 @@ end;
 procedure TI_InvoiceSeminarFRM.GenerateInvoices(COnst seminarSubjectSerial:Integer);
 var
   qr:TksQuery;
-  str:String;
+  str,PerViewStr:String;
   SerialNumber:integer;
   SeminarSerial:Integer;
   isMono:Boolean;
@@ -388,6 +388,9 @@ var
   param:TParameterRecord;
   SubjectName:string;
 
+  PriceJ:Double;
+  cntStudents:Integer;
+
   vatRate:Double;
 begin
 
@@ -398,11 +401,17 @@ begin
   invoiceSQL.Close;
   invoiceSQL.Open;
 
-  qr:= TksQuery.Create(cn,'select * from seminar_subject where serial_number= :SsSerial');
+  Str:=
+  '   select sub.*, sem.type_mono_poly,sem.anad_approved     from'
+  +'  seminar_subject sub left outer join'
+  +'  seminar sem on sem.serial_number=sub.fk_seminar_serial'
+  +'  where'
+  +'  sub.serial_number= :SsSerial';
+  qr:= TksQuery.Create(cn,str);
   try
     qr.ParamByName('SsSerial').value:=SeminarSubjectSerial;
     qr.open;
-//    isMono:=qr.FieldByName('TYPE_MONO_POLY').Value='M';
+    isMono:=qr.FieldByName('TYPE_MONO_POLY').Value='M';
     PriceNormal:=qr.FieldByName('fee_normal').AsFloat;
     PriceANAD:=qr.FieldByName('fee_reduced').AsFloat;    //take this as default
     SeminarSerial:=qr.FieldByName('fk_seminar_serial').AsInteger;
@@ -419,7 +428,7 @@ begin
   ///
   if isMono then begin
     //company will be invoiced
-    str:=
+    PerViewStr:=
     ' select'
     +'  first 1 sem.fk_company_person_serial as per_Serial, per.NATIONAL_ID, per.last_name as Inv_Last_name, per.first_name as inv_first_name'
     +'  from'
@@ -428,8 +437,13 @@ begin
     +'  where'
     +'  sem.serial_number = :SeminarSerial';
 
+
+    str:='select sp.fk_seminar_serial from seminar_person sp where sp.is_guest=''N'' and sp.fk_seminar_serial= :SeminarSerial';
+    cntStudents:=  ksCountRecVarSQL(cn,str,[SeminarSerial]);
+    priceJ:=cntStudents * priceAnad;
+
   end else begin
-    str:=
+    PerViewStr:=
     '   select'
     +'    sp.person_serial as per_serial, sp.national_id, sp.last_name as INv_last_name, sp.first_name as inv_first_name'
     +'  from'
@@ -437,9 +451,10 @@ begin
     +'  where'
     +'      sp.fk_seminar_serial = :SeminarSerial    and sp.is_guest<>''Y''  ';
 
+    priceJ:=PriceAnad;
   end;
 
-  qr:= TksQuery.Create(cn,str);
+  qr:= TksQuery.Create(cn,PerViewstr);
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
@@ -473,7 +488,7 @@ begin
         InvoiceSQL.FieldByName('Discount_by_safe').Value:=0;
         InvoiceSQL.FieldByName('AMOUNT_NET').AsFloat:=0;
 
-        InvoiceSQL.FieldByName('AMOUNT_GROSS').AsFloat:=PriceAnad;
+        InvoiceSQL.FieldByName('AMOUNT_GROSS').AsFloat:=PriceJ;
         InvoiceSQL.FieldByName('VAT_RATE').AsFloat:=VatRate;
 
         AmountVat:= PriceAnad* vatRate/100.00;
@@ -540,13 +555,6 @@ begin
 //    InvoiceSQL.Connection.StartTransaction;
     if not InvoiceSQL.UpdateTransaction.Active then
       InvoiceSQL.UpdateTransaction.StartTransaction;
-
-
-
-// personSQL.Close;
-// personSQL.ParamByName('seminarSerial').Value:=SeminarSErial;
-// personSQL.Open;
-
 
   GenerateInvoices(seminarSubjectSerial);
 

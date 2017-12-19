@@ -69,12 +69,10 @@ type
     Label1: TLabel;
     Label5: TLabel;
     SerialFLD: TRzDBLabel;
-    Label17: TLabel;
     Label15: TLabel;
     Label16: TLabel;
     FirstFLD: TwwDBEdit;
     wwDBEdit1: TwwDBEdit;
-    wwDBEdit2: TwwDBEdit;
     DatePassedFLD: TwwDBDateTimePicker;
     wwDBEdit13: TwwDBEdit;
     wwDBComboBox1: TwwDBComboBox;
@@ -126,6 +124,9 @@ type
     wwDBEdit5: TwwDBEdit;
     Label18: TLabel;
     wwDBEdit6: TwwDBEdit;
+    Label19: TLabel;
+    wwDBEdit7: TwwDBEdit;
+    TableSQLJOB: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

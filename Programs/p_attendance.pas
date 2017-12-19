@@ -108,6 +108,7 @@ type
     Label1: TLabel;
     RzDBLabel1: TRzDBLabel;
     N4: TMenuItem;
+    BitBtn1: TBitBtn;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -134,11 +135,13 @@ type
     procedure N4Click(Sender: TObject);
     procedure wwDBGrid1Exit(Sender: TObject);
     procedure Reports1Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
   procedure UpdatePresenceTable(const seminarSerial, DaySerial:integer);
   procedure SavePresenceTable();
+  procedure TickALl();
   public
     { Public declarations }
     IN_ACTION:String;
@@ -398,6 +401,10 @@ begin
   if VPresenceSQL.State in [dsInactive] then
     exit;
 
+  if vPresenceSQL.FieldByName('personSerial').AsInteger=0 then
+    exit;
+
+
   isPresent:=VPresenceSQL.FieldByName('is_present').AsString='Y';
 
   if VPresenceSQL.State in [dsBrowse] then VPresenceSQL.Edit;
@@ -579,6 +586,11 @@ str:=
 end;
 
 
+procedure TP_attendanceFRM.BitBtn1Click(Sender: TObject);
+begin
+  TickAll();
+end;
+
 procedure TP_attendanceFRM.Button1Click(Sender: TObject);
 var
   daySerial:Integer;
@@ -601,6 +613,29 @@ begin
   SeminarSerial:=DaySQL.FieldByName('SeminarSerial').AsInteger;
   daySerial:=DaySQL.FieldByName('Dayserial').AsInteger;
    UpdatePresenceTable(seminarSerial,daySerial);
+end;
+
+
+procedure TP_attendanceFRM.TickALl();
+var
+  hours:Integer;
+begin
+
+  if VPresenceSQL.State in [dsInactive] then
+    exit;
+
+  VPresenceSQL.First;
+  while not VPresenceSQL.eof do begin
+    if VPresenceSQL.State in [dsBrowse] then VPresenceSQL.Edit;
+      hours:=daySQL.FieldByName('DURATION_HOURS').AsInteger;
+      VPresenceSQL.FieldByName('hours_present').Value:=hours;
+      VPresenceSQL.FieldByName('is_present').AsString :='Y';
+      VPresenceSQL.Post;
+    VPresenceSQL.Next;
+  end;
+  VpresenceSQL.First;
+
+
 end;
 
 

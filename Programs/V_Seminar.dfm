@@ -124,6 +124,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      ExplicitTop = 18
       object SeminarTS: TTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
         OnShow = SeminarTSShow
@@ -138,7 +139,7 @@ object V_SeminarFRM: TV_SeminarFRM
           object FirstGRP: TRzGroupBox
             Left = 20
             Top = 24
-            Width = 370
+            Width = 386
             Height = 402
             Caption = #928#955#951#961#959#966#959#961#943#949#962
             Font.Charset = DEFAULT_CHARSET

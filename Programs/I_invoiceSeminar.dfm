@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 578
+  ClientHeight = 585
   ClientWidth = 1079
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,11 +21,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 535
+    Top = 542
     Width = 1079
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 978
       Top = 1
@@ -190,19 +191,21 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 65
     Width = 1079
-    Height = 470
+    Height = 477
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
+    ExplicitHeight = 450
     object Panel5: TPanel
       Left = 421
       Top = 2
       Width = 750
-      Height = 466
+      Height = 473
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 446
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -348,12 +351,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 423
+        Top = 430
         Width = 750
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         TabOrder = 1
+        ExplicitTop = 403
         object RzPanel6: TRzPanel
           Left = 649
           Top = 1
@@ -567,10 +571,11 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 419
-      Height = 466
+      Height = 473
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 446
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -582,12 +587,13 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 228
+        Top = 235
         Width = 419
         Height = 238
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 208
         object GroupBox1: TGroupBox
           Left = 0
           Top = 0
@@ -1061,7 +1067,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
         'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
         ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
-        'ATEGORY)'
+        'ATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE, SPECIFICATION_NUM' +
+        'BER)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
@@ -1069,7 +1076,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
         ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
         ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
-        ':TYPE_MONO_POLY, :SEM_CATEGORY)')
+        ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED, :PASS_PERC' +
+        'ENTAGE, :SPECIFICATION_NUMBER)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -1088,7 +1096,9 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
         'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
         ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
-        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY'
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY, FK_C' +
+        'OMPANY_INVOICED = :FK_COMPANY_INVOICED, PASS_PERCENTAGE = :PASS_' +
+        'PERCENTAGE, SPECIFICATION_NUMBER = :SPECIFICATION_NUMBER'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1098,7 +1108,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
         '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
         'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
-        'EM_CATEGORY FROM SEMINAR'
+        'EM_CATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE, SPECIFICATION' +
+        '_NUMBER FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
