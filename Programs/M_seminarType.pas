@@ -106,7 +106,7 @@ type
     Label7: TLabel;
     Label17: TLabel;
     Label5: TLabel;
-    FirstFLD: TwwDBEdit;
+    DescFLD: TwwDBEdit;
     RzDBRichEdit1: TRzDBRichEdit;
     wwCheckBox1: TwwCheckBox;
     wwCheckBox2: TwwCheckBox;
@@ -301,6 +301,9 @@ type
     insSeminarAllInstructorsSQLJOB_TITLE: TWideStringField;
     insSeminarAllInstructorsSQLFK_INSTRUCTOR_SERIAL: TIntegerField;
     insSeminarAllInstructorsSQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
+    TableSQLSPECIFICATION_NUMBER: TWideStringField;
+    Label24: TLabel;
+    FirstFLD: TwwDBEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);

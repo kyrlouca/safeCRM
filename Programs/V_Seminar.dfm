@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = StudentsTS
+      ActivePage = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -150,7 +150,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TabOrder = 0
             object Label1: TLabel
               Left = 49
-              Top = 177
+              Top = 200
               Width = 58
               Height = 14
               Caption = #928#949#961#953#947#961#945#966#942
@@ -187,7 +187,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label3: TLabel
               Left = 55
-              Top = 148
+              Top = 171
               Width = 52
               Height = 14
               Caption = 'Template'
@@ -200,7 +200,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label4: TLabel
               Left = 72
-              Top = 199
+              Top = 222
               Width = 35
               Height = 14
               Caption = #931#967#972#955#953#945
@@ -213,7 +213,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Companylbl: TLabel
               Left = 64
-              Top = 356
+              Top = 379
               Width = 43
               Height = 14
               Caption = #917#964#945#953#961#949#943#945
@@ -226,7 +226,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label6: TLabel
               Left = 66
-              Top = 88
+              Top = 111
               Width = 41
               Height = 14
               Caption = #904#957#945#961#958#951
@@ -239,7 +239,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label7: TLabel
               Left = 37
-              Top = 115
+              Top = 138
               Width = 70
               Height = 14
               Caption = #927#955#959#954#955#942#961#969#963#951
@@ -263,9 +263,22 @@ object V_SeminarFRM: TV_SeminarFRM
               Font.Style = []
               ParentFont = False
             end
+            object Label27: TLabel
+              Left = 5
+              Top = 75
+              Width = 102
+              Height = 14
+              Caption = #913#961'. '#928#961#959#948#953#945#947#961#945#966#942#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
             object DescFLD: TwwDBEdit
-              Left = 113
-              Top = 171
+              Left = 115
+              Top = 194
               Width = 252
               Height = 22
               DataField = 'SEMINAR_NAME'
@@ -276,8 +289,8 @@ object V_SeminarFRM: TV_SeminarFRM
               WordWrap = False
             end
             object SeminarTypeFLD: TwwDBComboBox
-              Left = 113
-              Top = 146
+              Left = 115
+              Top = 169
               Width = 144
               Height = 21
               ShowButton = True
@@ -302,8 +315,8 @@ object V_SeminarFRM: TV_SeminarFRM
               OnCloseUp = SeminarTypeFLDCloseUp
             end
             object RzDBRichEdit1: TRzDBRichEdit
-              Left = 113
-              Top = 199
+              Left = 115
+              Top = 222
               Width = 252
               Height = 49
               DataField = 'COMMENTS'
@@ -317,8 +330,8 @@ object V_SeminarFRM: TV_SeminarFRM
               Zoom = 100
             end
             object MonoRGP: TwwRadioGroup
-              Left = 113
-              Top = 262
+              Left = 115
+              Top = 285
               Width = 185
               Height = 62
               DisableThemes = False
@@ -335,8 +348,8 @@ object V_SeminarFRM: TV_SeminarFRM
               OnChange = MonoRGPChange
             end
             object CompanyFLD: TwwDBLookupCombo
-              Left = 113
-              Top = 354
+              Left = 115
+              Top = 377
               Width = 143
               Height = 22
               DropDownAlignment = taLeftJustify
@@ -356,8 +369,8 @@ object V_SeminarFRM: TV_SeminarFRM
               ShowMatchText = True
             end
             object StartDateFLD: TwwDBDateTimePicker
-              Left = 113
-              Top = 85
+              Left = 115
+              Top = 108
               Width = 90
               Height = 23
               CalendarAttributes.Font.Charset = DEFAULT_CHARSET
@@ -379,8 +392,8 @@ object V_SeminarFRM: TV_SeminarFRM
               DisplayFormat = 'dd/mm/yyyy'
             end
             object wwDBDateTimePicker1: TwwDBDateTimePicker
-              Left = 113
-              Top = 112
+              Left = 115
+              Top = 135
               Width = 90
               Height = 23
               CalendarAttributes.Font.Charset = DEFAULT_CHARSET
@@ -402,24 +415,39 @@ object V_SeminarFRM: TV_SeminarFRM
               DisplayFormat = 'dd/mm/yyyy'
             end
             object AnadFLD: TwwDBEdit
-              Left = 113
+              Left = 115
               Top = 46
-              Width = 141
+              Width = 77
               Height = 22
               CharCase = ecUpperCase
               DataField = 'ANAD_NUMBER'
               DataSource = SeminarSRC
+              Picture.PictureMask = '*6{#}'
+              Picture.AutoFill = False
+              RegexMask.Mask = '\d{6}'
               TabOrder = 0
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object FirstFLD: TwwDBEdit
+              Left = 115
+              Top = 72
+              Width = 75
+              Height = 22
+              DataField = 'SPECIFICATION_NUMBER'
+              DataSource = SeminarSRC
+              TabOrder = 8
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
             end
           end
           object SecondGRP: TRzGroupBox
-            Left = 408
+            Left = 416
             Top = 24
             Width = 321
-            Height = 265
+            Height = 177
             Caption = #928#955#951#961#959#966#959#961#943#949#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -428,22 +456,9 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
             TabOrder = 1
-            object Label5: TLabel
+            object Label10: TLabel
               Left = 35
               Top = 22
-              Width = 66
-              Height = 14
-              Caption = #917#954#960#945#953#948#949#965#964#942#962
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label10: TLabel
-              Left = 27
-              Top = 103
               Width = 74
               Height = 14
               Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
@@ -454,66 +469,9 @@ object V_SeminarFRM: TV_SeminarFRM
               Font.Style = []
               ParentFont = False
             end
-            object Label11: TLabel
-              Left = 68
-              Top = 68
-              Width = 34
-              Height = 14
-              Caption = #935#974#961#959#962
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object InstructorBTN: TSpeedButton
-              Left = 258
-              Top = 18
-              Width = 21
-              Height = 19
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Arial'
-              Font.Style = []
-              Glyph.Data = {
-                D6000000424DD60000000000000076000000280000000C0000000C0000000100
-                0400000000006000000000000000000000001000000000000000000000000000
-                80000080000000808000800000008000800080800000C0C0C000808080000000
-                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
-                0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
-                0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
-                0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
-              Layout = blGlyphBottom
-              ParentFont = False
-              OnClick = InstructorBTNClick
-            end
-            object VenueBTN: TSpeedButton
-              Left = 258
-              Top = 68
-              Width = 21
-              Height = 19
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Arial'
-              Font.Style = []
-              Glyph.Data = {
-                D6000000424DD60000000000000076000000280000000C0000000C0000000100
-                0400000000006000000000000000000000001000000000000000000000000000
-                80000080000000808000800000008000800080800000C0C0C000808080000000
-                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
-                0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
-                0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
-                0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
-              Layout = blGlyphBottom
-              ParentFont = False
-              OnClick = VenueBTNClick
-            end
             object Label12: TLabel
-              Left = 4
-              Top = 133
+              Left = 12
+              Top = 52
               Width = 97
               Height = 14
               Caption = #913#961#953#952#956#972#962' '#924#945#952#951#964#974#957
@@ -525,8 +483,8 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentFont = False
             end
             object Label13: TLabel
-              Left = 24
-              Top = 194
+              Left = 32
+              Top = 113
               Width = 73
               Height = 14
               Caption = #933#960#940#961#967#949#953' '#923#942#958#951
@@ -538,8 +496,8 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentFont = False
             end
             object Label19: TLabel
-              Left = 53
-              Top = 218
+              Left = 61
+              Top = 137
               Width = 48
               Height = 14
               Caption = #931#949' '#924#942#957#949#962
@@ -550,44 +508,9 @@ object V_SeminarFRM: TV_SeminarFRM
               Font.Style = []
               ParentFont = False
             end
-            object Label9: TLabel
-              Left = 35
-              Top = 47
-              Width = 66
-              Height = 14
-              Caption = #913#958#953#959#955#959#947#951#964#942#962
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-            end
-            object ExaminerBTN: TSpeedButton
-              Left = 257
-              Top = 43
-              Width = 21
-              Height = 19
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Arial'
-              Font.Style = []
-              Glyph.Data = {
-                D6000000424DD60000000000000076000000280000000C0000000C0000000100
-                0400000000006000000000000000000000001000000000000000000000000000
-                80000080000000808000800000008000800080800000C0C0C000808080000000
-                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
-                0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
-                0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
-                0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
-              Layout = blGlyphBottom
-              ParentFont = False
-              OnClick = ExaminerBTNClick
-            end
             object Label24: TLabel
-              Left = 4
-              Top = 164
+              Left = 12
+              Top = 83
               Width = 97
               Height = 14
               Caption = #917#955#940#967#953#963#964#959' %'#937#961#974#957' '
@@ -599,83 +522,32 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentFont = False
             end
             object wwDBEdit1: TwwDBEdit
-              Left = 108
-              Top = 100
+              Left = 116
+              Top = 19
               Width = 90
               Height = 22
               DataField = 'DURATION_HOURS'
               DataSource = SeminarSRC
-              TabOrder = 3
+              TabOrder = 0
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
             end
-            object InstructorFLD: TwwDBComboBox
-              Left = 108
-              Top = 17
-              Width = 144
-              Height = 21
-              ShowButton = True
-              Style = csDropDownList
-              MapList = True
-              AllowClearKey = False
-              AutoDropDown = True
-              ShowMatchText = True
-              DataField = 'FK_INSTRUCTOR'
-              DataSource = SeminarSRC
-              DropDownCount = 8
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ItemHeight = 0
-              ParentFont = False
-              Sorted = False
-              TabOrder = 0
-              UnboundDataType = wwDefault
-            end
-            object VenueFLD: TwwDBComboBox
-              Left = 108
-              Top = 66
-              Width = 144
-              Height = 21
-              ShowButton = True
-              Style = csDropDownList
-              MapList = True
-              AllowClearKey = False
-              AutoDropDown = True
-              ShowMatchText = True
-              DataField = 'FK_VENUE'
-              DataSource = SeminarSRC
-              DropDownCount = 8
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ItemHeight = 0
-              ParentFont = False
-              Sorted = False
-              TabOrder = 2
-              UnboundDataType = wwDefault
-              TwoColumnDisplay = True
-            end
             object wwDBEdit3: TwwDBEdit
-              Left = 108
-              Top = 125
+              Left = 116
+              Top = 44
               Width = 90
               Height = 22
               DataField = 'MAX_CAPACITY'
               DataSource = SeminarSRC
-              TabOrder = 4
+              TabOrder = 1
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
             end
             object CompletedFLD: TwwCheckBox
-              Left = 108
-              Top = 193
+              Left = 116
+              Top = 112
               Width = 37
               Height = 18
               DisableThemes = False
@@ -688,53 +560,28 @@ object V_SeminarFRM: TV_SeminarFRM
               DataField = 'HAS_EXPIRY'
               DataSource = SeminarSRC
               ShowText = False
-              TabOrder = 6
+              TabOrder = 3
             end
             object wwDBEdit4: TwwDBEdit
-              Left = 107
-              Top = 217
+              Left = 115
+              Top = 136
               Width = 75
               Height = 22
               DataField = 'EXPIRY_PERIOD'
               DataSource = SeminarSRC
-              TabOrder = 7
+              TabOrder = 4
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
             end
-            object ExaminerFLD: TwwDBComboBox
-              Left = 108
-              Top = 42
-              Width = 144
-              Height = 21
-              ShowButton = True
-              Style = csDropDownList
-              MapList = True
-              AllowClearKey = False
-              AutoDropDown = True
-              ShowMatchText = True
-              DataField = 'FK_EXAMINER'
-              DataSource = SeminarSRC
-              DropDownCount = 8
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ItemHeight = 0
-              ParentFont = False
-              Sorted = False
-              TabOrder = 1
-              UnboundDataType = wwDefault
-            end
             object wwDBEdit6: TwwDBEdit
-              Left = 108
-              Top = 161
+              Left = 116
+              Top = 80
               Width = 59
               Height = 22
               DataField = 'PASS_PERCENTAGE'
               DataSource = SeminarSRC
-              TabOrder = 5
+              TabOrder = 2
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -764,7 +611,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TabOrder = 3
             object GroupBox2: TGroupBox
               Left = 6
-              Top = 195
+              Top = 330
               Width = 337
               Height = 236
               Caption = #924#941#961#949#962' '#916#953#949#958#945#947#969#947#942#962
@@ -1226,6 +1073,193 @@ object V_SeminarFRM: TV_SeminarFRM
                 end
               end
             end
+            object RzGroupBox3: TRzGroupBox
+              Left = 6
+              Top = 195
+              Width = 339
+              Height = 112
+              Caption = #917#954#960#945#943#948#949#965#963#951
+              TabOrder = 2
+              object Label5: TLabel
+                Left = 11
+                Top = 30
+                Width = 66
+                Height = 14
+                Caption = #917#954#960#945#953#948#949#965#964#942#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label11: TLabel
+                Left = 44
+                Top = 76
+                Width = 34
+                Height = 14
+                Caption = #935#974#961#959#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object InstructorBTN: TSpeedButton
+                Left = 234
+                Top = 28
+                Width = 21
+                Height = 19
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Arial'
+                Font.Style = []
+                Glyph.Data = {
+                  D6000000424DD60000000000000076000000280000000C0000000C0000000100
+                  0400000000006000000000000000000000001000000000000000000000000000
+                  80000080000000808000800000008000800080800000C0C0C000808080000000
+                  FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                  0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+                  0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+                  0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
+                Layout = blGlyphBottom
+                ParentFont = False
+                OnClick = InstructorBTNClick
+              end
+              object VenueBTN: TSpeedButton
+                Left = 234
+                Top = 76
+                Width = 21
+                Height = 19
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Arial'
+                Font.Style = []
+                Glyph.Data = {
+                  D6000000424DD60000000000000076000000280000000C0000000C0000000100
+                  0400000000006000000000000000000000001000000000000000000000000000
+                  80000080000000808000800000008000800080800000C0C0C000808080000000
+                  FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                  0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+                  0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+                  0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
+                Layout = blGlyphBottom
+                ParentFont = False
+                OnClick = VenueBTNClick
+              end
+              object Label9: TLabel
+                Left = 11
+                Top = 55
+                Width = 66
+                Height = 14
+                Caption = #913#958#953#959#955#959#947#951#964#942#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object ExaminerBTN: TSpeedButton
+                Left = 234
+                Top = 53
+                Width = 21
+                Height = 19
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Arial'
+                Font.Style = []
+                Glyph.Data = {
+                  D6000000424DD60000000000000076000000280000000C0000000C0000000100
+                  0400000000006000000000000000000000001000000000000000000000000000
+                  80000080000000808000800000008000800080800000C0C0C000808080000000
+                  FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                  0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+                  0000F00FF00FF00F0000F00FF00FF00F0000FFFFFFFFFFFF0000FFFFFFFFFFFF
+                  0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000}
+                Layout = blGlyphBottom
+                ParentFont = False
+                OnClick = ExaminerBTNClick
+              end
+              object VenueFLD: TwwDBComboBox
+                Left = 84
+                Top = 74
+                Width = 144
+                Height = 21
+                ShowButton = True
+                Style = csDropDownList
+                MapList = True
+                AllowClearKey = False
+                AutoDropDown = True
+                ShowMatchText = True
+                DataField = 'FK_VENUE'
+                DataSource = SeminarSubjectSRC
+                DropDownCount = 8
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ItemHeight = 0
+                ParentFont = False
+                Sorted = False
+                TabOrder = 0
+                UnboundDataType = wwDefault
+                TwoColumnDisplay = True
+              end
+              object InstructorFLD: TwwDBLookupCombo
+                Left = 84
+                Top = 27
+                Width = 144
+                Height = 21
+                DropDownAlignment = taLeftJustify
+                Selected.Strings = (
+                  'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
+                  'FIRST_NAME'#9'12'#9#908#957#959#956#945#9'F'
+                  'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945#9'F'
+                  'PHONE_MOBILE'#9'10'#9#922#953#957#951#964#972#9'F')
+                DataField = 'FK_INSTRUCTOR'
+                DataSource = SeminarSubjectSRC
+                LookupTable = instructorSelectSQL
+                LookupField = 'SERIAL_NUMBER'
+                Options = [loTitles]
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
+                AutoDropDown = True
+                ShowButton = True
+                PreciseEditRegion = False
+                AllowClearKey = False
+              end
+              object ExaminerFLD: TwwDBLookupCombo
+                Left = 84
+                Top = 50
+                Width = 144
+                Height = 21
+                DropDownAlignment = taLeftJustify
+                Selected.Strings = (
+                  'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
+                  'FIRST_NAME'#9'12'#9#908#957#959#956#945#9'F'
+                  'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945#9'F'
+                  'PHONE_MOBILE'#9'10'#9#922#953#957#951#964#972#9'F')
+                DataField = 'FK_EXAMINER'
+                DataSource = SeminarSubjectSRC
+                LookupTable = instructorSelectSQL
+                LookupField = 'SERIAL_NUMBER'
+                Options = [loTitles]
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 2
+                AutoDropDown = True
+                ShowButton = True
+                PreciseEditRegion = False
+                AllowClearKey = False
+              end
+            end
           end
           object GroupBox1: TGroupBox
             Left = 0
@@ -1331,7 +1365,6 @@ object V_SeminarFRM: TV_SeminarFRM
               Height = 29
               Align = alTop
               TabOrder = 0
-              ExplicitWidth = 487
             end
             object AttendGRD: TwwDBGrid
               Left = 1
@@ -1368,7 +1401,6 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleButtons = False
               OnTitleButtonClick = AttendGRDTitleButtonClick
               OnUpdateFooter = AttendGRDUpdateFooter
-              ExplicitWidth = 487
             end
           end
           object RzPanel3: TRzPanel
@@ -1379,7 +1411,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 2
-            ExplicitLeft = 489
             object ToRightBTN: TBitBtn
               Left = 3
               Top = 141
@@ -1539,12 +1570,11 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
             TabOrder = 3
-            ExplicitLeft = 583
             object AllPersonsGRD: TwwDBGrid
               Left = 1
-              Top = 57
+              Top = 84
               Width = 448
-              Height = 510
+              Height = 483
               Selected.Strings = (
                 'SERIAL_NUMBER'#9'10'#9'A/A'
                 'SERIAL_QB'#9'8'#9'QB'
@@ -1581,17 +1611,44 @@ object V_SeminarFRM: TV_SeminarFRM
               OnTitleButtonClick = AllPersonsGRDTitleButtonClick
               OnDblClick = AllPersonsGRDDblClick
               OnKeyDown = AllPersonsGRDKeyDown
+              ExplicitTop = 128
+              ExplicitHeight = 439
             end
             object RzSizePanel1: TRzSizePanel
               Left = 1
               Top = 15
               Width = 448
-              Height = 42
+              Height = 69
               Align = alTop
               TabOrder = 0
-              ExplicitWidth = 389
-              object SearchPersonFLD: TwwIncrementalSearch
+              object Label25: TLabel
                 Left = 8
+                Top = 38
+                Width = 61
+                Height = 14
+                Caption = #932#945#965#964#972#964#951#964#945
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label26: TLabel
+                Left = 30
+                Top = 10
+                Width = 41
+                Height = 14
+                Caption = #917#960#943#952#949#964#959
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object SearchPersonFLD: TwwIncrementalSearch
+                Left = 75
                 Top = 7
                 Width = 128
                 Height = 22
@@ -1605,6 +1662,23 @@ object V_SeminarFRM: TV_SeminarFRM
                 Font.Style = []
                 ParentFont = False
                 TabOrder = 0
+                OnKeyDown = SearchPersonFLDKeyDown
+              end
+              object wwIncrementalSearch2: TwwIncrementalSearch
+                Left = 75
+                Top = 35
+                Width = 128
+                Height = 22
+                DataSource = NonAttendSRC
+                SearchField = 'NATIONAL_ID'
+                ShowMatchText = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 1
                 OnKeyDown = SearchPersonFLDKeyDown
               end
             end
@@ -2689,7 +2763,8 @@ object V_SeminarFRM: TV_SeminarFRM
         'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
         'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
         ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
-        'ATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE)'
+        'ATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE, SPECIFICATION_NUM' +
+        'BER)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
@@ -2698,7 +2773,7 @@ object V_SeminarFRM: TV_SeminarFRM
         ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
         ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
         ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED, :PASS_PERC' +
-        'ENTAGE)')
+        'ENTAGE, :SPECIFICATION_NUMBER)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -2719,7 +2794,7 @@ object V_SeminarFRM: TV_SeminarFRM
         ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
         '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY, FK_C' +
         'OMPANY_INVOICED = :FK_COMPANY_INVOICED, PASS_PERCENTAGE = :PASS_' +
-        'PERCENTAGE'
+        'PERCENTAGE, SPECIFICATION_NUMBER = :SPECIFICATION_NUMBER'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -2729,7 +2804,8 @@ object V_SeminarFRM: TV_SeminarFRM
         'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
         '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
         'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
-        'EM_CATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE FROM SEMINAR'
+        'EM_CATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE, SPECIFICATION' +
+        '_NUMBER FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -2838,7 +2914,6 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object SeminarSQLANAD_NUMBER: TWideStringField
       FieldName = 'ANAD_NUMBER'
-      Required = True
       FixedChar = True
       Size = 30
     end
@@ -2863,6 +2938,10 @@ object V_SeminarFRM: TV_SeminarFRM
     object SeminarSQLPASS_PERCENTAGE: TIntegerField
       FieldName = 'PASS_PERCENTAGE'
     end
+    object SeminarSQLSPECIFICATION_NUMBER: TWideStringField
+      FieldName = 'SPECIFICATION_NUMBER'
+      Size = 10
+    end
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -2879,7 +2958,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800180310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800200310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3809,11 +3888,13 @@ object V_SeminarFRM: TV_SeminarFRM
       'INSERT INTO SEMINAR_SUBJECT'
       
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, SUBJECT, FK_SUBJECT_TYPE_SE' +
-        'RIAL, FEE_NORMAL, FEE_REDUCED)'
+        'RIAL, FEE_NORMAL, FEE_REDUCED, FK_INSTRUCTOR, FK_EXAMINER, FK_VE' +
+        'NUE)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :SUBJECT, :FK_SUBJECT_TYP' +
-        'E_SERIAL, :FEE_NORMAL, :FEE_REDUCED)')
+        'E_SERIAL, :FEE_NORMAL, :FEE_REDUCED, :FK_INSTRUCTOR, :FK_EXAMINE' +
+        'R, :FK_VENUE)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_SUBJECT'
       'WHERE'
@@ -3825,13 +3906,15 @@ object V_SeminarFRM: TV_SeminarFRM
         '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_SEMINAR_SERIAL = :FK_SEMINA' +
         'R_SERIAL, SUBJECT = :SUBJECT, FK_SUBJECT_TYPE_SERIAL = :FK_SUBJE' +
         'CT_TYPE_SERIAL, FEE_NORMAL = :FEE_NORMAL, FEE_REDUCED = :FEE_RED' +
-        'UCED'
+        'UCED, FK_INSTRUCTOR = :FK_INSTRUCTOR, FK_EXAMINER = :FK_EXAMINER' +
+        ', FK_VENUE = :FK_VENUE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, SUBJECT, FK_SUBJECT_TYP' +
-        'E_SERIAL, FEE_NORMAL, FEE_REDUCED FROM SEMINAR_SUBJECT'
+        'E_SERIAL, FEE_NORMAL, FEE_REDUCED, FK_INSTRUCTOR, FK_EXAMINER, F' +
+        'K_VENUE FROM SEMINAR_SUBJECT'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -3897,6 +3980,18 @@ object V_SeminarFRM: TV_SeminarFRM
       DisplayLabel = #932#953#956#942' '#956#949' '#917#960#953#967#959#961#942#947#951#963#951
       FieldName = 'FEE_REDUCED'
       Required = True
+      Visible = False
+    end
+    object seminarSubjectSQLFK_INSTRUCTOR: TIntegerField
+      FieldName = 'FK_INSTRUCTOR'
+      Visible = False
+    end
+    object seminarSubjectSQLFK_EXAMINER: TIntegerField
+      FieldName = 'FK_EXAMINER'
+      Visible = False
+    end
+    object seminarSubjectSQLFK_VENUE: TIntegerField
+      FieldName = 'FK_VENUE'
       Visible = False
     end
   end
@@ -4452,6 +4547,406 @@ object V_SeminarFRM: TV_SeminarFRM
       FieldName = 'PHONE_CONTACT'
       FixedChar = True
       Size = 15
+    end
+  end
+  object instructorSelectSQL: TIBCQuery
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    SQL.Strings = (
+      'select * from instructor where status_active= '#39'Y'#39)
+    ReadOnly = True
+    Left = 539
+    Top = 282
+    object instructorSelectSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 12
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object instructorSelectSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 12
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object instructorSelectSQLNATIONAL_ID: TWideStringField
+      DisplayLabel = #932#945#965#964#972#964#951#964#945
+      DisplayWidth = 10
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
+    object instructorSelectSQLPHONE_MOBILE: TWideStringField
+      DisplayLabel = #922#953#957#951#964#972
+      DisplayWidth = 10
+      FieldName = 'PHONE_MOBILE'
+      FixedChar = True
+      Size = 15
+    end
+    object instructorSelectSQLSERIAL_NUMBER: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+      Visible = False
+    end
+    object instructorSelectSQLANAD_NUMBER: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'ANAD_NUMBER'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object instructorSelectSQLFK_COMPANY_SERIAL: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'FK_COMPANY_SERIAL'
+      Visible = False
+    end
+    object instructorSelectSQLNICKNAME: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'NICKNAME'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object instructorSelectSQLSTATUS: TWideStringField
+      DisplayWidth = 3
+      FieldName = 'STATUS'
+      Visible = False
+      FixedChar = True
+      Size = 3
+    end
+    object instructorSelectSQLOCCUPATION: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'OCCUPATION'
+      Visible = False
+      Size = 160
+    end
+    object instructorSelectSQLPHONE_FIXED: TWideStringField
+      DisplayWidth = 15
+      FieldName = 'PHONE_FIXED'
+      Visible = False
+      FixedChar = True
+      Size = 15
+    end
+    object instructorSelectSQLPHONE_ALTERNATE: TWideStringField
+      DisplayWidth = 15
+      FieldName = 'PHONE_ALTERNATE'
+      Visible = False
+      FixedChar = True
+      Size = 15
+    end
+    object instructorSelectSQLFAX: TWideStringField
+      DisplayWidth = 15
+      FieldName = 'FAX'
+      Visible = False
+      FixedChar = True
+      Size = 15
+    end
+    object instructorSelectSQLEMAIL: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'EMAIL'
+      Visible = False
+      Size = 160
+    end
+    object instructorSelectSQLEMAIL_2: TSmallintField
+      DisplayWidth = 10
+      FieldName = 'EMAIL_2'
+      Visible = False
+    end
+    object instructorSelectSQLADDRESS: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'ADDRESS'
+      Visible = False
+      Size = 160
+    end
+    object instructorSelectSQLADDRESS_STREET: TWideStringField
+      DisplayWidth = 80
+      FieldName = 'ADDRESS_STREET'
+      Visible = False
+      Size = 80
+    end
+    object instructorSelectSQLADDRESS_POST_CODE: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'ADDRESS_POST_CODE'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object instructorSelectSQLADDRESS_CITY: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'ADDRESS_CITY'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object instructorSelectSQLADDRESS_DISTRICT: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'ADDRESS_DISTRICT'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object instructorSelectSQLDATE_STARTED: TDateField
+      DisplayWidth = 10
+      FieldName = 'DATE_STARTED'
+      Visible = False
+    end
+    object instructorSelectSQLDATE_BIRTH: TDateField
+      DisplayWidth = 10
+      FieldName = 'DATE_BIRTH'
+      Visible = False
+    end
+    object instructorSelectSQLDATE_USER: TDateField
+      DisplayWidth = 10
+      FieldName = 'DATE_USER'
+      Visible = False
+    end
+    object instructorSelectSQLLIST_SOURCE: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'LIST_SOURCE'
+      Visible = False
+      Size = 160
+    end
+    object instructorSelectSQLFACEBOOK: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'FACEBOOK'
+      Visible = False
+      Size = 160
+    end
+    object instructorSelectSQLWEBSITE: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'WEBSITE'
+      Visible = False
+      Size = 160
+    end
+    object instructorSelectSQLTWITTER: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'TWITTER'
+      Visible = False
+      Size = 160
+    end
+    object instructorSelectSQLSTATUS_ACTIVE: TWideStringField
+      DisplayWidth = 1
+      FieldName = 'STATUS_ACTIVE'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object instructorSelectSQLCERTIFIED_ANAD: TWideStringField
+      DisplayWidth = 1
+      FieldName = 'CERTIFIED_ANAD'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object instructorSelectSQLJOB_TITLE: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'JOB_TITLE'
+      Visible = False
+      Size = 160
+    end
+  end
+  object ExaminerSelectSQL: TIBCQuery
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    SQL.Strings = (
+      'select * from instructor where status_active= '#39'Y'#39)
+    ReadOnly = True
+    Left = 547
+    Top = 242
+    object WideStringField1: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 12
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object WideStringField2: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 12
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object WideStringField3: TWideStringField
+      DisplayLabel = #932#945#965#964#972#964#951#964#945
+      DisplayWidth = 10
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
+    object WideStringField4: TWideStringField
+      DisplayLabel = #922#953#957#951#964#972
+      DisplayWidth = 10
+      FieldName = 'PHONE_MOBILE'
+      FixedChar = True
+      Size = 15
+    end
+    object IntegerField1: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+      Visible = False
+    end
+    object WideStringField5: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'ANAD_NUMBER'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object IntegerField2: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'FK_COMPANY_SERIAL'
+      Visible = False
+    end
+    object WideStringField6: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'NICKNAME'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object WideStringField7: TWideStringField
+      DisplayWidth = 3
+      FieldName = 'STATUS'
+      Visible = False
+      FixedChar = True
+      Size = 3
+    end
+    object WideStringField8: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'OCCUPATION'
+      Visible = False
+      Size = 160
+    end
+    object WideStringField9: TWideStringField
+      DisplayWidth = 15
+      FieldName = 'PHONE_FIXED'
+      Visible = False
+      FixedChar = True
+      Size = 15
+    end
+    object WideStringField10: TWideStringField
+      DisplayWidth = 15
+      FieldName = 'PHONE_ALTERNATE'
+      Visible = False
+      FixedChar = True
+      Size = 15
+    end
+    object WideStringField11: TWideStringField
+      DisplayWidth = 15
+      FieldName = 'FAX'
+      Visible = False
+      FixedChar = True
+      Size = 15
+    end
+    object WideStringField12: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'EMAIL'
+      Visible = False
+      Size = 160
+    end
+    object SmallintField1: TSmallintField
+      DisplayWidth = 10
+      FieldName = 'EMAIL_2'
+      Visible = False
+    end
+    object WideStringField13: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'ADDRESS'
+      Visible = False
+      Size = 160
+    end
+    object WideStringField14: TWideStringField
+      DisplayWidth = 80
+      FieldName = 'ADDRESS_STREET'
+      Visible = False
+      Size = 80
+    end
+    object WideStringField15: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'ADDRESS_POST_CODE'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object WideStringField16: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'ADDRESS_CITY'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object WideStringField17: TWideStringField
+      DisplayWidth = 30
+      FieldName = 'ADDRESS_DISTRICT'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object DateField1: TDateField
+      DisplayWidth = 10
+      FieldName = 'DATE_STARTED'
+      Visible = False
+    end
+    object DateField2: TDateField
+      DisplayWidth = 10
+      FieldName = 'DATE_BIRTH'
+      Visible = False
+    end
+    object DateField3: TDateField
+      DisplayWidth = 10
+      FieldName = 'DATE_USER'
+      Visible = False
+    end
+    object WideStringField18: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'LIST_SOURCE'
+      Visible = False
+      Size = 160
+    end
+    object WideStringField19: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'FACEBOOK'
+      Visible = False
+      Size = 160
+    end
+    object WideStringField20: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'WEBSITE'
+      Visible = False
+      Size = 160
+    end
+    object WideStringField21: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'TWITTER'
+      Visible = False
+      Size = 160
+    end
+    object WideStringField22: TWideStringField
+      DisplayWidth = 1
+      FieldName = 'STATUS_ACTIVE'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object WideStringField23: TWideStringField
+      DisplayWidth = 1
+      FieldName = 'CERTIFIED_ANAD'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object WideStringField24: TWideStringField
+      DisplayWidth = 160
+      FieldName = 'JOB_TITLE'
+      Visible = False
+      Size = 160
     end
   end
 end

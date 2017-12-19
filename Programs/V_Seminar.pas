@@ -179,23 +179,14 @@ type
     wwDBDateTimePicker1: TwwDBDateTimePicker;
     AnadFLD: TwwDBEdit;
     SecondGRP: TRzGroupBox;
-    Label5: TLabel;
     Label10: TLabel;
-    Label11: TLabel;
-    InstructorBTN: TSpeedButton;
-    VenueBTN: TSpeedButton;
     Label12: TLabel;
     Label13: TLabel;
     Label19: TLabel;
-    Label9: TLabel;
-    ExaminerBTN: TSpeedButton;
     wwDBEdit1: TwwDBEdit;
-    InstructorFLD: TwwDBComboBox;
-    VenueFLD: TwwDBComboBox;
     wwDBEdit3: TwwDBEdit;
     CompletedFLD: TwwCheckBox;
     wwDBEdit4: TwwDBEdit;
-    ExaminerFLD: TwwDBComboBox;
     SubjectTS: TTabSheet;
     RzPanel19: TRzPanel;
     RzPanel4: TRzPanel;
@@ -311,6 +302,87 @@ type
     SeminarSQLPASS_PERCENTAGE: TIntegerField;
     NonAttendSQLSERIAL_QB: TIntegerField;
     AttendingSQLSERIAL_QB: TIntegerField;
+    RzGroupBox3: TRzGroupBox;
+    Label5: TLabel;
+    Label11: TLabel;
+    InstructorBTN: TSpeedButton;
+    VenueBTN: TSpeedButton;
+    Label9: TLabel;
+    ExaminerBTN: TSpeedButton;
+    VenueFLD: TwwDBComboBox;
+    seminarSubjectSQLFK_INSTRUCTOR: TIntegerField;
+    seminarSubjectSQLFK_EXAMINER: TIntegerField;
+    seminarSubjectSQLFK_VENUE: TIntegerField;
+    instructorSelectSQL: TIBCQuery;
+    instructorSelectSQLSERIAL_NUMBER: TIntegerField;
+    instructorSelectSQLANAD_NUMBER: TWideStringField;
+    instructorSelectSQLNATIONAL_ID: TWideStringField;
+    instructorSelectSQLFK_COMPANY_SERIAL: TIntegerField;
+    instructorSelectSQLFIRST_NAME: TWideStringField;
+    instructorSelectSQLLAST_NAME: TWideStringField;
+    instructorSelectSQLNICKNAME: TWideStringField;
+    instructorSelectSQLSTATUS: TWideStringField;
+    instructorSelectSQLOCCUPATION: TWideStringField;
+    instructorSelectSQLPHONE_MOBILE: TWideStringField;
+    instructorSelectSQLPHONE_FIXED: TWideStringField;
+    instructorSelectSQLPHONE_ALTERNATE: TWideStringField;
+    instructorSelectSQLFAX: TWideStringField;
+    instructorSelectSQLEMAIL: TWideStringField;
+    instructorSelectSQLEMAIL_2: TSmallintField;
+    instructorSelectSQLADDRESS: TWideStringField;
+    instructorSelectSQLADDRESS_STREET: TWideStringField;
+    instructorSelectSQLADDRESS_POST_CODE: TWideStringField;
+    instructorSelectSQLADDRESS_CITY: TWideStringField;
+    instructorSelectSQLADDRESS_DISTRICT: TWideStringField;
+    instructorSelectSQLDATE_STARTED: TDateField;
+    instructorSelectSQLDATE_BIRTH: TDateField;
+    instructorSelectSQLDATE_USER: TDateField;
+    instructorSelectSQLLIST_SOURCE: TWideStringField;
+    instructorSelectSQLFACEBOOK: TWideStringField;
+    instructorSelectSQLWEBSITE: TWideStringField;
+    instructorSelectSQLTWITTER: TWideStringField;
+    instructorSelectSQLSTATUS_ACTIVE: TWideStringField;
+    instructorSelectSQLCERTIFIED_ANAD: TWideStringField;
+    instructorSelectSQLJOB_TITLE: TWideStringField;
+    InstructorFLD: TwwDBLookupCombo;
+    ExaminerSelectSQL: TIBCQuery;
+    WideStringField1: TWideStringField;
+    WideStringField2: TWideStringField;
+    WideStringField3: TWideStringField;
+    WideStringField4: TWideStringField;
+    IntegerField1: TIntegerField;
+    WideStringField5: TWideStringField;
+    IntegerField2: TIntegerField;
+    WideStringField6: TWideStringField;
+    WideStringField7: TWideStringField;
+    WideStringField8: TWideStringField;
+    WideStringField9: TWideStringField;
+    WideStringField10: TWideStringField;
+    WideStringField11: TWideStringField;
+    WideStringField12: TWideStringField;
+    SmallintField1: TSmallintField;
+    WideStringField13: TWideStringField;
+    WideStringField14: TWideStringField;
+    WideStringField15: TWideStringField;
+    WideStringField16: TWideStringField;
+    WideStringField17: TWideStringField;
+    DateField1: TDateField;
+    DateField2: TDateField;
+    DateField3: TDateField;
+    WideStringField18: TWideStringField;
+    WideStringField19: TWideStringField;
+    WideStringField20: TWideStringField;
+    WideStringField21: TWideStringField;
+    WideStringField22: TWideStringField;
+    WideStringField23: TWideStringField;
+    WideStringField24: TWideStringField;
+    ExaminerFLD: TwwDBLookupCombo;
+    wwIncrementalSearch2: TwwIncrementalSearch;
+    Label25: TLabel;
+    Label26: TLabel;
+    FirstFLD: TwwDBEdit;
+    Label27: TLabel;
+    SeminarSQLSPECIFICATION_NUMBER: TWideStringField;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -550,6 +622,7 @@ var
   fexpiry: string;
   fexpiryMonths: Integer;
   fpercent:integer;
+  fSpec:String;
   str: string;
 begin
 
@@ -563,6 +636,7 @@ begin
     fAnad := qr.FieldByName('ANAD_APPROVED').AsString;
     fhours := qr.FieldByName('DURATION_HOURS').AsInteger;
     fpercent := qr.FieldByName('pass_PERCENTAGE').AsInteger;
+    fspec := qr.FieldByName('SPECIFICATION_NUMBER').AsString;
 
     fMaxCapacity := qr.FieldByName('Max_capacity').AsInteger;
 //   fDays:=qr.FieldByName('DURATION_DAYS').AsInteger;
@@ -576,12 +650,12 @@ begin
     str :=
       ' update seminar sem set'
       + '    seminar_Name= :fname, anad_approved= :fAnad,Duration_hours = :fhours, max_capacity= :FMaxCapacity,  '
-      + '    sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths, sem.pass_PERCENTAGE = :aper'
+      + '    sem.has_expiry = :fHasExpiry, sem.expiry_period= :fExpirymonths, sem.pass_PERCENTAGE = :aper, sem.SPECIFICATION_NUMBER= :spec'
       + '  where  sem.serial_number= :fSerial';
 
     ksExecSQLVar(cn, str,
       [fname, fAnad, fhours, fMaxCapacity, fExpiry,
-        fExpiryMonths, fpercent,seminarSerial]);
+        fExpiryMonths, fpercent,fspec,seminarSerial]);
 
   finally
     qr.Free;
@@ -1026,8 +1100,8 @@ end;
 procedure TV_SeminarFRM.FormActivate(Sender: TObject);
 begin
   ksfillComboF1(cn, SeminarTYpeFLD, 'SEMINAR_TYPE', 'SERIAL_NUMBER',    'SEMINAR_NAME', 'SEMINAR_NAME');
-  ksfillComboF1(cn, InstructorFLD, 'INSTRUCTOR', 'SERIAL_NUMBER', 'Last_NAME',    'last_NAME');
-  ksfillComboF1(cn, ExaminerFLD, 'INSTRUCTOR', 'SERIAL_NUMBER', 'Last_NAME',    'last_NAME');
+//  ksfillComboF1(cn, InstructorFLD, 'INSTRUCTOR', 'SERIAL_NUMBER', 'Last_NAME',    'last_NAME');
+//  ksfillComboF1(cn, ExaminerFLD, 'INSTRUCTOR', 'SERIAL_NUMBER', 'Last_NAME',    'last_NAME');
   ksfillComboF1(cn, VenueFLD, 'VENUE', 'SERIAL_NUMBER', 'VENUE_NAME','VENUE_NAME');
   ksfillComboF1(cn, StatusFLD, 'status_activity', 'status', 'description');
   ksOpenTables([SeminarSQL]);
@@ -1153,7 +1227,7 @@ var
   allowmodify: Boolean;
 begin
 
-  ksOpenTables([seminarSubjectSQL, SeminarDaySQL]);
+  ksOpenTables([seminarSubjectSQL, SeminarDaySQL,instructorSelectSQL]);
 
   AllowmodifY := allowToModify();
   seminarSubjectSQL.ReadOnly := not allowmodify;

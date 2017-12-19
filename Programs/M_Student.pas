@@ -117,6 +117,15 @@ type
     Label7: TLabel;
     wwIncrementalSearch4: TwwIncrementalSearch;
     TableSQLSERIAL_QB: TIntegerField;
+    Label8: TLabel;
+    wwDBEdit4: TwwDBEdit;
+    TableSQLPHONE_CONTACT: TWideStringField;
+    TableSQLPHONE_MOBILE_2: TWideStringField;
+    TableSQLLINKED_IN: TWideStringField;
+    Label9: TLabel;
+    wwDBEdit5: TwwDBEdit;
+    Label18: TLabel;
+    wwDBEdit6: TwwDBEdit;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

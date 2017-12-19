@@ -70,7 +70,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Top = 67
       Width = 1017
       Height = 619
-      ActivePage = CertificationTS
+      ActivePage = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -182,10 +182,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Align = alClient
             TabOrder = 2
             object GroupBox1: TGroupBox
-              Left = 31
-              Top = 31
+              Left = 34
+              Top = 39
               Width = 349
-              Height = 188
+              Height = 204
               Caption = #928#955#951#961#959#966#959#961#943#949#962
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -196,7 +196,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               TabOrder = 0
               object Label2: TLabel
                 Left = 54
-                Top = 46
+                Top = 72
                 Width = 58
                 Height = 14
                 Caption = #928#949#961#953#947#961#945#966#942
@@ -233,7 +233,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object Label7: TLabel
                 Left = 77
-                Top = 101
+                Top = 123
                 Width = 35
                 Height = 14
                 Caption = #931#967#972#955#953#945
@@ -246,7 +246,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object Label17: TLabel
                 Left = 60
-                Top = 81
+                Top = 100
                 Width = 52
                 Height = 14
                 Caption = #928#959#955#965'-'#917#960#967
@@ -258,8 +258,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 ParentFont = False
               end
               object Label5: TLabel
-                Left = 3
-                Top = 157
+                Left = 10
+                Top = 178
                 Width = 105
                 Height = 14
                 Caption = #917#960#953#967#959#961#942#947#951#963#951' '#913#925#913#916
@@ -270,9 +270,22 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 Font.Style = []
                 ParentFont = False
               end
-              object FirstFLD: TwwDBEdit
+              object Label24: TLabel
+                Left = 10
+                Top = 48
+                Width = 102
+                Height = 13
+                Caption = #913#961'. '#928#961#959#948#953#945#947#961#945#966#942#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object DescFLD: TwwDBEdit
                 Left = 119
-                Top = 43
+                Top = 69
                 Width = 219
                 Height = 22
                 DataField = 'SEMINAR_NAME'
@@ -284,7 +297,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object RzDBRichEdit1: TRzDBRichEdit
                 Left = 118
-                Top = 101
+                Top = 123
                 Width = 219
                 Height = 49
                 DataField = 'COMMENTS'
@@ -300,7 +313,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               object wwCheckBox1: TwwCheckBox
                 AlignWithMargins = True
                 Left = 118
-                Top = 78
+                Top = 100
                 Width = 29
                 Height = 17
                 DisableThemes = False
@@ -318,7 +331,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               object wwCheckBox2: TwwCheckBox
                 AlignWithMargins = True
                 Left = 121
-                Top = 156
+                Top = 178
                 Width = 29
                 Height = 17
                 DisableThemes = False
@@ -328,15 +341,29 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 DisplayValueChecked = 'Y'
                 DisplayValueUnchecked = 'N'
                 NullAndBlankState = cbUnchecked
+                Checked = True
                 DataField = 'ANAD_APPROVED'
                 DataSource = TableSRC
                 ShowText = False
+                State = cbChecked
                 TabOrder = 3
+              end
+              object FirstFLD: TwwDBEdit
+                Left = 118
+                Top = 42
+                Width = 75
+                Height = 22
+                DataField = 'SPECIFICATION_NUMBER'
+                DataSource = TableSRC
+                TabOrder = 4
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
               end
             end
             object SecondGRP: TRzGroupBox
-              Left = 31
-              Top = 225
+              Left = 34
+              Top = 249
               Width = 349
               Height = 160
               Caption = #916#953#940#961#954#949#953#945
@@ -448,9 +475,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 DisplayValueChecked = 'Y'
                 DisplayValueUnchecked = 'N'
                 NullAndBlankState = cbUnchecked
+                Checked = True
                 DataField = 'HAS_EXPIRY'
                 DataSource = TableSRC
                 ShowText = False
+                State = cbChecked
                 TabOrder = 2
               end
               object wwDBEdit2: TwwDBEdit
@@ -546,7 +575,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Next'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 2
@@ -563,7 +591,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Button1'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 3
@@ -580,7 +607,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Insert'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   OnClick = wwNavButton5Click
@@ -598,7 +624,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Delete'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 5
@@ -893,7 +918,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Next'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 2
@@ -910,7 +934,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Button1'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 3
@@ -944,7 +967,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Delete'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 5
@@ -1068,8 +1090,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 3
-            ExplicitLeft = 2
-            ExplicitTop = -6
           end
         end
       end
@@ -1194,6 +1214,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 Items.Strings = (
                   #924#949#964#940#9'A'
                   #928#961#953#957#9'B')
+                ItemIndex = 0
                 Sorted = False
                 TabOrder = 0
                 UnboundDataType = wwDefault
@@ -1215,6 +1236,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 Items.Strings = (
                   #924#941#961#949#962#9'D'
                   #924#942#957#949#962#9'M')
+                ItemIndex = 0
                 Sorted = False
                 TabOrder = 1
                 UnboundDataType = wwDefault
@@ -1236,6 +1258,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 Items.Strings = (
                   #913#960#972' '#964#951#957' '#904#957#945#961#958#951#9'S'
                   #913#960#972' '#964#959' '#932#941#955#959#962#9'E')
+                ItemIndex = 0
                 Sorted = False
                 TabOrder = 2
                 UnboundDataType = wwDefault
@@ -1629,7 +1652,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Next'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 2
@@ -1646,7 +1668,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Button1'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 3
@@ -1680,7 +1701,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                   Spacing = 4
                   Transparent = False
                   Caption = 'Nav1Delete'
-                  Enabled = False
                   DisabledTextColors.ShadeColor = clGray
                   DisabledTextColors.HighlightColor = clBtnHighlight
                   Index = 5
@@ -1755,7 +1775,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitTop = 1
           object RzPanel32: TRzPanel
             Left = 0
             Top = 157
@@ -1787,7 +1806,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Height = 29
               Align = alTop
               TabOrder = 0
-              ExplicitWidth = 487
             end
             object AttendGRD: TwwDBGrid
               Left = 1
@@ -1822,7 +1840,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
-              ExplicitLeft = -1
             end
           end
           object middlePNL: TRzPanel
@@ -1833,9 +1850,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 2
-            ExplicitLeft = 489
-            ExplicitTop = 12
-            ExplicitHeight = 568
             object ToRightBTN: TBitBtn
               Left = 3
               Top = 141
@@ -2032,8 +2046,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = True
-              ExplicitTop = 57
-              ExplicitHeight = 361
             end
             object RzSizePanel2: TRzSizePanel
               Left = 1
@@ -2068,7 +2080,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 4
-            ExplicitTop = 24
             object RzGroupBox5: TRzGroupBox
               Left = 0
               Top = 0
@@ -2084,8 +2095,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Font.Style = []
               ParentFont = False
               TabOrder = 0
-              ExplicitLeft = -4
-              ExplicitTop = 6
               object RzSizePanel3: TRzSizePanel
                 Left = 1
                 Top = 15
@@ -2093,7 +2102,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 Height = 10
                 Align = alTop
                 TabOrder = 0
-                ExplicitLeft = 0
               end
               object wwDBGrid3: TwwDBGrid
                 Left = 1
@@ -3589,13 +3597,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         '  (SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED, SEM' +
         'INAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, MAX_CAPA' +
         'CITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, PASS_PERCENTAGE' +
-        ')'
+        ', SPECIFICATION_NUMBER)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :SEMINAR_NAME, :SEMINAR_COST, :ANAD_APPROVED,' +
         ' :SEMINAR_CATEGORY, :DURATION_HOURS, :DURATION_DAYS, :COMMENTS, ' +
         ':MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, :TYPE_MONO_POLY, :PA' +
-        'SS_PERCENTAGE)')
+        'SS_PERCENTAGE, :SPECIFICATION_NUMBER)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_TYPE'
       'WHERE'
@@ -3610,7 +3618,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         'OURS, DURATION_DAYS = :DURATION_DAYS, COMMENTS = :COMMENTS, MAX_' +
         'CAPACITY = :MAX_CAPACITY, HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIO' +
         'D = :EXPIRY_PERIOD, TYPE_MONO_POLY = :TYPE_MONO_POLY, PASS_PERCE' +
-        'NTAGE = :PASS_PERCENTAGE'
+        'NTAGE = :PASS_PERCENTAGE, SPECIFICATION_NUMBER = :SPECIFICATION_' +
+        'NUMBER'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -3618,7 +3627,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         'SELECT SERIAL_NUMBER, SEMINAR_NAME, SEMINAR_COST, ANAD_APPROVED,' +
         ' SEMINAR_CATEGORY, DURATION_HOURS, DURATION_DAYS, COMMENTS, MAX_' +
         'CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, PASS_PERCEN' +
-        'TAGE FROM SEMINAR_TYPE'
+        'TAGE, SPECIFICATION_NUMBER FROM SEMINAR_TYPE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -3639,6 +3648,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       '*'
       'FROM'
       'SEMINAR_type ORDER BY SEMINAR_NAME')
+    Active = True
     AfterScroll = TableSQLAfterScroll
     OnNewRecord = TableSQLNewRecord
     Left = 49
@@ -3659,6 +3669,14 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       DisplayLabel = #913#925#913#916
       DisplayWidth = 6
       FieldName = 'ANAD_APPROVED'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLTYPE_MONO_POLY: TWideStringField
+      DisplayLabel = #928#959#955#965#917#960#967
+      DisplayWidth = 9
+      FieldName = 'TYPE_MONO_POLY'
       Required = True
       FixedChar = True
       Size = 1
@@ -3711,11 +3729,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       FieldName = 'PASS_PERCENTAGE'
       Visible = False
     end
-    object TableSQLTYPE_MONO_POLY: TWideStringField
-      FieldName = 'TYPE_MONO_POLY'
-      Required = True
-      FixedChar = True
-      Size = 1
+    object TableSQLSPECIFICATION_NUMBER: TWideStringField
+      FieldName = 'SPECIFICATION_NUMBER'
+      Visible = False
+      Size = 10
     end
   end
   object WriteTrans: TIBCTransaction
@@ -3790,7 +3807,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 9
+        Value = 3
       end>
     object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
@@ -3899,7 +3916,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 9
+        Value = 3
       end>
     object SeminarReminderSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
