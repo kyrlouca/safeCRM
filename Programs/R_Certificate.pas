@@ -460,7 +460,7 @@ end;
 
 function TR_certificateFRM.ReplaceText(picFIeldName:String):String;
 const
-  ReplaceArray : array of String= ['[NAME]','[SEX]','[ID]','[HOURS]','[DATE]','[ANAD]' ];
+  ReplaceArray : array of String= ['[NAME]','[SEX]','[ID]','[HOURS]','[DATE]','[ANAD]','[SERIAL]' ];
 //  ReplaceArray : array of String= ['[NAME]'];
 
 var
@@ -537,6 +537,9 @@ begin
              end;
          end else if token='[ANAD]' then begin
             temp:=CertificateSQL.FieldByName('ANAD_NUMBER').AsString;
+
+         end else if token='[SERIAL]' then begin
+            temp:=CertificateSQL.FieldByName('SERIAL_NUMBER').AsString;
 
          end;
         wwMemo.SelText :=Temp;

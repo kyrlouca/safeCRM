@@ -146,8 +146,8 @@ type
     PersonSQLCOMPANY_CONTACT_EMAIL: TWideStringField;
     PersonSQLCOMPANY_CONTACT_FAX: TWideStringField;
     PersonSQLCOMPANY_SOCIAL_SEC: TWideStringField;
-    PersonSQLSAFE_SERIAL: TIntegerField;
     ppLabel8: TppLabel;
+    PersonSQLSERIAL_QB: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);

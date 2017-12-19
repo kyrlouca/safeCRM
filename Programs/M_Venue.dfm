@@ -580,11 +580,11 @@ object M_venuFRM: TM_venuFRM
           ParentFont = False
         end
         object Label6: TLabel
-          Left = 42
+          Left = 52
           Top = 47
-          Width = 54
+          Width = 44
           Height = 14
-          Caption = #927#957'. '#913#925#913#916
+          Caption = #913#961'. '#916#917#922
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12

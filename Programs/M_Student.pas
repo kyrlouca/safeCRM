@@ -111,10 +111,12 @@ type
     wwCheckBox1: TwwCheckBox;
     wwDBEdit3: TwwDBEdit;
     Label6: TLabel;
-    TableSQLSAFE_SERIAL: TIntegerField;
     MainMenu1: TMainMenu;
     Reports1: TMenuItem;
     N3: TMenuItem;
+    Label7: TLabel;
+    wwIncrementalSearch4: TwwIncrementalSearch;
+    TableSQLSERIAL_QB: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

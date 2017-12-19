@@ -47,7 +47,8 @@ uses
   M_Instructor in 'M_Instructor.pas' {M_InstructorFRM},
   R_invoices in 'R_invoices.pas' {R_InvoicesFRM},
   R_InvoicesUnpaid in 'R_InvoicesUnpaid.pas' {R_invoicesUnpaidFRM},
-  M_reminder in 'M_reminder.pas' {M_reminderFRM};
+  M_reminder in 'M_reminder.pas' {M_reminderFRM},
+  R_seminarAttend in 'R_seminarAttend.pas' {R_seminarsAttendFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -87,5 +88,6 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TM_InstructorFRM, M_InstructorFRM);
   Application.CreateForm(TR_InvoicesFRM, R_InvoicesFRM);
   Application.CreateForm(TM_reminderFRM, M_reminderFRM);
+  Application.CreateForm(TR_seminarsAttendFRM, R_seminarsAttendFRM);
   Application.Run;
 end.

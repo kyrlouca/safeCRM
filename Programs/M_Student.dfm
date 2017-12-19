@@ -2,7 +2,7 @@ object M_StudentFRM: TM_StudentFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 767
+  ClientHeight = 747
   ClientWidth = 1155
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -48,12 +48,11 @@ object M_StudentFRM: TM_StudentFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 724
+    Top = 704
     Width = 1155
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 744
     object RzPanel1: TRzPanel
       Left = 1054
       Top = 1
@@ -146,9 +145,11 @@ object M_StudentFRM: TM_StudentFRM
     Height = 116
     Align = alTop
     TabOrder = 1
+    ExplicitLeft = -48
+    ExplicitTop = 53
     object Label23: TLabel
       Left = 31
-      Top = 40
+      Top = 8
       Width = 41
       Height = 14
       Caption = #917#960#943#952#949#964#959
@@ -161,7 +162,7 @@ object M_StudentFRM: TM_StudentFRM
     end
     object Label24: TLabel
       Left = 11
-      Top = 65
+      Top = 33
       Width = 61
       Height = 14
       Caption = #932#945#965#964#972#964#951#964#945
@@ -173,8 +174,8 @@ object M_StudentFRM: TM_StudentFRM
       ParentFont = False
     end
     object Label25: TLabel
-      Left = 31
-      Top = 92
+      Left = 37
+      Top = 61
       Width = 35
       Height = 14
       Caption = #922#953#957#951#964#972
@@ -185,9 +186,22 @@ object M_StudentFRM: TM_StudentFRM
       Font.Style = []
       ParentFont = False
     end
+    object Label7: TLabel
+      Left = 56
+      Top = 88
+      Width = 16
+      Height = 14
+      Caption = 'QB'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
     object wwIncrementalSearch1: TwwIncrementalSearch
       Left = 80
-      Top = 37
+      Top = 5
       Width = 128
       Height = 22
       DataSource = TableSRC
@@ -203,7 +217,7 @@ object M_StudentFRM: TM_StudentFRM
     end
     object wwIncrementalSearch2: TwwIncrementalSearch
       Left = 80
-      Top = 62
+      Top = 31
       Width = 128
       Height = 22
       DataSource = TableSRC
@@ -219,7 +233,7 @@ object M_StudentFRM: TM_StudentFRM
     end
     object wwIncrementalSearch3: TwwIncrementalSearch
       Left = 80
-      Top = 89
+      Top = 58
       Width = 128
       Height = 22
       DataSource = TableSRC
@@ -233,47 +247,65 @@ object M_StudentFRM: TM_StudentFRM
       ParentFont = False
       TabOrder = 2
     end
+    object wwIncrementalSearch4: TwwIncrementalSearch
+      Left = 78
+      Top = 86
+      Width = 128
+      Height = 22
+      DataSource = TableSRC
+      SearchField = 'serial_qb'
+      ShowMatchText = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+    end
   end
   object Panel3: TPanel
     Left = 0
     Top = 163
     Width = 1155
-    Height = 561
+    Height = 541
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 581
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
-      Width = 528
-      Height = 559
+      Width = 632
+      Height = 539
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 579
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 528
+        Width = 632
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 528
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 9
-        Width = 528
-        Height = 550
+        Width = 626
+        Height = 530
         ControlType.Strings = (
-          'IS_COMPANY;CheckBox;Y;N')
+          'IS_COMPANY;CheckBox;Y;N'
+          'STATUS_ACTIVE;CheckBox;'#925';'#933)
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
+          'SERIAL_QB'#9'10'#9'A/A QB'
+          'STATUS_ACTIVE'#9'9'#9#916#953#945#947#961#945#966#942
           'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
           'FIRST_NAME'#9'13'#9#908#957#959#956#945
           'IS_COMPANY'#9'8'#9' '#917#964#945#953#961#949#943#945
           'NATIONAL_ID'#9'11'#9#932#945#965#964#972#964#951#964#945
-          'PHONE_MOBILE'#9'14'#9#922#953#957#951#964#972)
+          'PHONE_MOBILE'#9'11'#9#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -301,19 +333,18 @@ object M_StudentFRM: TM_StudentFRM
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
-        ExplicitHeight = 570
       end
     end
     object RzPanel4: TRzPanel
-      Left = 529
+      Left = 633
       Top = 1
-      Width = 625
-      Height = 559
+      Width = 521
+      Height = 539
       Align = alClient
       TabOrder = 1
-      ExplicitHeight = 579
+      ExplicitTop = 16
       object GroupBox1: TGroupBox
-        Left = 6
+        Left = 0
         Top = 49
         Width = 274
         Height = 291
@@ -429,11 +460,11 @@ object M_StudentFRM: TM_StudentFRM
           ParentFont = False
         end
         object Label6: TLabel
-          Left = 22
+          Left = 54
           Top = 45
-          Width = 73
+          Width = 41
           Height = 14
-          Caption = 'Quick reports'
+          Caption = 'A/A QB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -535,9 +566,9 @@ object M_StudentFRM: TM_StudentFRM
           UnboundDataType = wwDefault
         end
         object wwCheckBox1: TwwCheckBox
-          Left = 191
+          Left = 176
           Top = 265
-          Width = 67
+          Width = 82
           Height = 17
           TabStop = False
           DisableThemes = False
@@ -548,7 +579,7 @@ object M_StudentFRM: TM_StudentFRM
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
           Alignment = taLeftJustify
-          Caption = #917#957#949#961#947#972#962
+          Caption = #916#953#945#947#961#945#966#942
           Checked = True
           DataField = 'STATUS_ACTIVE'
           DataSource = TableSRC
@@ -556,11 +587,11 @@ object M_StudentFRM: TM_StudentFRM
           TabOrder = 6
         end
         object wwDBEdit3: TwwDBEdit
-          Left = 100
-          Top = 42
+          Left = 101
+          Top = 45
           Width = 49
           Height = 22
-          DataField = 'SAFE_SERIAL'
+          DataField = 'SERIAL_QB'
           DataSource = TableSRC
           TabOrder = 7
           UnboundDataType = wwDefault
@@ -569,7 +600,7 @@ object M_StudentFRM: TM_StudentFRM
         end
       end
       object GroupBox2: TGroupBox
-        Left = 318
+        Left = 302
         Top = 49
         Width = 274
         Height = 159
@@ -710,11 +741,13 @@ object M_StudentFRM: TM_StudentFRM
       object RzPanel5: TRzPanel
         Left = 2
         Top = 2
-        Width = 621
+        Width = 517
         Height = 41
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
+        ExplicitLeft = 6
+        ExplicitTop = 20
         object Nav1: TwwDBNavigator
           Left = 4
           Top = 3
@@ -740,7 +773,6 @@ object M_StudentFRM: TM_StudentFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 0
@@ -757,7 +789,6 @@ object M_StudentFRM: TM_StudentFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Prior'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -865,7 +896,7 @@ object M_StudentFRM: TM_StudentFRM
         end
       end
       object GroupBox3: TGroupBox
-        Left = 318
+        Left = 302
         Top = 214
         Width = 274
         Height = 126
@@ -992,28 +1023,29 @@ object M_StudentFRM: TM_StudentFRM
     SQLInsert.Strings = (
       'INSERT INTO PERSON'
       
-        '  (SERIAL_NUMBER, FK_COMPANY_SERIAL, LAST_NAME, FIRST_NAME, NATI' +
-        'ONAL_ID, NICKNAME, OCCUPATION, PHONE_MOBILE, PHONE_FIXED, PHONE_' +
-        'ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET, ADDRESS' +
-        '_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED, DATE_B' +
-        'IRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER, STATUS' +
-        '_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONTACT, COMPAN' +
-        'Y_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTACT_FIRST, COMPA' +
-        'NY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTACT_PHONE, COMPA' +
-        'NY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC, SAFE_' +
-        'SERIAL)'
+        '  (SERIAL_NUMBER, SERIAL_QB, FK_COMPANY_SERIAL, LAST_NAME, FIRST' +
+        '_NAME, NATIONAL_ID, NICKNAME, OCCUPATION, PHONE_MOBILE, PHONE_FI' +
+        'XED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STRE' +
+        'ET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STAR' +
+        'TED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWIT' +
+        'TER, STATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONT' +
+        'ACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTACT_F' +
+        'IRST, COMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTACT_P' +
+        'HONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SOCIAL' +
+        '_SEC, COMPANY_EMPLOYEES)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_COMPANY_SERIAL, :LAST_NAME, :FIRST_NAME, ' +
-        ':NATIONAL_ID, :NICKNAME, :OCCUPATION, :PHONE_MOBILE, :PHONE_FIXE' +
-        'D, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRESS, :ADDRESS_' +
-        'STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_DISTRICT, :D' +
-        'ATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, :FACEBOOK, :' +
-        'WEBSITE, :TWITTER, :STATUS_ACTIVE, :SEX, :IS_COMPANY, :COMPANY_O' +
-        'WNER, :COMPANY_CONTACT, :COMPANY_REGISTRATION_DATE, :PHONE_CONTA' +
-        'CT, :COMPANY_CONTACT_FIRST, :COMPANY_CONTACT_LAST, :COMPANY_OWNE' +
-        'R_REG, :COMPANY_CONTACT_PHONE, :COMPANY_CONTACT_EMAIL, :COMPANY_' +
-        'CONTACT_FAX, :COMPANY_SOCIAL_SEC, :SAFE_SERIAL)')
+        '  (:SERIAL_NUMBER, :SERIAL_QB, :FK_COMPANY_SERIAL, :LAST_NAME, :' +
+        'FIRST_NAME, :NATIONAL_ID, :NICKNAME, :OCCUPATION, :PHONE_MOBILE,' +
+        ' :PHONE_FIXED, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRES' +
+        'S, :ADDRESS_STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_' +
+        'DISTRICT, :DATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, ' +
+        ':FACEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE, :SEX, :IS_COMPANY' +
+        ', :COMPANY_OWNER, :COMPANY_CONTACT, :COMPANY_REGISTRATION_DATE, ' +
+        ':PHONE_CONTACT, :COMPANY_CONTACT_FIRST, :COMPANY_CONTACT_LAST, :' +
+        'COMPANY_OWNER_REG, :COMPANY_CONTACT_PHONE, :COMPANY_CONTACT_EMAI' +
+        'L, :COMPANY_CONTACT_FAX, :COMPANY_SOCIAL_SEC, :COMPANY_EMPLOYEES' +
+        ')')
     SQLDelete.Strings = (
       'DELETE FROM PERSON'
       'WHERE'
@@ -1022,40 +1054,40 @@ object M_StudentFRM: TM_StudentFRM
       'UPDATE PERSON'
       'SET'
       
-        '  SERIAL_NUMBER = :SERIAL_NUMBER, FK_COMPANY_SERIAL = :FK_COMPAN' +
-        'Y_SERIAL, LAST_NAME = :LAST_NAME, FIRST_NAME = :FIRST_NAME, NATI' +
-        'ONAL_ID = :NATIONAL_ID, NICKNAME = :NICKNAME, OCCUPATION = :OCCU' +
-        'PATION, PHONE_MOBILE = :PHONE_MOBILE, PHONE_FIXED = :PHONE_FIXED' +
-        ', PHONE_ALTERNATE = :PHONE_ALTERNATE, FAX = :FAX, EMAIL = :EMAIL' +
-        ', EMAIL_2 = :EMAIL_2, ADDRESS = :ADDRESS, ADDRESS_STREET = :ADDR' +
-        'ESS_STREET, ADDRESS_POST_CODE = :ADDRESS_POST_CODE, ADDRESS_CITY' +
-        ' = :ADDRESS_CITY, ADDRESS_DISTRICT = :ADDRESS_DISTRICT, DATE_STA' +
-        'RTED = :DATE_STARTED, DATE_BIRTH = :DATE_BIRTH, DATE_USER = :DAT' +
-        'E_USER, LIST_SOURCE = :LIST_SOURCE, FACEBOOK = :FACEBOOK, WEBSIT' +
-        'E = :WEBSITE, TWITTER = :TWITTER, STATUS_ACTIVE = :STATUS_ACTIVE' +
-        ', SEX = :SEX, IS_COMPANY = :IS_COMPANY, COMPANY_OWNER = :COMPANY' +
-        '_OWNER, COMPANY_CONTACT = :COMPANY_CONTACT, COMPANY_REGISTRATION' +
-        '_DATE = :COMPANY_REGISTRATION_DATE, PHONE_CONTACT = :PHONE_CONTA' +
-        'CT, COMPANY_CONTACT_FIRST = :COMPANY_CONTACT_FIRST, COMPANY_CONT' +
-        'ACT_LAST = :COMPANY_CONTACT_LAST, COMPANY_OWNER_REG = :COMPANY_O' +
-        'WNER_REG, COMPANY_CONTACT_PHONE = :COMPANY_CONTACT_PHONE, COMPAN' +
-        'Y_CONTACT_EMAIL = :COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX = ' +
-        ':COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC = :COMPANY_SOCIAL_SEC, ' +
-        'SAFE_SERIAL = :SAFE_SERIAL'
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, SERIAL_QB = :SERIAL_QB, FK_COM' +
+        'PANY_SERIAL = :FK_COMPANY_SERIAL, LAST_NAME = :LAST_NAME, FIRST_' +
+        'NAME = :FIRST_NAME, NATIONAL_ID = :NATIONAL_ID, NICKNAME = :NICK' +
+        'NAME, OCCUPATION = :OCCUPATION, PHONE_MOBILE = :PHONE_MOBILE, PH' +
+        'ONE_FIXED = :PHONE_FIXED, PHONE_ALTERNATE = :PHONE_ALTERNATE, FA' +
+        'X = :FAX, EMAIL = :EMAIL, EMAIL_2 = :EMAIL_2, ADDRESS = :ADDRESS' +
+        ', ADDRESS_STREET = :ADDRESS_STREET, ADDRESS_POST_CODE = :ADDRESS' +
+        '_POST_CODE, ADDRESS_CITY = :ADDRESS_CITY, ADDRESS_DISTRICT = :AD' +
+        'DRESS_DISTRICT, DATE_STARTED = :DATE_STARTED, DATE_BIRTH = :DATE' +
+        '_BIRTH, DATE_USER = :DATE_USER, LIST_SOURCE = :LIST_SOURCE, FACE' +
+        'BOOK = :FACEBOOK, WEBSITE = :WEBSITE, TWITTER = :TWITTER, STATUS' +
+        '_ACTIVE = :STATUS_ACTIVE, SEX = :SEX, IS_COMPANY = :IS_COMPANY, ' +
+        'COMPANY_OWNER = :COMPANY_OWNER, COMPANY_CONTACT = :COMPANY_CONTA' +
+        'CT, COMPANY_REGISTRATION_DATE = :COMPANY_REGISTRATION_DATE, PHON' +
+        'E_CONTACT = :PHONE_CONTACT, COMPANY_CONTACT_FIRST = :COMPANY_CON' +
+        'TACT_FIRST, COMPANY_CONTACT_LAST = :COMPANY_CONTACT_LAST, COMPAN' +
+        'Y_OWNER_REG = :COMPANY_OWNER_REG, COMPANY_CONTACT_PHONE = :COMPA' +
+        'NY_CONTACT_PHONE, COMPANY_CONTACT_EMAIL = :COMPANY_CONTACT_EMAIL' +
+        ', COMPANY_CONTACT_FAX = :COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC' +
+        ' = :COMPANY_SOCIAL_SEC, COMPANY_EMPLOYEES = :COMPANY_EMPLOYEES'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, FK_COMPANY_SERIAL, LAST_NAME, FIRST_NAME, ' +
-        'NATIONAL_ID, NICKNAME, OCCUPATION, PHONE_MOBILE, PHONE_FIXED, PH' +
-        'ONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET, ADD' +
-        'RESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED, DA' +
-        'TE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER, ST' +
-        'ATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONTACT, CO' +
-        'MPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTACT_FIRST, C' +
-        'OMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTACT_PHONE, C' +
-        'OMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC, S' +
-        'AFE_SERIAL FROM PERSON'
+        'SELECT SERIAL_NUMBER, SERIAL_QB, FK_COMPANY_SERIAL, LAST_NAME, F' +
+        'IRST_NAME, NATIONAL_ID, NICKNAME, OCCUPATION, PHONE_MOBILE, PHON' +
+        'E_FIXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_' +
+        'STREET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_' +
+        'STARTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, ' +
+        'TWITTER, STATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_' +
+        'CONTACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTA' +
+        'CT_FIRST, COMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTA' +
+        'CT_PHONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SO' +
+        'CIAL_SEC, COMPANY_EMPLOYEES FROM PERSON'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1086,6 +1118,19 @@ object M_StudentFRM: TM_StudentFRM
       DisplayLabel = 'A/A'
       DisplayWidth = 6
       FieldName = 'SERIAL_NUMBER'
+    end
+    object TableSQLSERIAL_QB: TIntegerField
+      DisplayLabel = 'A/A QB'
+      DisplayWidth = 10
+      FieldName = 'SERIAL_QB'
+    end
+    object TableSQLSTATUS_ACTIVE: TWideStringField
+      DisplayLabel = #916#953#945#947#961#945#966#942
+      DisplayWidth = 9
+      FieldName = 'STATUS_ACTIVE'
+      Required = True
+      FixedChar = True
+      Size = 1
     end
     object TableSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
@@ -1120,7 +1165,7 @@ object M_StudentFRM: TM_StudentFRM
     end
     object TableSQLPHONE_MOBILE: TWideStringField
       DisplayLabel = #922#953#957#951#964#972
-      DisplayWidth = 14
+      DisplayWidth = 11
       FieldName = 'PHONE_MOBILE'
       FixedChar = True
       Size = 15
@@ -1229,13 +1274,6 @@ object M_StudentFRM: TM_StudentFRM
       Visible = False
       Size = 160
     end
-    object TableSQLSTATUS_ACTIVE: TWideStringField
-      FieldName = 'STATUS_ACTIVE'
-      Required = True
-      Visible = False
-      FixedChar = True
-      Size = 1
-    end
     object TableSQLSEX: TWideStringField
       FieldName = 'SEX'
       Visible = False
@@ -1254,10 +1292,6 @@ object M_StudentFRM: TM_StudentFRM
     end
     object TableSQLCOMPANY_REGISTRATION_DATE: TDateField
       FieldName = 'COMPANY_REGISTRATION_DATE'
-      Visible = False
-    end
-    object TableSQLSAFE_SERIAL: TIntegerField
-      FieldName = 'SAFE_SERIAL'
       Visible = False
     end
   end

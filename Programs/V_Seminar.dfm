@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = TabSheet1
+      ActivePage = StudentsTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1312,7 +1312,7 @@ object V_SeminarFRM: TV_SeminarFRM
           object RzGroupBox1: TRzGroupBox
             Left = 0
             Top = 12
-            Width = 489
+            Width = 532
             Height = 568
             Align = alLeft
             BorderSides = [sdLeft, sdTop, sdRight]
@@ -1327,20 +1327,22 @@ object V_SeminarFRM: TV_SeminarFRM
             object RzSizePanel2: TRzSizePanel
               Left = 1
               Top = 15
-              Width = 487
+              Width = 530
               Height = 29
               Align = alTop
               TabOrder = 0
+              ExplicitWidth = 487
             end
             object AttendGRD: TwwDBGrid
               Left = 1
               Top = 44
-              Width = 487
+              Width = 530
               Height = 523
               ControlType.Strings = (
                 'IS_GUEST;CheckBox;Y;N')
               Selected.Strings = (
                 'SERIAL_NUMBER'#9'8'#9'A/A'
+                'SERIAL_QB'#9'8'#9'QB'
                 'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
                 'FIRST_NAME'#9'15'#9#908#957#959#956#945
                 'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945
@@ -1348,7 +1350,7 @@ object V_SeminarFRM: TV_SeminarFRM
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
-              FixedCols = 4
+              FixedCols = 5
               ShowHorzScrollBar = True
               Align = alClient
               BorderStyle = bsNone
@@ -1366,16 +1368,18 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleButtons = False
               OnTitleButtonClick = AttendGRDTitleButtonClick
               OnUpdateFooter = AttendGRDUpdateFooter
+              ExplicitWidth = 487
             end
           end
           object RzPanel3: TRzPanel
-            Left = 489
+            Left = 532
             Top = 12
             Width = 94
             Height = 568
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 2
+            ExplicitLeft = 489
             object ToRightBTN: TBitBtn
               Left = 3
               Top = 141
@@ -1522,9 +1526,9 @@ object V_SeminarFRM: TV_SeminarFRM
             end
           end
           object RzGroupBox2: TRzGroupBox
-            Left = 583
+            Left = 626
             Top = 12
-            Width = 391
+            Width = 450
             Height = 568
             Align = alLeft
             Caption = #922#945#964#940#955#959#947#959#962
@@ -1535,15 +1539,17 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
             TabOrder = 3
+            ExplicitLeft = 583
             object AllPersonsGRD: TwwDBGrid
               Left = 1
               Top = 57
-              Width = 389
+              Width = 448
               Height = 510
               Selected.Strings = (
                 'SERIAL_NUMBER'#9'10'#9'A/A'
+                'SERIAL_QB'#9'8'#9'QB'
                 'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959
-                'FIRST_NAME'#9'10'#9#908#957#959#956#945
+                'FIRST_NAME'#9'12'#9#908#957#959#956#945
                 'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945)
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
@@ -1579,10 +1585,11 @@ object V_SeminarFRM: TV_SeminarFRM
             object RzSizePanel1: TRzSizePanel
               Left = 1
               Top = 15
-              Width = 389
+              Width = 448
               Height = 42
               Align = alTop
               TabOrder = 0
+              ExplicitWidth = 389
               object SearchPersonFLD: TwwIncrementalSearch
                 Left = 8
                 Top = 7
@@ -3593,9 +3600,9 @@ object V_SeminarFRM: TV_SeminarFRM
     SQL.Strings = (
       'select'
       
-        ' pe.serial_number, pe.first_name,pe.last_name , pe.national_id, ' +
-        'sp.fk_seminar_serial, sp.fk_person_serial, sp.attendance_status,' +
-        'sp.IS_Guest'
+        ' pe.serial_number,pe.serial_qb, pe.first_name,pe.last_name , pe.' +
+        'national_id, sp.fk_seminar_serial, sp.fk_person_serial, sp.atten' +
+        'dance_status,sp.IS_Guest'
       'from'
       '   seminar_person   sp  left outer join'
       '   person pe        on pe.serial_number=sp.fk_person_serial'
@@ -3617,6 +3624,12 @@ object V_SeminarFRM: TV_SeminarFRM
       DisplayLabel = 'A/A'
       DisplayWidth = 8
       FieldName = 'SERIAL_NUMBER'
+      ReadOnly = True
+    end
+    object AttendingSQLSERIAL_QB: TIntegerField
+      DisplayLabel = 'QB'
+      DisplayWidth = 8
+      FieldName = 'SERIAL_QB'
       ReadOnly = True
     end
     object AttendingSQLLAST_NAME: TWideStringField
@@ -3671,8 +3684,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object AttendingSRC: TDataSource
     DataSet = AttendingSQL
-    Left = 248
-    Top = 225
+    Left = 192
+    Top = 241
   end
   object NonAttendSQL: TIBCQuery
     UpdatingTable = 'person'
@@ -3723,8 +3736,8 @@ object V_SeminarFRM: TV_SeminarFRM
     SQL.Strings = (
       ' select'
       
-        '     pout.serial_number,pout.last_name,pout.first_name, pout.nat' +
-        'ional_id'
+        '     pout.serial_number,pout.serial_qb, pout.last_name,pout.firs' +
+        't_name, pout.national_id'
       ' from'
       ' person pout left outer join'
       '('
@@ -3758,6 +3771,11 @@ object V_SeminarFRM: TV_SeminarFRM
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
+    object NonAttendSQLSERIAL_QB: TIntegerField
+      DisplayLabel = 'QB'
+      DisplayWidth = 8
+      FieldName = 'SERIAL_QB'
+    end
     object NonAttendSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
       DisplayWidth = 21
@@ -3767,7 +3785,7 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object NonAttendSQLFIRST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
-      DisplayWidth = 10
+      DisplayWidth = 12
       FieldName = 'FIRST_NAME'
       FixedChar = True
       Size = 30

@@ -195,6 +195,7 @@ end;
 procedure TM_mainFRM.LoginBTNClick(Sender: TObject);
 begin
 gpShowModal(TSN_LoginFRm);
+//TODO INTIALIZE SERIALS FOR CERTIFICATE
 //TODO  Certificates
 //TODO certificates when present as quest in another seminar check 4 months before or after
 //TODO   seminar-tabsheets save aux tables with ACCEPT button. Save on Close
@@ -204,6 +205,7 @@ gpShowModal(TSN_LoginFRm);
 //TODO    expenses/revenue report
 //TODO    invoice company instead of students
 //TODO approve should check for instructor, examiner, dates, subject, etc
+
 
 
 end;

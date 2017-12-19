@@ -309,6 +309,8 @@ type
     wwDBEdit6: TwwDBEdit;
     SeminarSQLFK_COMPANY_INVOICED: TIntegerField;
     SeminarSQLPASS_PERCENTAGE: TIntegerField;
+    NonAttendSQLSERIAL_QB: TIntegerField;
+    AttendingSQLSERIAL_QB: TIntegerField;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
