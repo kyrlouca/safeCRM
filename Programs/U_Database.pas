@@ -100,7 +100,7 @@ begin
    end;
 
    if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['A'])=0 then begin
-      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS,Order_number, DESCRIPTION,description_Greek) values( :ST,:o,:DS,:Gr)',['A',1,'ANAD Approved','Έγκριση ΑΝΑΔ']);
+      ksExecSQLVar(cn,'insert into STATUS_ACTIVITY (STATUS,Order_number, DESCRIPTION,description_Greek) values( :ST,:o,:DS,:Gr)',['A',1,'Approved','Εγκεκριμένο']);
    end;
 
    if ksCountRecSQL(cn,'select STATUS from STATUS_ACTIVITY where STATUS= :VAL',['F'])=0 then begin

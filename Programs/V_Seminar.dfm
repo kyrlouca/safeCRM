@@ -124,7 +124,6 @@ object V_SeminarFRM: TV_SeminarFRM
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitTop = 18
       object SeminarTS: TTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
         OnShow = SeminarTSShow
@@ -136,6 +135,8 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitLeft = -1
+          ExplicitTop = -2
           object FirstGRP: TRzGroupBox
             Left = 20
             Top = 24
@@ -586,6 +587,58 @@ object V_SeminarFRM: TV_SeminarFRM
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
+            end
+          end
+          object GroupBox7: TGroupBox
+            Left = 412
+            Top = 236
+            Width = 325
+            Height = 59
+            Caption = #932#965#960#959#962' '#931#949#956#953#957#945#961#943#959#965
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentBackground = False
+            ParentColor = False
+            ParentFont = False
+            TabOrder = 2
+            object CategoryChangeFLD: TwwDBComboBox
+              Left = 19
+              Top = 23
+              Width = 166
+              Height = 23
+              ParentCustomHint = False
+              BiDiMode = bdLeftToRight
+              ParentBiDiMode = False
+              ShowButton = True
+              Style = csOwnerDrawVariable
+              MapList = True
+              AllowClearKey = False
+              AutoDropDown = True
+              ShowMatchText = True
+              AutoSelect = False
+              Ctl3D = True
+              DataField = 'SEM_CATEGORY'
+              DataSource = SeminarSRC
+              DropDownCount = 8
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 0
+              ParentCtl3D = False
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = False
+              Sorted = False
+              TabOrder = 0
+              UnboundDataType = wwDefault
+              DoubleBuffered = False
+              ParentDoubleBuffered = False
             end
           end
         end
@@ -1216,7 +1269,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 Left = 84
                 Top = 27
                 Width = 144
-                Height = 21
+                Height = 24
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1240,7 +1293,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 Left = 84
                 Top = 50
                 Width = 144
-                Height = 21
+                Height = 24
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1612,8 +1665,6 @@ object V_SeminarFRM: TV_SeminarFRM
               OnTitleButtonClick = AllPersonsGRDTitleButtonClick
               OnDblClick = AllPersonsGRDDblClick
               OnKeyDown = AllPersonsGRDKeyDown
-              ExplicitTop = 128
-              ExplicitHeight = 439
             end
             object RzSizePanel1: TRzSizePanel
               Left = 1
@@ -2959,7 +3010,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800200310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800240310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

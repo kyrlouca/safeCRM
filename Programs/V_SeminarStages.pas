@@ -20,7 +20,6 @@ type
   End;
 
   TV_SeminarStagesFRM = class(TForm)
-    Panel3: TRzPanel;
     Panel4: TRzPanel;
     Panel11: TRzPanel;
     BitBtn1: TBitBtn;
@@ -44,18 +43,6 @@ type
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     TableSQLLAST_NAME: TWideStringField;
     TableSRC: TIBCDataSource;
-    FirstGRP: TGroupBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    SerialFLD: TRzDBLabel;
-    Label5: TLabel;
-    Label4: TLabel;
-    RzDBLabel1: TRzDBLabel;
-    RzDBLabel2: TRzDBLabel;
-    SeminarFLD: TRzDBLabel;
-    Companylbl: TLabel;
-    RzDBLabel3: TRzDBLabel;
-    wwDBComboBox1: TwwDBComboBox;
     SeminarSQL: TIBCQuery;
     SeminarSQLSERIAL_NUMBER: TIntegerField;
     SeminarSQLFK_SEMINAR: TIntegerField;
@@ -79,56 +66,66 @@ type
     SeminarSQLMAX_CAPACITY: TIntegerField;
     SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
     SeminarSRC: TDataSource;
-    GroupBox1: TGroupBox;
-    ApprovedBTN: TRzBitBtn;
-    CompletedBTN: TRzBitBtn;
     RzPanel1: TRzPanel;
     wwDBLookupCombo1: TwwDBLookupCombo;
     Panel1: TRzPanel;
-    ApprovedST: TRzGlyphStatus;
-    CompletedST: TRzGlyphStatus;
     RzGlyphStatus2: TRzGlyphStatus;
-    CreatedBTN: TRzBitBtn;
-    CreatedST: TRzGlyphStatus;
     TableSQLANAD_NUMBER: TWideStringField;
     TableSQLHAS_EXPIRY: TWideStringField;
     TableSQLEXPIRY_PERIOD: TIntegerField;
     TableSQLFK_EXAMINER: TIntegerField;
     TableSQLTYPE_MONO_POLY: TWideStringField;
-    GroupBox2: TGroupBox;
     TableSQLSEM_CATEGORY: TWideStringField;
-    GroupBox3: TGroupBox;
-    Label1: TLabel;
-    RzDBLabel4: TRzDBLabel;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     AcceptBTN: TBitBtn;
     CanelBTN: TBitBtn;
-    CategoryChangeFLD: TwwDBComboBox;
-    StatusChangeFLD: TwwDBComboBox;
+    Panel2: TRzPanel;
+    MainHelpRE: TwwDBRichEdit;
+    MainMenu1: TMainMenu;
+    Help1: TMenuItem;
+    Certifcates1: TMenuItem;
+    Panel3: TRzPanel;
     RzPanel2: TRzPanel;
-    RzPanel3: TRzPanel;
-    wwIncrementalSearch3: TwwIncrementalSearch;
-    grid1: TwwDBGrid;
+    RzPanel6: TRzPanel;
+    GroupBox2: TGroupBox;
+    InvoicedST: TRzGlyphStatus;
+    CertifiedST: TRzGlyphStatus;
+    GroupBox1: TGroupBox;
+    ApprovedST: TRzGlyphStatus;
+    CompletedST: TRzGlyphStatus;
+    CreatedST: TRzGlyphStatus;
+    FirstGRP: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    SerialFLD: TRzDBLabel;
+    Label5: TLabel;
+    Label4: TLabel;
+    RzDBLabel1: TRzDBLabel;
+    RzDBLabel2: TRzDBLabel;
+    SeminarFLD: TRzDBLabel;
+    Companylbl: TLabel;
+    RzDBLabel3: TRzDBLabel;
+    Label1: TLabel;
+    RzDBLabel4: TRzDBLabel;
+    wwDBComboBox1: TwwDBComboBox;
+    RzPanel7: TRzPanel;
+    ErrorMemo: TRzMemo;
+    RzPanel4: TRzPanel;
+    ApprBTN: TRzBitBtn;
+    RzBitBtn1: TRzBitBtn;
+    SemGRD: TwwDBGrid;
+    ShowStageFLD: TwwDBComboBox;
+    ShowCatFLD: TwwDBComboBox;
+    RzPanel5: TRzPanel;
     Nav1: TwwDBNavigator;
     Nav1Button: TwwNavButton;
     Nav1Prior: TwwNavButton;
     Nav1Next: TwwNavButton;
     Nav1Button1: TwwNavButton;
-    Panel2: TRzPanel;
-    ShowCatFLD: TwwDBComboBox;
-    ShowStageFLD: TwwDBComboBox;
-    GroupBox4: TGroupBox;
-    InvoicedBTN: TRzBitBtn;
-    CertifiedBTN: TRzBitBtn;
-    InvoicedST: TRzGlyphStatus;
-    CertifiedST: TRzGlyphStatus;
-    MainHelpRE: TwwDBRichEdit;
-    MainMenu1: TMainMenu;
-    Help1: TMenuItem;
-    Certifcates1: TMenuItem;
-    ApprBTN: TRzBitBtn;
-    ErrorMemo: TRzMemo;
+    wwIncrementalSearch1: TwwIncrementalSearch;
+    RzPanel3: TRzPanel;
+    StatusChangeFLD: TwwDBComboBox;
     procedure AcceptBTNClick(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -148,8 +145,8 @@ type
     { Private declarations }
     cn:TIBCConnection;
   procedure ShowStatus(Dataset:TDataset);
-  Function FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
-  Function CalcDaysLeft():TReminderResult;
+  procedure CompleteSeminar(Const seminarSerial:Integer);
+
   public
     { Public declarations }
   end;
@@ -236,9 +233,14 @@ try
   finally
     qr.Free;
   end;
-ErrorMemo.Visible:=isError;
-if Not isError then
-  ShowMessage('approve oK');
+  ErrorMemo.Visible:=isError;
+
+if Not isError then begin
+  Str:='update seminar sem set sem.status= ''A'' where sem.serial_number=:seminarSerial';
+  ksExecSQLVar(cn,str,[SeminarSerial]);
+  MessageDlg('ΟΚ. Το Σεμινάριο έχει ΕΓΚΡΙΘΕΙ', mtInformation, [mbOK], 0);
+  TableSQL.Refresh;
+end;
 
 end;
 
@@ -263,8 +265,67 @@ begin
 end;
 
 procedure TV_SeminarStagesFRM.RzBitBtn1Click(Sender: TObject);
+var
+  SeminarSerial:Integer;
+
 begin
-  close;
+  SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  COmpleteSeminar(SeminarSerial);
+
+end;
+
+procedure TV_SeminarStagesFRM.CompleteSeminar(Const seminarSerial:Integer);
+var
+  qr:TksQuery;
+  status:String;
+  isError:Boolean;
+  str:string;
+  cnt:integer;
+begin
+//check if anad
+ErrorMemo.Clear;
+ErrorMemo.Visible:=false;
+isError:=false;
+
+ qr:=TksQuery.Create(cn,'select * from seminar sem where sem.serial_number= :SeminarSerial');
+  try
+    qr.ParamByName('seminarSerial').Value:=SeminarSerial;
+    qr.Open;
+    status:=qr.FieldByName('STATUS').AsString;
+    If status<>'A' then begin
+      ErrorMemo.Lines.Add('Μόνο σεμινάρια σε στάδιο ΕΓΚΡΙΣΗΣ μπορεί να ολοκληρωθούν') ;
+      isError:=true;
+    end;
+
+  finally
+    qr.Free;
+  end;
+
+
+  str:=
+  '   select sub.serial_number,inv.serial_number as INvoice_Serial'
+  +'    from'
+  +'        seminar_subject sub left outer join'
+  +'        invoice inv  on  inv.fk_subject_serial = sub.serial_number'
+  +'    where'
+  +'        sub.fk_seminar_serial = :seminarSerial'
+  +'        and inv.serial_number is null';
+
+  cnt:=ksCountRecVarSQL(cn,str,[SeminarSerial]);
+  if cnt>0 then begin
+      ErrorMemo.Lines.Add('ΔΕΝ είναι όλα τα θέματα ΤΙΜΟΛΟΓΗΜΕΝΑ ακόμα') ;
+      isError:=true;
+  end;
+
+  ErrorMemo.Visible:=isError;
+
+if Not isError then begin
+  Str:='update seminar sem set sem.status= ''F'' where sem.serial_number=:seminarSerial';
+  ksExecSQLVar(cn,str,[SeminarSerial]);
+  MessageDlg('ΟΚ. Το Σεμινάριο έχει ΟΛΟΚΛΗΡΩΘΕΙ', mtInformation, [mbOK], 0);
+  TableSQL.Refresh;
+end;
+
 end;
 
 
@@ -301,7 +362,7 @@ Var
     str:string;
 
 begin
-  BtnArray :=[CreatedBTn,ApprovedBTN,CertifiedBTN,InvoicedBTN,CompletedBTN];
+//  BtnArray :=[CreatedBTn,ApprovedBTN,CertifiedBTN,InvoicedBTN,CompletedBTN];
   StArray := [CreatedST,ApprovedST,CertifiedST,InvoicedST,CompletedST];
 
   Status:= Dataset.FieldByName('Status').AsString;
@@ -337,6 +398,7 @@ if not select then
 if TableSQL.State in [dsEdit] then
   TableSQL.Post;
 
+
 end;
 
 procedure TV_SeminarStagesFRM.VtFilterRecord(DataSet: TDataSet;
@@ -344,13 +406,6 @@ procedure TV_SeminarStagesFRM.VtFilterRecord(DataSet: TDataSet;
 begin
   accept := Dataset.FieldByName('DaysCalc').asInteger >= 0;
 end;
-
-Function TV_SeminarStagesFRM.CalcDaysLeft():TReminderResult;
-begin
-
-
-end;
-
 
 
 procedure TV_SeminarStagesFRM.CanelBTNClick(Sender: TObject);
@@ -384,17 +439,14 @@ begin
   end;
 end;
 
-Function TV_SeminarStagesFRM.FindActionDate(const DateSeminar:TDate;Const isAfter,isDayUnit:Boolean;Const NumberOfUnits:Integer):Tdate;
-begin
-
-end;
 
 
 procedure TV_SeminarStagesFRM.FormActivate(Sender: TObject);
 begin
+  ErrorMemo.Visible:=false;
   ksfillComboF1(cn,ShowCatFLD,'SEM_CATEGORY','category_code','TYPE_DESC_GR','order_NUMBER' );
   ksfillComboF1(cn,ShowStageFLD,'status_activity','status','DESCRIPTION_greek','order_NUMBER' );
-  ksfillComboF1(cn,CategoryChangeFLD,'SEM_CATEGORY','category_code','TYPE_DESC_GR','order_NUMBER' );
+//  ksfillComboF1(cn,CategoryChangeFLD,'SEM_CATEGORY','category_code','TYPE_DESC_GR','order_NUMBER' );
   ksfillComboF1(cn,StatusChangeFLD,'status_activity','status','DESCRIPTION_greek','order_NUMBER' );
 
 ksOpenTables([TableSQL])

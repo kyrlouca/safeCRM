@@ -383,6 +383,8 @@ type
     FirstFLD: TwwDBEdit;
     Label27: TLabel;
     SeminarSQLSPECIFICATION_NUMBER: TWideStringField;
+    GroupBox7: TGroupBox;
+    CategoryChangeFLD: TwwDBComboBox;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -566,7 +568,10 @@ end;
 procedure TV_SeminarFRM.SeminarTSShow(Sender: TObject);
 begin
   try
+
     SeminarSQL.DisableControls;
+    ksfillComboF1(cn,CategoryChangeFLD,'SEM_CATEGORY','category_code','TYPE_DESC_GR','order_NUMBER' );
+
     ksOpenTables([CompanySQL]);
     ksOpenTables([seminarSubjectSQL, SeminarDaySQL]);
     AnadFLD.SetFocus;
