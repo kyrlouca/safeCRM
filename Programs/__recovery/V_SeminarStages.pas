@@ -188,25 +188,25 @@ try
     qr.Open;
     status:=qr.FieldByName('STATUS').AsString;
     If status<>'P' then begin
-      ErrorMemo.Lines.Add('Μόνο σεμινάρια σε στάδιο ΕΤΟΙΜΑΣΙΑΣ μπορεί εγκριθούν') ;
+      ErrorMemo.Lines.Add('ΞΟΞ½ΞΏ ΟƒΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞ± ΟƒΞµ ΟƒΟ„Ξ¬Ξ΄ΞΉΞΏ Ξ•Ξ¤ΞΞ™ΞΞ‘Ξ£Ξ™Ξ‘Ξ£ ΞΌΟ€ΞΏΟΞµΞ― ΞµΞ³ΞΊΟΞΉΞΈΞΏΟΞ½') ;
       isError:=true;
     end;
 
     if trim(qr.FieldByName('anad_number').AsString)='' then begin
-      ErrorMemo.Lines.Add('Ο Αριθμός ΑΝΑΔ δεν είναι συμπληρωμένος');
+      ErrorMemo.Lines.Add('Ξ Ξ‘ΟΞΉΞΈΞΌΟΟ‚ Ξ‘ΞΞ‘Ξ” Ξ΄ΞµΞ½ ΞµΞ―Ξ½Ξ±ΞΉ ΟƒΟ…ΞΌΟ€Ξ»Ξ·ΟΟ‰ΞΌΞ­Ξ½ΞΏΟ‚');
       isError:=true;
     end;
 
     str:='select sub.fk_instructor, sub.fk_examiner from seminar_subject sub where sub.fk_seminar_serial = :seminarSerial';
     if ksCountRecVarSQL(cn,str,[seminarSerial])<1 then begin
-      ErrorMemo.Lines.Add('Το Σεμινάριο πρέπει να έχει Τουλάχιστον ένα ΘΕΜΑ');
+      ErrorMemo.Lines.Add('Ξ¤ΞΏ Ξ£ΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞΏ Ο€ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± Ξ­Ο‡ΞµΞΉ Ξ¤ΞΏΟ…Ξ»Ξ¬Ο‡ΞΉΟƒΟ„ΞΏΞ½ Ξ­Ξ½Ξ± ΞΞ•ΞΞ‘');
       isError:=true;
     end;
 
     {
     str:='select sub.fk_instructor, sub.fk_examiner from seminar_subject sub where sub.fk_seminar_serial = :seminarSerial';
     if ksCountRecVarSQL(cn,str,[seminarSerial])<1 then begin
-      ErrorMemo.Lines.Add('Το Σεμινάριο πρέπει να έχει Τουλάχιστον ένα ΘΕΜΑ');
+      ErrorMemo.Lines.Add('Ξ¤ΞΏ Ξ£ΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞΏ Ο€ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± Ξ­Ο‡ΞµΞΉ Ξ¤ΞΏΟ…Ξ»Ξ¬Ο‡ΞΉΟƒΟ„ΞΏΞ½ Ξ­Ξ½Ξ± ΞΞ•ΞΞ‘');
       isError:=true;
     end;
     }
@@ -216,7 +216,7 @@ try
   +'    sub.fk_seminar_serial = :seminarSerial'
   +'    and ((sub.fk_instructor is null ) or (sub.fk_examiner is null) or (sub.fk_venue is null) )';
       if ksCountRecVarSQL(cn,str,[seminarSerial])>0 then begin
-      ErrorMemo.Lines.Add('Σε Όλα τα Θέματα πρέπει να υπάρχει Εκπαιδευτής, Αξιολογητής και Αίθουσα');
+      ErrorMemo.Lines.Add('Ξ£Ξµ ΞΞ»Ξ± Ο„Ξ± ΞΞ­ΞΌΞ±Ο„Ξ± Ο€ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ Ξ•ΞΊΟ€Ξ±ΞΉΞ΄ΞµΟ…Ο„Ξ®Ο‚, Ξ‘ΞΎΞΉΞΏΞ»ΞΏΞ³Ξ·Ο„Ξ®Ο‚ ΞΊΞ±ΞΉ Ξ‘Ξ―ΞΈΞΏΟ…ΟƒΞ±');
       isError:=true;
     end;
 
@@ -229,7 +229,7 @@ try
   +'      sub.fk_seminar_serial = :seminarSerial'
   +'      and sday.serial_number is null';
   if ksCountRecVarSQL(cn,str,[seminarSerial])>0 then begin
-      ErrorMemo.Lines.Add('Σε Όλα τα Θέματα πρέπει να υπάρχει ΗΜΕΡΑ');
+      ErrorMemo.Lines.Add('Ξ£Ξµ ΞΞ»Ξ± Ο„Ξ± ΞΞ­ΞΌΞ±Ο„Ξ± Ο€ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ Ξ—ΞΞ•Ξ΅Ξ‘');
       isError:=true;
   end;
 
@@ -237,8 +237,11 @@ try
     qr.Free;
   end;
 ErrorMemo.Visible:=isError;
-if Not isError then
-  ShowMessage('approve oK');
+if Not isError then begin
+  Str:=update seminar sem set sem.status= 'A' where sem.serial_number=:seminarSerial,
+  ksExecSQLVar(cn,str,[SeminarSerial])
+
+end;
 
 end;
 
