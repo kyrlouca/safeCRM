@@ -7523,6 +7523,10 @@ object M_mainFRM: TM_mainFRM
           OnClick = SystemParameters1Click
         end
       end
+      object N13: TMenuItem
+        Caption = #913#955#955#945#947#942' '#931#964#945#948#943#959#965
+        OnClick = N13Click
+      end
     end
     object Help1: TMenuItem
       Caption = 'Help'

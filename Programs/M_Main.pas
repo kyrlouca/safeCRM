@@ -85,6 +85,7 @@ type
     N6: TMenuItem;
     N7: TMenuItem;
     N10: TMenuItem;
+    N13: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -109,6 +110,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure ChangePassword1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure N13Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -129,7 +131,7 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
   G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices,
   v_SeminarPictureTemplate, R_SeminarListingRevenues, t_test2, R_presencePerDay,
-  SN_ModifyPassword;
+  SN_ModifyPassword, S_updateStatus;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -224,6 +226,12 @@ end;
 procedure TM_mainFRM.N12Click(Sender: TObject);
 begin
   gpShowModal(TR_ExpiryFRM);
+
+end;
+
+procedure TM_mainFRM.N13Click(Sender: TObject);
+begin
+gpShowModal(TS_UpdateStatusFRM);
 
 end;
 

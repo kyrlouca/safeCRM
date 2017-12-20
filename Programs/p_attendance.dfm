@@ -2,7 +2,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 542
+  ClientHeight = 559
   ClientWidth = 1002
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,11 +54,12 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 499
+    Top = 516
     Width = 1002
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 479
     object RzPanel1: TRzPanel
       Left = 901
       Top = 1
@@ -156,23 +157,25 @@ object P_attendanceFRM: TP_attendanceFRM
     Left = 0
     Top = 92
     Width = 1002
-    Height = 407
+    Height = 424
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 387
     object Panel5: TPanel
       Left = 457
       Top = 1
       Width = 416
-      Height = 405
+      Height = 422
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 0
+      ExplicitHeight = 385
       object wwDBGrid1: TwwDBGrid
         Left = 0
         Top = 36
         Width = 416
-        Height = 326
+        Height = 343
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
@@ -199,6 +202,7 @@ object P_attendanceFRM: TP_attendanceFRM
         TitleLines = 1
         TitleButtons = False
         OnExit = wwDBGrid1Exit
+        ExplicitHeight = 306
         object PresentFLD: TwwCheckBox
           Left = 72
           Top = 62
@@ -347,13 +351,14 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 362
+        Top = 379
         Width = 416
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 2
+        ExplicitTop = 342
         object RzPanel6: TRzPanel
           Left = 315
           Top = 0
@@ -585,10 +590,11 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 456
-      Height = 405
+      Height = 422
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
+      ExplicitHeight = 385
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -600,12 +606,13 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 208
+        Top = 225
         Width = 456
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 188
         object Grid1: TwwDBGrid
           Left = 0
           Top = 0

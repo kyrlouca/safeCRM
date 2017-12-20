@@ -238,8 +238,6 @@ var
   Allow:Boolean;
 Begin
 
-  status:=TableSQL.FieldByName('status').AsString;
-  allow:= (Status='A');
 
 
 
@@ -253,12 +251,12 @@ Begin
     exit;
   end;
 
+  status:=TableSQL.FieldByName('status').AsString;
+  allow:= (Status='A');
+
   if allow then begin
     UpdatePresenceTable(seminarSerial,daySerial);
-  end else begin
-      SHowMessage('Το σεμινάριο δεν είναι σε στάδιο ΕΓΚΡΙΣΗ. Χρησιμοποιείστε τα Reports');
   end;
-  VPresenceSQL.ReadOnly:= not allow;
 end;
 
 procedure TP_attendanceFRM.DaySQLBeforeScroll(DataSet: TDataSet);
@@ -281,7 +279,8 @@ procedure TP_attendanceFRM.FormActivate(Sender: TObject);
 var
   allowModify: boolean;
   st:string;
-
+status:string;
+isAllow:boolean;
 begin
 // personSQL.Close;
 // personSQL.ParamByName('seminarSerial').Value:=IN_seminar_serial;
@@ -295,6 +294,16 @@ begin
   daySQL.Close;
   daySQL.ParamByName('SeminarSerial').Value:=TableSQL.FieldByName('serial_number').AsInteger;
   daySQL.Open;
+
+  status:=TableSQL.FieldByName('status').AsString;
+  isallow:= (Status='A');
+
+  if isallow then begin
+//    UpdatePresenceTable(seminarSerial,daySerial);
+  end else begin
+      SHowMessage('Το σεμινάριο δεν είναι σε στάδιο ΕΓΚΡΙΣΗ. Χρησιμοποιείστε τα Reports');
+  end;
+  VPresenceSQL.ReadOnly:= not isallow;
 
 
 

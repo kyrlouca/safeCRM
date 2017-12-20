@@ -199,11 +199,12 @@ str:string;
 begin
   seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 
-  SeminarStatus:=TableSQL.FieldByName('status').AsString;
+//  SeminarStatus:=TableSQL.FieldByName('status').AsString;
 //  if SeminarStatus<>'A' then begin
 //    MessageDlg('Δεν γίνεται να καταγραφούν παρουσίες γιατί το Σεμινάριο δεν είναι σε στάδιο ''APPROVED'' ', mtWarning, [mbOK], 0);
 //    abort;
 //  end;
+
 
   SeminarCategory:= CategorySHowFLD.Text;
   SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
@@ -215,8 +216,6 @@ begin
     MessageDlg('Για Σεμινάρια του τύπου: '+ SeminarCategory +' δεν παίρνονται Παρουσίες', mtWarning, [mbOK], 0);
     exit;
   end;
-
-
 
 
   frm :=  TP_attendanceFRM.Create(nil);

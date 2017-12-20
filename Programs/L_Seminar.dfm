@@ -3,7 +3,7 @@ object L_SeminarFRM: TL_SeminarFRM
   Top = 153
   Align = alClient
   Caption = '--'
-  ClientHeight = 538
+  ClientHeight = 588
   ClientWidth = 1053
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -57,11 +57,12 @@ object L_SeminarFRM: TL_SeminarFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 495
+    Top = 545
     Width = 1053
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 495
     object RzPanel1: TRzPanel
       Left = 952
       Top = 1
@@ -400,21 +401,20 @@ object L_SeminarFRM: TL_SeminarFRM
     Left = 0
     Top = 187
     Width = 1053
-    Height = 308
+    Height = 358
     Align = alClient
     TabOrder = 2
-    ExplicitTop = 145
-    ExplicitHeight = 350
+    ExplicitHeight = 308
     object Panel5: TPanel
       Left = 833
       Top = 1
       Width = 224
-      Height = 306
+      Height = 356
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 348
+      ExplicitHeight = 306
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -573,7 +573,7 @@ object L_SeminarFRM: TL_SeminarFRM
       end
       object CertificatesBTN: TRzBitBtn
         Left = 6
-        Top = 236
+        Top = 279
         Width = 135
         Height = 37
         Alignment = taLeftJustify
@@ -729,7 +729,7 @@ object L_SeminarFRM: TL_SeminarFRM
       end
       object InvoiceBTN: TRzBitBtn
         Left = 6
-        Top = 279
+        Top = 236
         Width = 135
         Height = 37
         Alignment = taLeftJustify
@@ -810,11 +810,11 @@ object L_SeminarFRM: TL_SeminarFRM
       Left = 25
       Top = 1
       Width = 808
-      Height = 306
+      Height = 356
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 348
+      ExplicitHeight = 306
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -942,23 +942,23 @@ object L_SeminarFRM: TL_SeminarFRM
         Left = 0
         Top = 33
         Width = 808
-        Height = 273
+        Height = 323
         ControlType.Strings = (
           'SEMINAR_CORP_TYPE;CustomEdit;wwDBComboBox1;F'
           'TYPE_MONO_POLY;CheckBox;M;P'
           'STATUS;CustomEdit;StatusShowFLD;T'
           'SEM_CATEGORY;CustomEdit;CategoryShowFLD;F')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'5'#9'A/A'#9#9
-          'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942#9#9
-          'ANAD_NUMBER'#9'13'#9#913#925#913#916' '#9#9
-          'STATUS'#9'11'#9#931#964#940#948#953#959#9#9
-          'SEM_CATEGORY'#9'15'#9#932#973#960#959#962#9#9
-          'TYPE_MONO_POLY'#9'9'#9#924#972#957#959'-'#917#960#967#9#9
-          'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945#9#9
-          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951#9#9
-          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962#9#9
-          'DURATION_HOURS'#9'6'#9#911#961#949#962#9#9)
+          'SERIAL_NUMBER'#9'5'#9'A/A'
+          'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942
+          'ANAD_NUMBER'#9'13'#9#913#925#913#916' '
+          'STATUS'#9'11'#9#931#964#940#948#953#959
+          'SEM_CATEGORY'#9'15'#9#932#973#960#959#962
+          'TYPE_MONO_POLY'#9'9'#9#924#972#957#959'-'#917#960#967
+          'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945
+          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
+          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
+          'DURATION_HOURS'#9'6'#9#911#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -987,7 +987,7 @@ object L_SeminarFRM: TL_SeminarFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
-        ExplicitHeight = 315
+        ExplicitHeight = 273
         object StatusShowFLD: TwwDBComboBox
           Left = 304
           Top = 176
@@ -1032,12 +1032,12 @@ object L_SeminarFRM: TL_SeminarFRM
       Left = 1
       Top = 1
       Width = 24
-      Height = 306
+      Height = 356
       Align = alLeft
       Alignment = taLeftJustify
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitHeight = 348
+      ExplicitHeight = 306
     end
   end
   object TableSRC: TDataSource
