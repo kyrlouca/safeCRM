@@ -269,44 +269,20 @@ type
     insSemInstructorsSQLNATIONAL_ID: TWideStringField;
     insSeminarAllInstructorsSQL: TIBCQuery;
     insSeminarAllInstructorsSRC: TDataSource;
-    insSeminarAllInstructorsSQLSERIAL_NUMBER: TIntegerField;
-    insSeminarAllInstructorsSQLANAD_NUMBER: TWideStringField;
-    insSeminarAllInstructorsSQLNATIONAL_ID: TWideStringField;
-    insSeminarAllInstructorsSQLFK_COMPANY_SERIAL: TIntegerField;
-    insSeminarAllInstructorsSQLFIRST_NAME: TWideStringField;
-    insSeminarAllInstructorsSQLLAST_NAME: TWideStringField;
-    insSeminarAllInstructorsSQLNICKNAME: TWideStringField;
-    insSeminarAllInstructorsSQLSTATUS: TWideStringField;
-    insSeminarAllInstructorsSQLOCCUPATION: TWideStringField;
-    insSeminarAllInstructorsSQLPHONE_MOBILE: TWideStringField;
-    insSeminarAllInstructorsSQLPHONE_FIXED: TWideStringField;
-    insSeminarAllInstructorsSQLPHONE_ALTERNATE: TWideStringField;
-    insSeminarAllInstructorsSQLFAX: TWideStringField;
-    insSeminarAllInstructorsSQLEMAIL: TWideStringField;
-    insSeminarAllInstructorsSQLEMAIL_2: TSmallintField;
-    insSeminarAllInstructorsSQLADDRESS: TWideStringField;
-    insSeminarAllInstructorsSQLADDRESS_STREET: TWideStringField;
-    insSeminarAllInstructorsSQLADDRESS_POST_CODE: TWideStringField;
-    insSeminarAllInstructorsSQLADDRESS_CITY: TWideStringField;
-    insSeminarAllInstructorsSQLADDRESS_DISTRICT: TWideStringField;
-    insSeminarAllInstructorsSQLDATE_STARTED: TDateField;
-    insSeminarAllInstructorsSQLDATE_BIRTH: TDateField;
-    insSeminarAllInstructorsSQLDATE_USER: TDateField;
-    insSeminarAllInstructorsSQLLIST_SOURCE: TWideStringField;
-    insSeminarAllInstructorsSQLFACEBOOK: TWideStringField;
-    insSeminarAllInstructorsSQLWEBSITE: TWideStringField;
-    insSeminarAllInstructorsSQLTWITTER: TWideStringField;
-    insSeminarAllInstructorsSQLSTATUS_ACTIVE: TWideStringField;
-    insSeminarAllInstructorsSQLCERTIFIED_ANAD: TWideStringField;
-    insSeminarAllInstructorsSQLJOB_TITLE: TWideStringField;
-    insSeminarAllInstructorsSQLFK_INSTRUCTOR_SERIAL: TIntegerField;
-    insSeminarAllInstructorsSQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     TableSQLSPECIFICATION_NUMBER: TWideStringField;
     Label24: TLabel;
     FirstFLD: TwwDBEdit;
     wwIncrementalSearch3: TwwIncrementalSearch;
     Label25: TLabel;
     Label26: TLabel;
+    insSeminarAllInstructorsSQLSERIAL_NUMBER: TIntegerField;
+    insSeminarAllInstructorsSQLLAST_NAME: TWideStringField;
+    insSeminarAllInstructorsSQLFIRST_NAME: TWideStringField;
+    insSeminarAllInstructorsSQLSTATUS_ACTIVE: TWideStringField;
+    insSeminarAllInstructorsSQLNATIONAL_ID: TWideStringField;
+    insSeminarAllInstructorsSQLANAD_NUMBER: TWideStringField;
+    insSeminarAllInstructorsSQLFK_INSTRUCTOR_SERIAL: TIntegerField;
+    insSeminarAllInstructorsSQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
@@ -337,6 +313,8 @@ type
     procedure ToRightBTNClick(Sender: TObject);
     procedure insSeminarSubjectSQLAfterScroll(DataSet: TDataSet);
     procedure wwNavButton21Click(Sender: TObject);
+    procedure SeminarTSExit(Sender: TObject);
+    procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -421,12 +399,13 @@ insSeminarSubjectSQL.Close;
 insSeminarSubjectSQL.ParamByName('SubjectSerial').Value:=subjectSerial;
 insSeminarSubjectSQL.Open;
 
+
 ksOpenTables([insSemInstructorsSQL]);
 
 insSeminarAllInstructorsSQL.Close;
 insSeminarAllInstructorsSQL.ParamByName('SubjectSerial').Value:=subjectSerial;
 insSeminarAllInstructorsSQL.Open;
-
+insSeminarSubjectSQL.First;
 
 end;
 
@@ -541,6 +520,24 @@ end;
 procedure TM_SeminarTypeFRM.Nav1InsertClick(Sender: TObject);
 begin
  ReminderDescFLD.SetFocus;
+end;
+
+procedure TM_SeminarTypeFRM.PageControlPCChanging(Sender: TObject;
+  var AllowChange: Boolean);
+begin
+
+  allowChange:=true;
+  try
+    If tableSQL.State in [dsEdit,dsInsert] then
+      TableSQL.Post;
+  except
+    On E : Exception do begin
+        ShowMessage(E.Message);
+      AllowChange:=false;
+    end;
+
+  end;
+
 end;
 
 procedure TM_SeminarTypeFRM.PICTURE_TOP_L1DblClick(Sender: TObject);
@@ -712,6 +709,15 @@ Begin
     img.Picture.LoadFromFile(filename);
     result:=true;
 end;
+procedure TM_SeminarTypeFRM.SeminarTSExit(Sender: TObject);
+begin
+if TableSQL.State in [dsEdit,dsInsert] then begin
+  tableSQL.Post;
+end;
+
+
+end;
+
 procedure TM_SeminarTypeFRM.ShowPictureDataT(Const TypeSerial:Integer;Const  Language:String);
 begin
    SeminarPictureSQL.Close;
@@ -938,6 +944,7 @@ begin
     PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
     Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
     CopyFromDefault(PictureSerial,-1,Language);
+    TableSQL.Refresh;
     ShowAll(SeminarSerial,Language);
 end;
 
@@ -976,6 +983,7 @@ var
 begin
 
   InstrSerial := insSeminarAllInstructorsSQL.FieldByName('serial_number').AsInteger;
+
   subjectSerial := insSeminarSubjectSQL.FieldByName('serial_number').AsInteger;
 
   if InstrSerial < 1 then

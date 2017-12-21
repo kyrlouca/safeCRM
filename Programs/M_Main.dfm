@@ -7496,10 +7496,6 @@ object M_mainFRM: TM_mainFRM
           Caption = #935#974#961#959#953' '#917#954#960#945#943#948#949#965#963#951#962
           OnClick = N2Click
         end
-        object N3: TMenuItem
-          Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
-          OnClick = N3Click
-        end
         object N5: TMenuItem
           Caption = #917#954#960#945#953#948#949#965#964#941#962
           OnClick = N5Click
@@ -7507,6 +7503,10 @@ object M_mainFRM: TM_mainFRM
         object N4: TMenuItem
           Caption = #917#943#948#951' '#922#972#963#964#959#965#962
           OnClick = N4Click
+        end
+        object N3: TMenuItem
+          Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
+          OnClick = N3Click
         end
       end
       object Security1: TMenuItem

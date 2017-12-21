@@ -339,14 +339,9 @@ object L_companiesFRM: TL_companiesFRM
         Font.Style = []
         ItemHeight = 0
         Items.Strings = (
-          'All'#9'All'
-          'IT2 - All High Value'#9'IT2'
-          'IM4 - High Value'#9'IM4'
-          'MED - Medium Value'#9'MED'
-          'LOW - Low Value'#9'LOW'
-          'STC - Status C'#9'STC'
-          'DO - Delivery Order '#9'DO'
-          'DOZ - Zero Delivery Order'#9'DOZ')
+          'All'#9
+          'Active'#9'Y'
+          'Deleted'#9'N')
         ParentCtl3D = False
         ParentFont = False
         ParentShowHint = False
@@ -354,6 +349,7 @@ object L_companiesFRM: TL_companiesFRM
         Sorted = False
         TabOrder = 0
         UnboundDataType = wwDefault
+        OnCloseUp = FilterBoxCloseUp
         DoubleBuffered = False
         ParentDoubleBuffered = False
       end
@@ -453,7 +449,7 @@ object L_companiesFRM: TL_companiesFRM
         NumGlyphs = 2
         Spacing = 12
       end
-      object RzBitBtn2: TRzBitBtn
+      object EditBTN: TRzBitBtn
         Left = 6
         Top = 78
         Width = 135
@@ -470,6 +466,7 @@ object L_companiesFRM: TL_companiesFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 2
+        OnClick = EditBTNClick
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
           180000000000C006000000000000000000000000000000000000FFFFFFF8F8F8
@@ -683,12 +680,15 @@ object L_companiesFRM: TL_companiesFRM
         Top = 33
         Width = 810
         Height = 327
+        ControlType.Strings = (
+          'STATUS_ACTIVE;CheckBox;'#933';'#925)
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
+          'STATUS_ACTIVE'#9'7'#9#917#957#949#961#947#972#962
           'LAST_NAME'#9'23'#9#908#957#959#956#945
           'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962
           'COMPANY_OWNER'#9'24'#9#921#948#953#959#954#964#942#964#951#962
-          'COMPANY_CONTACT'#9'19'#9#917#960#953#954#959#953#957#969#957#943#945
+          'COMPANY_CONTACT'#9'16'#9#917#960#953#954#959#953#957#969#957#943#945
           'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972
           'PHONE_MOBILE'#9'10'#9#932#951#955'. '#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
@@ -833,6 +833,14 @@ object L_companiesFRM: TL_companiesFRM
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
+    object TableSQLSTATUS_ACTIVE: TWideStringField
+      DisplayLabel = #917#957#949#961#947#972#962
+      DisplayWidth = 7
+      FieldName = 'STATUS_ACTIVE'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
     object TableSQLLAST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
       DisplayWidth = 23
@@ -854,7 +862,7 @@ object L_companiesFRM: TL_companiesFRM
     end
     object TableSQLCOMPANY_CONTACT: TWideStringField
       DisplayLabel = #917#960#953#954#959#953#957#969#957#943#945
-      DisplayWidth = 19
+      DisplayWidth = 16
       FieldName = 'COMPANY_CONTACT'
       Size = 160
     end
@@ -975,13 +983,6 @@ object L_companiesFRM: TL_companiesFRM
       FieldName = 'TWITTER'
       Visible = False
       Size = 160
-    end
-    object TableSQLSTATUS_ACTIVE: TWideStringField
-      FieldName = 'STATUS_ACTIVE'
-      Required = True
-      Visible = False
-      FixedChar = True
-      Size = 1
     end
     object TableSQLSEX: TWideStringField
       FieldName = 'SEX'

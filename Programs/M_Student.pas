@@ -107,7 +107,7 @@ type
     wwDBEdit20: TwwDBEdit;
     wwDBEdit21: TwwDBEdit;
     wwCheckBox1: TwwCheckBox;
-    wwDBEdit3: TwwDBEdit;
+    QbFLD: TwwDBEdit;
     Label6: TLabel;
     MainMenu1: TMainMenu;
     Reports1: TMenuItem;
@@ -174,7 +174,8 @@ end;
 procedure TM_StudentFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
 Dataset.FieldByName('status_active').Value:='Y';
-//Dataset.FieldByName('is_company').Value:='N';
+Dataset.FieldByName('is_company').Value:='N';
+Dataset.FieldByName('serial_qb').Value:= Dataset.FieldByName('serial_number').AsInteger;
 
 end;
 
@@ -252,7 +253,7 @@ end;
 
 procedure TM_StudentFRM.Nav1InsertClick(Sender: TObject);
 begin
-  FirstFLD.SetFocus;
+  qbflD.SetFocus;
 end;
 
 procedure TM_StudentFRM.CanelBTNClick(Sender: TObject);

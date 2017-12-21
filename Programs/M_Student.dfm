@@ -2,7 +2,7 @@ object M_StudentFRM: TM_StudentFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 727
+  ClientHeight = 707
   ClientWidth = 1246
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -32,7 +32,6 @@ object M_StudentFRM: TM_StudentFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1155
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -49,12 +48,11 @@ object M_StudentFRM: TM_StudentFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 684
+    Top = 664
     Width = 1246
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 1155
     object RzPanel1: TRzPanel
       Left = 1145
       Top = 1
@@ -63,7 +61,6 @@ object M_StudentFRM: TM_StudentFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 1054
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -148,7 +145,6 @@ object M_StudentFRM: TM_StudentFRM
     Height = 116
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 1155
     object Label23: TLabel
       Left = 31
       Top = 8
@@ -270,15 +266,14 @@ object M_StudentFRM: TM_StudentFRM
     Left = 0
     Top = 163
     Width = 1246
-    Height = 521
+    Height = 501
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 1155
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
       Width = 632
-      Height = 519
+      Height = 499
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -295,19 +290,19 @@ object M_StudentFRM: TM_StudentFRM
         Left = 0
         Top = 9
         Width = 626
-        Height = 510
+        Height = 490
         ControlType.Strings = (
           'IS_COMPANY;CheckBox;Y;N'
-          'STATUS_ACTIVE;CheckBox;'#925';'#933)
+          'STATUS_ACTIVE;CheckBox;'#933';'#925)
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'SERIAL_QB'#9'10'#9'A/A QB'
-          'STATUS_ACTIVE'#9'9'#9#916#953#945#947#961#945#966#942
-          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'13'#9#908#957#959#956#945
-          'IS_COMPANY'#9'8'#9' '#917#964#945#953#961#949#943#945
-          'NATIONAL_ID'#9'11'#9#932#945#965#964#972#964#951#964#945
-          'PHONE_MOBILE'#9'11'#9#922#953#957#951#964#972)
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'SERIAL_QB'#9'10'#9'A/A QB'#9#9
+          'STATUS_ACTIVE'#9'9'#9#917#957#949#961#947#972#962#9'F'#9
+          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959#9#9
+          'FIRST_NAME'#9'13'#9#908#957#959#956#945#9#9
+          'IS_COMPANY'#9'8'#9' '#917#964#945#953#961#949#943#945#9#9
+          'NATIONAL_ID'#9'11'#9#932#945#965#964#972#964#951#964#945#9#9
+          'PHONE_MOBILE'#9'11'#9#922#953#957#951#964#972#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -335,16 +330,16 @@ object M_StudentFRM: TM_StudentFRM
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
+        ExplicitTop = 5
       end
     end
     object RzPanel4: TRzPanel
       Left = 633
       Top = 1
       Width = 612
-      Height = 519
+      Height = 499
       Align = alClient
       TabOrder = 1
-      ExplicitTop = 16
       object GroupBox1: TGroupBox
         Left = 0
         Top = 49
@@ -450,7 +445,7 @@ object M_StudentFRM: TM_StudentFRM
         end
         object Label6: TLabel
           Left = 69
-          Top = 45
+          Top = 48
           Width = 41
           Height = 14
           Caption = 'A/A QB'
@@ -481,7 +476,7 @@ object M_StudentFRM: TM_StudentFRM
           Height = 22
           DataField = 'FIRST_NAME'
           DataSource = TableSRC
-          TabOrder = 0
+          TabOrder = 1
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
@@ -493,7 +488,7 @@ object M_StudentFRM: TM_StudentFRM
           Height = 22
           DataField = 'LAST_NAME'
           DataSource = TableSRC
-          TabOrder = 1
+          TabOrder = 2
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
@@ -510,6 +505,7 @@ object M_StudentFRM: TM_StudentFRM
           CalendarAttributes.Font.Style = []
           DataField = 'DATE_BIRTH'
           DataSource = TableSRC
+          Date = 43075.000000000000000000
           Epoch = 1950
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -518,7 +514,7 @@ object M_StudentFRM: TM_StudentFRM
           Font.Style = []
           ParentFont = False
           ShowButton = True
-          TabOrder = 3
+          TabOrder = 4
           DisplayFormat = 'dd/mm/yyyy'
         end
         object wwDBEdit13: TwwDBEdit
@@ -528,7 +524,7 @@ object M_StudentFRM: TM_StudentFRM
           Height = 22
           DataField = 'NATIONAL_ID'
           DataSource = TableSRC
-          TabOrder = 2
+          TabOrder = 3
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
@@ -552,7 +548,7 @@ object M_StudentFRM: TM_StudentFRM
           ItemIndex = 0
           LimitEditRect = True
           Sorted = False
-          TabOrder = 4
+          TabOrder = 5
           UnboundDataType = wwDefault
         end
         object wwCheckBox1: TwwCheckBox
@@ -569,21 +565,21 @@ object M_StudentFRM: TM_StudentFRM
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
           Alignment = taLeftJustify
-          Caption = #916#953#945#947#961#945#966#942
+          Caption = #917#957#949#961#947#972#962
           Checked = True
           DataField = 'STATUS_ACTIVE'
           DataSource = TableSRC
           State = cbChecked
-          TabOrder = 5
+          TabOrder = 7
         end
-        object wwDBEdit3: TwwDBEdit
+        object QbFLD: TwwDBEdit
           Left = 116
           Top = 45
           Width = 49
           Height = 22
           DataField = 'SERIAL_QB'
           DataSource = TableSRC
-          TabOrder = 6
+          TabOrder = 0
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
@@ -595,7 +591,7 @@ object M_StudentFRM: TM_StudentFRM
           Height = 22
           DataField = 'JOB'
           DataSource = TableSRC
-          TabOrder = 7
+          TabOrder = 6
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
@@ -798,7 +794,6 @@ object M_StudentFRM: TM_StudentFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
-        ExplicitWidth = 517
         object Nav1: TwwDBNavigator
           Left = 4
           Top = 3
@@ -1098,6 +1093,7 @@ object M_StudentFRM: TM_StudentFRM
   object TableSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
     KeyGenerator = 'GEN_PERSON'
+    GeneratorMode = gmInsert
     SQLInsert.Strings = (
       'INSERT INTO PERSON'
       
@@ -1206,7 +1202,7 @@ object M_StudentFRM: TM_StudentFRM
       FieldName = 'SERIAL_QB'
     end
     object TableSQLSTATUS_ACTIVE: TWideStringField
-      DisplayLabel = #916#953#945#947#961#945#966#942
+      DisplayLabel = #917#957#949#961#947#972#962
       DisplayWidth = 9
       FieldName = 'STATUS_ACTIVE'
       Required = True

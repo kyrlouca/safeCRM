@@ -33,7 +33,7 @@ type
     RzGroupBox1: TRzGroupBox;
     Label2: TLabel;
     FilterBox: TwwDBComboBox;
-    RzBitBtn2: TRzBitBtn;
+    EditBTN: TRzBitBtn;
     Nav1: TwwDBNavigator;
     Nav1Button: TwwNavButton;
     Nav1Prior: TwwNavButton;
@@ -88,6 +88,8 @@ type
     procedure Grid1DblClick(Sender: TObject);
     procedure DeletehawbBTNClick(Sender: TObject);
     procedure Nav1InsertClick(Sender: TObject);
+    procedure FilterBoxCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure EditBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -142,12 +144,33 @@ begin
 close;
 end;
 
+procedure TL_companiesFRM.EditBTNClick(Sender: TObject);
+begin
+  EditCompany();
+end;
+
 procedure TL_companiesFRM.TableSQLAfterInsert(DataSet: TDataSet);
 begin
 //      StationIDFLD.SetFocus;
 
 end;
 
+
+procedure TL_companiesFRM.FilterBoxCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+begin
+  if not select then exit;
+  TableSQL.RestoreSQL;
+
+  if sender.Value='Y' then begin
+    TableSQL.AddWhere('status_active = ''Y'' ')
+  end else if  sender.Value='N' then begin
+    TableSQL.AddWhere('status_active = ''N'' ')
+  end;
+  TableSQL.Open;
+
+
+end;
 
 procedure TL_companiesFRM.FormActivate(Sender: TObject);
 begin

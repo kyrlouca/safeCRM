@@ -79,8 +79,10 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Font.Style = []
       ParentFont = False
       TabOrder = 2
+      OnChanging = PageControlPCChanging
       object SeminarTS: TTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
+        OnExit = SeminarTSExit
         object RzPanel22: TRzPanel
           Left = 0
           Top = 0
@@ -1851,8 +1853,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
-              ExplicitTop = 44
-              ExplicitHeight = 374
+              ExplicitTop = 26
             end
           end
           object middlePNL: TRzPanel
@@ -1864,8 +1865,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             BorderOuter = fsNone
             TabOrder = 2
             object ToRightBTN: TBitBtn
-              Left = 3
-              Top = 141
+              Left = 5
+              Top = 69
               Width = 37
               Height = 37
               Cancel = True
@@ -2059,8 +2060,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = True
-              ExplicitTop = 47
-              ExplicitHeight = 371
             end
             object RzSizePanel2: TRzSizePanel
               Left = 1
@@ -2084,7 +2083,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object Label26: TLabel
                 Left = 30
-                Top = 12
+                Top = 7
                 Width = 41
                 Height = 14
                 Caption = #917#960#943#952#949#964#959
@@ -2191,6 +2190,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 TitleFont.Style = []
                 TitleLines = 1
                 TitleButtons = False
+                ExplicitLeft = 3
+                ExplicitTop = 31
               end
             end
           end
@@ -3569,7 +3570,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     end
     object CanelBTN: TBitBtn
       Left = 112
-      Top = 1
+      Top = 5
       Width = 89
       Height = 34
       Caption = 'Cancel'
@@ -3966,8 +3967,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
     MasterSource = TableSRC
     Active = True
-    Left = 409
-    Top = 149
+    Left = 385
+    Top = 133
     ParamData = <
       item
         DataType = ftInteger
@@ -4276,8 +4277,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     DetailFields = 'FK_SEMINAR_SUBJECT_SERIAL'
     MasterSource = insSeminarSubjectSRC
     Active = True
-    Left = 145
-    Top = 357
+    Left = 33
+    Top = 349
     ParamData = <
       item
         DataType = ftInteger
@@ -4322,8 +4323,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   end
   object insSemInstructorsSRC: TDataSource
     DataSet = insSemInstructorsSQL
-    Left = 272
-    Top = 345
+    Left = 32
+    Top = 393
   end
   object insSeminarSubjectSQL: TIBCQuery
     SQLInsert.Strings = (
@@ -4375,8 +4376,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       'where sty.serial_number= :subjectSerial')
     Active = True
     AfterScroll = insSeminarSubjectSQLAfterScroll
-    Left = 49
-    Top = 109
+    Left = 201
+    Top = 157
     ParamData = <
       item
         DataType = ftUnknown
@@ -4403,10 +4404,12 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     end
     object insSeminarSubjectSQLFEE_NORMAL: TFloatField
       FieldName = 'FEE_NORMAL'
+      Required = True
       Visible = False
     end
     object insSeminarSubjectSQLFEE_REDUCED: TFloatField
       FieldName = 'FEE_REDUCED'
+      Required = True
       Visible = False
     end
   end
@@ -4482,7 +4485,12 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     Transaction = ReadTrans
     UpdateTransaction = WriteTrans
     SQL.Strings = (
-      'select * from instructor outerT'
+      
+        'select outert.serial_number,outert.last_name,outerT.first_name, ' +
+        'outerT.status_active,'
+      'outerT.national_id,outerT.anad_number,'
+      '    innerT.fk_instructor_serial,innerT.fk_seminar_subject_serial'
+      'from instructor outerT'
       'left outer join'
       '('
       '    select'
@@ -4495,12 +4503,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       '    where sts.fk_seminar_subject_serial= :subjectSerial'
       ')innerT on InnerT.fk_instructor_serial=OuterT.serial_number'
       'where'
-      'InnerT.fk_Instructor_serial is null'
-      'and status_active='#39'Y'#39
-      '')
+      '    fk_instructor_serial is null'
+      '    and status_active= '#39'Y'#39)
     Active = True
-    Left = 137
-    Top = 413
+    Left = 169
+    Top = 453
     ParamData = <
       item
         DataType = ftUnknown
@@ -4533,126 +4540,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       FieldName = 'NATIONAL_ID'
       FixedChar = True
     end
-    object insSeminarAllInstructorsSQLANAD_NUMBER: TWideStringField
-      FieldName = 'ANAD_NUMBER'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object insSeminarAllInstructorsSQLFK_COMPANY_SERIAL: TIntegerField
-      FieldName = 'FK_COMPANY_SERIAL'
-      Visible = False
-    end
-    object insSeminarAllInstructorsSQLNICKNAME: TWideStringField
-      FieldName = 'NICKNAME'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object insSeminarAllInstructorsSQLSTATUS: TWideStringField
-      FieldName = 'STATUS'
-      Visible = False
-      FixedChar = True
-      Size = 3
-    end
-    object insSeminarAllInstructorsSQLOCCUPATION: TWideStringField
-      FieldName = 'OCCUPATION'
-      Visible = False
-      Size = 160
-    end
-    object insSeminarAllInstructorsSQLPHONE_MOBILE: TWideStringField
-      FieldName = 'PHONE_MOBILE'
-      Visible = False
-      FixedChar = True
-      Size = 15
-    end
-    object insSeminarAllInstructorsSQLPHONE_FIXED: TWideStringField
-      FieldName = 'PHONE_FIXED'
-      Visible = False
-      FixedChar = True
-      Size = 15
-    end
-    object insSeminarAllInstructorsSQLPHONE_ALTERNATE: TWideStringField
-      FieldName = 'PHONE_ALTERNATE'
-      Visible = False
-      FixedChar = True
-      Size = 15
-    end
-    object insSeminarAllInstructorsSQLFAX: TWideStringField
-      FieldName = 'FAX'
-      Visible = False
-      FixedChar = True
-      Size = 15
-    end
-    object insSeminarAllInstructorsSQLEMAIL: TWideStringField
-      FieldName = 'EMAIL'
-      Visible = False
-      Size = 160
-    end
-    object insSeminarAllInstructorsSQLEMAIL_2: TSmallintField
-      FieldName = 'EMAIL_2'
-      Visible = False
-    end
-    object insSeminarAllInstructorsSQLADDRESS: TWideStringField
-      FieldName = 'ADDRESS'
-      Visible = False
-      Size = 160
-    end
-    object insSeminarAllInstructorsSQLADDRESS_STREET: TWideStringField
-      FieldName = 'ADDRESS_STREET'
-      Visible = False
-      Size = 80
-    end
-    object insSeminarAllInstructorsSQLADDRESS_POST_CODE: TWideStringField
-      FieldName = 'ADDRESS_POST_CODE'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object insSeminarAllInstructorsSQLADDRESS_CITY: TWideStringField
-      FieldName = 'ADDRESS_CITY'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object insSeminarAllInstructorsSQLADDRESS_DISTRICT: TWideStringField
-      FieldName = 'ADDRESS_DISTRICT'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object insSeminarAllInstructorsSQLDATE_STARTED: TDateField
-      FieldName = 'DATE_STARTED'
-      Visible = False
-    end
-    object insSeminarAllInstructorsSQLDATE_BIRTH: TDateField
-      FieldName = 'DATE_BIRTH'
-      Visible = False
-    end
-    object insSeminarAllInstructorsSQLDATE_USER: TDateField
-      FieldName = 'DATE_USER'
-      Visible = False
-    end
-    object insSeminarAllInstructorsSQLLIST_SOURCE: TWideStringField
-      FieldName = 'LIST_SOURCE'
-      Visible = False
-      Size = 160
-    end
-    object insSeminarAllInstructorsSQLFACEBOOK: TWideStringField
-      FieldName = 'FACEBOOK'
-      Visible = False
-      Size = 160
-    end
-    object insSeminarAllInstructorsSQLWEBSITE: TWideStringField
-      FieldName = 'WEBSITE'
-      Visible = False
-      Size = 160
-    end
-    object insSeminarAllInstructorsSQLTWITTER: TWideStringField
-      FieldName = 'TWITTER'
-      Visible = False
-      Size = 160
-    end
     object insSeminarAllInstructorsSQLSTATUS_ACTIVE: TWideStringField
       FieldName = 'STATUS_ACTIVE'
       Required = True
@@ -4660,17 +4547,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       FixedChar = True
       Size = 1
     end
-    object insSeminarAllInstructorsSQLCERTIFIED_ANAD: TWideStringField
-      FieldName = 'CERTIFIED_ANAD'
-      Required = True
+    object insSeminarAllInstructorsSQLANAD_NUMBER: TWideStringField
+      FieldName = 'ANAD_NUMBER'
       Visible = False
       FixedChar = True
-      Size = 1
-    end
-    object insSeminarAllInstructorsSQLJOB_TITLE: TWideStringField
-      FieldName = 'JOB_TITLE'
-      Visible = False
-      Size = 160
+      Size = 30
     end
     object insSeminarAllInstructorsSQLFK_INSTRUCTOR_SERIAL: TIntegerField
       FieldName = 'FK_INSTRUCTOR_SERIAL'

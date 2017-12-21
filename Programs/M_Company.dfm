@@ -31,7 +31,6 @@ object M_CompanyFRM: TM_CompanyFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 897
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -53,7 +52,6 @@ object M_CompanyFRM: TM_CompanyFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 897
     object RzPanel1: TRzPanel
       Left = 817
       Top = 1
@@ -62,7 +60,6 @@ object M_CompanyFRM: TM_CompanyFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 796
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -291,7 +288,6 @@ object M_CompanyFRM: TM_CompanyFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 897
     object Nav1: TwwDBNavigator
       Left = 1
       Top = 7
@@ -463,7 +459,6 @@ object M_CompanyFRM: TM_CompanyFRM
     Height = 423
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 897
     object Panel5: TPanel
       Left = 693
       Top = 1
@@ -473,7 +468,6 @@ object M_CompanyFRM: TM_CompanyFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 672
     end
     object GroupBox1: TGroupBox
       Left = 335

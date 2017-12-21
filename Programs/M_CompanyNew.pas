@@ -21,37 +21,6 @@ type
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    CompanySQLSERIAL_NUMBER: TIntegerField;
-    CompanySQLNATIONAL_ID: TWideStringField;
-    CompanySQLFK_COMPANY_SERIAL: TIntegerField;
-    CompanySQLFIRST_NAME: TWideStringField;
-    CompanySQLLAST_NAME: TWideStringField;
-    CompanySQLNICKNAME: TWideStringField;
-    CompanySQLOCCUPATION: TWideStringField;
-    CompanySQLPHONE_MOBILE: TWideStringField;
-    CompanySQLPHONE_FIXED: TWideStringField;
-    CompanySQLPHONE_ALTERNATE: TWideStringField;
-    CompanySQLFAX: TWideStringField;
-    CompanySQLEMAIL: TWideStringField;
-    CompanySQLEMAIL_2: TSmallintField;
-    CompanySQLADDRESS: TWideStringField;
-    CompanySQLADDRESS_STREET: TWideStringField;
-    CompanySQLADDRESS_POST_CODE: TWideStringField;
-    CompanySQLADDRESS_CITY: TWideStringField;
-    CompanySQLADDRESS_DISTRICT: TWideStringField;
-    CompanySQLDATE_STARTED: TDateField;
-    CompanySQLDATE_BIRTH: TDateField;
-    CompanySQLDATE_USER: TDateField;
-    CompanySQLLIST_SOURCE: TWideStringField;
-    CompanySQLFACEBOOK: TWideStringField;
-    CompanySQLWEBSITE: TWideStringField;
-    CompanySQLTWITTER: TWideStringField;
-    CompanySQLSTATUS_ACTIVE: TWideStringField;
-    CompanySQLSEX: TWideStringField;
-    CompanySQLIS_COMPANY: TWideStringField;
-    CompanySQLCOMPANY_OWNER: TWideStringField;
-    CompanySQLCOMPANY_CONTACT: TWideStringField;
-    CompanySQLCOMPANY_REGISTRATION_DATE: TDateField;
     BitBtn1: TBitBtn;
     CanelBTN: TBitBtn;
     IncludedPersonsSQL: TIBCQuery;
@@ -71,14 +40,6 @@ type
     IncludedPersonsSQLCOMP_SERIAL: TIntegerField;
     IncludedPersonsSQLCOMP_REG: TWideStringField;
     IncludedPersonsSQLPHONE_MOBILE: TWideStringField;
-    CompanySQLPHONE_CONTACT: TWideStringField;
-    CompanySQLCOMPANY_CONTACT_FIRST: TWideStringField;
-    CompanySQLCOMPANY_CONTACT_LAST: TWideStringField;
-    CompanySQLCOMPANY_OWNER_REG: TWideStringField;
-    CompanySQLCOMPANY_CONTACT_PHONE: TWideStringField;
-    CompanySQLCOMPANY_CONTACT_EMAIL: TWideStringField;
-    CompanySQLCOMPANY_CONTACT_FAX: TWideStringField;
-    CompanySQLCOMPANY_SOCIAL_SEC: TWideStringField;
     PageControlPC: TPageControl;
     InfoTS: TTabSheet;
     EmployeesTS: TTabSheet;
@@ -143,8 +104,51 @@ type
     wwDBEdit26: TwwDBEdit;
     wwDBEdit27: TwwDBEdit;
     wwDBEdit28: TwwDBEdit;
-    CompanySQLSAFE_SERIAL: TIntegerField;
+    CompanySQLSERIAL_NUMBER: TIntegerField;
+    CompanySQLSERIAL_QB: TIntegerField;
+    CompanySQLFK_COMPANY_SERIAL: TIntegerField;
+    CompanySQLLAST_NAME: TWideStringField;
+    CompanySQLFIRST_NAME: TWideStringField;
+    CompanySQLNATIONAL_ID: TWideStringField;
+    CompanySQLNICKNAME: TWideStringField;
+    CompanySQLOCCUPATION: TWideStringField;
+    CompanySQLPHONE_MOBILE: TWideStringField;
+    CompanySQLPHONE_FIXED: TWideStringField;
+    CompanySQLPHONE_ALTERNATE: TWideStringField;
+    CompanySQLFAX: TWideStringField;
+    CompanySQLEMAIL: TWideStringField;
+    CompanySQLEMAIL_2: TSmallintField;
+    CompanySQLADDRESS: TWideStringField;
+    CompanySQLADDRESS_STREET: TWideStringField;
+    CompanySQLADDRESS_POST_CODE: TWideStringField;
+    CompanySQLADDRESS_CITY: TWideStringField;
+    CompanySQLADDRESS_DISTRICT: TWideStringField;
+    CompanySQLDATE_STARTED: TDateField;
+    CompanySQLDATE_BIRTH: TDateField;
+    CompanySQLDATE_USER: TDateField;
+    CompanySQLLIST_SOURCE: TWideStringField;
+    CompanySQLFACEBOOK: TWideStringField;
+    CompanySQLWEBSITE: TWideStringField;
+    CompanySQLTWITTER: TWideStringField;
+    CompanySQLSTATUS_ACTIVE: TWideStringField;
+    CompanySQLSEX: TWideStringField;
+    CompanySQLIS_COMPANY: TWideStringField;
+    CompanySQLCOMPANY_OWNER: TWideStringField;
+    CompanySQLCOMPANY_CONTACT: TWideStringField;
+    CompanySQLCOMPANY_REGISTRATION_DATE: TDateField;
+    CompanySQLPHONE_CONTACT: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_FIRST: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_LAST: TWideStringField;
+    CompanySQLCOMPANY_OWNER_REG: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_PHONE: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_EMAIL: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_FAX: TWideStringField;
+    CompanySQLCOMPANY_SOCIAL_SEC: TWideStringField;
     CompanySQLCOMPANY_EMPLOYEES: TIntegerField;
+    CompanySQLPHONE_MOBILE_2: TWideStringField;
+    CompanySQLLINKED_IN: TWideStringField;
+    CompanySQLJOB: TWideStringField;
+    wwCheckBox1: TwwCheckBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
@@ -162,6 +166,8 @@ type
     procedure PersonSearchFLDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure EmployeesTSShow(Sender: TObject);
+    procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
+    procedure InfoTSShow(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -219,6 +225,8 @@ procedure TM_companyNewFRM.CompanySQLNewRecord(DataSet: TDataSet);
 begin
 Dataset.FieldByName('status_active').Value:='Y';
 Dataset.FieldByName('is_company').Value:='Y';
+Dataset.FieldByName('SEX').Value:='M';
+Dataset.FieldByName('serial_QB').Value:=Dataset.FieldByName('serial_number').AsInteger;
 
 end;
 
@@ -306,6 +314,24 @@ begin
 end;
 
 
+procedure TM_companyNewFRM.PageControlPCChanging(Sender: TObject;
+  var AllowChange: Boolean);
+begin
+
+  allowChange:=true;
+  try
+    If CompanySQL.State in [dsEdit,dsInsert] then
+      CompanySQL.Post;
+  except
+    On E : Exception do begin
+        ShowMessage(E.Message);
+      AllowChange:=false;
+    end;
+
+  end;
+
+End;
+
 procedure TM_companyNewFRM.PersonSearchFLDKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
@@ -337,6 +363,11 @@ begin
 
   IncludedPersonsSQL.Refresh;
   excludedPersonsSQL.Refresh;
+end;
+
+procedure TM_companyNewFRM.InfoTSShow(Sender: TObject);
+begin
+FIrstFLD.SetFocus;
 end;
 
 procedure TM_companyNewFRM.InsertPerson();

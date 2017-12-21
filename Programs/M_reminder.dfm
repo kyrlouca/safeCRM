@@ -744,11 +744,13 @@ object M_reminderFRM: TM_reminderFRM
       FieldName = 'FK_SEMINAR_SERIAL'
     end
     object CompanySQLDESCRIPTION: TWideStringField
+      DisplayLabel = #928#949#961#953#947#961#945#966#942
       FieldName = 'DESCRIPTION'
       Required = True
       Size = 160
     end
     object CompanySQLREMINDER_MESSAGE: TWideStringField
+      DisplayLabel = #924#942#957#965#956#945
       FieldName = 'REMINDER_MESSAGE'
       Required = True
       Size = 160
@@ -790,9 +792,11 @@ object M_reminderFRM: TM_reminderFRM
       Size = 1
     end
     object CompanySQLDATE_TARGETED: TDateField
+      DisplayLabel = #919#956#949#961'. '#916#961#940#963#951#962
       FieldName = 'DATE_TARGETED'
     end
     object CompanySQLDATE_COMPLETED: TDateField
+      DisplayLabel = #919#956#949#961'. '#917#954#964#941#955#949#963#951#962
       FieldName = 'DATE_COMPLETED'
     end
     object CompanySQLSEMINAR_NAME: TWideStringField
@@ -809,12 +813,14 @@ object M_reminderFRM: TM_reminderFRM
       ReadOnly = True
     end
     object CompanySQLIS_HIGH: TWideStringField
+      DisplayLabel = #931#951#956#945#957#964#953#954#942
       FieldName = 'IS_HIGH'
       Required = True
       FixedChar = True
       Size = 1
     end
     object CompanySQLIS_INTERNAL: TWideStringField
+      DisplayLabel = #917#964#945#953#961#953#954#942
       FieldName = 'IS_INTERNAL'
       Required = True
       FixedChar = True
