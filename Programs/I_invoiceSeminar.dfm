@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 585
+  ClientHeight = 565
   ClientWidth = 1079
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,12 +21,11 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 542
+    Top = 522
     Width = 1079
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 515
     object RzPanel1: TRzPanel
       Left = 978
       Top = 1
@@ -191,21 +190,19 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 65
     Width = 1079
-    Height = 477
+    Height = 457
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitHeight = 450
     object Panel5: TPanel
       Left = 421
       Top = 2
       Width = 750
-      Height = 473
+      Height = 453
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 446
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -351,13 +348,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 430
+        Top = 410
         Width = 750
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         TabOrder = 1
-        ExplicitTop = 403
         object RzPanel6: TRzPanel
           Left = 649
           Top = 1
@@ -571,11 +567,10 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 419
-      Height = 473
+      Height = 453
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 446
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -587,13 +582,12 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 235
+        Top = 215
         Width = 419
         Height = 238
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 208
         object GroupBox1: TGroupBox
           Left = 0
           Top = 0

@@ -26,7 +26,6 @@ type
     wwIncrementalSearch1: TwwIncrementalSearch;
     RzPanel2: TRzPanel;
     RzPanel3: TRzPanel;
-    Grid1: TwwDBGrid;
     TableSQL: TIBCQuery;
     RzPanel5: TRzPanel;
     GroupBox1: TGroupBox;
@@ -75,7 +74,6 @@ type
     wwDBEdit13: TwwDBEdit;
     Label17: TLabel;
     TableSQLANAD_NUMBER: TWideStringField;
-    Panel5: TPanel;
     Panel6: TRzPanel;
     Nav1: TwwDBNavigator;
     Nav1Button: TwwNavButton;
@@ -105,9 +103,9 @@ type
     wwDBEdit4: TwwDBEdit;
     wwDBEdit5: TwwDBEdit;
     wwDBEdit6: TwwDBEdit;
+    Grid1: TwwDBGrid;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
-    procedure TableSRCStateChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
@@ -116,6 +114,7 @@ type
     procedure Nav1InsertClick(Sender: TObject);
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
     procedure TableSQLNewRecord(DataSet: TDataSet);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -139,7 +138,8 @@ uses   U_Database, G_generalProcs;
 
 procedure TM_InstructorFRM.BitBtn2Click(Sender: TObject);
 begin
-  close;
+if TableSQL.State in [dsEdit,dsInsert] then
+  TableSQL.Post;
 end;
 
 procedure TM_InstructorFRM.TableSQLBeforeEdit(
@@ -152,20 +152,7 @@ end;
 procedure TM_InstructorFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
   Dataset.FieldByName('status_active').Value:='Y';
-end;
-
-procedure TM_InstructorFRM.TableSRCStateChange(Sender: TObject);
-begin
-
-
-  with TableSQL do begin
-     If State<>dsInsert then begin
-//         StationIDFLD.Enabled:=false;
-     end  else begin
-//         StationIDFLD.Enabled:=true;
-     end;
-  end;//with
-
+  Dataset.FieldByName('CERTIFIED_ANAD').Value:='N';
 end;
 
 procedure TM_InstructorFRM.RzBitBtn1Click(Sender: TObject);
@@ -205,6 +192,13 @@ procedure TM_InstructorFRM.FormClose(Sender: TObject;
 begin
 if TableSQL.State in [dsInsert, dsEdit] then
    TableSQL.Post;
+end;
+
+procedure TM_InstructorFRM.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+if TableSQL.State in [dsEdit,dsInsert] then
+  TableSQL.Post;
 end;
 
 procedure TM_InstructorFRM.FormCreate(Sender: TObject);

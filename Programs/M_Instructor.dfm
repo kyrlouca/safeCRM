@@ -3,7 +3,7 @@ object M_InstructorFRM: TM_InstructorFRM
   Top = 153
   Caption = '--'
   ClientHeight = 558
-  ClientWidth = 1027
+  ClientWidth = 1092
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,13 +15,14 @@ object M_InstructorFRM: TM_InstructorFRM
   Position = poDesktopCenter
   OnActivate = FormActivate
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1027
+    Width = 1092
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -31,11 +32,12 @@ object M_InstructorFRM: TM_InstructorFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1027
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 1019
+      Width = 1084
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -48,18 +50,20 @@ object M_InstructorFRM: TM_InstructorFRM
   object Panel4: TPanel
     Left = 0
     Top = 515
-    Width = 1027
+    Width = 1092
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitWidth = 1027
     object RzPanel1: TRzPanel
-      Left = 926
+      Left = 991
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 926
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -284,10 +288,11 @@ object M_InstructorFRM: TM_InstructorFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 1027
+    Width = 1092
     Height = 39
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 1027
     object wwIncrementalSearch1: TwwIncrementalSearch
       Left = 7
       Top = 12
@@ -308,14 +313,15 @@ object M_InstructorFRM: TM_InstructorFRM
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 1027
+    Width = 1092
     Height = 423
     Align = alClient
     TabOrder = 2
+    ExplicitWidth = 1027
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
-      Width = 456
+      Width = 504
       Height = 421
       Align = alLeft
       BorderOuter = fsNone
@@ -323,22 +329,24 @@ object M_InstructorFRM: TM_InstructorFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 456
+        Width = 504
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 456
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 9
-        Width = 433
+        Width = 498
         Height = 412
         Selected.Strings = (
-          'ANAD_NUMBER'#9'10'#9#913#961'. '#913#925#913#916
-          'LAST_NAME'#9'20'#9#917#960#943#952#949#964#959
+          'SERIAL_NUMBER'#9'6'#9#913'/'#913
+          'LAST_NAME'#9'19'#9#917#960#943#952#949#964#959
           'FIRST_NAME'#9'17'#9#908#957#959#956#945
-          'PHONE_MOBILE'#9'12'#9#922#953#957#951#964#972)
+          'NATIONAL_ID'#9'12'#9#932#945#965#964#972#964#951#964#945
+          'PHONE_MOBILE'#9'10'#9#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -353,7 +361,7 @@ object M_InstructorFRM: TM_InstructorFRM
         Font.Name = 'Arial'
         Font.Style = []
         KeyOptions = []
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+        Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         ParentFont = False
         ReadOnly = True
         TabOrder = 1
@@ -366,32 +374,22 @@ object M_InstructorFRM: TM_InstructorFRM
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
-        object Panel5: TPanel
-          Left = 0
-          Top = 0
-          Width = 279
-          Height = 408
-          Align = alLeft
-          BevelOuter = bvNone
-          Locked = True
-          TabOrder = 0
-          ExplicitLeft = 48
-          ExplicitTop = 135
-        end
       end
     end
     object RzPanel5: TRzPanel
-      Left = 457
+      Left = 505
       Top = 1
-      Width = 569
+      Width = 586
       Height = 421
       Align = alClient
       BorderOuter = fsNone
       TabOrder = 1
       VisualStyle = vsClassic
+      ExplicitLeft = 457
+      ExplicitWidth = 569
       object GroupBox1: TGroupBox
-        Left = 6
-        Top = 50
+        Left = 16
+        Top = 45
         Width = 251
         Height = 331
         Caption = #928#955#951#961#959#966#959#961#943#949#962
@@ -530,10 +528,8 @@ object M_InstructorFRM: TM_InstructorFRM
           NullAndBlankState = cbUnchecked
           Alignment = taLeftJustify
           Caption = #917#957#949#961#947#972#962
-          Checked = True
           DataField = 'STATUS_ACTIVE'
           DataSource = TableSRC
-          State = cbChecked
           TabOrder = 6
         end
         object wwDBEdit1: TwwDBEdit
@@ -608,14 +604,15 @@ object M_InstructorFRM: TM_InstructorFRM
       object Panel6: TRzPanel
         Left = 0
         Top = 0
-        Width = 569
+        Width = 586
         Height = 39
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitWidth = 569
         object Nav1: TwwDBNavigator
-          Left = 1
-          Top = 7
+          Left = 16
+          Top = 5
           Width = 184
           Height = 26
           AutosizeStyle = asSizeNavButtons
@@ -763,9 +760,9 @@ object M_InstructorFRM: TM_InstructorFRM
         end
       end
       object GroupBox2: TGroupBox
-        Left = 278
-        Top = 50
-        Width = 249
+        Left = 286
+        Top = 45
+        Width = 259
         Height = 331
         Caption = #917#960#953#954#959#953#957#969#957#943#945
         Font.Charset = DEFAULT_CHARSET
@@ -1005,7 +1002,6 @@ object M_InstructorFRM: TM_InstructorFRM
   end
   object TableSRC: TDataSource
     DataSet = TableSQL
-    OnStateChange = TableSRCStateChange
     Left = 112
     Top = 17
   end
@@ -1094,18 +1090,17 @@ object M_InstructorFRM: TM_InstructorFRM
       'FROM'
       'Instructor order by Last_name')
     Active = True
+    OnNewRecord = TableSQLNewRecord
     Left = 40
     Top = 16
-    object TableSQLANAD_NUMBER: TWideStringField
-      DisplayLabel = #913#961'. '#913#925#913#916
-      DisplayWidth = 10
-      FieldName = 'ANAD_NUMBER'
-      FixedChar = True
-      Size = 30
+    object TableSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = #913'/'#913
+      DisplayWidth = 6
+      FieldName = 'SERIAL_NUMBER'
     end
     object TableSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
-      DisplayWidth = 20
+      DisplayWidth = 19
       FieldName = 'LAST_NAME'
       FixedChar = True
       Size = 30
@@ -1117,22 +1112,34 @@ object M_InstructorFRM: TM_InstructorFRM
       FixedChar = True
       Size = 30
     end
+    object TableSQLNATIONAL_ID: TWideStringField
+      DisplayLabel = #932#945#965#964#972#964#951#964#945
+      DisplayWidth = 12
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
     object TableSQLPHONE_MOBILE: TWideStringField
       DisplayLabel = #922#953#957#951#964#972
-      DisplayWidth = 12
+      DisplayWidth = 10
       FieldName = 'PHONE_MOBILE'
       FixedChar = True
       Size = 15
     end
-    object TableSQLSERIAL_NUMBER: TIntegerField
-      DisplayWidth = 18
-      FieldName = 'SERIAL_NUMBER'
-      Visible = False
-    end
-    object TableSQLNATIONAL_ID: TWideStringField
-      FieldName = 'NATIONAL_ID'
+    object TableSQLANAD_NUMBER: TWideStringField
+      DisplayLabel = #913#961'. '#913#925#913#916
+      DisplayWidth = 10
+      FieldName = 'ANAD_NUMBER'
       Visible = False
       FixedChar = True
+      Size = 30
+    end
+    object TableSQLPHONE_FIXED: TWideStringField
+      DisplayLabel = #932#951#955'. '#931#964#945#952#949#961#972
+      DisplayWidth = 12
+      FieldName = 'PHONE_FIXED'
+      Visible = False
+      FixedChar = True
+      Size = 15
     end
     object TableSQLFK_COMPANY_SERIAL: TIntegerField
       FieldName = 'FK_COMPANY_SERIAL'
@@ -1154,12 +1161,6 @@ object M_InstructorFRM: TM_InstructorFRM
       FieldName = 'OCCUPATION'
       Visible = False
       Size = 160
-    end
-    object TableSQLPHONE_FIXED: TWideStringField
-      FieldName = 'PHONE_FIXED'
-      Visible = False
-      FixedChar = True
-      Size = 15
     end
     object TableSQLPHONE_ALTERNATE: TWideStringField
       FieldName = 'PHONE_ALTERNATE'

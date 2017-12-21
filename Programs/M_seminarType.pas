@@ -304,6 +304,9 @@ type
     TableSQLSPECIFICATION_NUMBER: TWideStringField;
     Label24: TLabel;
     FirstFLD: TwwDBEdit;
+    wwIncrementalSearch3: TwwIncrementalSearch;
+    Label25: TLabel;
+    Label26: TLabel;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
@@ -333,6 +336,7 @@ type
     procedure ToLeftBTNClick(Sender: TObject);
     procedure ToRightBTNClick(Sender: TObject);
     procedure insSeminarSubjectSQLAfterScroll(DataSet: TDataSet);
+    procedure wwNavButton21Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -426,6 +430,11 @@ insSeminarAllInstructorsSQL.Open;
 
 end;
 
+procedure TM_SeminarTypeFRM.wwNavButton21Click(Sender: TObject);
+begin
+SubjectDescFLD.SetFocus;
+end;
+
 procedure TM_SeminarTypeFRM.wwNavButton5Click(Sender: TObject);
 begin
 FirstFLD.SetFocus;
@@ -456,9 +465,12 @@ procedure TM_SeminarTypeFRM.SubjectTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
 begin
+  if TableSQL.State in [dsInsert,dsEdit] then
+    TableSQL.post;
 
   SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
   ksOpenTables([SeminarSubjectSQL]);
+  subjectDescFLD.setFocus;
 
 end;
 
@@ -528,7 +540,7 @@ end;
 
 procedure TM_SeminarTypeFRM.Nav1InsertClick(Sender: TObject);
 begin
-  SubjectDescFLD.SetFocus;
+ ReminderDescFLD.SetFocus;
 end;
 
 procedure TM_SeminarTypeFRM.PICTURE_TOP_L1DblClick(Sender: TObject);
