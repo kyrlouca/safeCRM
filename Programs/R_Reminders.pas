@@ -54,8 +54,6 @@ type
     ppLabel8: TppLabel;
     ppLabel9: TppLabel;
     ppShape1: TppShape;
-    ppVariable3: TppVariable;
-    ppLabel10: TppLabel;
     ppLabel11: TppLabel;
     ppLabel12: TppLabel;
     ppDBText7: TppDBText;
@@ -269,6 +267,10 @@ begin
 
 if (Trim(FromDateFLD.text)='') then
    FromDateFLD.Date:=date;
+
+SeminarReminderSQL.SQL.Clear;
+SeminarReminderSQL.SQL.Add(IN_SQL);
+
 
 end;
 

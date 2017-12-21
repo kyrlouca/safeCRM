@@ -75,7 +75,6 @@ type
     TableSQLCOMPANY_CONTACT: TWideStringField;
     TableSQLCOMPANY_REGISTRATION_DATE: TDateField;
     TableSQLPHONE_CONTACT: TWideStringField;
-    procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure TableSQLAfterInsert(DataSet: TDataSet);
@@ -112,11 +111,6 @@ uses   U_Database, G_generalProcs, V_Seminar, M_CompanyNew;
 
 
 {$R *.DFM}
-
-procedure TL_companiesFRM.BitBtn2Click(Sender: TObject);
-begin
-  close;
-end;
 
 procedure TL_companiesFRM.TableSQLBeforeEdit(
   DataSet: TDataSet);

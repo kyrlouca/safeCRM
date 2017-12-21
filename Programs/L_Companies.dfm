@@ -207,7 +207,6 @@ object L_companiesFRM: TL_companiesFRM
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       ParentFont = False
       TabOrder = 1
-      OnClick = BitBtn2Click
     end
     object CanelBTN: TBitBtn
       Left = 112

@@ -100,7 +100,10 @@ uses   U_Database, G_generalProcs;
 
 procedure TM_ReminderCompleteFRM.BitBtn1Click(Sender: TObject);
 begin
-close;
+ if CompanySQL.State in [dsEdit, dsInsert] then begin
+         CompanySQL.Post;
+ end;
+
 end;
 
 procedure TM_ReminderCompleteFRM.BitBtn2Click(Sender: TObject);
