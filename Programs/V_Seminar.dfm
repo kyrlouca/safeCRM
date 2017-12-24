@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = SeminarTS
+      ActivePage = CompaniesTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -135,8 +135,6 @@ object V_SeminarFRM: TV_SeminarFRM
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitLeft = -1
-          ExplicitTop = -2
           object FirstGRP: TRzGroupBox
             Left = 20
             Top = 24
@@ -1337,6 +1335,8 @@ object V_SeminarFRM: TV_SeminarFRM
               Align = alTop
               BorderOuter = fsNone
               TabOrder = 0
+              ExplicitLeft = 3
+              ExplicitTop = 10
             end
             object wwDBGrid1: TwwDBGrid
               Left = 2
@@ -1455,6 +1455,8 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleButtons = False
               OnTitleButtonClick = AttendGRDTitleButtonClick
               OnUpdateFooter = AttendGRDUpdateFooter
+              ExplicitLeft = -1
+              ExplicitTop = 43
             end
           end
           object RzPanel3: TRzPanel
@@ -1736,6 +1738,371 @@ object V_SeminarFRM: TV_SeminarFRM
             end
           end
           object Panel2: TRzPanel
+            Left = 0
+            Top = 0
+            Width = 1065
+            Height = 12
+            Align = alTop
+            BorderOuter = fsNone
+            TabOrder = 0
+          end
+        end
+      end
+      object CompaniesTS: TTabSheet
+        Caption = #917#964#945#953#961#949#943#949#962
+        ImageIndex = 6
+        OnShow = CompaniesTSShow
+        object RzPanel24: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 1065
+          Height = 580
+          Align = alClient
+          BorderOuter = fsNone
+          TabOrder = 0
+          object RzGroupBox4: TRzGroupBox
+            Left = 0
+            Top = 12
+            Width = 532
+            Height = 568
+            Align = alLeft
+            BorderSides = [sdLeft, sdTop, sdRight]
+            Caption = #931#965#956#956#949#964#941#967#959#957#964#949#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 1
+            ExplicitLeft = -3
+            ExplicitTop = 10
+            object RzSizePanel3: TRzSizePanel
+              Left = 1
+              Top = 15
+              Width = 530
+              Height = 29
+              Align = alTop
+              TabOrder = 0
+              ExplicitLeft = -4
+              ExplicitTop = 9
+            end
+            object wwDBGrid4: TwwDBGrid
+              Left = 1
+              Top = 44
+              Width = 530
+              Height = 523
+              ControlType.Strings = (
+                'IS_GUEST;CheckBox;Y;N')
+              Selected.Strings = (
+                'SERIAL_NUMBER'#9'8'#9'A/A'
+                'SERIAL_QB'#9'8'#9'QB'
+                'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
+                'FIRST_NAME'#9'15'#9#908#957#959#956#945
+                'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945
+                'IS_GUEST'#9'7'#9#917#954#964#945#954#964#959#962)
+              IniAttributes.Delimiter = ';;'
+              IniAttributes.UnicodeIniFile = False
+              TitleColor = clBtnFace
+              FixedCols = 5
+              ShowHorzScrollBar = True
+              Align = alClient
+              BorderStyle = bsNone
+              DataSource = Co_companiesInSRC
+              KeyOptions = []
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter]
+              TabOrder = 1
+              TitleAlignment = taLeftJustify
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -12
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+              TitleLines = 1
+              TitleButtons = False
+              OnTitleButtonClick = AttendGRDTitleButtonClick
+              OnUpdateFooter = AttendGRDUpdateFooter
+            end
+          end
+          object RzPanel25: TRzPanel
+            Left = 532
+            Top = 12
+            Width = 94
+            Height = 568
+            Align = alLeft
+            BorderOuter = fsNone
+            TabOrder = 2
+            object RemoveCompanyBTN: TBitBtn
+              Left = 3
+              Top = 141
+              Width = 37
+              Height = 37
+              Cancel = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              Glyph.Data = {
+                F6060000424DF606000000000000360000002800000018000000180000000100
+                180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFC1C1C1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF202020ABABABFDFDFDFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFD4D4D4E8E8E8FEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000001111119F9F9F
+                F6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6363634E4E4EADADADF9F9F9FFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+                0000000000080808727272E5E5E5FFFFFFFFFFFFFFFFFFFFFFFFBFBFBF535353
+                111111434343B6B6B6FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFF0000000000000000000505054E4E4EE8E8E8FFFFFFFFFFFFFF
+                FFFFFCFCFCBBBBBB1A1A1A0000000101012323236868689E9E9EBEBEBECACACA
+                C7C7C7B4B4B48F8F8F5E5E5E2424240000000000000000000000000000003030
+                30D5D5D5FCFCFCFFFFFFFFFFFFFCFCFC9494940A0A0A00000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                000000000000000000252525AAAAAAFAFAFAFFFFFFFFFFFFFBFBFB9A9A9A0C0C
+                0C00000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000010101141414929292FFFFFFFFFFFF
+                FFFFFFFCFCFCA5A5A52727270505050000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000001010113131392
+                9292FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD7D7D78181813B3B3B090909000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00242424ABABABFAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCE9
+                E9E9CFCFCF8F8F8F5C5C5C3636361B1B1B0C0C0C060606000000000000000000
+                000000000000323232D6D6D6FCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+                00000000000000000606064F4F4FE8E8E8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFF000000000000080808737373E5E5E5FFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000111111A0A0A0F6F6F6FFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF202020AAAAAAFDFDFD
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC2
+                C2C2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              ParentFont = False
+              TabOrder = 0
+              OnClick = RemoveCompanyBTNClick
+            end
+            object InsertCompanyBTN: TBitBtn
+              Left = 49
+              Top = 216
+              Width = 39
+              Height = 37
+              Cancel = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              Glyph.Data = {
+                F6060000424DF606000000000000360000002800000018000000180000000100
+                180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC2C2C2FFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDACACAC202020FFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6A0A0A011
+                1111000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFEFEFEE8E8E8AAAAAAFFFFFFFFFFFFFFFFFFFFFFFFE5E5
+                E5717171080808000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9F9ADADAD4D4D4DB9B9B9FFFFFFFFFFFF
+                FFFFFFE8E8E84E4E4E060606000000000000000000FFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFBB7B7B7424242111111515151F0
+                F0F0FFFFFFFDFDFDD5D5D5303030000000000000000000000000000000242424
+                5E5E5E8F8F8FB3B3B3C6C6C6CACACABEBEBE9F9F9F6868682323230101010000
+                00191919BABABAFFFFFFF6F6F6AAAAAA25252500000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000A0A0A939393FCFCFCFFFFFF9393931414140101010000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000C0C0C999999FAFAFAFFFFFFFFFFFF434343141414
+                0101010000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000000050505262626A3A3A3FCFCFCFFFFFFFFFFFFFF
+                FFFFE5E5E5ACACAC252525000000000000000000000000000000000000000000
+                0000000000000000000000000000000909093A3A3A818181D7D7D7FFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDD7D7D732323200000000000000000000
+                00000000000606060B0B0B1B1B1B3636365C5C5C8F8F8FCFCFCFE8E8E8FCFCFC
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE9E9E94F4F
+                4F060606000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFE5E5E5737373080808000000000000FFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6A0A0A0111111000000FFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDAB
+                ABAB202020FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFC3C3C3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              ParentFont = False
+              TabOrder = 1
+              OnClick = InsertCompanyBTNClick
+            end
+          end
+          object RzGroupBox5: TRzGroupBox
+            Left = 626
+            Top = 12
+            Width = 450
+            Height = 568
+            Align = alLeft
+            Caption = #922#945#964#940#955#959#947#959#962
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 3
+            object wwDBGrid5: TwwDBGrid
+              Left = 1
+              Top = 84
+              Width = 448
+              Height = 483
+              Selected.Strings = (
+                'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
+                'SERIAL_QB'#9'8'#9'QB'#9#9
+                'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959#9#9
+                'FIRST_NAME'#9'12'#9#908#957#959#956#945#9#9
+                'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945#9#9)
+              IniAttributes.Delimiter = ';;'
+              IniAttributes.UnicodeIniFile = False
+              TitleColor = clBtnFace
+              FixedCols = 0
+              ShowHorzScrollBar = True
+              Align = alClient
+              BorderStyle = bsNone
+              Color = clBtnFace
+              DataSource = Co_CompaniesOutSRC
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Arial'
+              Font.Style = []
+              KeyOptions = []
+              Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 1
+              TitleAlignment = taLeftJustify
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -13
+              TitleFont.Name = 'Arial'
+              TitleFont.Style = []
+              TitleLines = 1
+              TitleButtons = True
+              OnTitleButtonClick = AllPersonsGRDTitleButtonClick
+              OnDblClick = AllPersonsGRDDblClick
+              OnKeyDown = AllPersonsGRDKeyDown
+            end
+            object RzSizePanel4: TRzSizePanel
+              Left = 1
+              Top = 15
+              Width = 448
+              Height = 69
+              Align = alTop
+              TabOrder = 0
+              object Label28: TLabel
+                Left = 8
+                Top = 38
+                Width = 61
+                Height = 14
+                Caption = #932#945#965#964#972#964#951#964#945
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label29: TLabel
+                Left = 30
+                Top = 10
+                Width = 41
+                Height = 14
+                Caption = #917#960#943#952#949#964#959
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object wwIncrementalSearch3: TwwIncrementalSearch
+                Left = 75
+                Top = 7
+                Width = 128
+                Height = 22
+                DataSource = NonAttendSRC
+                SearchField = 'last_name'
+                ShowMatchText = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 0
+                OnKeyDown = SearchPersonFLDKeyDown
+              end
+              object wwIncrementalSearch4: TwwIncrementalSearch
+                Left = 75
+                Top = 35
+                Width = 128
+                Height = 22
+                DataSource = NonAttendSRC
+                SearchField = 'NATIONAL_ID'
+                ShowMatchText = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 1
+                OnKeyDown = SearchPersonFLDKeyDown
+              end
+            end
+          end
+          object RzPanel26: TRzPanel
             Left = 0
             Top = 0
             Width = 1065
@@ -2459,7 +2826,7 @@ object V_SeminarFRM: TV_SeminarFRM
           end
         end
       end
-      object TabSheet1: TTabSheet
+      object PictureTS: TTabSheet
         Caption = #922#949#943#956#949#957#959'/'#917#953#954#972#957#949#962
         ImageIndex = 5
         object RzPanel23: TRzPanel
@@ -2560,6 +2927,7 @@ object V_SeminarFRM: TV_SeminarFRM
     BorderInner = fsFlatRounded
     BorderOuter = fsNone
     TabOrder = 2
+    ExplicitTop = 687
     object RzPanel1: TRzPanel
       Left = 971
       Top = 2
@@ -3010,7 +3378,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800240310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800280310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3742,8 +4110,8 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
-    Left = 114
-    Top = 393
+    Left = 90
+    Top = 145
     ParamData = <
       item
         DataType = ftInteger
@@ -3815,8 +4183,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object AttendingSRC: TDataSource
     DataSet = AttendingSQL
-    Left = 192
-    Top = 241
+    Left = 56
+    Top = 137
   end
   object NonAttendSQL: TIBCQuery
     UpdatingTable = 'person'
@@ -3868,7 +4236,7 @@ object V_SeminarFRM: TV_SeminarFRM
       ' select'
       
         '     pout.serial_number,pout.serial_qb, pout.last_name,pout.firs' +
-        't_name, pout.national_id'
+        't_name, pout.national_id,pout.is_company'
       ' from'
       ' person pout left outer join'
       '('
@@ -3883,13 +4251,14 @@ object V_SeminarFRM: TV_SeminarFRM
       'on pout.serial_number= peFound.serial_number'
       'where '
       '   pout.status_active='#39'Y'#39
+      '   and pout.is_company='#39'N'#39
       '   and pefound.serial_number is null'
       '    ')
     DetailFields = 'FK_SEMINAR_SERIAL'
     ReadOnly = True
     Active = True
-    Left = 298
-    Top = 569
+    Left = 26
+    Top = 193
     ParamData = <
       item
         DataType = ftUnknown
@@ -3930,8 +4299,8 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object NonAttendSRC: TDataSource
     DataSet = NonAttendSQL
-    Left = 328
-    Top = 513
+    Left = 88
+    Top = 185
   end
   object seminarSubjectSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
@@ -4440,6 +4809,16 @@ object V_SeminarFRM: TV_SeminarFRM
     end
   end
   object OpenPictureDialog1: TOpenPictureDialog
+    Filter = 
+      'All (*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jpg;*.jpeg;*.gif;*.png;*.i' +
+      'co;*.emf;*.wmf;*.tif;*.tiff)|*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jp' +
+      'g;*.jpeg;*.gif;*.png;*.ico;*.emf;*.wmf;*.tif;*.tiff|GIF Image (*' +
+      '.gif)|*.gif|Portable Network Graphics (*.png)|*.png|JPEG Image F' +
+      'ile (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Bitmaps (*.bmp' +
+      ')|*.bmp|JPEG Images (*.jpg)|*.jpg|JPEG Images (*.jpeg)|*.jpeg|GI' +
+      'F Images (*.gif)|*.gif|PNG Images (*.png)|*.png|Icons (*.ico)|*.' +
+      'ico|Enhanced Metafiles (*.emf)|*.emf|Metafiles (*.wmf)|*.wmf|TIF' +
+      'F Images (*.tif)|*.tif|TIFF Images (*.tiff)|*.tiff'
     Left = 360
     Top = 199
   end
@@ -4808,7 +5187,7 @@ object V_SeminarFRM: TV_SeminarFRM
       'select * from instructor where status_active= '#39'Y'#39)
     ReadOnly = True
     Left = 547
-    Top = 242
+    Top = 226
     object WideStringField1: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
       DisplayWidth = 12
@@ -5000,5 +5379,217 @@ object V_SeminarFRM: TV_SeminarFRM
       Visible = False
       Size = 160
     end
+  end
+  object Co_CompaniesInSQL: TIBCQuery
+    UpdatingTable = 'SEMINAR_COMPANY'
+    SQLInsert.Strings = (
+      'INSERT INTO PERSON'
+      '  (SERIAL_NUMBER, SERIAL_QB, LAST_NAME, FIRST_NAME, NATIONAL_ID)'
+      'VALUES'
+      
+        '  (:SERIAL_NUMBER, :SERIAL_QB, :LAST_NAME, :FIRST_NAME, :NATIONA' +
+        'L_ID)')
+    SQLDelete.Strings = (
+      'DELETE FROM PERSON'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE PERSON'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, SERIAL_QB = :SERIAL_QB, LAST_N' +
+        'AME = :LAST_NAME, FIRST_NAME = :FIRST_NAME, NATIONAL_ID = :NATIO' +
+        'NAL_ID'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, SERIAL_QB, LAST_NAME, FIRST_NAME, NATIONAL' +
+        '_ID FROM PERSON'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM PERSON'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM PERSON'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'select'
+      
+        ' pe.serial_number,pe.serial_qb, pe.first_name,pe.last_name , pe.' +
+        'national_id, '
+      'sp.fk_seminar_serial, sp.fk_person_serial'
+      'from'
+      '   seminar_company   sp  left outer join'
+      '   person pe        on pe.serial_number=sp.fk_person_serial'
+      'order by pe.last_name')
+    MasterFields = 'SERIAL_NUMBER'
+    DetailFields = 'FK_SEMINAR_SERIAL'
+    MasterSource = SeminarSRC
+    Left = 274
+    Top = 633
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'SERIAL_NUMBER'
+        ParamType = ptInput
+        Value = nil
+      end>
+    object Co_CompaniesInSQLSERIAL_NUMBER: TIntegerField
+      FieldName = 'SERIAL_NUMBER'
+    end
+    object Co_CompaniesInSQLSERIAL_QB: TIntegerField
+      FieldName = 'SERIAL_QB'
+    end
+    object Co_CompaniesInSQLFIRST_NAME: TWideStringField
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object Co_CompaniesInSQLLAST_NAME: TWideStringField
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object Co_CompaniesInSQLNATIONAL_ID: TWideStringField
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
+    object Co_CompaniesInSQLFK_SEMINAR_SERIAL: TIntegerField
+      FieldName = 'FK_SEMINAR_SERIAL'
+      ReadOnly = True
+      Required = True
+    end
+    object Co_CompaniesInSQLFK_PERSON_SERIAL: TIntegerField
+      FieldName = 'FK_PERSON_SERIAL'
+      ReadOnly = True
+      Required = True
+    end
+  end
+  object Co_companiesInSRC: TDataSource
+    DataSet = Co_CompaniesInSQL
+    Left = 336
+    Top = 633
+  end
+  object Co_companiesOutSQL: TIBCQuery
+    UpdatingTable = 'person'
+    SQLInsert.Strings = (
+      'INSERT INTO SEMINAR_PERSON'
+      '  (FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, ATTENDANCE_STATUS)'
+      'VALUES'
+      '  (:FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :ATTENDANCE_STATUS)')
+    SQLDelete.Strings = (
+      'DELETE FROM SEMINAR_PERSON'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIA' +
+        'L = :Old_FK_PERSON_SERIAL')
+    SQLUpdate.Strings = (
+      'UPDATE SEMINAR_PERSON'
+      'SET'
+      
+        '  FK_SEMINAR_SERIAL = :FK_SEMINAR_SERIAL, FK_PERSON_SERIAL = :FK' +
+        '_PERSON_SERIAL, ATTENDANCE_STATUS = :ATTENDANCE_STATUS'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIA' +
+        'L = :Old_FK_PERSON_SERIAL')
+    SQLRefresh.Strings = (
+      
+        'SELECT FK_SEMINAR_SERIAL, FK_PERSON_SERIAL, ATTENDANCE_STATUS FR' +
+        'OM SEMINAR_PERSON'
+      'WHERE'
+      
+        '  FK_SEMINAR_SERIAL = :FK_SEMINAR_SERIAL AND FK_PERSON_SERIAL = ' +
+        ':FK_PERSON_SERIAL')
+    SQLLock.Strings = (
+      'SELECT NULL FROM SEMINAR_PERSON'
+      'WHERE'
+      
+        'FK_SEMINAR_SERIAL = :Old_FK_SEMINAR_SERIAL AND FK_PERSON_SERIAL ' +
+        '= :Old_FK_PERSON_SERIAL'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM person'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      ' select'
+      
+        '     pout.serial_number,pout.serial_qb, pout.last_name,pout.firs' +
+        't_name, pout.national_id,pout.is_company'
+      ' from'
+      ' person pout left outer join'
+      '('
+      'select'
+      '    pe.serial_number, sp.fk_person_serial, sp.attendance_status'
+      'from'
+      '    person pe inner join'
+      '    seminar_company sp on pe.serial_number=sp.fk_person_serial'
+      '    where '
+      '       sp.fk_seminar_serial= :seminarSerial'
+      ') as PeFound'
+      'on pout.serial_number= peFound.serial_number'
+      'where '
+      '   pout.status_active='#39'Y'#39
+      '   and pout.is_company='#39'Y'#39
+      '   and pefound.serial_number is null')
+    ReadOnly = True
+    Left = 306
+    Top = 681
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'seminarSerial'
+        Value = nil
+      end>
+    object Co_companiesOutSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
+      Required = True
+    end
+    object Co_companiesOutSQLSERIAL_QB: TIntegerField
+      DisplayLabel = 'QB'
+      DisplayWidth = 8
+      FieldName = 'SERIAL_QB'
+    end
+    object Co_companiesOutSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 21
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object Co_companiesOutSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 12
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object Co_companiesOutSQLNATIONAL_ID: TWideStringField
+      DisplayLabel = #932#945#965#964#972#964#951#964#945
+      DisplayWidth = 13
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
+  end
+  object Co_CompaniesOutSRC: TDataSource
+    DataSet = Co_companiesOutSQL
+    Left = 392
+    Top = 689
   end
 end

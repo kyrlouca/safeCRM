@@ -293,7 +293,7 @@ type
     AcceptBTN: TBitBtn;
     CanelBTN: TBitBtn;
     RzPanel22: TRzPanel;
-    TabSheet1: TTabSheet;
+    PictureTS: TTabSheet;
     RzPanel23: TRzPanel;
     RzBitBtn2: TRzBitBtn;
     Label24: TLabel;
@@ -385,6 +385,38 @@ type
     SeminarSQLSPECIFICATION_NUMBER: TWideStringField;
     GroupBox7: TGroupBox;
     CategoryChangeFLD: TwwDBComboBox;
+    CompaniesTS: TTabSheet;
+    RzPanel24: TRzPanel;
+    RzGroupBox4: TRzGroupBox;
+    RzSizePanel3: TRzSizePanel;
+    wwDBGrid4: TwwDBGrid;
+    RzPanel25: TRzPanel;
+    RemoveCompanyBTN: TBitBtn;
+    InsertCompanyBTN: TBitBtn;
+    RzGroupBox5: TRzGroupBox;
+    wwDBGrid5: TwwDBGrid;
+    RzSizePanel4: TRzSizePanel;
+    Label28: TLabel;
+    Label29: TLabel;
+    wwIncrementalSearch3: TwwIncrementalSearch;
+    wwIncrementalSearch4: TwwIncrementalSearch;
+    RzPanel26: TRzPanel;
+    Co_CompaniesInSQL: TIBCQuery;
+    Co_CompaniesInSQLSERIAL_NUMBER: TIntegerField;
+    Co_CompaniesInSQLSERIAL_QB: TIntegerField;
+    Co_CompaniesInSQLFIRST_NAME: TWideStringField;
+    Co_CompaniesInSQLLAST_NAME: TWideStringField;
+    Co_CompaniesInSQLNATIONAL_ID: TWideStringField;
+    Co_CompaniesInSQLFK_SEMINAR_SERIAL: TIntegerField;
+    Co_CompaniesInSQLFK_PERSON_SERIAL: TIntegerField;
+    Co_companiesInSRC: TDataSource;
+    Co_companiesOutSQL: TIBCQuery;
+    Co_CompaniesOutSRC: TDataSource;
+    Co_companiesOutSQLSERIAL_NUMBER: TIntegerField;
+    Co_companiesOutSQLSERIAL_QB: TIntegerField;
+    Co_companiesOutSQLLAST_NAME: TWideStringField;
+    Co_companiesOutSQLFIRST_NAME: TWideStringField;
+    Co_companiesOutSQLNATIONAL_ID: TWideStringField;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -434,6 +466,9 @@ type
     procedure AttendGRDTitleButtonClick(Sender: TObject; AFieldName: string);
     procedure AttendGRDUpdateFooter(Sender: TObject);
     procedure ExaminerBTNClick(Sender: TObject);
+    procedure CompaniesTSShow(Sender: TObject);
+    procedure InsertCompanyBTNClick(Sender: TObject);
+    procedure RemoveCompanyBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -448,6 +483,8 @@ type
     procedure EditSeminar(const SeminarSerial: integer);
     procedure RemovePerson();
     procedure InsertPerson();
+    procedure RemoveCompany();
+    procedure InsertCompany();
     procedure UseSeminarTemplate(const SeminarSerial, TypeSerial: Integer);
     procedure GetReminderFromTemplate(const SeminarSerial, TypeSerial: Integer);
     procedure GetTemplatePIctures(const SeminarSerial, TypeSerial: Integer);
@@ -985,6 +1022,22 @@ begin
   abort;
 end;
 
+procedure TV_SeminarFRM.CompaniesTSShow(Sender: TObject);
+var
+  SeminarSerial: Integer;
+  st: string;
+  allowModify: BOolean;
+begin
+
+  SeminarSerial := SEminarSQL.FieldByName('serial_number').AsInteger;
+
+  Co_companiesOutSQL.Close;
+  Co_companiesOutSQL.ParamByName('seminarSerial').Value := seminarSerial;
+  Co_companiesOutSQL.Open;
+
+  ksOpenTables([Co_CompaniesInSQL]);
+end;
+
 procedure TV_SeminarFRM.CostGRDUpdateFooter(Sender: TObject);
 var
   amount: Double;
@@ -1046,6 +1099,39 @@ begin
   AttendingSQL.Refresh;
   NonAttendSQL.Refresh;
 
+end;
+
+procedure TV_SeminarFRM.InsertCompany();
+var
+  qr: TksQuery;
+  Personserial: Integer;
+  seminarSerial: Integer;
+  str: string;
+begin
+
+  if not allowToModify() then
+  begin
+    ShowMessage('Cannot Modify');
+    exit;
+  end;
+
+  PersonSerial := Co_companiesOutSQL.FieldByName('serial_number').AsInteger;
+  SeminarSerial := SeminarSQL.FieldByName('serial_number').AsInteger;
+  if Personserial < 1 then
+    exit;
+  str := ' insert into seminar_COMPANY  (fk_seminar_serial,fk_person_serial) '
+    + ' values(:seminar,:person)';
+  ksExecSQLVar(cn, str, [seminarSerial, Personserial]);
+
+  Co_CompaniesInSQL.Refresh;
+  Co_companiesOutSQL.Refresh;
+
+end;
+
+
+procedure TV_SeminarFRM.InsertCompanyBTNClick(Sender: TObject);
+begin
+InsertCompany();
 end;
 
 procedure TV_SeminarFRM.AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
@@ -1159,6 +1245,39 @@ begin
 
   AttendingSQL.Refresh;
   NonAttendSQL.Refresh;
+end;
+
+procedure TV_SeminarFRM.RemoveCompany();
+var
+  qr: TksQuery;
+  Personserial: Integer;
+  seminarSerial: Integer;
+  str: string;
+  st: string;
+  AllowModify: Boolean;
+begin
+  if not allowToModify() then
+  begin
+    ShowMessage('Cannot Modify');
+    exit;
+  end;
+
+  PersonSerial := Co_CompaniesInSQL.FieldByName('fk_person_serial').AsInteger;
+  SeminarSerial := Co_CompaniesInSQL.FieldByName('fk_seminar_serial').AsInteger;
+  if (Personserial < 1) or (seminarSerial < 1) then
+    exit;
+  str :=
+    ' delete from seminar_Company where fk_person_serial= :personSerial and fk_seminar_serial= :seminarSerial';
+  ksExecSQLVar(cn, str, [Personserial, seminarSerial]);
+
+  Co_CompaniesInSQL.Refresh;
+  Co_companiesOutSQL.Refresh;
+end;
+
+
+procedure TV_SeminarFRM.RemoveCompanyBTNClick(Sender: TObject);
+begin
+RemoveCompany();
 end;
 
 procedure TV_SeminarFRM.RzBitBtn1Click(Sender: TObject);
