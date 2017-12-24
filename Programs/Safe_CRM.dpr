@@ -71,9 +71,5 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
-  Application.CreateForm(TH_HelpFRM, H_HelpFRM);
-  Application.CreateForm(TSN_LoginFRm, SN_LoginFRm);
-  Application.CreateForm(TSN_UserFRM, SN_UserFRM);
-  Application.CreateForm(TSN_SecurityAccessFRM, SN_SecurityAccessFRM);
   Application.Run;
 end.

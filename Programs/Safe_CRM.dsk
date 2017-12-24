@@ -1,51 +1,42 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'C:\Data\DelphiProjects\TokyoCabT\programs\MainFFF.pas',0,1,1,1,1,0,0,,
-File_1=TSourceModule,'C:\Data\DelphiProjects\Tariffs\programs\MainFFF.pas',0,1,1,1,1,0,0,,
-File_2=TSourceModule,'C:\Data\DelphiProjects\Tariffs\programs\U_ClairDML.pas',0,1,1,1,1,0,0,,
-File_3=TSourceModule,'C:\Data\DelphiProjects\Tariffs\programs\testUnit.pas',0,1,1,1,1,0,0,,
-File_4=TSourceModule,'C:\Data\DelphiProjects\Tariffs\programs\M_Units.pas',0,1,1,56,20,0,0,,
-File_5=TSourceModule,'C:\Data\DelphiProjects\Tariffs\testUnit.pas',0,1,89,1,104,0,0,,
-File_6=TSourceModule,'C:\Data\DelphiProjects\Tariffs\V_hawbItem4.pas',0,1,1,1,1,0,0,,
-File_7=TSourceModule,'C:\Data\DelphiProjects\Tariffs\V_hawb.pas',0,1,53,1,119,0,0,,
-File_8=TSourceModule,'C:\Data\DelphiProjects\Tariffs\G_KyrSQL.pas',0,1,13,23,14,0,0,{{41,53}
-File_9=TSourceModule,'C:\Data\DelphiProjects\Tariffs\MainFFF.pas',0,1,1,1,1,0,0,,
-File_10=TSourceModule,'C:\Data\DelphiProjects\Tariffs\G_generalProcs.pas',0,1,25,28,12,0,0,,
-File_11=TSourceModule,'C:\Data\DelphiProjects\Tariffs\M_sTariff.pas',0,1,247,1,1,0,0,,
-File_12=TSourceModule,'C:\Data\DelphiProjects\Tariffs\M_BaseTariff.pas',0,1,1,1,1,0,0,,
-File_13=TSourceModule,'C:\Data\DelphiProjects\Tariffs\MN_DutyTYpe.pas',0,1,1,1,1,0,0,,
+File_0=TSourceModule,'C:\Data\DelphiProjects\Safe_CRM\Programs\V_Seminar.pas',0,1,1,1,1,0,0,,
+File_1=TSourceModule,'C:\Data\DelphiProjects\Safe_CRM\Programs\t_test2.pas',0,1,202,1,1,0,0,,
+File_2=TSourceModule,'C:\Data\DelphiProjects\TokyoCabT\programs\MainFFF.pas',0,1,1,1,1,0,0,,
+File_3=TSourceModule,'C:\Data\DelphiProjects\Tariffs\programs\MainFFF.pas',0,1,1,1,1,0,0,,
+File_4=TSourceModule,'C:\Data\DelphiProjects\Tariffs\programs\U_ClairDML.pas',0,1,1,1,1,0,0,,
+File_5=TSourceModule,'C:\Data\DelphiProjects\Tariffs\programs\testUnit.pas',0,1,1,1,1,0,0,,
+File_6=TSourceModule,'C:\Data\DelphiProjects\Tariffs\programs\M_Units.pas',0,1,1,56,20,0,0,,
+File_7=TSourceModule,'C:\Data\DelphiProjects\Tariffs\testUnit.pas',0,1,89,1,104,0,0,,
+File_8=TSourceModule,'C:\Data\DelphiProjects\Tariffs\V_hawbItem4.pas',0,1,1,1,1,0,0,,
+File_9=TSourceModule,'C:\Data\DelphiProjects\Tariffs\V_hawb.pas',0,1,53,1,119,0,0,,
+File_10=TSourceModule,'C:\Data\DelphiProjects\Tariffs\G_KyrSQL.pas',0,1,13,23,14,0,0,{{41,53}
+File_11=TSourceModule,'C:\Data\DelphiProjects\Tariffs\MainFFF.pas',0,1,1,1,1,0,0,,
+File_12=TSourceModule,'C:\Data\DelphiProjects\Tariffs\G_generalProcs.pas',0,1,25,28,12,0,0,,
+File_13=TSourceModule,'C:\Data\DelphiProjects\Tariffs\M_sTariff.pas',0,1,247,1,1,0,0,,
+File_14=TSourceModule,'C:\Data\DelphiProjects\Tariffs\M_BaseTariff.pas',0,1,1,1,1,0,0,,
 
 [Modules]
-Module0=C:\Data\DelphiProjects\Safe_CRM\Programs\t_test2.pas
-Module1=C:\Data\DelphiProjects\Safe_CRM\Programs\Safe_CRM.dproj
-Module2=C:\Data\DelphiProjects\Safe_CRM\Programs\U_Database.pas
-Module3=C:\Data\DelphiProjects\Safe_CRM\Programs\M_Main.pas
-Module4=default.htm
-Count=5
+Module0=C:\Data\DelphiProjects\Safe_CRM\Programs\M_Main.pas
+Module1=C:\Data\DelphiProjects\Safe_CRM\Programs\U_Database.pas
+Module2=default.htm
+Count=3
 EditWindowCount=1
 
-[C:\Data\DelphiProjects\Safe_CRM\Programs\t_test2.pas]
+[C:\Data\DelphiProjects\Safe_CRM\Programs\M_Main.pas]
 ModuleType=TSourceModule
-
-[C:\Data\DelphiProjects\Safe_CRM\Programs\Safe_CRM.dproj]
-ModuleType=TBaseProject
 
 [C:\Data\DelphiProjects\Safe_CRM\Programs\U_Database.pas]
-ModuleType=TSourceModule
-
-[C:\Data\DelphiProjects\Safe_CRM\Programs\M_Main.pas]
 ModuleType=TSourceModule
 
 [default.htm]
 ModuleType=TURLModule
 
 [EditWindow0]
-ViewCount=5
-CurrentEditView=C:\Data\DelphiProjects\Safe_CRM\Programs\t_test2.pas
+ViewCount=3
+CurrentEditView=C:\Data\DelphiProjects\Safe_CRM\Programs\M_Main.pas
 View0=0
 View1=1
 View2=2
-View3=3
-View4=4
 PercentageSizes=1
 Create=1
 Visible=1
@@ -90,35 +81,13 @@ EditViewName=Borland.FormDesignerView
 [View2]
 CustomEditViewType=TEditView
 Module=C:\Data\DelphiProjects\Safe_CRM\Programs\M_Main.pas
-CursorX=26
-CursorY=148
-TopLine=142
+CursorX=1
+CursorY=294
+TopLine=292
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
-
-[View3]
-CustomEditViewType=TEditView
-Module=C:\Data\DelphiProjects\Safe_CRM\Programs\t_test2.pas
-CursorX=53
-CursorY=228
-TopLine=214
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Data\DelphiProjects\Safe_CRM\Programs\t_test2.pas
-
-[View4]
-CustomEditViewType=TEditView
-Module=C:\Data\DelphiProjects\Safe_CRM\Programs\Safe_CRM.dpr
-CursorX=32
-CursorY=61
-TopLine=46
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Data\DelphiProjects\Safe_CRM\Programs\Safe_CRM.dpr
 
 [UndockedDesigner]
 Count=0
@@ -290,8 +259,8 @@ SplitPos=69
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Action,
-ExpandedItems=Encryption=0,FilterOptions=0,Options=0,RefreshOptions=0,SmartFetch=0,Transaction=0,UpdateTransaction=0,Anchors=0,BorderIcons=0,DefaultTransaction=0,PoolingOptions=0,EngineOptions=0,Constraints=0
+SelectedItem=Caption,
+ExpandedItems=Encryption=0,FilterOptions=0,Options=0,RefreshOptions=0,SmartFetch=0,Transaction=0,UpdateTransaction=0,Anchors=0,BorderIcons=0,DefaultTransaction=0,PoolingOptions=0,Constraints=0
 
 [frmDesignPreview]
 PercentageSizes=1
@@ -401,7 +370,7 @@ Create=1
 Visible=0
 Docked=0
 State=0
-Left=0
+Left=-616
 Top=0
 Width=5047
 Height=7310
@@ -420,7 +389,7 @@ Create=1
 Visible=0
 Docked=0
 State=0
-Left=0
+Left=-616
 Top=0
 Width=1311
 Height=6810
