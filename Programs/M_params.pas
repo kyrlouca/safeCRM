@@ -293,19 +293,26 @@ Begin
       open;
       if qr.IsEmpty then
         exit;
+
       Edit;
       BlobField := qr.FieldByName('anad_picture');
       BS := CreateBlobStream(BlobField,bmWrite);
-//    bs.Position:=0;
-      ImgTEmp.Picture.SaveToStream(BS);
+
+      try
+        ImgTEmp.Picture.SaveToStream(BS);
+      finally
+
+      end;
       Post;
-      close;
-      FindGeneralParameterSQL.Refresh;
+
+//    bs.Position:=0;
+//      close;
     end;
   finally
-    imgTEmp.Free;
     qr.Free;
+    imgTEmp.Free;
   end;
+  FindGeneralParameterSQL.Refresh;
 
 end;
 
@@ -332,13 +339,24 @@ begin
       if qr.IsEmpty then
         exit;
 
-      BlobField := FieldByName('anad_picture');
-      BS := CreateBlobStream(BlobField,bmRead);
-      bs.Position:=0;
-      ImgShow.Picture.LoadFromStream(bs);
-      close;
+        BlobField := FieldByName('anad_picture');
+        BS := CreateBlobStream(BlobField,bmRead);
+
+        try
+          bs.Position:=0;
+          ImgShow.Picture.LoadFromStream(bs);
+              if BS.Size = 0 then  begin
+                 BlobField.Clear;
+              end;
+
+        finally
+
+        end;
+
+//      close;
       end;
    finally
+      bs.Free;
       qr.Free;
    end;
 

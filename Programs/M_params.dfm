@@ -998,6 +998,16 @@ object M_paramsFRM: TM_paramsFRM
       end>
   end
   object OpenPictureDialog1: TOpenPictureDialog
+    Filter = 
+      'All (*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jpg;*.jpeg;*.gif;*.png;*.i' +
+      'co;*.emf;*.wmf;*.tif;*.tiff)|*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jp' +
+      'g;*.jpeg;*.gif;*.png;*.ico;*.emf;*.wmf;*.tif;*.tiff|GIF Image (*' +
+      '.gif)|*.gif|Portable Network Graphics (*.png)|*.png|JPEG Image F' +
+      'ile (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Bitmaps (*.bmp' +
+      ')|*.bmp|JPEG Images (*.jpg)|*.jpg|JPEG Images (*.jpeg)|*.jpeg|GI' +
+      'F Images (*.gif)|*.gif|PNG Images (*.png)|*.png|Icons (*.ico)|*.' +
+      'ico|Enhanced Metafiles (*.emf)|*.emf|Metafiles (*.wmf)|*.wmf|TIF' +
+      'F Images (*.tif)|*.tif|TIFF Images (*.tiff)|*.tiff'
     Left = 416
     Top = 199
   end
