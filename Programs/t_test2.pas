@@ -7,7 +7,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Data.DB,
   MemDS, DBAccess, IBC, Vcl.Grids, vcl.wwdbigrd, vcl.wwdbgrid, VirtualTable,
   ppDB, ppDBPipe, ppComm, ppRelatv, ppProd, ppClass, ppReport, ppBands, ppCache,
-  ppDesignLayer, ppParameter, ppPrnabl, ppCtrls, ppVar, Vcl.Imaging.pngimage,ComCtrls;
+  ppDesignLayer, ppParameter, ppPrnabl, ppCtrls, ppVar, Vcl.Imaging.pngimage,ComCtrls,
+  ppStrtch, ppRichTx, frxClass, Vcl.ExtCtrls, frxDock, frxDBSet, frxExportXML,
+  frxExportDOCX, frxExportPDF,frxrcExports, frxRich, frxExportRTF;
 
 type
   TT_test2FRM = class(TForm)
@@ -27,23 +29,153 @@ type
     vtpip: TppDBPipeline;
     ppReport1: TppReport;
     ppTitleBand1: TppTitleBand;
-    ppLabel4: TppLabel;
-    ppImage1: TppImage;
     ppHeaderBand1: TppHeaderBand;
-    ppLine1: TppLine;
     ddBand: TppDetailBand;
     ppFooterBand1: TppFooterBand;
     ppLine2: TppLine;
-    ppSystemVariable1: TppSystemVariable;
-    ppSystemVariable2: TppSystemVariable;
     ppDesignLayers1: TppDesignLayers;
     ppDesignLayer1: TppDesignLayer;
     ppParameterList1: TppParameterList;
-    ppShape2: TppShape;
-    ppLabel9: TppLabel;
-    ppDBText8: TppDBText;
-    ppDBText9: TppDBText;
-    ppLabel11: TppLabel;
+    ppDesignLayer2: TppDesignLayer;
+    ppPageStyle1: TppPageStyle;
+    ppRichText1: TppRichText;
+    ppRichText2: TppRichText;
+    fs1: TfrxReport;
+    picturesSQL: TIBCQuery;
+    PicturesSRC: TDataSource;
+    CompanySQL: TIBCQuery;
+    SeminarSUbjectSQL: TIBCQuery;
+    SeminarSUbjectSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSUbjectSQLFK_SEMINAR_SERIAL: TIntegerField;
+    SeminarSUbjectSQLSUBJECT: TWideStringField;
+    SeminarSUbjectSQLFK_SUBJECT_TYPE_SERIAL: TIntegerField;
+    SeminarSUbjectSQLFEE_NORMAL: TFloatField;
+    SeminarSUbjectSQLFEE_REDUCED: TFloatField;
+    SeminarSUbjectSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSUbjectSQLFK_EXAMINER: TIntegerField;
+    SeminarSUbjectSQLFK_VENUE: TIntegerField;
+    CompanyDRX: TfrxDBDataset;
+    SeminarSubjectDRX: TfrxDBDataset;
+    picturesSQLSERIAL_NUMBER: TIntegerField;
+    picturesSQLPICTURE_SEMINAR: TBlobField;
+    picturesSQLLINE_A1: TWideStringField;
+    picturesSQLLINE_A2: TWideStringField;
+    picturesSQLLINE_B1: TWideStringField;
+    picturesSQLLINE_B2: TWideStringField;
+    picturesSQLLINE_B3: TWideStringField;
+    picturesSQLTL_X: TIntegerField;
+    picturesSQLTL_Y: TIntegerField;
+    picturesSQLTR_X: TIntegerField;
+    picturesSQLTR_Y: TIntegerField;
+    picturesSQLBL_X: TIntegerField;
+    picturesSQLBL_Y: TIntegerField;
+    picturesSQLBR_X: TIntegerField;
+    picturesSQLBR_Y: TIntegerField;
+    picturesSQLPICTURE_TOP_L1: TBlobField;
+    picturesSQLPICTURE_TOP_R1: TBlobField;
+    picturesSQLPICTURE_BOT_L1: TBlobField;
+    picturesSQLPICTURE_BOT_R1: TBlobField;
+    picturesSQLLINE_C1: TWideStringField;
+    picturesSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
+    PircturesDRX: TfrxDBDataset;
+    PersonSQL: TIBCQuery;
+    PersonSQLSERIAL_NUMBER: TIntegerField;
+    PersonSQLSERIAL_QB: TIntegerField;
+    PersonSQLFK_COMPANY_SERIAL: TIntegerField;
+    PersonSQLLAST_NAME: TWideStringField;
+    PersonSQLFIRST_NAME: TWideStringField;
+    PersonSQLNATIONAL_ID: TWideStringField;
+    PersonSQLNICKNAME: TWideStringField;
+    PersonSQLOCCUPATION: TWideStringField;
+    PersonSQLPHONE_MOBILE: TWideStringField;
+    PersonSQLPHONE_FIXED: TWideStringField;
+    PersonSQLPHONE_ALTERNATE: TWideStringField;
+    PersonSQLFAX: TWideStringField;
+    PersonSQLEMAIL: TWideStringField;
+    PersonSQLEMAIL_2: TSmallintField;
+    PersonSQLADDRESS: TWideStringField;
+    PersonSQLADDRESS_STREET: TWideStringField;
+    PersonSQLADDRESS_POST_CODE: TWideStringField;
+    PersonSQLADDRESS_CITY: TWideStringField;
+    PersonSQLADDRESS_DISTRICT: TWideStringField;
+    PersonSQLDATE_STARTED: TDateField;
+    PersonSQLDATE_BIRTH: TDateField;
+    PersonSQLDATE_USER: TDateField;
+    PersonSQLLIST_SOURCE: TWideStringField;
+    PersonSQLFACEBOOK: TWideStringField;
+    PersonSQLWEBSITE: TWideStringField;
+    PersonSQLTWITTER: TWideStringField;
+    PersonSQLSTATUS_ACTIVE: TWideStringField;
+    PersonSQLSEX: TWideStringField;
+    PersonSQLIS_COMPANY: TWideStringField;
+    PersonSQLCOMPANY_OWNER: TWideStringField;
+    PersonSQLCOMPANY_CONTACT: TWideStringField;
+    PersonSQLCOMPANY_REGISTRATION_DATE: TDateField;
+    PersonSQLPHONE_CONTACT: TWideStringField;
+    PersonSQLCOMPANY_CONTACT_FIRST: TWideStringField;
+    PersonSQLCOMPANY_CONTACT_LAST: TWideStringField;
+    PersonSQLCOMPANY_OWNER_REG: TWideStringField;
+    PersonSQLCOMPANY_CONTACT_PHONE: TWideStringField;
+    PersonSQLCOMPANY_CONTACT_EMAIL: TWideStringField;
+    PersonSQLCOMPANY_CONTACT_FAX: TWideStringField;
+    PersonSQLCOMPANY_SOCIAL_SEC: TWideStringField;
+    PersonSQLCOMPANY_EMPLOYEES: TIntegerField;
+    PersonSQLPHONE_MOBILE_2: TWideStringField;
+    PersonSQLLINKED_IN: TWideStringField;
+    PersonSQLJOB: TWideStringField;
+    PersonSRC: TDataSource;
+    PersonDX: TfrxDBDataset;
+    CompanySQLSERIAL_NUMBER: TIntegerField;
+    CompanySQLSERIAL_QB: TIntegerField;
+    CompanySQLFK_COMPANY_SERIAL: TIntegerField;
+    CompanySQLLAST_NAME: TWideStringField;
+    CompanySQLFIRST_NAME: TWideStringField;
+    CompanySQLNATIONAL_ID: TWideStringField;
+    CompanySQLNICKNAME: TWideStringField;
+    CompanySQLOCCUPATION: TWideStringField;
+    CompanySQLPHONE_MOBILE: TWideStringField;
+    CompanySQLPHONE_FIXED: TWideStringField;
+    CompanySQLPHONE_ALTERNATE: TWideStringField;
+    CompanySQLFAX: TWideStringField;
+    CompanySQLEMAIL: TWideStringField;
+    CompanySQLEMAIL_2: TSmallintField;
+    CompanySQLADDRESS: TWideStringField;
+    CompanySQLADDRESS_STREET: TWideStringField;
+    CompanySQLADDRESS_POST_CODE: TWideStringField;
+    CompanySQLADDRESS_CITY: TWideStringField;
+    CompanySQLADDRESS_DISTRICT: TWideStringField;
+    CompanySQLDATE_STARTED: TDateField;
+    CompanySQLDATE_BIRTH: TDateField;
+    CompanySQLDATE_USER: TDateField;
+    CompanySQLLIST_SOURCE: TWideStringField;
+    CompanySQLFACEBOOK: TWideStringField;
+    CompanySQLWEBSITE: TWideStringField;
+    CompanySQLTWITTER: TWideStringField;
+    CompanySQLSTATUS_ACTIVE: TWideStringField;
+    CompanySQLSEX: TWideStringField;
+    CompanySQLIS_COMPANY: TWideStringField;
+    CompanySQLCOMPANY_OWNER: TWideStringField;
+    CompanySQLCOMPANY_CONTACT: TWideStringField;
+    CompanySQLCOMPANY_REGISTRATION_DATE: TDateField;
+    CompanySQLPHONE_CONTACT: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_FIRST: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_LAST: TWideStringField;
+    CompanySQLCOMPANY_OWNER_REG: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_PHONE: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_EMAIL: TWideStringField;
+    CompanySQLCOMPANY_CONTACT_FAX: TWideStringField;
+    CompanySQLCOMPANY_SOCIAL_SEC: TWideStringField;
+    CompanySQLCOMPANY_EMPLOYEES: TIntegerField;
+    CompanySQLPHONE_MOBILE_2: TWideStringField;
+    CompanySQLLINKED_IN: TWideStringField;
+    CompanySQLJOB: TWideStringField;
+    CompanySRC: TDataSource;
+    frxDOCXExport1: TfrxDOCXExport;
+    frxXMLExport1: TfrxXMLExport;
+    frxPDFExport1: TfrxPDFExport;
+    fs2: TfrxReport;
+    frxRichObject1: TfrxRichObject;
+    frxRTFExport1: TfrxRTFExport;
     procedure PrintRBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -80,11 +212,28 @@ begin
 end;
 
 procedure TT_test2FRM.PrintRBtnClick(Sender: TObject);
+var
+
+fileName:String;
 begin
-  CreateTable(94);
-  PopulateTable(94);
-  AddReportFields();
-  ppReport1.Print;
+{
+  fs1.Variables['FileNameU']:= 234;
+
+  fs1.ShowReport(true);
+  exit;
+}
+  //////////////////////////
+  fs2.PrepareReport;
+
+  FileName := 'C:\Users\KyrLouca\Desktop\ttt2.doc';
+  frxRTFExport1.FileName:=fileName;
+  frxRTFExport1.ShowDialog:=false;
+  frxRTFExport1.OpenAfterExport:=false;
+
+  fs2.Export(frxRTFExport1);
+
+
+
 end;
 
 
