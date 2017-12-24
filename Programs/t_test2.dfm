@@ -882,7 +882,7 @@ object T_test2FRM: TT_test2FRM
         Top = 102.047310000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
-          Width = 718.110236220472000000
+          Width = 718.110236220471900000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1991,11 +1991,11 @@ object T_test2FRM: TT_test2FRM
     Top = 300
   end
   object frxDOCXExport1: TfrxDOCXExport
-    FileName = 'C:\Users\KyrLouca\Desktop\test3.docx'
+    FileName = 'C:\Users\KyrLouca\Desktop\test34.docx'
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
-    CreationTime = 43092.557071273150000000
+    CreationTime = 43093.810806921300000000
     DataOnly = False
     OpenAfterExport = True
     PictureType = gpPNG
@@ -2052,7 +2052,7 @@ object T_test2FRM: TT_test2FRM
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43092.531638888900000000
-    ReportOptions.LastChange = 43092.575147824070000000
+    ReportOptions.LastChange = 43092.575147824100000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -2376,7 +2376,7 @@ object T_test2FRM: TT_test2FRM
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
-    CreationTime = 43092.558157442130000000
+    CreationTime = 43093.811078356490000000
     DataOnly = False
     PictureType = gpPNG
     OpenAfterExport = True

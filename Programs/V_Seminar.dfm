@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = CompaniesTS
+      ActivePage = CostTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -4827,6 +4827,13 @@ object V_SeminarFRM: TV_SeminarFRM
     Top = 12
     object Help1: TMenuItem
       Caption = 'Help'
+    end
+    object N1: TMenuItem
+      Caption = #913#925#913#916'-'#913#961#967#949#943#945
+      object N2: TMenuItem
+        Caption = #924#972#957#959
+        OnClick = N2Click
+      end
     end
   end
   object IBCSQLMonitor1: TIBCSQLMonitor

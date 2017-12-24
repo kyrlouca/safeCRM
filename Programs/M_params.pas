@@ -232,7 +232,7 @@ procedure TM_paramsFRM.ShowOneRecord(RecordIndex:Integer);
 Const
 //        LabelValuesArray:Array[0..4,0..8] of String = (
         LabelValuesArray:Array[0..4] of TStringArray = (
-                ['T00','Reports Title - First line ','Φ.Π.Α.','% Ελάχιστης Παρακολούθησης','','Image File as Invoice logo','','',''],
+                ['T00','Reports Title - First line ','Φ.Π.Α.','% Ελάχιστης Παρακολούθησης','','Folder to Save Word Files','','',''],
                 ['T01','Test','','','','','','',''],
                 ['T02','Unused','','','','','','',''],
                 ['T03','','VAT Rate','','','','','',''],

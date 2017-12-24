@@ -394,6 +394,7 @@ var
   vatRate:Double;
 begin
 
+
  param:=gpGetGeneralParam(cn,'T00');
   VatRate:=param.P_Float1;
 

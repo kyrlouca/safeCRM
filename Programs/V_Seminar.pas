@@ -417,13 +417,14 @@ type
     Co_companiesOutSQLLAST_NAME: TWideStringField;
     Co_companiesOutSQLFIRST_NAME: TWideStringField;
     Co_companiesOutSQLNATIONAL_ID: TWideStringField;
+    N1: TMenuItem;
+    N2: TMenuItem;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CLoseBTNClick(Sender: TObject);
-    procedure Nav1InsertClick(Sender: TObject);
     procedure InstructorBTNClick(Sender: TObject);
     procedure VenueBTNClick(Sender: TObject);
     procedure SeminarTypeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
@@ -469,6 +470,7 @@ type
     procedure CompaniesTSShow(Sender: TObject);
     procedure InsertCompanyBTNClick(Sender: TObject);
     procedure RemoveCompanyBTNClick(Sender: TObject);
+    procedure N2Click(Sender: TObject);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -505,7 +507,7 @@ var
 implementation
 
 uses U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs,
-  H_Help, v_SeminarPictureTemplate;
+  H_Help, v_SeminarPictureTemplate, R_AnadFIles;
 
 {$R *.DFM}
 
@@ -1296,9 +1298,24 @@ begin
 end;
 
 
-procedure TV_SeminarFRM.Nav1InsertClick(Sender: TObject);
+procedure TV_SeminarFRM.N2Click(Sender: TObject);
+var
+  Frm:TR_AnadFilesFRM;
+  BaseFolder:string;
+  param:G_generalProcs.TParameterRecord;
 begin
-//  FirstFLD.SetFocus;
+
+  param:=  gpGetGeneralParam(cn,'T00');
+  baseFOlder:=param.P_String3;
+
+  frm := TR_AnadFilesFRM.Create(nil);
+  try
+    frm.IN_BaseFolder:=BaseFolder;
+    frm.CreateTheFIle;
+  finally
+    frm.Free;
+  end;
+
 end;
 
 procedure TV_SeminarFRM.PageControlPCChanging(Sender: TObject;
