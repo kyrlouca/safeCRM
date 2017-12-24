@@ -145,7 +145,7 @@ var
  j:integer;
 
 begin
-  gpShowModal(TR_presencePErDayFRM);
+  gpShowModal(TT_test2FRM);
 end;
 
 procedure TM_mainFRM.Button2Click(Sender: TObject);

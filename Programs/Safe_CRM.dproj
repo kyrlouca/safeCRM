@@ -266,6 +266,10 @@
             <Form>R_remindersFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="t_test2.pas">
+            <Form>T_test2FRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -288,6 +292,13 @@
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\ipstudiowinwordxp250.bpl">Woll2Woll InfoPower RichEdit for MSWord XP</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfrxTee25.bpl">(untitled)</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfsTee25.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfrxADO25.bpl">FastReport 5.0 ADO Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfsADO25.bpl">FastScript 1.9 ADO Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfrxDBX25.bpl">FastReport 5.0 DBX Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfrxIBX25.bpl">FastReport 5.0 IBX Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfsIBX25.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>

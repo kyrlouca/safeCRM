@@ -50,7 +50,8 @@ uses
   R_seminarAttend in 'R_seminarAttend.pas' {R_seminarsAttendFRM},
   S_updateStatus in 'S_updateStatus.pas' {S_UpdateStatusFRM},
   M_Instructor in 'M_Instructor.pas' {M_InstructorFRM},
-  R_Reminders in 'R_Reminders.pas' {R_remindersFRM};
+  R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
+  t_test2 in 't_test2.pas' {T_test2FRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -74,24 +75,5 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TSN_LoginFRm, SN_LoginFRm);
   Application.CreateForm(TSN_UserFRM, SN_UserFRM);
   Application.CreateForm(TSN_SecurityAccessFRM, SN_SecurityAccessFRM);
-  Application.CreateForm(TSN_AddUserFRM, SN_AddUserFRM);
-  Application.CreateForm(TP_ViewPaymentFRM, P_ViewPaymentFRM);
-  Application.CreateForm(TL_listInvoicesFRM, L_listInvoicesFRM);
-  Application.CreateForm(TR_CertificateDatesFRM, R_CertificateDatesFRM);
-  Application.CreateForm(TM_ReminderCompleteFRM, M_ReminderCompleteFRM);
-  Application.CreateForm(TR_SeminarListingRevenuesFRM, R_SeminarListingRevenuesFRM);
-  Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
-  Application.CreateForm(TR_SeminarRevenuesFRM, R_SeminarRevenuesFRM);
-  Application.CreateForm(TR_presencePErDayFRM, R_presencePErDayFRM);
-  Application.CreateForm(TM_StudentFRM, M_StudentFRM);
-  Application.CreateForm(TR_presencePErDayFRM, R_presencePErDayFRM);
-  Application.CreateForm(TSN_ModifyPasswordFRM, SN_ModifyPasswordFRM);
-  Application.CreateForm(TR_invoicesUnpaidFRM, R_invoicesUnpaidFRM);
-  Application.CreateForm(TS_UpdateStatusFRM, S_UpdateStatusFRM);
-  Application.CreateForm(TR_InvoicesFRM, R_InvoicesFRM);
-  Application.CreateForm(TM_reminderFRM, M_reminderFRM);
-  Application.CreateForm(TR_seminarsAttendFRM, R_seminarsAttendFRM);
-  Application.CreateForm(TM_InstructorFRM, M_InstructorFRM);
-  Application.CreateForm(TR_remindersFRM, R_remindersFRM);
   Application.Run;
 end.
