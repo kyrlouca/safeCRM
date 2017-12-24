@@ -94,9 +94,12 @@ begin
 //fs2.ShowReport(True);
 //exit;
 
+
+  fs2.PrepareReport;
+
+//  FileName := 'C:\Users\KyrLouca\Desktop\ttt23.rtf';
   FileName := baseFolder+'\ttt2.doc';
 
-  FileName := 'C:\Users\KyrLouca\Desktop\ttt23.rtf';
   frxRTFExport1.FileName:=fileName;
   frxRTFExport1.ShowDialog:=false;
   frxRTFExport1.OpenAfterExport:=false;
