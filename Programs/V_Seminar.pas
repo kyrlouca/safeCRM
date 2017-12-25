@@ -1302,16 +1302,18 @@ procedure TV_SeminarFRM.N2Click(Sender: TObject);
 var
   Frm:TR_AnadFilesFRM;
   BaseFolder:string;
+  SeminarSerial:Integer;
   param:G_generalProcs.TParameterRecord;
 begin
 
-  param:=  gpGetGeneralParam(cn,'T00');
-  baseFOlder:=param.P_String3;
+  SeminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+  if SeminarSerial<1 then
+    exit;
 
   frm := TR_AnadFilesFRM.Create(nil);
   try
-    frm.IN_BaseFolder:=BaseFolder;
-    frm.CreateTheFIle;
+    frm.IN_SeminarSerial:=SeminarSerial;
+    frm.CreateSeminarRequestFile(SeminarSerial);
   finally
     frm.Free;
   end;

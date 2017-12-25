@@ -69,7 +69,10 @@ type
   public
     { Public declarations }
     IN_BaseFolder:string;
+    IN_SeminarSerial:Integer;
     procedure CreateTheFIle;
+
+  function CreateSeminarRequestFile(Const SeminarSerial:Integer):boolean;
   end;
 
 var
@@ -79,7 +82,7 @@ implementation
 
 {$R *.dfm}
 
-uses U_Database;
+uses U_Database, G_generalProcs, G_KyrSQL;
 
 procedure TR_AnadFilesFRM.FormCreate(Sender: TObject);
 begin
@@ -114,6 +117,88 @@ begin
 
 
 end;
+
+function TR_AnadFilesFRM.CreateSeminarRequestFile(Const SeminarSerial:Integer):boolean;
+
+var
+  Frm:TR_AnadFilesFRM;
+  BaseFolder:string;
+  param:G_generalProcs.TParameterRecord;
+  FileName:String;
+  qr:TksQuery;
+  seminarName:String;
+  UseFolder:String;
+  FnAME:sTRING;
+
+
+begin
+
+  //fs2.ShowReport(True);
+//exit;
+
+  param:=  gpGetGeneralParam(cn,'T00');
+  baseFOlder:=param.P_String3;
+  if trim(baseFOlder)='' then begin
+    result:=false;
+    exit;
+  end;
+
+  if not DirectoryExists(baseFOlder) then begin
+      ShowMessage('Base Directory does NOT EXISTS: '+BaseFolder);
+      result:=false;
+      exit;
+  end;
+
+
+  qr:=TksQuery.Create(cn,'select * from Seminar where serial_number = :SeminarSerial');
+  try
+    qr.ParamByName('seminarSerial').Value:=SeminarSerial;
+    qr.Open;
+    if qr.IsEmpty then begin
+      result:=false;
+      exit;
+    end;
+    SeminarName:=trim(qr.FieldByName('Seminar_name').AsString);
+    qr.Close;
+
+  finally
+    qr.free;
+  end;
+
+  useFolder:=baseFOlder+'\'+SeminarName+'_'+IntToStr(SeminarSerial);
+  if not DirectoryExists(useFOlder) then begin
+    showMessage(useFolder);
+    if not CreateDir(useFOlder) then begin
+      ShowMessage('cannot Create Directory: '+UseFolder);
+      result:=false;
+      exit;
+    end;
+  end;
+
+
+
+
+  fs2.PrepareReport;
+
+//  FileName := 'C:\Users\KyrLouca\Desktop\ttt23.rtf';
+  fName:='Εντυπο Αίτηση εργοδότη για Έκριση Προγράμματος .doc';
+  FileName := useFolder+'\'+fName;
+
+  frxRTFExport1.FileName:=fileName;
+  frxRTFExport1.ShowDialog:=false;
+  frxRTFExport1.OpenAfterExport:=false;
+
+  fs2.Export(frxRTFExport1);
+
+  frxRTFExport1.FileName:=fileName;
+  frxRTFExport1.ShowDialog:=false;
+  frxRTFExport1.OpenAfterExport:=false;
+
+  fs2.Export(frxRTFExport1);
+
+
+end;
+
 
 procedure TR_AnadFilesFRM.CreateTheFIle;
 begin

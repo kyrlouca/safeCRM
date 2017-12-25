@@ -127,6 +127,10 @@ object V_SeminarFRM: TV_SeminarFRM
       object SeminarTS: TTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
         OnShow = SeminarTSShow
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object RzPanel18: TRzPanel
           Left = 0
           Top = 0
@@ -1775,8 +1779,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
             TabOrder = 1
-            ExplicitLeft = -3
-            ExplicitTop = 10
             object RzSizePanel3: TRzSizePanel
               Left = 1
               Top = 15
@@ -2829,6 +2831,10 @@ object V_SeminarFRM: TV_SeminarFRM
       object PictureTS: TTabSheet
         Caption = #922#949#943#956#949#957#959'/'#917#953#954#972#957#949#962
         ImageIndex = 5
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object RzPanel23: TRzPanel
           Left = 0
           Top = 0
@@ -2927,7 +2933,6 @@ object V_SeminarFRM: TV_SeminarFRM
     BorderInner = fsFlatRounded
     BorderOuter = fsNone
     TabOrder = 2
-    ExplicitTop = 687
     object RzPanel1: TRzPanel
       Left = 971
       Top = 2
@@ -3378,7 +3383,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800280310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088002C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
