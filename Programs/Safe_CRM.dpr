@@ -52,7 +52,8 @@ uses
   M_Instructor in 'M_Instructor.pas' {M_InstructorFRM},
   R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
   t_test2 in 't_test2.pas' {T_test2FRM},
-  R_AnadFIles in 'R_AnadFIles.pas' {R_AnadFilesFRM};
+  R_AnadFIles in 'R_AnadFIles.pas' {R_AnadFilesFRM},
+  S_LoadDocs in 'S_LoadDocs.pas' {S_LoadDocsFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -73,5 +74,6 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
   Application.CreateForm(TR_AnadFilesFRM, R_AnadFilesFRM);
+  Application.CreateForm(TS_LoadDocsFRM, S_LoadDocsFRM);
   Application.Run;
 end.

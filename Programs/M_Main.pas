@@ -131,7 +131,7 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
   G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices,
   v_SeminarPictureTemplate, R_SeminarListingRevenues, t_test2, R_presencePerDay,
-  SN_ModifyPassword, S_updateStatus;
+  SN_ModifyPassword, S_updateStatus, S_LoadDocs;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -150,7 +150,7 @@ end;
 
 procedure TM_mainFRM.Button2Click(Sender: TObject);
 begin
-gpShowModal(TL_listInvoicesFRM);
+gpShowModal(TS_LoadDocsFRM);
 end;
 
 procedure TM_mainFRM.ChangePassword1Click(Sender: TObject);

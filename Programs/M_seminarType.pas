@@ -709,6 +709,8 @@ Begin
     img.Picture.LoadFromFile(filename);
     result:=true;
 end;
+
+
 procedure TM_SeminarTypeFRM.SeminarTSExit(Sender: TObject);
 begin
 if TableSQL.State in [dsEdit,dsInsert] then begin

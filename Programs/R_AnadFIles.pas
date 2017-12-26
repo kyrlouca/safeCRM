@@ -9,7 +9,7 @@ uses
 
 type
   TR_AnadFilesFRM = class(TForm)
-    fs2: TfrxReport;
+    IssonosRpt: TfrxReport;
     frxDOCXExport1: TfrxDOCXExport;
     frxRTFExport1: TfrxRTFExport;
     frxRichObject1: TfrxRichObject;
@@ -98,7 +98,7 @@ begin
 //exit;
 
 
-  fs2.PrepareReport;
+  IssonosRPT.PrepareReport;
 
 //  FileName := 'C:\Users\KyrLouca\Desktop\ttt23.rtf';
   FileName := baseFolder+'\ttt2.doc';
@@ -107,13 +107,13 @@ begin
   frxRTFExport1.ShowDialog:=false;
   frxRTFExport1.OpenAfterExport:=false;
 
-  fs2.Export(frxRTFExport1);
+  IssonosRPT.Export(frxRTFExport1);
 
   frxRTFExport1.FileName:=fileName;
   frxRTFExport1.ShowDialog:=false;
   frxRTFExport1.OpenAfterExport:=false;
 
-  fs2.Export(frxRTFExport1);
+  IssonosRPT.Export(frxRTFExport1);
 
 
 end;
@@ -178,7 +178,7 @@ begin
 
 
 
-  fs2.PrepareReport;
+  IssonosRPT.PrepareReport;
 
 //  FileName := 'C:\Users\KyrLouca\Desktop\ttt23.rtf';
   fName:='Εντυπο Αίτηση εργοδότη για Έκριση Προγράμματος .doc';
@@ -188,13 +188,13 @@ begin
   frxRTFExport1.ShowDialog:=false;
   frxRTFExport1.OpenAfterExport:=false;
 
-  fs2.Export(frxRTFExport1);
+  IssonosRPT.Export(frxRTFExport1);
 
   frxRTFExport1.FileName:=fileName;
   frxRTFExport1.ShowDialog:=false;
   frxRTFExport1.OpenAfterExport:=false;
 
-  fs2.Export(frxRTFExport1);
+  IssonosRPT.Export(frxRTFExport1);
 
 
 end;

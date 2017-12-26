@@ -2,7 +2,7 @@ object M_paramsFRM: TM_paramsFRM
   Left = 0
   Top = 0
   Caption = 'M_paramsFRM'
-  ClientHeight = 610
+  ClientHeight = 618
   ClientWidth = 938
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -27,13 +27,14 @@ object M_paramsFRM: TM_paramsFRM
   end
   object ButtonsPNL: TPanel
     Left = 0
-    Top = 565
+    Top = 573
     Width = 938
     Height = 45
     Align = alBottom
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
+    ExplicitTop = 565
     object Panel1: TPanel
       Left = 801
       Top = 2
@@ -298,10 +299,13 @@ object M_paramsFRM: TM_paramsFRM
     Left = 0
     Top = 53
     Width = 938
-    Height = 512
+    Height = 520
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
+    ExplicitLeft = -10
+    ExplicitTop = -35
+    ExplicitHeight = 512
     object OptionGRP: TRzRadioGroup
       Left = 534
       Top = 26
@@ -998,16 +1002,6 @@ object M_paramsFRM: TM_paramsFRM
       end>
   end
   object OpenPictureDialog1: TOpenPictureDialog
-    Filter = 
-      'All (*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jpg;*.jpeg;*.gif;*.png;*.i' +
-      'co;*.emf;*.wmf;*.tif;*.tiff)|*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jp' +
-      'g;*.jpeg;*.gif;*.png;*.ico;*.emf;*.wmf;*.tif;*.tiff|GIF Image (*' +
-      '.gif)|*.gif|Portable Network Graphics (*.png)|*.png|JPEG Image F' +
-      'ile (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Bitmaps (*.bmp' +
-      ')|*.bmp|JPEG Images (*.jpg)|*.jpg|JPEG Images (*.jpeg)|*.jpeg|GI' +
-      'F Images (*.gif)|*.gif|PNG Images (*.png)|*.png|Icons (*.ico)|*.' +
-      'ico|Enhanced Metafiles (*.emf)|*.emf|Metafiles (*.wmf)|*.wmf|TIF' +
-      'F Images (*.tif)|*.tif|TIFF Images (*.tiff)|*.tiff'
     Left = 416
     Top = 199
   end

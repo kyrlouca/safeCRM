@@ -75,6 +75,7 @@ type
     TableSQLCOMPANY_CONTACT: TWideStringField;
     TableSQLCOMPANY_REGISTRATION_DATE: TDateField;
     TableSQLPHONE_CONTACT: TWideStringField;
+    SafeBTN: TRzBitBtn;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure TableSQLAfterInsert(DataSet: TDataSet);
@@ -89,11 +90,13 @@ type
     procedure Nav1InsertClick(Sender: TObject);
     procedure FilterBoxCloseUp(Sender: TwwDBComboBox; Select: Boolean);
     procedure EditBTNClick(Sender: TObject);
+    procedure SafeBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
     procedure EditCompany();
     procedure DeleteCompany();
+  procedure MakeItSafe(Const PersonSerial:Integer);
   procedure  InsertCompany();
   public
     { Public declarations }
@@ -136,6 +139,25 @@ end;
 procedure TL_companiesFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure TL_companiesFRM.SafeBTNClick(Sender: TObject);
+var
+  PersonSerial:Integer;
+begin
+  PersonSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  if PersonSerial<1 then exit;
+  MakeItSafe(PersonSerial);
+
+end;
+
+procedure TL_companiesFRM.MakeItSafe(Const PersonSerial:Integer);
+begin
+
+  if MessageDlg('Select this Company as Safe Partners.'+#13+#10+'Are you sure ?', mtWarning, [mbOk, mbCancel], 0,mbCancel)= mrOk then begin
+    ksExecSQLVar(cn,'update person set is_safe_company=''N'' ',[]);
+    ksExecSQLVar(cn,'update person set is_safe_company=''Y'' where serial_number= :SeminarSerial',[PersonSerial]);
+  end;
 end;
 
 procedure TL_companiesFRM.EditBTNClick(Sender: TObject);
