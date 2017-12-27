@@ -36,30 +36,25 @@ type
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    BitBtn1: TBitBtn;
-    CanelBTN: TBitBtn;
     wwDBEdit1: TwwDBEdit;
     Label5: TLabel;
     TableSQLPOLY_MONO: TWideStringField;
     TableSQLCODE_KEY: TWideStringField;
     TableSQLDOC_NAME: TWideStringField;
     TableSQLDOC_BLOB: TBlobField;
-    SelTopLeftBTN: TRzBitBtn;
-    OpenPictureDialog1: TOpenPictureDialog;
-    procedure BitBtn2Click(Sender: TObject);
-    procedure TableSQLBeforeEdit(DataSet: TDataSet);
-    procedure TableSRCStateChange(Sender: TObject);
-    procedure TableSQLAfterInsert(DataSet: TDataSet);
-    procedure FormActivate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure CanelBTNClick(Sender: TObject);
+    SavetoDB: TRzBitBtn;
+    Button1: TButton;
+    OD1: TOpenDialog;
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
-    procedure SelTopLeftBTNClick(Sender: TObject);
+    procedure SavetoDBClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
-  procedure SavePictureT(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+  procedure WriteStreamToDatabase(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+  procedure SaveToFile(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
   public
     { Public declarations }
     MyInsertState:Boolean;
@@ -77,44 +72,12 @@ uses   U_Database;
 
 {$R *.DFM}
 
-procedure TS_LoadDocsFRM.BitBtn2Click(Sender: TObject);
-begin
-  close;
-end;
-
-procedure TS_LoadDocsFRM.TableSQLBeforeEdit(
-  DataSet: TDataSet);
-begin
-//   Dataset.FieldByName('Serial_number').ReadOnly:=true;
-end;
-
-
-procedure TS_LoadDocsFRM.TableSRCStateChange(Sender: TObject);
-begin
-
-
-with TableSQL do
-begin
-     If State<>dsInsert then
-     begin
-         StationIDFLD.Enabled:=false;
-//       FieldByName('id').ReadOnly:=true;
-     end
-     else
-     begin
-         StationIDFLD.Enabled:=true;
-//       FieldByName('id').ReadOnly:=false;
-     end;
-end;//with
-
-end;
-
 procedure TS_LoadDocsFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
 end;
 
-procedure TS_LoadDocsFRM.SavePictureT(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+procedure TS_LoadDocsFRM.WriteStreamToDatabase(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
 var
 //  BlobField: TField;
   BlobField: TBlobField;
@@ -123,16 +86,10 @@ var
   qr:TksQuery;
   FS:TStream;
 begin
-
-//  CodeSite.send(InttoStr(SeminarSerial));
-//
-//  CodeSite.Send(afieldName);
-//  CodeSite.Send(Language);
-//  CodeSite.Send(img.Name);
   str2:='Select * from word_docs wd where wd.code_key = :CodeKey';
   qr:= TksQuery.Create(cn,str2);
   try
-      close;
+      qr.close;
       qr.ParamByName('CodeKey').Value:=CodeKey;
       qr.open;
 
@@ -144,15 +101,16 @@ begin
       BS := qr.CreateBlobStream(BlobField,bmWrite);
       try
         Bs.Position:=0;
-//        Img.Picture.SaveToStream(BS);
         FS := TFileStream.Create( filename, fmOpenRead );
+        fs.Position:=0;
         try
+          showMessage(intToStr(fs.Size));
           bs.CopyFrom(Fs,fs.Size);
+          qr.FieldByName('doc_name').AsString:=filename;
           qr.Post;
         finally
           fs.Free;
         end;
-//        qr.close; // do not close because it will free bs
 
       finally
           BS.Free;
@@ -169,53 +127,46 @@ end;
 
 
 
-procedure TS_LoadDocsFRM.WriteToFile(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+procedure TS_LoadDocsFRM.SaveToFile(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
 var
 //  BlobField: TField;
   BlobField: TBlobField;
   BS: TStream;
   str2:String;
   qr:TksQuery;
-  FS:TStream;
+  FS:TMemoryStream;
+  binR:TbinaryReader;
+  binW:TBinaryWriter;
+
+
 begin
 
-//  CodeSite.send(InttoStr(SeminarSerial));
-//
-//  CodeSite.Send(afieldName);
-//  CodeSite.Send(Language);
-//  CodeSite.Send(img.Name);
+
+
   str2:='Select * from word_docs wd where wd.code_key = :CodeKey';
   qr:= TksQuery.Create(cn,str2);
   try
-      close;
+      qr.close;
       qr.ParamByName('CodeKey').Value:=CodeKey;
       qr.open;
 
       if qr.IsEmpty then
        exit;
 
-      qr.Edit;
       BlobField := qr.FieldByName('doc_blob') as TBlobField;
       BS := qr.CreateBlobStream(BlobField,bmRead);
       try
-        Bs.Position:=0;
-//        Img.Picture.SaveToStream(BS);
-        fs.sa
-        FS := TFileStream.Create( filename, fmOpenRead );
+        fs:=TMemoryStream.Create;
         try
-          bs.CopyFrom(Fs,fs.Size);
-          qr.Post;
+          fs.CopyFrom(bs,bs.Size);
+          fs.SaveToFile(fileName);
         finally
           fs.Free;
         end;
-//        qr.close; // do not close because it will free bs
 
       finally
-          BS.Free;
-
+        BS.Free;
       end;
-
-
 
   finally
     qr.Free;
@@ -225,44 +176,26 @@ end;
 
 
 
-procedure TS_LoadDocsFRM.SelTopLeftBTNClick(Sender: TObject);
+procedure TS_LoadDocsFRM.SavetoDBClick(Sender: TObject);
 var
   FileName:String;
   codeKey:String;
 begin
-  if not OpenPictureDialog1.Execute then     begin
+  if not Od1.Execute then     begin
       showMessage('exit');
       Exit;
   end;
-  filename :=OpenPictureDialog1.FileName;
+  filename :=od1.FileName;
   ShowMessage(filename);
   codeKEy:=TableSQL.FieldByName('code_key').AsString;
- SavePictureT(codeKey,filename,'Y');
-
-end;
-
-procedure TS_LoadDocsFRM.TableSQLAfterInsert(DataSet: TDataSet);
-begin
-      StationIDFLD.SetFocus;
+ WriteStreamToDatabase(codeKey,filename,'Y');
 
 end;
 
 
 procedure TS_LoadDocsFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL]);
-if IN_ACTION='INSERT' then begin
-   TableSQL.Insert;
-   TableSQL.FieldByName('IS_Default').Value:='N';
-end;
-
-end;
-
-procedure TS_LoadDocsFRM.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-if TableSQL.State in [dsInsert, dsEdit] then
-   TableSQL.Post;
+ksOpenTables([TableSQL])
 end;
 
 procedure TS_LoadDocsFRM.FormCreate(Sender: TObject);
@@ -270,10 +203,36 @@ begin
   cn:=  U_databaseFRM.DataConnection;
 end;
 
-procedure TS_LoadDocsFRM.CanelBTNClick(Sender: TObject);
+procedure TS_LoadDocsFRM.Button1Click(Sender: TObject);
+var
+  fileName:String;
+  codeKey:String;
+  qr:TksQuery;
+  str2:string;
+  fpath:string;
+  fname:string;
 begin
-TableSQL.Cancel;
-close;
+
+  fileName:='C:\Data\DelphiProjects\Safe_CRM\documents\Mono_anadForms\temp.doc';
+  codeKEy:=TableSQL.FieldByName('code_key').AsString;
+
+  str2:='Select * from word_docs wd where wd.code_key = :CodeKey';
+  qr:= TksQuery.Create(cn,str2);
+  try
+      qr.close;
+      qr.ParamByName('CodeKey').Value:=CodeKey;
+      qr.open;
+      fileName:=qr.FieldByName('doc_name').AsString;
+  finally
+    qr.Free;
+  end;
+
+      fpath:=ExtractFilePath(filename);
+      fname:=ExtractFileName(fileName);
+      fname:='x_'+fname;
+      fileName:=fpath+fname;
+
+  SaveToFile(CodeKey,fileName,'P');
 end;
 
 End.
