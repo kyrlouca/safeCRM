@@ -67,8 +67,10 @@ type
     { Private declarations }
     cn:TIBCConnection;
   procedure WriteStreamToDatabase(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
-  procedure SaveToFile(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+//  procedure SaveToFile(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
   procedure SaveToFileXX(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+  procedure CopyAFile(Const DocSerial:Integer;Const FileName :String);
+
   procedure SaveXX(Const SerialNumber:Integer;Const  FilePath, DocName :String);
   function FindHex(const FileName:String): Integer;
 
@@ -244,7 +246,7 @@ begin
 end;
 }
 
-procedure TS_LoadDocsFRM.SaveToFile(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+procedure TS_LoadDocsFRM.CopyaFile(Const DocSerial:Integer;Const FileName :String);
 var
 //  BlobField: TField;
   BlobField: TBlobField;
@@ -255,11 +257,11 @@ var
 
 begin
 
-  str2:='Select * from word_docs wd where wd.code_key = :CodeKey';
+  str2:='Select * from word_docs wd where wd.Serial_number = :SerialNumber';
   qr:= TksQuery.Create(cn,str2);
   try
       qr.close;
-      qr.ParamByName('CodeKey').Value:=CodeKey;
+      qr.ParamByName('SerialNumber').Value:=DocSerial;
       qr.open;
 
       if qr.IsEmpty then
@@ -428,10 +430,13 @@ procedure TS_LoadDocsFRM.WriteFiles(Const SeminarSerial:Integer);
 var
   param:G_generalProcs.TParameterRecord;
   baseFolder:String;
+  useFolder:string;
   fileName:String;
+  DocSerial:integer;
   codeKey:String;
   qr:TksQuery;
   str2:string;
+  SeminarName:String;
   fpath:string;
   fname:string;
   IsPoly:string;
@@ -457,7 +462,7 @@ begin
       exit;
     end;
     SeminarName:=trim(qr.FieldByName('Seminar_name').AsString);
-    IsPoly:=qr.FieldByName('Poly_mono').AsString;
+    IsPoly:=qr.FieldByName('Type_mono_poly').AsString;
     qr.Close;
 
   finally
@@ -469,7 +474,7 @@ begin
 //    showMessage(useFolder);
     if not CreateDir(useFOlder) then begin
       ShowMessage('cannot Create Directory: '+UseFolder);
-      result:=false;
+//      result:=false;
       exit;
     end;
   end;
@@ -483,11 +488,13 @@ begin
       qr.ParamByName('poly').Value:=isPoly;
       qr.open;
       while not qr.Eof do begin
+        DocSerial:=qr.FieldByName('SERIAL_NUMBER').AsInteger;
         fileName:=qr.FieldByName('doc_name').AsString;
         IsSendToAll:=qr.FieldByName('Is_send_to_all').AsString;
+
         if IsSendToAll='N' then begin
-          fname:= UseFolder+'\'+fileName;
-          SaveToFile(CodeKey,fName,'P');
+          fname:= UseFolder+'\'+fileName+'.doc';
+          CopyaFile(DocSerial,fName);
         end else begin
 
         end;
