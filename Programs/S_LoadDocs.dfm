@@ -3,7 +3,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   Top = 153
   Caption = '--'
   ClientHeight = 558
-  ClientWidth = 1026
+  ClientWidth = 1071
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel1: TRzPanel
     Left = 0
     Top = 0
-    Width = 1026
+    Width = 1071
     Height = 53
     Align = alTop
     BorderOuter = fsFlatRounded
@@ -31,11 +31,12 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1026
     object Label4: TLabel
       AlignWithMargins = True
       Left = 5
       Top = 5
-      Width = 1016
+      Width = 1061
       Height = 43
       Align = alClient
       Alignment = taCenter
@@ -48,18 +49,20 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel4: TRzPanel
     Left = 0
     Top = 515
-    Width = 1026
+    Width = 1071
     Height = 43
     Align = alBottom
     TabOrder = 1
+    ExplicitWidth = 1026
     object RzPanel1: TRzPanel
-      Left = 924
+      Left = 969
       Top = 2
       Width = 100
       Height = 39
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 924
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -140,15 +143,16 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel3: TRzPanel
     Left = 0
     Top = 86
-    Width = 1026
+    Width = 1071
     Height = 429
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
+    ExplicitWidth = 1026
     object Panel5: TRzPanel
       Left = 671
       Top = 0
-      Width = 352
+      Width = 377
       Height = 429
       Align = alLeft
       BorderOuter = fsNone
@@ -157,7 +161,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       object GroupBox1: TGroupBox
         Left = 6
         Top = 46
-        Width = 323
+        Width = 363
         Height = 195
         Caption = 'Details'
         Font.Charset = DEFAULT_CHARSET
@@ -334,8 +338,8 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Margin = -1
         end
         object Button1: TButton
-          Left = 131
-          Top = 143
+          Left = 155
+          Top = 103
           Width = 137
           Height = 25
           Caption = 'Write to File'
@@ -400,15 +404,16 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
-        Width = 352
+        Width = 377
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
+        ExplicitWidth = 352
         object wwIncrementalSearch1: TwwIncrementalSearch
-          Left = 199
+          Left = 216
           Top = 6
-          Width = 128
+          Width = 153
           Height = 22
           DataSource = TableSRC
           SearchField = 'Seminar_name'
@@ -624,11 +629,12 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel2: TRzPanel
     Left = 0
     Top = 53
-    Width = 1026
+    Width = 1071
     Height = 33
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 2
+    ExplicitWidth = 1026
   end
   object TableSRC: TDataSource
     DataSet = TableSQL

@@ -146,7 +146,7 @@ type
     procedure GetInvoices();
     procedure GenerateCertificates(Const SeminarSerial:integer);
   Function NewFindGuestHours(Const SubjectSerial,subjectTypeSerial, PersonSerial:Integer):THoursRec;
-  Function CheckDaysEmpty(Const SeminarSerial:Integer):Boolean;
+  Function IsOneDayEmpty(Const SeminarSerial:Integer):Boolean;
 
   public
     { Public declarations }
@@ -379,11 +379,14 @@ begin
   SeminarStatus:=TableSQL.FieldByName('status').AsString;
 
   if SeminarStatus<>'F' then begin
-    MessageDlg('Δεν εκδίδονται πιστοιητικά γιατί το σεμινάριο δεν έχει γίνει ''COMPLETED'' ', mtWarning, [mbOK], 0);
+    MessageDlg('Ξ”ΞµΞ½ ΞµΞΊΞ΄Ξ―Ξ΄ΞΏΞ½Ο„Ξ±ΞΉ Ο€ΞΉΟƒΟ„ΞΏΞΉΞ·Ο„ΞΉΞΊΞ¬ Ξ³ΞΉΞ±Ο„Ξ― Ο„ΞΏ ΟƒΞµΞΌΞΉΞ½Ξ¬ΟΞΉΞΏ Ξ΄ΞµΞ½ Ξ­Ο‡ΞµΞΉ Ξ³Ξ―Ξ½ΞµΞΉ ''COMPLETED'' ', mtWarning, [mbOK], 0);
     abort;
   end;
 
-
+  if IsOneDayEmpty(SeminarSerial) then begin
+    MessageDlg('Ξ”ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½ Ξ Ξ±ΟΞΏΟ…ΟƒΞ―ΞµΟ‚ Ξ³ΞΉΞ± ΞΌΞΉΞ± ΞΞ›ΞΞΞ›Ξ—Ξ΅Ξ— ΞΞ•Ξ΅Ξ‘', mtWarning, [mbOK], 0);
+    abort;
+  end;
 
     GenerateCertificates(seminarSerial);
     ksOpenTables([CertificateSQL]);
@@ -427,7 +430,7 @@ begin
 end;
 
 
-Function TI_CertificatesFRM.CheckDaysEmpty(Const SeminarSerial:Integer):Boolean;
+Function TI_CertificatesFRM.IsOneDayEmpty(Const SeminarSerial:Integer):Boolean;
 var
   str:string;
   qr:TksQuery;
@@ -452,11 +455,10 @@ str:=
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
-    HoursSeminar:=qr.FieldByName('SEMINAR_Hours').asInteger;
+    result:= qr.IsEmpty;
   finally
     qr.Free;
   end;
-
 
 end;
 
