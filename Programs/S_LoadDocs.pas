@@ -337,6 +337,7 @@ var
 //  BS: TStream;
   str2:String;
   qr:TksQuery;
+  CompQr:TksQuery;
 //  FS:TMemoryStream;
 begin
 
@@ -423,24 +424,26 @@ end;
 procedure TS_LoadDocsFRM.Button1Click(Sender: TObject);
 begin
 
-WriteFiles(117);
+WriteFiles(119);
 end;
 
 procedure TS_LoadDocsFRM.WriteFiles(Const SeminarSerial:Integer);
 var
+  qr:TksQuery;
+  compQr:TksQuery;
   param:G_generalProcs.TParameterRecord;
   baseFolder:String;
   useFolder:string;
   fileName:String;
   DocSerial:integer;
   codeKey:String;
-  qr:TksQuery;
   str2:string;
   SeminarName:String;
   fpath:string;
   fname:string;
   IsPoly:string;
   IsSendToAll:String;
+  PerSerial:Integer;
 begin
 
   param:=  gpGetGeneralParam(cn,'T00');
@@ -488,6 +491,7 @@ begin
       qr.ParamByName('poly').Value:=isPoly;
       qr.open;
       while not qr.Eof do begin
+      //for every document
         DocSerial:=qr.FieldByName('SERIAL_NUMBER').AsInteger;
         fileName:=qr.FieldByName('doc_name').AsString;
         IsSendToAll:=qr.FieldByName('Is_send_to_all').AsString;
@@ -497,9 +501,28 @@ begin
           CopyaFile(DocSerial,fName);
         end else begin
 
-        end;
+          str2:=
+          '   select per.serial_number,per.Serial_qb from'
+          +'          seminar_company semC left outer join'
+          +'          person per on semc.fk_person_serial = per.serial_number'
+          +'  where semC.fk_seminar_serial= :SeminarSerial';
 
-        qr.Next;
+          Compqr:= TksQuery.Create(cn,str2);
+          try
+            CompQR.close;
+            CompQr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+            CompQr.open;
+            while not CompQR.Eof do begin
+              perSerial:=CompQR.FieldByName('serial_qb').AsInteger;
+              fname:=UseFOlder+'\'+IntToStr(perSerial)+'_'+fname+'.doc';
+              compQR.Next;
+            end;
+          finally
+           CompQr.Free;
+          end;
+
+          qr.Next;
+        end;
       end;
 
   finally
