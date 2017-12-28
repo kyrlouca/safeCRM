@@ -1,7 +1,7 @@
 object S_LoadDocsFRM: TS_LoadDocsFRM
   Left = 365
   Top = 153
-  Caption = 'Instructor'
+  Caption = '--'
   ClientHeight = 558
   ClientWidth = 1026
   Color = clBtnFace
@@ -156,9 +156,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       TabOrder = 0
       object GroupBox1: TGroupBox
         Left = 6
-        Top = 54
+        Top = 46
         Width = 323
-        Height = 219
+        Height = 195
         Caption = 'Details'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -334,12 +334,13 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Margin = -1
         end
         object Button1: TButton
-          Left = 11
-          Top = 191
+          Left = 131
+          Top = 143
           Width = 137
           Height = 25
           Caption = 'Write to File'
           TabOrder = 3
+          Visible = False
           OnClick = Button1Click
         end
         object wwCheckBox2: TwwCheckBox
@@ -355,9 +356,11 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
+          Checked = True
           DataField = 'IS_SEND_TO_ALL'
           DataSource = TableSRC
           ShowText = False
+          State = cbChecked
           TabOrder = 1
         end
         object wwCheckBox1: TwwCheckBox
@@ -373,11 +376,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Checked = True
           DataField = 'POLY_MONO'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 4
         end
       end
@@ -445,7 +446,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 0
@@ -462,7 +462,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Prior'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -479,6 +478,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Next'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 2
@@ -495,6 +495,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button1'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 3

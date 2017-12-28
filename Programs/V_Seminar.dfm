@@ -3383,7 +3383,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800300310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800340310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4814,16 +4814,6 @@ object V_SeminarFRM: TV_SeminarFRM
     end
   end
   object OpenPictureDialog1: TOpenPictureDialog
-    Filter = 
-      'All (*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jpg;*.jpeg;*.gif;*.png;*.i' +
-      'co;*.emf;*.wmf;*.tif;*.tiff)|*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jp' +
-      'g;*.jpeg;*.gif;*.png;*.ico;*.emf;*.wmf;*.tif;*.tiff|GIF Image (*' +
-      '.gif)|*.gif|Portable Network Graphics (*.png)|*.png|JPEG Image F' +
-      'ile (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Bitmaps (*.bmp' +
-      ')|*.bmp|JPEG Images (*.jpg)|*.jpg|JPEG Images (*.jpeg)|*.jpeg|GI' +
-      'F Images (*.gif)|*.gif|PNG Images (*.png)|*.png|Icons (*.ico)|*.' +
-      'ico|Enhanced Metafiles (*.emf)|*.emf|Metafiles (*.wmf)|*.wmf|TIF' +
-      'F Images (*.tif)|*.tif|TIFF Images (*.tiff)|*.tiff'
     Left = 360
     Top = 199
   end
@@ -4836,7 +4826,7 @@ object V_SeminarFRM: TV_SeminarFRM
     object N1: TMenuItem
       Caption = #913#925#913#916'-'#913#961#967#949#943#945
       object N2: TMenuItem
-        Caption = #924#972#957#959
+        Caption = #916#951#956#953#959#965#961#947#943#945
         OnClick = N2Click
       end
     end

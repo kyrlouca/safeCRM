@@ -86,6 +86,7 @@ type
     N7: TMenuItem;
     N10: TMenuItem;
     N13: TMenuItem;
+    N14: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -111,6 +112,7 @@ type
     procedure ChangePassword1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure N13Click(Sender: TObject);
+    procedure N14Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -234,6 +236,11 @@ procedure TM_mainFRM.N13Click(Sender: TObject);
 begin
 gpShowModal(TS_UpdateStatusFRM);
 
+end;
+
+procedure TM_mainFRM.N14Click(Sender: TObject);
+begin
+gpShowModal( TS_LoadDocsFRM);
 end;
 
 procedure TM_mainFRM.N1Click(Sender: TObject);

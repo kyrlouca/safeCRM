@@ -37,7 +37,6 @@ object M_mainFRM: TM_mainFRM
     RealTimeDrag = True
     SizeBarWidth = 1
     TabOrder = 0
-    ExplicitWidth = 789
     object PanelButtonsBTN: TPanel
       Left = 2
       Top = 2
@@ -187,8 +186,6 @@ object M_mainFRM: TM_mainFRM
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitTop = 391
-    ExplicitWidth = 789
     object Panel1: TPanel
       Left = 710
       Top = 2
@@ -197,7 +194,6 @@ object M_mainFRM: TM_mainFRM
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 652
       object BitBtn1: TRzBitBtn
         Left = 54
         Top = 1
@@ -286,8 +282,6 @@ object M_mainFRM: TM_mainFRM
     SizeBarWidth = 1
     TabOrder = 2
     VisualStyle = vsClassic
-    ExplicitWidth = 789
-    ExplicitHeight = 308
     object Image1: TImage
       Left = 0
       Top = 0
@@ -7510,10 +7504,6 @@ object M_mainFRM: TM_mainFRM
           Caption = #917#943#948#951' '#922#972#963#964#959#965#962
           OnClick = N4Click
         end
-        object N3: TMenuItem
-          Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
-          OnClick = N3Click
-        end
       end
       object Security1: TMenuItem
         Caption = 'Security'
@@ -7532,6 +7522,14 @@ object M_mainFRM: TM_mainFRM
       object N13: TMenuItem
         Caption = #913#955#955#945#947#942' '#931#964#945#948#943#959#965
         OnClick = N13Click
+      end
+      object N3: TMenuItem
+        Caption = 'Template '#931#949#956#953#957#945#961#943#969#957
+        OnClick = N3Click
+      end
+      object N14: TMenuItem
+        Caption = #904#947#947#961#945#966#945' '#913#925#913#916
+        OnClick = N14Click
       end
     end
     object Help1: TMenuItem

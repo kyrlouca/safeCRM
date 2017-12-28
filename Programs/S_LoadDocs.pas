@@ -79,7 +79,8 @@ type
   public
     { Public declarations }
     MyInsertState:Boolean;
-    IN_ACTION:String;
+    IN_SeminarSerial:integer;
+    Procedure CreateTheFiles;
   end;
 
 var
@@ -427,6 +428,11 @@ begin
 WriteFiles(119);
 end;
 
+procedure TS_LoadDocsFRM.CreateTheFiles;
+begin
+  WriteFiles(IN_SeminarSerial);
+end;
+
 procedure TS_LoadDocsFRM.WriteFiles(Const SeminarSerial:Integer);
 var
   qr:TksQuery;
@@ -474,8 +480,10 @@ begin
   end;
 
   useFolder:=baseFOlder+'\'+SeminarName+'_'+IntToStr(SeminarSerial);
-  if not DirectoryExists(useFOlder) then begin
-//    showMessage(useFolder);
+  if  DirectoryExists(useFOlder) then begin
+    MessageDlg('Directory to write the Files already EXISTS. Delete first', mtError, [mbOK], 0);
+    exit;
+  end else begin
     if not CreateDir(useFOlder) then begin
       ShowMessage('cannot Create Directory: '+UseFolder);
 //      result:=false;

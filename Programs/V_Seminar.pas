@@ -507,7 +507,7 @@ var
 implementation
 
 uses U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs,
-  H_Help, v_SeminarPictureTemplate, R_AnadFIles;
+  H_Help, v_SeminarPictureTemplate, R_AnadFIles, S_LoadDocs;
 
 {$R *.DFM}
 
@@ -1300,7 +1300,7 @@ end;
 
 procedure TV_SeminarFRM.N2Click(Sender: TObject);
 var
-  Frm:TR_AnadFilesFRM;
+  Frm:TS_LoadDocsFRM;
   BaseFolder:string;
   SeminarSerial:Integer;
   param:G_generalProcs.TParameterRecord;
@@ -1310,6 +1310,14 @@ begin
   if SeminarSerial<1 then
     exit;
 
+  frm := TS_LoadDocsFRM.Create(nil);
+  try
+    frm.IN_SeminarSerial:=SeminarSerial;
+    frm.CreateTheFiles;
+  finally
+    frm.Free;
+  end;
+{
   frm := TR_AnadFilesFRM.Create(nil);
   try
     frm.IN_SeminarSerial:=SeminarSerial;
@@ -1317,7 +1325,7 @@ begin
   finally
     frm.Free;
   end;
-
+}
 end;
 
 procedure TV_SeminarFRM.PageControlPCChanging(Sender: TObject;

@@ -75,5 +75,6 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TM_mainFRM, M_mainFRM);
   Application.CreateForm(TR_AnadFilesFRM, R_AnadFilesFRM);
   Application.CreateForm(TS_LoadDocsFRM, S_LoadDocsFRM);
+  Application.CreateForm(TS_LoadDocsFRM, S_LoadDocsFRM);
   Application.Run;
 end.
