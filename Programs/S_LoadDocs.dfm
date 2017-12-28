@@ -3,7 +3,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   Top = 153
   Caption = 'Instructor'
   ClientHeight = 558
-  ClientWidth = 555
+  ClientWidth = 701
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 555
+    Width = 701
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -35,7 +35,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 547
+      Width = 693
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -48,13 +48,13 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel4: TPanel
     Left = 0
     Top = 515
-    Width = 555
+    Width = 701
     Height = 43
     Align = alBottom
     TabOrder = 1
     ExplicitWidth = 530
     object RzPanel1: TRzPanel
-      Left = 454
+      Left = 600
       Top = 1
       Width = 100
       Height = 41
@@ -142,7 +142,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 555
+    Width = 701
     Height = 39
     Align = alTop
     TabOrder = 2
@@ -292,7 +292,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel3: TPanel
     Left = 0
     Top = 92
-    Width = 555
+    Width = 701
     Height = 423
     Align = alClient
     TabOrder = 3
@@ -300,7 +300,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     object Panel5: TPanel
       Left = 1
       Top = 1
-      Width = 553
+      Width = 699
       Height = 224
       Align = alTop
       BevelOuter = bvNone
@@ -514,11 +514,28 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           OnClick = Button1Click
         end
       end
+      object wwButton1: TwwButton
+        Left = 552
+        Top = 121
+        Width = 75
+        Height = 25
+        Caption = 'wwButton1'
+        Color = clBtnFace
+        DitherColor = clWhite
+        DitherStyle = wwdsDither
+        NumGlyphs = 0
+        ShadeStyle = wwbsNormal
+        TabOrder = 1
+        TabStop = True
+        TextOptions.Alignment = taCenter
+        TextOptions.VAlignment = vaVCenter
+        OnClick = wwButton1Click
+      end
     end
     object Grid1: TwwDBGrid
       Left = 1
       Top = 225
-      Width = 553
+      Width = 699
       Height = 197
       Selected.Strings = (
         'CODE_KEY'#9'11'#9'CODE_KEY'

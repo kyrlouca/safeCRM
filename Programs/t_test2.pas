@@ -9,7 +9,7 @@ uses
   ppDB, ppDBPipe, ppComm, ppRelatv, ppProd, ppClass, ppReport, ppBands, ppCache,
   ppDesignLayer, ppParameter, ppPrnabl, ppCtrls, ppVar, Vcl.Imaging.pngimage,ComCtrls,
   ppStrtch, ppRichTx, frxClass, Vcl.ExtCtrls, frxDock, frxDBSet, frxExportXML,
-  frxExportDOCX, frxExportPDF,frxrcExports, frxRich, frxExportRTF;
+  frxExportDOCX, frxExportPDF,frxrcExports, frxRich, frxExportRTF, vcl.wwriched;
 
 type
   TT_test2FRM = class(TForm)
@@ -176,9 +176,58 @@ type
     fs2: TfrxReport;
     frxRichObject1: TfrxRichObject;
     frxRTFExport1: TfrxRTFExport;
+    Button1: TButton;
+    fsa1: TfrxReport;
+    Comp1: TIBCQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
+    IntegerField3: TIntegerField;
+    WideStringField1: TWideStringField;
+    WideStringField2: TWideStringField;
+    WideStringField3: TWideStringField;
+    WideStringField4: TWideStringField;
+    WideStringField5: TWideStringField;
+    WideStringField6: TWideStringField;
+    WideStringField7: TWideStringField;
+    WideStringField8: TWideStringField;
+    WideStringField9: TWideStringField;
+    WideStringField10: TWideStringField;
+    SmallintField1: TSmallintField;
+    WideStringField11: TWideStringField;
+    WideStringField12: TWideStringField;
+    WideStringField13: TWideStringField;
+    WideStringField14: TWideStringField;
+    WideStringField15: TWideStringField;
+    DateField1: TDateField;
+    DateField2: TDateField;
+    DateField3: TDateField;
+    WideStringField16: TWideStringField;
+    WideStringField17: TWideStringField;
+    WideStringField18: TWideStringField;
+    WideStringField19: TWideStringField;
+    WideStringField20: TWideStringField;
+    WideStringField21: TWideStringField;
+    WideStringField22: TWideStringField;
+    WideStringField23: TWideStringField;
+    WideStringField24: TWideStringField;
+    DateField4: TDateField;
+    WideStringField25: TWideStringField;
+    WideStringField26: TWideStringField;
+    WideStringField27: TWideStringField;
+    WideStringField28: TWideStringField;
+    WideStringField29: TWideStringField;
+    WideStringField30: TWideStringField;
+    WideStringField31: TWideStringField;
+    WideStringField32: TWideStringField;
+    IntegerField4: TIntegerField;
+    WideStringField33: TWideStringField;
+    WideStringField34: TWideStringField;
+    WideStringField35: TWideStringField;
+    Comp1DRX: TfrxDBDataset;
     procedure PrintRBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -243,6 +292,26 @@ begin
   PopulateTable(IN_SeminarSerial);
 end;
 
+
+procedure TT_test2FRM.Button1Click(Sender: TObject);
+var
+  fileName:String;
+begin
+
+  FileName := 'C:\Users\KyrLouca\Desktop\fuck1.rtf';
+  exit;
+
+  fsa1.PrepareReport;
+
+  FileName := 'C:\Users\KyrLouca\Desktop\ttt2.doc';
+  frxRTFExport1.FileName:=fileName;
+  frxRTFExport1.ShowDialog:=false;
+  frxRTFExport1.OpenAfterExport:=false;
+
+  fsa1.Export(frxRTFExport1);
+
+
+end;
 
 procedure TT_test2FRM.CreateTable(Const SeminarSerial:Integer);
 var

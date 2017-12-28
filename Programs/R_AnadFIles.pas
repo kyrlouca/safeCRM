@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frxClass, frxDBSet, Data.DB, MemDS,
-  DBAccess, IBC, frxExportPDF, frxRich, frxExportRTF, frxExportDOCX;
+  DBAccess, IBC, frxExportPDF, frxRich, frxExportRTF, frxExportDOCX,
+  Vcl.StdCtrls;
 
 type
   TR_AnadFilesFRM = class(TForm)
@@ -61,6 +62,8 @@ type
     CompanySQLJOB: TWideStringField;
     CompanySRC: TDataSource;
     CompanyDRX: TfrxDBDataset;
+    r1: TfrxReport;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
