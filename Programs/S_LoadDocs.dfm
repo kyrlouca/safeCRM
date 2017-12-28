@@ -189,11 +189,11 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 65
+          Left = 72
           Top = 22
-          Width = 28
+          Width = 21
           Height = 14
-          Caption = 'Code'
+          Caption = 'A/A'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -227,6 +227,22 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Font.Style = []
           ParentFont = False
         end
+        object RzDBLabel1: TRzDBLabel
+          Left = 107
+          Top = 23
+          Width = 65
+          Height = 17
+          Alignment = taRightJustify
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          BorderOuter = fsFlat
+          DataField = 'SERIAL_NUMBER'
+          DataSource = TableSRC
+        end
         object NameFLD: TwwDBEdit
           Left = 108
           Top = 46
@@ -245,38 +261,14 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Frame.FocusStyle = efsFrameSingle
           Frame.NonFocusStyle = efsFrameSunken
           ParentFont = False
-          TabOrder = 1
-          UnboundDataType = wwDefault
-          WantReturns = False
-          WordWrap = False
-        end
-        object StationIdFLD: TwwDBEdit
-          Left = 108
-          Top = 19
-          Width = 52
-          Height = 21
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          DataField = 'SERIAL_NUMBER'
-          DataSource = TableSRC
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Enabled = True
-          Frame.NonFocusBorders = [efLeftBorder, efTopBorder, efRightBorder, efBottomBorder]
-          Frame.FocusStyle = efsFrameSingle
-          Frame.NonFocusStyle = efsFrameSunken
-          ParentFont = False
           TabOrder = 0
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
         end
         object SavetoDB: TRzBitBtn
-          Left = 0
-          Top = 156
+          Left = 11
+          Top = 148
           Width = 121
           Height = 37
           Caption = 'Select and Save'
@@ -350,31 +342,13 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Margin = -1
         end
         object Button1: TButton
-          Left = 127
-          Top = 168
+          Left = 3
+          Top = 191
           Width = 137
           Height = 25
           Caption = 'Write to File'
           TabOrder = 3
           OnClick = Button1Click
-        end
-        object wwCheckBox1: TwwCheckBox
-          AlignWithMargins = True
-          Left = 108
-          Top = 78
-          Width = 29
-          Height = 17
-          DisableThemes = False
-          AlwaysTransparent = False
-          ValueChecked = 'Y'
-          ValueUnchecked = 'N'
-          DisplayValueChecked = 'P'
-          DisplayValueUnchecked = 'M'
-          NullAndBlankState = cbUnchecked
-          DataField = 'POLY_MONO'
-          DataSource = TableSRC
-          ShowText = False
-          TabOrder = 4
         end
         object wwCheckBox2: TwwCheckBox
           AlignWithMargins = True
@@ -390,10 +364,29 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
           Checked = True
-          DataField = 'ANAD_APPROVED'
+          DataField = 'IS_SEND_TO_ALL'
+          DataSource = TableSRC
           ShowText = False
           State = cbChecked
-          TabOrder = 5
+          TabOrder = 1
+        end
+        object wwCheckBox1: TwwCheckBox
+          AlignWithMargins = True
+          Left = 108
+          Top = 78
+          Width = 29
+          Height = 17
+          DisableThemes = False
+          AlwaysTransparent = False
+          ValueChecked = 'P'
+          ValueUnchecked = 'M'
+          DisplayValueChecked = 'Y'
+          DisplayValueUnchecked = 'N'
+          NullAndBlankState = cbUnchecked
+          DataField = 'POLY_MONO'
+          DataSource = TableSRC
+          ShowText = False
+          TabOrder = 4
         end
       end
       object wwButton1: TwwButton
@@ -596,8 +589,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Selected.Strings = (
         'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
         'DOC_NAME'#9'40'#9#908#957#959#956#945' '#917#947#947#961#940#966#959#965#9#9
-        'POLY_MONO'#9'13'#9#928#959#955#965'-'#917#960#9#9
-        'IS_SEND_TO_ALL'#9'22'#9#913#960#959#963#964#959#955#942' '#963#949' '#917#964#945#953#961#949#943#949#962#9#9)
+        'POLY_MONO'#9'13'#9#928#959#955#965'-'#917#960#967#9'F'#9
+        'IS_SEND_TO_ALL'#9'10'#9#917#964#945#953#961#949#943#949#962#9#9
+        'DOC_BLOB'#9'10'#9#904#947#947#961#945#966#959#9#9)
       IniAttributes.Delimiter = ';;'
       IniAttributes.UnicodeIniFile = False
       TitleColor = clBtnFace
@@ -633,7 +627,8 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitLeft = 647
+      ExplicitLeft = 644
+      ExplicitTop = -6
     end
   end
   object Panel2: TRzPanel
@@ -652,6 +647,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Top = 9
   end
   object TableSQL: TIBCQuery
+    KeyFields = 'serial_number'
+    KeyGenerator = 'GEN_WORD_DOCS'
+    GeneratorMode = gmInsert
     SQLInsert.Strings = (
       'INSERT INTO WORD_DOCS'
       
@@ -700,22 +698,23 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       'Word_docs'
       '')
     Active = True
+    OnNewRecord = TableSQLNewRecord
     Left = 49
     Top = 5
     object TableSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
       DisplayWidth = 10
       FieldName = 'SERIAL_NUMBER'
-      Required = True
     end
     object TableSQLDOC_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945' '#917#947#947#961#940#966#959#965
       DisplayWidth = 40
       FieldName = 'DOC_NAME'
+      Required = True
       Size = 160
     end
     object TableSQLPOLY_MONO: TWideStringField
-      DisplayLabel = #928#959#955#965'-'#917#960
+      DisplayLabel = #928#959#955#965'-'#917#960#967
       DisplayWidth = 13
       FieldName = 'POLY_MONO'
       Required = True
@@ -723,23 +722,23 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Size = 1
     end
     object TableSQLIS_SEND_TO_ALL: TWideStringField
-      DisplayLabel = #913#960#959#963#964#959#955#942' '#963#949' '#917#964#945#953#961#949#943#949#962
-      DisplayWidth = 22
+      DisplayLabel = #917#964#945#953#961#949#943#949#962
+      DisplayWidth = 10
       FieldName = 'IS_SEND_TO_ALL'
       Required = True
       FixedChar = True
       Size = 1
     end
+    object TableSQLDOC_BLOB: TBlobField
+      DisplayLabel = #904#947#947#961#945#966#959
+      DisplayWidth = 10
+      FieldName = 'DOC_BLOB'
+    end
     object TableSQLCODE_KEY: TWideStringField
       DisplayWidth = 11
       FieldName = 'CODE_KEY'
-      Required = True
       Visible = False
       Size = 10
-    end
-    object TableSQLDOC_BLOB: TBlobField
-      FieldName = 'DOC_BLOB'
-      Visible = False
     end
   end
   object WriteTrans: TIBCTransaction
@@ -754,7 +753,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Left = 288
     Top = 169
   end
-  object OD1: TOpenDialog
+  object FileDialog1: TOpenDialog
     Left = 328
     Top = 392
   end

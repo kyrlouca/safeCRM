@@ -4,10 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  System.IOUtils,
   StdCtrls, Mask, DBCtrls, Db, wwSpeedButton, wwDBNavigator,
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
-  G_KyrSQL, RzButton, RzPanel, vcl.wwcheckbox, Vcl.ExtDlgs, vcl.wwbutton;
+  G_KyrSQL, RzButton, RzPanel, vcl.wwcheckbox, Vcl.ExtDlgs, vcl.wwbutton,
+  RzLabel, RzDBLbl;
 type
   TS_LoadDocsFRM = class(TForm)
     Panel1: TrzPanel;
@@ -20,20 +22,18 @@ type
     Grid1: TwwDBGrid;
     Label3: TLabel;
     NameFLD: TwwDBEdit;
-    StationIdFLD: TwwDBEdit;
     TableSQL: TIBCQuery;
     WriteTrans: TIBCTransaction;
     ReadTrans: TIBCTransaction;
     Label4: TLabel;
     RzPanel1: TRzPanel;
     RzBitBtn1: TRzBitBtn;
-    TableSQLPOLY_MONO: TWideStringField;
     TableSQLCODE_KEY: TWideStringField;
     TableSQLDOC_NAME: TWideStringField;
     TableSQLDOC_BLOB: TBlobField;
     SavetoDB: TRzBitBtn;
     Button1: TButton;
-    OD1: TOpenDialog;
+    FileDialog1: TOpenDialog;
     wwButton1: TwwButton;
     Panel2: TRzPanel;
     RzPanel2: TRzPanel;
@@ -52,22 +52,27 @@ type
     Nav1Cancel: TwwNavButton;
     Label1: TLabel;
     Label6: TLabel;
-    wwCheckBox1: TwwCheckBox;
     wwCheckBox2: TwwCheckBox;
+    RzDBLabel1: TRzDBLabel;
+    TableSQLPOLY_MONO: TWideStringField;
+    wwCheckBox1: TwwCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure SavetoDBClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure wwButton1Click(Sender: TObject);
+    procedure TableSQLNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
   procedure WriteStreamToDatabase(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
   procedure SaveToFile(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
   procedure SaveToFileXX(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
-  procedure SaveXX(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+  procedure SaveXX(Const SerialNumber:Integer;Const  FilePath, DocName :String);
   function FindHex(const FileName:String): Integer;
+
+  procedure WriteFiles(Const SeminarSerial:Integer);
 
   public
     { Public declarations }
@@ -80,7 +85,7 @@ var
 
 implementation
 
-uses   U_Database;
+uses   U_Database, G_generalProcs;
 
 {$R *.DFM}
 
@@ -160,13 +165,14 @@ var
   fByte:Byte;
   isPrev:boolean;
   gChar:Char;
-  dCount:intger;
+  dCount:integer;
 begin
   goOn:=true;
   isPrev:=False;
   dCount:=0;
   AFile := TFileStream.Create(filename, fmOpenRead);
   BR := TBinaryReader.Create(AFile, TEncoding.Unicode, false);
+  {
   try
     while goOn do begin
           fByte := BR.ReadByte;
@@ -182,7 +188,7 @@ begin
           isPrev:= (AChar='$');
           goOn:= (Achar <> '~');
     end;
-
+   }
   {
     // read a char and write it to the console
     AChar := BR.ReadChar;
@@ -190,14 +196,14 @@ begin
     // read a string and write it to the console
     AString := BR.ReadString;
     Writeln(AString);
-  }
+
     BR.Close;
   finally
 
     BR.Free;
     AFile.Free;
   end;
-
+  }
 end;
 
 {
@@ -323,27 +329,33 @@ begin
 
 end;
 
-procedure TS_LoadDocsFRM.SaveXX(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
+procedure TS_LoadDocsFRM.SaveXX(Const SerialNumber:Integer;Const  FilePath, DocName :String);
 var
   BlobField: TBlobField;
-  BS: TStream;
+//  BS: TStream;
   str2:String;
   qr:TksQuery;
-  FS:TMemoryStream;
+//  FS:TMemoryStream;
 begin
-  str2:='Select * from word_docs wd where wd.code_key = :CodeKey';
+
+  str2:='Select * from word_docs wd where wd.serial_number = :SerialNumber';
   qr:= TksQuery.Create(cn,str2);
   try
       qr.close;
-      qr.ParamByName('CodeKey').Value:=CodeKey;
+      qr.ParamByName('SerialNumber').Value:=SerialNumber;
       qr.open;
 
       if qr.IsEmpty then
        exit;
       qr.Edit;
-      TBlobField(qr.FieldByName('doc_blob')).LoadFromFile(filename);
-      qr.FieldByName('doc_name').AsString:=filename;
+      TBlobField(qr.FieldByName('doc_blob')).LoadFromFile(filePath);
+      qr.FieldByName('doc_Name').AsString:=DocName;
+      qr.FieldByName('doc_path').AsString:=filePath;
       qr.Post;
+  finally
+     qr.Free;
+  end;
+
 
 {
    fs := TFileStream.Create('filename', fmOpenRead);
@@ -360,26 +372,38 @@ IBCQuery.Edit;
 TBlobField(IBCQuery.FieldByName('blobfieldname')).LoadFromFile('filename');
 IBCQuery.Post;
 }
-  finally
-     qr.Free;
-  end;
+
 end;
 
+
+procedure TS_LoadDocsFRM.TableSQLNewRecord(DataSet: TDataSet);
+begin
+  Dataset.FieldByName('Poly_mono').AsString:='M';
+  Dataset.FieldByName('iS_send_to_all').AsString:='N';
+end;
 
 procedure TS_LoadDocsFRM.SavetoDBClick(Sender: TObject);
 var
   FileName:String;
+  FIlePath:String;
   codeKey:String;
+  SerialNumber:Integer;
 begin
-  if not Od1.Execute then     begin
+  if TableSQL.State in [dsEdit,dsInsert] then
+    TableSQL.Post;
+
+  if not FileDialog1.Execute then     begin
       showMessage('exit');
       Exit;
   end;
-  filename :=od1.FileName;
-  ShowMessage(filename);
-  codeKEy:=TableSQL.FieldByName('code_key').AsString;
+
+  filePath :=FileDialog1.FileName;
+//  FileName:=ExtractFileName(FilePath);
+  FileName:=TPath.GetFileNameWithoutExtension(FilePath);
+  SerialNumber:=TableSQL.FieldByName('Serial_Number').AsInteger;
 // WriteStreamToDatabase(codeKey,filename,'Y');
-  saveXX(codeKey,filename,'Y');
+  saveXX(SerialNumber,FilePath, filename);
+  ksOpenTables([TableSQL]);
 
 end;
 
@@ -395,35 +419,86 @@ begin
 end;
 
 procedure TS_LoadDocsFRM.Button1Click(Sender: TObject);
+begin
+
+WriteFiles(117);
+end;
+
+procedure TS_LoadDocsFRM.WriteFiles(Const SeminarSerial:Integer);
 var
+  param:G_generalProcs.TParameterRecord;
+  baseFolder:String;
   fileName:String;
   codeKey:String;
   qr:TksQuery;
   str2:string;
   fpath:string;
   fname:string;
+  IsPoly:string;
+  IsSendToAll:String;
 begin
 
-  fileName:='C:\Data\DelphiProjects\Safe_CRM\documents\Mono_anadForms\temp.doc';
-  codeKEy:=TableSQL.FieldByName('code_key').AsString;
+  param:=  gpGetGeneralParam(cn,'T00');
+  baseFOlder:=Trim(param.P_String3);
 
-  str2:='Select * from word_docs wd where wd.code_key = :CodeKey';
+  if not DirectoryExists(baseFOlder) then begin
+      ShowMessage('Base Directory does NOT EXISTS: '+BaseFolder);
+//      result:=false;
+      exit;
+  end;
+
+
+  qr:=TksQuery.Create(cn,'select * from Seminar where serial_number = :SeminarSerial');
+  try
+    qr.ParamByName('seminarSerial').Value:=SeminarSerial;
+    qr.Open;
+    if qr.IsEmpty then begin
+//      result:=false;
+      exit;
+    end;
+    SeminarName:=trim(qr.FieldByName('Seminar_name').AsString);
+    IsPoly:=qr.FieldByName('Poly_mono').AsString;
+    qr.Close;
+
+  finally
+    qr.free;
+  end;
+
+  useFolder:=baseFOlder+'\'+SeminarName+'_'+IntToStr(SeminarSerial);
+  if not DirectoryExists(useFOlder) then begin
+//    showMessage(useFolder);
+    if not CreateDir(useFOlder) then begin
+      ShowMessage('cannot Create Directory: '+UseFolder);
+      result:=false;
+      exit;
+    end;
+  end;
+
+//  fileName:='C:\Data\DelphiProjects\Safe_CRM\documents\Mono_anadForms\temp.doc';
+
+  str2:='Select * from word_docs wd where wd.Poly_mono = :poly';
   qr:= TksQuery.Create(cn,str2);
   try
       qr.close;
-      qr.ParamByName('CodeKey').Value:=CodeKey;
+      qr.ParamByName('poly').Value:=isPoly;
       qr.open;
-      fileName:=qr.FieldByName('doc_name').AsString;
+      while not qr.Eof do begin
+        fileName:=qr.FieldByName('doc_name').AsString;
+        IsSendToAll:=qr.FieldByName('Is_send_to_all').AsString;
+        if IsSendToAll='N' then begin
+          fname:= UseFolder+'\'+fileName;
+          SaveToFile(CodeKey,fName,'P');
+        end else begin
+
+        end;
+
+        qr.Next;
+      end;
+
   finally
     qr.Free;
   end;
 
-      fpath:=ExtractFilePath(filename);
-      fname:=ExtractFileName(fileName);
-      fname:='x_'+fname;
-      fileName:=fpath+fname;
-
-  SaveToFile(CodeKey,fileName,'P');
 end;
 
 End.
