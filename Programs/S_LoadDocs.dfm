@@ -3,7 +3,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   Top = 153
   Caption = 'Instructor'
   ClientHeight = 558
-  ClientWidth = 701
+  ClientWidth = 1026
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,12 +17,13 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object Panel1: TRzPanel
     Left = 0
     Top = 0
-    Width = 701
+    Width = 1026
     Height = 53
     Align = alTop
+    BorderOuter = fsFlatRounded
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlue
     Font.Height = -27
@@ -30,38 +31,38 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 530
+    ExplicitWidth = 885
     object Label4: TLabel
       AlignWithMargins = True
-      Left = 4
-      Top = 4
-      Width = 693
-      Height = 45
+      Left = 5
+      Top = 5
+      Width = 1016
+      Height = 43
       Align = alClient
       Alignment = taCenter
-      Caption = 'Load Documents'
+      Caption = #904#947#947#961#945#966#945' '#913#925#913#916
       Layout = tlCenter
-      ExplicitWidth = 225
+      ExplicitWidth = 206
       ExplicitHeight = 32
     end
   end
-  object Panel4: TPanel
+  object Panel4: TRzPanel
     Left = 0
     Top = 515
-    Width = 701
+    Width = 1026
     Height = 43
     Align = alBottom
     TabOrder = 1
-    ExplicitWidth = 530
+    ExplicitWidth = 885
     object RzPanel1: TRzPanel
-      Left = 600
-      Top = 1
+      Left = 924
+      Top = 2
       Width = 100
-      Height = 41
+      Height = 39
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 429
+      ExplicitLeft = 783
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -139,179 +140,33 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       end
     end
   end
-  object Panel2: TPanel
+  object Panel3: TRzPanel
     Left = 0
-    Top = 53
-    Width = 701
-    Height = 39
-    Align = alTop
-    TabOrder = 2
-    ExplicitWidth = 530
-    object Nav1: TwwDBNavigator
-      Left = 1
-      Top = 7
-      Width = 200
-      Height = 26
-      AutosizeStyle = asSizeNavButtons
-      DataSource = TableSRC
-      RepeatInterval.InitialDelay = 500
-      RepeatInterval.Interval = 100
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial'
-      Font.Style = []
-      object Nav1Prior: TwwNavButton
-        Left = 0
-        Top = 0
-        Width = 34
-        Height = 26
-        Hint = 'Move to prior record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Prior'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 0
-        Style = nbsPrior
-      end
-      object Nav1Next: TwwNavButton
-        Left = 34
-        Top = 0
-        Width = 34
-        Height = 26
-        Hint = 'Move to next record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Next'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 1
-        Style = nbsNext
-      end
-      object Nav1Insert: TwwNavButton
-        Left = 68
-        Top = 0
-        Width = 33
-        Height = 26
-        Hint = 'Insert new record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Insert'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 2
-        Style = nbsInsert
-      end
-      object Nav1Delete: TwwNavButton
-        Left = 101
-        Top = 0
-        Width = 33
-        Height = 26
-        Hint = 'Delete current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Delete'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 3
-        Style = nbsDelete
-      end
-      object Nav1Post: TwwNavButton
-        Left = 134
-        Top = 0
-        Width = 33
-        Height = 26
-        Hint = 'Post changes of current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Post'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 4
-        Style = nbsPost
-      end
-      object Nav1Cancel: TwwNavButton
-        Left = 167
-        Top = 0
-        Width = 33
-        Height = 26
-        Hint = 'Cancel changes made to current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'Nav1Cancel'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 5
-        Style = nbsCancel
-      end
-    end
-    object SearchFieldFLD: TwwIncrementalSearch
-      Left = 224
-      Top = 10
-      Width = 265
-      Height = 19
-      Cursor = crHandPoint
-      Frame.Enabled = True
-      Frame.NonFocusBorders = [efLeftBorder, efTopBorder, efRightBorder, efBottomBorder]
-      Frame.FocusStyle = efsFrameSingle
-      Frame.NonFocusStyle = efsFrameSunken
-      DataSource = TableSRC
-      SearchField = 'STATION_ID'
-      ShowMatchText = True
-      SearchDelay = 100
-      AutoSize = False
-      BorderStyle = bsNone
-      CharCase = ecUpperCase
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-    end
-  end
-  object Panel3: TPanel
-    Left = 0
-    Top = 92
-    Width = 701
-    Height = 423
+    Top = 86
+    Width = 1026
+    Height = 429
     Align = alClient
+    BorderOuter = fsNone
     TabOrder = 3
-    ExplicitWidth = 530
-    object Panel5: TPanel
-      Left = 1
-      Top = 1
-      Width = 699
-      Height = 224
-      Align = alTop
-      BevelOuter = bvNone
+    ExplicitLeft = -8
+    ExplicitTop = -42
+    ExplicitWidth = 885
+    object Panel5: TRzPanel
+      Left = 671
+      Top = 0
+      Width = 352
+      Height = 429
+      Align = alLeft
+      BorderOuter = fsNone
       Locked = True
       TabOrder = 0
-      ExplicitWidth = 528
+      ExplicitLeft = 695
+      ExplicitTop = 6
       object GroupBox1: TGroupBox
         Left = 6
-        Top = 5
-        Width = 473
-        Height = 164
+        Top = 54
+        Width = 323
+        Height = 219
         Caption = 'Details'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -321,7 +176,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         ParentFont = False
         TabOrder = 0
         object Label2: TLabel
-          Left = 9
+          Left = 37
           Top = 49
           Width = 56
           Height = 14
@@ -334,7 +189,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 37
+          Left = 65
           Top = 22
           Width = 28
           Height = 14
@@ -346,12 +201,25 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Font.Style = []
           ParentFont = False
         end
-        object Label5: TLabel
-          Left = 8
-          Top = 73
-          Width = 57
+        object Label1: TLabel
+          Left = 41
+          Top = 78
+          Width = 52
           Height = 14
-          Caption = 'Poly/Mono'
+          Caption = #928#959#955#965'-'#917#960#967
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 28
+          Top = 98
+          Width = 65
+          Height = 14
+          Caption = #915#953#945' '#917#964#945#953#961#949#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -360,9 +228,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object NameFLD: TwwDBEdit
-          Left = 72
+          Left = 108
           Top = 46
-          Width = 369
+          Width = 242
           Height = 21
           BorderStyle = bsNone
           DataField = 'DOC_NAME'
@@ -383,13 +251,13 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           WordWrap = False
         end
         object StationIdFLD: TwwDBEdit
-          Left = 72
+          Left = 108
           Top = 19
           Width = 52
           Height = 21
           BorderStyle = bsNone
           CharCase = ecUpperCase
-          DataField = 'CODE_KEY'
+          DataField = 'SERIAL_NUMBER'
           DataSource = TableSRC
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -406,32 +274,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           WantReturns = False
           WordWrap = False
         end
-        object wwDBEdit1: TwwDBEdit
-          Left = 72
-          Top = 73
-          Width = 89
-          Height = 21
-          BorderStyle = bsNone
-          DataField = 'POLY_MONO'
-          DataSource = TableSRC
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Enabled = True
-          Frame.NonFocusBorders = [efLeftBorder, efTopBorder, efRightBorder, efBottomBorder]
-          Frame.FocusStyle = efsFrameSingle
-          Frame.NonFocusStyle = efsFrameSunken
-          ParentFont = False
-          TabOrder = 2
-          UnboundDataType = wwDefault
-          WantReturns = False
-          WordWrap = False
-        end
         object SavetoDB: TRzBitBtn
-          Left = 9
-          Top = 116
+          Left = 0
+          Top = 156
           Width = 121
           Height = 37
           Caption = 'Select and Save'
@@ -443,7 +288,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 2
           OnClick = SavetoDBClick
           Glyph.Data = {
             F6060000424DF606000000000000360000002800000018000000180000000100
@@ -505,13 +350,50 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Margin = -1
         end
         object Button1: TButton
-          Left = 168
-          Top = 128
+          Left = 127
+          Top = 168
           Width = 137
           Height = 25
           Caption = 'Write to File'
-          TabOrder = 4
+          TabOrder = 3
           OnClick = Button1Click
+        end
+        object wwCheckBox1: TwwCheckBox
+          AlignWithMargins = True
+          Left = 108
+          Top = 78
+          Width = 29
+          Height = 17
+          DisableThemes = False
+          AlwaysTransparent = False
+          ValueChecked = 'Y'
+          ValueUnchecked = 'N'
+          DisplayValueChecked = 'P'
+          DisplayValueUnchecked = 'M'
+          NullAndBlankState = cbUnchecked
+          DataField = 'POLY_MONO'
+          DataSource = TableSRC
+          ShowText = False
+          TabOrder = 4
+        end
+        object wwCheckBox2: TwwCheckBox
+          AlignWithMargins = True
+          Left = 108
+          Top = 101
+          Width = 29
+          Height = 17
+          DisableThemes = False
+          AlwaysTransparent = False
+          ValueChecked = 'Y'
+          ValueUnchecked = 'N'
+          DisplayValueChecked = 'Y'
+          DisplayValueUnchecked = 'N'
+          NullAndBlankState = cbUnchecked
+          Checked = True
+          DataField = 'ANAD_APPROVED'
+          ShowText = False
+          State = cbChecked
+          TabOrder = 5
         end
       end
       object wwButton1: TwwButton
@@ -526,27 +408,202 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
-        TabStop = True
         TextOptions.Alignment = taCenter
         TextOptions.VAlignment = vaVCenter
         OnClick = wwButton1Click
       end
+      object RzPanel2: TRzPanel
+        Left = 0
+        Top = 0
+        Width = 352
+        Height = 33
+        Align = alTop
+        BorderOuter = fsNone
+        TabOrder = 2
+        object wwIncrementalSearch1: TwwIncrementalSearch
+          Left = 199
+          Top = 6
+          Width = 128
+          Height = 22
+          DataSource = TableSRC
+          SearchField = 'Seminar_name'
+          ShowMatchText = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+        object Nav1: TwwDBNavigator
+          Left = 1
+          Top = 7
+          Width = 184
+          Height = 26
+          AutosizeStyle = asSizeNavButtons
+          DataSource = TableSRC
+          RepeatInterval.InitialDelay = 500
+          RepeatInterval.Interval = 100
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          object Nav1Button: TwwNavButton
+            Left = 0
+            Top = 0
+            Width = 23
+            Height = 26
+            Hint = 'Move to first record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Button'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 0
+            Style = nbsFirst
+          end
+          object Nav1Prior: TwwNavButton
+            Left = 23
+            Top = 0
+            Width = 23
+            Height = 26
+            Hint = 'Move to prior record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Prior'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 1
+            Style = nbsPrior
+          end
+          object Nav1Next: TwwNavButton
+            Left = 46
+            Top = 0
+            Width = 23
+            Height = 26
+            Hint = 'Move to next record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Next'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 2
+            Style = nbsNext
+          end
+          object Nav1Button1: TwwNavButton
+            Left = 69
+            Top = 0
+            Width = 23
+            Height = 26
+            Hint = 'Move to last record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Button1'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 3
+            Style = nbsLast
+          end
+          object Nav1Insert: TwwNavButton
+            Left = 92
+            Top = 0
+            Width = 23
+            Height = 26
+            Hint = 'Insert new record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Insert'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 4
+            Style = nbsInsert
+          end
+          object Nav1Delete: TwwNavButton
+            Left = 115
+            Top = 0
+            Width = 23
+            Height = 26
+            Hint = 'Delete current record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Delete'
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 5
+            Style = nbsDelete
+          end
+          object Nav1Post: TwwNavButton
+            Left = 138
+            Top = 0
+            Width = 23
+            Height = 26
+            Hint = 'Post changes of current record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Post'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 6
+            Style = nbsPost
+          end
+          object Nav1Cancel: TwwNavButton
+            Left = 161
+            Top = 0
+            Width = 23
+            Height = 26
+            Hint = 'Cancel changes made to current record'
+            ImageIndex = -1
+            NumGlyphs = 2
+            Spacing = 4
+            Transparent = False
+            Caption = 'Nav1Cancel'
+            Enabled = False
+            DisabledTextColors.ShadeColor = clGray
+            DisabledTextColors.HighlightColor = clBtnHighlight
+            Index = 7
+            Style = nbsCancel
+          end
+        end
+      end
     end
     object Grid1: TwwDBGrid
-      Left = 1
-      Top = 225
-      Width = 699
-      Height = 197
+      Left = 0
+      Top = 0
+      Width = 641
+      Height = 429
+      ControlType.Strings = (
+        'POLY_MONO;CheckBox;P;M'
+        'IS_SEND_TO_ALL;CheckBox;Y;N')
       Selected.Strings = (
-        'CODE_KEY'#9'11'#9'CODE_KEY'
-        'DOC_NAME'#9'32'#9'DOC_NAME'
-        'POLY_MONO'#9'13'#9'POLY_MONO')
+        'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
+        'DOC_NAME'#9'40'#9#908#957#959#956#945' '#917#947#947#961#940#966#959#965#9#9
+        'POLY_MONO'#9'13'#9#928#959#955#965'-'#917#960#9#9
+        'IS_SEND_TO_ALL'#9'22'#9#913#960#959#963#964#959#955#942' '#963#949' '#917#964#945#953#961#949#943#949#962#9#9)
       IniAttributes.Delimiter = ';;'
       IniAttributes.UnicodeIniFile = False
       TitleColor = clBtnFace
       FixedCols = 0
       ShowHorzScrollBar = True
-      Align = alClient
+      Align = alLeft
       Color = 12713983
       DataSource = TableSRC
       Font.Charset = DEFAULT_CHARSET
@@ -567,8 +624,27 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       TitleFont.Style = []
       TitleLines = 1
       TitleButtons = False
-      ExplicitWidth = 528
     end
+    object RzPanel3: TRzPanel
+      Left = 641
+      Top = 0
+      Width = 30
+      Height = 429
+      Align = alLeft
+      BorderOuter = fsNone
+      TabOrder = 2
+      ExplicitLeft = 647
+    end
+  end
+  object Panel2: TRzPanel
+    Left = 0
+    Top = 53
+    Width = 1026
+    Height = 33
+    Align = alTop
+    BorderOuter = fsNone
+    TabOrder = 2
+    ExplicitWidth = 885
   end
   object TableSRC: TDataSource
     DataSet = TableSQL
@@ -578,29 +654,36 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object TableSQL: TIBCQuery
     SQLInsert.Strings = (
       'INSERT INTO WORD_DOCS'
-      '  (POLY_MONO, CODE_KEY, DOC_NAME, DOC_BLOB)'
+      
+        '  (POLY_MONO, CODE_KEY, DOC_NAME, DOC_BLOB, IS_SEND_TO_ALL, SERI' +
+        'AL_NUMBER, DOC_PATH)'
       'VALUES'
-      '  (:POLY_MONO, :CODE_KEY, :DOC_NAME, :DOC_BLOB)')
+      
+        '  (:POLY_MONO, :CODE_KEY, :DOC_NAME, :DOC_BLOB, :IS_SEND_TO_ALL,' +
+        ' :SERIAL_NUMBER, :DOC_PATH)')
     SQLDelete.Strings = (
       'DELETE FROM WORD_DOCS'
       'WHERE'
-      '  CODE_KEY = :Old_CODE_KEY')
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLUpdate.Strings = (
       'UPDATE WORD_DOCS'
       'SET'
       
         '  POLY_MONO = :POLY_MONO, CODE_KEY = :CODE_KEY, DOC_NAME = :DOC_' +
-        'NAME, DOC_BLOB = :DOC_BLOB'
+        'NAME, DOC_BLOB = :DOC_BLOB, IS_SEND_TO_ALL = :IS_SEND_TO_ALL, SE' +
+        'RIAL_NUMBER = :SERIAL_NUMBER, DOC_PATH = :DOC_PATH'
       'WHERE'
-      '  CODE_KEY = :Old_CODE_KEY')
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
-      'SELECT POLY_MONO, CODE_KEY, DOC_NAME, DOC_BLOB FROM WORD_DOCS'
+      
+        'SELECT POLY_MONO, CODE_KEY, DOC_NAME, DOC_BLOB, IS_SEND_TO_ALL, ' +
+        'SERIAL_NUMBER, DOC_PATH FROM WORD_DOCS'
       'WHERE'
-      '  CODE_KEY = :CODE_KEY')
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
       'SELECT NULL FROM WORD_DOCS'
       'WHERE'
-      'CODE_KEY = :Old_CODE_KEY'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
       'FOR UPDATE WITH LOCK')
     SQLRecCount.Strings = (
       'SELECT COUNT(*) FROM ('
@@ -619,23 +702,40 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Active = True
     Left = 49
     Top = 5
-    object TableSQLCODE_KEY: TWideStringField
-      DisplayWidth = 11
-      FieldName = 'CODE_KEY'
+    object TableSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 10
+      FieldName = 'SERIAL_NUMBER'
       Required = True
-      Size = 10
     end
     object TableSQLDOC_NAME: TWideStringField
-      DisplayWidth = 32
+      DisplayLabel = #908#957#959#956#945' '#917#947#947#961#940#966#959#965
+      DisplayWidth = 40
       FieldName = 'DOC_NAME'
       Size = 160
     end
     object TableSQLPOLY_MONO: TWideStringField
+      DisplayLabel = #928#959#955#965'-'#917#960
       DisplayWidth = 13
       FieldName = 'POLY_MONO'
       Required = True
       FixedChar = True
       Size = 1
+    end
+    object TableSQLIS_SEND_TO_ALL: TWideStringField
+      DisplayLabel = #913#960#959#963#964#959#955#942' '#963#949' '#917#964#945#953#961#949#943#949#962
+      DisplayWidth = 22
+      FieldName = 'IS_SEND_TO_ALL'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLCODE_KEY: TWideStringField
+      DisplayWidth = 11
+      FieldName = 'CODE_KEY'
+      Required = True
+      Visible = False
+      Size = 10
     end
     object TableSQLDOC_BLOB: TBlobField
       FieldName = 'DOC_BLOB'
@@ -651,7 +751,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object ReadTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
     IsolationLevel = iblReadOnlyReadCommitted
-    Active = True
     Left = 288
     Top = 169
   end

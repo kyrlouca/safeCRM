@@ -3,8 +3,8 @@ object M_mainFRM: TM_mainFRM
   Top = 0
   BorderStyle = bsSingle
   Caption = 'EnaSimple'
-  ClientHeight = 436
-  ClientWidth = 789
+  ClientHeight = 416
+  ClientWidth = 847
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object M_mainFRM: TM_mainFRM
   object PanelButtonsPNL: TRzSizePanel
     Left = 0
     Top = 0
-    Width = 789
+    Width = 847
     Height = 83
     Margins.Top = 0
     Margins.Bottom = 0
@@ -37,6 +37,7 @@ object M_mainFRM: TM_mainFRM
     RealTimeDrag = True
     SizeBarWidth = 1
     TabOrder = 0
+    ExplicitWidth = 789
     object PanelButtonsBTN: TPanel
       Left = 2
       Top = 2
@@ -179,21 +180,24 @@ object M_mainFRM: TM_mainFRM
   end
   object ButtonsPNL: TPanel
     Left = 0
-    Top = 391
-    Width = 789
+    Top = 371
+    Width = 847
     Height = 45
     Align = alBottom
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
+    ExplicitTop = 391
+    ExplicitWidth = 789
     object Panel1: TPanel
-      Left = 652
+      Left = 710
       Top = 2
       Width = 135
       Height = 41
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitLeft = 652
       object BitBtn1: TRzBitBtn
         Left = 54
         Top = 1
@@ -274,19 +278,21 @@ object M_mainFRM: TM_mainFRM
   object RzSizePanel2: TRzSizePanel
     Left = 0
     Top = 83
-    Width = 789
-    Height = 308
+    Width = 847
+    Height = 288
     Margins.Top = 0
     Margins.Bottom = 0
     Align = alClient
     SizeBarWidth = 1
     TabOrder = 2
     VisualStyle = vsClassic
+    ExplicitWidth = 789
+    ExplicitHeight = 308
     object Image1: TImage
       Left = 0
       Top = 0
-      Width = 789
-      Height = 308
+      Width = 847
+      Height = 288
       Align = alClient
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000033C0000
@@ -7232,6 +7238,8 @@ object M_mainFRM: TM_mainFRM
       Proportional = True
       Stretch = True
       ExplicitTop = -3
+      ExplicitWidth = 789
+      ExplicitHeight = 308
     end
     object LoginBTN: TRzBitBtn
       Left = 14
