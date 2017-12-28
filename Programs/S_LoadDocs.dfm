@@ -31,7 +31,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 885
     object Label4: TLabel
       AlignWithMargins = True
       Left = 5
@@ -53,7 +52,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Height = 43
     Align = alBottom
     TabOrder = 1
-    ExplicitWidth = 885
     object RzPanel1: TRzPanel
       Left = 924
       Top = 2
@@ -62,7 +60,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 783
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -148,9 +145,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
-    ExplicitLeft = -8
-    ExplicitTop = -42
-    ExplicitWidth = 885
     object Panel5: TRzPanel
       Left = 671
       Top = 0
@@ -160,8 +154,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       BorderOuter = fsNone
       Locked = True
       TabOrder = 0
-      ExplicitLeft = 695
-      ExplicitTop = 6
       object GroupBox1: TGroupBox
         Left = 6
         Top = 54
@@ -342,7 +334,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Margin = -1
         end
         object Button1: TButton
-          Left = 3
+          Left = 11
           Top = 191
           Width = 137
           Height = 25
@@ -363,11 +355,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Checked = True
           DataField = 'IS_SEND_TO_ALL'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 1
         end
         object wwCheckBox1: TwwCheckBox
@@ -383,9 +373,11 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
+          Checked = True
           DataField = 'POLY_MONO'
           DataSource = TableSRC
           ShowText = False
+          State = cbChecked
           TabOrder = 4
         end
       end
@@ -398,7 +390,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Color = clBtnFace
         DitherColor = clWhite
         DitherStyle = wwdsDither
-        NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
         TextOptions.Alignment = taCenter
@@ -587,11 +578,11 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         'POLY_MONO;CheckBox;P;M'
         'IS_SEND_TO_ALL;CheckBox;Y;N')
       Selected.Strings = (
-        'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
-        'DOC_NAME'#9'40'#9#908#957#959#956#945' '#917#947#947#961#940#966#959#965#9#9
-        'POLY_MONO'#9'13'#9#928#959#955#965'-'#917#960#967#9'F'#9
-        'IS_SEND_TO_ALL'#9'10'#9#917#964#945#953#961#949#943#949#962#9#9
-        'DOC_BLOB'#9'10'#9#904#947#947#961#945#966#959#9#9)
+        'SERIAL_NUMBER'#9'10'#9'A/A'
+        'DOC_NAME'#9'40'#9#908#957#959#956#945' '#917#947#947#961#940#966#959#965
+        'POLY_MONO'#9'13'#9#928#959#955#965'-'#917#960#967
+        'IS_SEND_TO_ALL'#9'10'#9#917#964#945#953#961#949#943#949#962
+        'DOC_BLOB'#9'10'#9#904#947#947#961#945#966#959)
       IniAttributes.Delimiter = ';;'
       IniAttributes.UnicodeIniFile = False
       TitleColor = clBtnFace
@@ -627,8 +618,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitLeft = 644
-      ExplicitTop = -6
     end
   end
   object Panel2: TRzPanel
@@ -639,7 +628,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 2
-    ExplicitWidth = 885
   end
   object TableSRC: TDataSource
     DataSet = TableSQL

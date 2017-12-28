@@ -443,7 +443,8 @@ var
   fname:string;
   IsPoly:string;
   IsSendToAll:String;
-  PerSerial:Integer;
+  CompId:String;
+
 begin
 
   param:=  gpGetGeneralParam(cn,'T00');
@@ -502,7 +503,7 @@ begin
         end else begin
 
           str2:=
-          '   select per.serial_number,per.Serial_qb from'
+          '   select per.serial_number,per.National_id from'
           +'          seminar_company semC left outer join'
           +'          person per on semc.fk_person_serial = per.serial_number'
           +'  where semC.fk_seminar_serial= :SeminarSerial';
@@ -513,16 +514,17 @@ begin
             CompQr.ParamByName('SeminarSerial').Value:=SeminarSerial;
             CompQr.open;
             while not CompQR.Eof do begin
-              perSerial:=CompQR.FieldByName('serial_qb').AsInteger;
-              fname:=UseFOlder+'\'+IntToStr(perSerial)+'_'+fname+'.doc';
+              CompId:=CompQR.FieldByName('National_id').AsString;
+              fname:=UseFOlder+'\'+Trim(compId)+'_'+fileName+'.doc';
+              CopyaFile(DocSerial,fName);
               compQR.Next;
             end;
           finally
            CompQr.Free;
           end;
 
-          qr.Next;
         end;
+        qr.Next;
       end;
 
   finally
