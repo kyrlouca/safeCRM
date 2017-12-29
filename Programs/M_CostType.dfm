@@ -347,7 +347,6 @@ object M_CostTypeFRM: TM_CostTypeFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Next'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 2
@@ -364,7 +363,6 @@ object M_CostTypeFRM: TM_CostTypeFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Button1'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 3
@@ -398,7 +396,6 @@ object M_CostTypeFRM: TM_CostTypeFRM
         Spacing = 4
         Transparent = False
         Caption = 'Nav1Delete'
-        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 5
@@ -576,7 +573,6 @@ object M_CostTypeFRM: TM_CostTypeFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 328
       end
       object Grid1: TwwDBGrid
         Left = 0

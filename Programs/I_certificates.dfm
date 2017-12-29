@@ -612,14 +612,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
           'IS_VALID;CheckBox;Y;N'
           'HAS_ANOTHER_DATE;CheckBox;Y;N')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'FK_PERSON_SERIAL'#9'4'#9'PS/N'
-          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'16'#9#908#957#959#956#945
-          'HOURS_COMPLETED'#9'6'#9#937#961#949#962
-          'HAS_ANOTHER_DATE'#9'1'#9'*'#931#965#956#960#955#951#961#969#956#945'*'
-          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
-          'IS_VALID'#9'7'#9#904#947#954#965#961#959)
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'FK_PERSON_SERIAL'#9'4'#9'PS/N'#9#9
+          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959#9#9
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945#9#9
+          'HOURS_COMPLETED'#9'6'#9#937#961#949#962#9#9
+          'HAS_ANOTHER_DATE'#9'1'#9'*'#931#965#956#960#955#951#961#969#956#945'*'#9#9
+          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957#9#9
+          'IS_VALID'#9'7'#9#904#947#954#965#961#959#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -924,7 +924,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
         'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
         ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
-        'ATEGORY)'
+        'ATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE, SPECIFICATION_NUM' +
+        'BER)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
@@ -932,7 +933,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
         ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
         ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
-        ':TYPE_MONO_POLY, :SEM_CATEGORY)')
+        ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED, :PASS_PERC' +
+        'ENTAGE, :SPECIFICATION_NUMBER)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -951,7 +953,9 @@ object I_CertificatesFRM: TI_CertificatesFRM
         '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
         'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
         ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
-        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY'
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY, FK_C' +
+        'OMPANY_INVOICED = :FK_COMPANY_INVOICED, PASS_PERCENTAGE = :PASS_' +
+        'PERCENTAGE, SPECIFICATION_NUMBER = :SPECIFICATION_NUMBER'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -961,7 +965,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
         '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
         'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
-        'EM_CATEGORY FROM SEMINAR'
+        'EM_CATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE, SPECIFICATION' +
+        '_NUMBER FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -979,7 +984,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
     UpdateTransaction = WriteTrans
     SQL.Strings = (
       'SELECT'
-      ' se.*, per.last_name'
+      ' se.*, per.last_name,Per.serial_qb'
       'FROM'
       '    Seminar se left outer join'
       '    person per on se.fk_company_person_serial =per.serial_number'
@@ -1132,6 +1137,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Required = True
       FixedChar = True
       Size = 1
+    end
+    object TableSQLSERIAL_QB: TIntegerField
+      FieldName = 'SERIAL_QB'
+      ReadOnly = True
     end
   end
   object WriteTrans: TIBCTransaction
@@ -1432,7 +1441,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
         OnClick = N3Click
       end
       object N1: TMenuItem
-        Caption = #917#954#964#973#960#969#963#951' '#923#943#963#964#945#962
+        Caption = #917#954#964#973#960#969#963#951' '#919#956#949#961#974#957' '#928#945#961#945#954#959#955#959#973#952#951#963#951#962
         OnClick = N1Click
       end
     end

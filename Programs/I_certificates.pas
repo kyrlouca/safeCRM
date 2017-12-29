@@ -122,6 +122,7 @@ type
     MainHelpRE: TwwDBRichEdit;
     Help1: TMenuItem;
     N2: TMenuItem;
+    TableSQLSERIAL_QB: TIntegerField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -146,7 +147,7 @@ type
     procedure GetInvoices();
     procedure GenerateCertificates(Const SeminarSerial:integer);
   Function NewFindGuestHours(Const SubjectSerial,subjectTypeSerial, PersonSerial:Integer):THoursRec;
-  Function CheckDaysEmpty(Const SeminarSerial:Integer):Boolean;
+  Function IsOneDayEmpty(Const SeminarSerial:Integer):Boolean;
 
   public
     { Public declarations }
@@ -383,7 +384,10 @@ begin
     abort;
   end;
 
-
+  if IsOneDayEmpty(SeminarSerial) then begin
+    MessageDlg('Δεν υπάρχουν Παρουσίες για μια ΟΛΟΚΛΗΡΗ ΜΕΡΑ', mtWarning, [mbOK], 0);
+    abort;
+  end;
 
     GenerateCertificates(seminarSerial);
     ksOpenTables([CertificateSQL]);
@@ -427,7 +431,7 @@ begin
 end;
 
 
-Function TI_CertificatesFRM.CheckDaysEmpty(Const SeminarSerial:Integer):Boolean;
+Function TI_CertificatesFRM.IsOneDayEmpty(Const SeminarSerial:Integer):Boolean;
 var
   str:string;
   qr:TksQuery;
@@ -452,11 +456,11 @@ str:=
   try
     qr.ParamByName('seminarSerial').value:=SeminarSerial;
     qr.open;
-    HoursSeminar:=qr.FieldByName('SEMINAR_Hours').asInteger;
+    result:= (not qr.IsEmpty);
+//    result:= qr.FieldByName('Total_hours').AsInteger=0;
   finally
     qr.Free;
   end;
-
 
 end;
 
@@ -563,6 +567,8 @@ begin
     'select serial_number,FK_SUBJECT_TYPE_SERIAL from seminar_subject ss where ss.fk_seminar_serial= :SeminarSerial';
   subjectQR:=TksQuery.Create(cn,str);
 
+  //one record for each subject  for all days presence of the person . calc the sum of hours and Use latest date.
+  //will create a row in Seminar_certificate_subject
   str:=
     'select sum(pv.present_hours) as Total_hours, max(pv.present_ispresent) as isPresent,  max(pv.day_date) as maxDate '
     +' from person_presence_view pv '

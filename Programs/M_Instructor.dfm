@@ -32,7 +32,6 @@ object M_InstructorFRM: TM_InstructorFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1027
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -54,7 +53,6 @@ object M_InstructorFRM: TM_InstructorFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 1027
     object RzPanel1: TRzPanel
       Left = 991
       Top = 1
@@ -63,7 +61,6 @@ object M_InstructorFRM: TM_InstructorFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 926
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -292,7 +289,6 @@ object M_InstructorFRM: TM_InstructorFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 1027
     object wwIncrementalSearch1: TwwIncrementalSearch
       Left = 7
       Top = 12
@@ -317,7 +313,6 @@ object M_InstructorFRM: TM_InstructorFRM
     Height = 423
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 1027
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
@@ -334,7 +329,6 @@ object M_InstructorFRM: TM_InstructorFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 456
       end
       object Grid1: TwwDBGrid
         Left = 0
@@ -385,8 +379,6 @@ object M_InstructorFRM: TM_InstructorFRM
       BorderOuter = fsNone
       TabOrder = 1
       VisualStyle = vsClassic
-      ExplicitLeft = 457
-      ExplicitWidth = 569
       object GroupBox1: TGroupBox
         Left = 16
         Top = 45
@@ -581,11 +573,9 @@ object M_InstructorFRM: TM_InstructorFRM
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
           Caption = #913#925#913#916
-          Checked = True
           DataField = 'CERTIFIED_ANAD'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 0
         end
         object wwDBEdit13: TwwDBEdit
@@ -609,7 +599,6 @@ object M_InstructorFRM: TM_InstructorFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitWidth = 569
         object Nav1: TwwDBNavigator
           Left = 16
           Top = 5
@@ -1102,6 +1091,7 @@ object M_InstructorFRM: TM_InstructorFRM
       DisplayLabel = #917#960#943#952#949#964#959
       DisplayWidth = 19
       FieldName = 'LAST_NAME'
+      Required = True
       FixedChar = True
       Size = 30
     end
@@ -1109,6 +1099,7 @@ object M_InstructorFRM: TM_InstructorFRM
       DisplayLabel = #908#957#959#956#945
       DisplayWidth = 17
       FieldName = 'FIRST_NAME'
+      Required = True
       FixedChar = True
       Size = 30
     end

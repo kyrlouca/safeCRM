@@ -80,7 +80,8 @@ uses   U_Database, G_generalProcs;
 
 procedure TM_CostTypeFRM.BitBtn2Click(Sender: TObject);
 begin
-  close;
+if TableSQL.State in [dsEdit,dsInsert] then
+  TableSQL.Post;
 end;
 
 procedure TM_CostTypeFRM.TableSQLBeforeEdit(

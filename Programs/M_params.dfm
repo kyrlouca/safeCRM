@@ -2,7 +2,7 @@ object M_paramsFRM: TM_paramsFRM
   Left = 0
   Top = 0
   Caption = 'M_paramsFRM'
-  ClientHeight = 618
+  ClientHeight = 640
   ClientWidth = 938
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -27,14 +27,14 @@ object M_paramsFRM: TM_paramsFRM
   end
   object ButtonsPNL: TPanel
     Left = 0
-    Top = 573
+    Top = 595
     Width = 938
     Height = 45
     Align = alBottom
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitTop = 565
+    ExplicitTop = 573
     object Panel1: TPanel
       Left = 801
       Top = 2
@@ -120,8 +120,8 @@ object M_paramsFRM: TM_paramsFRM
       end
     end
     object RzBitBtn2: TRzBitBtn
-      Left = 8
-      Top = 8
+      Left = 6
+      Top = 4
       Width = 80
       Height = 37
       Caption = 'Ok'
@@ -195,8 +195,8 @@ object M_paramsFRM: TM_paramsFRM
       Margin = -1
     end
     object RzBitBtn1: TRzBitBtn
-      Left = 105
-      Top = 8
+      Left = 103
+      Top = 4
       Width = 80
       Height = 37
       Caption = 'Cancel'
@@ -299,13 +299,11 @@ object M_paramsFRM: TM_paramsFRM
     Left = 0
     Top = 53
     Width = 938
-    Height = 520
+    Height = 542
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
-    ExplicitLeft = -10
-    ExplicitTop = -35
-    ExplicitHeight = 512
+    ExplicitHeight = 520
     object OptionGRP: TRzRadioGroup
       Left = 534
       Top = 26

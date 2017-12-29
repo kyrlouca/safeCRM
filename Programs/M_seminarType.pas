@@ -315,6 +315,7 @@ type
     procedure wwNavButton21Click(Sender: TObject);
     procedure SeminarTSExit(Sender: TObject);
     procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
+    procedure SeminarReminderSQLNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -377,6 +378,7 @@ procedure TM_SeminarTypeFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
 Dataset.FieldByName('ANAD_APPROVED').value:='Y';
 Dataset.FieldByName('type_mono_poly').value:='M';
+Dataset.FieldByName('Has_expiry').value:='N';
 
 end;
 
@@ -710,6 +712,11 @@ Begin
     result:=true;
 end;
 
+
+procedure TM_SeminarTypeFRM.SeminarReminderSQLNewRecord(DataSet: TDataSet);
+begin
+Dataset.FieldByName('Is_high').Value:='N';
+end;
 
 procedure TM_SeminarTypeFRM.SeminarTSExit(Sender: TObject);
 begin
