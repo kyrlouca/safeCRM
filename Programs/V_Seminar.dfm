@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = CostTS
+      ActivePage = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -127,10 +127,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object SeminarTS: TTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
         OnShow = SeminarTSShow
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object RzPanel18: TRzPanel
           Left = 0
           Top = 0
@@ -1339,8 +1335,6 @@ object V_SeminarFRM: TV_SeminarFRM
               Align = alTop
               BorderOuter = fsNone
               TabOrder = 0
-              ExplicitLeft = 3
-              ExplicitTop = 10
             end
             object wwDBGrid1: TwwDBGrid
               Left = 2
@@ -1459,8 +1453,6 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleButtons = False
               OnTitleButtonClick = AttendGRDTitleButtonClick
               OnUpdateFooter = AttendGRDUpdateFooter
-              ExplicitLeft = -1
-              ExplicitTop = 43
             end
           end
           object RzPanel3: TRzPanel
@@ -1786,8 +1778,6 @@ object V_SeminarFRM: TV_SeminarFRM
               Height = 29
               Align = alTop
               TabOrder = 0
-              ExplicitLeft = -4
-              ExplicitTop = 9
             end
             object wwDBGrid4: TwwDBGrid
               Left = 1
@@ -2831,10 +2821,6 @@ object V_SeminarFRM: TV_SeminarFRM
       object PictureTS: TTabSheet
         Caption = #922#949#943#956#949#957#959'/'#917#953#954#972#957#949#962
         ImageIndex = 5
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object RzPanel23: TRzPanel
           Left = 0
           Top = 0
@@ -3383,7 +3369,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800340310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800380310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

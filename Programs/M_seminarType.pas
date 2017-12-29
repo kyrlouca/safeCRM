@@ -316,6 +316,7 @@ type
     procedure SeminarTSExit(Sender: TObject);
     procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
     procedure SeminarReminderSQLNewRecord(DataSet: TDataSet);
+    procedure SeminarTSShow(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -402,7 +403,7 @@ insSeminarSubjectSQL.ParamByName('SubjectSerial').Value:=subjectSerial;
 insSeminarSubjectSQL.Open;
 
 
-ksOpenTables([insSemInstructorsSQL]);
+ksOpenTables([ insSemInstructorsSQL]);
 
 insSeminarAllInstructorsSQL.Close;
 insSeminarAllInstructorsSQL.ParamByName('SubjectSerial').Value:=subjectSerial;
@@ -478,6 +479,8 @@ end;
 procedure TM_SeminarTypeFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
+    PageControlPC.ActivePageIndex := 0;
+
 end;
 
 procedure TM_SeminarTypeFRM.Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
@@ -507,7 +510,8 @@ end;
 procedure TM_SeminarTypeFRM.ShowAll(Const SeminarSerial:integer;Const Language :String);
 begin
   if SeminarSerial<1 then exit;
-  if trim(LanguageRGP.Value)='' then exit;
+//  SHowMessage( intToStr(  LanguageRGP.ItemIndex));
+  if language='' then exit;
 
   SHowPictureT(SeminarSerial,Picture_top_l1.Name, Language, Picture_top_L1);
   SHowPictureT(SeminarSerial,Picture_top_R1.Name, Language, Picture_top_R1);
@@ -581,17 +585,27 @@ end;
 procedure TM_SeminarTypeFRM.CertificationTSShow(Sender: TObject);
 var
   SeminarSerial:Integer;
+  Language:String;
 begin
   SeminarSerial:= TableSQL.FieldByName('serial_number').AsInteger;
   LanguageRGP.ItemIndex:=0;
+
 //  showMessage(LanguageRGP.Values[LanguageRGP.ItemIndex]);
-//  showMessage(languageRGP.Value);
-  CheckPicturesT(SeminarSerial);
+//  showMessage(languageRGP.Value);not working!!
+  CheckPicturesT(SeminarSerial); // if not exists then create one for English and one for Greek
+
+
+   Language:=LanguageRGP.Values[LanguageRGP.ItemIndex]; //LanguageRGP.value not working!!
+
+   ShowAll(seminarSerial,Language);
+
+  {
   SHowPictureT(SeminarSerial,Picture_top_l1.Name,'G',Picture_top_L1);
   SHowPictureT(SeminarSerial,Picture_top_R1.Name,'G',Picture_top_R1);
   SHowPictureT(SeminarSerial,Picture_bot_l1.Name,'G',Picture_bot_L1);
   SHowPictureT(SeminarSerial,Picture_bot_R1.Name,'G',Picture_bot_R1);
   SHowPictureDataT(SeminarSerial,'G');
+  }
 end;
 
 ////////////////////////////////////////
@@ -727,12 +741,18 @@ end;
 
 end;
 
+procedure TM_SeminarTypeFRM.SeminarTSShow(Sender: TObject);
+begin
+//ShowMessage('ts enter');
+end;
+
 procedure TM_SeminarTypeFRM.ShowPictureDataT(Const TypeSerial:Integer;Const  Language:String);
 begin
    SeminarPictureSQL.Close;
    SeminarPictureSQL.ParamByName('SeminarSerial').Value:=TypeSerial;
    SeminarPictureSQL.ParamByName('language').Value:=Language;
    SeminarPictureSQL.Open;
+//   ShowMessage(SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString);
 
 end;
 procedure TM_SeminarTypeFRM.ShowPictureT(Const TypeSerial:Integer;Const aFieldName :String; Const  Language:String;img:TImage);
@@ -994,6 +1014,10 @@ begin
   InstrSerial := insSeminarAllInstructorsSQL.FieldByName('serial_number').AsInteger;
 
   subjectSerial := insSeminarSubjectSQL.FieldByName('serial_number').AsInteger;
+
+    if subjectSerial < 1 then
+    exit;
+
 
   if InstrSerial < 1 then
     exit;
