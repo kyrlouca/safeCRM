@@ -397,10 +397,11 @@ procedure TM_SeminarTypeFRM.InstructTSShow(Sender: TObject);
 var
   subjectSerial:Integer;
 begin
-  subjectSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+ subjectSerial:= TableSQL.FieldByName('serial_number').AsInteger;
 insSeminarSubjectSQL.Close;
 insSeminarSubjectSQL.ParamByName('SubjectSerial').Value:=subjectSerial;
 insSeminarSubjectSQL.Open;
+//showMessage(insSeminarSubjectSQL.FieldByName('subject').AsString);
 
 
 ksOpenTables([ insSemInstructorsSQL]);
@@ -533,18 +534,28 @@ procedure TM_SeminarTypeFRM.PageControlPCChanging(Sender: TObject;
 begin
 
   allowChange:=true;
-  try
-    If tableSQL.State in [dsEdit,dsInsert] then
-      TableSQL.Post;
+
+  Try
+
+    case PageControlPC.ActivePageIndex of
+    0: ksPostTables([TableSQL]);
+    1: ksPostTables([seminarSubjectSQL]);
+    2: ksPostTables([SeminarReminderSQL]);
+//    2: ksPostTables([AttendingSQL]);
+//    3: ksPostTables([SeminarCostItemSQL]);
+//    5: ksPostTables([SeminarPictureSQL]);
+   end;
   except
     On E : Exception do begin
         ShowMessage(E.Message);
       AllowChange:=false;
     end;
-
   end;
 
-end;
+
+End;
+
+
 
 procedure TM_SeminarTypeFRM.PICTURE_TOP_L1DblClick(Sender: TObject);
 begin

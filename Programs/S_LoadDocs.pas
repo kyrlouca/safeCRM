@@ -63,6 +63,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure wwButton1Click(Sender: TObject);
     procedure TableSQLNewRecord(DataSet: TDataSet);
+    procedure Nav1InsertClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -402,10 +403,8 @@ begin
   end;
 
   filePath :=FileDialog1.FileName;
-//  FileName:=ExtractFileName(FilePath);
   FileName:=TPath.GetFileNameWithoutExtension(FilePath);
   SerialNumber:=TableSQL.FieldByName('Serial_Number').AsInteger;
-// WriteStreamToDatabase(codeKey,filename,'Y');
   saveXX(SerialNumber,FilePath, filename);
   ksOpenTables([TableSQL]);
 
@@ -422,10 +421,39 @@ begin
   cn:=  U_databaseFRM.DataConnection;
 end;
 
+procedure TS_LoadDocsFRM.Nav1InsertClick(Sender: TObject);
+var
+  FileName:String;
+  FIlePath:String;
+  codeKey:String;
+  SerialNumber:Integer;
+begin
+  if TableSQL.State in [dsEdit,dsInsert] then
+    TableSQL.Post;
+
+
+  if not FileDialog1.Execute then     begin
+      showMessage('exit');
+      Exit;
+  end;
+
+  tableSQL.Insert;
+
+  filePath :=FileDialog1.FileName;
+  FileName:=TPath.GetFileNameWithoutExtension(FilePath);
+  tableSQL.FieldByName('DOC_name').Value:=fileName;
+  TableSQL.Post;
+
+  SerialNumber:=TableSQL.FieldByName('Serial_Number').AsInteger;
+  saveXX(SerialNumber,FilePath, filename);
+  ksOpenTables([TableSQL]);
+  NameFLD.SetFocus;
+  abort;
+end;
+
 procedure TS_LoadDocsFRM.Button1Click(Sender: TObject);
 begin
-
-WriteFiles(119);
+  WriteFiles(119);
 end;
 
 procedure TS_LoadDocsFRM.CreateTheFiles;

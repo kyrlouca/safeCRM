@@ -429,8 +429,6 @@ type
     procedure VenueBTNClick(Sender: TObject);
     procedure SeminarTypeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
     procedure StudentsTSShow(Sender: TObject);
-    procedure PageControlPCChanging(Sender: TObject; NewIndex: Integer;
-      var AllowChange: Boolean);
     procedure AllPersonsGRDDblClick(Sender: TObject);
     procedure AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -471,6 +469,7 @@ type
     procedure InsertCompanyBTNClick(Sender: TObject);
     procedure RemoveCompanyBTNClick(Sender: TObject);
     procedure N2Click(Sender: TObject);
+    procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -1328,8 +1327,10 @@ begin
 }
 end;
 
+
+
 procedure TV_SeminarFRM.PageControlPCChanging(Sender: TObject;
-  NewIndex: Integer; var AllowChange: Boolean);
+  var AllowChange: Boolean);
 begin
   try
     if SeminarSQL.State in [dsInsert, dsEdit] then
