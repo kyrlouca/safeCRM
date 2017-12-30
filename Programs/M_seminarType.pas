@@ -202,7 +202,6 @@ type
     CopyDefaultBTN: TRzBitBtn;
     CopyHardBTN: TRzBitBtn;
     SaveDefaultBTN: TRzBitBtn;
-    certificatesHelpRE: TwwDBRichEdit;
     SaveHardBTN: TRzBitBtn;
     RzGroupBox2: TRzGroupBox;
     SelTopLeftBTN: TRzBitBtn;
@@ -283,6 +282,7 @@ type
     insSeminarAllInstructorsSQLANAD_NUMBER: TWideStringField;
     insSeminarAllInstructorsSQLFK_INSTRUCTOR_SERIAL: TIntegerField;
     insSeminarAllInstructorsSQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
+    certificatesHelpRE: TwwDBRichEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);

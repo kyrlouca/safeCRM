@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = PictureTS
+      ActivePage = ReminderTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -3370,7 +3370,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800380310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088003C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4648,13 +4648,13 @@ object V_SeminarFRM: TV_SeminarFRM
         '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_MESSA' +
         'GE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_OR_MO' +
         'NTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DATE_T' +
-        'ARGETED, DATE_COMPLETED, IS_HIGH)'
+        'ARGETED, DATE_COMPLETED, IS_HIGH, IS_INTERNAL)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :DESCRIPTION, :REMINDER_M' +
         'ESSAGE, :AFTER_OR_BEFORE, :PERSON_OR_SEMINAR, :START_OR_END, :DA' +
         'YS_OR_MONTHS, :NUMBER_OF_DAYS_MONTHS, :REMINDER_TYPE, :IS_COMPLE' +
-        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH)')
+        'TED, :DATE_TARGETED, :DATE_COMPLETED, :IS_HIGH, :IS_INTERNAL)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_REMINDER'
       'WHERE'
@@ -4670,7 +4670,7 @@ object V_SeminarFRM: TV_SeminarFRM
         'NTHS = :DAYS_OR_MONTHS, NUMBER_OF_DAYS_MONTHS = :NUMBER_OF_DAYS_' +
         'MONTHS, REMINDER_TYPE = :REMINDER_TYPE, IS_COMPLETED = :IS_COMPL' +
         'ETED, DATE_TARGETED = :DATE_TARGETED, DATE_COMPLETED = :DATE_COM' +
-        'PLETED, IS_HIGH = :IS_HIGH'
+        'PLETED, IS_HIGH = :IS_HIGH, IS_INTERNAL = :IS_INTERNAL'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -4678,7 +4678,8 @@ object V_SeminarFRM: TV_SeminarFRM
         'SELECT SERIAL_NUMBER, FK_SEMINAR_SERIAL, DESCRIPTION, REMINDER_M' +
         'ESSAGE, AFTER_OR_BEFORE, PERSON_OR_SEMINAR, START_OR_END, DAYS_O' +
         'R_MONTHS, NUMBER_OF_DAYS_MONTHS, REMINDER_TYPE, IS_COMPLETED, DA' +
-        'TE_TARGETED, DATE_COMPLETED, IS_HIGH FROM SEMINAR_REMINDER'
+        'TE_TARGETED, DATE_COMPLETED, IS_HIGH, IS_INTERNAL FROM SEMINAR_R' +
+        'EMINDER'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -4799,13 +4800,20 @@ object V_SeminarFRM: TV_SeminarFRM
       FixedChar = True
       Size = 1
     end
+    object SeminarReminderSQLIS_INTERNAL: TWideStringField
+      FieldName = 'IS_INTERNAL'
+      Required = True
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
   end
   object OpenPictureDialog1: TOpenPictureDialog
     Left = 360
     Top = 199
   end
   object MainMenu1: TMainMenu
-    Left = 28
+    Left = 748
     Top = 12
     object Help1: TMenuItem
       Caption = 'Help'
@@ -5423,6 +5431,7 @@ object V_SeminarFRM: TV_SeminarFRM
     MasterFields = 'SERIAL_NUMBER'
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
+    Active = True
     Left = 274
     Top = 633
     ParamData = <
@@ -5433,22 +5442,32 @@ object V_SeminarFRM: TV_SeminarFRM
         Value = nil
       end>
     object Co_CompaniesInSQLSERIAL_NUMBER: TIntegerField
+      DisplayLabel = 'A/A'
+      DisplayWidth = 8
       FieldName = 'SERIAL_NUMBER'
     end
     object Co_CompaniesInSQLSERIAL_QB: TIntegerField
+      DisplayLabel = 'QB'
+      DisplayWidth = 8
       FieldName = 'SERIAL_QB'
     end
-    object Co_CompaniesInSQLFIRST_NAME: TWideStringField
-      FieldName = 'FIRST_NAME'
-      FixedChar = True
-      Size = 30
-    end
     object Co_CompaniesInSQLLAST_NAME: TWideStringField
+      DisplayLabel = #917#960#943#952#949#964#959
+      DisplayWidth = 17
       FieldName = 'LAST_NAME'
       FixedChar = True
       Size = 30
     end
+    object Co_CompaniesInSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 15
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 30
+    end
     object Co_CompaniesInSQLNATIONAL_ID: TWideStringField
+      DisplayLabel = #932#945#965#964#972#964#951#964#945
+      DisplayWidth = 10
       FieldName = 'NATIONAL_ID'
       FixedChar = True
     end
@@ -5456,11 +5475,13 @@ object V_SeminarFRM: TV_SeminarFRM
       FieldName = 'FK_SEMINAR_SERIAL'
       ReadOnly = True
       Required = True
+      Visible = False
     end
     object Co_CompaniesInSQLFK_PERSON_SERIAL: TIntegerField
       FieldName = 'FK_PERSON_SERIAL'
       ReadOnly = True
       Required = True
+      Visible = False
     end
   end
   object Co_companiesInSRC: TDataSource

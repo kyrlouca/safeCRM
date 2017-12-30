@@ -419,6 +419,7 @@ type
     Co_companiesOutSQLNATIONAL_ID: TWideStringField;
     N1: TMenuItem;
     N2: TMenuItem;
+    SeminarReminderSQLIS_INTERNAL: TWideStringField;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -588,6 +589,8 @@ begin
   Dataset.FieldByName('reminder_type').Value := 'S';
   Dataset.FieldByName('PERSON_OR_SEMINAR').Value := 'S';
   Dataset.FieldByName('is_completed').Value := 'N';
+  Dataset.FieldByName('is_iNTERNAL').Value := 'N';
+  Dataset.FieldByName('is_high').Value := 'N';
 end;
 
 procedure TV_SeminarFRM.SeminarSQLNewRecord(DataSet: TDataSet);
@@ -1332,14 +1335,24 @@ end;
 procedure TV_SeminarFRM.PageControlPCChanging(Sender: TObject;
   var AllowChange: Boolean);
 begin
-  try
-    if SeminarSQL.State in [dsInsert, dsEdit] then
-      SeminarSQl.Post;
+
+  allowChange:=true;
+
+  Try
+
+    case PageControlPC.ActivePageIndex of
+    0: ksPostTables([SeminarSQL]);
+    1: ksPostTables([seminarSubjectSQL]);
+//    2: ksPostTables([AttendingSQL]);
+    4: ksPostTables([SeminarCostItemSQL]);
+    5: ksPostTables([SeminarReminderSQL]);
+   end;
   except
-    allowChange := false;
-    exit;
+    On E : Exception do begin
+        ShowMessage(E.Message);
+      AllowChange:=false;
+    end;
   end;
-  allowChange := (SeminarSQL.FieldByName('serial_number').AsInteger > 0);
 
 end;
 

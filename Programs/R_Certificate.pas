@@ -470,6 +470,7 @@ var
   Token:String;
   TokenInMemo:String;
   temp:String;
+  tempInt:Integer;
   GreekOrEnglish:String;
   isAllUpper:Boolean;
   isAllLower:Boolean;
@@ -539,7 +540,12 @@ begin
             temp:=CertificateSQL.FieldByName('ANAD_NUMBER').AsString;
 
          end else if token='[SERIAL]' then begin
-            temp:=CertificateSQL.FieldByName('SERIAL_NUMBER').AsString;
+            tempInt:=CertificateSQL.FieldByName('SERIAL_NUMBER').AsInteger;
+             if isAllUpper then begin
+                temp:=  Format('%.*d',[5, TempInt]);;
+             end else begin
+                temp:= IntToStr(tempInt);
+             end;
 
          end;
         wwMemo.SelText :=Temp;

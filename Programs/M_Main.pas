@@ -145,9 +145,13 @@ procedure TM_mainFRM.Button1Click(Sender: TObject);
 var
   i:integer;
  j:integer;
+ str:string;
 
 begin
-  gpShowModal(TT_test2FRM);
+  str := Format('%.*d',[6, 23]);
+  ShowMessage(str);
+
+//  gpShowModal(TT_test2FRM);
 end;
 
 procedure TM_mainFRM.Button2Click(Sender: TObject);
