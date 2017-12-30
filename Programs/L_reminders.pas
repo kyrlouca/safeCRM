@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  Vcl.WinXCtrls, vcl.wwcheckbox, Vcl.Menus;
+  Vcl.WinXCtrls, vcl.wwcheckbox, Vcl.Menus, RzRadChk;
 type
   TL_RemindersFRM = class(TForm)
     Panel1: TPanel;
@@ -89,6 +89,10 @@ type
     TableSQLSEMINAR_SERIAL: TIntegerField;
     TableSQLANAD_NUMBER: TWideStringField;
     TableSQLIS_INTERNAL: TWideStringField;
+    Label5: TLabel;
+    Label6: TLabel;
+    isHighFLD: TRzCheckBox;
+    IsCompanyFLD: TRzCheckBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -114,6 +118,9 @@ type
     procedure DateRefFLDCloseUp(Sender: TObject);
     procedure CompleteBTNClick(Sender: TObject);
     procedure HighFLDClick(Sender: TObject);
+    procedure IsHighFLDClick(Sender: TObject);
+    procedure cb1Click(Sender: TObject);
+    procedure IsCompanyFLDClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -188,6 +195,16 @@ begin
 
 end;
 
+procedure TL_RemindersFRM.IsCompanyFLDClick(Sender: TObject);
+begin
+DisplayFilter();
+end;
+
+procedure TL_RemindersFRM.IsHighFLDClick(Sender: TObject);
+begin
+//ShowMessage(isHighFLD.Caption);
+end;
+
 procedure TL_RemindersFRM.HighFLDClick(Sender: TObject);
 begin
   if HighFLD.Checked then
@@ -217,6 +234,11 @@ procedure TL_RemindersFRM.RzBitBtn3Click(Sender: TObject);
 begin
 DisplayFilter();
 
+end;
+
+procedure TL_RemindersFRM.cb1Click(Sender: TObject);
+begin
+DisplayFilter();
 end;
 
 procedure TL_RemindersFRM.SeminarSFLDCloseUp(Sender: TObject; LookupTable,
@@ -254,6 +276,15 @@ TableSQL.RestoreSQL;
     TableSQL.ParamByName('seminarSerial').Value:=SeminarSerial;
   end;
   TableSQL.ParamByName('theDate').AsDate:= Date;
+
+
+  if IsHighFLD.State = cbChecked then begin
+      TableSQL.AddWhere('is_High = ''Y'' ');
+  end;
+
+  if IsCompanyFLD.State = cbChecked then begin
+      TableSQL.AddWhere('is_internal = ''Y'' ');
+  end;
 
   TableSQL.Open;
 

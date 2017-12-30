@@ -121,6 +121,12 @@ type
     ppDBText9: TppDBText;
     ppLabel7: TppLabel;
     ppDBText5: TppDBText;
+    PersonSQLSERIAL_QB: TIntegerField;
+    PersonSQLCOMPANY_EMPLOYEES: TIntegerField;
+    PersonSQLPHONE_MOBILE_2: TWideStringField;
+    PersonSQLLINKED_IN: TWideStringField;
+    PersonSQLJOB: TWideStringField;
+    PersonSQLIS_SAFE_COMPANY: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);

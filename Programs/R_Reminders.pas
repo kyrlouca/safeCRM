@@ -39,7 +39,6 @@ type
     ppLine5: TppLine;
     ppLabel5: TppLabel;
     ddBand: TppDetailBand;
-    ppDBText4: TppDBText;
     ppFooterBand3: TppFooterBand;
     ppLine6: TppLine;
     ppSystemVariable5: TppSystemVariable;
@@ -48,7 +47,6 @@ type
     ppDesignLayer3: TppDesignLayer;
     ppDBText1: TppDBText;
     ppDBText5: TppDBText;
-    ppLabel1: TppLabel;
     ppLabel6: TppLabel;
     ppLabel7: TppLabel;
     ppLabel8: TppLabel;
@@ -86,6 +84,9 @@ type
     SeminarReminderSQLSEMINAR_SERIAL: TIntegerField;
     SeminarReminderSQLANAD_NUMBER: TWideStringField;
     DaysLeftLBL: TppDBText;
+    ppLabel10: TppLabel;
+    ppDBText6: TppDBText;
+    ppLine1: TppLine;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);

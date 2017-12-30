@@ -143,14 +143,16 @@ object L_RemindersFRM: TL_RemindersFRM
     Left = 0
     Top = 53
     Width = 1067
-    Height = 173
+    Height = 201
     Align = alTop
     TabOrder = 1
+    ExplicitLeft = 66
+    ExplicitTop = 47
     object RzGroupBox1: TRzGroupBox
-      Left = 4
-      Top = 6
-      Width = 525
-      Height = 147
+      Left = 34
+      Top = 2
+      Width = 431
+      Height = 175
       Caption = 'Filter Reminders'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -188,11 +190,37 @@ object L_RemindersFRM: TL_RemindersFRM
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 28
-        Top = 91
+        Left = 33
+        Top = 87
         Width = 60
         Height = 15
         Caption = #935#969#961#943#962' '#923#942#958#951
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 38
+        Top = 116
+        Width = 55
+        Height = 15
+        Caption = #931#951#956#945#957#964#953#954#940
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 46
+        Top = 142
+        Width = 47
+        Height = 15
+        Caption = #917#964#945#953#961#953#954#940
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -363,25 +391,45 @@ object L_RemindersFRM: TL_RemindersFRM
           ECC5B3B7A99196AC9298B69592AF999EBCA8ACDDD3D4FFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       end
+      object isHighFLD: TRzCheckBox
+        Left = 100
+        Top = 116
+        Width = 28
+        Height = 15
+        State = cbUnchecked
+        TabOrder = 4
+        OnClick = cb1Click
+      end
+      object IsCompanyFLD: TRzCheckBox
+        Left = 100
+        Top = 142
+        Width = 19
+        Height = 15
+        State = cbUnchecked
+        TabOrder = 5
+        OnClick = IsCompanyFLDClick
+      end
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 226
+    Top = 254
     Width = 1067
-    Height = 269
+    Height = 241
     Align = alClient
     TabOrder = 2
+    ExplicitTop = 226
+    ExplicitHeight = 269
     object Panel5: TPanel
       Left = 966
       Top = 1
       Width = 155
-      Height = 267
+      Height = 239
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 921
+      ExplicitHeight = 267
       object InsertHawbBTN: TRzBitBtn
         Left = 2
         Top = 32
@@ -622,10 +670,11 @@ object L_RemindersFRM: TL_RemindersFRM
       Left = 41
       Top = 1
       Width = 925
-      Height = 267
+      Height = 239
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 267
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -634,7 +683,8 @@ object L_RemindersFRM: TL_RemindersFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 880
+        ExplicitLeft = -4
+        ExplicitTop = 36
         object wwIncrementalSearch1: TwwIncrementalSearch
           Left = 119
           Top = 4
@@ -671,6 +721,7 @@ object L_RemindersFRM: TL_RemindersFRM
             Spacing = 4
             Transparent = False
             Caption = 'wwDBNavigator1First'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 0
@@ -687,6 +738,7 @@ object L_RemindersFRM: TL_RemindersFRM
             Spacing = 4
             Transparent = False
             Caption = 'wwDBNavigator1Prior'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -730,23 +782,23 @@ object L_RemindersFRM: TL_RemindersFRM
         Left = 0
         Top = 33
         Width = 919
-        Height = 234
+        Height = 206
         ControlType.Strings = (
           'IS_COMPLETED;CustomEdit;CompletedFLD;F'
           'IS_HIGH;CustomEdit;HighFLD;F'
           'IS_INTERNAL;CheckBox;Y;N')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'DESCRIPTION'#9'20'#9#928#949#961#953#947#961#945#966#942#9#9
-          'IS_HIGH'#9'8'#9#931#951#956#945#957#964#953#954#972#9#9
-          'IS_INTERNAL'#9'7'#9#917#964#945#953#961#941#953#945#962#9#9
-          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945#9#9
-          'ANAD_NUMBER'#9'10'#9#913#925#913#916#9#9
-          'SEMINAR_NAME'#9'15'#9#931#949#956#953#957#940#961#953#959#9#9
-          'DATE_TARGETED'#9'11'#9#916#961#940#963#951#9#9
-          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951#9#9
-          'IS_COMPLETED'#9'4'#9#932#941#955#959#962#9#9
-          'DAYSLEFT'#9'5'#9#924#941#961#949#962#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'DESCRIPTION'#9'20'#9#928#949#961#953#947#961#945#966#942
+          'IS_HIGH'#9'8'#9#931#951#956#945#957#964#953#954#972
+          'IS_INTERNAL'#9'7'#9#917#964#945#953#961#941#953#945#962
+          'REMINDER_MESSAGE'#9'12'#9#924#942#957#965#956#945
+          'ANAD_NUMBER'#9'10'#9#913#925#913#916
+          'SEMINAR_NAME'#9'15'#9#931#949#956#953#957#940#961#953#959
+          'DATE_TARGETED'#9'11'#9#916#961#940#963#951
+          'DATE_COMPLETED'#9'12'#9#917#954#964#941#955#949#963#951
+          'IS_COMPLETED'#9'4'#9#932#941#955#959#962
+          'DAYSLEFT'#9'5'#9#924#941#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -830,11 +882,12 @@ object L_RemindersFRM: TL_RemindersFRM
       Left = 1
       Top = 1
       Width = 40
-      Height = 267
+      Height = 239
       Align = alLeft
       Alignment = taLeftJustify
       BorderOuter = fsNone
       TabOrder = 2
+      ExplicitHeight = 267
     end
   end
   object TableSRC: TDataSource
