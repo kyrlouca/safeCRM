@@ -2,8 +2,8 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 605
-  ClientWidth = 1079
+  ClientHeight = 585
+  ClientWidth = 1211
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,20 +21,21 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 562
-    Width = 1079
+    Top = 542
+    Width = 1211
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 502
+    ExplicitWidth = 1079
     object RzPanel1: TRzPanel
-      Left = 978
+      Left = 1110
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 978
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -190,30 +191,30 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   object BodyPanel: TRzPanel
     Left = 0
     Top = 65
-    Width = 1079
-    Height = 497
+    Width = 1211
+    Height = 477
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitHeight = 437
+    ExplicitWidth = 1079
     object Panel5: TPanel
       Left = 433
       Top = 2
-      Width = 750
-      Height = 493
+      Width = 696
+      Height = 473
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 439
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
-        Width = 750
+        Width = 696
         Height = 36
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 750
         object wwDBNavigator2: TwwDBNavigator
           Left = 29
           Top = 4
@@ -350,10 +351,10 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
       end
       object InvoiceGRD: TwwDBGrid
-        Left = 29
+        Left = 6
         Top = 42
-        Width = 723
-        Height = 367
+        Width = 659
+        Height = 407
         ControlType.Strings = (
           'IS_ANAD;CustomEdit;AnadCheckFLD;F')
         Selected.Strings = (
@@ -404,22 +405,23 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
         object RzPanel5: TRzPanel
           Left = 0
-          Top = 320
-          Width = 702
+          Top = 360
+          Width = 638
           Height = 43
           Align = alBottom
           BorderOuter = fsFlat
           TabOrder = 1
-          ExplicitTop = 390
-          ExplicitWidth = 750
+          ExplicitTop = 303
+          ExplicitWidth = 702
           object RzPanel6: TRzPanel
-            Left = 601
+            Left = 537
             Top = 1
             Width = 100
             Height = 41
             Align = alRight
             BorderOuter = fsNone
             TabOrder = 0
+            ExplicitLeft = 601
           end
           object SavePresBTN: TBitBtn
             Left = 15
@@ -572,7 +574,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 431
-      Height = 493
+      Height = 473
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -584,7 +586,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 419
       end
       object RzPanel4: TRzPanel
         Left = 0
@@ -594,7 +595,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitWidth = 419
         object GroupBox1: TGroupBox
           Left = 0
           Top = 0
@@ -609,8 +609,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          ExplicitLeft = 41
-          ExplicitTop = 6
           object RzPanel7: TRzPanel
             Left = 2
             Top = 16
@@ -619,8 +617,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitLeft = 45
-            ExplicitTop = 24
           end
           object wwDBGrid1: TwwDBGrid
             Left = 17
@@ -649,9 +645,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = False
-            ExplicitLeft = 2
-            ExplicitWidth = 397
-            ExplicitHeight = 211
           end
           object RzPanel9: TRzPanel
             Left = 2
@@ -661,8 +654,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Align = alLeft
             BorderOuter = fsNone
             TabOrder = 2
-            ExplicitLeft = 17
-            ExplicitTop = 31
           end
         end
       end
@@ -674,7 +665,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
-        ExplicitWidth = 419
         object FirstGRP: TGroupBox
           Left = 17
           Top = 6
@@ -851,21 +841,31 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         end
       end
       object RzPanel10: TRzPanel
-        Left = 0
+        Left = 9
         Top = 516
         Width = 15
         Height = 219
         Align = alLeft
         BorderOuter = fsNone
         TabOrder = 3
-        ExplicitTop = 274
+        ExplicitLeft = 0
+      end
+      object RzPanel11: TRzPanel
+        Left = 0
+        Top = 516
+        Width = 9
+        Height = 431
+        Align = alLeft
+        BorderOuter = fsButtonDown
+        TabOrder = 4
+        ExplicitTop = 0
       end
     end
   end
   object Panel1: TRzPanel
     Left = 0
     Top = 0
-    Width = 1079
+    Width = 1211
     Height = 53
     Align = alTop
     BorderOuter = fsFlatRounded
@@ -877,15 +877,17 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1079
   end
   object Panel2: TRzPanel
     Left = 0
     Top = 53
-    Width = 1079
+    Width = 1211
     Height = 12
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 1
+    ExplicitWidth = 1079
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection

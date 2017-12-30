@@ -97,6 +97,7 @@ type
     procedure EditCompany();
     procedure DeleteCompany();
   procedure MakeItSafe(Const PersonSerial:Integer);
+  procedure ShowFiltered(Const Status:String);
   procedure  InsertCompany();
   public
     { Public declarations }
@@ -172,25 +173,41 @@ begin
 end;
 
 
+
+
 procedure TL_companiesFRM.FilterBoxCloseUp(Sender: TwwDBComboBox;
   Select: Boolean);
+Var
+  Status:String;
 begin
   if not select then exit;
+  status:= FilterBox.Value;
+  ShowFiltered(Status);
+end;
+
+procedure TL_companiesFRM.ShowFiltered(Const Status:String);
+begin
   TableSQL.RestoreSQL;
 
-  if sender.Value='Y' then begin
+  if Status='Y' then begin
     TableSQL.AddWhere('status_active = ''Y'' ')
-  end else if  sender.Value='N' then begin
+  end else if  status='N' then begin
     TableSQL.AddWhere('status_active = ''N'' ')
   end;
   TableSQL.Open;
 
-
 end;
 
 procedure TL_companiesFRM.FormActivate(Sender: TObject);
+var
+  Status:String;
 begin
-ksOpenTables([TableSQL]);
+
+
+  filterBox.ItemIndex:=1;
+  status:= FilterBox.Value;
+  ShowFiltered(Status);
+
 
 end;
 

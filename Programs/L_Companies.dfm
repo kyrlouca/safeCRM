@@ -32,7 +32,6 @@ object L_companiesFRM: TL_companiesFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 918
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -54,8 +53,6 @@ object L_companiesFRM: TL_companiesFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 515
-    ExplicitWidth = 918
     object RzPanel1: TRzPanel
       Left = 985
       Top = 1
@@ -64,7 +61,6 @@ object L_companiesFRM: TL_companiesFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 817
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -292,7 +288,6 @@ object L_companiesFRM: TL_companiesFRM
     Height = 100
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 918
     object RzGroupBox1: TRzGroupBox
       Left = 7
       Top = 0
@@ -366,8 +361,6 @@ object L_companiesFRM: TL_companiesFRM
     Height = 358
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 918
-    ExplicitHeight = 362
     object Panel5: TPanel
       Left = 857
       Top = 1
@@ -377,8 +370,6 @@ object L_companiesFRM: TL_companiesFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitTop = 0
-      ExplicitHeight = 360
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -435,6 +426,7 @@ object L_companiesFRM: TL_companiesFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 1
+        Visible = False
         OnClick = DeletehawbBTNClick
         Glyph.Data = {
           DE010000424DDE01000000000000760000002800000024000000120000000100
@@ -622,7 +614,6 @@ object L_companiesFRM: TL_companiesFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 360
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -743,6 +734,7 @@ object L_companiesFRM: TL_companiesFRM
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 5
             Style = nbsDelete
+            Visible = False
           end
         end
         object wwIncrementalSearch1: TwwIncrementalSearch
@@ -806,7 +798,6 @@ object L_companiesFRM: TL_companiesFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
-        ExplicitHeight = 327
       end
     end
     object RzPanel4: TRzPanel
@@ -818,7 +809,6 @@ object L_companiesFRM: TL_companiesFRM
       Alignment = taLeftJustify
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitHeight = 360
     end
   end
   object TableSRC: TDataSource

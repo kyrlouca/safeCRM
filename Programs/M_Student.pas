@@ -127,6 +127,9 @@ type
     Label19: TLabel;
     wwDBEdit7: TwwDBEdit;
     TableSQLJOB: TWideStringField;
+    RzGroupBox1: TRzGroupBox;
+    Label17: TLabel;
+    FilterBox: TwwDBComboBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -139,6 +142,7 @@ type
     procedure Grid1TitleButtonClick(Sender: TObject; AFieldName: string);
     procedure TableSQLNewRecord(DataSet: TDataSet);
     procedure N3Click(Sender: TObject);
+    procedure FilterBoxCloseUp(Sender: TwwDBComboBox; Select: Boolean);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -146,6 +150,7 @@ type
     { Public declarations }
     MyInsertState:Boolean;
     IN_ACTION:String;
+  procedure ShowFiltered(Const Status:String);
 
   end;
 
@@ -169,6 +174,20 @@ procedure TM_StudentFRM.TableSQLBeforeEdit(
 begin
 //   Dataset.FieldByName('Serial_number').ReadOnly:=true;
 end;
+
+procedure TM_StudentFRM.ShowFiltered(Const Status:String);
+begin
+  TableSQL.RestoreSQL;
+
+  if Status='Y' then begin
+    TableSQL.AddWhere('status_active = ''Y'' ')
+  end else if  status='N' then begin
+    TableSQL.AddWhere('status_active = ''N'' ')
+  end;
+  TableSQL.Open;
+
+end;
+
 
 
 procedure TM_StudentFRM.TableSQLNewRecord(DataSet: TDataSet);
@@ -198,9 +217,25 @@ begin
 close;
 end;
 
-procedure TM_StudentFRM.FormActivate(Sender: TObject);
+procedure TM_StudentFRM.FilterBoxCloseUp(Sender: TwwDBComboBox;
+  Select: Boolean);
+Var
+  Status:String;
 begin
-ksOpenTables([TableSQL]);
+  if not select then exit;
+  status:= FilterBox.Value;
+  ShowFiltered(Status);
+end;
+
+procedure TM_StudentFRM.FormActivate(Sender: TObject);
+var
+  status:String;
+begin
+  filterBox.ItemIndex:=1;
+  status:= FilterBox.Value;
+  ShowFiltered(Status);
+
+
 if IN_ACTION='INSERT' then begin
    TableSQL.Insert;
 end;

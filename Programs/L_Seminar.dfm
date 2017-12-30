@@ -62,7 +62,6 @@ object L_SeminarFRM: TL_SeminarFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 495
     object RzPanel1: TRzPanel
       Left = 952
       Top = 1
@@ -404,7 +403,6 @@ object L_SeminarFRM: TL_SeminarFRM
     Height = 358
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 308
     object Panel5: TPanel
       Left = 833
       Top = 1
@@ -414,7 +412,6 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 306
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -814,7 +811,6 @@ object L_SeminarFRM: TL_SeminarFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 306
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -987,7 +983,6 @@ object L_SeminarFRM: TL_SeminarFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
-        ExplicitHeight = 273
         object StatusShowFLD: TwwDBComboBox
           Left = 304
           Top = 176
@@ -1037,7 +1032,6 @@ object L_SeminarFRM: TL_SeminarFRM
       Alignment = taLeftJustify
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitHeight = 306
     end
   end
   object TableSRC: TDataSource
@@ -1303,7 +1297,7 @@ object L_SeminarFRM: TL_SeminarFRM
         OnClick = N1Click
       end
       object N2: TMenuItem
-        Caption = #923#943#963#964#945' '#928#953#963#964#959#960#959#953#951#964#953#954#974#957
+        Caption = #928#953#963#964#959#960#959#953#951#964#953#954#940'-'#924#941#961#949#962' '#960#945#961#945#954#959#955#959#973#952#951#963#951#962
         OnClick = N2Click
       end
       object N4: TMenuItem

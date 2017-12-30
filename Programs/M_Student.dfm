@@ -2,7 +2,7 @@ object M_StudentFRM: TM_StudentFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 707
+  ClientHeight = 687
   ClientWidth = 1246
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,6 +14,7 @@ object M_StudentFRM: TM_StudentFRM
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
+  WindowState = wsMaximized
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
@@ -48,7 +49,7 @@ object M_StudentFRM: TM_StudentFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 664
+    Top = 644
     Width = 1246
     Height = 43
     Align = alBottom
@@ -261,19 +262,84 @@ object M_StudentFRM: TM_StudentFRM
       ParentFont = False
       TabOrder = 3
     end
+    object RzGroupBox1: TRzGroupBox
+      Left = 263
+      Top = 2
+      Width = 237
+      Height = 97
+      Caption = 'Filter Students'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      GradientColorStop = clWhite
+      GroupStyle = gsUnderline
+      ParentFont = False
+      TabOrder = 4
+      object Label17: TLabel
+        Left = 11
+        Top = 24
+        Width = 69
+        Height = 15
+        Caption = 'Active Status'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object FilterBox: TwwDBComboBox
+        Left = 86
+        Top = 21
+        Width = 140
+        Height = 23
+        ParentCustomHint = False
+        BiDiMode = bdLeftToRight
+        ParentBiDiMode = False
+        ShowButton = True
+        Style = csDropDownList
+        MapList = True
+        AllowClearKey = False
+        Color = clWhite
+        Ctl3D = True
+        DropDownCount = 8
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'All'#9
+          'Active'#9'Y'
+          'Deleted'#9'N')
+        ParentCtl3D = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Sorted = False
+        TabOrder = 0
+        UnboundDataType = wwDefault
+        OnCloseUp = FilterBoxCloseUp
+        DoubleBuffered = False
+        ParentDoubleBuffered = False
+      end
+    end
   end
   object Panel3: TPanel
     Left = 0
     Top = 163
     Width = 1246
-    Height = 501
+    Height = 481
     Align = alClient
     TabOrder = 2
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
       Width = 632
-      Height = 499
+      Height = 479
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -290,19 +356,19 @@ object M_StudentFRM: TM_StudentFRM
         Left = 0
         Top = 9
         Width = 626
-        Height = 490
+        Height = 470
         ControlType.Strings = (
           'IS_COMPANY;CheckBox;Y;N'
-          'STATUS_ACTIVE;CheckBox;'#933';'#925)
+          'STATUS_ACTIVE;CheckBox;N;Y')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'SERIAL_QB'#9'10'#9'A/A QB'#9#9
-          'STATUS_ACTIVE'#9'9'#9#917#957#949#961#947#972#962#9'F'#9
-          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959#9#9
-          'FIRST_NAME'#9'13'#9#908#957#959#956#945#9#9
-          'IS_COMPANY'#9'8'#9' '#917#964#945#953#961#949#943#945#9#9
-          'NATIONAL_ID'#9'11'#9#932#945#965#964#972#964#951#964#945#9#9
-          'PHONE_MOBILE'#9'11'#9#922#953#957#951#964#972#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'SERIAL_QB'#9'10'#9'A/A QB'
+          'STATUS_ACTIVE'#9'9'#9#916#953#945#947#961#945#966#942#9'F'
+          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'13'#9#908#957#959#956#945
+          'IS_COMPANY'#9'8'#9' '#917#964#945#953#961#949#943#945
+          'NATIONAL_ID'#9'11'#9#932#945#965#964#972#964#951#964#945
+          'PHONE_MOBILE'#9'11'#9#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -330,14 +396,13 @@ object M_StudentFRM: TM_StudentFRM
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
-        ExplicitTop = 5
       end
     end
     object RzPanel4: TRzPanel
       Left = 633
       Top = 1
       Width = 612
-      Height = 499
+      Height = 479
       Align = alClient
       TabOrder = 1
       object GroupBox1: TGroupBox
@@ -1202,7 +1267,7 @@ object M_StudentFRM: TM_StudentFRM
       FieldName = 'SERIAL_QB'
     end
     object TableSQLSTATUS_ACTIVE: TWideStringField
-      DisplayLabel = #917#957#949#961#947#972#962
+      DisplayLabel = #916#953#945#947#961#945#966#942
       DisplayWidth = 9
       FieldName = 'STATUS_ACTIVE'
       Required = True

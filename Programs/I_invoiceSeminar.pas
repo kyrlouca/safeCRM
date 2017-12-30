@@ -119,6 +119,7 @@ type
     SavePresBTN: TBitBtn;
     CanelBTN: TBitBtn;
     RzPanel10: TRzPanel;
+    RzPanel11: TRzPanel;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -286,7 +287,10 @@ end;
 procedure TI_InvoiceSeminarFRM.FormActivate(Sender: TObject);
 var
   params:G_generalProcs.TParameterRecord;
+  SeminarStatus:String;
 begin
+
+
 
 
   if not InvoiceSQL.UpdateTransaction.Active then
@@ -302,7 +306,8 @@ begin
   InvoiceSQL.ParamByName('subjectSerial').Value:= SeminarSubjectSQL.FieldByName('serial_number').AsInteger;
   InvoiceSQL.open;
 
-
+  SeminarStatus:=SeminarSQL.FieldByName('status').AsString;
+  invoiceSQL.ReadOnly:= (SeminarStatus<>'A')
 end;
 
 procedure TI_InvoiceSeminarFRM.FormCloseQuery(Sender: TObject;
@@ -485,8 +490,8 @@ begin
         InvoiceSQL.FieldByName('last_name').Value       :=qr.FieldByName('inv_last_name').AsString;
         InvoiceSQL.FieldByName('first_name').Value:=qr.FieldByName('inv_first_name').AsString;
         InvoiceSQL.FieldByName('FUll_name').Value:=qr.FieldByName('inv_first_name').AsString;
-        InvoiceSQL.FieldByName('PERSON_NATIONAL_ID').Value:=Trim(qr.FieldByName('national_id').AsString)
-        +' '+Trim(qr.FieldByName('inv_last_name').AsString);
+        InvoiceSQL.FieldByName('PERSON_NATIONAL_ID').Value:=Trim(qr.FieldByName('national_id').AsString);
+//        +' '+Trim(qr.FieldByName('inv_last_name').AsString);
 
         InvoiceSQL.FieldByName('Discount_Customer').Value:=0; //will change in beforePost
         InvoiceSQL.FieldByName('Discount_by_safe').Value:=0;
