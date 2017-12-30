@@ -301,7 +301,7 @@ begin
   if isallow then begin
 //    UpdatePresenceTable(seminarSerial,daySerial);
   end else begin
-      SHowMessage('Το σεμινάριο δεν είναι σε στάδιο ΕΓΚΡΙΣΗ. Χρησιμοποιείστε τα Reports');
+        MessageDlg('Tο σεμινάριο δεν είναι σε στάδιο ΕΓΚΡΙΣΗΣ. '+#13+#10+'Χρησιμοποιείστε τα Reports για εκτύπωση.', mtWarning, [mbOK], 0);
   end;
   VPresenceSQL.ReadOnly:= not isallow;
 

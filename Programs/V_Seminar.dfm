@@ -284,7 +284,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Height = 22
               DataField = 'SEMINAR_NAME'
               DataSource = SeminarSRC
-              TabOrder = 4
+              TabOrder = 5
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -311,7 +311,7 @@ object V_SeminarFRM: TV_SeminarFRM
               ItemHeight = 0
               ParentFont = False
               Sorted = False
-              TabOrder = 3
+              TabOrder = 4
               UnboundDataType = wwDefault
               OnCloseUp = SeminarTypeFLDCloseUp
             end
@@ -327,7 +327,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Font.Height = -12
               Font.Name = 'Tahoma'
               Font.Style = []
-              TabOrder = 5
+              TabOrder = 6
               Zoom = 100
             end
             object MonoRGP: TwwRadioGroup
@@ -342,7 +342,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Items.Strings = (
                 #924#972#957#959'-'#917#960#953#967#949#953#961#953#963#953#945#954#972
                 #928#972#955#965'-'#917#960#953#967#949#953#961#953#963#953#945#954#972)
-              TabOrder = 6
+              TabOrder = 7
               Values.Strings = (
                 'M'
                 'P')
@@ -362,7 +362,7 @@ object V_SeminarFRM: TV_SeminarFRM
               LookupTable = CompanySQL
               LookupField = 'SERIAL_NUMBER'
               Options = [loRowLines, loTitles]
-              TabOrder = 7
+              TabOrder = 8
               AutoDropDown = True
               ShowButton = True
               PreciseEditRegion = False
@@ -389,7 +389,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Font.Style = []
               ParentFont = False
               ShowButton = True
-              TabOrder = 1
+              TabOrder = 2
               DisplayFormat = 'dd/mm/yyyy'
             end
             object wwDBDateTimePicker1: TwwDBDateTimePicker
@@ -412,7 +412,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Font.Style = []
               ParentFont = False
               ShowButton = True
-              TabOrder = 2
+              TabOrder = 3
               DisplayFormat = 'dd/mm/yyyy'
             end
             object AnadFLD: TwwDBEdit
@@ -438,7 +438,7 @@ object V_SeminarFRM: TV_SeminarFRM
               Height = 22
               DataField = 'SPECIFICATION_NUMBER'
               DataSource = SeminarSRC
-              TabOrder = 8
+              TabOrder = 1
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -2821,6 +2821,10 @@ object V_SeminarFRM: TV_SeminarFRM
       object PictureTS: TTabSheet
         Caption = #922#949#943#956#949#957#959'/'#917#953#954#972#957#949#962
         ImageIndex = 5
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object RzPanel23: TRzPanel
           Left = 0
           Top = 0
@@ -3369,7 +3373,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800400310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800440310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

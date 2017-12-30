@@ -58,7 +58,6 @@ type
     Image1: TImage;
     HelpFile1: TMenuItem;
     Reports1: TMenuItem;
-    Reminders1: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
     N11: TMenuItem;
@@ -285,7 +284,7 @@ end;
 
 procedure TM_mainFRM.N7Click(Sender: TObject);
 begin
-  gpShowModal(TL_listInvoicesFRM);
+ gpShowModal(TL_listInvoicesFRM);
 
 end;
 

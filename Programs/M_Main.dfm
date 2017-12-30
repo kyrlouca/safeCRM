@@ -7468,10 +7468,6 @@ object M_mainFRM: TM_mainFRM
     end
     object Reports1: TMenuItem
       Caption = 'Reports'
-      object Reminders1: TMenuItem
-        Caption = #917#961#947#945#963#943#949#962
-        OnClick = Reminders1Click
-      end
       object N12: TMenuItem
         Caption = #923#942#958#949#953#962
         OnClick = N12Click
