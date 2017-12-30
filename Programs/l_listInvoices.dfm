@@ -60,7 +60,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 680
     object RzPanel1: TRzPanel
       Left = 1054
       Top = 1
@@ -314,7 +313,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
     Height = 497
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 517
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
@@ -323,7 +321,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 515
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -332,7 +329,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 984
       end
       object Grid1: TwwDBGrid
         Left = 0
@@ -343,15 +339,16 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
           'IS_COMPANY;CheckBox;Y;N'
           'INVOICE_STATUS;CheckBox;P;U')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
-          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'13'#9#908#957#959#956#945
-          'NATIONAL_ID'#9'11'#9#932#945#965#964#972#964#951#964#945
-          'PHONE_MOBILE'#9'14'#9#922#953#957#951#964#972
-          'SUBJECT_NAME'#9'23'#9#931#949#956#953#957#940#961#953#959
-          'DATE_INVOICED'#9'11'#9#919#956#949#961#959#956'.'
-          'AMOUNT_WITH_VAT'#9'10'#9#928#959#963#972
-          'INVOICE_STATUS'#9'8'#9#928#955#951#961#969#956#942)
+          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
+          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959#9#9
+          'FIRST_NAME'#9'13'#9#908#957#959#956#945#9#9
+          'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945#9#9
+          'PHONE_MOBILE'#9'10'#9#922#953#957#951#964#972#9#9
+          'SUBJECT_NAME'#9'23'#9#931#949#956#953#957#940#961#953#959#9#9
+          'DATE_INVOICED'#9'11'#9#919#956#949#961#959#956'.'#9#9
+          'AMOUNT_WITH_VAT'#9'5'#9#928#959#963#972#9#9
+          'REMAINING'#9'9'#9#933#960#972#955#959#953#960#959#9#9
+          'INVOICE_STATUS'#9'8'#9#928#955#951#961#969#956#942#9#9)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -461,9 +458,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
       Align = alClient
       BorderOuter = fsNone
       TabOrder = 1
-      ExplicitLeft = 985
-      ExplicitWidth = 169
-      ExplicitHeight = 515
       object RzPanel5: TRzPanel
         Left = 0
         Top = 0
@@ -472,7 +466,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 169
       end
     end
   end
@@ -489,14 +482,15 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         '  (SERIAL_NUMBER, FK_PERSON_SERIAL, INVOICE_STATUS, DATE_INVOICE' +
         'D, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER, AMOUNT_GROSS, ' +
         'AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_ANAD, LAST_NAME, FIR' +
-        'ST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL, SUBJECT_NAME)'
+        'ST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL, SUBJECT_NAME, FU' +
+        'LL_NAME)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_PERSON_SERIAL, :INVOICE_STATUS, :DATE_INV' +
         'OICED, :VAT_RATE, :DISCOUNT_BY_SAFE, :DISCOUNT_CUSTOMER, :AMOUNT' +
         '_GROSS, :AMOUNT_NET, :AMOUNT_VAT, :AMOUNT_WITH_VAT, :IS_ANAD, :L' +
         'AST_NAME, :FIRST_NAME, :PERSON_NATIONAL_ID, :FK_SUBJECT_SERIAL, ' +
-        ':SUBJECT_NAME)')
+        ':SUBJECT_NAME, :FULL_NAME)')
     SQLDelete.Strings = (
       'DELETE FROM INVOICE'
       'WHERE'
@@ -513,7 +507,7 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         'AMOUNT_WITH_VAT = :AMOUNT_WITH_VAT, IS_ANAD = :IS_ANAD, LAST_NAM' +
         'E = :LAST_NAME, FIRST_NAME = :FIRST_NAME, PERSON_NATIONAL_ID = :' +
         'PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL = :FK_SUBJECT_SERIAL, SUBJ' +
-        'ECT_NAME = :SUBJECT_NAME'
+        'ECT_NAME = :SUBJECT_NAME, FULL_NAME = :FULL_NAME'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -522,7 +516,7 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         'OICED, VAT_RATE, DISCOUNT_BY_SAFE, DISCOUNT_CUSTOMER, AMOUNT_GRO' +
         'SS, AMOUNT_NET, AMOUNT_VAT, AMOUNT_WITH_VAT, IS_ANAD, LAST_NAME,' +
         ' FIRST_NAME, PERSON_NATIONAL_ID, FK_SUBJECT_SERIAL, SUBJECT_NAME' +
-        ' FROM INVOICE'
+        ', FULL_NAME FROM INVOICE'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -539,15 +533,25 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
     Transaction = ReadTrans
     UpdateTransaction = WriteTrans
     SQL.Strings = (
+      ''
+      '    Select'
       
-        'select inv.serial_number,  per.last_first_name, per.national_id,' +
-        ' per.phone_mobile,'
-      'inv.*'
-      'from'
-      'invoice inv left outer join'
-      ' person_view per on inv.fk_person_serial= per.serial_number'
-      'Order by '
-      'per.last_name')
+        '        coalesce(pp.payment,0) as payment, coalesce(inv.amount_w' +
+        'ith_vat,0) - coalesce(payment,0) as Remaining,'
+      '        inv.*,'
+      '        per.last_first_name, per.national_id, per.phone_mobile'
+      '    from'
+      '    invoice inv left outer join'
+      '    ('
+      
+        '        select pay.fk_invoice_serial, sum(pay.amount_paid) as Pa' +
+        'yment from invoice_payment pay'
+      '        group by pay.fk_invoice_serial'
+      '    )pp  on inv.serial_number= pp.fk_invoice_serial'
+      
+        '    left outer join person_view per on per.serial_number=inv.fk_' +
+        'person_serial'
+      'order by per.last_name')
     ReadOnly = True
     Active = True
     OnNewRecord = TableSQLNewRecord
@@ -575,14 +579,14 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
     end
     object TableSQLNATIONAL_ID: TWideStringField
       DisplayLabel = #932#945#965#964#972#964#951#964#945
-      DisplayWidth = 11
+      DisplayWidth = 10
       FieldName = 'NATIONAL_ID'
       ReadOnly = True
       FixedChar = True
     end
     object TableSQLPHONE_MOBILE: TWideStringField
       DisplayLabel = #922#953#957#951#964#972
-      DisplayWidth = 14
+      DisplayWidth = 10
       FieldName = 'PHONE_MOBILE'
       ReadOnly = True
       FixedChar = True
@@ -599,12 +603,18 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
       DisplayLabel = #919#956#949#961#959#956'.'
       DisplayWidth = 11
       FieldName = 'DATE_INVOICED'
-      DisplayFormat = 'dd/mm/yyyy'
     end
     object TableSQLAMOUNT_WITH_VAT: TFloatField
       DisplayLabel = #928#959#963#972
-      DisplayWidth = 10
+      DisplayWidth = 5
       FieldName = 'AMOUNT_WITH_VAT'
+      DisplayFormat = '0.00'
+    end
+    object TableSQLREMAINING: TFloatField
+      DisplayLabel = #933#960#972#955#959#953#960#959
+      DisplayWidth = 9
+      FieldName = 'REMAINING'
+      ReadOnly = True
       DisplayFormat = '0.00'
     end
     object TableSQLINVOICE_STATUS: TWideStringField
@@ -615,16 +625,9 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
       FixedChar = True
       Size = 1
     end
-    object TableSQLLAST_FIRST_NAME: TWideStringField
-      DisplayWidth = 61
-      FieldName = 'LAST_FIRST_NAME'
+    object TableSQLPAYMENT: TFloatField
+      FieldName = 'PAYMENT'
       ReadOnly = True
-      Visible = False
-      Size = 61
-    end
-    object TableSQLSERIAL_NUMBER_1: TIntegerField
-      FieldName = 'SERIAL_NUMBER_1'
-      Required = True
       Visible = False
     end
     object TableSQLFK_PERSON_SERIAL: TIntegerField
@@ -651,6 +654,7 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
     object TableSQLAMOUNT_NET: TFloatField
       FieldName = 'AMOUNT_NET'
       Visible = False
+      DisplayFormat = '0.00'
     end
     object TableSQLAMOUNT_VAT: TFloatField
       FieldName = 'AMOUNT_VAT'
@@ -674,6 +678,17 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
       Required = True
       Visible = False
     end
+    object TableSQLFULL_NAME: TWideStringField
+      FieldName = 'FULL_NAME'
+      Visible = False
+      Size = 80
+    end
+    object TableSQLLAST_FIRST_NAME: TWideStringField
+      FieldName = 'LAST_FIRST_NAME'
+      ReadOnly = True
+      Visible = False
+      Size = 61
+    end
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -691,7 +706,7 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
     object Reports1: TMenuItem
       Caption = #917#954#964#973#960#969#963#951
       object N3: TMenuItem
-        Caption = #913#960#955#942#961#969#964#945' '#932#953#956#959#955#972#947#953#945
+        Caption = #932#953#956#959#955#972#947#953#945
         OnClick = N3Click
       end
     end

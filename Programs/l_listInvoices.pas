@@ -33,11 +33,16 @@ type
     Label25: TLabel;
     RzPanel4: TRzPanel;
     RzPanel5: TRzPanel;
+    RzGroupBox1: TRzGroupBox;
+    Label2: TLabel;
+    PayStatusFLD: TwwDBComboBox;
+    PrintRBtn: TBitBtn;
+    MainMenu1: TMainMenu;
+    Reports1: TMenuItem;
+    N3: TMenuItem;
+    TableSQLPAYMENT: TFloatField;
+    TableSQLREMAINING: TFloatField;
     TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLLAST_FIRST_NAME: TWideStringField;
-    TableSQLNATIONAL_ID: TWideStringField;
-    TableSQLPHONE_MOBILE: TWideStringField;
-    TableSQLSERIAL_NUMBER_1: TIntegerField;
     TableSQLFK_PERSON_SERIAL: TIntegerField;
     TableSQLINVOICE_STATUS: TWideStringField;
     TableSQLDATE_INVOICED: TDateField;
@@ -54,13 +59,10 @@ type
     TableSQLPERSON_NATIONAL_ID: TWideStringField;
     TableSQLFK_SUBJECT_SERIAL: TIntegerField;
     TableSQLSUBJECT_NAME: TWideStringField;
-    RzGroupBox1: TRzGroupBox;
-    Label2: TLabel;
-    PayStatusFLD: TwwDBComboBox;
-    PrintRBtn: TBitBtn;
-    MainMenu1: TMainMenu;
-    Reports1: TMenuItem;
-    N3: TMenuItem;
+    TableSQLFULL_NAME: TWideStringField;
+    TableSQLLAST_FIRST_NAME: TWideStringField;
+    TableSQLNATIONAL_ID: TWideStringField;
+    TableSQLPHONE_MOBILE: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -216,9 +218,9 @@ begin
 
   frm :=  TR_invoicesUnpaidFRM.Create(nil);
 //  frm.IN_certificate_serial:=0;
-//  frm.IN_Day_Serial :=0;
+    frm.IN_SQL:=TableSQL.FinalSQL;
   try
-    frm.PrintSeminar;
+    frm.PrintInvoices;
   finally
     frm.Free;
   end;

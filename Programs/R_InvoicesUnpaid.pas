@@ -92,7 +92,6 @@ type
     PersonSQLCOMPANY_CONTACT_EMAIL: TWideStringField;
     PersonSQLCOMPANY_CONTACT_FAX: TWideStringField;
     PersonSQLCOMPANY_SOCIAL_SEC: TWideStringField;
-    PersonSQLSAFE_SERIAL: TIntegerField;
     ppLabel8: TppLabel;
     InvoiceSQLSERIAL_NUMBER: TIntegerField;
     InvoiceSQLFK_PERSON_SERIAL: TIntegerField;
@@ -143,7 +142,9 @@ type
   public
     { Public declarations }
   IN_PersonSerial:Integer;
-  procedure PrintSeminar();
+   IN_SQL:String;
+
+  procedure PrintInvoices();
   end;
 
 var
@@ -211,7 +212,7 @@ end;
 
 
 
-procedure TR_invoicesUnpaidFRM.PrintSeminar();
+procedure TR_invoicesUnpaidFRM.PrintInvoices();
 begin
     PrintTheSeminar(IN_PersonSerial);
 
@@ -227,7 +228,9 @@ Var
 begin
 
   InvoiceSQL.Close;
-  InvoiceSQL.Open;
+  InvoiceSQL.SQL.Clear;
+  InvoiceSQL.SQL.Add(IN_SQL);
+   InvoiceSQL.Open;
 
   PpReport1.Print;
 
