@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = ReminderTS
+      ActivePage = SubjectTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1792,8 +1792,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 'SERIAL_QB'#9'8'#9'QB'
                 'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
                 'FIRST_NAME'#9'15'#9#908#957#959#956#945
-                'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945
-                'IS_GUEST'#9'7'#9#917#954#964#945#954#964#959#962)
+                'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945)
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
@@ -2822,6 +2821,10 @@ object V_SeminarFRM: TV_SeminarFRM
       object PictureTS: TTabSheet
         Caption = #922#949#943#956#949#957#959'/'#917#953#954#972#957#949#962
         ImageIndex = 5
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object RzPanel23: TRzPanel
           Left = 0
           Top = 0
@@ -3370,7 +3373,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C0101100088003C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800400310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
