@@ -156,6 +156,12 @@ type
     SeminarSQLFK_EXAMINER: TIntegerField;
     SeminarSQLTYPE_MONO_POLY: TWideStringField;
     SeminarSQLSEM_CATEGORY: TWideStringField;
+    ppLabel14: TppLabel;
+    ppDBText4: TppDBText;
+    PersonSQLSEMINAR_ANAD: TWideStringField;
+    ppLabel15: TppLabel;
+    ppDBText6: TppDBText;
+    PersonSQLPERSON_QB: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);

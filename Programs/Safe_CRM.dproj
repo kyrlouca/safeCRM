@@ -219,10 +219,6 @@
             <Form>R_SeminarListingRevenuesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_expiry.pas">
-            <Form>R_ExpiryFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="R_SeminarRevenues.pas">
             <Form>R_SeminarRevenuesFRM</Form>
             <FormType>dfm</FormType>
@@ -276,6 +272,10 @@
         </DCCReference>
         <DCCReference Include="S_LoadDocs.pas">
             <Form>S_LoadDocsFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="R_expiry.pas">
+            <Form>R_ExpiryFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
