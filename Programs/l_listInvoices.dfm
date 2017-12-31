@@ -332,28 +332,29 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
       end
       object Grid1: TwwDBGrid
         Left = 0
-        Top = 5
-        Width = 897
-        Height = 184
+        Top = 9
+        Width = 1016
+        Height = 486
         ControlType.Strings = (
           'IS_COMPANY;CheckBox;Y;N'
           'INVOICE_STATUS;CheckBox;P;U')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959#9#9
-          'FIRST_NAME'#9'13'#9#908#957#959#956#945#9#9
-          'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945#9#9
-          'PHONE_MOBILE'#9'10'#9#922#953#957#951#964#972#9#9
-          'SUBJECT_NAME'#9'23'#9#931#949#956#953#957#940#961#953#959#9#9
-          'DATE_INVOICED'#9'11'#9#919#956#949#961#959#956'.'#9#9
-          'AMOUNT_WITH_VAT'#9'5'#9#928#959#963#972#9#9
-          'REMAINING'#9'9'#9#933#960#972#955#959#953#960#959#9#9
-          'INVOICE_STATUS'#9'8'#9#928#955#951#961#969#956#942#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'13'#9#908#957#959#956#945
+          'NATIONAL_ID'#9'10'#9#932#945#965#964#972#964#951#964#945
+          'PHONE_MOBILE'#9'10'#9#922#953#957#951#964#972
+          'SUBJECT_NAME'#9'23'#9#931#949#956#953#957#940#961#953#959
+          'DATE_INVOICED'#9'11'#9#919#956#949#961#959#956'.'
+          'AMOUNT_WITH_VAT'#9'5'#9#928#959#963#972
+          'REMAINING'#9'9'#9#933#960#972#955#959#953#960#959
+          'INVOICE_STATUS'#9'8'#9#928#955#951#961#969#956#942)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
         FixedCols = 0
         ShowHorzScrollBar = True
+        Align = alClient
         Color = 12713983
         DataSource = TableSRC
         Font.Charset = DEFAULT_CHARSET
@@ -376,10 +377,13 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
+        ExplicitTop = 5
+        ExplicitWidth = 897
+        ExplicitHeight = 184
       end
       object PrintRBtn: TBitBtn
-        Left = 905
-        Top = 5
+        Left = 769
+        Top = 29
         Width = 96
         Height = 37
         Caption = #928#955#951#961#969#956#942

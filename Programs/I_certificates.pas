@@ -671,18 +671,27 @@ begin
           xDateLast:=hoursQr.FieldByName('maxDate').AsDateTime;
           xSubjectSerial:=SubjectSerial;
 
-          isAbsent:= hoursQr.IsEmpty or (hoursqr.FieldByName('isPresent').AsString='N')
-          or (xSeminarHours < SubjectHours ) ;
+          isAbsent:= hoursQr.IsEmpty or (hoursqr.FieldByName('TOtal_hours').AsInteger=0)or (hoursqr.FieldByName('isPresent').AsString='N');
+
           //*********** check if isPresent is EMPTY STRING === do it
           if isAbsent then  begin
 //            PresentStr:='N';
             xGuestHours:=NewFindGuestHours(SubjectSerial,SubjectTypeSerial,PersonSerial);
-            xSeminarHours:=min(xGuestHours.Hours,SeminarHours);
+
+            xSeminarHours:=min(xGuestHours.Hours,SubjectHours);
             xDateLast:=xGuestHours.maxdate;
             xSubjectSerial:=xGuestHours.SubjectSerial;
             ///isAbsent is checked again after looking into other seminars above
-            isAbsent:= not xGuestHours.isPresent;
-            isHasAnotherDay:= isHasAnotherDay OR (xSeminarHours>0);   //any subject may have another day
+
+            //is is recent ...
+            if abs(XDateLast- date)<200 then begin
+              isAbsent:= not xGuestHours.isPresent;
+              isHasAnotherDay:= isHasAnotherDay OR (xSeminarHours>0);   //any subject may have another day
+            end else begin
+              isAbsent:=true;
+              xSeminarHours:=0;
+            end;
+
 
           end;
           if isAbsent then
@@ -754,6 +763,7 @@ begin
   str:=
   ' select'
   +'      first 1 pp.subject_serial, sum(pp.present_hours) as hours, max(pp.present_ispresent) as isPresent, max(pp.day_date) as maxDate'
+  +'        ,abs(  ( max(pp.day_date) - Current_date ) ) as daysDiff '
   +'  from'
   +'      person_presence_view pp'
   +'  where'
