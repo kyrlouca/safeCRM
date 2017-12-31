@@ -903,6 +903,7 @@ begin
   NonAttendSQL.Open;
 
   ksOpenTables([AttendingSQL]);
+  AttendingSQL.ReadOnly:=not allowToModify();
 
 //  st:=SeminarSQL.FieldByName('status').AsString;
 //  allowModify := (St='P') or (St='N') or (St='W');

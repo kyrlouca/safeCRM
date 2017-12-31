@@ -111,6 +111,9 @@ type
     ppDBText4: TppDBText;
     ppLabel17: TppLabel;
     ppLine4: TppLine;
+    ppDBText3: TppDBText;
+    SeminarPresenceSQLSUBJECT: TWideStringField;
+    ppLabel18: TppLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);

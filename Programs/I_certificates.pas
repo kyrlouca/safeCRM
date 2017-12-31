@@ -481,6 +481,7 @@ type
 var
   qr,PersonQr:TksQuery;
   subjectQr:TksQuery;
+  subjectHoursQR:TksQuery;
   hoursQr:TksQuery;
 
   str:String;
@@ -524,6 +525,8 @@ var
   isValidCert:boolean;
   isValidstr:String;
   isHasAnotherDay:Boolean;
+
+  SubjectHours:integer;
 
 begin
 
@@ -569,6 +572,12 @@ begin
   str:=
     'select serial_number,FK_SUBJECT_TYPE_SERIAL from seminar_subject ss where ss.fk_seminar_serial= :SeminarSerial';
   subjectQR:=TksQuery.Create(cn,str);
+
+
+    str:=
+   ' select sum(ssd.duration_hours) as SubjectHours from seminar_subject_day ssd'
+    +' where ssd.fk_seminar_subject_serial = :SubjectSerial' ;
+    subjectHoursQR:=TksQuery.Create(cn,str);
 
   //one record for each subject  for all days presence of the person . calc the sum of hours and Use latest date.
   //will create a row in Seminar_certificate_subject
@@ -646,6 +655,12 @@ begin
           SubjectSerial:=subjectQR.FieldByName('serial_number').AsInteger;
           SubjectTypeSerial:=subjectQR.FieldByName('FK_SUBJECT_TYPE_SERIAL').AsInteger;
 
+          SubjectHoursQR.Close;
+          SubjectHoursQR.ParamByName('SubjectSerial').Value:=SubjectSerial;
+          SubjectHoursQR.Open;
+          SubjectHours:= SubjectHoursQR.FieldbyName('subjectHours').AsInteger;
+
+
           hoursQr.Close;
           hoursQr.ParamByName('PersonSerial').Value:=Personserial;
           hoursQr.ParamByName('SubjectSerial').Value:=Subjectserial;
@@ -656,12 +671,13 @@ begin
           xDateLast:=hoursQr.FieldByName('maxDate').AsDateTime;
           xSubjectSerial:=SubjectSerial;
 
-          isAbsent:= hoursQr.IsEmpty or (hoursqr.FieldByName('isPresent').AsString='N') ;
+          isAbsent:= hoursQr.IsEmpty or (hoursqr.FieldByName('isPresent').AsString='N')
+          or (xSeminarHours < SubjectHours ) ;
           //*********** check if isPresent is EMPTY STRING === do it
           if isAbsent then  begin
 //            PresentStr:='N';
             xGuestHours:=NewFindGuestHours(SubjectSerial,SubjectTypeSerial,PersonSerial);
-            xSeminarHours:=xGuestHours.Hours;
+            xSeminarHours:=min(xGuestHours.Hours,SeminarHours);
             xDateLast:=xGuestHours.maxdate;
             xSubjectSerial:=xGuestHours.SubjectSerial;
             ///isAbsent is checked again after looking into other seminars above
@@ -720,6 +736,8 @@ begin
       qr.Free;
       hoursQr.Free;
       SubjectQr.Free;
+      SubjectHoursQR.free;
+
   end;
 
   end;

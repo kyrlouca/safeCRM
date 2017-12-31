@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 529
+  ClientHeight = 557
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -183,11 +183,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 486
+    Top = 514
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 466
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -280,25 +281,25 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = 1
-    ExplicitTop = 55
   end
   object Panel3: TPanel
     Left = 0
     Top = 92
     Width = 1004
-    Height = 394
+    Height = 422
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 374
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 392
+      Height = 420
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 372
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -444,13 +445,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 349
+        Top = 377
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsNone
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
+        ExplicitTop = 329
         object RzPanel6: TRzPanel
           Left = 571
           Top = 0
@@ -644,10 +646,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 392
+      Height = 420
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 372
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -659,12 +662,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 195
+        Top = 223
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 175
         object CertificatesBTN: TRzBitBtn
           Left = 29
           Top = 158
