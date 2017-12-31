@@ -123,6 +123,9 @@ type
     Help1: TMenuItem;
     N2: TMenuItem;
     TableSQLSERIAL_QB: TIntegerField;
+    Label6: TLabel;
+    RzDBLabel6: TRzDBLabel;
+    TableSQLPASS_PERCENTAGE: TIntegerField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);

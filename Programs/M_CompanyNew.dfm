@@ -293,7 +293,7 @@ object M_companyNewFRM: TM_companyNewFRM
     Top = 92
     Width = 1096
     Height = 504
-    ActivePage = EmployeesTS
+    ActivePage = InfoTS
     Align = alClient
     MultiLine = True
     TabOrder = 3

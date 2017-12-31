@@ -338,7 +338,7 @@ object M_StudentFRM: TM_StudentFRM
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
-      Width = 632
+      Width = 671
       Height = 479
       Align = alLeft
       BorderOuter = fsNone
@@ -346,16 +346,17 @@ object M_StudentFRM: TM_StudentFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 632
+        Width = 671
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 632
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 9
-        Width = 626
+        Width = 649
         Height = 470
         ControlType.Strings = (
           'IS_COMPANY;CheckBox;Y;N'
@@ -363,7 +364,7 @@ object M_StudentFRM: TM_StudentFRM
         Selected.Strings = (
           'SERIAL_NUMBER'#9'6'#9'A/A'
           'SERIAL_QB'#9'10'#9'A/A QB'
-          'STATUS_ACTIVE'#9'9'#9#916#953#945#947#961#945#966#942#9'F'
+          'STATUS_ACTIVE'#9'9'#9#916#953#945#947#961#945#956#956#941#957#951#9'F'
           'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
           'FIRST_NAME'#9'13'#9#908#957#959#956#945
           'IS_COMPANY'#9'8'#9' '#917#964#945#953#961#949#943#945
@@ -399,14 +400,16 @@ object M_StudentFRM: TM_StudentFRM
       end
     end
     object RzPanel4: TRzPanel
-      Left = 633
+      Left = 672
       Top = 1
-      Width = 612
+      Width = 573
       Height = 479
       Align = alClient
       TabOrder = 1
+      ExplicitLeft = 633
+      ExplicitWidth = 612
       object GroupBox1: TGroupBox
-        Left = 0
+        Left = 19
         Top = 49
         Width = 295
         Height = 360
@@ -631,10 +634,8 @@ object M_StudentFRM: TM_StudentFRM
           NullAndBlankState = cbUnchecked
           Alignment = taLeftJustify
           Caption = #917#957#949#961#947#972#962
-          Checked = True
           DataField = 'STATUS_ACTIVE'
           DataSource = TableSRC
-          State = cbChecked
           TabOrder = 7
         end
         object QbFLD: TwwDBEdit
@@ -854,11 +855,12 @@ object M_StudentFRM: TM_StudentFRM
       object RzPanel5: TRzPanel
         Left = 2
         Top = 2
-        Width = 608
+        Width = 569
         Height = 41
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
+        ExplicitWidth = 608
         object Nav1: TwwDBNavigator
           Left = 4
           Top = 3
@@ -1267,7 +1269,7 @@ object M_StudentFRM: TM_StudentFRM
       FieldName = 'SERIAL_QB'
     end
     object TableSQLSTATUS_ACTIVE: TWideStringField
-      DisplayLabel = #916#953#945#947#961#945#966#942
+      DisplayLabel = #916#953#945#947#961#945#956#956#941#957#951
       DisplayWidth = 9
       FieldName = 'STATUS_ACTIVE'
       Required = True

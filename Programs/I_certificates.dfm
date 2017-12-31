@@ -280,6 +280,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Height = 39
     Align = alTop
     TabOrder = 1
+    ExplicitLeft = 1
+    ExplicitTop = 55
   end
   object Panel3: TPanel
     Left = 0
@@ -892,6 +894,29 @@ object I_CertificatesFRM: TI_CertificatesFRM
         DataField = 'SEMINAR_NAME'
         DataSource = TableSRC
       end
+      object Label6: TLabel
+        Left = 92
+        Top = 235
+        Width = 101
+        Height = 14
+        Caption = #917#955#940#967#953#963#964#959' % '#937#961#974#957' '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object RzDBLabel6: TRzDBLabel
+        Left = 195
+        Top = 232
+        Width = 60
+        Height = 20
+        BorderOuter = fsFlat
+        BorderWidth = 1
+        DataField = 'PASS_PERCENTAGE'
+        DataSource = TableSRC
+      end
       object wwDBComboBox1: TwwDBComboBox
         Left = 79
         Top = 116
@@ -1141,6 +1166,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
     object TableSQLSERIAL_QB: TIntegerField
       FieldName = 'SERIAL_QB'
       ReadOnly = True
+    end
+    object TableSQLPASS_PERCENTAGE: TIntegerField
+      FieldName = 'PASS_PERCENTAGE'
+      DisplayFormat = '0%'
     end
   end
   object WriteTrans: TIBCTransaction
