@@ -200,19 +200,18 @@ qr:=TksQuery.Create(cn,'select * from seminar sem where sem.serial_number= :Semi
       isError:=true;
     end;
 
+    if (qr.FieldByName('Date_Started').AsDateTime > qr.FieldByName('Date_COMPLETED').AsDateTime ) then begin
+      ErrorMemo.Lines.Add('Η ημερομηνία Έναρξης είναι μεγαλύτερη από την ημερομηνία Ολοκλήρωσης');
+      isError:=true;
+    end;
+
+
     str:='select sub.fk_instructor, sub.fk_examiner from seminar_subject sub where sub.fk_seminar_serial = :seminarSerial';
     if ksCountRecVarSQL(cn,str,[seminarSerial])<1 then begin
       ErrorMemo.Lines.Add('Το Σεμινάριο πρέπει να έχει Τουλάχιστον ένα ΘΕΜΑ');
       isError:=true;
     end;
 
-    {
-    str:='select sub.fk_instructor, sub.fk_examiner from seminar_subject sub where sub.fk_seminar_serial = :seminarSerial';
-    if ksCountRecVarSQL(cn,str,[seminarSerial])<1 then begin
-      ErrorMemo.Lines.Add('Το Σεμινάριο πρέπει να έχει Τουλάχιστον ένα ΘΕΜΑ');
-      isError:=true;
-    end;
-    }
   str:=
   '   select sub.fk_seminar_serial from seminar_subject sub'
   +'    where'
@@ -232,9 +231,16 @@ qr:=TksQuery.Create(cn,'select * from seminar sem where sem.serial_number= :Semi
   +'      sub.fk_seminar_serial = :seminarSerial'
   +'      and sday.serial_number is null';
   if ksCountRecVarSQL(cn,str,[seminarSerial])>0 then begin
-      ErrorMemo.Lines.Add('Σε Όλα τα Θέματα πρέπει να υπάρχει ΗΜΕΡΑ');
+      ErrorMemo.Lines.Add('Σε Όλα τα Θέματα πρέπει να υπάρχει ΗΜΕΡΑ Διεξαγωγής');
       isError:=true;
   end;
+
+    str:= '   SELECT sp.fk_seminar_serial from seminar_person SP WhERE sp.fk_seminar_serial= :SeminarSerial';
+      if ksCountRecVarSQL(cn,str,[seminarSerial])=0 then begin
+      ErrorMemo.Lines.Add('Στο Σεμινάριο ΔΕΝ έχουν επιλεγεί ΕΚΠΑΙΔΕΥΟΜΕΝΟΙ');
+      isError:=true;
+    end;
+
 
  finally
     qr.Free;

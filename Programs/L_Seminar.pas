@@ -213,7 +213,7 @@ begin
       +' sem_category sc    on sem.sem_category=sc.category_code'
       +' where  sem.serial_number = :SeminarSerial and sc.is_CERTIFICATE=''Y'' ';
   if ksCountRecVarSQL(cn,str,[SeminarSerial])=0 then begin
-    MessageDlg('Για Σεμινάρια του τύπου: '+ SeminarCategory +' δεν παίρνονται Παρουσίες', mtWarning, [mbOK], 0);
+    MessageDlg('Για Σεμινάρια του τύπου: '+ SeminarCategory +' ΔΕΝ κρατούνται Παρουσίες', mtWarning, [mbOK], 0);
     exit;
   end;
 
@@ -255,8 +255,8 @@ ksfillComboF1(cn,CategoryShowFLD,'sem_category','Category_code','TYPE_DESC_GR','
 statusFLD.ItemIndex:=0;
 //tableSQL.AddWhere('sem.status = '''' ');
 
-CategoryFLD.ItemIndex:=1;
-tableSQL.AddWhere('sem.sem_category= ''N'' ');
+CategoryFLD.ItemIndex:=0;
+//tableSQL.AddWhere('sem.sem_category= ''N'' ');
 
 ksOpenTables([TableSQL]);
 
@@ -588,8 +588,15 @@ begin
 end;
 
 procedure TL_SeminarFRM.DeletehawbBTNClick(Sender: TObject);
+VAR
+  isAllow:Boolean;
 begin
-DeleteSeminar();
+  isAllow:=TableSQL.FieldByName('status').AsString='P';
+  if not isAllow then begin;
+    MessageDlg('Το Σεμινάριο ΔΕΝ επιτρέπεται να διαγραφεί.'+#13+#10+'Δεν είναι σε σταδιο Προετοιμασίας.', mtError, [mbOK], 0);
+    exit;
+  end;
+  DeleteSeminar();
 end;
 
 End.

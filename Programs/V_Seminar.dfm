@@ -2330,6 +2330,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
+            ExplicitTop = -6
           end
         end
       end
@@ -3267,9 +3268,11 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object SeminarSQLDATE_STARTED: TDateField
       FieldName = 'DATE_STARTED'
+      Required = True
     end
     object SeminarSQLDATE_COMPLETED: TDateField
       FieldName = 'DATE_COMPLETED'
+      Required = True
     end
     object SeminarSQLDURATION_DAYS: TIntegerField
       FieldName = 'DURATION_DAYS'
@@ -3369,7 +3372,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800480310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088004C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

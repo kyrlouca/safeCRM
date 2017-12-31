@@ -210,9 +210,9 @@ gpShowModal(TSN_LoginFRm);
 //TODO   invoices on Planned, invoice company on Outsourced
 //TODO   No Certificates on planned
 //TODO    database backup/restore
-//TODO    expenses/revenue report
-//TODO    invoice company instead of students
-//TODO approve should check for instructor, examiner, dates, subject, etc
+//TODO check כחמויע
+//TODO check types when invoiced, presence, certificates
+
 
 
 

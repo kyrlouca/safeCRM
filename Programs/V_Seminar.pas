@@ -1216,8 +1216,7 @@ end;
 procedure TV_SeminarFRM.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  if SeminarSQL.State in [dsInsert, dsEdit] then
-    SeminarSQL.Post;
+  ksPostTables([SeminarSQL])
 end;
 
 procedure TV_SeminarFRM.FormCreate(Sender: TObject);
