@@ -180,7 +180,7 @@ isError:=false;
 
 SeminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
 qr:=TksQuery.Create(cn,'select * from seminar sem where sem.serial_number= :SeminarSerial');
-try
+ try
     qr.ParamByName('seminarSerial').Value:=SeminarSerial;
     qr.Open;
     status:=qr.FieldByName('STATUS').AsString;
@@ -191,6 +191,12 @@ try
 
     if trim(qr.FieldByName('anad_number').AsString)='' then begin
       ErrorMemo.Lines.Add('Ο Αριθμός ΑΝΑΔ δεν είναι συμπληρωμένος');
+      isError:=true;
+    end;
+
+    if (trim(qr.FieldByName('TYPE_mono_poly').AsString)='M') and
+     (qr.FieldByName('FK_COMPANY_PERSON_SERIAL').AsInteger=0) then begin
+      ErrorMemo.Lines.Add('Στα ΜΟΝΟ-Επιχειρισιακά πρέπει να υπάρχει Εταιρεία');
       isError:=true;
     end;
 
@@ -230,10 +236,10 @@ try
       isError:=true;
   end;
 
-  finally
+ finally
     qr.Free;
-  end;
-  ErrorMemo.Visible:=isError;
+ end;
+ ErrorMemo.Visible:=isError;
 
 if Not isError then begin
   Str:='update seminar sem set sem.status= ''A'' where sem.serial_number=:seminarSerial';
