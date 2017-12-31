@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 585
+  ClientHeight = 565
   ClientWidth = 1211
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,7 +13,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   KeyPreview = True
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnActivate = FormActivate
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -21,12 +21,11 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 542
+    Top = 522
     Width = 1211
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 1079
     object RzPanel1: TRzPanel
       Left = 1110
       Top = 1
@@ -35,7 +34,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 978
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -192,16 +190,15 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 65
     Width = 1211
-    Height = 477
+    Height = 457
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
-    ExplicitWidth = 1079
     object Panel5: TPanel
       Left = 433
       Top = 2
       Width = 696
-      Height = 473
+      Height = 453
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -214,7 +211,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 750
         object wwDBNavigator2: TwwDBNavigator
           Left = 29
           Top = 4
@@ -411,8 +407,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
           Align = alBottom
           BorderOuter = fsFlat
           TabOrder = 1
-          ExplicitTop = 303
-          ExplicitWidth = 702
+          ExplicitTop = 343
           object RzPanel6: TRzPanel
             Left = 537
             Top = 1
@@ -421,7 +416,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
             Align = alRight
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitLeft = 601
           end
           object SavePresBTN: TBitBtn
             Left = 15
@@ -574,7 +568,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 431
-      Height = 473
+      Height = 453
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -848,7 +842,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Align = alLeft
         BorderOuter = fsNone
         TabOrder = 3
-        ExplicitLeft = 0
       end
       object RzPanel11: TRzPanel
         Left = 0
@@ -858,7 +851,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         Align = alLeft
         BorderOuter = fsButtonDown
         TabOrder = 4
-        ExplicitTop = 0
       end
     end
   end
@@ -877,7 +869,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1079
   end
   object Panel2: TRzPanel
     Left = 0
@@ -887,7 +878,6 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 1
-    ExplicitWidth = 1079
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection

@@ -39,7 +39,6 @@ type
     ppLine5: TppLine;
     ppLabel5: TppLabel;
     ddBand: TppDetailBand;
-    ppDBText4: TppDBText;
     ppFooterBand3: TppFooterBand;
     ppLine6: TppLine;
     ppSystemVariable5: TppSystemVariable;
@@ -53,14 +52,7 @@ type
     ppLabel8: TppLabel;
     ppShape1: TppShape;
     ppLabel10: TppLabel;
-    SeminarPresenceSQLPERSON_SERIAL: TIntegerField;
-    SeminarPresenceSQLLAST_FIRST_NAME: TWideStringField;
-    SeminarPresenceSQLIS_PRESENT: TWideStringField;
-    SeminarPresenceSQLHOURS_PRESENT: TIntegerField;
-    SeminarPresenceSQLDAYSERIAL: TIntegerField;
-    SeminarPresenceSQLSEMINAR_DAY: TDateField;
     ppDBText2: TppDBText;
-    SeminarPresenceSQLNATIONAL_ID: TWideStringField;
     ppLabel2: TppLabel;
     myDBCheckBox1: TmyDBCheckBox;
     SeminarSQL: TIBCQuery;
@@ -75,7 +67,6 @@ type
     ppGroup1: TppGroup;
     ppGroupHeaderBand1: TppGroupHeaderBand;
     ppGroupFooterBand1: TppGroupFooterBand;
-    ppDBText3: TppDBText;
     ppReport2: TppReport;
     ppTitleBand1: TppTitleBand;
     ppLabel6: TppLabel;
@@ -109,6 +100,17 @@ type
     ppDesignLayers1: TppDesignLayers;
     ppDesignLayer1: TppDesignLayer;
     ppParameterList1: TppParameterList;
+    SeminarPresenceSQLPERSON_SERIAL: TIntegerField;
+    SeminarPresenceSQLLAST_FIRST_NAME: TWideStringField;
+    SeminarPresenceSQLNATIONAL_ID: TWideStringField;
+    SeminarPresenceSQLIS_PRESENT: TWideStringField;
+    SeminarPresenceSQLHOURS_PRESENT: TIntegerField;
+    SeminarPresenceSQLDAYSERIAL: TIntegerField;
+    SeminarPresenceSQLSEMINAR_DAY: TDateField;
+    ppDBText15: TppDBText;
+    ppDBText4: TppDBText;
+    ppLabel17: TppLabel;
+    ppLine4: TppLine;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -223,7 +225,7 @@ begin
 
   SeminarPresenceSQL.RestoreSQL;
   if DaySerial>0 then begin
-      SeminarPresenceSQL.AddWhere('ssd.serial_number = :daySerial');
+      SeminarPresenceSQL.AddWhere('pres.day_serial = :daySerial');
   end;
 
   with SeminarPresenceSQL do begin

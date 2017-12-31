@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 549
+  ClientHeight = 529
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,7 +13,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   KeyPreview = True
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnActivate = FormActivate
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -183,7 +183,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 506
+    Top = 486
     Width = 1004
     Height = 43
     Align = alBottom
@@ -285,14 +285,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 414
+    Height = 394
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 412
+      Height = 392
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -442,7 +442,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 369
+        Top = 349
         Width = 671
         Height = 43
         Align = alBottom
@@ -612,14 +612,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
           'IS_VALID;CheckBox;Y;N'
           'HAS_ANOTHER_DATE;CheckBox;Y;N')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'#9#9
-          'FK_PERSON_SERIAL'#9'4'#9'PS/N'#9#9
-          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959#9#9
-          'FIRST_NAME'#9'16'#9#908#957#959#956#945#9#9
-          'HOURS_COMPLETED'#9'6'#9#937#961#949#962#9#9
-          'HAS_ANOTHER_DATE'#9'1'#9'*'#931#965#956#960#955#951#961#969#956#945'*'#9#9
-          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957#9#9
-          'IS_VALID'#9'7'#9#904#947#954#965#961#959#9#9)
+          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'FK_PERSON_SERIAL'#9'4'#9'PS/N'
+          'LAST_NAME'#9'18'#9#917#960#943#952#949#964#959
+          'FIRST_NAME'#9'16'#9#908#957#959#956#945
+          'HOURS_COMPLETED'#9'6'#9#937#961#949#962
+          'HAS_ANOTHER_DATE'#9'1'#9'*'#931#965#956#960#955#951#961#969#956#945'*'
+          'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
+          'IS_VALID'#9'7'#9#904#947#954#965#961#959)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -642,7 +642,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 412
+      Height = 392
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
@@ -657,7 +657,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 215
+        Top = 195
         Width = 328
         Height = 197
         Align = alBottom
