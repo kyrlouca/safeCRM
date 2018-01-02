@@ -88,6 +88,7 @@ type
     wwIncrementalSearch2: TwwIncrementalSearch;
     Label6: TLabel;
     MonoFLD: TwwDBComboBox;
+    TableSQLSPECIFICATION_NUMBER: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

@@ -31,7 +31,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1071
     object Label4: TLabel
       AlignWithMargins = True
       Left = 5
@@ -53,7 +52,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Height = 43
     Align = alBottom
     TabOrder = 1
-    ExplicitWidth = 1071
     object RzPanel1: TRzPanel
       Left = 977
       Top = 2
@@ -62,7 +60,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 969
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -148,9 +145,8 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
-    ExplicitWidth = 1071
     object Panel5: TRzPanel
-      Left = 623
+      Left = 631
       Top = 0
       Width = 451
       Height = 429
@@ -158,6 +154,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       BorderOuter = fsNone
       Locked = True
       TabOrder = 0
+      ExplicitLeft = 623
       object GroupBox1: TGroupBox
         Left = 6
         Top = 46
@@ -360,9 +357,11 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
+          Checked = True
           DataField = 'IS_SEND_TO_ALL'
           DataSource = TableSRC
           ShowText = False
+          State = cbChecked
           TabOrder = 1
         end
         object wwCheckBox1: TwwCheckBox
@@ -378,9 +377,11 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
+          Checked = True
           DataField = 'POLY_MONO'
           DataSource = TableSRC
           ShowText = False
+          State = cbChecked
           TabOrder = 4
         end
       end
@@ -393,7 +394,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Color = clBtnFace
         DitherColor = clWhite
         DitherStyle = wwdsDither
-        NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
         TextOptions.Alignment = taCenter
@@ -408,7 +408,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
-        ExplicitWidth = 377
         object wwIncrementalSearch1: TwwIncrementalSearch
           Left = 216
           Top = 6
@@ -578,16 +577,15 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     object Grid1: TwwDBGrid
       Left = 0
       Top = 0
-      Width = 593
+      Width = 601
       Height = 429
       ControlType.Strings = (
-        'POLY_MONO;CheckBox;P;M'
         'IS_SEND_TO_ALL;CheckBox;Y;N')
       Selected.Strings = (
-        'SERIAL_NUMBER'#9'10'#9'A/A'
+        'SERIAL_NUMBER'#9'7'#9'A/A'
         'DOC_NAME'#9'40'#9#908#957#959#956#945' '#917#947#947#961#940#966#959#965
-        'POLY_MONO'#9'13'#9#928#959#955#965'-'#917#960#967
-        'IS_SEND_TO_ALL'#9'10'#9#917#964#945#953#961#949#943#949#962
+        'POLY_MONO'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972
+        'IS_SEND_TO_ALL'#9'10'#9#931#949' '#917#964#945#953#961#949#943#949#962#9'F'
         'DOC_BLOB'#9'10'#9#904#947#947#961#945#966#959)
       IniAttributes.Delimiter = ';;'
       IniAttributes.UnicodeIniFile = False
@@ -617,14 +615,14 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       TitleButtons = False
     end
     object RzPanel3: TRzPanel
-      Left = 593
+      Left = 601
       Top = 0
       Width = 30
       Height = 429
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitLeft = 641
+      ExplicitLeft = 593
     end
   end
   object Panel2: TRzPanel
@@ -635,7 +633,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 2
-    ExplicitWidth = 1071
   end
   object TableSRC: TDataSource
     DataSet = TableSQL
@@ -699,7 +696,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Top = 5
     object TableSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
-      DisplayWidth = 10
+      DisplayWidth = 7
       FieldName = 'SERIAL_NUMBER'
     end
     object TableSQLDOC_NAME: TWideStringField
@@ -710,7 +707,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Size = 160
     end
     object TableSQLPOLY_MONO: TWideStringField
-      DisplayLabel = #928#959#955#965'-'#917#960#967
+      DisplayLabel = #917#960#953#967#949#953#961#953#963#953#945#954#972
       DisplayWidth = 13
       FieldName = 'POLY_MONO'
       Required = True
@@ -718,7 +715,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Size = 1
     end
     object TableSQLIS_SEND_TO_ALL: TWideStringField
-      DisplayLabel = #917#964#945#953#961#949#943#949#962
+      DisplayLabel = #931#949' '#917#964#945#953#961#949#943#949#962
       DisplayWidth = 10
       FieldName = 'IS_SEND_TO_ALL'
       Required = True

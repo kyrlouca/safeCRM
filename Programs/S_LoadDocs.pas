@@ -467,6 +467,7 @@ var
   compQr:TksQuery;
   param:G_generalProcs.TParameterRecord;
   baseFolder:String;
+  SeminarFolder:String;
   useFolder:string;
   fileName:String;
   DocSerial:integer;
@@ -478,6 +479,7 @@ var
   IsPoly:string;
   IsSendToAll:String;
   CompId:String;
+  CompName:String;
 
 begin
 
@@ -507,14 +509,13 @@ begin
     qr.free;
   end;
 
-  useFolder:=baseFOlder+'\'+SeminarName+'_'+IntToStr(SeminarSerial);
-  if  DirectoryExists(useFOlder) then begin
+  SeminarFolder:=baseFOlder+'\'+SeminarName+'_'+IntToStr(SeminarSerial);
+  if  DirectoryExists(SeminarFOlder) then begin
     MessageDlg('Directory to write the Files already EXISTS. Delete first', mtError, [mbOK], 0);
     exit;
   end else begin
-    if not CreateDir(useFOlder) then begin
-      ShowMessage('cannot Create Directory: '+UseFolder);
-//      result:=false;
+    if not CreateDir(SeminarFOlder) then begin
+      ShowMessage('cannot Create Directory: '+SeminarFolder);
       exit;
     end;
   end;
@@ -534,12 +535,13 @@ begin
         IsSendToAll:=qr.FieldByName('Is_send_to_all').AsString;
 
         if IsSendToAll='N' then begin
-          fname:= UseFolder+'\'+fileName+'.doc';
+          /////////file for the seminar
+          fname:= SeminarFolder+'\'+fileName+'.doc';
           CopyaFile(DocSerial,fName);
         end else begin
 
           str2:=
-          '   select per.serial_number,per.National_id from'
+          '   select per.serial_number,per.National_id, per.Last_name from'
           +'          seminar_company semC left outer join'
           +'          person per on semc.fk_person_serial = per.serial_number'
           +'  where semC.fk_seminar_serial= :SeminarSerial';
@@ -551,6 +553,15 @@ begin
             CompQr.open;
             while not CompQR.Eof do begin
               CompId:=CompQR.FieldByName('National_id').AsString;
+              CompName:=CompQR.FieldByName('Last_name').AsString;
+              /////////file for a compnay in its own folder
+              useFolder:=SeminarFolder+'\'+trim(compName);
+              if  not DirectoryExists(useFOlder) then begin
+                    if not CreateDir(useFOlder) then begin
+                      ShowMessage('cannot Create Directory: '+UseFolder);
+                      exit;
+                    end;
+              end;
               fname:=UseFOlder+'\'+Trim(compId)+'_'+fileName+'.doc';
               CopyaFile(DocSerial,fName);
               compQR.Next;

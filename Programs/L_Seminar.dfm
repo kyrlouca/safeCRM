@@ -404,7 +404,7 @@ object L_SeminarFRM: TL_SeminarFRM
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
-      Left = 833
+      Left = 849
       Top = 1
       Width = 224
       Height = 356
@@ -412,6 +412,7 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 833
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -806,7 +807,7 @@ object L_SeminarFRM: TL_SeminarFRM
     object RzPanel2: TRzPanel
       Left = 25
       Top = 1
-      Width = 808
+      Width = 824
       Height = 356
       Align = alLeft
       BorderOuter = fsNone
@@ -814,11 +815,12 @@ object L_SeminarFRM: TL_SeminarFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 808
+        Width = 824
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 808
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -937,23 +939,23 @@ object L_SeminarFRM: TL_SeminarFRM
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 808
+        Width = 818
         Height = 323
         ControlType.Strings = (
           'SEMINAR_CORP_TYPE;CustomEdit;wwDBComboBox1;F'
-          'TYPE_MONO_POLY;CheckBox;M;P'
           'STATUS;CustomEdit;StatusShowFLD;T'
           'SEM_CATEGORY;CustomEdit;CategoryShowFLD;F')
         Selected.Strings = (
           'SERIAL_NUMBER'#9'5'#9'A/A'
           'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942
-          'ANAD_NUMBER'#9'13'#9#913#925#913#916' '
+          'ANAD_NUMBER'#9'9'#9#913#925#913#916' '
+          'SPECIFICATION_NUMBER'#9'10'#9#913#957#945#966#959#961#940
           'STATUS'#9'11'#9#931#964#940#948#953#959
-          'SEM_CATEGORY'#9'15'#9#932#973#960#959#962
-          'TYPE_MONO_POLY'#9'9'#9#924#972#957#959'-'#917#960#967
+          'SEM_CATEGORY'#9'14'#9#932#973#960#959#962
+          'TYPE_MONO_POLY'#9'4'#9#917#960#967
           'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945
-          'DATE_STARTED'#9'12'#9#904#957#945#961#958#951
-          'DATE_COMPLETED'#9'12'#9#932#941#955#959#962
+          'DATE_STARTED'#9'11'#9#904#957#945#961#958#951
+          'DATE_COMPLETED'#9'11'#9#932#941#955#959#962
           'DURATION_HOURS'#9'6'#9#911#961#949#962)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
@@ -1051,7 +1053,8 @@ object L_SeminarFRM: TL_SeminarFRM
         'ARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT_ANA' +
         'D, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFICATED' +
         ', MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, SEM_C' +
-        'ATEGORY)'
+        'ATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE, SPECIFICATION_NUM' +
+        'BER)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :ANAD_NUMBER, :FK_SEMINAR, :FK_INSTRUCTOR, :F' +
@@ -1059,7 +1062,8 @@ object L_SeminarFRM: TL_SeminarFRM
         ' :DATE_STARTED, :DATE_COMPLETED, :DURATION_DAYS, :DURATION_HOURS' +
         ', :AMOUNT_ANAD, :COMMENTS, :ANAD_APPROVED, :STATUS, :IS_INVOICED' +
         ', :IS_CERTIFICATED, :MAX_CAPACITY, :HAS_EXPIRY, :EXPIRY_PERIOD, ' +
-        ':TYPE_MONO_POLY, :SEM_CATEGORY)')
+        ':TYPE_MONO_POLY, :SEM_CATEGORY, :FK_COMPANY_INVOICED, :PASS_PERC' +
+        'ENTAGE, :SPECIFICATION_NUMBER)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR'
       'WHERE'
@@ -1078,7 +1082,9 @@ object L_SeminarFRM: TL_SeminarFRM
         '= :ANAD_APPROVED, STATUS = :STATUS, IS_INVOICED = :IS_INVOICED, ' +
         'IS_CERTIFICATED = :IS_CERTIFICATED, MAX_CAPACITY = :MAX_CAPACITY' +
         ', HAS_EXPIRY = :HAS_EXPIRY, EXPIRY_PERIOD = :EXPIRY_PERIOD, TYPE' +
-        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY'
+        '_MONO_POLY = :TYPE_MONO_POLY, SEM_CATEGORY = :SEM_CATEGORY, FK_C' +
+        'OMPANY_INVOICED = :FK_COMPANY_INVOICED, PASS_PERCENTAGE = :PASS_' +
+        'PERCENTAGE, SPECIFICATION_NUMBER = :SPECIFICATION_NUMBER'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1088,7 +1094,8 @@ object L_SeminarFRM: TL_SeminarFRM
         'E_STARTED, DATE_COMPLETED, DURATION_DAYS, DURATION_HOURS, AMOUNT' +
         '_ANAD, COMMENTS, ANAD_APPROVED, STATUS, IS_INVOICED, IS_CERTIFIC' +
         'ATED, MAX_CAPACITY, HAS_EXPIRY, EXPIRY_PERIOD, TYPE_MONO_POLY, S' +
-        'EM_CATEGORY FROM SEMINAR'
+        'EM_CATEGORY, FK_COMPANY_INVOICED, PASS_PERCENTAGE, SPECIFICATION' +
+        '_NUMBER FROM SEMINAR'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1133,11 +1140,17 @@ object L_SeminarFRM: TL_SeminarFRM
     end
     object TableSQLANAD_NUMBER: TWideStringField
       DisplayLabel = #913#925#913#916' '
-      DisplayWidth = 13
+      DisplayWidth = 9
       FieldName = 'ANAD_NUMBER'
       Required = True
       FixedChar = True
       Size = 30
+    end
+    object TableSQLSPECIFICATION_NUMBER: TWideStringField
+      DisplayLabel = #913#957#945#966#959#961#940
+      DisplayWidth = 10
+      FieldName = 'SPECIFICATION_NUMBER'
+      Size = 10
     end
     object TableSQLSTATUS: TWideStringField
       DisplayLabel = #931#964#940#948#953#959
@@ -1148,15 +1161,15 @@ object L_SeminarFRM: TL_SeminarFRM
     end
     object TableSQLSEM_CATEGORY: TWideStringField
       DisplayLabel = #932#973#960#959#962
-      DisplayWidth = 15
+      DisplayWidth = 14
       FieldName = 'SEM_CATEGORY'
       Required = True
       FixedChar = True
       Size = 1
     end
     object TableSQLTYPE_MONO_POLY: TWideStringField
-      DisplayLabel = #924#972#957#959'-'#917#960#967
-      DisplayWidth = 9
+      DisplayLabel = #917#960#967
+      DisplayWidth = 4
       FieldName = 'TYPE_MONO_POLY'
       Required = True
       FixedChar = True
@@ -1172,12 +1185,12 @@ object L_SeminarFRM: TL_SeminarFRM
     end
     object TableSQLDATE_STARTED: TDateField
       DisplayLabel = #904#957#945#961#958#951
-      DisplayWidth = 12
+      DisplayWidth = 11
       FieldName = 'DATE_STARTED'
     end
     object TableSQLDATE_COMPLETED: TDateField
       DisplayLabel = #932#941#955#959#962
-      DisplayWidth = 12
+      DisplayWidth = 11
       FieldName = 'DATE_COMPLETED'
     end
     object TableSQLDURATION_HOURS: TIntegerField

@@ -140,7 +140,7 @@ object V_SeminarFRM: TV_SeminarFRM
             Left = 20
             Top = 24
             Width = 386
-            Height = 402
+            Height = 417
             Caption = #928#955#951#961#959#966#959#961#943#949#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -2330,7 +2330,6 @@ object V_SeminarFRM: TV_SeminarFRM
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 0
-            ExplicitTop = -6
           end
         end
       end
@@ -3372,7 +3371,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C0101100088004C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800500310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4823,7 +4822,7 @@ object V_SeminarFRM: TV_SeminarFRM
     object N1: TMenuItem
       Caption = #913#925#913#916'-'#913#961#967#949#943#945
       object N2: TMenuItem
-        Caption = #916#951#956#953#959#965#961#947#943#945
+        Caption = #916#951#956#953#959#965#961#947#943#945' '#913#961#967#949#943#969#957
         OnClick = N2Click
       end
     end
