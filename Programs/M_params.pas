@@ -69,6 +69,12 @@ type
     ImgShow: TImage;
     Label3: TLabel;
     RzBitBtn4: TRzBitBtn;
+    CertificateGenFLD: TwwDBEdit;
+    InstructorBTN: TSpeedButton;
+    Label2: TLabel;
+    Label4: TLabel;
+    PersonGenFLD: TwwDBEdit;
+    SpeedButton2: TSpeedButton;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure OptionGRPClick(Sender: TObject);
@@ -79,6 +85,8 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure RzBitBtn4Click(Sender: TObject);
     procedure FindGeneralParameterSQLAfterScroll(DataSet: TDataSet);
+    procedure InstructorBTNClick(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -89,6 +97,9 @@ type
 
     procedure ShowOneRecord(RecordIndex:Integer);
   procedure ShowXLabels(LabelValueLine:TstringArray; LabelArray:TlabelArray;FieldsArray:TFieldArray);
+  function SelectGenId(const connection: TIBCConnection; const GenName:  string): integer;
+  function UpdateGenId(const connection: TIBCConnection; const GenName:  string;Const GEnValue:Integer): integer;
+
   public
     { Public declarations }
   end;
@@ -135,8 +146,16 @@ begin
 end;
 
 procedure TM_paramsFRM.FormActivate(Sender: TObject);
+var
+  CertNumber:Integer;
 begin
 ShowOneRecord(0);
+  certNumber:= SelectGenId(cn,'GEN_SEMINAR_CERTIFICATE');
+  certificateGENFLD.Text:=intToStr(certNumber);
+
+  certNumber:= SelectGenId(cn,'GEN_PERSON');
+  PersonGEnFLD.Text:=intToStr(certNumber);
+
 end;
 
 procedure TM_paramsFRM.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -152,11 +171,51 @@ begin
 cn:=U_databaseFRM.DataConnection;
 end;
 
+procedure TM_paramsFRM.InstructorBTNClick(Sender: TObject);
+var
+  Serial:Integer;
+begin
+
+serial:= StrToIntDef( CertificateGenFLD.Text,-1);
+if serial>0 then
+  UpdateGenId(cn,'GEN_SEMINAR_CERTIFICATE',serial);
+end;
+
 procedure TM_paramsFRM.OptionGRPClick(Sender: TObject);
 begin
 
   ShowOneRecord(OptionGRP.ItemIndex);
+
 end;
+
+
+function TM_paramsFRM.SelectGenId(const connection: TIBCConnection; const GenName:  string): integer;
+var
+  qr: TksQuery;
+  Str:String;
+begin
+  Str:='SELECT GEN_ID( '+GenName+ ', 0 ) FROM RDB$DATABASE';
+  try
+    qr := TksQuery.Create(connection, str);
+    qr.Open;
+    result := qr.FieldByName('GEN_ID').AsInteger;
+  finally
+    qr.Free;
+  end;
+
+ENd;
+
+function TM_paramsFRM.UpdateGenId(const connection: TIBCConnection; const GenName:  string;Const GEnValue:Integer): integer;
+var
+  qr: TksQuery;
+  Str:String;
+begin
+  str:='ALTER SEQUENCE '+ genName+ ' RESTART WITH '+inttoStr(genValue);
+  ksExecSQLVar(connection,str,[]);
+  result:=GEnValue;
+
+ENd;
+
 
 
 
@@ -225,6 +284,16 @@ begin
        end;
 
 
+
+end;
+
+procedure TM_paramsFRM.SpeedButton2Click(Sender: TObject);
+var
+  Serial:Integer;
+begin
+  serial:= StrToIntDef( PersonGEnFLD.Text,-1);
+  if serial>0 then
+    UpdateGenId(cn,'GEN_Person',serial);
 
 end;
 

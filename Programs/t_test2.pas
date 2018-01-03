@@ -8,8 +8,8 @@ uses
   MemDS, DBAccess, IBC, Vcl.Grids, vcl.wwdbigrd, vcl.wwdbgrid, VirtualTable,
   ppDB, ppDBPipe, ppComm, ppRelatv, ppProd, ppClass, ppReport, ppBands, ppCache,
   ppDesignLayer, ppParameter, ppPrnabl, ppCtrls, ppVar, Vcl.Imaging.pngimage,ComCtrls,
-  ppStrtch, ppRichTx, frxClass, Vcl.ExtCtrls, frxDock, frxDBSet, frxExportXML,
-  frxExportDOCX, frxExportPDF,frxrcExports, frxRich, frxExportRTF, vcl.wwriched;
+  ppStrtch, ppRichTx,  Vcl.ExtCtrls,
+  vcl.wwriched;
 
 type
   TT_test2FRM = class(TForm)
@@ -40,7 +40,6 @@ type
     ppPageStyle1: TppPageStyle;
     ppRichText1: TppRichText;
     ppRichText2: TppRichText;
-    fs1: TfrxReport;
     picturesSQL: TIBCQuery;
     PicturesSRC: TDataSource;
     CompanySQL: TIBCQuery;
@@ -54,8 +53,6 @@ type
     SeminarSUbjectSQLFK_INSTRUCTOR: TIntegerField;
     SeminarSUbjectSQLFK_EXAMINER: TIntegerField;
     SeminarSUbjectSQLFK_VENUE: TIntegerField;
-    CompanyDRX: TfrxDBDataset;
-    SeminarSubjectDRX: TfrxDBDataset;
     picturesSQLSERIAL_NUMBER: TIntegerField;
     picturesSQLPICTURE_SEMINAR: TBlobField;
     picturesSQLLINE_A1: TWideStringField;
@@ -77,7 +74,6 @@ type
     picturesSQLPICTURE_BOT_R1: TBlobField;
     picturesSQLLINE_C1: TWideStringField;
     picturesSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
-    PircturesDRX: TfrxDBDataset;
     PersonSQL: TIBCQuery;
     PersonSQLSERIAL_NUMBER: TIntegerField;
     PersonSQLSERIAL_QB: TIntegerField;
@@ -124,7 +120,6 @@ type
     PersonSQLLINKED_IN: TWideStringField;
     PersonSQLJOB: TWideStringField;
     PersonSRC: TDataSource;
-    PersonDX: TfrxDBDataset;
     CompanySQLSERIAL_NUMBER: TIntegerField;
     CompanySQLSERIAL_QB: TIntegerField;
     CompanySQLFK_COMPANY_SERIAL: TIntegerField;
@@ -170,14 +165,7 @@ type
     CompanySQLLINKED_IN: TWideStringField;
     CompanySQLJOB: TWideStringField;
     CompanySRC: TDataSource;
-    frxDOCXExport1: TfrxDOCXExport;
-    frxXMLExport1: TfrxXMLExport;
-    frxPDFExport1: TfrxPDFExport;
-    fs2: TfrxReport;
-    frxRichObject1: TfrxRichObject;
-    frxRTFExport1: TfrxRTFExport;
     Button1: TButton;
-    fsa1: TfrxReport;
     Comp1: TIBCQuery;
     IntegerField1: TIntegerField;
     IntegerField2: TIntegerField;
@@ -223,7 +211,6 @@ type
     WideStringField33: TWideStringField;
     WideStringField34: TWideStringField;
     WideStringField35: TWideStringField;
-    Comp1DRX: TfrxDBDataset;
     procedure PrintRBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -272,15 +259,6 @@ begin
   exit;
 }
   //////////////////////////
-  fs2.PrepareReport;
-
-  FileName := 'C:\Users\KyrLouca\Desktop\ttt2.doc';
-  frxRTFExport1.FileName:=fileName;
-  frxRTFExport1.ShowDialog:=false;
-  frxRTFExport1.OpenAfterExport:=false;
-
-  fs2.Export(frxRTFExport1);
-
 
 
 end;
@@ -298,18 +276,7 @@ var
   fileName:String;
 begin
 
-  FileName := 'C:\Users\KyrLouca\Desktop\fuck1.rtf';
-  exit;
-
-  fsa1.PrepareReport;
-
-  FileName := 'C:\Users\KyrLouca\Desktop\ttt2.doc';
-  frxRTFExport1.FileName:=fileName;
-  frxRTFExport1.ShowDialog:=false;
-  frxRTFExport1.OpenAfterExport:=false;
-
-  fsa1.Export(frxRTFExport1);
-
+  
 
 end;
 

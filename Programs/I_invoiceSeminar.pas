@@ -575,8 +575,27 @@ begin
 end;
 
 procedure TI_InvoiceSeminarFRM.AnadCheckFLDClick(Sender: TObject);
+var
+  SeminarSerial:Integer;
+  IsMono:Boolean;
+  CountMembers:Integer;
+  str:string;
 begin
   if TwwCheckBox(sender).Modified then begin
+
+    seminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
+
+    str:='select * from seminar sem where sem.serial_number= :SeminarSerial and sem.type_mono_poly = :Mono ';
+
+    countMembers:=ksExecSQLVar(cn,str,[SeminarSerial,'M']);
+    IsMOno:= ksCountRecVarSQL(cn,str,[SeminarSerial,'M'])>0;
+
+    str:='select sp.fk_person_serial from seminar_person sp where sp.fk_seminar_serial= :SeminarSerial';
+    CountMembers:= ksCountRecVarSQL(cn,str,[SeminarSerial]);
+
+    if not isMono then  //for mono will only invoice ONE company multiply by number of students
+       CountMembers:=1;
+
     if invoiceSQL.State in [dsBrowse] then
       invoiceSQL.edit;
 
@@ -584,9 +603,9 @@ begin
 
     if (AnadCheckFLD.Checked) then begin
     //CHECK VALUE before the click
-      InvoiceSQL.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('fee_Reduced').AsFloat;
+      InvoiceSQL.FieldByName('amount_gross').AsFloat :=CountMembers * SeminarSubjectSQL.FieldByName('fee_Reduced').AsFloat;
     end else begin
-      InvoiceSQL.FieldByName('amount_gross').AsFloat :=SeminarSubjectSQL.FieldByName('FEE_Normal').AsFloat;
+      InvoiceSQL.FieldByName('amount_gross').AsFloat :=CountMembers * SeminarSubjectSQL.FieldByName('FEE_Normal').AsFloat;
     end;
 
   end;

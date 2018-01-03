@@ -2,7 +2,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 565
+  ClientHeight = 545
   ClientWidth = 1211
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
-    Top = 522
+    Top = 502
     Width = 1211
     Height = 43
     Align = alBottom
@@ -190,7 +190,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
     Left = 0
     Top = 65
     Width = 1211
-    Height = 457
+    Height = 437
     Align = alClient
     BorderOuter = fsFlatRounded
     TabOrder = 2
@@ -198,7 +198,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 433
       Top = 2
       Width = 696
-      Height = 453
+      Height = 433
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
@@ -367,7 +367,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
-        FixedCols = 5
+        FixedCols = 4
         ShowHorzScrollBar = True
         DataSource = InvoiceSRC
         TabOrder = 1
@@ -568,7 +568,7 @@ object I_InvoiceSeminarFRM: TI_InvoiceSeminarFRM
       Left = 2
       Top = 2
       Width = 431
-      Height = 453
+      Height = 433
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0

@@ -4,17 +4,12 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frxClass, frxDBSet, Data.DB, MemDS,
-  DBAccess, IBC, frxExportPDF, frxRich, frxExportRTF, frxExportDOCX,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, MemDS,
+  DBAccess, IBC,
   Vcl.StdCtrls;
 
 type
   TR_AnadFilesFRM = class(TForm)
-    IssonosRpt: TfrxReport;
-    frxDOCXExport1: TfrxDOCXExport;
-    frxRTFExport1: TfrxRTFExport;
-    frxRichObject1: TfrxRichObject;
-    frxPDFExport1: TfrxPDFExport;
     CompanySQL: TIBCQuery;
     CompanySQLSERIAL_NUMBER: TIntegerField;
     CompanySQLSERIAL_QB: TIntegerField;
@@ -61,8 +56,6 @@ type
     CompanySQLLINKED_IN: TWideStringField;
     CompanySQLJOB: TWideStringField;
     CompanySRC: TDataSource;
-    CompanyDRX: TfrxDBDataset;
-    r1: TfrxReport;
     Button1: TButton;
     procedure FormCreate(Sender: TObject);
   private
@@ -97,26 +90,6 @@ var
   FIleName:String;
 begin
 
-//fs2.ShowReport(True);
-//exit;
-
-
-  IssonosRPT.PrepareReport;
-
-//  FileName := 'C:\Users\KyrLouca\Desktop\ttt23.rtf';
-  FileName := baseFolder+'\ttt2.doc';
-
-  frxRTFExport1.FileName:=fileName;
-  frxRTFExport1.ShowDialog:=false;
-  frxRTFExport1.OpenAfterExport:=false;
-
-  IssonosRPT.Export(frxRTFExport1);
-
-  frxRTFExport1.FileName:=fileName;
-  frxRTFExport1.ShowDialog:=false;
-  frxRTFExport1.OpenAfterExport:=false;
-
-  IssonosRPT.Export(frxRTFExport1);
 
 
 end;
@@ -181,24 +154,7 @@ begin
 
 
 
-  IssonosRPT.PrepareReport;
-
-//  FileName := 'C:\Users\KyrLouca\Desktop\ttt23.rtf';
-  fName:='Εντυπο Αίτηση εργοδότη για Έκριση Προγράμματος .doc';
-  FileName := useFolder+'\'+fName;
-
-  frxRTFExport1.FileName:=fileName;
-  frxRTFExport1.ShowDialog:=false;
-  frxRTFExport1.OpenAfterExport:=false;
-
-  IssonosRPT.Export(frxRTFExport1);
-
-  frxRTFExport1.FileName:=fileName;
-  frxRTFExport1.ShowDialog:=false;
-  frxRTFExport1.OpenAfterExport:=false;
-
-  IssonosRPT.Export(frxRTFExport1);
-
+  
 
 end;
 

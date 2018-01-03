@@ -126,6 +126,7 @@ type
     Label6: TLabel;
     RzDBLabel6: TRzDBLabel;
     TableSQLPASS_PERCENTAGE: TIntegerField;
+    CertificateSQLSERIAL_MANUAL: TIntegerField;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -619,6 +620,7 @@ begin
 
         CertificateSerial:=ksGenerateSerial(cn,'GEN_SEMINAR_CERTIFICATE');
         CertificateSQL.FieldByName('serial_number').Value:=CertificateSerial;
+        CertificateSQL.FieldByName('serial_Manual').Value:=CertificateSerial;
         CertificateSQL.FieldByName('fk_seminar_serial').Value:=SEminarSerial;
         CertificateSQL.FieldByName('fk_PERSON_serial').Value:=PersonSerial;
 

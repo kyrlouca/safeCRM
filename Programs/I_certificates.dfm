@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 557
+  ClientHeight = 537
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -183,12 +183,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 514
+    Top = 494
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 466
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -286,20 +285,18 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 422
+    Height = 402
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 374
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 420
+      Height = 400
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 372
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -445,14 +442,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 377
+        Top = 357
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsNone
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
-        ExplicitTop = 329
         object RzPanel6: TRzPanel
           Left = 571
           Top = 0
@@ -610,7 +606,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
       object wwDBGrid1: TwwDBGrid
         Left = 6
         Top = 47
-        Width = 547
+        Width = 643
         Height = 305
         ControlType.Strings = (
           'IS_VALID;CheckBox;Y;N'
@@ -623,6 +619,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
           'HOURS_COMPLETED'#9'6'#9#937#961#949#962
           'HAS_ANOTHER_DATE'#9'1'#9'*'#931#965#956#960#955#951#961#969#956#945'*'
           'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
+          'SERIAL_MANUAL'#9'10'#9#913#961'. '#917#954#964#973#960#969#963#951#962#9'F'
           'IS_VALID'#9'7'#9#904#947#954#965#961#959)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
@@ -630,7 +627,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         FixedCols = 7
         ShowHorzScrollBar = True
         DataSource = CertificateSRC
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+        KeyOptions = [dgAllowDelete]
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         TabOrder = 2
         TitleAlignment = taLeftJustify
         TitleFont.Charset = DEFAULT_CHARSET
@@ -646,11 +644,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 420
+      Height = 400
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 372
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -662,13 +659,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 223
+        Top = 203
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 175
         object CertificatesBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -1282,7 +1278,8 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'ED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NAME, ' +
         'FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, INST' +
         'RUCTOR_NAME, INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE, SUBJECT_HOU' +
-        'RS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER, DATE_CREATED)'
+        'RS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER, DATE_CREATED, SERIAL_' +
+        'MANUAL)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :FK_PERSON_SERIAL, :DATE_' +
@@ -1290,7 +1287,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'T_NAME, :FIRST_NAME, :NATIONAL_ID, :SEMINAR_SUBJECT, :SEMINAR_DU' +
         'RATION, :INSTRUCTOR_NAME, :INSTRUCTOR_JOB_TITLE, :HAS_ANOTHER_DA' +
         'TE, :SUBJECT_HOURS, :SEMINAR_CERTIFICATE, :SEX, :ANAD_NUMBER, :D' +
-        'ATE_CREATED)')
+        'ATE_CREATED, :SERIAL_MANUAL)')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_CERTIFICATE'
       'WHERE'
@@ -1309,7 +1306,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'ITLE = :INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE = :HAS_ANOTHER_DA' +
         'TE, SUBJECT_HOURS = :SUBJECT_HOURS, SEMINAR_CERTIFICATE = :SEMIN' +
         'AR_CERTIFICATE, SEX = :SEX, ANAD_NUMBER = :ANAD_NUMBER, DATE_CRE' +
-        'ATED = :DATE_CREATED'
+        'ATED = :DATE_CREATED, SERIAL_MANUAL = :SERIAL_MANUAL'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1318,10 +1315,10 @@ object I_CertificatesFRM: TI_CertificatesFRM
         'ISSUED, HOURS_COMPLETED, PERCENTAGE_COMPLETED, IS_VALID, LAST_NA' +
         'ME, FIRST_NAME, NATIONAL_ID, SEMINAR_SUBJECT, SEMINAR_DURATION, ' +
         'INSTRUCTOR_NAME, INSTRUCTOR_JOB_TITLE, HAS_ANOTHER_DATE, SUBJECT' +
-        '_HOURS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER, DATE_CREATED FROM' +
-        ' SEMINAR_CERTIFICATE'
+        '_HOURS, SEMINAR_CERTIFICATE, SEX, ANAD_NUMBER, DATE_CREATED, SER' +
+        'IAL_MANUAL FROM SEMINAR_CERTIFICATE'
       'WHERE'
-      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
       'SELECT NULL FROM SEMINAR_CERTIFICATE'
       'WHERE'
@@ -1393,6 +1390,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
       DisplayLabel = '% '#937#961#974#957
       DisplayWidth = 9
       FieldName = 'PERCENTAGE_COMPLETED'
+    end
+    object CertificateSQLSERIAL_MANUAL: TIntegerField
+      DisplayLabel = #913#961'. '#917#954#964#973#960#969#963#951#962
+      DisplayWidth = 10
+      FieldName = 'SERIAL_MANUAL'
     end
     object CertificateSQLIS_VALID: TWideStringField
       DisplayLabel = #904#947#954#965#961#959

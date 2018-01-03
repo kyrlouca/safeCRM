@@ -178,6 +178,11 @@ type
     TableSRC: TIBCDataSource;
     PrintOnexBTN: TBitBtn;
     Grid1: TwwDBGrid;
+    CertificateSQLDATE_CREATED: TDateField;
+    CertificateSQLSERIAL_MANUAL: TIntegerField;
+    TableSQLFK_COMPANY_INVOICED: TIntegerField;
+    TableSQLPASS_PERCENTAGE: TIntegerField;
+    TableSQLSPECIFICATION_NUMBER: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -540,7 +545,7 @@ begin
             temp:=CertificateSQL.FieldByName('ANAD_NUMBER').AsString;
 
          end else if token='[SERIAL]' then begin
-            tempInt:=CertificateSQL.FieldByName('SERIAL_NUMBER').AsInteger;
+            tempInt:=CertificateSQL.FieldByName('SERIAL_Manual').AsInteger;
              if isAllUpper then begin
                 temp:=  Format('%.*d',[5, TempInt]);;
              end else begin
