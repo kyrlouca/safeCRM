@@ -41,7 +41,6 @@ type
     Nav1Button1: TwwNavButton;
     Nav1Insert: TwwNavButton;
     Nav1Delete: TwwNavButton;
-    wwIncrementalSearch1: TwwIncrementalSearch;
     TableSQL: TIBCQuery;
     TableSQLSERIAL_NUMBER: TIntegerField;
     TableSQLNATIONAL_ID: TWideStringField;
@@ -76,6 +75,13 @@ type
     TableSQLCOMPANY_REGISTRATION_DATE: TDateField;
     TableSQLPHONE_CONTACT: TWideStringField;
     SafeBTN: TRzBitBtn;
+    Label1: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    wwIncrementalSearch2: TwwIncrementalSearch;
+    wwIncrementalSearch3: TwwIncrementalSearch;
+    wwIncrementalSearch4: TwwIncrementalSearch;
+    wwIncrementalSearch1: TwwIncrementalSearch;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure TableSQLAfterInsert(DataSet: TDataSet);

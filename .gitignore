@@ -10,3 +10,11 @@
 *.dproj.local
 /DCU/*
 /exe/*
+*.xls
+*.xlsx
+*.csv
+*.txt
+*.dip
+*.pdf
+*.doc
+*.rtf

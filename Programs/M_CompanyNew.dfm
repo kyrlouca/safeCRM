@@ -39,10 +39,20 @@ object M_companyNewFRM: TM_companyNewFRM
       Height = 45
       Align = alClient
       Alignment = taCenter
-      Caption = #917#964#945#953#961#949#943#949#962
+      Caption = #917#964#945#953#961#949#943#945
       Layout = tlCenter
-      ExplicitWidth = 119
-      ExplicitHeight = 32
+      ExplicitLeft = 7
+      ExplicitTop = 2
+    end
+    object RzDBLabel1: TRzDBLabel
+      Left = 1
+      Top = 1
+      Width = 1094
+      Height = 51
+      Align = alClient
+      DataField = 'LAST_NAME'
+      DataSource = CompanySRC
+      ExplicitWidth = 194
     end
   end
   object Panel4: TPanel
@@ -1260,8 +1270,8 @@ object M_companyNewFRM: TM_companyNewFRM
   end
   object CompanySRC: TDataSource
     DataSet = CompanySQL
-    Left = 112
-    Top = 9
+    Left = 80
+    Top = 81
   end
   object CompanySQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
@@ -1363,8 +1373,8 @@ object M_companyNewFRM: TM_companyNewFRM
     Options.AutoClose = True
     Active = True
     OnNewRecord = CompanySQLNewRecord
-    Left = 49
-    Top = 13
+    Left = 33
+    Top = 93
     ParamData = <
       item
         DataType = ftUnknown

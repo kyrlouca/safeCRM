@@ -154,7 +154,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       BorderOuter = fsNone
       Locked = True
       TabOrder = 0
-      ExplicitLeft = 623
       object GroupBox1: TGroupBox
         Left = 6
         Top = 46
@@ -377,11 +376,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Checked = True
           DataField = 'POLY_MONO'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 4
         end
       end
@@ -394,6 +391,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Color = clBtnFace
         DitherColor = clWhite
         DitherStyle = wwdsDither
+        NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
         TextOptions.Alignment = taCenter
@@ -585,7 +583,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         'SERIAL_NUMBER'#9'7'#9'A/A'
         'DOC_NAME'#9'40'#9#908#957#959#956#945' '#917#947#947#961#940#966#959#965
         'POLY_MONO'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972
-        'IS_SEND_TO_ALL'#9'10'#9#931#949' '#917#964#945#953#961#949#943#949#962#9'F'
+        'IS_SEND_TO_ALL'#9'10'#9#931#949' '#917#964#945#953#961#949#943#949#962
         'DOC_BLOB'#9'10'#9#904#947#947#961#945#966#959)
       IniAttributes.Delimiter = ';;'
       IniAttributes.UnicodeIniFile = False
@@ -622,7 +620,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitLeft = 593
     end
   end
   object Panel2: TRzPanel

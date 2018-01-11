@@ -285,15 +285,54 @@ object L_companiesFRM: TL_companiesFRM
     Left = 0
     Top = 53
     Width = 1086
-    Height = 100
+    Height = 130
     Align = alTop
     TabOrder = 1
+    object Label1: TLabel
+      Left = 51
+      Top = 30
+      Width = 36
+      Height = 14
+      Caption = #927#957#959#956#945
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 10
+      Top = 55
+      Width = 77
+      Height = 14
+      Caption = #913#961'. '#917#947#947#961#945#966#942#962
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 31
+      Top = 83
+      Width = 56
+      Height = 14
+      Caption = #932#951#955#941#966#969#957#959
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
     object RzGroupBox1: TRzGroupBox
-      Left = 7
-      Top = 0
+      Left = 255
+      Top = 6
       Width = 237
       Height = 97
-      Caption = 'Filter Seminars'
+      Caption = 'Filter Companies'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -353,24 +392,83 @@ object L_companiesFRM: TL_companiesFRM
         ParentDoubleBuffered = False
       end
     end
+    object wwIncrementalSearch2: TwwIncrementalSearch
+      Left = 93
+      Top = 25
+      Width = 128
+      Height = 22
+      DataSource = TableSRC
+      SearchField = 'LAST_NAME'
+      ShowMatchText = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object wwIncrementalSearch3: TwwIncrementalSearch
+      Left = 96
+      Top = 53
+      Width = 128
+      Height = 22
+      DataSource = TableSRC
+      SearchField = 'National_id'
+      ShowMatchText = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+    object wwIncrementalSearch4: TwwIncrementalSearch
+      Left = 96
+      Top = 80
+      Width = 128
+      Height = 22
+      DataSource = TableSRC
+      SearchField = 'Phone_fixed'
+      ShowMatchText = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+    end
+    object wwIncrementalSearch1: TwwIncrementalSearch
+      Left = 93
+      Top = 103
+      Width = 121
+      Height = 21
+      DataSource = TableSRC
+      SearchField = 'last_name'
+      TabOrder = 4
+    end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 153
+    Top = 183
     Width = 1086
-    Height = 358
+    Height = 328
     Align = alClient
     TabOrder = 2
+    ExplicitTop = 153
+    ExplicitHeight = 358
     object Panel5: TPanel
       Left = 905
       Top = 1
       Width = 224
-      Height = 356
+      Height = 326
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 857
+      ExplicitHeight = 356
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -545,6 +643,7 @@ object L_companiesFRM: TL_companiesFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 3
+        Visible = False
         OnClick = SafeBTNClick
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
@@ -611,10 +710,11 @@ object L_companiesFRM: TL_companiesFRM
       Left = 41
       Top = 1
       Width = 864
-      Height = 356
+      Height = 326
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 356
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -623,7 +723,6 @@ object L_companiesFRM: TL_companiesFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 816
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -739,39 +838,23 @@ object L_companiesFRM: TL_companiesFRM
             Visible = False
           end
         end
-        object wwIncrementalSearch1: TwwIncrementalSearch
-          Left = 215
-          Top = 5
-          Width = 128
-          Height = 22
-          DataSource = TableSRC
-          SearchField = 'Last_name'
-          ShowMatchText = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-        end
       end
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
         Width = 849
-        Height = 323
+        Height = 293
         ControlType.Strings = (
           'STATUS_ACTIVE;CheckBox;N;Y')
         Selected.Strings = (
-          'SERIAL_NUMBER'#9'6'#9'A/A'
+          'SERIAL_NUMBER'#9'8'#9'A/A'
           'STATUS_ACTIVE'#9'12'#9#916#953#945#947#961#945#956#956#941#957#951
           'LAST_NAME'#9'23'#9#908#957#959#956#945
           'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962
-          'COMPANY_OWNER'#9'22'#9#921#948#953#959#954#964#942#964#951#962
+          'COMPANY_OWNER'#9'16'#9#921#948#953#959#954#964#942#964#951#962
           'COMPANY_CONTACT'#9'16'#9#917#960#953#954#959#953#957#969#957#943#945
           'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972
-          'PHONE_MOBILE'#9'10'#9#932#951#955'. '#922#953#957#951#964#972)
+          'PHONE_MOBILE'#9'13'#9#932#951#955'. '#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
         TitleColor = clBtnFace
@@ -800,17 +883,19 @@ object L_companiesFRM: TL_companiesFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
+        ExplicitLeft = 6
       end
     end
     object RzPanel4: TRzPanel
       Left = 1
       Top = 1
       Width = 40
-      Height = 356
+      Height = 326
       Align = alLeft
       Alignment = taLeftJustify
       BorderOuter = fsNone
       TabOrder = 2
+      ExplicitHeight = 356
     end
   end
   object TableSRC: TDataSource
@@ -910,7 +995,7 @@ object L_companiesFRM: TL_companiesFRM
     Top = 96
     object TableSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
-      DisplayWidth = 6
+      DisplayWidth = 8
       FieldName = 'SERIAL_NUMBER'
       Required = True
     end
@@ -937,7 +1022,7 @@ object L_companiesFRM: TL_companiesFRM
     end
     object TableSQLCOMPANY_OWNER: TWideStringField
       DisplayLabel = #921#948#953#959#954#964#942#964#951#962
-      DisplayWidth = 22
+      DisplayWidth = 16
       FieldName = 'COMPANY_OWNER'
       Size = 160
     end
@@ -956,7 +1041,7 @@ object L_companiesFRM: TL_companiesFRM
     end
     object TableSQLPHONE_MOBILE: TWideStringField
       DisplayLabel = #932#951#955'. '#922#953#957#951#964#972
-      DisplayWidth = 10
+      DisplayWidth = 13
       FieldName = 'PHONE_MOBILE'
       FixedChar = True
       Size = 15

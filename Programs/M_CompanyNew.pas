@@ -149,6 +149,7 @@ type
     CompanySQLLINKED_IN: TWideStringField;
     CompanySQLJOB: TWideStringField;
     wwCheckBox1: TwwCheckBox;
+    RzDBLabel1: TRzDBLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);

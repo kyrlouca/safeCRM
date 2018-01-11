@@ -71,6 +71,7 @@ type
 //  procedure SaveToFile(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
   procedure SaveToFileXX(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
   procedure CopyAFile(Const DocSerial:Integer;Const FileName :String);
+  procedure CopyModifiedFile(Const DocSerial:Integer;Const FileName :String);
 
   procedure SaveXX(Const SerialNumber:Integer;Const  FilePath, DocName :String);
   function FindHex(const FileName:String): Integer;
@@ -579,5 +580,49 @@ begin
   end;
 
 end;
+
+
+procedure TS_LoadDocsFRM.CopyModifiedFile(Const DocSerial:Integer;Const FileName :String);
+var
+//  BlobField: TField;
+  BlobField: TBlobField;
+  BS: TStream;
+  str2:String;
+  qr:TksQuery;
+  FS:TMemoryStream;
+
+begin
+
+  str2:='Select * from word_docs wd where wd.Serial_number = :SerialNumber';
+  qr:= TksQuery.Create(cn,str2);
+  try
+      qr.close;
+      qr.ParamByName('SerialNumber').Value:=DocSerial;
+      qr.open;
+
+      if qr.IsEmpty then
+       exit;
+
+      BlobField := qr.FieldByName('doc_blob') as TBlobField;
+      BS := qr.CreateBlobStream(BlobField,bmRead);
+      try
+        fs:=TMemoryStream.Create;
+        try
+          fs.CopyFrom(bs,bs.Size);
+          fs.SaveToFile(fileName);
+        finally
+          fs.Free;
+        end;
+
+      finally
+        BS.Free;
+      end;
+
+  finally
+    qr.Free;
+  end;
+
+end;
+
 
 End.
