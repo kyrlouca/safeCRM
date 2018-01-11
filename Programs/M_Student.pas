@@ -94,7 +94,6 @@ type
     Nav1Next: TwwNavButton;
     Nav1Button1: TwwNavButton;
     Nav1Insert: TwwNavButton;
-    Nav1Delete: TwwNavButton;
     Nav1Post: TwwNavButton;
     Nav1Cancel: TwwNavButton;
     GroupBox3: TGroupBox;
@@ -124,12 +123,19 @@ type
     wwDBEdit5: TwwDBEdit;
     Label18: TLabel;
     wwDBEdit6: TwwDBEdit;
-    Label19: TLabel;
-    wwDBEdit7: TwwDBEdit;
     TableSQLJOB: TWideStringField;
     RzGroupBox1: TRzGroupBox;
     Label17: TLabel;
     FilterBox: TwwDBComboBox;
+    TableSQLCOMPANY_SERIAL: TIntegerField;
+    TableSQLCOMPANY_NAME: TWideStringField;
+    RzGroupBox2: TRzGroupBox;
+    RzDBLabel2: TRzDBLabel;
+    RzDBLabel3: TRzDBLabel;
+    Label19: TLabel;
+    wwDBEdit2: TwwDBEdit;
+    Label20: TLabel;
+    Label21: TLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -180,9 +186,9 @@ begin
   TableSQL.RestoreSQL;
 
   if Status='Y' then begin
-    TableSQL.AddWhere('status_active = ''Y'' ')
+    TableSQL.AddWhere('per.status_active = ''Y'' ')
   end else if  status='N' then begin
-    TableSQL.AddWhere('status_active = ''N'' ')
+    TableSQL.AddWhere('per.status_active = ''N'' ')
   end;
   TableSQL.Open;
 

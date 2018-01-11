@@ -78,10 +78,9 @@ type
     Label1: TLabel;
     Label3: TLabel;
     Label5: TLabel;
-    wwIncrementalSearch2: TwwIncrementalSearch;
+    NameFLD: TwwIncrementalSearch;
     wwIncrementalSearch3: TwwIncrementalSearch;
     wwIncrementalSearch4: TwwIncrementalSearch;
-    wwIncrementalSearch1: TwwIncrementalSearch;
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
     procedure TableSQLAfterInsert(DataSet: TDataSet);
@@ -213,7 +212,7 @@ begin
   filterBox.ItemIndex:=1;
   status:= FilterBox.Value;
   ShowFiltered(Status);
-
+  if NameFLD.CanFocus then nameFLD.SetFocus;
 
 end;
 

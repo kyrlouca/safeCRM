@@ -322,7 +322,7 @@ object M_companyNewFRM: TM_companyNewFRM
         object GroupBox1: TGroupBox
           Left = 3
           Top = 20
-          Width = 309
+          Width = 346
           Height = 333
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
@@ -437,7 +437,7 @@ object M_companyNewFRM: TM_companyNewFRM
           object FirstFLD: TwwDBEdit
             Left = 112
             Top = 45
-            Width = 161
+            Width = 228
             Height = 22
             DataField = 'LAST_NAME'
             DataSource = CompanySRC
@@ -449,7 +449,7 @@ object M_companyNewFRM: TM_companyNewFRM
           object wwDBEdit1: TwwDBEdit
             Left = 112
             Top = 70
-            Width = 161
+            Width = 228
             Height = 22
             DataField = 'COMPANY_OWNER'
             DataSource = CompanySRC
@@ -538,9 +538,9 @@ object M_companyNewFRM: TM_companyNewFRM
           end
         end
         object GroupBox2: TGroupBox
-          Left = 337
+          Left = 355
           Top = 19
-          Width = 304
+          Width = 272
           Height = 177
           Caption = #917#960#953#954#959#953#957#969#957#943#945
           Font.Charset = DEFAULT_CHARSET
@@ -578,7 +578,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object Label12: TLabel
             Left = 73
-            Top = 45
+            Top = 46
             Width = 35
             Height = 14
             Caption = #922#953#957#951#964#972
@@ -617,7 +617,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object Label17: TLabel
             Left = 14
-            Top = 70
+            Top = 71
             Width = 94
             Height = 14
             Caption = #932#951#955'. '#917#960#953#954#959#953#957#969#957#943#945#962
@@ -642,7 +642,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object wwDBEdit9: TwwDBEdit
             Left = 113
-            Top = 42
+            Top = 43
             Width = 121
             Height = 22
             DataField = 'PHONE_MOBILE'
@@ -690,7 +690,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object wwDBEdit16: TwwDBEdit
             Left = 113
-            Top = 67
+            Top = 68
             Width = 121
             Height = 22
             DataField = 'PHONE_ALTERNATE'
@@ -702,9 +702,9 @@ object M_companyNewFRM: TM_companyNewFRM
           end
         end
         object GroupBox3: TGroupBox
-          Left = 665
-          Top = 20
-          Width = 272
+          Left = 633
+          Top = 18
+          Width = 232
           Height = 176
           Caption = #913#961#956#972#948#953#959#962' '#917#960#953#954#959#953#957#969#957#943#945#962
           Font.Charset = DEFAULT_CHARSET
@@ -715,7 +715,7 @@ object M_companyNewFRM: TM_companyNewFRM
           ParentFont = False
           TabOrder = 3
           object Label23: TLabel
-            Left = 61
+            Left = 23
             Top = 21
             Width = 37
             Height = 14
@@ -728,7 +728,7 @@ object M_companyNewFRM: TM_companyNewFRM
             ParentFont = False
           end
           object Label24: TLabel
-            Left = 76
+            Left = 38
             Top = 96
             Width = 22
             Height = 14
@@ -741,7 +741,7 @@ object M_companyNewFRM: TM_companyNewFRM
             ParentFont = False
           end
           object Label25: TLabel
-            Left = 63
+            Left = 25
             Top = 71
             Width = 35
             Height = 14
@@ -754,7 +754,7 @@ object M_companyNewFRM: TM_companyNewFRM
             ParentFont = False
           end
           object Label26: TLabel
-            Left = 71
+            Left = 33
             Top = 121
             Width = 27
             Height = 14
@@ -767,7 +767,7 @@ object M_companyNewFRM: TM_companyNewFRM
             ParentFont = False
           end
           object Label27: TLabel
-            Left = 57
+            Left = 19
             Top = 46
             Width = 41
             Height = 14
@@ -780,7 +780,7 @@ object M_companyNewFRM: TM_companyNewFRM
             ParentFont = False
           end
           object wwDBEdit17: TwwDBEdit
-            Left = 113
+            Left = 75
             Top = 18
             Width = 121
             Height = 22
@@ -792,7 +792,7 @@ object M_companyNewFRM: TM_companyNewFRM
             WordWrap = False
           end
           object wwDBEdit18: TwwDBEdit
-            Left = 113
+            Left = 75
             Top = 43
             Width = 121
             Height = 22
@@ -804,7 +804,7 @@ object M_companyNewFRM: TM_companyNewFRM
             WordWrap = False
           end
           object wwDBEdit19: TwwDBEdit
-            Left = 113
+            Left = 75
             Top = 68
             Width = 121
             Height = 22
@@ -816,7 +816,7 @@ object M_companyNewFRM: TM_companyNewFRM
             WordWrap = False
           end
           object wwDBEdit20: TwwDBEdit
-            Left = 113
+            Left = 75
             Top = 118
             Width = 121
             Height = 22
@@ -828,7 +828,7 @@ object M_companyNewFRM: TM_companyNewFRM
             WordWrap = False
           end
           object wwDBEdit21: TwwDBEdit
-            Left = 113
+            Left = 75
             Top = 93
             Width = 121
             Height = 22
@@ -841,9 +841,9 @@ object M_companyNewFRM: TM_companyNewFRM
           end
         end
         object GroupBox4: TGroupBox
-          Left = 337
+          Left = 355
           Top = 202
-          Width = 304
+          Width = 272
           Height = 151
           Caption = #916#953#949#973#952#965#957#963#951
           Font.Charset = DEFAULT_CHARSET
@@ -919,7 +919,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object wwDBEdit26: TwwDBEdit
             Left = 89
-            Top = 47
+            Top = 48
             Width = 161
             Height = 22
             DataField = 'ADDRESS_STREET'
@@ -931,7 +931,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object wwDBEdit27: TwwDBEdit
             Left = 89
-            Top = 72
+            Top = 74
             Width = 161
             Height = 22
             DataField = 'ADDRESS_POST_CODE'
@@ -942,7 +942,7 @@ object M_companyNewFRM: TM_companyNewFRM
             WordWrap = False
           end
           object wwDBEdit28: TwwDBEdit
-            Left = 90
+            Left = 89
             Top = 100
             Width = 161
             Height = 22
@@ -1270,12 +1270,12 @@ object M_companyNewFRM: TM_companyNewFRM
   end
   object CompanySRC: TDataSource
     DataSet = CompanySQL
-    Left = 80
-    Top = 81
+    Left = 88
+    Top = 41
   end
   object CompanySQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
-    KeyGenerator = 'GEN_PERSON'
+    KeyGenerator = 'GEN_COMPANY'
     GeneratorMode = gmInsert
     SQLInsert.Strings = (
       'INSERT INTO PERSON'
@@ -1373,8 +1373,8 @@ object M_companyNewFRM: TM_companyNewFRM
     Options.AutoClose = True
     Active = True
     OnNewRecord = CompanySQLNewRecord
-    Left = 33
-    Top = 93
+    Left = 49
+    Top = 37
     ParamData = <
       item
         DataType = ftUnknown
@@ -1699,8 +1699,8 @@ object M_companyNewFRM: TM_companyNewFRM
   end
   object IncludedPersonsSRC: TDataSource
     DataSet = IncludedPersonsSQL
-    Left = 296
-    Top = 193
+    Left = 312
+    Top = 297
   end
   object ExcludedPersonsSQL: TIBCQuery
     UpdatingTable = 'person'

@@ -328,7 +328,7 @@ object L_companiesFRM: TL_companiesFRM
       ParentFont = False
     end
     object RzGroupBox1: TRzGroupBox
-      Left = 255
+      Left = 319
       Top = 6
       Width = 237
       Height = 97
@@ -392,14 +392,13 @@ object L_companiesFRM: TL_companiesFRM
         ParentDoubleBuffered = False
       end
     end
-    object wwIncrementalSearch2: TwwIncrementalSearch
+    object NameFLD: TwwIncrementalSearch
       Left = 93
       Top = 25
-      Width = 128
+      Width = 220
       Height = 22
       DataSource = TableSRC
       SearchField = 'LAST_NAME'
-      ShowMatchText = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -409,13 +408,12 @@ object L_companiesFRM: TL_companiesFRM
       TabOrder = 1
     end
     object wwIncrementalSearch3: TwwIncrementalSearch
-      Left = 96
+      Left = 93
       Top = 53
       Width = 128
       Height = 22
       DataSource = TableSRC
       SearchField = 'National_id'
-      ShowMatchText = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -425,13 +423,12 @@ object L_companiesFRM: TL_companiesFRM
       TabOrder = 2
     end
     object wwIncrementalSearch4: TwwIncrementalSearch
-      Left = 96
+      Left = 93
       Top = 80
       Width = 128
       Height = 22
       DataSource = TableSRC
       SearchField = 'Phone_fixed'
-      ShowMatchText = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -439,15 +436,6 @@ object L_companiesFRM: TL_companiesFRM
       Font.Style = []
       ParentFont = False
       TabOrder = 3
-    end
-    object wwIncrementalSearch1: TwwIncrementalSearch
-      Left = 93
-      Top = 103
-      Width = 121
-      Height = 21
-      DataSource = TableSRC
-      SearchField = 'last_name'
-      TabOrder = 4
     end
   end
   object Panel3: TPanel
@@ -849,7 +837,7 @@ object L_companiesFRM: TL_companiesFRM
         Selected.Strings = (
           'SERIAL_NUMBER'#9'8'#9'A/A'
           'STATUS_ACTIVE'#9'12'#9#916#953#945#947#961#945#956#956#941#957#951
-          'LAST_NAME'#9'23'#9#908#957#959#956#945
+          'LAST_NAME'#9'32'#9#908#957#959#956#945
           'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962
           'COMPANY_OWNER'#9'16'#9#921#948#953#959#954#964#942#964#951#962
           'COMPANY_CONTACT'#9'16'#9#917#960#953#954#959#953#957#969#957#943#945
@@ -883,7 +871,6 @@ object L_companiesFRM: TL_companiesFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
-        ExplicitLeft = 6
       end
     end
     object RzPanel4: TRzPanel
@@ -901,8 +888,8 @@ object L_companiesFRM: TL_companiesFRM
   object TableSRC: TDataSource
     DataSet = TableSQL
     OnStateChange = TableSRCStateChange
-    Left = 288
-    Top = 81
+    Left = 488
+    Top = 105
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -1009,7 +996,7 @@ object L_companiesFRM: TL_companiesFRM
     end
     object TableSQLLAST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
-      DisplayWidth = 23
+      DisplayWidth = 32
       FieldName = 'LAST_NAME'
       FixedChar = True
       Size = 30
