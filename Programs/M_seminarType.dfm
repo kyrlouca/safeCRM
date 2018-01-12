@@ -55,8 +55,6 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Transparent = True
       VisualStyle = vsClassic
       WordWrap = False
-      ExplicitLeft = 6
-      ExplicitTop = 0
       object certificatesHelpRE: TwwDBRichEdit
         Left = 702
         Top = -1
@@ -488,7 +486,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object Label24: TLabel
                 Left = 10
-                Top = 48
+                Top = 45
                 Width = 102
                 Height = 14
                 Caption = #913#961'. '#928#961#959#948#953#945#947#961#945#966#942#962

@@ -37,7 +37,6 @@ type
     wwButton1: TwwButton;
     Panel2: TRzPanel;
     RzPanel2: TRzPanel;
-    wwIncrementalSearch1: TwwIncrementalSearch;
     RzPanel3: TRzPanel;
     TableSQLIS_SEND_TO_ALL: TWideStringField;
     TableSQLSERIAL_NUMBER: TIntegerField;
@@ -56,6 +55,8 @@ type
     RzDBLabel1: TRzDBLabel;
     TableSQLPOLY_MONO: TWideStringField;
     wwCheckBox1: TwwCheckBox;
+    Label5: TLabel;
+    wwIncrementalSearch1: TwwIncrementalSearch;
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure SavetoDBClick(Sender: TObject);

@@ -2,7 +2,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 537
+  ClientHeight = 570
   ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -183,11 +183,12 @@ object I_CertificatesFRM: TI_CertificatesFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 494
+    Top = 527
     Width = 1004
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 474
     object RzPanel1: TRzPanel
       Left = 903
       Top = 1
@@ -285,18 +286,20 @@ object I_CertificatesFRM: TI_CertificatesFRM
     Left = 0
     Top = 92
     Width = 1004
-    Height = 402
+    Height = 435
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 382
     object Panel5: TPanel
       Left = 329
       Top = 1
       Width = 671
-      Height = 400
+      Height = 433
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitHeight = 380
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
@@ -442,13 +445,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 357
+        Top = 390
         Width = 671
         Height = 43
         Align = alBottom
         BorderOuter = fsNone
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 1
+        ExplicitTop = 337
         object RzPanel6: TRzPanel
           Left = 571
           Top = 0
@@ -619,7 +623,7 @@ object I_CertificatesFRM: TI_CertificatesFRM
           'HOURS_COMPLETED'#9'6'#9#937#961#949#962
           'HAS_ANOTHER_DATE'#9'1'#9'*'#931#965#956#960#955#951#961#969#956#945'*'
           'PERCENTAGE_COMPLETED'#9'9'#9'% '#937#961#974#957
-          'SERIAL_MANUAL'#9'10'#9#913#961'. '#917#954#964#973#960#969#963#951#962#9'F'
+          'SERIAL_MANUAL'#9'10'#9#913#961'. '#917#954#964#973#960#969#963#951#962
           'IS_VALID'#9'7'#9#904#947#954#965#961#959)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
@@ -644,10 +648,11 @@ object I_CertificatesFRM: TI_CertificatesFRM
       Left = 1
       Top = 1
       Width = 328
-      Height = 400
+      Height = 433
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitHeight = 380
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -659,12 +664,13 @@ object I_CertificatesFRM: TI_CertificatesFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 203
+        Top = 236
         Width = 328
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 183
         object CertificatesBTN: TRzBitBtn
           Left = 29
           Top = 158
@@ -1175,14 +1181,14 @@ object I_CertificatesFRM: TI_CertificatesFRM
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
     Active = True
-    Left = 137
-    Top = 413
+    Left = 209
+    Top = 405
   end
   object ReadTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
     IsolationLevel = iblReadOnlyReadCommitted
-    Left = 80
-    Top = 409
+    Left = 112
+    Top = 385
   end
   object TableSRC: TIBCDataSource
     DataSet = TableSQL

@@ -154,6 +154,8 @@ object L_SeminarFRM: TL_SeminarFRM
     Height = 134
     Align = alTop
     TabOrder = 1
+    ExplicitLeft = 1
+    ExplicitTop = 55
     object RzGroupBox1: TRzGroupBox
       Left = 4
       Top = 6
@@ -322,7 +324,7 @@ object L_SeminarFRM: TL_SeminarFRM
     object RzGroupBox2: TRzGroupBox
       Left = 269
       Top = 6
-      Width = 237
+      Width = 356
       Height = 83
       Caption = 'Search Seminars'
       Font.Charset = DEFAULT_CHARSET
@@ -363,7 +365,7 @@ object L_SeminarFRM: TL_SeminarFRM
       object wwIncrementalSearch1: TwwIncrementalSearch
         Left = 85
         Top = 21
-        Width = 128
+        Width = 268
         Height = 22
         DataSource = TableSRC
         SearchField = 'Seminar_name'
@@ -380,7 +382,7 @@ object L_SeminarFRM: TL_SeminarFRM
       object wwIncrementalSearch2: TwwIncrementalSearch
         Left = 85
         Top = 49
-        Width = 128
+        Width = 76
         Height = 22
         DataSource = TableSRC
         SearchField = 'ANAD_NUMBER'
@@ -412,7 +414,6 @@ object L_SeminarFRM: TL_SeminarFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitLeft = 833
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -820,7 +821,6 @@ object L_SeminarFRM: TL_SeminarFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 808
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -950,8 +950,8 @@ object L_SeminarFRM: TL_SeminarFRM
           'SEMINAR_NAME'#9'18'#9#928#949#961#953#947#961#945#966#942
           'ANAD_NUMBER'#9'9'#9#913#925#913#916' '
           'SPECIFICATION_NUMBER'#9'10'#9#913#957#945#966#959#961#940
-          'STATUS'#9'11'#9#931#964#940#948#953#959
           'SEM_CATEGORY'#9'14'#9#932#973#960#959#962
+          'STATUS'#9'11'#9#931#964#940#948#953#959
           'TYPE_MONO_POLY'#9'4'#9#917#960#967
           'LAST_NAME'#9'11'#9#917#964#945#953#961#949#943#945
           'DATE_STARTED'#9'11'#9#904#957#945#961#958#951
@@ -1152,18 +1152,18 @@ object L_SeminarFRM: TL_SeminarFRM
       FieldName = 'SPECIFICATION_NUMBER'
       Size = 10
     end
-    object TableSQLSTATUS: TWideStringField
-      DisplayLabel = #931#964#940#948#953#959
-      DisplayWidth = 11
-      FieldName = 'STATUS'
-      FixedChar = True
-      Size = 1
-    end
     object TableSQLSEM_CATEGORY: TWideStringField
       DisplayLabel = #932#973#960#959#962
       DisplayWidth = 14
       FieldName = 'SEM_CATEGORY'
       Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object TableSQLSTATUS: TWideStringField
+      DisplayLabel = #931#964#940#948#953#959
+      DisplayWidth = 11
+      FieldName = 'STATUS'
       FixedChar = True
       Size = 1
     end

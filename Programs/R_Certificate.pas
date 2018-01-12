@@ -381,6 +381,7 @@ language:string;
 isValid:Boolean;
 begin
   certSerial:=CertificateSQL.FieldByName('serial_number').AsInteger;
+  if certSerial<1 then exit;
   isValid:=CertificateSQL.FieldByName('is_valid').AsString='Y';
   if Not IsValid then begin
     MessageDlg('Certificate is NOT valid. Canot be printed', mtWarning, [mbOK], 0);
@@ -416,7 +417,9 @@ begin
         CertificateSQL.ParamByName('CertificateSerial').Value:=CertificateSerial;
     end;
     CertificateSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
-    Open ;
+    CertificateSQL.Open ;
+    if CertificateSQL.IsEmpty then
+      exit;
   end;
 
     with SeminarPicturesSQL do begin

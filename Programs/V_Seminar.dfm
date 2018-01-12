@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = SubjectTS
+      ActivePage = ReminderTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1801,8 +1801,9 @@ object V_SeminarFRM: TV_SeminarFRM
               Align = alClient
               BorderStyle = bsNone
               DataSource = Co_companiesInSRC
-              KeyOptions = []
-              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter]
+              KeyOptions = [dgAllowDelete]
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter]
+              ReadOnly = True
               TabOrder = 1
               TitleAlignment = taLeftJustify
               TitleFont.Charset = DEFAULT_CHARSET
@@ -2386,7 +2387,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 'DAYS_OR_MONTHS'#9'10'#9#919#956#941#961#949#962'/'#924#942#957#949#962
                 'AFTER_OR_BEFORE'#9'8'#9#928#961#953#957'/'#924#949#964#940
                 'START_OR_END'#9'11'#9#913#960#972' '
-                'DATE_TARGETED'#9'12'#9#923#942#958#951)
+                'DATE_TARGETED'#9'12'#9#917#954#964#941#955#949#963#951#9'F')
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
@@ -3371,7 +3372,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800540310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800580310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4755,7 +4756,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Size = 1
     end
     object SeminarReminderSQLDATE_TARGETED: TDateField
-      DisplayLabel = #923#942#958#951
+      DisplayLabel = #917#954#964#941#955#949#963#951
       DisplayWidth = 12
       FieldName = 'DATE_TARGETED'
     end

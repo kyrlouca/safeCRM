@@ -11,6 +11,8 @@ object M_paramsFRM: TM_paramsFRM
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
+  WindowState = wsMaximized
   OnActivate = FormActivate
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -34,7 +36,6 @@ object M_paramsFRM: TM_paramsFRM
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitTop = 595
     object Panel1: TPanel
       Left = 801
       Top = 2
@@ -303,7 +304,6 @@ object M_paramsFRM: TM_paramsFRM
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
-    ExplicitHeight = 542
     object OptionGRP: TRzRadioGroup
       Left = 534
       Top = 26

@@ -8,11 +8,12 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -10
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
+  WindowState = wsMaximized
   OnActivate = FormActivate
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -156,19 +157,19 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       TabOrder = 0
       object GroupBox1: TGroupBox
         Left = 6
-        Top = 46
+        Top = 38
         Width = 435
         Height = 195
-        Caption = 'Details'
+        Caption = #928#955#951#961#959#966#959#961#943#949#962
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
         Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
+        Font.Style = []
         ParentFont = False
         TabOrder = 0
         object Label2: TLabel
-          Left = 37
+          Left = 45
           Top = 49
           Width = 56
           Height = 14
@@ -181,7 +182,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 72
+          Left = 80
           Top = 22
           Width = 21
           Height = 14
@@ -194,7 +195,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object Label1: TLabel
-          Left = 41
+          Left = 49
           Top = 78
           Width = 52
           Height = 14
@@ -207,11 +208,11 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object Label6: TLabel
-          Left = 28
-          Top = 98
-          Width = 65
+          Left = 31
+          Top = 101
+          Width = 70
           Height = 14
-          Caption = #915#953#945' '#917#964#945#953#961#949#943#949#962
+          Caption = #931#964#953#962' '#917#964#945#953#961#949#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -234,6 +235,19 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           BorderOuter = fsFlat
           DataField = 'SERIAL_NUMBER'
           DataSource = TableSRC
+        end
+        object Label5: TLabel
+          Left = 143
+          Top = 101
+          Width = 267
+          Height = 14
+          Caption = '*'#924#972#957#959' '#941#957#945' '#942' '#941#957#945' '#963#949' '#954#940#952#949' '#949#964#945#953#961#949#943#945' '#960#959#965' '#963#965#956#956#949#964#941#967#949#953
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
         end
         object NameFLD: TwwDBEdit
           Left = 108
@@ -334,8 +348,8 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           Margin = -1
         end
         object Button1: TButton
-          Left = 155
-          Top = 103
+          Left = 267
+          Top = 167
           Width = 137
           Height = 25
           Caption = 'Write to File'
@@ -356,11 +370,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Checked = True
           DataField = 'IS_SEND_TO_ALL'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 1
         end
         object wwCheckBox1: TwwCheckBox
@@ -391,7 +403,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Color = clBtnFace
         DitherColor = clWhite
         DitherStyle = wwdsDither
-        NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
         TextOptions.Alignment = taCenter
@@ -406,22 +417,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
-        object wwIncrementalSearch1: TwwIncrementalSearch
-          Left = 216
-          Top = 6
-          Width = 153
-          Height = 22
-          DataSource = TableSRC
-          SearchField = 'DoC_name'
-          ShowMatchText = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-        end
         object Nav1: TwwDBNavigator
           Left = 6
           Top = 6
@@ -630,6 +625,22 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 2
+    object wwIncrementalSearch1: TwwIncrementalSearch
+      Left = 5
+      Top = 6
+      Width = 153
+      Height = 22
+      DataSource = TableSRC
+      SearchField = 'DoC_name'
+      ShowMatchText = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
   end
   object TableSRC: TDataSource
     DataSet = TableSQL

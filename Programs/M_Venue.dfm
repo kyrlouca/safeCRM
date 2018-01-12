@@ -329,9 +329,10 @@ object M_venuFRM: TM_venuFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitTop = -1
         object Nav1: TwwDBNavigator
           Left = 3
-          Top = 4
+          Top = 5
           Width = 184
           Height = 26
           AutosizeStyle = asSizeNavButtons
@@ -478,8 +479,8 @@ object M_venuFRM: TM_venuFRM
         end
       end
       object GroupBox1: TGroupBox
-        Left = -5
-        Top = 58
+        Left = 11
+        Top = 47
         Width = 370
         Height = 331
         Caption = #928#955#951#961#959#966#959#961#943#949#962
