@@ -435,7 +435,7 @@ vAR
 
 
 begin
-  seminarSerial:=TableSQL.FieldByName('serial_number').AsInteger;
+  seminarSerial:=SeminarSQL.FieldByName('serial_number').AsInteger;
   if Trim(SeminarSFLD.Text)='' then
     SeminarSerial:=0;
 

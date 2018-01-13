@@ -281,7 +281,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Top = 67
       Width = 1017
       Height = 618
-      ActivePage = CertificationTS
+      ActivePage = ReminderTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1430,7 +1430,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 Items.Strings = (
                   #924#949#964#940#9'A'
                   #928#961#953#957#9'B')
-                ItemIndex = 0
+                ItemIndex = 1
                 Sorted = False
                 TabOrder = 0
                 UnboundDataType = wwDefault
@@ -3855,7 +3855,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 25
+        Value = 41
       end>
     object seminarSubjectSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
@@ -3965,7 +3965,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         DataType = ftInteger
         Name = 'SERIAL_NUMBER'
         ParamType = ptInput
-        Value = 25
+        Value = 41
       end>
     object SeminarReminderSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'

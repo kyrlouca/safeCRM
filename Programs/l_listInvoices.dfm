@@ -377,9 +377,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
         OnDblClick = Grid1DblClick
-        ExplicitTop = 5
-        ExplicitWidth = 897
-        ExplicitHeight = 184
       end
       object PrintRBtn: TBitBtn
         Left = 769
@@ -537,7 +534,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
     Transaction = ReadTrans
     UpdateTransaction = WriteTrans
     SQL.Strings = (
-      ''
       '    Select'
       
         '        coalesce(pp.payment,0) as payment, coalesce(inv.amount_w' +
@@ -557,6 +553,7 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         'person_serial'
       'order by per.last_name')
     ReadOnly = True
+    Options.SetFieldsReadOnly = False
     Active = True
     OnNewRecord = TableSQLNewRecord
     Left = 49
@@ -671,12 +668,6 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
       FixedChar = True
       Size = 1
     end
-    object TableSQLPERSON_NATIONAL_ID: TWideStringField
-      FieldName = 'PERSON_NATIONAL_ID'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
     object TableSQLFK_SUBJECT_SERIAL: TIntegerField
       FieldName = 'FK_SUBJECT_SERIAL'
       Required = True
@@ -692,6 +683,11 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
       ReadOnly = True
       Visible = False
       Size = 61
+    end
+    object TableSQLPERSON_NATIONAL_ID: TWideStringField
+      FieldName = 'PERSON_NATIONAL_ID'
+      Visible = False
+      Size = 30
     end
   end
   object WriteTrans: TIBCTransaction
@@ -714,5 +710,30 @@ object L_listInvoicesFRM: TL_listInvoicesFRM
         OnClick = N3Click
       end
     end
+  end
+  object IBCQuery1: TIBCQuery
+    Connection = U_databaseFRM.DataConnection
+    SQL.Strings = (
+      '   Select'
+      
+        '        coalesce(pp.payment,0) as payment, coalesce(inv.amount_w' +
+        'ith_vat,0) - coalesce(payment,0) as Remaining,'
+      '        inv.*,'
+      '        per.last_first_name, per.national_id, per.phone_mobile'
+      '    from'
+      '    invoice inv left outer join'
+      '    ('
+      
+        '        select pay.fk_invoice_serial, sum(pay.amount_paid) as Pa' +
+        'yment from invoice_payment pay'
+      '        group by pay.fk_invoice_serial'
+      '    )pp  on inv.serial_number= pp.fk_invoice_serial'
+      
+        '    left outer join person_view per on per.serial_number=inv.fk_' +
+        'person_serial'
+      'order by per.last_name')
+    Active = True
+    Left = 504
+    Top = 119
   end
 end

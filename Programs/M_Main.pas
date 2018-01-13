@@ -112,6 +112,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure N13Click(Sender: TObject);
     procedure N14Click(Sender: TObject);
+    procedure FixMaleFemale1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -132,7 +133,8 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
   G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices,
   v_SeminarPictureTemplate, R_SeminarListingRevenues, t_test2, R_presencePerDay,
-  SN_ModifyPassword, S_updateStatus, S_LoadDocs;
+  SN_ModifyPassword, S_updateStatus, S_LoadDocs, m_FixMaleFemale,
+  R_word_issonos1_;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -147,10 +149,8 @@ var
  str:string;
 
 begin
-  str := Format('%.*d',[6, 23]);
-  ShowMessage(str);
 
-//  gpShowModal(TT_test2FRM);
+  gpShowModal(TR_Word_issonos1_frm);
 end;
 
 procedure TM_mainFRM.Button2Click(Sender: TObject);
@@ -173,6 +173,11 @@ end;
 procedure TM_mainFRM.ExchangeRates1Click(Sender: TObject);
 begin
   gpShowModal(TL_SeminarFRM);
+end;
+
+procedure TM_mainFRM.FixMaleFemale1Click(Sender: TObject);
+begin
+gpShowModal(TM_FixMaleFemaleFRM);
 end;
 
 procedure TM_mainFRM.FormActivate(Sender: TObject);

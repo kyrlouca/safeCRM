@@ -52,8 +52,10 @@ uses
   t_test2 in 't_test2.pas' {T_test2FRM},
   R_AnadFIles in 'R_AnadFIles.pas' {R_AnadFilesFRM},
   S_LoadDocs in 'S_LoadDocs.pas' {S_LoadDocsFRM},
-  R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
-  M_Student in 'M_Student.pas' {M_StudentFRM};
+  m_FixMaleFemale in 'm_FixMaleFemale.pas' {M_FixMaleFemaleFRM},
+  M_Student in 'M_Student.pas' {M_StudentFRM},
+  R_word_issonos1_ in 'R_word_issonos1_.pas' {R_Word_issonos1_frm},
+  R_expiry in 'R_expiry.pas' {R_ExpiryFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -73,10 +75,9 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
-  Application.CreateForm(TR_AnadFilesFRM, R_AnadFilesFRM);
-  Application.CreateForm(TS_LoadDocsFRM, S_LoadDocsFRM);
-  Application.CreateForm(TS_LoadDocsFRM, S_LoadDocsFRM);
-  Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
   Application.CreateForm(TM_StudentFRM, M_StudentFRM);
+  Application.CreateForm(TR_Word_issonos1_frm, R_Word_issonos1_frm);
+  Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
+  Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
   Application.Run;
 end.

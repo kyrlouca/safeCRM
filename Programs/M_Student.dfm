@@ -54,7 +54,6 @@ object M_StudentFRM: TM_StudentFRM
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 644
     object RzPanel1: TRzPanel
       Left = 1145
       Top = 1
@@ -213,6 +212,7 @@ object M_StudentFRM: TM_StudentFRM
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnKeyDown = wwIncrementalSearch1KeyDown
     end
     object wwIncrementalSearch2: TwwIncrementalSearch
       Left = 80
@@ -228,6 +228,7 @@ object M_StudentFRM: TM_StudentFRM
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      OnKeyDown = wwIncrementalSearch1KeyDown
     end
     object wwIncrementalSearch3: TwwIncrementalSearch
       Left = 80
@@ -243,6 +244,7 @@ object M_StudentFRM: TM_StudentFRM
       Font.Style = []
       ParentFont = False
       TabOrder = 2
+      OnKeyDown = wwIncrementalSearch1KeyDown
     end
     object wwIncrementalSearch4: TwwIncrementalSearch
       Left = 78
@@ -258,6 +260,7 @@ object M_StudentFRM: TM_StudentFRM
       Font.Style = []
       ParentFont = False
       TabOrder = 3
+      OnKeyDown = wwIncrementalSearch1KeyDown
     end
     object RzGroupBox1: TRzGroupBox
       Left = 351
@@ -332,7 +335,6 @@ object M_StudentFRM: TM_StudentFRM
     Height = 489
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 481
     object RzPanel2: TRzPanel
       Left = 1
       Top = 1
@@ -349,7 +351,6 @@ object M_StudentFRM: TM_StudentFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 671
       end
       object Grid1: TwwDBGrid
         Left = 0
@@ -395,6 +396,8 @@ object M_StudentFRM: TM_StudentFRM
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
+        ExplicitLeft = -1
+        ExplicitTop = 15
       end
     end
     object RzPanel4: TRzPanel
@@ -404,9 +407,6 @@ object M_StudentFRM: TM_StudentFRM
       Height = 487
       Align = alClient
       TabOrder = 1
-      ExplicitLeft = 672
-      ExplicitTop = 0
-      ExplicitWidth = 573
       object GroupBox1: TGroupBox
         Left = 19
         Top = 49
@@ -559,7 +559,7 @@ object M_StudentFRM: TM_StudentFRM
           CalendarAttributes.Font.Style = []
           DataField = 'DATE_BIRTH'
           DataSource = TableSRC
-          Date = 36526.000000000000000000
+          Date = 23806.000000000000000000
           Epoch = 1950
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -599,7 +599,7 @@ object M_StudentFRM: TM_StudentFRM
           Items.Strings = (
             'Male'#9'M'
             'Female'#9'F')
-          ItemIndex = 0
+          ItemIndex = 1
           LimitEditRect = True
           Sorted = False
           TabOrder = 5
@@ -836,7 +836,6 @@ object M_StudentFRM: TM_StudentFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
-        ExplicitWidth = 569
         object Nav1: TwwDBNavigator
           Left = 4
           Top = 3

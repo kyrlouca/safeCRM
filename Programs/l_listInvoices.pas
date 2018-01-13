@@ -56,13 +56,14 @@ type
     TableSQLIS_ANAD: TWideStringField;
     TableSQLLAST_NAME: TWideStringField;
     TableSQLFIRST_NAME: TWideStringField;
-    TableSQLPERSON_NATIONAL_ID: TWideStringField;
     TableSQLFK_SUBJECT_SERIAL: TIntegerField;
     TableSQLSUBJECT_NAME: TWideStringField;
     TableSQLFULL_NAME: TWideStringField;
     TableSQLLAST_FIRST_NAME: TWideStringField;
     TableSQLNATIONAL_ID: TWideStringField;
     TableSQLPHONE_MOBILE: TWideStringField;
+    IBCQuery1: TIBCQuery;
+    TableSQLPERSON_NATIONAL_ID: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

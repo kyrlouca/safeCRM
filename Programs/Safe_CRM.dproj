@@ -271,12 +271,20 @@
             <Form>S_LoadDocsFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_expiry.pas">
-            <Form>R_ExpiryFRM</Form>
+        <DCCReference Include="m_FixMaleFemale.pas">
+            <Form>M_FixMaleFemaleFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="M_Student.pas">
             <Form>M_StudentFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="R_word_issonos1_.pas">
+            <Form>R_Word_issonos1_frm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="R_expiry.pas">
+            <Form>R_ExpiryFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

@@ -9,7 +9,7 @@ uses
   Mask, wwdbedit,  DBGrids, wwdbdatetimepicker, ppDB, ppCtrls,
   ppVar, ppPrnabl, ppClass, ppBands, ppProd, ppReport, ppComm, ppRelatv,
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
-  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox;
+  RzPanel, Vcl.Imaging.pngimage, VirtualTable, myChkBox, RzEdit;
 
 type
   TReminderResult= Record
@@ -87,6 +87,7 @@ type
     ppLabel10: TppLabel;
     ppDBText6: TppDBText;
     ppLine1: TppLine;
+    M1: TRzMemo;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -251,6 +252,9 @@ fromDate:=FromDateFLD.Date;
    SeminarReminderSQL.close;
    SeminarReminderSQL.SQL.Clear;
    SeminarReminderSQL.SQL.Add(IN_SQL);
+   m1.Clear;
+   m1.Lines.Add(IN_SQL);
+
    SeminarReminderSQL.Prepare;
    if SeminarReminderSQL.FindParam('SeminarSerial')<>nil then begin
     SeminarReminderSQL.ParamByName('seminarSerial').Value:= IN_SeminarSerial;

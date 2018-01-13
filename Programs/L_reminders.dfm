@@ -146,8 +146,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Height = 201
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = 66
-    ExplicitTop = 47
     object RzGroupBox1: TRzGroupBox
       Left = 34
       Top = 2
@@ -394,7 +392,7 @@ object L_RemindersFRM: TL_RemindersFRM
       object isHighFLD: TRzCheckBox
         Left = 100
         Top = 116
-        Width = 28
+        Width = 19
         Height = 15
         State = cbUnchecked
         TabOrder = 4
@@ -418,8 +416,6 @@ object L_RemindersFRM: TL_RemindersFRM
     Height = 241
     Align = alClient
     TabOrder = 2
-    ExplicitTop = 226
-    ExplicitHeight = 269
     object Panel5: TPanel
       Left = 966
       Top = 1
@@ -429,7 +425,6 @@ object L_RemindersFRM: TL_RemindersFRM
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
-      ExplicitHeight = 267
       object InsertHawbBTN: TRzBitBtn
         Left = 2
         Top = 32
@@ -674,7 +669,6 @@ object L_RemindersFRM: TL_RemindersFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitHeight = 267
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -683,8 +677,6 @@ object L_RemindersFRM: TL_RemindersFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitLeft = -4
-        ExplicitTop = 36
         object wwIncrementalSearch1: TwwIncrementalSearch
           Left = 119
           Top = 4
@@ -840,6 +832,7 @@ object L_RemindersFRM: TL_RemindersFRM
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
           Alignment = taLeftJustify
+          Checked = True
           DataField = 'IS_COMPLETED'
           DataSource = TableSRC
           Font.Charset = DEFAULT_CHARSET
@@ -849,6 +842,7 @@ object L_RemindersFRM: TL_RemindersFRM
           Font.Style = [fsBold]
           ParentFont = False
           ShowText = False
+          State = cbChecked
           TabOrder = 0
         end
         object HighFLD: TwwCheckBox
@@ -887,7 +881,6 @@ object L_RemindersFRM: TL_RemindersFRM
       Alignment = taLeftJustify
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitHeight = 267
     end
   end
   object TableSRC: TDataSource
