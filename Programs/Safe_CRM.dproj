@@ -267,10 +267,6 @@
             <Form>R_AnadFilesFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="S_LoadDocs.pas">
-            <Form>S_LoadDocsFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="m_FixMaleFemale.pas">
             <Form>M_FixMaleFemaleFRM</Form>
             <FormType>dfm</FormType>
@@ -285,6 +281,10 @@
         </DCCReference>
         <DCCReference Include="R_expiry.pas">
             <Form>R_ExpiryFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="S_LoadPDF.pas">
+            <Form>S_loadPdfFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

@@ -78,7 +78,7 @@ type
     ppDBText4: TppDBText;
     ppLabel15: TppLabel;
     ppDBText6: TppDBText;
-    Rep: TppReport;
+    PolyIssonosRPT: TppReport;
     ppParameterList1: TppParameterList;
     ppDesignLayers1: TppDesignLayers;
     ppDesignLayer1: TppDesignLayer;
@@ -95,36 +95,6 @@ type
     ppDetailBand3: TppDetailBand;
     ppSubReport3: TppSubReport;
     ppChildReport3: TppChildReport;
-    TableSQLSERIAL_NUMBER: TIntegerField;
-    TableSQLANAD_NUMBER: TWideStringField;
-    TableSQLNATIONAL_ID: TWideStringField;
-    TableSQLFK_COMPANY_SERIAL: TIntegerField;
-    TableSQLFIRST_NAME: TWideStringField;
-    TableSQLLAST_NAME: TWideStringField;
-    TableSQLNICKNAME: TWideStringField;
-    TableSQLSTATUS: TWideStringField;
-    TableSQLOCCUPATION: TWideStringField;
-    TableSQLPHONE_MOBILE: TWideStringField;
-    TableSQLPHONE_FIXED: TWideStringField;
-    TableSQLPHONE_ALTERNATE: TWideStringField;
-    TableSQLFAX: TWideStringField;
-    TableSQLEMAIL: TWideStringField;
-    TableSQLEMAIL_2: TSmallintField;
-    TableSQLADDRESS: TWideStringField;
-    TableSQLADDRESS_STREET: TWideStringField;
-    TableSQLADDRESS_POST_CODE: TWideStringField;
-    TableSQLADDRESS_CITY: TWideStringField;
-    TableSQLADDRESS_DISTRICT: TWideStringField;
-    TableSQLDATE_STARTED: TDateField;
-    TableSQLDATE_BIRTH: TDateField;
-    TableSQLDATE_USER: TDateField;
-    TableSQLLIST_SOURCE: TWideStringField;
-    TableSQLFACEBOOK: TWideStringField;
-    TableSQLWEBSITE: TWideStringField;
-    TableSQLTWITTER: TWideStringField;
-    TableSQLSTATUS_ACTIVE: TWideStringField;
-    TableSQLCERTIFIED_ANAD: TWideStringField;
-    TableSQLJOB_TITLE: TWideStringField;
     ppPageStyle1: TppPageStyle;
     ppDesignLayer4: TppDesignLayer;
     ppPageStyle2: TppPageStyle;
@@ -177,6 +147,102 @@ type
     ppDBText9: TppDBText;
     ppDBText10: TppDBText;
     ppImage1: TppImage;
+    ppSubReport4: TppSubReport;
+    ppChildReport4: TppChildReport;
+    ppSubReport5: TppSubReport;
+    ppChildReport5: TppChildReport;
+    ppSubReport6: TppSubReport;
+    ppChildReport6: TppChildReport;
+    ppPageStyle3: TppPageStyle;
+    ppDesignLayer8: TppDesignLayer;
+    ppDesignLayers6: TppDesignLayers;
+    ppDesignLayer9: TppDesignLayer;
+    ppDetailBand4: TppDetailBand;
+    ppPageStyle4: TppPageStyle;
+    ppDesignLayer10: TppDesignLayer;
+    ppDesignLayers7: TppDesignLayers;
+    ppDesignLayer11: TppDesignLayer;
+    ppDetailBand5: TppDetailBand;
+    ppPageStyle5: TppPageStyle;
+    ppDesignLayer12: TppDesignLayer;
+    ppDesignLayers8: TppDesignLayers;
+    ppDesignLayer13: TppDesignLayer;
+    ppDetailBand6: TppDetailBand;
+    ppImage2: TppImage;
+    ppImage4: TppImage;
+    ppImage5: TppImage;
+    ppPageStyle6: TppPageStyle;
+    ppDesignLayer14: TppDesignLayer;
+    ppImage6: TppImage;
+    ppDBText11: TppDBText;
+    TableSQLSERIAL_NUMBER: TIntegerField;
+    TableSQLFK_COMPANY_SERIAL: TIntegerField;
+    TableSQLLAST_NAME: TWideStringField;
+    TableSQLFIRST_NAME: TWideStringField;
+    TableSQLFIRST_LAST_NAME: TWideStringField;
+    TableSQLLAST_FIRST_NAME: TWideStringField;
+    TableSQLNATIONAL_ID: TWideStringField;
+    TableSQLNICKNAME: TWideStringField;
+    TableSQLOCCUPATION: TWideStringField;
+    TableSQLPHONE_MOBILE: TWideStringField;
+    TableSQLPHONE_FIXED: TWideStringField;
+    TableSQLPHONE_ALTERNATE: TWideStringField;
+    TableSQLFAX: TWideStringField;
+    TableSQLEMAIL: TWideStringField;
+    TableSQLEMAIL_2: TSmallintField;
+    TableSQLADDRESS: TWideStringField;
+    TableSQLADDRESS_STREET: TWideStringField;
+    TableSQLADDRESS_POST_CODE: TWideStringField;
+    TableSQLADDRESS_CITY: TWideStringField;
+    TableSQLADDRESS_DISTRICT: TWideStringField;
+    TableSQLDATE_STARTED: TDateField;
+    TableSQLDATE_BIRTH: TDateField;
+    TableSQLDATE_USER: TDateField;
+    TableSQLLIST_SOURCE: TWideStringField;
+    TableSQLFACEBOOK: TWideStringField;
+    TableSQLWEBSITE: TWideStringField;
+    TableSQLTWITTER: TWideStringField;
+    TableSQLSTATUS_ACTIVE: TWideStringField;
+    TableSQLSEX: TWideStringField;
+    TableSQLIS_COMPANY: TWideStringField;
+    TableSQLCOMPANY_OWNER: TWideStringField;
+    TableSQLCOMPANY_CONTACT: TWideStringField;
+    TableSQLCOMPANY_REGISTRATION_DATE: TDateField;
+    TableSQLPHONE_CONTACT: TWideStringField;
+    ppDBText12: TppDBText;
+    TableSQLCOMPANY_OWNER_ID: TWideStringField;
+    TableSQLCOMPANY_OWENER_REG: TWideStringField;
+    ppDBText13: TppDBText;
+    ppDBText14: TppDBText;
+    SeminarSQL: TIBCQuery;
+    SeminarSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSQLANAD_NUMBER: TWideStringField;
+    SeminarSQLFK_SEMINAR: TIntegerField;
+    SeminarSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSQLFK_EXAMINER: TIntegerField;
+    SeminarSQLFK_VENUE: TIntegerField;
+    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    SeminarSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQLDATE_STARTED: TDateField;
+    SeminarSQLDATE_COMPLETED: TDateField;
+    SeminarSQLDURATION_DAYS: TIntegerField;
+    SeminarSQLDURATION_HOURS: TIntegerField;
+    SeminarSQLAMOUNT_ANAD: TFloatField;
+    SeminarSQLCOMMENTS: TWideStringField;
+    SeminarSQLANAD_APPROVED: TWideStringField;
+    SeminarSQLSTATUS: TWideStringField;
+    SeminarSQLIS_INVOICED: TWideStringField;
+    SeminarSQLIS_CERTIFICATED: TWideStringField;
+    SeminarSQLMAX_CAPACITY: TIntegerField;
+    SeminarSQLHAS_EXPIRY: TWideStringField;
+    SeminarSQLEXPIRY_PERIOD: TIntegerField;
+    SeminarSQLTYPE_MONO_POLY: TWideStringField;
+    SeminarSQLSEM_CATEGORY: TWideStringField;
+    SeminarSQLFK_COMPANY_INVOICED: TIntegerField;
+    SeminarSQLPASS_PERCENTAGE: TIntegerField;
+    SeminarSQLSPECIFICATION_NUMBER: TWideStringField;
+    SeminarSRC: TDataSource;
+    SeminarPIP: TppDBPipeline;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -188,9 +254,7 @@ type
     procedure ppVariable2Calc(Sender: TObject; var Value: Variant);
     procedure ppVariable3Calc(Sender: TObject; var Value: Variant);
     procedure TableSQLCalcFields(DataSet: TDataSet);
-    procedure DaysLeftLBLPrint(Sender: TObject);
     procedure PrintRBtnClick(Sender: TObject);
-    procedure DaysLeftVrbCalc(Sender: TObject; var Value: Variant);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -205,6 +269,7 @@ type
     IN_HasDate:String;
     IN_DateRef:TDate;
     Procedure PrintTheSeminar();
+    Procedure PrintOnePolyIssonos(Const SeminarSerial:integer; CompanySerial : Integer);
 
   end;
 
@@ -309,30 +374,6 @@ begin
 end;
 
 
-procedure TR_Word_issonos1_frm.DaysLeftLBLPrint(Sender: TObject);
-begin
-{
-  if (TableSQL.FieldByName('DaysLeft').AsInteger<8)
-  and (TableSQL.FieldByName('is_completed').AsString<>'Y') then
-  begin
-    DaysLeftLBL.Font.Color:=clRed;
-    DaysLeftLBL.Font.Size:=12;
-  end else begin
-    DaysLeftLBL.Font.Color:=clBlack;
-    DaysLeftLBL.Font.Size:=9;
-
-  end;
-  }
-end;
-
-procedure TR_Word_issonos1_frm.DaysLeftVrbCalc(Sender: TObject; var Value: Variant);
-var
-  days:integer;
-begin
-  Days:= Trunc( TableSQL.FieldByName('finDate').AsDateTime - FromDateFLD.Date );
-  value:=Days;
-
-end;
 
 procedure TR_Word_issonos1_frm.ppLabel10GetText(Sender: TObject;
   var Text: String);
@@ -354,7 +395,7 @@ begin
 // in this case, for each person, we get the latest of each seminar type
 // add to that date the number of months after the date completed to find the expiry date!
 
-PrintTheSeminar;
+PrintOnePolyIssonos(130,100003);
 
 end;
 
@@ -367,9 +408,26 @@ begin
 
 //fromDate:=FromDateFLD.Date;
 
-     Rep.Print;
+
+     PolyIssonosRPT.Print;
 
 end;
+
+
+procedure TR_Word_issonos1_frm.PrintOnePolyIssonos(Const SeminarSerial:integer;CompanySerial: Integer);
+begin
+     TableSQL.Close;
+     TableSQL.ParamByName('SerialNumber').Value:=CompanySerial;
+     TableSQL.Open;
+
+     SeminarSQL.Close;
+     SeminarSQL.ParamByName('SerialNumber').Value:=SeminarSerial;
+     SeminarSQL.Open;
+
+     PolyIssonosRPT.Print;
+
+end;
+
 
 
 procedure TR_Word_issonos1_frm.FormActivate(Sender: TObject);

@@ -18,6 +18,7 @@ type
     procedure CheckStatusActivity();
     procedure CheckStatusNormal();
     procedure CheckSemCategory();
+    procedure  CheckPdfDocs();
   public
     { Public declarations }
      cn:TIBCConnection;
@@ -87,6 +88,7 @@ begin
  CheckStatusActivity();
  CheckStatusNormal();
  CheckSemCategory();
+ CheckPdfDocs();
 end;
 
 
@@ -147,6 +149,37 @@ begin
 
 end;
 
+
+
+
+procedure TU_databaseFRM.CheckPdfDocs();
+begin
+  ConnectToDatabase;
+  cn:=DataConnection;
+
+   if ksCountRecVarSQL(cn,'select Serial_number from word_docs wd where serial_number =:SerialNumber',[101])=0 then begin
+      ksExecSQLVar(cn,'insert into word_docs  (serial_number,poly_Mono,is_send_to_all, doc_name) values (:s1,:s2,:s3,:s4)',
+      [101,'P','Y','Mono Issonos 1']);
+   end;
+   if ksCountRecVarSQL(cn,'select Serial_number from word_docs wd where serial_number =:SerialNumber',[102])=0 then begin
+      ksExecSQLVar(cn,'insert into word_docs  (serial_number,poly_Mono,is_send_to_all, doc_name) values (:s1,:s2,:s3,:s4)',
+      [102,'P','Y','Mono Issonos 2']);
+   end;
+   if ksCountRecVarSQL(cn,'select Serial_number from word_docs wd where serial_number =:SerialNumber',[103])=0 then begin
+      ksExecSQLVar(cn,'insert into word_docs  (serial_number,poly_Mono,is_send_to_all, doc_name) values (:s1,:s2,:s3,:s4)',
+      [103,'P','Y','Mono Issonos 3']);
+   end;
+   if ksCountRecVarSQL(cn,'select Serial_number from word_docs wd where serial_number =:SerialNumber',[104])=0 then begin
+      ksExecSQLVar(cn,'insert into word_docs  (serial_number,poly_Mono,is_send_to_all, doc_name) values (:s1,:s2,:s3,:s4)',
+      [104,'P','Y','Mono Issonos 4']);
+   end;
+   if ksCountRecVarSQL(cn,'select Serial_number from word_docs wd where serial_number =:SerialNumber',[105])=0 then begin
+      ksExecSQLVar(cn,'insert into word_docs  (serial_number,poly_Mono,is_send_to_all, doc_name) values (:s1,:s2,:s3,:s4)',
+      [105,'P','Y','Mono Issonos 5']);
+   end;
+
+
+end;
 
 
 

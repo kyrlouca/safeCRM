@@ -51,11 +51,11 @@ uses
   R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
   t_test2 in 't_test2.pas' {T_test2FRM},
   R_AnadFIles in 'R_AnadFIles.pas' {R_AnadFilesFRM},
-  S_LoadDocs in 'S_LoadDocs.pas' {S_LoadDocsFRM},
   m_FixMaleFemale in 'm_FixMaleFemale.pas' {M_FixMaleFemaleFRM},
   M_Student in 'M_Student.pas' {M_StudentFRM},
   R_word_issonos1_ in 'R_word_issonos1_.pas' {R_Word_issonos1_frm},
-  R_expiry in 'R_expiry.pas' {R_ExpiryFRM};
+  R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
+  S_LoadPDF in 'S_LoadPDF.pas' {S_loadPdfFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -79,5 +79,6 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TR_Word_issonos1_frm, R_Word_issonos1_frm);
   Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
   Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
+  Application.CreateForm(TS_loadPdfFRM, S_loadPdfFRM);
   Application.Run;
 end.

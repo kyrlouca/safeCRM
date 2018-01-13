@@ -41,8 +41,8 @@ object M_companyNewFRM: TM_companyNewFRM
       Alignment = taCenter
       Caption = #917#964#945#953#961#949#943#945
       Layout = tlCenter
-      ExplicitLeft = 7
-      ExplicitTop = 2
+      ExplicitWidth = 109
+      ExplicitHeight = 32
     end
     object RzDBLabel1: TRzDBLabel
       Left = 1
@@ -360,7 +360,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object Label1: TLabel
             Left = 15
-            Top = 160
+            Top = 205
             Width = 89
             Height = 14
             Caption = #919#956#949#961'. '#917#947#947#961#945#966#942#962
@@ -397,7 +397,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object Label16: TLabel
             Left = 21
-            Top = 97
+            Top = 142
             Width = 84
             Height = 14
             Caption = #913#961'. '#933#960#945#955#955#942#955#969#957
@@ -410,7 +410,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object Label15: TLabel
             Left = 27
-            Top = 134
+            Top = 179
             Width = 77
             Height = 14
             Caption = #913#961'. '#917#947#947#961#945#966#942#962
@@ -423,10 +423,23 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object Label28: TLabel
             Left = 9
-            Top = 186
+            Top = 231
             Width = 95
             Height = 14
             Caption = #913#961'. '#922#959#953#957#969#957'. '#913#963#966'.'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label6: TLabel
+            Left = 4
+            Top = 99
+            Width = 101
+            Height = 14
+            Caption = #932#945#965#964#972#964#951#964#945' '#921#948#953#959#954#964'.'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -460,19 +473,19 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object wwDBEdit2: TwwDBEdit
             Left = 112
-            Top = 95
+            Top = 140
             Width = 115
             Height = 22
             DataField = 'COMPANY_EMPLOYEES'
             DataSource = CompanySRC
-            TabOrder = 2
+            TabOrder = 3
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
           end
           object DatePassedFLD: TwwDBDateTimePicker
             Left = 112
-            Top = 157
+            Top = 202
             Width = 115
             Height = 23
             CalendarAttributes.Font.Charset = DEFAULT_CHARSET
@@ -490,29 +503,29 @@ object M_companyNewFRM: TM_companyNewFRM
             Font.Style = []
             ParentFont = False
             ShowButton = True
-            TabOrder = 4
+            TabOrder = 5
             DisplayFormat = 'dd/mm/yyyy'
           end
           object wwDBEdit13: TwwDBEdit
             Left = 112
-            Top = 132
+            Top = 177
             Width = 115
             Height = 22
             DataField = 'NATIONAL_ID'
             DataSource = CompanySRC
-            TabOrder = 3
+            TabOrder = 4
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
           end
           object wwDBEdit22: TwwDBEdit
             Left = 112
-            Top = 183
+            Top = 228
             Width = 115
             Height = 22
             DataField = 'COMPANY_SOCIAL_SEC'
             DataSource = CompanySRC
-            TabOrder = 5
+            TabOrder = 6
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -534,7 +547,19 @@ object M_companyNewFRM: TM_companyNewFRM
             Caption = #917#957#949#961#947#972#962
             DataField = 'STATUS_ACTIVE'
             DataSource = CompanySRC
-            TabOrder = 6
+            TabOrder = 7
+          end
+          object wwDBEdit3: TwwDBEdit
+            Left = 112
+            Top = 96
+            Width = 112
+            Height = 22
+            DataField = 'COMPANY_OWNER_ID'
+            DataSource = CompanySRC
+            TabOrder = 2
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
           end
         end
         object GroupBox2: TGroupBox
@@ -1289,7 +1314,8 @@ object M_companyNewFRM: TM_companyNewFRM
         'ACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTACT_F' +
         'IRST, COMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTACT_P' +
         'HONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SOCIAL' +
-        '_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB)'
+        '_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB, IS_SAFE' +
+        '_COMPANY, COMPANY_OWNER_ID)'
       'VALUES'
       
         '  (:SERIAL_NUMBER, :SERIAL_QB, :FK_COMPANY_SERIAL, :LAST_NAME, :' +
@@ -1302,7 +1328,8 @@ object M_companyNewFRM: TM_companyNewFRM
         ':PHONE_CONTACT, :COMPANY_CONTACT_FIRST, :COMPANY_CONTACT_LAST, :' +
         'COMPANY_OWNER_REG, :COMPANY_CONTACT_PHONE, :COMPANY_CONTACT_EMAI' +
         'L, :COMPANY_CONTACT_FAX, :COMPANY_SOCIAL_SEC, :COMPANY_EMPLOYEES' +
-        ', :PHONE_MOBILE_2, :LINKED_IN, :JOB)')
+        ', :PHONE_MOBILE_2, :LINKED_IN, :JOB, :IS_SAFE_COMPANY, :COMPANY_' +
+        'OWNER_ID)')
     SQLDelete.Strings = (
       'DELETE FROM PERSON'
       'WHERE'
@@ -1332,7 +1359,8 @@ object M_companyNewFRM: TM_companyNewFRM
         ', COMPANY_CONTACT_FAX = :COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC' +
         ' = :COMPANY_SOCIAL_SEC, COMPANY_EMPLOYEES = :COMPANY_EMPLOYEES, ' +
         'PHONE_MOBILE_2 = :PHONE_MOBILE_2, LINKED_IN = :LINKED_IN, JOB = ' +
-        ':JOB'
+        ':JOB, IS_SAFE_COMPANY = :IS_SAFE_COMPANY, COMPANY_OWNER_ID = :CO' +
+        'MPANY_OWNER_ID'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
@@ -1346,8 +1374,8 @@ object M_companyNewFRM: TM_companyNewFRM
         'CONTACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTA' +
         'CT_FIRST, COMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTA' +
         'CT_PHONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SO' +
-        'CIAL_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB FROM' +
-        ' PERSON'
+        'CIAL_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB, IS_' +
+        'SAFE_COMPANY, COMPANY_OWNER_ID FROM PERSON'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1574,6 +1602,16 @@ object M_companyNewFRM: TM_companyNewFRM
       FieldName = 'JOB'
       Size = 50
     end
+    object CompanySQLIS_SAFE_COMPANY: TWideStringField
+      FieldName = 'IS_SAFE_COMPANY'
+      FixedChar = True
+      Size = 1
+    end
+    object CompanySQLCOMPANY_OWNER_ID: TWideStringField
+      FieldName = 'COMPANY_OWNER_ID'
+      FixedChar = True
+      Size = 30
+    end
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -1635,8 +1673,8 @@ object M_companyNewFRM: TM_companyNewFRM
       'order by '
       'pe.Last_name, pe.first_name')
     Active = True
-    Left = 106
-    Top = 377
+    Left = 74
+    Top = 505
     ParamData = <
       item
         DataType = ftUnknown
@@ -1758,8 +1796,8 @@ object M_companyNewFRM: TM_companyNewFRM
       'Order by pout.last_name, pout.first_name')
     ReadOnly = True
     Active = True
-    Left = 170
-    Top = 369
+    Left = 138
+    Top = 481
     object ExcludedPersonsSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
       DisplayWidth = 6
@@ -1796,7 +1834,7 @@ object M_companyNewFRM: TM_companyNewFRM
   end
   object ExcludedPersonsSRC: TDataSource
     DataSet = ExcludedPersonsSQL
-    Left = 264
-    Top = 353
+    Left = 296
+    Top = 529
   end
 end

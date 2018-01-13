@@ -7546,6 +7546,10 @@ object M_mainFRM: TM_mainFRM
         Caption = #904#947#947#961#945#966#945' '#913#925#913#916
         OnClick = N14Click
       end
+      object PDF1: TMenuItem
+        Caption = 'PDF '#949#953#954#972#957#949#962
+        OnClick = PDF1Click
+      end
     end
     object Help1: TMenuItem
       Caption = 'Help'

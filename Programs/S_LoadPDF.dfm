@@ -1,4 +1,4 @@
-object S_LoadDocsFRM: TS_LoadDocsFRM
+object S_loadPdfFRM: TS_loadPdfFRM
   Left = 365
   Top = 153
   Caption = '--'
@@ -40,9 +40,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Height = 43
       Align = alClient
       Alignment = taCenter
-      Caption = #904#947#947#961#945#966#945' '#913#925#913#916
+      Caption = 'PDF '#913#925#913#916
       Layout = tlCenter
-      ExplicitWidth = 206
+      ExplicitWidth = 140
       ExplicitHeight = 32
     end
   end
@@ -147,7 +147,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     BorderOuter = fsNone
     TabOrder = 3
     object Panel5: TRzPanel
-      Left = 631
+      Left = 487
       Top = 0
       Width = 451
       Height = 429
@@ -155,6 +155,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       BorderOuter = fsNone
       Locked = True
       TabOrder = 0
+      ExplicitLeft = 631
       object GroupBox1: TGroupBox
         Left = 6
         Top = 38
@@ -370,11 +371,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Checked = True
           DataField = 'IS_SEND_TO_ALL'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 1
         end
         object wwCheckBox1: TwwCheckBox
@@ -390,11 +389,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Checked = True
           DataField = 'POLY_MONO'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 4
         end
       end
@@ -407,7 +404,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Color = clBtnFace
         DitherColor = clWhite
         DitherStyle = wwdsDither
-        NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
         TextOptions.Alignment = taCenter
@@ -481,6 +477,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Next'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 2
@@ -497,6 +494,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button1'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 3
@@ -530,6 +528,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Delete'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 5
@@ -575,15 +574,13 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     object Grid1: TwwDBGrid
       Left = 0
       Top = 0
-      Width = 601
+      Width = 457
       Height = 429
       ControlType.Strings = (
         'IS_SEND_TO_ALL;CheckBox;Y;N')
       Selected.Strings = (
         'SERIAL_NUMBER'#9'7'#9'A/A'
         'DOC_NAME'#9'40'#9#908#957#959#956#945' '#917#947#947#961#940#966#959#965
-        'POLY_MONO'#9'13'#9#917#960#953#967#949#953#961#953#963#953#945#954#972
-        'IS_SEND_TO_ALL'#9'10'#9#931#949' '#917#964#945#953#961#949#943#949#962
         'DOC_BLOB'#9'10'#9#904#947#947#961#945#966#959)
       IniAttributes.Delimiter = ';;'
       IniAttributes.UnicodeIniFile = False
@@ -613,13 +610,14 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       TitleButtons = False
     end
     object RzPanel3: TRzPanel
-      Left = 601
+      Left = 457
       Top = 0
       Width = 30
       Height = 429
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
+      ExplicitLeft = 601
     end
   end
   object Panel2: TRzPanel
@@ -701,12 +699,18 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       'SELECT'
       '*'
       'FROM'
-      'Word_docs'
+      'Word_docs where doc_type=:docTYpe'
       '')
     Active = True
     OnNewRecord = TableSQLNewRecord
     Left = 49
     Top = 5
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'docTYpe'
+        Value = nil
+      end>
     object TableSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
       DisplayWidth = 7
@@ -719,11 +723,17 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Required = True
       Size = 160
     end
+    object TableSQLDOC_BLOB: TBlobField
+      DisplayLabel = #904#947#947#961#945#966#959
+      DisplayWidth = 10
+      FieldName = 'DOC_BLOB'
+    end
     object TableSQLPOLY_MONO: TWideStringField
       DisplayLabel = #917#960#953#967#949#953#961#953#963#953#945#954#972
       DisplayWidth = 13
       FieldName = 'POLY_MONO'
       Required = True
+      Visible = False
       FixedChar = True
       Size = 1
     end
@@ -732,13 +742,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       DisplayWidth = 10
       FieldName = 'IS_SEND_TO_ALL'
       Required = True
+      Visible = False
       FixedChar = True
       Size = 1
-    end
-    object TableSQLDOC_BLOB: TBlobField
-      DisplayLabel = #904#947#947#961#945#966#959
-      DisplayWidth = 10
-      FieldName = 'DOC_BLOB'
     end
     object TableSQLCODE_KEY: TWideStringField
       DisplayWidth = 11

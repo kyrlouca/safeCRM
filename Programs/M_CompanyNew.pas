@@ -150,6 +150,10 @@ type
     CompanySQLJOB: TWideStringField;
     wwCheckBox1: TwwCheckBox;
     RzDBLabel1: TRzDBLabel;
+    Label6: TLabel;
+    wwDBEdit3: TwwDBEdit;
+    CompanySQLIS_SAFE_COMPANY: TWideStringField;
+    CompanySQLCOMPANY_OWNER_ID: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
