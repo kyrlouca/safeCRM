@@ -155,7 +155,6 @@ object S_loadPdfFRM: TS_loadPdfFRM
       BorderOuter = fsNone
       Locked = True
       TabOrder = 0
-      ExplicitLeft = 631
       object GroupBox1: TGroupBox
         Left = 6
         Top = 38
@@ -404,6 +403,7 @@ object S_loadPdfFRM: TS_loadPdfFRM
         Color = clBtnFace
         DitherColor = clWhite
         DitherStyle = wwdsDither
+        NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
         TextOptions.Alignment = taCenter
@@ -617,7 +617,6 @@ object S_loadPdfFRM: TS_loadPdfFRM
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 2
-      ExplicitLeft = 601
     end
   end
   object Panel2: TRzPanel
@@ -658,11 +657,11 @@ object S_loadPdfFRM: TS_loadPdfFRM
       'INSERT INTO WORD_DOCS'
       
         '  (POLY_MONO, CODE_KEY, DOC_NAME, DOC_BLOB, IS_SEND_TO_ALL, SERI' +
-        'AL_NUMBER, DOC_PATH)'
+        'AL_NUMBER, DOC_PATH, DOC_TYPE)'
       'VALUES'
       
         '  (:POLY_MONO, :CODE_KEY, :DOC_NAME, :DOC_BLOB, :IS_SEND_TO_ALL,' +
-        ' :SERIAL_NUMBER, :DOC_PATH)')
+        ' :SERIAL_NUMBER, :DOC_PATH, :DOC_TYPE)')
     SQLDelete.Strings = (
       'DELETE FROM WORD_DOCS'
       'WHERE'
@@ -673,13 +672,14 @@ object S_loadPdfFRM: TS_loadPdfFRM
       
         '  POLY_MONO = :POLY_MONO, CODE_KEY = :CODE_KEY, DOC_NAME = :DOC_' +
         'NAME, DOC_BLOB = :DOC_BLOB, IS_SEND_TO_ALL = :IS_SEND_TO_ALL, SE' +
-        'RIAL_NUMBER = :SERIAL_NUMBER, DOC_PATH = :DOC_PATH'
+        'RIAL_NUMBER = :SERIAL_NUMBER, DOC_PATH = :DOC_PATH, DOC_TYPE = :' +
+        'DOC_TYPE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT POLY_MONO, CODE_KEY, DOC_NAME, DOC_BLOB, IS_SEND_TO_ALL, ' +
-        'SERIAL_NUMBER, DOC_PATH FROM WORD_DOCS'
+        'SERIAL_NUMBER, DOC_PATH, DOC_TYPE FROM WORD_DOCS'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -751,6 +751,17 @@ object S_loadPdfFRM: TS_loadPdfFRM
       FieldName = 'CODE_KEY'
       Visible = False
       Size = 10
+    end
+    object TableSQLDOC_PATH: TWideStringField
+      FieldName = 'DOC_PATH'
+      Visible = False
+      Size = 500
+    end
+    object TableSQLDOC_TYPE: TWideStringField
+      FieldName = 'DOC_TYPE'
+      Visible = False
+      FixedChar = True
+      Size = 5
     end
   end
   object WriteTrans: TIBCTransaction

@@ -86,7 +86,6 @@ type
     N10: TMenuItem;
     N13: TMenuItem;
     N14: TMenuItem;
-    PDF1: TMenuItem;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Countries2Click(Sender: TObject);
@@ -135,8 +134,7 @@ uses G_generalProcs, M_params, M_Company, M_Student, M_Venue, M_seminarType,
   L_Companies, R_invoices, V_SeminarStages, L_reminders, R_expiry,
   G_SFCommonProcs, SN_Login, SN_User, M_payment, l_listInvoices,
   v_SeminarPictureTemplate, R_SeminarListingRevenues, t_test2, R_presencePerDay,
-  SN_ModifyPassword, S_updateStatus, S_LoadDocs, m_FixMaleFemale,
-  R_word_issonos1_, S_LoadPDF;
+  SN_ModifyPassword, S_updateStatus, S_LoadDocs, m_FixMaleFemale, S_LoadPDF;
 
 procedure TM_mainFRM.BitBtn1Click(Sender: TObject);
 begin
@@ -152,11 +150,12 @@ var
 
 begin
 
-  gpShowModal(TR_Word_issonos1_frm);
+//  gpShowModal(TR_Word_issonos1_frm);
 end;
 
 procedure TM_mainFRM.Button2Click(Sender: TObject);
 begin
+
 
 gpShowModal(TS_LoadDocsFRM);
 end;

@@ -57,6 +57,8 @@ type
     wwCheckBox1: TwwCheckBox;
     Label5: TLabel;
     wwIncrementalSearch1: TwwIncrementalSearch;
+    TableSQLDOC_PATH: TWideStringField;
+    TableSQLDOC_TYPE: TWideStringField;
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure SavetoDBClick(Sender: TObject);
@@ -77,12 +79,13 @@ type
   procedure SaveXX(Const SerialNumber:Integer;Const  FilePath, DocName :String);
   function FindHex(const FileName:String): Integer;
 
-  procedure WriteFiles(Const SeminarSerial:Integer);
+  procedure WriteFiles(Const SeminarSerial:Integer;Const FileType:String);
 
   public
     { Public declarations }
     MyInsertState:Boolean;
     IN_SeminarSerial:integer;
+    IN_FileTypes:String;
     Procedure CreateTheFiles;
   end;
 
@@ -387,6 +390,7 @@ procedure TS_loadPdfFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
   Dataset.FieldByName('Poly_mono').AsString:='M';
   Dataset.FieldByName('iS_send_to_all').AsString:='N';
+  Dataset.FieldByName('DOC_TYPE').AsString:='WORD';
 end;
 
 procedure TS_loadPdfFRM.SavetoDBClick(Sender: TObject);
@@ -415,7 +419,11 @@ end;
 
 procedure TS_loadPdfFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL])
+
+TableSQL.Close;
+TableSQL.ParamByName('DocTYpe').Value:='WORD';
+TableSQL.Open;
+
 end;
 
 procedure TS_loadPdfFRM.FormCreate(Sender: TObject);
@@ -455,15 +463,15 @@ end;
 
 procedure TS_loadPdfFRM.Button1Click(Sender: TObject);
 begin
-  WriteFiles(119);
+  WriteFiles(119,'PDF');
 end;
 
 procedure TS_loadPdfFRM.CreateTheFiles;
 begin
-  WriteFiles(IN_SeminarSerial);
+  WriteFiles(IN_SeminarSerial,IN_FileTypes);
 end;
 
-procedure TS_loadPdfFRM.WriteFiles(Const SeminarSerial:Integer);
+procedure TS_loadPdfFRM.WriteFiles(Const SeminarSerial:Integer;Const FileType:String);
 var
   qr:TksQuery;
   compQr:TksQuery;

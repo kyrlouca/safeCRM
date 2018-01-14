@@ -1315,6 +1315,7 @@ begin
   frm := TS_LoadDocsFRM.Create(nil);
   try
     frm.IN_SeminarSerial:=SeminarSerial;
+    frm.IN_DocTYpe:='WORD';
     frm.CreateTheFiles;
   finally
     frm.Free;

@@ -90,6 +90,9 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>Safe_CRM_Icon1.ico</Icon_MainIcon>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -275,16 +278,16 @@
             <Form>M_StudentFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="R_word_issonos1_.pas">
-            <Form>R_Word_issonos1_frm</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="R_expiry.pas">
             <Form>R_ExpiryFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="S_LoadPDF.pas">
             <Form>S_loadPdfFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="S_LoadDocs.pas">
+            <Form>S_LoadDocsFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -309,13 +312,6 @@
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\ipstudiowinwordxp250.bpl">Woll2Woll InfoPower RichEdit for MSWord XP</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfrxTee25.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfsTee25.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfrxADO25.bpl">FastReport 5.0 ADO Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfsADO25.bpl">FastScript 1.9 ADO Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfrxDBX25.bpl">FastReport 5.0 DBX Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfrxIBX25.bpl">FastReport 5.0 IBX Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD25\dclfsIBX25.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>

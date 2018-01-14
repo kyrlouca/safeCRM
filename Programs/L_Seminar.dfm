@@ -154,8 +154,6 @@ object L_SeminarFRM: TL_SeminarFRM
     Height = 134
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = 1
-    ExplicitTop = 55
     object RzGroupBox1: TRzGroupBox
       Left = 4
       Top = 6
@@ -324,7 +322,7 @@ object L_SeminarFRM: TL_SeminarFRM
     object RzGroupBox2: TRzGroupBox
       Left = 269
       Top = 6
-      Width = 356
+      Width = 428
       Height = 83
       Caption = 'Search Seminars'
       Font.Charset = DEFAULT_CHARSET
@@ -365,7 +363,7 @@ object L_SeminarFRM: TL_SeminarFRM
       object wwIncrementalSearch1: TwwIncrementalSearch
         Left = 85
         Top = 21
-        Width = 268
+        Width = 340
         Height = 22
         DataSource = TableSRC
         SearchField = 'Seminar_name'

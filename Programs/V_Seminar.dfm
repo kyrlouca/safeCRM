@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = ReminderTS
+      ActivePage = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -351,7 +351,7 @@ object V_SeminarFRM: TV_SeminarFRM
             object CompanyFLD: TwwDBLookupCombo
               Left = 115
               Top = 377
-              Width = 143
+              Width = 252
               Height = 22
               DropDownAlignment = taLeftJustify
               Selected.Strings = (
@@ -2387,7 +2387,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 'DAYS_OR_MONTHS'#9'10'#9#919#956#941#961#949#962'/'#924#942#957#949#962
                 'AFTER_OR_BEFORE'#9'8'#9#928#961#953#957'/'#924#949#964#940
                 'START_OR_END'#9'11'#9#913#960#972' '
-                'DATE_TARGETED'#9'12'#9#916#961#940#963#951#9'F')
+                'DATE_TARGETED'#9'12'#9#916#961#940#963#951)
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
@@ -3372,7 +3372,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C0101100088005C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800600310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4354,8 +4354,8 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
-    Left = 281
-    Top = 461
+    Left = 9
+    Top = 517
     ParamData = <
       item
         DataType = ftInteger
@@ -4503,7 +4503,7 @@ object V_SeminarFRM: TV_SeminarFRM
   end
   object SeminarDaySRC: TDataSource
     DataSet = SeminarDaySQL
-    Left = 184
+    Left = 32
     Top = 465
   end
   object SeminarCostItemSQL: TIBCQuery
@@ -4821,9 +4821,9 @@ object V_SeminarFRM: TV_SeminarFRM
       Caption = 'Help'
     end
     object N1: TMenuItem
-      Caption = #913#925#913#916'-'#913#961#967#949#943#945
+      Caption = #917#957#964#965#960#945'-'#916#951#956#953#959#965#961#947#943#945
       object N2: TMenuItem
-        Caption = #916#951#956#953#959#965#961#947#943#945' '#913#961#967#949#943#969#957
+        Caption = #916#951#956#953#959#965#961#947#943#945' '#917#957#964#973#960#969#957
         OnClick = N2Click
       end
     end

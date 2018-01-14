@@ -77,12 +77,13 @@ type
   procedure SaveXX(Const SerialNumber:Integer;Const  FilePath, DocName :String);
   function FindHex(const FileName:String): Integer;
 
-  procedure WriteFiles(Const SeminarSerial:Integer);
+  procedure WriteFiles(Const SeminarSerial:Integer;Const DocType:String);
 
   public
     { Public declarations }
     MyInsertState:Boolean;
     IN_SeminarSerial:integer;
+    IN_DocTYpe:String;
     Procedure CreateTheFiles;
   end;
 
@@ -455,15 +456,15 @@ end;
 
 procedure TS_LoadDocsFRM.Button1Click(Sender: TObject);
 begin
-  WriteFiles(119);
+  WriteFiles(119,'abc');
 end;
 
 procedure TS_LoadDocsFRM.CreateTheFiles;
 begin
-  WriteFiles(IN_SeminarSerial);
+  WriteFiles(IN_SeminarSerial,in_DocTYpe);
 end;
 
-procedure TS_LoadDocsFRM.WriteFiles(Const SeminarSerial:Integer);
+procedure TS_LoadDocsFRM.WriteFiles(Const SeminarSerial:Integer;Const DocType:String);
 var
   qr:TksQuery;
   compQr:TksQuery;
@@ -524,11 +525,12 @@ begin
 
 //  fileName:='C:\Data\DelphiProjects\Safe_CRM\documents\Mono_anadForms\temp.doc';
 
-  str2:='Select * from word_docs wd where wd.Poly_mono = :poly';
+  str2:='Select * from word_docs wd where wd.Poly_mono = :poly and wd.doc_type= :DocType';
   qr:= TksQuery.Create(cn,str2);
   try
       qr.close;
       qr.ParamByName('poly').Value:=isPoly;
+      qr.ParamByName('DocTYpe').Value:=DocType;
       qr.open;
       while not qr.Eof do begin
       //for every document

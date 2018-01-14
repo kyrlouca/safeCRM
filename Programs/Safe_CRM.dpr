@@ -53,9 +53,9 @@ uses
   R_AnadFIles in 'R_AnadFIles.pas' {R_AnadFilesFRM},
   m_FixMaleFemale in 'm_FixMaleFemale.pas' {M_FixMaleFemaleFRM},
   M_Student in 'M_Student.pas' {M_StudentFRM},
-  R_word_issonos1_ in 'R_word_issonos1_.pas' {R_Word_issonos1_frm},
   R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
-  S_LoadPDF in 'S_LoadPDF.pas' {S_loadPdfFRM};
+  S_LoadPDF in 'S_LoadPDF.pas' {S_loadPdfFRM},
+  S_LoadDocs in 'S_LoadDocs.pas' {S_LoadDocsFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -76,9 +76,9 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TU_databaseFRM, U_databaseFRM);
   Application.CreateForm(TM_mainFRM, M_mainFRM);
   Application.CreateForm(TM_StudentFRM, M_StudentFRM);
-  Application.CreateForm(TR_Word_issonos1_frm, R_Word_issonos1_frm);
   Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
   Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
   Application.CreateForm(TS_loadPdfFRM, S_loadPdfFRM);
+  Application.CreateForm(TS_LoadDocsFRM, S_LoadDocsFRM);
   Application.Run;
 end.

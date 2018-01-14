@@ -27,7 +27,7 @@ object M_mainFRM: TM_mainFRM
     Margins.Bottom = 0
     Align = alTop
     BorderOuter = fsGroove
-    Caption = 'Safe CRM - V0.99'
+    Caption = 'Safe CRM - V1.00'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 3947580
     Font.Height = -48
@@ -7231,9 +7231,7 @@ object M_mainFRM: TM_mainFRM
         BB01D75E82B64FFBF11FB4AA436D1FE5BA540000000049454E44AE426082}
       Proportional = True
       Stretch = True
-      ExplicitTop = -3
-      ExplicitWidth = 789
-      ExplicitHeight = 308
+      ExplicitTop = 2
     end
     object LoginBTN: TRzBitBtn
       Left = 14
@@ -7314,11 +7312,12 @@ object M_mainFRM: TM_mainFRM
     end
     object Button1: TButton
       Left = 27
-      Top = 81
+      Top = 41
       Width = 75
       Height = 25
       Caption = 'Button1'
       TabOrder = 1
+      Visible = False
       OnClick = Button1Click
     end
     object Button2: TButton
@@ -7328,6 +7327,7 @@ object M_mainFRM: TM_mainFRM
       Height = 25
       Caption = 'Button2'
       TabOrder = 2
+      Visible = False
       OnClick = Button2Click
     end
     object MainHelpRE: TwwDBRichEdit
@@ -7545,10 +7545,6 @@ object M_mainFRM: TM_mainFRM
       object N14: TMenuItem
         Caption = #904#947#947#961#945#966#945' '#913#925#913#916
         OnClick = N14Click
-      end
-      object PDF1: TMenuItem
-        Caption = 'PDF '#949#953#954#972#957#949#962
-        OnClick = PDF1Click
       end
     end
     object Help1: TMenuItem
