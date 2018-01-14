@@ -57,6 +57,8 @@ type
     wwCheckBox1: TwwCheckBox;
     Label5: TLabel;
     wwIncrementalSearch1: TwwIncrementalSearch;
+    TableSQLDOC_PATH: TWideStringField;
+    TableSQLDOC_TYPE: TWideStringField;
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure SavetoDBClick(Sender: TObject);
@@ -388,6 +390,7 @@ procedure TS_LoadDocsFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
   Dataset.FieldByName('Poly_mono').AsString:='M';
   Dataset.FieldByName('iS_send_to_all').AsString:='N';
+  Dataset.FieldByName('DOC_TYPE').AsString:='WORD';
 end;
 
 procedure TS_LoadDocsFRM.SavetoDBClick(Sender: TObject);
@@ -416,7 +419,9 @@ end;
 
 procedure TS_LoadDocsFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([TableSQL])
+  tableSQL.close;
+  TableSQL.ParamByName('DocTYpe').Value:='WORD';
+  TableSQL.Open;
 end;
 
 procedure TS_LoadDocsFRM.FormCreate(Sender: TObject);

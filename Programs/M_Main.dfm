@@ -7543,7 +7543,7 @@ object M_mainFRM: TM_mainFRM
         OnClick = N3Click
       end
       object N14: TMenuItem
-        Caption = #904#947#947#961#945#966#945' '#913#925#913#916
+        Caption = #904#957#964#965#960#945' '#913#925#913#916
         OnClick = N14Click
       end
     end

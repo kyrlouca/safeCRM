@@ -40,9 +40,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       Height = 43
       Align = alClient
       Alignment = taCenter
-      Caption = #904#947#947#961#945#966#945' '#913#925#913#916
+      Caption = #904#957#964#965#960#945' '#913#925#913#916
       Layout = tlCenter
-      ExplicitWidth = 206
+      ExplicitWidth = 187
       ExplicitHeight = 32
     end
   end
@@ -370,11 +370,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Checked = True
           DataField = 'IS_SEND_TO_ALL'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 1
         end
         object wwCheckBox1: TwwCheckBox
@@ -390,11 +388,9 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DisplayValueChecked = 'Y'
           DisplayValueUnchecked = 'N'
           NullAndBlankState = cbUnchecked
-          Checked = True
           DataField = 'POLY_MONO'
           DataSource = TableSRC
           ShowText = False
-          State = cbChecked
           TabOrder = 4
         end
       end
@@ -407,6 +403,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Color = clBtnFace
         DitherColor = clWhite
         DitherStyle = wwdsDither
+        NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
         TextOptions.Alignment = taCenter
@@ -480,6 +477,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Next'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 2
@@ -496,6 +494,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button1'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 3
@@ -529,6 +528,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Delete'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 5
@@ -659,11 +659,11 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       'INSERT INTO WORD_DOCS'
       
         '  (POLY_MONO, CODE_KEY, DOC_NAME, DOC_BLOB, IS_SEND_TO_ALL, SERI' +
-        'AL_NUMBER, DOC_PATH)'
+        'AL_NUMBER, DOC_PATH, DOC_TYPE)'
       'VALUES'
       
         '  (:POLY_MONO, :CODE_KEY, :DOC_NAME, :DOC_BLOB, :IS_SEND_TO_ALL,' +
-        ' :SERIAL_NUMBER, :DOC_PATH)')
+        ' :SERIAL_NUMBER, :DOC_PATH, :DOC_TYPE)')
     SQLDelete.Strings = (
       'DELETE FROM WORD_DOCS'
       'WHERE'
@@ -674,13 +674,14 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       
         '  POLY_MONO = :POLY_MONO, CODE_KEY = :CODE_KEY, DOC_NAME = :DOC_' +
         'NAME, DOC_BLOB = :DOC_BLOB, IS_SEND_TO_ALL = :IS_SEND_TO_ALL, SE' +
-        'RIAL_NUMBER = :SERIAL_NUMBER, DOC_PATH = :DOC_PATH'
+        'RIAL_NUMBER = :SERIAL_NUMBER, DOC_PATH = :DOC_PATH, DOC_TYPE = :' +
+        'DOC_TYPE'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
         'SELECT POLY_MONO, CODE_KEY, DOC_NAME, DOC_BLOB, IS_SEND_TO_ALL, ' +
-        'SERIAL_NUMBER, DOC_PATH FROM WORD_DOCS'
+        'SERIAL_NUMBER, DOC_PATH, DOC_TYPE FROM WORD_DOCS'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -700,12 +701,20 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       'SELECT'
       '*'
       'FROM'
-      'Word_docs'
+      'Word_docs where'
+      'doc_type= :DocTYpe'
+      ''
       '')
     Active = True
     OnNewRecord = TableSQLNewRecord
     Left = 49
     Top = 5
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DocTYpe'
+        Value = nil
+      end>
     object TableSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
       DisplayWidth = 7
@@ -744,6 +753,17 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       FieldName = 'CODE_KEY'
       Visible = False
       Size = 10
+    end
+    object TableSQLDOC_PATH: TWideStringField
+      FieldName = 'DOC_PATH'
+      Visible = False
+      Size = 500
+    end
+    object TableSQLDOC_TYPE: TWideStringField
+      FieldName = 'DOC_TYPE'
+      Visible = False
+      FixedChar = True
+      Size = 5
     end
   end
   object WriteTrans: TIBCTransaction
