@@ -184,28 +184,28 @@ type
     TableSQLPASS_PERCENTAGE: TIntegerField;
     TableSQLSPECIFICATION_NUMBER: TWideStringField;
     TestTypePicturesSQL: TIBCQuery;
-    IntegerField1: TIntegerField;
-    IntegerField2: TIntegerField;
-    WideStringField1: TWideStringField;
-    BlobField1: TBlobField;
-    WideStringField2: TWideStringField;
-    WideStringField3: TWideStringField;
-    WideStringField4: TWideStringField;
-    WideStringField5: TWideStringField;
-    WideStringField6: TWideStringField;
-    WideStringField7: TWideStringField;
-    BlobField2: TBlobField;
-    BlobField3: TBlobField;
-    BlobField4: TBlobField;
-    BlobField5: TBlobField;
-    IntegerField3: TIntegerField;
-    IntegerField4: TIntegerField;
-    IntegerField5: TIntegerField;
-    IntegerField6: TIntegerField;
-    IntegerField7: TIntegerField;
-    IntegerField8: TIntegerField;
-    IntegerField9: TIntegerField;
-    IntegerField10: TIntegerField;
+    TestTypePicturesSQLSERIAL_NUMBER: TIntegerField;
+    TestTypePicturesSQLFK_SEMINAR_TYPE_SERIAL: TIntegerField;
+    TestTypePicturesSQLLANGUAGE_GREEK_OR_ENGLISH: TWideStringField;
+    TestTypePicturesSQLPICTURE_SEMINAR: TBlobField;
+    TestTypePicturesSQLLINE_A1: TWideStringField;
+    TestTypePicturesSQLLINE_A2: TWideStringField;
+    TestTypePicturesSQLLINE_B1: TWideStringField;
+    TestTypePicturesSQLLINE_B2: TWideStringField;
+    TestTypePicturesSQLLINE_B3: TWideStringField;
+    TestTypePicturesSQLTL_X: TIntegerField;
+    TestTypePicturesSQLTL_Y: TIntegerField;
+    TestTypePicturesSQLTR_X: TIntegerField;
+    TestTypePicturesSQLTR_Y: TIntegerField;
+    TestTypePicturesSQLBL_X: TIntegerField;
+    TestTypePicturesSQLBL_Y: TIntegerField;
+    TestTypePicturesSQLBR_X: TIntegerField;
+    TestTypePicturesSQLBR_Y: TIntegerField;
+    TestTypePicturesSQLPICTURE_TOP_L1: TBlobField;
+    TestTypePicturesSQLPICTURE_TOP_R1: TBlobField;
+    TestTypePicturesSQLPICTURE_BOT_L1: TBlobField;
+    TestTypePicturesSQLPICTURE_BOT_R1: TBlobField;
+    TestTypePicturesSQLLINE_C1: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -282,7 +282,7 @@ end;
 procedure TR_certificateFRM.DurationFLDCalc(Sender: TObject;
   var Value: Variant);
 begin
-            value:='Διάρκειας: '+CertificateSQL.FieldByName('seminar_duration').AsString + ' ωρών';
+            value:='Ξ”ΞΉΞ¬ΟΞΊΞµΞΉΞ±Ο‚: '+CertificateSQL.FieldByName('seminar_duration').AsString + ' Ο‰ΟΟΞ½';
 
 end;
 
@@ -488,7 +488,7 @@ end;
 
 procedure TR_certificateFRM.IdFLDCalc(Sender: TObject; var Value: Variant);
 begin
-    value:='(Αρ. Ταυτότητας: '+Trim(CertificateSQL.FieldByName('National_id').AsString)+ ')' ;
+    value:='(Ξ‘Ο. Ξ¤Ξ±Ο…Ο„ΟΟ„Ξ·Ο„Ξ±Ο‚: '+Trim(CertificateSQL.FieldByName('National_id').AsString)+ ')' ;
 
 end;
 
@@ -544,9 +544,9 @@ begin
 
             temp:=CertificateSQL.FieldByName('SEX').AsString;
             if temp='M' then
-              temp:='Ο'
+              temp:='Ξ'
             else
-              temp:='Η';
+              temp:='Ξ—';
 
              if isAllUpper then begin
                 temp:= ToUpper(temp);
@@ -668,16 +668,17 @@ begin
   end;
 
     with TestTypePicturesSQL do begin
-    SeminarPicturesSQL.Close ;
-    SeminarPicturesSQL.ParamByName('SeminarSerial').Value:=SeminarSerial;
-    SeminarPicturesSQL.ParamByName('Language').Value:=Language;
-    SeminarPicturesSQL.Open ;
-    if     SeminarPicturesSQL.IsEmpty then begin
+    TestTypePicturesSQL.Close ;
+    TestTypePicturesSQL.ParamByName('SeminarTypeSerial').Value:=SeminarTypeSerial;
+    TestTypePicturesSQL.ParamByName('Language').Value:=Language;
+    TestTypePicturesSQL.Open ;
+    if     TestTypePicturesSQL.IsEmpty then begin
       showMessage('error: missing seminar picture record');
       exit;
     end;
   end;
 
+  SeminarPictureSRC.DataSet:=TestTypePicturesSQL;
 
 
  PpReport1.Print;

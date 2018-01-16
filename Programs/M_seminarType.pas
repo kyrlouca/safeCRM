@@ -473,7 +473,8 @@ begin
     try
       qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
       Qr.Open;
-     ShowMessage(qr.FieldByName('Serial_number').AsString);
+       ShowMessage(qr.FieldByName('Serial_number').AsString);
+      CertificateSerial:=qr.FieldByName('Serial_number').AsInteger;
 
     finally
       qr.Free;
@@ -485,8 +486,10 @@ begin
   frm :=  TR_certificateFRM.Create(nil);
 //  frm.IN_seminar_serial :=seminarSerial;
 //  frm.IN_certificate_serial:=0;
+Language:='G';
   try
-    frm.PrintSeminar(SeminarSerial,CertificateSerial,Language);
+
+    frm.PrintTestSeminar(SeminarSerial,TypeSerial,CertificateSerial,Language);
   finally
     frm.Free;
   end;
