@@ -11,7 +11,8 @@ uses
   ppCache, ppDBPipe,ppTypes,ppviewr, ppDesignLayer, ppParameter, RzButton,
   RzPanel, Vcl.Imaging.pngimage, VirtualTable, vcl.Wwdotdot, vcl.Wwdbcomb,
   RzLabel, RzDBLbl, vcl.wwdblook, vcl.wwclearpanel, RzStatus,G_KyrSQL,G_kyriacosTypes,
-  Vcl.Menus, Vcl.ComCtrls, vcl.wwriched, RzEdit;
+  Vcl.Menus, Vcl.ComCtrls, vcl.wwriched, RzEdit, System.ImageList, Vcl.ImgList,
+  Vcl.DBCtrls;
 
 type
   TReminderResult= Record
@@ -89,12 +90,7 @@ type
     RzPanel2: TRzPanel;
     RzPanel6: TRzPanel;
     GroupBox2: TGroupBox;
-    InvoicedST: TRzGlyphStatus;
-    CertifiedST: TRzGlyphStatus;
     GroupBox1: TGroupBox;
-    ApprovedST: TRzGlyphStatus;
-    CompletedST: TRzGlyphStatus;
-    CreatedST: TRzGlyphStatus;
     FirstGRP: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
@@ -126,6 +122,13 @@ type
     wwIncrementalSearch1: TwwIncrementalSearch;
     RzPanel3: TRzPanel;
     StatusChangeFLD: TwwDBComboBox;
+    CreatedST: TRzBitBtn;
+    ApprovedST: TRzBitBtn;
+    CompletedST: TRzBitBtn;
+    InvoicedST: TRzBitBtn;
+    CertifiedST: TRzBitBtn;
+    b1: TRzButton;
+    ImageList1: TImageList;
     procedure AcceptBTNClick(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -368,14 +371,14 @@ Var
   Status:String;
 
   BtnArray : Array of TrzBitBTN;
-  StArray : Array of TrzGlyphStatus;
+//  StArray : Array of TrzGlyphStatus;
   BoolArray : Array[0..4] of Boolean;
     i:integer;
     str:string;
 
 begin
-//  BtnArray :=[CreatedBTn,ApprovedBTN,CertifiedBTN,InvoicedBTN,CompletedBTN];
-  StArray := [CreatedST,ApprovedST,CertifiedST,InvoicedST,CompletedST];
+  BtnArray :=[CreatedSt,ApprovedSt,CertifiedSt,InvoicedSt,CompletedSt];
+//  StArray := [CreatedST,ApprovedST,CertifiedST,InvoicedST,CompletedST];
 
   Status:= Dataset.FieldByName('Status').AsString;
   SeminarSerial:= Dataset.FieldByName('Serial_number').AsInteger;
@@ -394,8 +397,12 @@ begin
 
 
   For i:=0 to Length(BtnArray)-1 do begin
-//    BtnArray[i].Enabled:=false;
-    StArray[i].ShowGlyph:= BoolArray[i];
+    if Boolarray[i] then
+      BtnArray[i].ImageIndex:=0
+    else
+      BtnArray[i].ImageIndex:=1;
+
+//    StArray[i].ShowGlyph:= BoolArray[i];
   end;
 
 

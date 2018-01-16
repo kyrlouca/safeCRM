@@ -702,8 +702,8 @@ object M_companyNewFRM: TM_companyNewFRM
             WordWrap = False
           end
           object wwDBEdit12: TwwDBEdit
-            Left = 113
-            Top = 143
+            Left = 114
+            Top = 146
             Width = 121
             Height = 22
             DataField = 'WEBSITE'

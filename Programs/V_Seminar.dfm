@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = SeminarTS
+      ActivePage = CompaniesTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1664,6 +1664,8 @@ object V_SeminarFRM: TV_SeminarFRM
               OnTitleButtonClick = AllPersonsGRDTitleButtonClick
               OnDblClick = AllPersonsGRDDblClick
               OnKeyDown = AllPersonsGRDKeyDown
+              ExplicitLeft = 6
+              ExplicitTop = 83
             end
             object RzSizePanel1: TRzSizePanel
               Left = 1
@@ -1984,17 +1986,16 @@ object V_SeminarFRM: TV_SeminarFRM
             Font.Style = []
             ParentFont = False
             TabOrder = 3
-            object wwDBGrid5: TwwDBGrid
+            object AllCompGRD: TwwDBGrid
               Left = 1
               Top = 84
               Width = 448
               Height = 483
               Selected.Strings = (
-                'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
-                'SERIAL_QB'#9'8'#9'QB'#9#9
-                'LAST_NAME'#9'21'#9#917#960#943#952#949#964#959#9#9
-                'FIRST_NAME'#9'12'#9#908#957#959#956#945#9#9
-                'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945#9#9)
+                'SERIAL_NUMBER'#9'10'#9'A/A'
+                'SERIAL_QB'#9'8'#9'QB'
+                'LAST_NAME'#9'33'#9#917#960#943#952#949#964#959
+                'NATIONAL_ID'#9'13'#9#932#945#965#964#972#964#951#964#945)
               IniAttributes.Delimiter = ';;'
               IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
@@ -2022,7 +2023,7 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = True
-              OnTitleButtonClick = AllPersonsGRDTitleButtonClick
+              OnTitleButtonClick = AllCompGRDTitleButtonClick
               OnDblClick = AllPersonsGRDDblClick
               OnKeyDown = AllPersonsGRDKeyDown
             end
@@ -2034,11 +2035,11 @@ object V_SeminarFRM: TV_SeminarFRM
               Align = alTop
               TabOrder = 0
               object Label28: TLabel
-                Left = 8
+                Left = 18
                 Top = 38
-                Width = 61
+                Width = 77
                 Height = 14
-                Caption = #932#945#965#964#972#964#951#964#945
+                Caption = #913#961'. '#917#947#947#961#945#966#942#962
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -12
@@ -2047,11 +2048,11 @@ object V_SeminarFRM: TV_SeminarFRM
                 ParentFont = False
               end
               object Label29: TLabel
-                Left = 30
+                Left = 54
                 Top = 10
-                Width = 41
+                Width = 37
                 Height = 14
-                Caption = #917#960#943#952#949#964#959
+                Caption = #908#957#959#956#945
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -12
@@ -2060,11 +2061,11 @@ object V_SeminarFRM: TV_SeminarFRM
                 ParentFont = False
               end
               object wwIncrementalSearch3: TwwIncrementalSearch
-                Left = 75
+                Left = 104
                 Top = 7
-                Width = 128
+                Width = 273
                 Height = 22
-                DataSource = NonAttendSRC
+                DataSource = Co_CompaniesOutSRC
                 SearchField = 'last_name'
                 ShowMatchText = True
                 Font.Charset = DEFAULT_CHARSET
@@ -2077,11 +2078,11 @@ object V_SeminarFRM: TV_SeminarFRM
                 OnKeyDown = SearchPersonFLDKeyDown
               end
               object wwIncrementalSearch4: TwwIncrementalSearch
-                Left = 75
+                Left = 104
                 Top = 35
                 Width = 128
                 Height = 22
-                DataSource = NonAttendSRC
+                DataSource = Co_CompaniesOutSRC
                 SearchField = 'NATIONAL_ID'
                 ShowMatchText = True
                 Font.Charset = DEFAULT_CHARSET
@@ -3372,7 +3373,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800600310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800640310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5559,6 +5560,7 @@ object V_SeminarFRM: TV_SeminarFRM
       '   and pout.is_company='#39'Y'#39
       '   and pefound.serial_number is null')
     ReadOnly = True
+    Active = True
     Left = 306
     Top = 681
     ParamData = <
@@ -5580,15 +5582,8 @@ object V_SeminarFRM: TV_SeminarFRM
     end
     object Co_companiesOutSQLLAST_NAME: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
-      DisplayWidth = 21
+      DisplayWidth = 33
       FieldName = 'LAST_NAME'
-      FixedChar = True
-      Size = 30
-    end
-    object Co_companiesOutSQLFIRST_NAME: TWideStringField
-      DisplayLabel = #908#957#959#956#945
-      DisplayWidth = 12
-      FieldName = 'FIRST_NAME'
       FixedChar = True
       Size = 30
     end
@@ -5597,6 +5592,14 @@ object V_SeminarFRM: TV_SeminarFRM
       DisplayWidth = 13
       FieldName = 'NATIONAL_ID'
       FixedChar = True
+    end
+    object Co_companiesOutSQLFIRST_NAME: TWideStringField
+      DisplayLabel = #908#957#959#956#945
+      DisplayWidth = 12
+      FieldName = 'FIRST_NAME'
+      Visible = False
+      FixedChar = True
+      Size = 30
     end
   end
   object Co_CompaniesOutSRC: TDataSource

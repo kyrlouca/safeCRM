@@ -254,20 +254,6 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
     UserName = 'vtpip'
     Left = 408
     Top = 40
-    object vtpipppField1: TppField
-      FieldAlias = 'vt1Field1'
-      FieldName = 'vt1Field1'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 0
-    end
-    object vtpipppField2: TppField
-      FieldAlias = 'af'
-      FieldName = 'af'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 1
-    end
   end
   object ppReport1: TppReport
     AutoStop = False

@@ -183,6 +183,29 @@ type
     TableSQLFK_COMPANY_INVOICED: TIntegerField;
     TableSQLPASS_PERCENTAGE: TIntegerField;
     TableSQLSPECIFICATION_NUMBER: TWideStringField;
+    TestTypePicturesSQL: TIBCQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
+    WideStringField1: TWideStringField;
+    BlobField1: TBlobField;
+    WideStringField2: TWideStringField;
+    WideStringField3: TWideStringField;
+    WideStringField4: TWideStringField;
+    WideStringField5: TWideStringField;
+    WideStringField6: TWideStringField;
+    WideStringField7: TWideStringField;
+    BlobField2: TBlobField;
+    BlobField3: TBlobField;
+    BlobField4: TBlobField;
+    BlobField5: TBlobField;
+    IntegerField3: TIntegerField;
+    IntegerField4: TIntegerField;
+    IntegerField5: TIntegerField;
+    IntegerField6: TIntegerField;
+    IntegerField7: TIntegerField;
+    IntegerField8: TIntegerField;
+    IntegerField9: TIntegerField;
+    IntegerField10: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -205,7 +228,6 @@ type
   private
     { Private declarations }
     cn:TIBCConnection;
-  procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer;Const language:String);
 
   function ReplaceText(picFIeldName:String):String;
   procedure MovePosition(img :TppDBImage);
@@ -215,7 +237,10 @@ type
     IN_Seminar_Serial:Integer;
     IN_certificate_serial:Integer;
     IN_Language:String;
+    procedure PrintSeminar(Const SeminarSerial,CertificateSerial:Integer;Const language:String);
+
     procedure PrintTheSeminar();
+    procedure PrintTestType();
 
   end;
 
@@ -392,6 +417,8 @@ begin
 
 end;
 
+
+
 procedure TR_certificateFRM.PrintTheSeminar();
 var
   Language:String;
@@ -485,7 +512,8 @@ var
 begin
 
   wwMemo.Clear;
-  wwMemo.SetRtfText(SeminarPicturesSQL.FieldByName(picFieldName).AsString);
+//  wwMemo.SetRtfText(SeminarPicturesSQL.FieldByName(picFieldName).AsString);
+  wwMemo.SetRtfText(SeminarPictureSRC.DataSet.FieldByName(picFieldName).AsString);
 
 
  For token in ReplaceArray do begin
@@ -534,7 +562,8 @@ begin
          end else if token='[HOURS]' then begin
             temp:=CertificateSQL.FieldByName('SEMINAR_DURATION').AsString;
          end else if token='[DATE]' then begin
-            GreekOrEnglish:=SeminarPicturesSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+//            GreekOrEnglish:=SeminarPicturesSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+            GreekOrEnglish:=SeminarPictureSRC.DataSet.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
             temp:=FormatGreekDate(CertificateSQL.FieldByName('DATE_ISSUED').AsDateTime,GreekOrEnglish);
              if isAllUpper then begin
                 temp:= ToUpper(temp);
@@ -601,35 +630,46 @@ begin
   ImgFound:=findElement(img.DataField);
   if imgFound.fName='' then
     exit;
-  if (SeminarPicturesSQL.FindField(ImgFound.fName) <> nil ) then begin
-    img.Left:=ImgFound.Left+ SeminarPicturesSQL.FieldByName(imgFound.FieldForLeft).AsFloat/10.0;
-    img.Top:= ImgFound.Top+ SeminarPicturesSQL.FieldByName(imgFOund.FieldForRIght).AsFloat/10;
+//  if (SeminarPicturesSQL.FindField(ImgFound.fName) <> nil ) then begin
+  if (SeminarPictureSRC.DataSet.FindField(ImgFound.fName) <> nil ) then begin
+//    img.Left:=ImgFound.Left+  SeminarPicturesSQL.FieldByName(imgFound.FieldForLeft).AsFloat/10.0;
+//    img.Top:= ImgFound.Top+ SeminarPicturesSQL.FieldByName(imgFOund.FieldForRIght).AsFloat/10;
+    img.Left:=ImgFound.Left+  SeminarPictureSRC.DataSet.FieldByName(imgFound.FieldForLeft).AsFloat/10.0;
+    img.Top:= ImgFound.Top+ SeminarPictureSRC.DataSet.FieldByName(imgFOund.FieldForRIght).AsFloat/10;
   end;
 
 end;
 
 
 
+procedure TR_certificateFRM.PrintTestType();
+var
+CertSerial:integer;
+language:string;
+isValid:Boolean;
+begin
+
+  LanguageRGP.ItemIndex:=0;
+  TableSQL.Close;
+  TableSQL.ParamByName('seminarSerial').Value:=IN_Seminar_Serial;
+  TableSQL.Open;
+
+  CertificateSQL.Close;
+  CertificateSQL.ParamByName('seminarSerial').Value:=IN_Seminar_Serial;
+  CertificateSQL.Open;
 
 
+  certSerial:=CertificateSQL.FieldByName('serial_number').AsInteger;
+  if certSerial<1 then exit;
+  isValid:=CertificateSQL.FieldByName('is_valid').AsString='Y';
+  if Not IsValid then begin
+    MessageDlg('Certificate is NOT valid. Canot be printed', mtWarning, [mbOK], 0);
+    exit;
+  end;
+  Language:=LanguageRGP.Values[LanguageRGP.ItemIndex];
+  PrintSeminar(IN_Seminar_Serial,certSerial,Language);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+end;
 
 
 end.

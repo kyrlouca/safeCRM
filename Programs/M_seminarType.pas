@@ -283,6 +283,7 @@ type
     insSeminarAllInstructorsSQLFK_INSTRUCTOR_SERIAL: TIntegerField;
     insSeminarAllInstructorsSQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     certificatesHelpRE: TwwDBRichEdit;
+    RzBitBtn2: TRzBitBtn;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
@@ -317,6 +318,7 @@ type
     procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
     procedure SeminarReminderSQLNewRecord(DataSet: TDataSet);
     procedure SeminarTSShow(Sender: TObject);
+    procedure RzBitBtn2Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -351,7 +353,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, G_SFCommonProcs, H_Help;
+uses   U_Database, G_generalProcs, G_SFCommonProcs, H_Help, R_Certificate;
 
 
 {$R *.DFM}
@@ -436,6 +438,61 @@ end;
 procedure TM_SeminarTypeFRM.RzBitBtn1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure TM_SeminarTypeFRM.RzBitBtn2Click(Sender: TObject);
+var
+  TypeSerial:Integer;
+  PictureSerial:Integer;
+  Language:string;
+  qr:TksQuery;
+  str:String;
+  SeminarSerial:Integer;
+  CertificateSerial:integer;
+  Frm:TR_certificateFRM;
+begin
+
+    TypeSerial:= TableSQL.FieldByName('serial_number').AsInteger;
+    PictureSerial:=SeminarPictureSQL.FieldByName('serial_number').AsInteger;
+    Language:= SeminarPictureSQL.FieldByName('LANGUAGE_GREEK_OR_ENGLISH').AsString;
+
+    str:= 'Select first 1 sem.serial_number,sem.seminar_name from Seminar sem where sem.fk_seminar = :typeSerial';
+    qr:=TksQuery.Create(cn,str);
+    try
+      qr.ParamByName('typeSerial').Value:=TypeSerial;
+      Qr.Open;
+      SeminarSerial:=qr.FieldByName('Serial_number').AsInteger;
+     ShowMessage(qr.FieldByName('seminar_name').AsString);
+
+    finally
+      qr.Free;
+    end;
+
+    str:= 'select first 1 cert.serial_number from Seminar_certificate cert where cert.fk_seminar_serial = :SeminarSerial';
+    qr:=TksQuery.Create(cn,str);
+    try
+      qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+      Qr.Open;
+     ShowMessage(qr.FieldByName('Serial_number').AsString);
+
+    finally
+      qr.Free;
+
+    end;
+
+
+
+  frm :=  TR_certificateFRM.Create(nil);
+//  frm.IN_seminar_serial :=seminarSerial;
+//  frm.IN_certificate_serial:=0;
+  try
+    frm.PrintSeminar(SeminarSerial,CertificateSerial,Language);
+  finally
+    frm.Free;
+  end;
+
+
+
 end;
 
 procedure TM_SeminarTypeFRM.CanelBTNClick(Sender: TObject);

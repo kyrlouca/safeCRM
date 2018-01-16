@@ -394,7 +394,7 @@ type
     RemoveCompanyBTN: TBitBtn;
     InsertCompanyBTN: TBitBtn;
     RzGroupBox5: TRzGroupBox;
-    wwDBGrid5: TwwDBGrid;
+    AllCompGRD: TwwDBGrid;
     RzSizePanel4: TRzSizePanel;
     Label28: TLabel;
     Label29: TLabel;
@@ -471,6 +471,7 @@ type
     procedure RemoveCompanyBTNClick(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
+    procedure AllCompGRDTitleButtonClick(Sender: TObject; AFieldName: string);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -997,6 +998,20 @@ end;
 procedure TV_SeminarFRM.AttendGRDUpdateFooter(Sender: TObject);
 begin
   UPdateAttendFooter();
+end;
+
+procedure TV_SeminarFRM.AllCompGRDTitleButtonClick(Sender: TObject;
+  AFieldName: string);
+  var
+         sortInfoHawb:TSOrtInfo;
+         Table:TIBCQuery;
+
+
+  begin
+        Table:=TIbcQuery(AllCompGRD.DataSource.DataSet);
+        SortInfoHawb.Table:=Table;
+        G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
+
 end;
 
 procedure TV_SeminarFRM.wwNavButton19Click(Sender: TObject);

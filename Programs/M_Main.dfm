@@ -13,7 +13,7 @@ object M_mainFRM: TM_mainFRM
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   WindowState = wsMaximized
   OnActivate = FormActivate
   PixelsPerInch = 96

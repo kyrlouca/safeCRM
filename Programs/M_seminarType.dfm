@@ -281,7 +281,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Top = 67
       Width = 1017
       Height = 618
-      ActivePage = ReminderTS
+      ActivePage = CertificationTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -3629,6 +3629,13 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       ParentFont = False
       TabOrder = 2
       OnClick = CanelBTNClick
+    end
+    object RzBitBtn2: TRzBitBtn
+      Left = 472
+      Top = 8
+      Caption = 'test'
+      TabOrder = 3
+      OnClick = RzBitBtn2Click
     end
   end
   object TableSRC: TDataSource
