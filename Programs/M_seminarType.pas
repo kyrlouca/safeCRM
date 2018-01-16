@@ -339,6 +339,7 @@ type
 
   procedure RemoveInstructor();
   procedure InsertInstructor();
+  procedure PrintTestCertificate();
 
 
   public
@@ -441,6 +442,11 @@ close;
 end;
 
 procedure TM_SeminarTypeFRM.RzBitBtn2Click(Sender: TObject);
+begin
+  PrintTestCertificate();
+end;
+
+procedure TM_SeminarTypeFRM.PrintTestCertificate();
 var
   TypeSerial:Integer;
   PictureSerial:Integer;
@@ -462,7 +468,7 @@ begin
       qr.ParamByName('typeSerial').Value:=TypeSerial;
       Qr.Open;
       SeminarSerial:=qr.FieldByName('Serial_number').AsInteger;
-     ShowMessage(qr.FieldByName('seminar_name').AsString);
+//     ShowMessage(qr.FieldByName('seminar_name').AsString);
 
     finally
       qr.Free;
@@ -473,7 +479,7 @@ begin
     try
       qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
       Qr.Open;
-       ShowMessage(qr.FieldByName('Serial_number').AsString);
+//       ShowMessage(qr.FieldByName('Serial_number').AsString);
       CertificateSerial:=qr.FieldByName('Serial_number').AsInteger;
 
     finally
