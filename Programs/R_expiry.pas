@@ -162,6 +162,23 @@ type
     ppLabel15: TppLabel;
     ppDBText6: TppDBText;
     PersonSQLPERSON_QB: TIntegerField;
+    Label4: TLabel;
+    SeminarTypeFLD: TwwDBLookupCombo;
+    SeminarTypeSQL: TIBCQuery;
+    SeminarTypeSQLSERIAL_NUMBER: TIntegerField;
+    SeminarTypeSQLSEMINAR_NAME: TWideStringField;
+    SeminarTypeSQLSEMINAR_COST: TFloatField;
+    SeminarTypeSQLANAD_APPROVED: TWideStringField;
+    SeminarTypeSQLSEMINAR_CATEGORY: TWideStringField;
+    SeminarTypeSQLDURATION_HOURS: TIntegerField;
+    SeminarTypeSQLDURATION_DAYS: TIntegerField;
+    SeminarTypeSQLCOMMENTS: TWideStringField;
+    SeminarTypeSQLMAX_CAPACITY: TIntegerField;
+    SeminarTypeSQLHAS_EXPIRY: TWideStringField;
+    SeminarTypeSQLEXPIRY_PERIOD: TIntegerField;
+    SeminarTypeSQLTYPE_MONO_POLY: TWideStringField;
+    SeminarTypeSQLPASS_PERCENTAGE: TIntegerField;
+    SeminarTypeSQLSPECIFICATION_NUMBER: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);
@@ -359,8 +376,9 @@ end;
 
 procedure TR_ExpiryFRM.FormActivate(Sender: TObject);
 begin
-ksOpenTables([CompanySQL,SeminarSQL]);
+ksOpenTables([CompanySQL,SeminarSQL,SeminarTypeSQL]);
 SeminarSFLD.Clear;
+SeminarTypeFLD.Clear;
 CompanySFLD.Clear;
 //DisplayFilter;
 if (Trim(FromDateFLD.text)='') then
@@ -377,6 +395,7 @@ end;
 procedure TR_ExpiryFRM.DisplayFilter;
 var
   SeminarSerial:Integer;
+  SeminarTypeSerial:Integer;
   CompanySerial:Integer;
 begin
 TableSQL.Close;
@@ -388,14 +407,28 @@ TableSQL.RestoreSQL;
     TableSQL.AddWhere('seminar_serial = :seminarSerial');
   end;
 
+  seminarTypeSerial:= SeminarTypeFLD.lookupTable.FieldByName('serial_number').AsInteger;
+  if (Trim(SeminarTypeFLD.text)>'') and  (SeminarTypeSerial >0)  then begin
+    TableSQL.AddWhere('Type_serial = :seminarTypeSerial');
+  end;
+
+
   CompanySerial:= CompanySFLD.lookupTable.FieldByName('serial_number').AsInteger;
   if (Trim(CompanySFLD.text)>'') and  (CompanySerial >0)  then begin
     TableSQL.AddWhere('company_serial = :CompanySerial');
   end;
 
+
+//////////////////////////////////////
+
   if TableSQL.FindParam('SeminarSerial')<>nil then begin
     TableSQL.ParamByName('seminarSerial').Value:=SeminarSerial;
   end;
+
+  if TableSQL.FindParam('SeminarTypeSerial')<>nil then begin
+    TableSQL.ParamByName('seminarTypeSerial').Value:=SeminarTypeSerial;
+  end;
+
 
   if TableSQL.FindParam('CompanySerial')<>nil then begin
     TableSQL.ParamByName('CompanySerial').Value:=CompanySerial;

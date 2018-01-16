@@ -487,6 +487,10 @@ begin
 
     end;
 
+    if CertificateSerial<1 then begin
+      ShowMessage('Cannot find an existing Certificate for this Type of Seminar');
+      exit;
+    end;
 
 
   frm :=  TR_certificateFRM.Create(nil);
