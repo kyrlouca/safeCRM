@@ -489,8 +489,8 @@ type
     procedure RemoveCompany();
     procedure InsertCompany();
     procedure UseSeminarTemplate(const SeminarSerial, TypeSerial: Integer);
-    procedure GetReminderFromTemplate(const SeminarSerial, TypeSerial: Integer);
-    procedure GetTemplatePIctures(const SeminarSerial, TypeSerial: Integer);
+    procedure CopyReminderFromTemplate(const SeminarSerial, TypeSerial: Integer);
+    procedure CopyTemplatePIctures(const SeminarSerial, TypeSerial: Integer);
 
     function UpdateCostFooter(const SeminarSerial: Integer): Double;
     procedure UPdateAttendFooter();
@@ -643,8 +643,8 @@ begin
   if (not select) or (Seminarserial < 1) or (TypeSerial < 1) then
     exit;
   UseSeminarTEmplate(SeminarSerial, TypeSerial);
-  GetReminderFromTemplate(SEminarSerial, TYpeSerial);
-  GetTemplatePIctures(SEminarSerial, TYpeSerial);
+  CopyReminderFromTemplate(SEminarSerial, TYpeSerial);
+  CopyTemplatePIctures(SEminarSerial, TYpeSerial);
 
   SeminarSQL.close;
   seminarSQL.ParamByName('serialNumber').Value := seminarSerial;
@@ -735,7 +735,7 @@ begin
   end;
 end;
 
-procedure TV_SeminarFRM.GetReminderFromTemplate(const SeminarSerial, TypeSerial:
+procedure TV_SeminarFRM.CopyReminderFromTemplate(const SeminarSerial, TypeSerial:
   Integer);
 var
   serial: Integer;
@@ -804,8 +804,7 @@ begin
 
 end;
 
-procedure TV_SeminarFRM.GetTemplatePIctures(const SeminarSerial, TypeSerial:
-  Integer);
+procedure TV_SeminarFRM.CopyTemplatePIctures(const SeminarSerial, TypeSerial:  Integer);
 var
   serial: Integer;
   Typeqr: TksQuery;

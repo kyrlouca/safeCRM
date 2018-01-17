@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = CompaniesTS
+      ActivePage = PictureTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1664,8 +1664,6 @@ object V_SeminarFRM: TV_SeminarFRM
               OnTitleButtonClick = AllPersonsGRDTitleButtonClick
               OnDblClick = AllPersonsGRDDblClick
               OnKeyDown = AllPersonsGRDKeyDown
-              ExplicitLeft = 6
-              ExplicitTop = 83
             end
             object RzSizePanel1: TRzSizePanel
               Left = 1
@@ -3373,7 +3371,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800640310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800680310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

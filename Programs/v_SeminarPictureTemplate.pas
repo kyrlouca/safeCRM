@@ -56,7 +56,6 @@ type
     LanguageRGP: TwwRadioGroup;
     certificatesHelpRE: TwwDBRichEdit;
     PictureGRP: TRzGroupBox;
-    SelTopLeftBTN: TRzBitBtn;
     ClearTopLeftBTN: TRzBitBtn;
     TopFLD: TwwDBRichEdit;
     MiddleFLD: TwwDBRichEdit;
@@ -80,6 +79,7 @@ type
     wwDBEdit6: TwwDBEdit;
     wwDBEdit7: TwwDBEdit;
     wwDBEdit8: TwwDBEdit;
+    CopyFromTemplateBTN: TRzBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
@@ -91,16 +91,22 @@ type
     procedure PICTURE_TOP_L1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure Certifcates1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure CopyFromTemplateBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
     procedure CheckPicturesX(const TypeSerial: Integer);
+    procedure ShowAllData(const SeminarSerial: Integer; const Language: string);
+
     function SelectPictureX(var img: TImage): Boolean;
     procedure ShowPictureDataX(const TypeSerial: Integer; const Language:  string);
     procedure ShowPictureX(const TypeSerial: Integer; const aFieldName: string; const Language: string; img: TImage);
     procedure SavePictureX(const SeminarSerial: Integer; const aFieldName:string; const Language: string; img: Timage);
     procedure SelectAndSavePictureX(const SeminarSerial: Integer; const Language: string; img: TImage);
     procedure ClearPictureX(const SeminarSerial: Integer; const aFieldName:string; const Language: string; img: Timage);
+    procedure CopyTemplatePIctures(const SeminarSerial, TypeSerial:  Integer);
+
 
   public
     { Public declarations }
@@ -114,7 +120,7 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs, H_Help;
+uses   U_Database, G_generalProcs, H_Help, G_SFCommonProcs;
 
 
 {$R *.DFM}
@@ -144,22 +150,28 @@ begin
 
   SeminarSerial := IN_SeminarSerial;
   LanguageRGP.ItemIndex := 0;
-
+  ShowAllData(seminarSerial,'G');
+{
   CheckPicturesX(SeminarSerial);
   SHowPictureX(SeminarSerial, Picture_top_l1.Name, 'G', Picture_top_L1);
   SHowPictureX(SeminarSerial, Picture_top_R1.Name, 'G', Picture_top_R1);
   SHowPictureX(SeminarSerial, Picture_bot_l1.Name, 'G', Picture_bot_L1);
   SHowPictureX(SeminarSerial, Picture_bot_R1.Name, 'G', Picture_bot_R1);
   SHowPictureDataX(SeminarSerial, 'G');
-
+}
 end;
 
 procedure TV_SeminarPictureTemplateFRM.CloseBTNClick(Sender: TObject);
 begin
-close;
+  close;
 end;
 
 
+
+procedure TV_SeminarPictureTemplateFRM.FormActivate(Sender: TObject);
+begin
+ //Check onShow of TabSheet PictTS
+end;
 
 procedure TV_SeminarPictureTemplateFRM.FormCreate(Sender: TObject);
 begin
@@ -178,6 +190,8 @@ begin
   if trim(LanguageRGP.Value) = '' then
     exit;
 
+  ShowAllData(SeminarSerial,LanguageRGP.Value);
+  {
   SHowPictureX(SeminarSerial, Picture_top_l1.Name, LanguageRGP.Value,
     Picture_top_L1);
   SHowPictureX(SeminarSerial, Picture_top_R1.Name, LanguageRGP.Value,
@@ -188,6 +202,7 @@ begin
     Picture_bot_R1);
 
   ShowPictureDataX(SeminarSerial, LanguageRGP.Value);
+  }
 end;
 
 procedure TV_SeminarPictureTemplateFRM.PictureGRPExit(Sender: TObject);
@@ -377,8 +392,33 @@ begin
   result := true;
 end;
 
-procedure TV_SeminarPictureTemplateFRM.ShowPictureDataX(const TypeSerial: Integer; const
-  Language: string);
+procedure TV_SeminarPictureTemplateFRM.CopyFromTemplateBTNClick(Sender: TObject);
+var
+ TypeSerial:integer;
+ qr:TksQuery;
+begin
+  if not IN_allowModify then
+    exit;
+
+
+  qr:=TksQuery.Create(cn,'select serial_number,fk_seminar from seminar where serial_number= :SeminarSerial');
+  try
+    qr.ParamByName('SeminarSerial').Value:=IN_SeminarSerial;
+    qr.Open;
+    TYpeSErial:=qr.FieldByName('fk_seminar').AsInteger;
+    qr.Close;
+  finally
+    qr.Free;
+  end;
+
+  if (IN_SeminarSerial >0) and (TypeSerial>0) then begin
+   CopyTemplatePIctures(IN_SeminarSerial,TypeSerial);
+   LanguageRGP.ItemIndex:=0;
+   ShowAllData(IN_SeminarSerial,'G');
+  end;
+end;
+
+procedure TV_SeminarPictureTemplateFRM.ShowPictureDataX(const TypeSerial: Integer; const Language: string);
 begin
   SeminarPictureSQL.Close;
   SeminarPictureSQL.ParamByName('SeminarSerial').Value := TypeSerial;
@@ -386,6 +426,19 @@ begin
   SeminarPictureSQL.Open;
 
 end;
+
+
+procedure TV_SeminarPictureTemplateFRM.ShowAllData(const SeminarSerial: Integer; const Language: string);
+begin
+  CheckPicturesX(SeminarSerial);
+  SHowPictureX(SeminarSerial, Picture_top_l1.Name, Language, Picture_top_L1);
+  SHowPictureX(SeminarSerial, Picture_top_R1.Name, Language, Picture_top_R1);
+  SHowPictureX(SeminarSerial, Picture_bot_l1.Name, Language, Picture_bot_L1);
+  SHowPictureX(SeminarSerial, Picture_bot_R1.Name, Language, Picture_bot_R1);
+  SHowPictureDataX(SeminarSerial, Language);
+
+end;
+
 
 procedure TV_SeminarPictureTemplateFRM.ShowPictureX(const TypeSerial: Integer; const
   aFieldName: string; const Language: string; img: TImage);
@@ -450,5 +503,85 @@ begin
 end;
 //////////////////////////////////////////
 
+
+procedure TV_SeminarPictureTemplateFRM.CopyTemplatePIctures(const SeminarSerial, TypeSerial:  Integer);
+//copied from v_seminar
+var
+  serial: Integer;
+  Typeqr: TksQuery;
+  seminarQr: TksQuery;
+  str: string;
+  fdesc, fmessage, fafter, fperson, fstart, fDays: string;
+  fnumber_of_days: Integer;
+  ActionDate: TDate;
+//  ActionDateRec: TActionDateRec;
+  blobRead, blobWrite: TBlobField;
+  streamRead, StreamWrite: TStream;
+  img: TImage;
+  I: Integer;
+begin
+
+  ksExecSQLVar(cn,
+    'delete from SEMINAR_pictures where fk_seminar_serial=:serial',
+    [SeminarSerial]);
+//    exit;
+
+  str :=
+    ' INSERT INTO SEMINAR_PICTURES'
+    + '   (SERIAL_NUMBER,  FK_SEMINAR_SERIAL,LANGUAGE_GREEK_OR_ENGLISH,'
+    + '   LINE_A1, LINE_A2, LINE_B1, LINE_B2, LINE_B3,LINE_C1,'
+    + '   picture_top_l1,picture_top_r1, picture_bot_l1,picture_bot_r1,'
+    + '   tl_x,tl_y, tr_x,tr_y, bl_x,bl_y,br_x,br_y)'
+    + '    VALUES ('
+    + '    :s1,:s2,:s3,'
+    + '    :l1,:l2,:l3,:l4,:l5,:l6,'
+    + '    :p1,:p2,:p3,:p4,'
+    + '    :t1,:t2,:t3,:t4,:t5,:t6,:t7,:t8)';
+
+// img:=Timage.Create(self);
+  SeminarQr := TksQuery.Create(cn,
+    ' select * from seminar_pictures where fk_seminar_serial= :seminarSerial');
+  Typeqr := TksQuery.Create(cn,
+    'select * from seminar_type_pictures where fk_seminar_type_serial= :Typeserial');
+  try
+    Typeqr.ParamByName('Typeserial').Value := TYpeSerial;
+    Typeqr.Open;
+    SeminarQr.ParamByName('seminarSerial').Value := SeminarSerial;
+    SeminarQR.Open;
+
+    try
+
+      while not Typeqr.Eof do
+      begin
+
+        serial := ksGenerateSerial(cn, 'GEN_SEMINAR_PICTURES');
+
+//    blobRead := Typeqr.FieldByName('picture_seminar') as TBlobField;
+//    streamRead := Typeqr.CreateBlobStream(blobRead, bmRead);
+//    Img.Picture.LoadFromStream(streamRead);
+
+        SeminarQR.Insert;
+        SeminarQR.FieldByName('Serial_number').value := Serial;
+        SeminarQR.FieldByName('FK_Seminar_serial').value := SeminarSerial;
+        CopyDataRecord(typeQr, SeminarQR);
+//    blobWrite := Seminarqr.FieldByName('picture_seminar') as TBlobField;
+//    streamWrite := Seminarqr.CreateBlobStream(blobWrite, bmWrite);
+//    StreamWrite.Position:=0;
+//    Img.Picture.SaveToStream(streamWrite);
+        SeminarQR.Post;
+        TypeQr.Next;
+      end;
+    finally
+//    streamWrite.Free;
+//    streamRead.Free;
+
+    end;
+  finally
+    Typeqr.Free;
+    SeminarQr.Free;
+//   img.Free;
+  end;
+
+end;
 
 End.

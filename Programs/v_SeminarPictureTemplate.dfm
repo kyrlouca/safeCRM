@@ -2,7 +2,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 761
+  ClientHeight = 721
   ClientWidth = 1027
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,12 +14,13 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel4: TRzPanel
     Left = 0
-    Top = 718
+    Top = 678
     Width = 1027
     Height = 43
     Align = alBottom
@@ -268,12 +269,14 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = -6
   end
   object RzPanel2: TRzPanel
     Left = 0
     Top = 53
     Width = 1027
-    Height = 665
+    Height = 625
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 2
@@ -281,10 +284,11 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
       Left = 0
       Top = 0
       Width = 1027
-      Height = 665
+      Height = 625
       ActivePage = PictTS
       Align = alClient
       TabOrder = 0
+      ExplicitTop = -1
       object PictTS: TTabSheet
         Caption = 'Template'
         OnShow = PictTSShow
@@ -292,10 +296,11 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
           Left = 0
           Top = 0
           Width = 1019
-          Height = 637
+          Height = 597
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitTop = -2
           object LanguageRGP: TwwRadioGroup
             Left = 18
             Top = 3
@@ -539,81 +544,6 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
             ParentFont = False
             TabOrder = 2
             OnExit = PictureGRPExit
-            object SelTopLeftBTN: TRzBitBtn
-              Left = 21
-              Top = 100
-              Width = 121
-              Height = 37
-              Caption = 'Select Picture'
-              DoubleBuffered = True
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Arial'
-              Font.Style = []
-              ParentDoubleBuffered = False
-              ParentFont = False
-              TabOrder = 0
-              Visible = False
-              Glyph.Data = {
-                F6060000424DF606000000000000360000002800000018000000180000000100
-                180000000000C006000000000000000000000000000000000000CAC8C77D7877
-                95918F938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F
-                8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D94908E85817EB7
-                B4B37E7979DFDCDBDFDDDCE2DFDFE3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0
-                E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E2E0
-                DFE0DDDCE4E2E18A858486807DDFDDDBC9C6C58C8986918D8A918D8A918D8A91
-                8D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A
-                918D8A918D8A8E8B87B7B4B0DDDCD99C99968B8683ECECECE1DFDECCCACACECC
-                CCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCE
-                CCCCCECCCCCECCCCCFCDCCD2CECFD0CDCDDCDAD9EBEBEAA5A29F918D88F6F6F5
-                EFEEEDF0EFEEF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0
-                EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF8F3F6D1DCCED0D9CCF1EEEEF6F4F4AF
-                ABA9999390FDFEFDF5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4
-                F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F8F6F7DBE6DB0693260EAB
-                388DB687FFFFFFB7B6B29F9A96FFFFFFFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFA
-                FAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFDFBFD
-                E2EFE432BF601ECA6C9AC79AFFFFFFBEBBBAA7A29FFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFBAE5C6A6DCB2F0F6F1FFFFFFC8C4C2C4C0BED5D3D1
-                E5E5E4E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4
-                E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E5E5E4EAE6E8EBE7E9E7E6E6E2E0E0B5
-                B0AEFFFFFFDDDBDAD8D6D4D8D6D4D8D6D4DAD7D6E0DCDDE1DDDEDAD7D6D8D6D4
-                D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6
-                D4D8D6D4D7D5D3FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
-                4C00004A00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFF0C530A41853C25882B0D4F0AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFF185E173D85388FE3A92BBF4C25882B1B5819FFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFF185E173E893B8EE3AC28BF4E2DBE4F2FC04F
-                25882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C6D1E3F903E8EE4AE28C1522B
-                BE522EBF532FBE522FC25225882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1E7A24409842A0E7
-                BD28C4582BC0562EC1572EC0562DBF542EC2542DBD4D25882B1F5F1CFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF238A2D
-                38983FA2EFCA33D17024C4562CC45C2DC25B2DC25A2EC1572FC3582ECA5B2EC0
-                4E25882B1F621CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFF259131259131359C3F288B2E177518A9E7C525C45B2DC55E2DC45D2DC35C
-                2AB1491F5E191F631D20661F20631F20631FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1A8222A2E8C522C7602D
-                C7642DC6612DC7622BB64F216C21FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C8B
-                26A2E8C822C9652CCA6A2CC9672EC8682BB953227122FFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFF1D942AA2EAC921CB6C2BCC6F2CCB6E2CCB6B2BBD59237925FFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A2EACC21CD722BCE752BCD722BCD73
-                2BBF5E237925FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A3EDD51DD37C26
-                D37D26D17927D27A27C46425882BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF26AC
-                3C58CC785AC9795AC6775AC47558C0725BC07225882BFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              Margin = -1
-            end
             object ClearTopLeftBTN: TRzBitBtn
               Left = 21
               Top = 143
@@ -628,7 +558,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Font.Style = []
               ParentDoubleBuffered = False
               ParentFont = False
-              TabOrder = 1
+              TabOrder = 0
               Visible = False
               Glyph.Data = {
                 F6060000424DF606000000000000360000002800000018000000180000000100
@@ -706,7 +636,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               HideSelection = False
               ParentFont = False
               PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-              TabOrder = 2
+              TabOrder = 1
               EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
               EditorCaption = 'Edit Rich Text'
               EditorPosition.Left = 0
@@ -758,7 +688,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               ParentFont = False
               Title = 'PICTURE_TOP_L1'
               PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-              TabOrder = 3
+              TabOrder = 2
               EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
               EditorCaption = 'Edit Rich Text'
               EditorPosition.Left = 0
@@ -809,7 +739,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               HideSelection = False
               ParentFont = False
               PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-              TabOrder = 4
+              TabOrder = 3
               EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
               EditorCaption = 'Edit Rich Text'
               EditorPosition.Left = 0
@@ -860,7 +790,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               HideSelection = False
               ParentFont = False
               PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-              TabOrder = 5
+              TabOrder = 4
               EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
               EditorCaption = 'Edit Rich Text'
               EditorPosition.Left = 0
@@ -911,7 +841,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               HideSelection = False
               ParentFont = False
               PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-              TabOrder = 6
+              TabOrder = 5
               EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
               EditorCaption = 'Edit Rich Text'
               EditorPosition.Left = 0
@@ -962,7 +892,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               HideSelection = False
               ParentFont = False
               PrintJobName = 'Safe_CRM - RAD Studio 10.2 - V_Seminar'
-              TabOrder = 7
+              TabOrder = 6
               EditorOptions = [reoShowSaveExit, reoShowPrint, reoShowPrintPreview, reoShowPageSetup, reoShowFormatBar, reoShowToolBar, reoShowStatusBar, reoShowHints, reoShowRuler, reoShowInsertObject, reoCloseOnEscape, reoFlatButtons, reoShowSpellCheck, reoShowMainMenuIcons, reoShowZoomCombo]
               EditorCaption = 'Edit Rich Text'
               EditorPosition.Left = 0
@@ -1002,7 +932,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Width = 82
               Height = 79
               BorderOuter = fsGroove
-              TabOrder = 8
+              TabOrder = 7
               object PICTURE_TOP_L1: TImage
                 Left = 2
                 Top = 2
@@ -1025,7 +955,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Width = 82
               Height = 79
               BorderOuter = fsGroove
-              TabOrder = 9
+              TabOrder = 8
               object PICTURE_TOP_R1: TImage
                 Left = 2
                 Top = 2
@@ -1047,7 +977,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Width = 82
               Height = 79
               BorderOuter = fsGroove
-              TabOrder = 10
+              TabOrder = 9
               object PICTURE_BOT_L1: TImage
                 Left = 2
                 Top = 2
@@ -1070,7 +1000,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Width = 82
               Height = 79
               BorderOuter = fsGroove
-              TabOrder = 11
+              TabOrder = 10
               object PICTURE_BOT_R1: TImage
                 Left = 2
                 Top = 2
@@ -1094,7 +1024,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Height = 22
               DataField = 'TR_Y'
               DataSource = SeminarPictureSRC
-              TabOrder = 12
+              TabOrder = 11
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -1106,7 +1036,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Height = 22
               DataField = 'TR_X'
               DataSource = SeminarPictureSRC
-              TabOrder = 13
+              TabOrder = 12
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -1118,7 +1048,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Height = 22
               DataField = 'TL_Y'
               DataSource = SeminarPictureSRC
-              TabOrder = 14
+              TabOrder = 13
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -1130,7 +1060,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Height = 22
               DataField = 'TL_X'
               DataSource = SeminarPictureSRC
-              TabOrder = 15
+              TabOrder = 14
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -1142,7 +1072,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Height = 22
               DataField = 'BL_Y'
               DataSource = SeminarPictureSRC
-              TabOrder = 16
+              TabOrder = 15
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -1154,7 +1084,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Height = 22
               DataField = 'BL_X'
               DataSource = SeminarPictureSRC
-              TabOrder = 17
+              TabOrder = 16
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -1167,7 +1097,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               DisableThemes = True
               DataField = 'BR_Y'
               DataSource = SeminarPictureSRC
-              TabOrder = 18
+              TabOrder = 17
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -1179,11 +1109,86 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
               Height = 22
               DataField = 'BR_X'
               DataSource = SeminarPictureSRC
-              TabOrder = 19
+              TabOrder = 18
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
             end
+          end
+          object CopyFromTemplateBTN: TRzBitBtn
+            Left = 704
+            Top = 31
+            Width = 121
+            Height = 37
+            Caption = 'Copy again from Template'
+            DoubleBuffered = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentDoubleBuffered = False
+            ParentFont = False
+            TabOrder = 3
+            OnClick = CopyFromTemplateBTNClick
+            Glyph.Data = {
+              F6060000424DF606000000000000360000002800000018000000180000000100
+              180000000000C006000000000000000000000000000000000000CAC8C77D7877
+              95918F938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F
+              8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D938F8D94908E85817EB7
+              B4B37E7979DFDCDBDFDDDCE2DFDFE3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0
+              E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E3E0E0E2E0
+              DFE0DDDCE4E2E18A858486807DDFDDDBC9C6C58C8986918D8A918D8A918D8A91
+              8D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A918D8A
+              918D8A918D8A8E8B87B7B4B0DDDCD99C99968B8683ECECECE1DFDECCCACACECC
+              CCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCECCCCCE
+              CCCCCECCCCCECCCCCFCDCCD2CECFD0CDCDDCDAD9EBEBEAA5A29F918D88F6F6F5
+              EFEEEDF0EFEEF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0
+              EFF1F0EFF1F0EFF1F0EFF1F0EFF1F0EFF8F3F6D1DCCED0D9CCF1EEEEF6F4F4AF
+              ABA9999390FDFEFDF5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4
+              F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F5F5F4F8F6F7DBE6DB0693260EAB
+              388DB687FFFFFFB7B6B29F9A96FFFFFFFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFA
+              FAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFDFBFD
+              E2EFE432BF601ECA6C9AC79AFFFFFFBEBBBAA7A29FFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFBAE5C6A6DCB2F0F6F1FFFFFFC8C4C2C4C0BED5D3D1
+              E5E5E4E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4
+              E3E4E4E3E4E4E3E4E4E3E4E4E3E4E4E3E5E5E4EAE6E8EBE7E9E7E6E6E2E0E0B5
+              B0AEFFFFFFDDDBDAD8D6D4D8D6D4D8D6D4DAD7D6E0DCDDE1DDDEDAD7D6D8D6D4
+              D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6D4D8D6
+              D4D8D6D4D7D5D3FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
+              4C00004A00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFF0C530A41853C25882B0D4F0AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFF185E173D85388FE3A92BBF4C25882B1B5819FFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFF185E173E893B8EE3AC28BF4E2DBE4F2FC04F
+              25882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C6D1E3F903E8EE4AE28C1522B
+              BE522EBF532FBE522FC25225882B1F5A1AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1E7A24409842A0E7
+              BD28C4582BC0562EC1572EC0562DBF542EC2542DBD4D25882B1F5F1CFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF238A2D
+              38983FA2EFCA33D17024C4562CC45C2DC25B2DC25A2EC1572FC3582ECA5B2EC0
+              4E25882B1F621CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFF259131259131359C3F288B2E177518A9E7C525C45B2DC55E2DC45D2DC35C
+              2AB1491F5E191F631D20661F20631F20631FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1A8222A2E8C522C7602D
+              C7642DC6612DC7622BB64F216C21FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1C8B
+              26A2E8C822C9652CCA6A2CC9672EC8682BB953227122FFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFF1D942AA2EAC921CB6C2BCC6F2CCB6E2CCB6B2BBD59237925FFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A2EACC21CD722BCE752BCD722BCD73
+              2BBF5E237925FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF21A637A3EDD51DD37C26
+              D37D26D17927D27A27C46425882BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF26AC
+              3C58CC785AC9795AC6775AC47558C0725BC07225882BFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            Margin = -1
           end
         end
       end
@@ -1270,8 +1275,8 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
       
         'where stp.FK_SEMINAR_SERIAL = :SeminarSerial  and stp.LANGUAGE_G' +
         'REEK_OR_ENGLISH = :language')
-    Left = 25
-    Top = 137
+    Left = 65
+    Top = 185
     ParamData = <
       item
         DataType = ftUnknown
@@ -1365,8 +1370,8 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
     Top = 199
   end
   object MainMenu1: TMainMenu
-    Left = 20
-    Top = 124
+    Left = 148
+    Top = 36
     object Help1: TMenuItem
       Caption = 'Help'
       object Certifcates1: TMenuItem
