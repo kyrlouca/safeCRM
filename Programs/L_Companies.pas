@@ -8,7 +8,7 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL,G_kyriacosTypes, RzButton, RzPanel, RzLabel, RzDBLbl, vcl.Wwdbdatetimepicker,
-  Vcl.WinXCtrls;
+  Vcl.WinXCtrls, Vcl.Menus;
 type
   TL_companiesFRM = class(TForm)
     Panel1: TPanel;
@@ -74,7 +74,6 @@ type
     TableSQLCOMPANY_CONTACT: TWideStringField;
     TableSQLCOMPANY_REGISTRATION_DATE: TDateField;
     TableSQLPHONE_CONTACT: TWideStringField;
-    SafeBTN: TRzBitBtn;
     Label1: TLabel;
     Label3: TLabel;
     Label5: TLabel;

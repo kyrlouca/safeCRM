@@ -3161,7 +3161,7 @@ object V_SeminarFRM: TV_SeminarFRM
   object SeminarSRC: TDataSource
     DataSet = SeminarSQL
     Left = 136
-    Top = 9
+    Top = 25
   end
   object SeminarSQL: TIBCQuery
     KeyFields = 'SERIAL_NUMBER'
@@ -3240,9 +3240,10 @@ object V_SeminarFRM: TV_SeminarFRM
       'where '
       ' serial_number= :SerialNumber'
       '')
+    Constraints = <>
     OnNewRecord = SeminarSQLNewRecord
-    Left = 89
-    Top = 5
+    Left = 65
+    Top = 37
     ParamData = <
       item
         DataType = ftUnknown
@@ -3371,7 +3372,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800680310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088006C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4103,6 +4104,7 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
+    Constraints = <>
     Left = 90
     Top = 145
     ParamData = <
@@ -4250,6 +4252,7 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     ReadOnly = True
     Active = True
+    Constraints = <>
     Left = 26
     Top = 193
     ParamData = <
@@ -4353,6 +4356,7 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
+    Constraints = <>
     Left = 9
     Top = 517
     ParamData = <
@@ -4467,6 +4471,7 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SUBJECT_SERIAL'
     MasterSource = SeminarSubjectSRC
     Active = True
+    Constraints = <>
     BeforeInsert = SeminarDaySQLBeforeInsert
     Left = 25
     Top = 397
@@ -4558,6 +4563,7 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
+    Constraints = <>
     OnCalcFields = SeminarCostItemSQLCalcFields
     OnNewRecord = SeminarCostItemSQLNewRecord
     Left = 265
@@ -4615,6 +4621,7 @@ object V_SeminarFRM: TV_SeminarFRM
     ReadOnly = True
     Connection = U_databaseFRM.DataConnection
     Transaction = ReadTrans
+    Constraints = <>
     IndexFieldNames = 'COST_NAME'
     Left = 372
     Top = 406
@@ -4706,6 +4713,7 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
+    Constraints = <>
     OnNewRecord = SeminarReminderSQLNewRecord
     Left = 81
     Top = 557
@@ -4836,6 +4844,7 @@ object V_SeminarFRM: TV_SeminarFRM
     SQL.Strings = (
       'select * from person where is_company='#39'Y'#39)
     ReadOnly = True
+    Constraints = <>
     Left = 483
     Top = 418
     object CompanySQLSERIAL_NUMBER: TIntegerField
@@ -4984,6 +4993,7 @@ object V_SeminarFRM: TV_SeminarFRM
     SQL.Strings = (
       'select * from instructor where status_active= '#39'Y'#39)
     ReadOnly = True
+    Constraints = <>
     Left = 539
     Top = 282
     object instructorSelectSQLLAST_NAME: TWideStringField
@@ -5184,6 +5194,7 @@ object V_SeminarFRM: TV_SeminarFRM
     SQL.Strings = (
       'select * from instructor where status_active= '#39'Y'#39)
     ReadOnly = True
+    Constraints = <>
     Left = 547
     Top = 226
     object WideStringField1: TWideStringField
@@ -5433,6 +5444,7 @@ object V_SeminarFRM: TV_SeminarFRM
     DetailFields = 'FK_SEMINAR_SERIAL'
     MasterSource = SeminarSRC
     Active = True
+    Constraints = <>
     Left = 274
     Top = 633
     ParamData = <
@@ -5559,6 +5571,7 @@ object V_SeminarFRM: TV_SeminarFRM
       '   and pefound.serial_number is null')
     ReadOnly = True
     Active = True
+    Constraints = <>
     Left = 306
     Top = 681
     ParamData = <

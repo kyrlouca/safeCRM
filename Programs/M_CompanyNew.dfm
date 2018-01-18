@@ -319,6 +319,8 @@ object M_companyNewFRM: TM_companyNewFRM
         Align = alClient
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitTop = 2
         object GroupBox1: TGroupBox
           Left = 3
           Top = 20
@@ -978,6 +980,26 @@ object M_companyNewFRM: TM_companyNewFRM
             WantReturns = False
             WordWrap = False
           end
+        end
+        object SafeFLD: TwwCheckBox
+          Left = 633
+          Top = 200
+          Width = 123
+          Height = 17
+          TabStop = False
+          DisableThemes = False
+          AlwaysTransparent = False
+          ValueChecked = 'Y'
+          ValueUnchecked = 'N'
+          DisplayValueChecked = 'Y'
+          DisplayValueUnchecked = 'N'
+          NullAndBlankState = cbUnchecked
+          Alignment = taLeftJustify
+          Caption = #919' '#916#953#954#942' '#956#945#962' '#917#964#945#953#961#949#943#945
+          DataField = 'IS_SAFE_COMPANY'
+          DataSource = CompanySRC
+          TabOrder = 4
+          OnClick = SafeFLDClick
         end
       end
     end

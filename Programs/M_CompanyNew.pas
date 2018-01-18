@@ -154,6 +154,7 @@ type
     wwDBEdit3: TwwDBEdit;
     CompanySQLIS_SAFE_COMPANY: TWideStringField;
     CompanySQLCOMPANY_OWNER_ID: TWideStringField;
+    SafeFLD: TwwCheckBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
@@ -173,6 +174,7 @@ type
     procedure EmployeesTSShow(Sender: TObject);
     procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
     procedure InfoTSShow(Sender: TObject);
+    procedure SafeFLDClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -224,6 +226,25 @@ end;
 procedure TM_companyNewFRM.ToRightBTNClick(Sender: TObject);
 begin
 RemovePerson();
+end;
+
+procedure TM_companyNewFRM.SafeFLDClick(Sender: TObject);
+var
+  PersonSerial:integer;
+  IsSafe:String;
+  box:TwwDBCustomCheckBox;
+  str:string;
+begin
+  box:=TwwDBCustomCheckBox(sender);
+  if not box.Modified then    exit;
+  if box.Checked then begin
+    personSerial:=box.DataSource.DataSet.FieldByName('serial_number').AsInteger;
+    str:='update person per set per.is_safe_company=''N'' where per.serial_number <> :PersonSerial';
+    ksExecSQLVar(cn,str,[PersonSerial])
+  end else begin
+  end
+
+
 end;
 
 procedure TM_companyNewFRM.CompanySQLNewRecord(DataSet: TDataSet);
@@ -394,5 +415,7 @@ begin
 
 
 end;
+
+
 
 End.

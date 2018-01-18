@@ -27,7 +27,7 @@ object M_mainFRM: TM_mainFRM
     Margins.Bottom = 0
     Align = alTop
     BorderOuter = fsGroove
-    Caption = 'Safe CRM - V1.01'
+    Caption = 'Safe CRM - V1.02'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 3947580
     Font.Height = -48
@@ -7231,7 +7231,7 @@ object M_mainFRM: TM_mainFRM
         BB01D75E82B64FFBF11FB4AA436D1FE5BA540000000049454E44AE426082}
       Proportional = True
       Stretch = True
-      ExplicitTop = 2
+      ExplicitTop = -3
     end
     object LoginBTN: TRzBitBtn
       Left = 14
