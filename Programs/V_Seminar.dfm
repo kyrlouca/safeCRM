@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = PictureTS
+      ActivePage = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -870,7 +870,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 Top = 31
                 Width = 338
                 Height = 148
-                Caption = #928#955#951#961#959#966#959#961#943#949#962
+                Caption = #920#941#956#945' - '#928#955#951#961#959#966#959#961#943#949#962
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -12
@@ -3372,7 +3372,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C0101100088006C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800700310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

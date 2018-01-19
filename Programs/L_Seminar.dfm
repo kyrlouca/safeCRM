@@ -490,7 +490,7 @@ object L_SeminarFRM: TL_SeminarFRM
         NumGlyphs = 2
         Spacing = 12
       end
-      object RzBitBtn2: TRzBitBtn
+      object EditBTN: TRzBitBtn
         Left = 6
         Top = 78
         Width = 135
@@ -507,7 +507,7 @@ object L_SeminarFRM: TL_SeminarFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 2
-        OnClick = InsertHawbBTNClick
+        OnClick = EditBTNClick
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
           180000000000C006000000000000000000000000000000000000FFFFFFF8F8F8
@@ -1122,6 +1122,7 @@ object L_SeminarFRM: TL_SeminarFRM
       ''
       '')
     Active = True
+    Constraints = <>
     OnNewRecord = TableSQLNewRecord
     Left = 49
     Top = 5
@@ -1295,7 +1296,7 @@ object L_SeminarFRM: TL_SeminarFRM
   object MainMenu1: TMainMenu
     Left = 232
     object Reports1: TMenuItem
-      Caption = #917#954#964#965#960#974#963#949#953#962
+      Caption = 'Reports'
       object N3: TMenuItem
         Caption = #932#953#956#959#955#972#947#953#945
         OnClick = N3Click

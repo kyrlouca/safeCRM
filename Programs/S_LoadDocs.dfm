@@ -3,7 +3,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   Top = 153
   Caption = '--'
   ClientHeight = 558
-  ClientWidth = 1079
+  ClientWidth = 1123
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel1: TRzPanel
     Left = 0
     Top = 0
-    Width = 1079
+    Width = 1123
     Height = 53
     Align = alTop
     BorderOuter = fsFlatRounded
@@ -32,11 +32,12 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1079
     object Label4: TLabel
       AlignWithMargins = True
       Left = 5
       Top = 5
-      Width = 1069
+      Width = 1113
       Height = 43
       Align = alClient
       Alignment = taCenter
@@ -49,18 +50,20 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel4: TRzPanel
     Left = 0
     Top = 515
-    Width = 1079
+    Width = 1123
     Height = 43
     Align = alBottom
     TabOrder = 1
+    ExplicitWidth = 1079
     object RzPanel1: TRzPanel
-      Left = 977
+      Left = 1021
       Top = 2
       Width = 100
       Height = 39
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 977
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -141,15 +144,16 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel3: TRzPanel
     Left = 0
     Top = 86
-    Width = 1079
+    Width = 1123
     Height = 429
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
+    ExplicitWidth = 1079
     object Panel5: TRzPanel
-      Left = 631
+      Left = 609
       Top = 0
-      Width = 451
+      Width = 491
       Height = 429
       Align = alLeft
       BorderOuter = fsNone
@@ -157,8 +161,8 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       TabOrder = 0
       object GroupBox1: TGroupBox
         Left = 6
-        Top = 38
-        Width = 435
+        Top = 39
+        Width = 483
         Height = 195
         Caption = #928#955#951#961#959#966#959#961#943#949#962
         Font.Charset = DEFAULT_CHARSET
@@ -169,7 +173,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         ParentFont = False
         TabOrder = 0
         object Label2: TLabel
-          Left = 45
+          Left = 18
           Top = 49
           Width = 56
           Height = 14
@@ -182,8 +186,8 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 80
-          Top = 22
+          Left = 53
+          Top = 24
           Width = 21
           Height = 14
           Caption = 'A/A'
@@ -195,7 +199,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object Label1: TLabel
-          Left = 49
+          Left = 22
           Top = 78
           Width = 52
           Height = 14
@@ -208,8 +212,8 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object Label6: TLabel
-          Left = 31
-          Top = 101
+          Left = 5
+          Top = 98
           Width = 70
           Height = 14
           Caption = #931#964#953#962' '#917#964#945#953#961#949#943#949#962
@@ -221,7 +225,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object RzDBLabel1: TRzDBLabel
-          Left = 107
+          Left = 80
           Top = 23
           Width = 65
           Height = 17
@@ -237,11 +241,13 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           DataSource = TableSRC
         end
         object Label5: TLabel
-          Left = 143
+          Left = 116
           Top = 101
-          Width = 267
+          Width = 358
           Height = 14
-          Caption = '*'#924#972#957#959' '#941#957#945' '#942' '#941#957#945' '#963#949' '#954#940#952#949' '#949#964#945#953#961#949#943#945' '#960#959#965' '#963#965#956#956#949#964#941#967#949#953
+          Caption = 
+            '*'#963#949' '#954#940#952#949' '#949#964#945#953#961#949#943#945' '#960#959#965' '#963#965#956#956#949#964#941#967#949#953' ('#924#953#945' '#945#957' '#949#943#957#945#953' '#924#959#957#959'-'#917#960#953#967#949#953#961#953#963#953#945#954 +
+            #972')'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -250,7 +256,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           ParentFont = False
         end
         object NameFLD: TwwDBEdit
-          Left = 108
+          Left = 81
           Top = 46
           Width = 221
           Height = 21
@@ -273,7 +279,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           WordWrap = False
         end
         object SavetoDB: TRzBitBtn
-          Left = 337
+          Left = 310
           Top = 44
           Width = 86
           Height = 26
@@ -359,7 +365,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         end
         object wwCheckBox2: TwwCheckBox
           AlignWithMargins = True
-          Left = 108
+          Left = 81
           Top = 101
           Width = 29
           Height = 17
@@ -377,7 +383,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         end
         object wwCheckBox1: TwwCheckBox
           AlignWithMargins = True
-          Left = 108
+          Left = 81
           Top = 78
           Width = 29
           Height = 17
@@ -403,7 +409,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
         Color = clBtnFace
         DitherColor = clWhite
         DitherStyle = wwdsDither
-        NumGlyphs = 0
         ShadeStyle = wwbsNormal
         TabOrder = 1
         TextOptions.Alignment = taCenter
@@ -413,11 +418,12 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
-        Width = 451
+        Width = 491
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 2
+        ExplicitWidth = 451
         object Nav1: TwwDBNavigator
           Left = 6
           Top = 6
@@ -570,6 +576,16 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
           end
         end
       end
+      object Button2: TButton
+        Left = 35
+        Top = 335
+        Width = 137
+        Height = 25
+        Caption = 'Test'
+        TabOrder = 3
+        Visible = False
+        OnClick = Button2Click
+      end
     end
     object Grid1: TwwDBGrid
       Left = 0
@@ -614,7 +630,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
     object RzPanel3: TRzPanel
       Left = 601
       Top = 0
-      Width = 30
+      Width = 8
       Height = 429
       Align = alLeft
       BorderOuter = fsNone
@@ -624,11 +640,12 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object Panel2: TRzPanel
     Left = 0
     Top = 53
-    Width = 1079
+    Width = 1123
     Height = 33
     Align = alTop
     BorderOuter = fsNone
     TabOrder = 2
+    ExplicitWidth = 1079
     object wwIncrementalSearch1: TwwIncrementalSearch
       Left = 5
       Top = 6
@@ -706,6 +723,7 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       ''
       '')
     Active = True
+    Constraints = <>
     OnNewRecord = TableSQLNewRecord
     Left = 49
     Top = 5
@@ -781,5 +799,1000 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
   object FileDialog1: TOpenDialog
     Left = 328
     Top = 392
+  end
+  object CompSQL: TIBCQuery
+    KeyFields = 'serial_number'
+    KeyGenerator = 'GEN_WORD_DOCS'
+    GeneratorMode = gmInsert
+    SQLInsert.Strings = (
+      'INSERT INTO PERSON'
+      
+        '  (SERIAL_NUMBER, SERIAL_QB, FK_COMPANY_SERIAL, LAST_NAME, FIRST' +
+        '_NAME, NATIONAL_ID, NICKNAME, OCCUPATION, PHONE_MOBILE, PHONE_FI' +
+        'XED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STRE' +
+        'ET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STAR' +
+        'TED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWIT' +
+        'TER, STATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONT' +
+        'ACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTACT_F' +
+        'IRST, COMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTACT_P' +
+        'HONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SOCIAL' +
+        '_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB, IS_SAFE' +
+        '_COMPANY, COMPANY_OWNER_ID)'
+      'VALUES'
+      
+        '  (:SERIAL_NUMBER, :SERIAL_QB, :FK_COMPANY_SERIAL, :LAST_NAME, :' +
+        'FIRST_NAME, :NATIONAL_ID, :NICKNAME, :OCCUPATION, :PHONE_MOBILE,' +
+        ' :PHONE_FIXED, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRES' +
+        'S, :ADDRESS_STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_' +
+        'DISTRICT, :DATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, ' +
+        ':FACEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE, :SEX, :IS_COMPANY' +
+        ', :COMPANY_OWNER, :COMPANY_CONTACT, :COMPANY_REGISTRATION_DATE, ' +
+        ':PHONE_CONTACT, :COMPANY_CONTACT_FIRST, :COMPANY_CONTACT_LAST, :' +
+        'COMPANY_OWNER_REG, :COMPANY_CONTACT_PHONE, :COMPANY_CONTACT_EMAI' +
+        'L, :COMPANY_CONTACT_FAX, :COMPANY_SOCIAL_SEC, :COMPANY_EMPLOYEES' +
+        ', :PHONE_MOBILE_2, :LINKED_IN, :JOB, :IS_SAFE_COMPANY, :COMPANY_' +
+        'OWNER_ID)')
+    SQLDelete.Strings = (
+      'DELETE FROM PERSON'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLUpdate.Strings = (
+      'UPDATE PERSON'
+      'SET'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, SERIAL_QB = :SERIAL_QB, FK_COM' +
+        'PANY_SERIAL = :FK_COMPANY_SERIAL, LAST_NAME = :LAST_NAME, FIRST_' +
+        'NAME = :FIRST_NAME, NATIONAL_ID = :NATIONAL_ID, NICKNAME = :NICK' +
+        'NAME, OCCUPATION = :OCCUPATION, PHONE_MOBILE = :PHONE_MOBILE, PH' +
+        'ONE_FIXED = :PHONE_FIXED, PHONE_ALTERNATE = :PHONE_ALTERNATE, FA' +
+        'X = :FAX, EMAIL = :EMAIL, EMAIL_2 = :EMAIL_2, ADDRESS = :ADDRESS' +
+        ', ADDRESS_STREET = :ADDRESS_STREET, ADDRESS_POST_CODE = :ADDRESS' +
+        '_POST_CODE, ADDRESS_CITY = :ADDRESS_CITY, ADDRESS_DISTRICT = :AD' +
+        'DRESS_DISTRICT, DATE_STARTED = :DATE_STARTED, DATE_BIRTH = :DATE' +
+        '_BIRTH, DATE_USER = :DATE_USER, LIST_SOURCE = :LIST_SOURCE, FACE' +
+        'BOOK = :FACEBOOK, WEBSITE = :WEBSITE, TWITTER = :TWITTER, STATUS' +
+        '_ACTIVE = :STATUS_ACTIVE, SEX = :SEX, IS_COMPANY = :IS_COMPANY, ' +
+        'COMPANY_OWNER = :COMPANY_OWNER, COMPANY_CONTACT = :COMPANY_CONTA' +
+        'CT, COMPANY_REGISTRATION_DATE = :COMPANY_REGISTRATION_DATE, PHON' +
+        'E_CONTACT = :PHONE_CONTACT, COMPANY_CONTACT_FIRST = :COMPANY_CON' +
+        'TACT_FIRST, COMPANY_CONTACT_LAST = :COMPANY_CONTACT_LAST, COMPAN' +
+        'Y_OWNER_REG = :COMPANY_OWNER_REG, COMPANY_CONTACT_PHONE = :COMPA' +
+        'NY_CONTACT_PHONE, COMPANY_CONTACT_EMAIL = :COMPANY_CONTACT_EMAIL' +
+        ', COMPANY_CONTACT_FAX = :COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC' +
+        ' = :COMPANY_SOCIAL_SEC, COMPANY_EMPLOYEES = :COMPANY_EMPLOYEES, ' +
+        'PHONE_MOBILE_2 = :PHONE_MOBILE_2, LINKED_IN = :LINKED_IN, JOB = ' +
+        ':JOB, IS_SAFE_COMPANY = :IS_SAFE_COMPANY, COMPANY_OWNER_ID = :CO' +
+        'MPANY_OWNER_ID'
+      'WHERE'
+      '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
+    SQLRefresh.Strings = (
+      
+        'SELECT SERIAL_NUMBER, SERIAL_QB, FK_COMPANY_SERIAL, LAST_NAME, F' +
+        'IRST_NAME, NATIONAL_ID, NICKNAME, OCCUPATION, PHONE_MOBILE, PHON' +
+        'E_FIXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_' +
+        'STREET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_' +
+        'STARTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, ' +
+        'TWITTER, STATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_' +
+        'CONTACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTA' +
+        'CT_FIRST, COMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTA' +
+        'CT_PHONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SO' +
+        'CIAL_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB, IS_' +
+        'SAFE_COMPANY, COMPANY_OWNER_ID FROM PERSON'
+      'WHERE'
+      '  SERIAL_NUMBER = :SERIAL_NUMBER')
+    SQLLock.Strings = (
+      'SELECT NULL FROM PERSON'
+      'WHERE'
+      'SERIAL_NUMBER = :Old_SERIAL_NUMBER'
+      'FOR UPDATE WITH LOCK')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM PERSON'
+      ''
+      ') q')
+    Connection = U_databaseFRM.DataConnection
+    Transaction = ReadTrans
+    UpdateTransaction = WriteTrans
+    SQL.Strings = (
+      'Select * from person  where serial_number = :PersonSerial')
+    Active = True
+    Constraints = <>
+    OnNewRecord = TableSQLNewRecord
+    Left = 49
+    Top = 165
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'PersonSerial'
+        Value = nil
+      end>
+    object CompSQLSERIAL_NUMBER: TIntegerField
+      FieldName = 'SERIAL_NUMBER'
+    end
+    object CompSQLSERIAL_QB: TIntegerField
+      FieldName = 'SERIAL_QB'
+    end
+    object CompSQLFK_COMPANY_SERIAL: TIntegerField
+      FieldName = 'FK_COMPANY_SERIAL'
+    end
+    object CompSQLLAST_NAME: TWideStringField
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLFIRST_NAME: TWideStringField
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLNATIONAL_ID: TWideStringField
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
+    object CompSQLNICKNAME: TWideStringField
+      FieldName = 'NICKNAME'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLOCCUPATION: TWideStringField
+      FieldName = 'OCCUPATION'
+      Size = 160
+    end
+    object CompSQLPHONE_MOBILE: TWideStringField
+      FieldName = 'PHONE_MOBILE'
+      FixedChar = True
+      Size = 15
+    end
+    object CompSQLPHONE_FIXED: TWideStringField
+      FieldName = 'PHONE_FIXED'
+      FixedChar = True
+      Size = 15
+    end
+    object CompSQLPHONE_ALTERNATE: TWideStringField
+      FieldName = 'PHONE_ALTERNATE'
+      FixedChar = True
+      Size = 15
+    end
+    object CompSQLFAX: TWideStringField
+      FieldName = 'FAX'
+      FixedChar = True
+      Size = 15
+    end
+    object CompSQLEMAIL: TWideStringField
+      FieldName = 'EMAIL'
+      Size = 160
+    end
+    object CompSQLEMAIL_2: TSmallintField
+      FieldName = 'EMAIL_2'
+    end
+    object CompSQLADDRESS: TWideStringField
+      FieldName = 'ADDRESS'
+      Size = 160
+    end
+    object CompSQLADDRESS_STREET: TWideStringField
+      FieldName = 'ADDRESS_STREET'
+      Size = 80
+    end
+    object CompSQLADDRESS_POST_CODE: TWideStringField
+      FieldName = 'ADDRESS_POST_CODE'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLADDRESS_CITY: TWideStringField
+      FieldName = 'ADDRESS_CITY'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLADDRESS_DISTRICT: TWideStringField
+      FieldName = 'ADDRESS_DISTRICT'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLDATE_STARTED: TDateField
+      FieldName = 'DATE_STARTED'
+    end
+    object CompSQLDATE_BIRTH: TDateField
+      FieldName = 'DATE_BIRTH'
+    end
+    object CompSQLDATE_USER: TDateField
+      FieldName = 'DATE_USER'
+    end
+    object CompSQLLIST_SOURCE: TWideStringField
+      FieldName = 'LIST_SOURCE'
+      Size = 160
+    end
+    object CompSQLFACEBOOK: TWideStringField
+      FieldName = 'FACEBOOK'
+      Size = 160
+    end
+    object CompSQLWEBSITE: TWideStringField
+      FieldName = 'WEBSITE'
+      Size = 160
+    end
+    object CompSQLTWITTER: TWideStringField
+      FieldName = 'TWITTER'
+      Size = 160
+    end
+    object CompSQLSTATUS_ACTIVE: TWideStringField
+      FieldName = 'STATUS_ACTIVE'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object CompSQLSEX: TWideStringField
+      FieldName = 'SEX'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object CompSQLIS_COMPANY: TWideStringField
+      FieldName = 'IS_COMPANY'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object CompSQLCOMPANY_OWNER: TWideStringField
+      FieldName = 'COMPANY_OWNER'
+      Size = 160
+    end
+    object CompSQLCOMPANY_CONTACT: TWideStringField
+      FieldName = 'COMPANY_CONTACT'
+      Size = 160
+    end
+    object CompSQLCOMPANY_REGISTRATION_DATE: TDateField
+      FieldName = 'COMPANY_REGISTRATION_DATE'
+    end
+    object CompSQLPHONE_CONTACT: TWideStringField
+      FieldName = 'PHONE_CONTACT'
+      FixedChar = True
+      Size = 15
+    end
+    object CompSQLCOMPANY_CONTACT_FIRST: TWideStringField
+      FieldName = 'COMPANY_CONTACT_FIRST'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLCOMPANY_CONTACT_LAST: TWideStringField
+      FieldName = 'COMPANY_CONTACT_LAST'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLCOMPANY_OWNER_REG: TWideStringField
+      FieldName = 'COMPANY_OWNER_REG'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLCOMPANY_CONTACT_PHONE: TWideStringField
+      FieldName = 'COMPANY_CONTACT_PHONE'
+      FixedChar = True
+      Size = 15
+    end
+    object CompSQLCOMPANY_CONTACT_EMAIL: TWideStringField
+      FieldName = 'COMPANY_CONTACT_EMAIL'
+      Size = 50
+    end
+    object CompSQLCOMPANY_CONTACT_FAX: TWideStringField
+      FieldName = 'COMPANY_CONTACT_FAX'
+      FixedChar = True
+      Size = 15
+    end
+    object CompSQLCOMPANY_SOCIAL_SEC: TWideStringField
+      FieldName = 'COMPANY_SOCIAL_SEC'
+      FixedChar = True
+    end
+    object CompSQLCOMPANY_EMPLOYEES: TIntegerField
+      FieldName = 'COMPANY_EMPLOYEES'
+    end
+    object CompSQLPHONE_MOBILE_2: TWideStringField
+      FieldName = 'PHONE_MOBILE_2'
+      FixedChar = True
+      Size = 15
+    end
+    object CompSQLLINKED_IN: TWideStringField
+      FieldName = 'LINKED_IN'
+      FixedChar = True
+      Size = 30
+    end
+    object CompSQLJOB: TWideStringField
+      FieldName = 'JOB'
+      Size = 50
+    end
+    object CompSQLIS_SAFE_COMPANY: TWideStringField
+      FieldName = 'IS_SAFE_COMPANY'
+      FixedChar = True
+      Size = 1
+    end
+    object CompSQLCOMPANY_OWNER_ID: TWideStringField
+      FieldName = 'COMPANY_OWNER_ID'
+      FixedChar = True
+      Size = 30
+    end
+  end
+  object CompSRc: TDataSource
+    DataSet = CompSQL
+    Left = 40
+    Top = 225
+  end
+  object CompPIP: TppDBPipeline
+    DataSource = CompSRc
+    UserName = 'CompPIP'
+    Left = 40
+    Top = 294
+    object CompPIPppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SERIAL_NUMBER'
+      FieldName = 'SERIAL_NUMBER'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 0
+    end
+    object CompPIPppField2: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SERIAL_QB'
+      FieldName = 'SERIAL_QB'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 1
+    end
+    object CompPIPppField3: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FK_COMPANY_SERIAL'
+      FieldName = 'FK_COMPANY_SERIAL'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 2
+    end
+    object CompPIPppField4: TppField
+      FieldAlias = 'LAST_NAME'
+      FieldName = 'LAST_NAME'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 3
+    end
+    object CompPIPppField5: TppField
+      FieldAlias = 'FIRST_NAME'
+      FieldName = 'FIRST_NAME'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 4
+    end
+    object CompPIPppField6: TppField
+      FieldAlias = 'NATIONAL_ID'
+      FieldName = 'NATIONAL_ID'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 5
+    end
+    object CompPIPppField7: TppField
+      FieldAlias = 'NICKNAME'
+      FieldName = 'NICKNAME'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 6
+    end
+    object CompPIPppField8: TppField
+      FieldAlias = 'OCCUPATION'
+      FieldName = 'OCCUPATION'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 7
+    end
+    object CompPIPppField9: TppField
+      FieldAlias = 'PHONE_MOBILE'
+      FieldName = 'PHONE_MOBILE'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 8
+    end
+    object CompPIPppField10: TppField
+      FieldAlias = 'PHONE_FIXED'
+      FieldName = 'PHONE_FIXED'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 9
+    end
+    object CompPIPppField11: TppField
+      FieldAlias = 'PHONE_ALTERNATE'
+      FieldName = 'PHONE_ALTERNATE'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 10
+    end
+    object CompPIPppField12: TppField
+      FieldAlias = 'FAX'
+      FieldName = 'FAX'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 11
+    end
+    object CompPIPppField13: TppField
+      FieldAlias = 'EMAIL'
+      FieldName = 'EMAIL'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 12
+    end
+    object CompPIPppField14: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'EMAIL_2'
+      FieldName = 'EMAIL_2'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 13
+    end
+    object CompPIPppField15: TppField
+      FieldAlias = 'ADDRESS'
+      FieldName = 'ADDRESS'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 14
+    end
+    object CompPIPppField16: TppField
+      FieldAlias = 'ADDRESS_STREET'
+      FieldName = 'ADDRESS_STREET'
+      FieldLength = 80
+      DisplayWidth = 80
+      Position = 15
+    end
+    object CompPIPppField17: TppField
+      FieldAlias = 'ADDRESS_POST_CODE'
+      FieldName = 'ADDRESS_POST_CODE'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 16
+    end
+    object CompPIPppField18: TppField
+      FieldAlias = 'ADDRESS_CITY'
+      FieldName = 'ADDRESS_CITY'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 17
+    end
+    object CompPIPppField19: TppField
+      FieldAlias = 'ADDRESS_DISTRICT'
+      FieldName = 'ADDRESS_DISTRICT'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 18
+    end
+    object CompPIPppField20: TppField
+      FieldAlias = 'DATE_STARTED'
+      FieldName = 'DATE_STARTED'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 19
+    end
+    object CompPIPppField21: TppField
+      FieldAlias = 'DATE_BIRTH'
+      FieldName = 'DATE_BIRTH'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 20
+    end
+    object CompPIPppField22: TppField
+      FieldAlias = 'DATE_USER'
+      FieldName = 'DATE_USER'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 21
+    end
+    object CompPIPppField23: TppField
+      FieldAlias = 'LIST_SOURCE'
+      FieldName = 'LIST_SOURCE'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 22
+    end
+    object CompPIPppField24: TppField
+      FieldAlias = 'FACEBOOK'
+      FieldName = 'FACEBOOK'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 23
+    end
+    object CompPIPppField25: TppField
+      FieldAlias = 'WEBSITE'
+      FieldName = 'WEBSITE'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 24
+    end
+    object CompPIPppField26: TppField
+      FieldAlias = 'TWITTER'
+      FieldName = 'TWITTER'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 25
+    end
+    object CompPIPppField27: TppField
+      FieldAlias = 'STATUS_ACTIVE'
+      FieldName = 'STATUS_ACTIVE'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 26
+    end
+    object CompPIPppField28: TppField
+      FieldAlias = 'SEX'
+      FieldName = 'SEX'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 27
+    end
+    object CompPIPppField29: TppField
+      FieldAlias = 'IS_COMPANY'
+      FieldName = 'IS_COMPANY'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 28
+    end
+    object CompPIPppField30: TppField
+      FieldAlias = 'COMPANY_OWNER'
+      FieldName = 'COMPANY_OWNER'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 29
+    end
+    object CompPIPppField31: TppField
+      FieldAlias = 'COMPANY_CONTACT'
+      FieldName = 'COMPANY_CONTACT'
+      FieldLength = 160
+      DisplayWidth = 160
+      Position = 30
+    end
+    object CompPIPppField32: TppField
+      FieldAlias = 'COMPANY_REGISTRATION_DATE'
+      FieldName = 'COMPANY_REGISTRATION_DATE'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 31
+    end
+    object CompPIPppField33: TppField
+      FieldAlias = 'PHONE_CONTACT'
+      FieldName = 'PHONE_CONTACT'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 32
+    end
+    object CompPIPppField34: TppField
+      FieldAlias = 'COMPANY_CONTACT_FIRST'
+      FieldName = 'COMPANY_CONTACT_FIRST'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 33
+    end
+    object CompPIPppField35: TppField
+      FieldAlias = 'COMPANY_CONTACT_LAST'
+      FieldName = 'COMPANY_CONTACT_LAST'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 34
+    end
+    object CompPIPppField36: TppField
+      FieldAlias = 'COMPANY_OWNER_REG'
+      FieldName = 'COMPANY_OWNER_REG'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 35
+    end
+    object CompPIPppField37: TppField
+      FieldAlias = 'COMPANY_CONTACT_PHONE'
+      FieldName = 'COMPANY_CONTACT_PHONE'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 36
+    end
+    object CompPIPppField38: TppField
+      FieldAlias = 'COMPANY_CONTACT_EMAIL'
+      FieldName = 'COMPANY_CONTACT_EMAIL'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 37
+    end
+    object CompPIPppField39: TppField
+      FieldAlias = 'COMPANY_CONTACT_FAX'
+      FieldName = 'COMPANY_CONTACT_FAX'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 38
+    end
+    object CompPIPppField40: TppField
+      FieldAlias = 'COMPANY_SOCIAL_SEC'
+      FieldName = 'COMPANY_SOCIAL_SEC'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 39
+    end
+    object CompPIPppField41: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'COMPANY_EMPLOYEES'
+      FieldName = 'COMPANY_EMPLOYEES'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 40
+    end
+    object CompPIPppField42: TppField
+      FieldAlias = 'PHONE_MOBILE_2'
+      FieldName = 'PHONE_MOBILE_2'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 41
+    end
+    object CompPIPppField43: TppField
+      FieldAlias = 'LINKED_IN'
+      FieldName = 'LINKED_IN'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 42
+    end
+    object CompPIPppField44: TppField
+      FieldAlias = 'JOB'
+      FieldName = 'JOB'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 43
+    end
+    object CompPIPppField45: TppField
+      FieldAlias = 'IS_SAFE_COMPANY'
+      FieldName = 'IS_SAFE_COMPANY'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 44
+    end
+    object CompPIPppField46: TppField
+      FieldAlias = 'COMPANY_OWNER_ID'
+      FieldName = 'COMPANY_OWNER_ID'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 45
+    end
+  end
+  object ValuesRPT: TppReport
+    AutoStop = False
+    DataPipeline = CompPIP
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.SaveDeviceSettings = False
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    Units = utMillimeters
+    AllowPrintToFile = True
+    ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+    DeviceType = 'Screen'
+    DefaultFileDeviceType = 'PDF'
+    EmailSettings.ReportFormat = 'PDF'
+    LanguageID = 'Default'
+    OpenFile = False
+    OutlineSettings.CreateNode = True
+    OutlineSettings.CreatePageNodes = True
+    OutlineSettings.Enabled = True
+    OutlineSettings.Visible = True
+    ThumbnailSettings.Enabled = True
+    ThumbnailSettings.Visible = True
+    ThumbnailSettings.DeadSpace = 30
+    PDFSettings.EmbedFontOptions = [efUseSubset]
+    PDFSettings.EncryptSettings.AllowCopy = True
+    PDFSettings.EncryptSettings.AllowInteract = True
+    PDFSettings.EncryptSettings.AllowModify = True
+    PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
+    PDFSettings.EncryptSettings.Enabled = False
+    PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.FontEncoding = feAnsi
+    PDFSettings.ImageCompressionLevel = 25
+    RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+    RTFSettings.DefaultFont.Color = clWindowText
+    RTFSettings.DefaultFont.Height = -13
+    RTFSettings.DefaultFont.Name = 'Arial'
+    RTFSettings.DefaultFont.Style = []
+    RTFSettings.ExportComponents = [ecText]
+    RTFSettings.RichTextAsMemo = True
+    TextFileName = '($MyDocuments)\Report.pdf'
+    TextFileType = ftSemicolon
+    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.Enabled = True
+    XLSSettings.AppName = 'ReportBuilder'
+    XLSSettings.Author = 'ReportBuilder'
+    XLSSettings.Subject = 'Report'
+    XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    Left = 536
+    Top = 288
+    Version = '18.01'
+    mmColumnWidth = 197300
+    DataPipelineName = 'CompPIP'
+    object ppHeaderBand1: TppHeaderBand
+      Save = True
+      Background.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 10848
+      mmPrintPosition = 0
+      object c6: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'c6'
+        SaveOrder = 5
+        Save = True
+        AutoSize = False
+        Caption = 'PHONE_FIXED'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 127000
+        mmTop = 4233
+        mmWidth = 23283
+        BandType = 0
+        LayerName = Foreground
+      end
+      object c3: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'c3'
+        SaveOrder = 2
+        Save = True
+        AutoSize = False
+        Caption = 'ADDRESS'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 50536
+        mmTop = 4233
+        mmWidth = 18521
+        BandType = 0
+        LayerName = Foreground
+      end
+      object c2: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'c2'
+        SaveOrder = 1
+        Save = True
+        AutoSize = False
+        Caption = 'COMPANY_OWNER_ID'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 28840
+        mmTop = 4233
+        mmWidth = 19315
+        BandType = 0
+        LayerName = Foreground
+      end
+      object C1: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'C1'
+        SaveOrder = 0
+        Save = True
+        AutoSize = False
+        Caption = 'COMPANY_OWNER'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 3704
+        mmTop = 4233
+        mmWidth = 22225
+        BandType = 0
+        LayerName = Foreground
+      end
+      object c4: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'c4'
+        SaveOrder = 3
+        Save = True
+        AutoSize = False
+        Caption = 'ADDRESS_STREET'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 74613
+        mmTop = 4233
+        mmWidth = 21696
+        BandType = 0
+        LayerName = Foreground
+      end
+      object c5: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'c5'
+        SaveOrder = 4
+        Save = True
+        AutoSize = False
+        Caption = 'ADDRESS_CITY'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 100013
+        mmTop = 4233
+        mmWidth = 20902
+        BandType = 0
+        LayerName = Foreground
+      end
+    end
+    object ppDetailBand1: TppDetailBand
+      Save = True
+      Background1.Brush.Style = bsClear
+      Background2.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 8467
+      mmPrintPosition = 0
+      object comp_owner: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'comp_owner'
+        SaveOrder = 0
+        Save = True
+        DataField = 'COMPANY_OWNER'
+        DataPipeline = CompPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'ARIAL'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'CompPIP'
+        mmHeight = 4498
+        mmLeft = 6350
+        mmTop = 1588
+        mmWidth = 16933
+        BandType = 4
+        LayerName = Foreground
+      end
+      object CompOwnerID: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'CompOwnerID'
+        SaveOrder = 1
+        Save = True
+        DataField = 'COMPANY_OWNER_ID'
+        DataPipeline = CompPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'ARIAL'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'CompPIP'
+        mmHeight = 4498
+        mmLeft = 27252
+        mmTop = 1588
+        mmWidth = 16933
+        BandType = 4
+        LayerName = Foreground
+      end
+      object AddressFLD: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'Address1'
+        SaveOrder = 2
+        Save = True
+        DataField = 'ADDRESS'
+        DataPipeline = CompPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'ARIAL'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'CompPIP'
+        mmHeight = 4498
+        mmLeft = 52652
+        mmTop = 1323
+        mmWidth = 16933
+        BandType = 4
+        LayerName = Foreground
+      end
+      object AddressStreetFLD: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'AddressStreetFLD'
+        SaveOrder = 3
+        Save = True
+        DataField = 'ADDRESS_STREET'
+        DataPipeline = CompPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'ARIAL'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'CompPIP'
+        mmHeight = 4498
+        mmLeft = 75671
+        mmTop = 1323
+        mmWidth = 16933
+        BandType = 4
+        LayerName = Foreground
+      end
+      object AddressCItyFLD: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'CityX'
+        SaveOrder = 4
+        Save = True
+        DataField = 'ADDRESS_CITY'
+        DataPipeline = CompPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'ARIAL'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'CompPIP'
+        mmHeight = 4498
+        mmLeft = 98690
+        mmTop = 1588
+        mmWidth = 16933
+        BandType = 4
+        LayerName = Foreground
+      end
+      object PhoneFixedFLD: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText5'
+        SaveOrder = 5
+        Save = True
+        DataField = 'PHONE_FIXED'
+        DataPipeline = CompPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'CompPIP'
+        mmHeight = 4763
+        mmLeft = 127000
+        mmTop = 1323
+        mmWidth = 23813
+        BandType = 4
+        LayerName = Foreground
+      end
+    end
+    object ppDesignLayers1: TppDesignLayers
+      object ppDesignLayer1: TppDesignLayer
+        UserName = 'Foreground'
+        LayerType = ltBanded
+        Index = 0
+      end
+    end
+    object ppParameterList1: TppParameterList
+    end
   end
 end

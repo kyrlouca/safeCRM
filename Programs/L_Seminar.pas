@@ -31,7 +31,7 @@ type
     RzGroupBox1: TRzGroupBox;
     Label2: TLabel;
     StatusFLD: TwwDBComboBox;
-    RzBitBtn2: TRzBitBtn;
+    EditBTN: TRzBitBtn;
     Nav1: TwwDBNavigator;
     Nav1Button: TwwNavButton;
     Nav1Prior: TwwNavButton;
@@ -115,6 +115,7 @@ type
     procedure N2Click(Sender: TObject);
     procedure N6Click(Sender: TObject);
     procedure MonoFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
+    procedure EditBTNClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -283,6 +284,11 @@ end;
 procedure TL_SeminarFRM.Grid1DblClick(Sender: TObject);
 begin
   EditSeminar;
+end;
+
+procedure TL_SeminarFRM.EditBTNClick(Sender: TObject);
+begin
+EditSeminar();
 end;
 
 procedure TL_SeminarFRM.EditSeminar();

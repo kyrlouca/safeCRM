@@ -9,7 +9,8 @@ uses
   wwclearpanel, Buttons, ExtCtrls, wwdblook, Wwkeycb, Grids,
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL, RzButton, RzPanel, vcl.wwcheckbox, Vcl.ExtDlgs, vcl.wwbutton,
-  RzLabel, RzDBLbl;
+  RzLabel, RzDBLbl, ppComm, ppRelatv, ppDB, ppDBPipe, ppProd, ppClass, ppReport,pptypes,
+  ppPrnabl, ppCtrls, ppCache, ppBands, ppDesignLayer, ppParameter;
 type
   TS_LoadDocsFRM = class(TForm)
     Panel1: TrzPanel;
@@ -59,6 +60,74 @@ type
     wwIncrementalSearch1: TwwIncrementalSearch;
     TableSQLDOC_PATH: TWideStringField;
     TableSQLDOC_TYPE: TWideStringField;
+    CompSQL: TIBCQuery;
+    CompSRc: TDataSource;
+    CompPIP: TppDBPipeline;
+    CompSQLSERIAL_NUMBER: TIntegerField;
+    CompSQLSERIAL_QB: TIntegerField;
+    CompSQLFK_COMPANY_SERIAL: TIntegerField;
+    CompSQLLAST_NAME: TWideStringField;
+    CompSQLFIRST_NAME: TWideStringField;
+    CompSQLNATIONAL_ID: TWideStringField;
+    CompSQLNICKNAME: TWideStringField;
+    CompSQLOCCUPATION: TWideStringField;
+    CompSQLPHONE_MOBILE: TWideStringField;
+    CompSQLPHONE_FIXED: TWideStringField;
+    CompSQLPHONE_ALTERNATE: TWideStringField;
+    CompSQLFAX: TWideStringField;
+    CompSQLEMAIL: TWideStringField;
+    CompSQLEMAIL_2: TSmallintField;
+    CompSQLADDRESS: TWideStringField;
+    CompSQLADDRESS_STREET: TWideStringField;
+    CompSQLADDRESS_POST_CODE: TWideStringField;
+    CompSQLADDRESS_CITY: TWideStringField;
+    CompSQLADDRESS_DISTRICT: TWideStringField;
+    CompSQLDATE_STARTED: TDateField;
+    CompSQLDATE_BIRTH: TDateField;
+    CompSQLDATE_USER: TDateField;
+    CompSQLLIST_SOURCE: TWideStringField;
+    CompSQLFACEBOOK: TWideStringField;
+    CompSQLWEBSITE: TWideStringField;
+    CompSQLTWITTER: TWideStringField;
+    CompSQLSTATUS_ACTIVE: TWideStringField;
+    CompSQLSEX: TWideStringField;
+    CompSQLIS_COMPANY: TWideStringField;
+    CompSQLCOMPANY_OWNER: TWideStringField;
+    CompSQLCOMPANY_CONTACT: TWideStringField;
+    CompSQLCOMPANY_REGISTRATION_DATE: TDateField;
+    CompSQLPHONE_CONTACT: TWideStringField;
+    CompSQLCOMPANY_CONTACT_FIRST: TWideStringField;
+    CompSQLCOMPANY_CONTACT_LAST: TWideStringField;
+    CompSQLCOMPANY_OWNER_REG: TWideStringField;
+    CompSQLCOMPANY_CONTACT_PHONE: TWideStringField;
+    CompSQLCOMPANY_CONTACT_EMAIL: TWideStringField;
+    CompSQLCOMPANY_CONTACT_FAX: TWideStringField;
+    CompSQLCOMPANY_SOCIAL_SEC: TWideStringField;
+    CompSQLCOMPANY_EMPLOYEES: TIntegerField;
+    CompSQLPHONE_MOBILE_2: TWideStringField;
+    CompSQLLINKED_IN: TWideStringField;
+    CompSQLJOB: TWideStringField;
+    CompSQLIS_SAFE_COMPANY: TWideStringField;
+    CompSQLCOMPANY_OWNER_ID: TWideStringField;
+    ValuesRPT: TppReport;
+    ppParameterList1: TppParameterList;
+    ppDesignLayers1: TppDesignLayers;
+    ppDesignLayer1: TppDesignLayer;
+    ppDetailBand1: TppDetailBand;
+    comp_owner: TppDBText;
+    CompOwnerID: TppDBText;
+    AddressFLD: TppDBText;
+    AddressStreetFLD: TppDBText;
+    AddressCItyFLD: TppDBText;
+    Button2: TButton;
+    ppHeaderBand1: TppHeaderBand;
+    c6: TppLabel;
+    PhoneFixedFLD: TppDBText;
+    c3: TppLabel;
+    c2: TppLabel;
+    C1: TppLabel;
+    c4: TppLabel;
+    c5: TppLabel;
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure SavetoDBClick(Sender: TObject);
@@ -67,6 +136,7 @@ type
     procedure wwButton1Click(Sender: TObject);
     procedure TableSQLNewRecord(DataSet: TDataSet);
     procedure Nav1InsertClick(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -75,6 +145,7 @@ type
   procedure SaveToFileXX(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
   procedure CopyAFile(Const DocSerial:Integer;Const FileName :String);
   procedure CopyModifiedFile(Const DocSerial:Integer;Const FileName :String);
+  procedure CreateTextFile(Const CompSerial:Integer; Const FileName :String);
 
   procedure SaveXX(Const SerialNumber:Integer;Const  FilePath, DocName :String);
   function FindHex(const FileName:String): Integer;
@@ -253,6 +324,14 @@ begin
 end;
 }
 
+procedure TS_LoadDocsFRM.Button2Click(Sender: TObject);
+  var
+    SeminarSerial:integer;
+begin
+  SeminarSerial:=129;
+  WriteFiles(SeminarSerial,'WORD');
+end;
+
 procedure TS_LoadDocsFRM.CopyaFile(Const DocSerial:Integer;Const FileName :String);
 var
 //  BlobField: TField;
@@ -388,8 +467,8 @@ end;
 
 procedure TS_LoadDocsFRM.TableSQLNewRecord(DataSet: TDataSet);
 begin
-  Dataset.FieldByName('Poly_mono').AsString:='M';
-  Dataset.FieldByName('iS_send_to_all').AsString:='N';
+  Dataset.FieldByName('Poly_mono').AsString:='P';
+  Dataset.FieldByName('iS_send_to_all').AsString:='Y';
   Dataset.FieldByName('DOC_TYPE').AsString:='WORD';
 end;
 
@@ -461,7 +540,7 @@ end;
 
 procedure TS_LoadDocsFRM.Button1Click(Sender: TObject);
 begin
-  WriteFiles(119,'abc');
+  WriteFiles(119,'WORD');
 end;
 
 procedure TS_LoadDocsFRM.CreateTheFiles;
@@ -470,6 +549,8 @@ begin
 end;
 
 procedure TS_LoadDocsFRM.WriteFiles(Const SeminarSerial:Integer;Const DocType:String);
+//doctype='WORD' for normal word documents
+
 var
   qr:TksQuery;
   compQr:TksQuery;
@@ -483,14 +564,20 @@ var
   str2:string;
   SeminarName:String;
   fpath:string;
+  fTExtName:string;
   fname:string;
   IsPoly:string;
   IsSendToAll:String;
   CompId:String;
   CompName:String;
+  MonoCompanySerial:Integer;
+  CompSerial:Integer;
 
 begin
 
+  //for every document
+  // if is sent_to_all is N then just one document to the seminar folder
+  // otherwise one for each company (but there is only one if is mono)
   param:=  gpGetGeneralParam(cn,'T00');
   baseFOlder:=Trim(param.P_String3);
 
@@ -511,6 +598,7 @@ begin
     end;
     SeminarName:=trim(qr.FieldByName('Seminar_name').AsString);
     IsPoly:=qr.FieldByName('Type_mono_poly').AsString;
+    MonoCompanySerial:= qr.FieldByName('FK_COMPANY_PERSON_SERIAL').AsInteger;
     qr.Close;
 
   finally
@@ -519,8 +607,8 @@ begin
 
   SeminarFolder:=baseFOlder+'\'+SeminarName+'_'+IntToStr(SeminarSerial);
   if  DirectoryExists(SeminarFOlder) then begin
-    MessageDlg('Directory to write the Files already EXISTS. Delete first', mtError, [mbOK], 0);
-    exit;
+//    MessageDlg('Directory to write the Files already EXISTS. Delete first', mtError, [mbOK], 0);
+//    exit;
   end else begin
     if not CreateDir(SeminarFOlder) then begin
       ShowMessage('cannot Create Directory: '+SeminarFolder);
@@ -528,14 +616,13 @@ begin
     end;
   end;
 
-//  fileName:='C:\Data\DelphiProjects\Safe_CRM\documents\Mono_anadForms\temp.doc';
 
   str2:='Select * from word_docs wd where wd.Poly_mono = :poly and wd.doc_type= :DocType';
   qr:= TksQuery.Create(cn,str2);
   try
       qr.close;
       qr.ParamByName('poly').Value:=isPoly;
-      qr.ParamByName('DocTYpe').Value:=DocType;
+      qr.ParamByName('DocTYpe').Value:=DocType; //WORD for word files to ANAD
       qr.open;
       while not qr.Eof do begin
       //for every document
@@ -546,33 +633,48 @@ begin
         if IsSendToAll='N' then begin
           /////////file for the seminar
           fname:= SeminarFolder+'\'+fileName+'.doc';
+          fTextName:=SeminarFolder+'\'+fileName+'.csv';
           CopyaFile(DocSerial,fName);
+          CreateTextFile(MonoCompanySerial,fTextName);
         end else begin
-
+         //Will copy this file to each Company (only One company if Mono)
+          if IsPoly='M' then begin
+              Str2:= 'select per.serial_number,per.National_id, per.Last_name from person per where per.serial_number= :PersonSerial';
+          end else begin
           str2:=
           '   select per.serial_number,per.National_id, per.Last_name from'
           +'          seminar_company semC left outer join'
           +'          person per on semc.fk_person_serial = per.serial_number'
           +'  where semC.fk_seminar_serial= :SeminarSerial';
 
+          end;
+
           Compqr:= TksQuery.Create(cn,str2);
           try
             CompQR.close;
-            CompQr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+            if (CompQr.FindParam('SeminarSerial')<>nil) then
+              CompQr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+            if (CompQr.FindParam('PersonSerial')<>nil) then
+              CompQr.ParamByName('PersonSerial').Value:=MonoCompanySerial;
+
             CompQr.open;
             while not CompQR.Eof do begin
               CompId:=CompQR.FieldByName('National_id').AsString;
               CompName:=CompQR.FieldByName('Last_name').AsString;
+              CompSerial:=CompQR.FieldByName('Serial_Number').AsInteger;
               /////////file for a compnay in its own folder
-              useFolder:=SeminarFolder+'\'+trim(compName);
+              useFolder:=SeminarFolder+'\'+trim(compName)+'_'+CompId;
               if  not DirectoryExists(useFOlder) then begin
                     if not CreateDir(useFOlder) then begin
                       ShowMessage('cannot Create Directory: '+UseFolder);
                       exit;
                     end;
               end;
-              fname:=UseFOlder+'\'+Trim(compId)+'_'+fileName+'.doc';
+              fname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.doc';
+              fTextname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.csv';
               CopyaFile(DocSerial,fName);
+              CreateTextFile(CompSerial,fTextName);
+
               compQR.Next;
             end;
           finally
@@ -631,6 +733,36 @@ begin
   end;
 
 end;
+
+procedure TS_LoadDocsFRM.CreateTextFile(Const CompSerial:Integer; Const FileName :String);
+var
+//  BlobField: TField;
+  BlobField: TBlobField;
+  BS: TStream;
+  str2:String;
+  qr:TksQuery;
+  FS:TMemoryStream;
+
+begin
+
+CompSQL.Close;
+compSQL.ParamByName('PersonSerial').Value:=CompSerial;
+CompSQL.Open;
+//if CompSQL.IsEmpty then
+//  exit;
+
+     with ValuesRPT do begin
+      AllowPrintToFile:=true;
+       ShowPrintDialog := False;
+        DeviceType := dtTextFile;
+//        DeviceType := dtReportTextFile
+        TextFileName := fileName;
+        Print;
+     end;
+
+
+end;
+
 
 
 End.
