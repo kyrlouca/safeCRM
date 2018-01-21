@@ -317,7 +317,7 @@ Const
 //        LabelValuesArray:Array[0..4,0..8] of String = (
         LabelValuesArray:Array[0..4] of TStringArray = (
                 ['T00','Reports Title - First line ','Ö.Ð.Á.','','','Folder to Save Word Files','','',''],
-                ['T01','Backup Database Full path','','','Folder for Backup','','','',''],
+                ['T01','Folder for Backup','','','','','','',''],
                 ['T02','Unused','','','','','','',''],
                 ['T03','','VAT Rate','','','','','',''],
                 ['T04','','','','','','','','']

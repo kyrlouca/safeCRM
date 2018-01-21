@@ -30,8 +30,6 @@ type
     Panel6: TPanel;
     RzPanel4: TRzPanel;
     BitBtn1: TBitBtn;
-    FirstFLD: TwwDBEdit;
-    CanelBTN: TBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);
@@ -41,7 +39,6 @@ type
     procedure CanelBTNClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
-    procedure Nav1InsertClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -122,11 +119,6 @@ begin
   cn:=U_databaseFRM.DataConnection;
 end;
 
-procedure TM_backupDataFRM.Nav1InsertClick(Sender: TObject);
-begin
-  FirstFLD.SetFocus;
-end;
-
 procedure TM_backupDataFRM.CanelBTNClick(Sender: TObject);
 begin
 TableSQL.Cancel;
@@ -159,27 +151,20 @@ begin
 
 //ShellExecute(Handle,'open', 'c:\windows\notepad.exe','c:\SomeText.txt', nil, SW_SHOWNORMAL) ;
 
-
-  SFrom:=param.P_String1;
-  if not FileExists(Sfrom) then begin
-      ShowMessage('Database to backup not found');
-      abort;
-  end;
+  sfrom:=cn.Database;
   Sfrom:='"'+Sfrom+'"';
 
-  if not DirectoryExists(param.P_String2) then begin
+  if not DirectoryExists(param.P_String1) then begin
       ShowMessage('Folder for backup not found');
       abort;
   end;
-//  STo:='C:\Data\DelphiProjects\Safe_CRM' +'\SafeData_'+ FormatDateTime('yyyymmdd_hhmmss',now)+'.fbk';
-  STo:= '"'+param.P_String2+ '\SafeData_'+ FormatDateTime('yyyymmdd_hhmmss',now)+'.fbk "';
+  STo:= '"'+param.P_String1+ '\SafeData_'+ FormatDateTime('yyyymmdd_hhmmss',now)+'.fbk "';
 
  xx:='-backup '+ Sfrom +' '+ sto+  ' -user sysdba -password masterkey';
- showMessage(xx);
 
 //SParam:='-b -v -user SYSDBA -password masterkey '+SFrom+' '+STo;
 SParam:='gbak '+ SFrom+' '+STo+ ' -backup -user SYSDBA -password masterkey ';
-ShowMessage('Backup Database'+#10#13+'From: '+Sfrom+ #10#13+'To: '+Sto);
+//ShowMessage('Backup Database'+#10#13+'From: '+Sfrom+ #10#13+'To: '+Sto);
 ShellExecute(
         handle,
         'open',
@@ -188,7 +173,7 @@ ShellExecute(
         nil,
         SW_SHOWNORMAL);
 
-  ShowMessage('Finished backup');
+    MessageDlg('Backup in'+#13+#10+Sto, mtInformation, [mbOK], 0);
 
 end;
 
