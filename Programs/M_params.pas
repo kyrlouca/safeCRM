@@ -75,6 +75,7 @@ type
     Label4: TLabel;
     PersonGenFLD: TwwDBEdit;
     SpeedButton2: TSpeedButton;
+    FileOpen1: TFileOpenDialog;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure OptionGRPClick(Sender: TObject);
@@ -87,6 +88,7 @@ type
     procedure FindGeneralParameterSQLAfterScroll(DataSet: TDataSet);
     procedure InstructorBTNClick(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -287,6 +289,19 @@ begin
 
 end;
 
+procedure TM_paramsFRM.SpeedButton1Click(Sender: TObject);
+var
+  fileName:string;
+begin
+  if not FileOPen1.Execute then     begin
+      showMessage('exit');
+      Exit;
+  end;
+ filename :=FileOpen1.FileName;
+ FIle1Fld.Text:=filename;
+
+end;
+
 procedure TM_paramsFRM.SpeedButton2Click(Sender: TObject);
 var
   Serial:Integer;
@@ -302,7 +317,7 @@ Const
 //        LabelValuesArray:Array[0..4,0..8] of String = (
         LabelValuesArray:Array[0..4] of TStringArray = (
                 ['T00','Reports Title - First line ','Ö.Ð.Á.','','','Folder to Save Word Files','','',''],
-                ['T01','Test','','','','','','',''],
+                ['T01','Backup Database Full path','','','Folder for Backup','','','',''],
                 ['T02','Unused','','','','','','',''],
                 ['T03','','VAT Rate','','','','','',''],
                 ['T04','','','','','','','','']

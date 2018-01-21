@@ -313,7 +313,7 @@ object M_paramsFRM: TM_paramsFRM
       ItemIndex = 0
       Items.Strings = (
         'General Params'
-        'Other Params')
+        'Backup Params')
       TabOrder = 0
       OnClick = OptionGRPClick
     end
@@ -527,6 +527,7 @@ object M_paramsFRM: TM_paramsFRM
           1C8F33BFDDC1FFFFFF45984C0C7716FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC9E8CC2D
           A54C289E4522973CC1E0C3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+        OnClick = SpeedButton1Click
       end
       object Label1: TLabel
         Left = 96
@@ -544,6 +545,7 @@ object M_paramsFRM: TM_paramsFRM
         Center = True
         Proportional = True
         Stretch = True
+        Visible = False
       end
       object Label3: TLabel
         Left = 6
@@ -559,6 +561,7 @@ object M_paramsFRM: TM_paramsFRM
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        Visible = False
       end
       object InstructorBTN: TSpeedButton
         Left = 315
@@ -624,6 +627,7 @@ object M_paramsFRM: TM_paramsFRM
         Layout = blGlyphBottom
         NumGlyphs = 2
         ParentFont = False
+        Visible = False
         OnClick = InstructorBTNClick
       end
       object Label2: TLabel
@@ -632,6 +636,7 @@ object M_paramsFRM: TM_paramsFRM
         Width = 106
         Height = 14
         Caption = #913'/'#913' '#928#953#963#964#959#960#959#953#951#964#953#954#959#973
+        Visible = False
       end
       object Label4: TLabel
         Left = 68
@@ -639,6 +644,7 @@ object M_paramsFRM: TM_paramsFRM
         Width = 112
         Height = 14
         Caption = #913'/'#913' '#917#954#960#945#953#948#949#965#972#956#949#957#959#965
+        Visible = False
       end
       object SpeedButton2: TSpeedButton
         Left = 315
@@ -704,6 +710,7 @@ object M_paramsFRM: TM_paramsFRM
         Layout = blGlyphBottom
         NumGlyphs = 2
         ParentFont = False
+        Visible = False
         OnClick = SpeedButton2Click
       end
       object VS1FLD: TwwDBEdit
@@ -932,6 +939,7 @@ object M_paramsFRM: TM_paramsFRM
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 10
+        Visible = False
         OnClick = RzBitBtn4Click
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
@@ -999,6 +1007,7 @@ object M_paramsFRM: TM_paramsFRM
         Height = 22
         TabOrder = 11
         UnboundDataType = wwDefault
+        Visible = False
         WantReturns = False
         WordWrap = False
       end
@@ -1009,6 +1018,7 @@ object M_paramsFRM: TM_paramsFRM
         Height = 22
         TabOrder = 12
         UnboundDataType = wwDefault
+        Visible = False
         WantReturns = False
         WordWrap = False
       end
@@ -1079,6 +1089,7 @@ object M_paramsFRM: TM_paramsFRM
       '   Code= :Code')
     Options.CacheBlobs = False
     Options.StreamedBlobs = True
+    Constraints = <>
     AfterScroll = FindGeneralParameterSQLAfterScroll
     Left = 537
     Top = 239
@@ -1168,5 +1179,12 @@ object M_paramsFRM: TM_paramsFRM
   object OpenPictureDialog1: TOpenPictureDialog
     Left = 416
     Top = 199
+  end
+  object FileOpen1: TFileOpenDialog
+    FavoriteLinks = <>
+    FileTypes = <>
+    Options = []
+    Left = 544
+    Top = 501
   end
 end

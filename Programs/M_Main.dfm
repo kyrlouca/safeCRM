@@ -7546,6 +7546,10 @@ object M_mainFRM: TM_mainFRM
         Caption = #904#957#964#965#960#945' '#913#925#913#916
         OnClick = N14Click
       end
+      object Backup1: TMenuItem
+        Caption = 'Backup'
+        OnClick = Backup1Click
+      end
     end
     object Help1: TMenuItem
       Caption = 'Help'
@@ -7556,6 +7560,7 @@ object M_mainFRM: TM_mainFRM
     end
   end
   object vt: TVirtualTable
+    Constraints = <>
     Left = 152
     Top = 179
     Data = {04000000000000000000}
@@ -7606,6 +7611,7 @@ object M_mainFRM: TM_mainFRM
     SQL.Strings = (
       'select * from general_Parameter where code = :TheCode')
     Options.StreamedBlobs = True
+    Constraints = <>
     Left = 408
     Top = 163
     ParamData = <

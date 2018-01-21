@@ -12,7 +12,6 @@ uses
   M_Main in 'M_Main.pas' {M_mainFRM},
   M_Venue in 'M_Venue.pas' {M_venuFRM},
   M_seminarType in 'M_seminarType.pas' {M_SeminarTypeFRM},
-  M_CostType in 'M_CostType.pas' {M_CostTypeFRM},
   V_Seminar in 'V_Seminar.pas' {V_SeminarFRM},
   H_Help in 'H_Help.pas' {H_HelpFRM},
   G_SFCommonProcs in 'G_SFCommonProcs.pas',
@@ -55,7 +54,8 @@ uses
   M_Student in 'M_Student.pas' {M_StudentFRM},
   R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
   S_LoadPDF in 'S_LoadPDF.pas' {S_loadPdfFRM},
-  S_LoadDocs in 'S_LoadDocs.pas' {S_LoadDocsFRM};
+  S_LoadDocs in 'S_LoadDocs.pas' {S_LoadDocsFRM},
+  S_backupData in 'S_backupData.pas' {M_backupDataFRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -80,5 +80,7 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TR_ExpiryFRM, R_ExpiryFRM);
   Application.CreateForm(TS_loadPdfFRM, S_loadPdfFRM);
   Application.CreateForm(TS_LoadDocsFRM, S_LoadDocsFRM);
+  Application.CreateForm(TM_backupDataFRM, M_backupDataFRM);
+  Application.CreateForm(TM_backupDataFRM, M_backupDataFRM);
   Application.Run;
 end.

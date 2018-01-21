@@ -121,10 +121,6 @@
             <Form>M_SeminarTypeFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="M_CostType.pas">
-            <Form>M_CostTypeFRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="V_Seminar.pas">
             <Form>V_SeminarFRM</Form>
             <FormType>dfm</FormType>
@@ -288,6 +284,10 @@
         </DCCReference>
         <DCCReference Include="S_LoadDocs.pas">
             <Form>S_LoadDocsFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="S_backupData.pas">
+            <Form>M_backupDataFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
