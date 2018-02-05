@@ -1,10 +1,9 @@
 object M_mainFRM: TM_mainFRM
   Left = 0
   Top = 0
-  BorderStyle = bsSingle
   Caption = 'EnaSimple'
-  ClientHeight = 416
-  ClientWidth = 847
+  ClientHeight = 406
+  ClientWidth = 837
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,13 +20,13 @@ object M_mainFRM: TM_mainFRM
   object PanelButtonsPNL: TRzSizePanel
     Left = 0
     Top = 0
-    Width = 847
+    Width = 837
     Height = 83
     Margins.Top = 0
     Margins.Bottom = 0
     Align = alTop
     BorderOuter = fsGroove
-    Caption = 'Safe CRM - V1.02'
+    Caption = 'Safe CRM - V1.04'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 3947580
     Font.Height = -48
@@ -179,15 +178,15 @@ object M_mainFRM: TM_mainFRM
   end
   object ButtonsPNL: TPanel
     Left = 0
-    Top = 371
-    Width = 847
+    Top = 361
+    Width = 837
     Height = 45
     Align = alBottom
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
     object Panel1: TPanel
-      Left = 710
+      Left = 700
       Top = 2
       Width = 135
       Height = 41
@@ -274,8 +273,8 @@ object M_mainFRM: TM_mainFRM
   object RzSizePanel2: TRzSizePanel
     Left = 0
     Top = 83
-    Width = 847
-    Height = 288
+    Width = 837
+    Height = 278
     Margins.Top = 0
     Margins.Bottom = 0
     Align = alClient
@@ -285,8 +284,8 @@ object M_mainFRM: TM_mainFRM
     object Image1: TImage
       Left = 0
       Top = 0
-      Width = 847
-      Height = 288
+      Width = 837
+      Height = 278
       Align = alClient
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000033C0000
@@ -7232,6 +7231,8 @@ object M_mainFRM: TM_mainFRM
       Proportional = True
       Stretch = True
       ExplicitTop = -3
+      ExplicitWidth = 847
+      ExplicitHeight = 288
     end
     object LoginBTN: TRzBitBtn
       Left = 14
@@ -7317,7 +7318,6 @@ object M_mainFRM: TM_mainFRM
       Height = 25
       Caption = 'Button1'
       TabOrder = 1
-      Visible = False
       OnClick = Button1Click
     end
     object Button2: TButton

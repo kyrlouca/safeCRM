@@ -1,7 +1,6 @@
 object L_RemindersFRM: TL_RemindersFRM
   Left = 365
   Top = 153
-  Align = alClient
   Caption = '--'
   ClientHeight = 538
   ClientWidth = 1067
@@ -971,6 +970,7 @@ object L_RemindersFRM: TL_RemindersFRM
       ''
       'order by sr.date_targeted')
     Active = True
+    Constraints = <>
     OnCalcFields = TableSQLCalcFields
     OnNewRecord = TableSQLNewRecord
     Left = 40
@@ -1170,6 +1170,7 @@ object L_RemindersFRM: TL_RemindersFRM
       'SELECT * from seminar ')
     ReadOnly = True
     Active = True
+    Constraints = <>
     Left = 649
     Top = 53
     object SeminarSQLSERIAL_NUMBER: TIntegerField

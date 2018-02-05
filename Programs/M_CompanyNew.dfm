@@ -3,7 +3,7 @@ object M_companyNewFRM: TM_companyNewFRM
   Top = 153
   Caption = '--'
   ClientHeight = 639
-  ClientWidth = 1096
+  ClientWidth = 1104
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1096
+    Width = 1104
     Height = 53
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -31,11 +31,12 @@ object M_companyNewFRM: TM_companyNewFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1096
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 1088
+      Width = 1096
       Height = 45
       Align = alClient
       Alignment = taCenter
@@ -47,7 +48,7 @@ object M_companyNewFRM: TM_companyNewFRM
     object RzDBLabel1: TRzDBLabel
       Left = 1
       Top = 1
-      Width = 1094
+      Width = 1102
       Height = 51
       Align = alClient
       DataField = 'LAST_NAME'
@@ -58,18 +59,20 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel4: TPanel
     Left = 0
     Top = 596
-    Width = 1096
+    Width = 1104
     Height = 43
     Align = alBottom
     TabOrder = 2
+    ExplicitWidth = 1096
     object RzPanel1: TRzPanel
-      Left = 995
+      Left = 1003
       Top = 1
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 995
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -293,34 +296,36 @@ object M_companyNewFRM: TM_companyNewFRM
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 1096
+    Width = 1104
     Height = 39
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 1096
   end
   object PageControlPC: TPageControl
     Left = 0
     Top = 92
-    Width = 1096
+    Width = 1104
     Height = 504
-    ActivePage = InfoTS
+    ActivePage = EmployeesTS
     Align = alClient
     MultiLine = True
     TabOrder = 3
     OnChanging = PageControlPCChanging
+    ExplicitWidth = 1096
     object InfoTS: TTabSheet
       Caption = #917#964#945#953#961#949#943#945
       OnShow = InfoTSShow
+      ExplicitWidth = 1088
       object RzPanel4: TRzPanel
         Left = 0
         Top = 0
-        Width = 1088
+        Width = 1096
         Height = 476
         Align = alClient
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 2
+        ExplicitWidth = 1088
         object GroupBox1: TGroupBox
           Left = 3
           Top = 20
@@ -1007,14 +1012,16 @@ object M_companyNewFRM: TM_companyNewFRM
       Caption = #933#960#940#955#955#951#955#959#953
       ImageIndex = 1
       OnShow = EmployeesTSShow
+      ExplicitWidth = 1088
       object RzPanel5: TRzPanel
         Left = 0
         Top = 0
-        Width = 1088
+        Width = 1096
         Height = 476
         Align = alClient
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 1088
         object RzGroupBox1: TRzGroupBox
           Left = 0
           Top = 17
@@ -1079,11 +1086,12 @@ object M_companyNewFRM: TM_companyNewFRM
         object RzPanel3: TRzPanel
           Left = 0
           Top = 0
-          Width = 1088
+          Width = 1096
           Height = 17
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 1
+          ExplicitWidth = 1088
         end
         object RzPanel2: TRzPanel
           Left = 593
@@ -1327,31 +1335,33 @@ object M_companyNewFRM: TM_companyNewFRM
     SQLInsert.Strings = (
       'INSERT INTO PERSON'
       
-        '  (SERIAL_NUMBER, SERIAL_QB, FK_COMPANY_SERIAL, LAST_NAME, FIRST' +
-        '_NAME, NATIONAL_ID, NICKNAME, OCCUPATION, PHONE_MOBILE, PHONE_FI' +
-        'XED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STRE' +
-        'ET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STAR' +
-        'TED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWIT' +
-        'TER, STATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONT' +
-        'ACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTACT_F' +
-        'IRST, COMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTACT_P' +
-        'HONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SOCIAL' +
-        '_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB, IS_SAFE' +
-        '_COMPANY, COMPANY_OWNER_ID)'
+        '  (SERIAL_NUMBER, SERIAL_QB, FK_COMPANY_SERIAL, NATIONAL_ID, NIC' +
+        'KNAME, OCCUPATION, PHONE_MOBILE, PHONE_FIXED, PHONE_ALTERNATE, F' +
+        'AX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET, ADDRESS_POST_CODE, ' +
+        'ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED, DATE_BIRTH, DATE_U' +
+        'SER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER, STATUS_ACTIVE, SEX' +
+        ', IS_COMPANY, COMPANY_OWNER, COMPANY_CONTACT, COMPANY_REGISTRATI' +
+        'ON_DATE, PHONE_CONTACT, COMPANY_OWNER_REG, COMPANY_CONTACT_PHONE' +
+        ', COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC' +
+        ', COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB, IS_SAFE_COM' +
+        'PANY, COMPANY_OWNER_ID, U_LAST_NAME, U_FIRST_NAME, U_COMPANY_CON' +
+        'TACT_FIRST, U_COMPANY_CONTACT_LAST, LAST_NAME, FIRST_NAME, COMPA' +
+        'NY_CONTACT_LAST, COMPANY_CONTACT_FIRST)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :SERIAL_QB, :FK_COMPANY_SERIAL, :LAST_NAME, :' +
-        'FIRST_NAME, :NATIONAL_ID, :NICKNAME, :OCCUPATION, :PHONE_MOBILE,' +
-        ' :PHONE_FIXED, :PHONE_ALTERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRES' +
-        'S, :ADDRESS_STREET, :ADDRESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_' +
-        'DISTRICT, :DATE_STARTED, :DATE_BIRTH, :DATE_USER, :LIST_SOURCE, ' +
-        ':FACEBOOK, :WEBSITE, :TWITTER, :STATUS_ACTIVE, :SEX, :IS_COMPANY' +
-        ', :COMPANY_OWNER, :COMPANY_CONTACT, :COMPANY_REGISTRATION_DATE, ' +
-        ':PHONE_CONTACT, :COMPANY_CONTACT_FIRST, :COMPANY_CONTACT_LAST, :' +
-        'COMPANY_OWNER_REG, :COMPANY_CONTACT_PHONE, :COMPANY_CONTACT_EMAI' +
-        'L, :COMPANY_CONTACT_FAX, :COMPANY_SOCIAL_SEC, :COMPANY_EMPLOYEES' +
-        ', :PHONE_MOBILE_2, :LINKED_IN, :JOB, :IS_SAFE_COMPANY, :COMPANY_' +
-        'OWNER_ID)')
+        '  (:SERIAL_NUMBER, :SERIAL_QB, :FK_COMPANY_SERIAL, :NATIONAL_ID,' +
+        ' :NICKNAME, :OCCUPATION, :PHONE_MOBILE, :PHONE_FIXED, :PHONE_ALT' +
+        'ERNATE, :FAX, :EMAIL, :EMAIL_2, :ADDRESS, :ADDRESS_STREET, :ADDR' +
+        'ESS_POST_CODE, :ADDRESS_CITY, :ADDRESS_DISTRICT, :DATE_STARTED, ' +
+        ':DATE_BIRTH, :DATE_USER, :LIST_SOURCE, :FACEBOOK, :WEBSITE, :TWI' +
+        'TTER, :STATUS_ACTIVE, :SEX, :IS_COMPANY, :COMPANY_OWNER, :COMPAN' +
+        'Y_CONTACT, :COMPANY_REGISTRATION_DATE, :PHONE_CONTACT, :COMPANY_' +
+        'OWNER_REG, :COMPANY_CONTACT_PHONE, :COMPANY_CONTACT_EMAIL, :COMP' +
+        'ANY_CONTACT_FAX, :COMPANY_SOCIAL_SEC, :COMPANY_EMPLOYEES, :PHONE' +
+        '_MOBILE_2, :LINKED_IN, :JOB, :IS_SAFE_COMPANY, :COMPANY_OWNER_ID' +
+        ', :U_LAST_NAME, :U_FIRST_NAME, :U_COMPANY_CONTACT_FIRST, :U_COMP' +
+        'ANY_CONTACT_LAST, :LAST_NAME, :FIRST_NAME, :COMPANY_CONTACT_LAST' +
+        ', :COMPANY_CONTACT_FIRST)')
     SQLDelete.Strings = (
       'DELETE FROM PERSON'
       'WHERE'
@@ -1361,43 +1371,46 @@ object M_companyNewFRM: TM_companyNewFRM
       'SET'
       
         '  SERIAL_NUMBER = :SERIAL_NUMBER, SERIAL_QB = :SERIAL_QB, FK_COM' +
-        'PANY_SERIAL = :FK_COMPANY_SERIAL, LAST_NAME = :LAST_NAME, FIRST_' +
-        'NAME = :FIRST_NAME, NATIONAL_ID = :NATIONAL_ID, NICKNAME = :NICK' +
-        'NAME, OCCUPATION = :OCCUPATION, PHONE_MOBILE = :PHONE_MOBILE, PH' +
-        'ONE_FIXED = :PHONE_FIXED, PHONE_ALTERNATE = :PHONE_ALTERNATE, FA' +
-        'X = :FAX, EMAIL = :EMAIL, EMAIL_2 = :EMAIL_2, ADDRESS = :ADDRESS' +
-        ', ADDRESS_STREET = :ADDRESS_STREET, ADDRESS_POST_CODE = :ADDRESS' +
-        '_POST_CODE, ADDRESS_CITY = :ADDRESS_CITY, ADDRESS_DISTRICT = :AD' +
-        'DRESS_DISTRICT, DATE_STARTED = :DATE_STARTED, DATE_BIRTH = :DATE' +
-        '_BIRTH, DATE_USER = :DATE_USER, LIST_SOURCE = :LIST_SOURCE, FACE' +
-        'BOOK = :FACEBOOK, WEBSITE = :WEBSITE, TWITTER = :TWITTER, STATUS' +
-        '_ACTIVE = :STATUS_ACTIVE, SEX = :SEX, IS_COMPANY = :IS_COMPANY, ' +
-        'COMPANY_OWNER = :COMPANY_OWNER, COMPANY_CONTACT = :COMPANY_CONTA' +
-        'CT, COMPANY_REGISTRATION_DATE = :COMPANY_REGISTRATION_DATE, PHON' +
-        'E_CONTACT = :PHONE_CONTACT, COMPANY_CONTACT_FIRST = :COMPANY_CON' +
-        'TACT_FIRST, COMPANY_CONTACT_LAST = :COMPANY_CONTACT_LAST, COMPAN' +
-        'Y_OWNER_REG = :COMPANY_OWNER_REG, COMPANY_CONTACT_PHONE = :COMPA' +
-        'NY_CONTACT_PHONE, COMPANY_CONTACT_EMAIL = :COMPANY_CONTACT_EMAIL' +
-        ', COMPANY_CONTACT_FAX = :COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC' +
-        ' = :COMPANY_SOCIAL_SEC, COMPANY_EMPLOYEES = :COMPANY_EMPLOYEES, ' +
-        'PHONE_MOBILE_2 = :PHONE_MOBILE_2, LINKED_IN = :LINKED_IN, JOB = ' +
-        ':JOB, IS_SAFE_COMPANY = :IS_SAFE_COMPANY, COMPANY_OWNER_ID = :CO' +
-        'MPANY_OWNER_ID'
+        'PANY_SERIAL = :FK_COMPANY_SERIAL, NATIONAL_ID = :NATIONAL_ID, NI' +
+        'CKNAME = :NICKNAME, OCCUPATION = :OCCUPATION, PHONE_MOBILE = :PH' +
+        'ONE_MOBILE, PHONE_FIXED = :PHONE_FIXED, PHONE_ALTERNATE = :PHONE' +
+        '_ALTERNATE, FAX = :FAX, EMAIL = :EMAIL, EMAIL_2 = :EMAIL_2, ADDR' +
+        'ESS = :ADDRESS, ADDRESS_STREET = :ADDRESS_STREET, ADDRESS_POST_C' +
+        'ODE = :ADDRESS_POST_CODE, ADDRESS_CITY = :ADDRESS_CITY, ADDRESS_' +
+        'DISTRICT = :ADDRESS_DISTRICT, DATE_STARTED = :DATE_STARTED, DATE' +
+        '_BIRTH = :DATE_BIRTH, DATE_USER = :DATE_USER, LIST_SOURCE = :LIS' +
+        'T_SOURCE, FACEBOOK = :FACEBOOK, WEBSITE = :WEBSITE, TWITTER = :T' +
+        'WITTER, STATUS_ACTIVE = :STATUS_ACTIVE, SEX = :SEX, IS_COMPANY =' +
+        ' :IS_COMPANY, COMPANY_OWNER = :COMPANY_OWNER, COMPANY_CONTACT = ' +
+        ':COMPANY_CONTACT, COMPANY_REGISTRATION_DATE = :COMPANY_REGISTRAT' +
+        'ION_DATE, PHONE_CONTACT = :PHONE_CONTACT, COMPANY_OWNER_REG = :C' +
+        'OMPANY_OWNER_REG, COMPANY_CONTACT_PHONE = :COMPANY_CONTACT_PHONE' +
+        ', COMPANY_CONTACT_EMAIL = :COMPANY_CONTACT_EMAIL, COMPANY_CONTAC' +
+        'T_FAX = :COMPANY_CONTACT_FAX, COMPANY_SOCIAL_SEC = :COMPANY_SOCI' +
+        'AL_SEC, COMPANY_EMPLOYEES = :COMPANY_EMPLOYEES, PHONE_MOBILE_2 =' +
+        ' :PHONE_MOBILE_2, LINKED_IN = :LINKED_IN, JOB = :JOB, IS_SAFE_CO' +
+        'MPANY = :IS_SAFE_COMPANY, COMPANY_OWNER_ID = :COMPANY_OWNER_ID, ' +
+        'U_LAST_NAME = :U_LAST_NAME, U_FIRST_NAME = :U_FIRST_NAME, U_COMP' +
+        'ANY_CONTACT_FIRST = :U_COMPANY_CONTACT_FIRST, U_COMPANY_CONTACT_' +
+        'LAST = :U_COMPANY_CONTACT_LAST, LAST_NAME = :LAST_NAME, FIRST_NA' +
+        'ME = :FIRST_NAME, COMPANY_CONTACT_LAST = :COMPANY_CONTACT_LAST, ' +
+        'COMPANY_CONTACT_FIRST = :COMPANY_CONTACT_FIRST'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
       
-        'SELECT SERIAL_NUMBER, SERIAL_QB, FK_COMPANY_SERIAL, LAST_NAME, F' +
-        'IRST_NAME, NATIONAL_ID, NICKNAME, OCCUPATION, PHONE_MOBILE, PHON' +
-        'E_FIXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_' +
-        'STREET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_' +
-        'STARTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, ' +
-        'TWITTER, STATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_' +
-        'CONTACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, COMPANY_CONTA' +
-        'CT_FIRST, COMPANY_CONTACT_LAST, COMPANY_OWNER_REG, COMPANY_CONTA' +
-        'CT_PHONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SO' +
-        'CIAL_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB, IS_' +
-        'SAFE_COMPANY, COMPANY_OWNER_ID FROM PERSON'
+        'SELECT SERIAL_NUMBER, SERIAL_QB, FK_COMPANY_SERIAL, NATIONAL_ID,' +
+        ' NICKNAME, OCCUPATION, PHONE_MOBILE, PHONE_FIXED, PHONE_ALTERNAT' +
+        'E, FAX, EMAIL, EMAIL_2, ADDRESS, ADDRESS_STREET, ADDRESS_POST_CO' +
+        'DE, ADDRESS_CITY, ADDRESS_DISTRICT, DATE_STARTED, DATE_BIRTH, DA' +
+        'TE_USER, LIST_SOURCE, FACEBOOK, WEBSITE, TWITTER, STATUS_ACTIVE,' +
+        ' SEX, IS_COMPANY, COMPANY_OWNER, COMPANY_CONTACT, COMPANY_REGIST' +
+        'RATION_DATE, PHONE_CONTACT, COMPANY_OWNER_REG, COMPANY_CONTACT_P' +
+        'HONE, COMPANY_CONTACT_EMAIL, COMPANY_CONTACT_FAX, COMPANY_SOCIAL' +
+        '_SEC, COMPANY_EMPLOYEES, PHONE_MOBILE_2, LINKED_IN, JOB, IS_SAFE' +
+        '_COMPANY, COMPANY_OWNER_ID, U_LAST_NAME, U_FIRST_NAME, U_COMPANY' +
+        '_CONTACT_FIRST, U_COMPANY_CONTACT_LAST, LAST_NAME, FIRST_NAME, C' +
+        'OMPANY_CONTACT_LAST, COMPANY_CONTACT_FIRST FROM PERSON'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1422,6 +1435,7 @@ object M_companyNewFRM: TM_companyNewFRM
       'SERIAL_NUMBER= :CompanySerial')
     Options.AutoClose = True
     Active = True
+    Constraints = <>
     OnNewRecord = CompanySQLNewRecord
     Left = 49
     Top = 37
@@ -1440,21 +1454,8 @@ object M_companyNewFRM: TM_companyNewFRM
     object CompanySQLFK_COMPANY_SERIAL: TIntegerField
       FieldName = 'FK_COMPANY_SERIAL'
     end
-    object CompanySQLLAST_NAME: TWideStringField
-      FieldName = 'LAST_NAME'
-      Required = True
-      FixedChar = True
-      Size = 30
-    end
-    object CompanySQLFIRST_NAME: TWideStringField
-      FieldName = 'FIRST_NAME'
-      FixedChar = True
-      Size = 30
-    end
     object CompanySQLNATIONAL_ID: TWideStringField
-      DisplayLabel = #913#961'. '#917#947#947#961#945#966#942#962
       FieldName = 'NATIONAL_ID'
-      Required = True
       FixedChar = True
     end
     object CompanySQLNICKNAME: TWideStringField
@@ -1549,6 +1550,7 @@ object M_companyNewFRM: TM_companyNewFRM
     end
     object CompanySQLSEX: TWideStringField
       FieldName = 'SEX'
+      Required = True
       FixedChar = True
       Size = 1
     end
@@ -1573,16 +1575,6 @@ object M_companyNewFRM: TM_companyNewFRM
       FieldName = 'PHONE_CONTACT'
       FixedChar = True
       Size = 15
-    end
-    object CompanySQLCOMPANY_CONTACT_FIRST: TWideStringField
-      FieldName = 'COMPANY_CONTACT_FIRST'
-      FixedChar = True
-      Size = 30
-    end
-    object CompanySQLCOMPANY_CONTACT_LAST: TWideStringField
-      FieldName = 'COMPANY_CONTACT_LAST'
-      FixedChar = True
-      Size = 30
     end
     object CompanySQLCOMPANY_OWNER_REG: TWideStringField
       FieldName = 'COMPANY_OWNER_REG'
@@ -1634,6 +1626,46 @@ object M_companyNewFRM: TM_companyNewFRM
       FixedChar = True
       Size = 30
     end
+    object CompanySQLU_LAST_NAME: TWideStringField
+      FieldName = 'U_LAST_NAME'
+      FixedChar = True
+      Size = 120
+    end
+    object CompanySQLU_FIRST_NAME: TWideStringField
+      FieldName = 'U_FIRST_NAME'
+      FixedChar = True
+      Size = 120
+    end
+    object CompanySQLU_COMPANY_CONTACT_FIRST: TWideStringField
+      FieldName = 'U_COMPANY_CONTACT_FIRST'
+      FixedChar = True
+      Size = 120
+    end
+    object CompanySQLU_COMPANY_CONTACT_LAST: TWideStringField
+      FieldName = 'U_COMPANY_CONTACT_LAST'
+      FixedChar = True
+      Size = 120
+    end
+    object CompanySQLLAST_NAME: TWideStringField
+      FieldName = 'LAST_NAME'
+      FixedChar = True
+      Size = 120
+    end
+    object CompanySQLFIRST_NAME: TWideStringField
+      FieldName = 'FIRST_NAME'
+      FixedChar = True
+      Size = 120
+    end
+    object CompanySQLCOMPANY_CONTACT_LAST: TWideStringField
+      FieldName = 'COMPANY_CONTACT_LAST'
+      FixedChar = True
+      Size = 120
+    end
+    object CompanySQLCOMPANY_CONTACT_FIRST: TWideStringField
+      FieldName = 'COMPANY_CONTACT_FIRST'
+      FixedChar = True
+      Size = 120
+    end
   end
   object WriteTrans: TIBCTransaction
     DefaultConnection = U_databaseFRM.DataConnection
@@ -1650,9 +1682,9 @@ object M_companyNewFRM: TM_companyNewFRM
     UpdatingTable = 'PERSON'
     SQLInsert.Strings = (
       'INSERT INTO PERSON'
-      '  (SERIAL_NUMBER, LAST_NAME)'
+      '  (SERIAL_NUMBER, NATIONAL_ID, LAST_NAME)'
       'VALUES'
-      '  (:SERIAL_NUMBER, :LAST_NAME)')
+      '  (:SERIAL_NUMBER, :NATIONAL_ID, :LAST_NAME)')
     SQLDelete.Strings = (
       'DELETE FROM PERSON'
       'WHERE'
@@ -1660,11 +1692,13 @@ object M_companyNewFRM: TM_companyNewFRM
     SQLUpdate.Strings = (
       'UPDATE PERSON'
       'SET'
-      '  SERIAL_NUMBER = :SERIAL_NUMBER, LAST_NAME = :LAST_NAME'
+      
+        '  SERIAL_NUMBER = :SERIAL_NUMBER, NATIONAL_ID = :NATIONAL_ID, LA' +
+        'ST_NAME = :LAST_NAME'
       'WHERE'
       '  SERIAL_NUMBER = :Old_SERIAL_NUMBER')
     SQLRefresh.Strings = (
-      'SELECT SERIAL_NUMBER, LAST_NAME FROM PERSON'
+      'SELECT SERIAL_NUMBER, NATIONAL_ID, LAST_NAME FROM PERSON'
       'WHERE'
       '  SERIAL_NUMBER = :SERIAL_NUMBER')
     SQLLock.Strings = (
@@ -1695,6 +1729,7 @@ object M_companyNewFRM: TM_companyNewFRM
       'order by '
       'pe.Last_name, pe.first_name')
     Active = True
+    Constraints = <>
     Left = 74
     Top = 505
     ParamData = <
@@ -1716,7 +1751,7 @@ object M_companyNewFRM: TM_companyNewFRM
       FieldName = 'LAST_NAME'
       ReadOnly = True
       FixedChar = True
-      Size = 30
+      Size = 120
     end
     object IncludedPersonsSQLFIRST_NAME: TWideStringField
       DisplayLabel = #168#927#957#959#956#945
@@ -1724,7 +1759,7 @@ object M_companyNewFRM: TM_companyNewFRM
       FieldName = 'FIRST_NAME'
       ReadOnly = True
       FixedChar = True
-      Size = 30
+      Size = 120
     end
     object IncludedPersonsSQLNATIONAL_ID: TWideStringField
       DisplayLabel = #932#945#965#964#972#964#951#964#945
@@ -1745,7 +1780,7 @@ object M_companyNewFRM: TM_companyNewFRM
       FieldName = 'COMP_NAME'
       Visible = False
       FixedChar = True
-      Size = 30
+      Size = 120
     end
     object IncludedPersonsSQLCOMP_SERIAL: TIntegerField
       FieldName = 'COMP_SERIAL'
@@ -1799,7 +1834,7 @@ object M_companyNewFRM: TM_companyNewFRM
       'FOR UPDATE WITH LOCK')
     SQLRecCount.Strings = (
       'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM COMPANY_PERSON'
+      'SELECT 1 AS C  FROM person'
       ''
       ') q')
     Connection = U_databaseFRM.DataConnection
@@ -1808,18 +1843,25 @@ object M_companyNewFRM: TM_companyNewFRM
     SQL.Strings = (
       ' select'
       
-        '     pout.serial_number,pout.last_name,pout.first_name, pout.nat' +
-        'ional_id,pout.phone_mobile'
+        '     pout.serial_number,pout.is_company, pout.last_name,pout.fir' +
+        'st_name, pout.national_id,pout.phone_mobile'
       ' from'
       ' person pout'
       ' where'
-      ' pout.fk_company_serial is null'
+      '('
+      ' (pout.fk_company_serial is null) OR'
+      ' (pout.fk_company_serial is not null'
+      
+        ' and  not exists(select serial_number from person comp where com' +
+        'p.serial_number= pout.fk_company_serial) )'
+      ' )'
       ' and pout.is_company ='#39'N'#39
       'Order by pout.last_name, pout.first_name')
     ReadOnly = True
     Active = True
-    Left = 138
-    Top = 481
+    Constraints = <>
+    Left = 258
+    Top = 473
     object ExcludedPersonsSQLSERIAL_NUMBER: TIntegerField
       DisplayLabel = 'A/A'
       DisplayWidth = 6
@@ -1831,14 +1873,14 @@ object M_companyNewFRM: TM_companyNewFRM
       DisplayWidth = 18
       FieldName = 'LAST_NAME'
       FixedChar = True
-      Size = 30
+      Size = 120
     end
     object ExcludedPersonsSQLFIRST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
       DisplayWidth = 10
       FieldName = 'FIRST_NAME'
       FixedChar = True
-      Size = 30
+      Size = 120
     end
     object ExcludedPersonsSQLNATIONAL_ID: TWideStringField
       DisplayLabel = #932#945#965#964#972#964#951#964#945

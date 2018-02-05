@@ -100,6 +100,12 @@ type
     ppDesignLayers1: TppDesignLayers;
     ppDesignLayer1: TppDesignLayer;
     ppParameterList1: TppParameterList;
+    ppDBText15: TppDBText;
+    ppDBText4: TppDBText;
+    ppLabel17: TppLabel;
+    ppLine4: TppLine;
+    ppDBText3: TppDBText;
+    ppLabel18: TppLabel;
     SeminarPresenceSQLPERSON_SERIAL: TIntegerField;
     SeminarPresenceSQLLAST_FIRST_NAME: TWideStringField;
     SeminarPresenceSQLNATIONAL_ID: TWideStringField;
@@ -107,13 +113,7 @@ type
     SeminarPresenceSQLHOURS_PRESENT: TIntegerField;
     SeminarPresenceSQLDAYSERIAL: TIntegerField;
     SeminarPresenceSQLSEMINAR_DAY: TDateField;
-    ppDBText15: TppDBText;
-    ppDBText4: TppDBText;
-    ppLabel17: TppLabel;
-    ppLine4: TppLine;
-    ppDBText3: TppDBText;
     SeminarPresenceSQLSUBJECT: TWideStringField;
-    ppLabel18: TppLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure ppReport1PreviewFormCreate(Sender: TObject);
     procedure ppLabel10GetText(Sender: TObject; var Text: String);

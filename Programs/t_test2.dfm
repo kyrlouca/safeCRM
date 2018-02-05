@@ -187,6 +187,7 @@ object T_test2FRM: TT_test2FRM
       '         spv.fk_seminar_serial= :SeminarSerial'
       '         order by'
       '            ssd.serial_number, spv.last_first_name')
+    Constraints = <>
     Filtered = True
     Left = 64
     Top = 8
@@ -233,6 +234,7 @@ object T_test2FRM: TT_test2FRM
   object vt1: TVirtualTable
     Options = [voPersistentData, voStored, voSetEmptyStrToNull, voSkipUnSupportedFieldTypes]
     Active = True
+    Constraints = <>
     FieldDefs = <
       item
         Name = 'vt1Field1'
@@ -775,6 +777,7 @@ object T_test2FRM: TT_test2FRM
     Connection = U_databaseFRM.DataConnection
     SQL.Strings = (
       'Select * from prototype_pictures')
+    Constraints = <>
     Left = 88
     Top = 216
     object picturesSQLSERIAL_NUMBER: TIntegerField
@@ -923,6 +926,7 @@ object T_test2FRM: TT_test2FRM
     Connection = U_databaseFRM.DataConnection
     SQL.Strings = (
       'select * from person co where co.is_company='#39'Y'#39)
+    Constraints = <>
     Left = 32
     Top = 304
     object CompanySQLSERIAL_NUMBER: TIntegerField
@@ -1119,17 +1123,45 @@ object T_test2FRM: TT_test2FRM
     end
   end
   object SeminarSUbjectSQL: TIBCQuery
+    DMLRefresh = True
     SQLInsert.Strings = (
-      'INSERT INTO SEMINAR_SUBJECT'
+      'INSERT INTO SEMINAR_PERSON_VIEW'
       
-        '  (SERIAL_NUMBER, FK_SEMINAR_SERIAL, SUBJECT, FK_SUBJECT_TYPE_SE' +
-        'RIAL, FEE_NORMAL, FEE_REDUCED, FK_INSTRUCTOR, FK_EXAMINER, FK_VE' +
-        'NUE)'
+        '  (FK_SEMINAR_SERIAL, ATTENDANCE_STATUS, IS_GUEST, PERSON_SERIAL' +
+        ', PERSON_QB, FK_COMPANY_SERIAL, LAST_NAME, FIRST_NAME, FIRST_LAS' +
+        'T_NAME, LAST_FIRST_NAME, NATIONAL_ID, NICKNAME, OCCUPATION, PHON' +
+        'E_MOBILE, PHONE_FIXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADD' +
+        'RESS, ADDRESS_STREET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_D' +
+        'ISTRICT, DATE_STARTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEB' +
+        'OOK, WEBSITE, TWITTER, STATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_O' +
+        'WNER, COMPANY_CONTACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT,' +
+        ' SEMINAR_SERIAL, SEMINAR_ANAD, SEMINAR_NAME, SEMINAR_DATE_STARTE' +
+        'D, SEMINAR_HAS_EXPIRY, SEMINAR_EXPIRY_PERIOD)'
       'VALUES'
       
-        '  (:SERIAL_NUMBER, :FK_SEMINAR_SERIAL, :SUBJECT, :FK_SUBJECT_TYP' +
-        'E_SERIAL, :FEE_NORMAL, :FEE_REDUCED, :FK_INSTRUCTOR, :FK_EXAMINE' +
-        'R, :FK_VENUE)')
+        '  (:FK_SEMINAR_SERIAL, :ATTENDANCE_STATUS, :IS_GUEST, :PERSON_SE' +
+        'RIAL, :PERSON_QB, :FK_COMPANY_SERIAL, :LAST_NAME, :FIRST_NAME, :' +
+        'FIRST_LAST_NAME, :LAST_FIRST_NAME, :NATIONAL_ID, :NICKNAME, :OCC' +
+        'UPATION, :PHONE_MOBILE, :PHONE_FIXED, :PHONE_ALTERNATE, :FAX, :E' +
+        'MAIL, :EMAIL_2, :ADDRESS, :ADDRESS_STREET, :ADDRESS_POST_CODE, :' +
+        'ADDRESS_CITY, :ADDRESS_DISTRICT, :DATE_STARTED, :DATE_BIRTH, :DA' +
+        'TE_USER, :LIST_SOURCE, :FACEBOOK, :WEBSITE, :TWITTER, :STATUS_AC' +
+        'TIVE, :SEX, :IS_COMPANY, :COMPANY_OWNER, :COMPANY_CONTACT, :COMP' +
+        'ANY_REGISTRATION_DATE, :PHONE_CONTACT, :SEMINAR_SERIAL, :SEMINAR' +
+        '_ANAD, :SEMINAR_NAME, :SEMINAR_DATE_STARTED, :SEMINAR_HAS_EXPIRY' +
+        ', :SEMINAR_EXPIRY_PERIOD)'
+      'RETURNING '
+      
+        '  FK_SEMINAR_SERIAL, ATTENDANCE_STATUS, IS_GUEST, PERSON_SERIAL,' +
+        ' PERSON_QB, FK_COMPANY_SERIAL, LAST_NAME, FIRST_NAME, FIRST_LAST' +
+        '_NAME, LAST_FIRST_NAME, NATIONAL_ID, NICKNAME, OCCUPATION, PHONE' +
+        '_MOBILE, PHONE_FIXED, PHONE_ALTERNATE, FAX, EMAIL, EMAIL_2, ADDR' +
+        'ESS, ADDRESS_STREET, ADDRESS_POST_CODE, ADDRESS_CITY, ADDRESS_DI' +
+        'STRICT, DATE_STARTED, DATE_BIRTH, DATE_USER, LIST_SOURCE, FACEBO' +
+        'OK, WEBSITE, TWITTER, STATUS_ACTIVE, SEX, IS_COMPANY, COMPANY_OW' +
+        'NER, COMPANY_CONTACT, COMPANY_REGISTRATION_DATE, PHONE_CONTACT, ' +
+        'SEMINAR_SERIAL, SEMINAR_ANAD, SEMINAR_NAME, SEMINAR_DATE_STARTED' +
+        ', SEMINAR_HAS_EXPIRY, SEMINAR_EXPIRY_PERIOD')
     SQLDelete.Strings = (
       'DELETE FROM SEMINAR_SUBJECT'
       'WHERE'
@@ -1159,52 +1191,85 @@ object T_test2FRM: TT_test2FRM
       'FOR UPDATE WITH LOCK')
     SQLRecCount.Strings = (
       'SELECT COUNT(*) FROM ('
-      'SELECT 1 AS C  FROM SEMINAR_SUBJECT'
+      'SELECT 1 AS C  FROM SEMINAR_PERSON_VIEW'
       ''
       ') q')
     Connection = U_databaseFRM.DataConnection
     SQL.Strings = (
+      '     SELECT'
+      '   '
+      '        spv.person_serial,spv.last_first_name,spv.national_id,'
       
-        'Select * from Seminar_subject where fk_seminar_serial=:Seminar_s' +
-        'erial')
-    Left = 88
-    Top = 424
+        '        pres.present_ispresent as is_present, pres.present_hours' +
+        ' as hours_present,'
+      
+        '        pres.day_serial as DaySerial, pres.day_date as Seminar_d' +
+        'ay,'
+      '        ss.subject'
+      ''
+      '        from'
+      '             seminar_person_view spv left outer join'
+      
+        '             person_presence_view pres on pres.person_serial = s' +
+        'pv.person_serial left outer join'
+      
+        '             seminar_subject ss on ss.serial_number= pres.subjec' +
+        't_serial'
+      ''
+      '         where'
+      '         spv.fk_seminar_serial= :SeminarSerial '
+      '         and pres.seminar_serial = :seminarSeriaL'
+      '         order by'
+      '            pres.day_serial,spv.first_name'
+      '')
+    Constraints = <>
+    Left = 32
+    Top = 416
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'Seminar_serial'
+        Name = 'SeminarSerial'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'seminarSeriaL'
         Value = nil
       end>
-    object SeminarSUbjectSQLSERIAL_NUMBER: TIntegerField
-      FieldName = 'SERIAL_NUMBER'
-      Required = True
+    object SeminarSUbjectSQLPERSON_SERIAL: TIntegerField
+      FieldName = 'PERSON_SERIAL'
     end
-    object SeminarSUbjectSQLFK_SEMINAR_SERIAL: TIntegerField
-      FieldName = 'FK_SEMINAR_SERIAL'
-      Required = True
+    object SeminarSUbjectSQLLAST_FIRST_NAME: TWideStringField
+      FieldName = 'LAST_FIRST_NAME'
+      Size = 61
+    end
+    object SeminarSUbjectSQLNATIONAL_ID: TWideStringField
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
+    object SeminarSUbjectSQLIS_PRESENT: TWideStringField
+      FieldName = 'IS_PRESENT'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object SeminarSUbjectSQLHOURS_PRESENT: TIntegerField
+      FieldName = 'HOURS_PRESENT'
+      ReadOnly = True
+    end
+    object SeminarSUbjectSQLDAYSERIAL: TIntegerField
+      FieldName = 'DAYSERIAL'
+      ReadOnly = True
+    end
+    object SeminarSUbjectSQLSEMINAR_DAY: TDateField
+      FieldName = 'SEMINAR_DAY'
+      ReadOnly = True
     end
     object SeminarSUbjectSQLSUBJECT: TWideStringField
       FieldName = 'SUBJECT'
+      ReadOnly = True
       FixedChar = True
       Size = 60
-    end
-    object SeminarSUbjectSQLFK_SUBJECT_TYPE_SERIAL: TIntegerField
-      FieldName = 'FK_SUBJECT_TYPE_SERIAL'
-    end
-    object SeminarSUbjectSQLFEE_NORMAL: TFloatField
-      FieldName = 'FEE_NORMAL'
-    end
-    object SeminarSUbjectSQLFEE_REDUCED: TFloatField
-      FieldName = 'FEE_REDUCED'
-    end
-    object SeminarSUbjectSQLFK_INSTRUCTOR: TIntegerField
-      FieldName = 'FK_INSTRUCTOR'
-    end
-    object SeminarSUbjectSQLFK_EXAMINER: TIntegerField
-      FieldName = 'FK_EXAMINER'
-    end
-    object SeminarSUbjectSQLFK_VENUE: TIntegerField
-      FieldName = 'FK_VENUE'
     end
   end
   object PersonSQL: TIBCQuery
@@ -1293,25 +1358,12 @@ object T_test2FRM: TT_test2FRM
       ') q')
     Connection = U_databaseFRM.DataConnection
     SQL.Strings = (
-      'Select * from Person ')
-    MasterFields = 'SERIAL_NUMBER'
-    DetailFields = 'FK_COMPANY_SERIAL'
-    MasterSource = CompanySRC
+      'Select * from Person_VIEW')
+    Constraints = <>
     Left = 48
     Top = 360
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'SERIAL_NUMBER'
-        ParamType = ptInput
-        Value = 24
-      end>
     object PersonSQLSERIAL_NUMBER: TIntegerField
       FieldName = 'SERIAL_NUMBER'
-      Required = True
-    end
-    object PersonSQLSERIAL_QB: TIntegerField
-      FieldName = 'SERIAL_QB'
     end
     object PersonSQLFK_COMPANY_SERIAL: TIntegerField
       FieldName = 'FK_COMPANY_SERIAL'
@@ -1319,12 +1371,20 @@ object T_test2FRM: TT_test2FRM
     object PersonSQLLAST_NAME: TWideStringField
       FieldName = 'LAST_NAME'
       FixedChar = True
-      Size = 30
+      Size = 120
     end
     object PersonSQLFIRST_NAME: TWideStringField
       FieldName = 'FIRST_NAME'
       FixedChar = True
-      Size = 30
+      Size = 120
+    end
+    object PersonSQLLAST_FIRST_NAME: TWideStringField
+      FieldName = 'LAST_FIRST_NAME'
+      Size = 241
+    end
+    object PersonSQLFIRST_LAST_NAME: TWideStringField
+      FieldName = 'FIRST_LAST_NAME'
+      Size = 241
     end
     object PersonSQLNATIONAL_ID: TWideStringField
       FieldName = 'NATIONAL_ID'
@@ -1416,25 +1476,32 @@ object T_test2FRM: TT_test2FRM
     end
     object PersonSQLSTATUS_ACTIVE: TWideStringField
       FieldName = 'STATUS_ACTIVE'
-      Required = True
       FixedChar = True
       Size = 1
     end
     object PersonSQLSEX: TWideStringField
       FieldName = 'SEX'
-      Required = True
       FixedChar = True
       Size = 1
     end
     object PersonSQLIS_COMPANY: TWideStringField
       FieldName = 'IS_COMPANY'
-      Required = True
       FixedChar = True
       Size = 1
     end
     object PersonSQLCOMPANY_OWNER: TWideStringField
       FieldName = 'COMPANY_OWNER'
       Size = 160
+    end
+    object PersonSQLCOMPANY_OWNER_ID: TWideStringField
+      FieldName = 'COMPANY_OWNER_ID'
+      FixedChar = True
+      Size = 30
+    end
+    object PersonSQLCOMPANY_OWENER_REG: TWideStringField
+      FieldName = 'COMPANY_OWENER_REG'
+      FixedChar = True
+      Size = 30
     end
     object PersonSQLCOMPANY_CONTACT: TWideStringField
       FieldName = 'COMPANY_CONTACT'
@@ -1448,59 +1515,9 @@ object T_test2FRM: TT_test2FRM
       FixedChar = True
       Size = 15
     end
-    object PersonSQLCOMPANY_CONTACT_FIRST: TWideStringField
-      FieldName = 'COMPANY_CONTACT_FIRST'
-      FixedChar = True
-      Size = 30
-    end
-    object PersonSQLCOMPANY_CONTACT_LAST: TWideStringField
-      FieldName = 'COMPANY_CONTACT_LAST'
-      FixedChar = True
-      Size = 30
-    end
-    object PersonSQLCOMPANY_OWNER_REG: TWideStringField
-      FieldName = 'COMPANY_OWNER_REG'
-      FixedChar = True
-      Size = 30
-    end
-    object PersonSQLCOMPANY_CONTACT_PHONE: TWideStringField
-      FieldName = 'COMPANY_CONTACT_PHONE'
-      FixedChar = True
-      Size = 15
-    end
-    object PersonSQLCOMPANY_CONTACT_EMAIL: TWideStringField
-      FieldName = 'COMPANY_CONTACT_EMAIL'
-      Size = 50
-    end
-    object PersonSQLCOMPANY_CONTACT_FAX: TWideStringField
-      FieldName = 'COMPANY_CONTACT_FAX'
-      FixedChar = True
-      Size = 15
-    end
-    object PersonSQLCOMPANY_SOCIAL_SEC: TWideStringField
-      FieldName = 'COMPANY_SOCIAL_SEC'
-      FixedChar = True
-    end
-    object PersonSQLCOMPANY_EMPLOYEES: TIntegerField
-      FieldName = 'COMPANY_EMPLOYEES'
-    end
-    object PersonSQLPHONE_MOBILE_2: TWideStringField
-      FieldName = 'PHONE_MOBILE_2'
-      FixedChar = True
-      Size = 15
-    end
-    object PersonSQLLINKED_IN: TWideStringField
-      FieldName = 'LINKED_IN'
-      FixedChar = True
-      Size = 30
-    end
-    object PersonSQLJOB: TWideStringField
-      FieldName = 'JOB'
-      Size = 50
-    end
   end
   object PersonSRC: TDataSource
-    DataSet = PersonSQL
+    DataSet = SeminarSUbjectSQL
     Left = 120
     Top = 364
   end
@@ -1577,6 +1594,7 @@ object T_test2FRM: TT_test2FRM
     SQL.Strings = (
       'select first 1 * from person co')
     Active = True
+    Constraints = <>
     Left = 617
     Top = 128
     object IntegerField1: TIntegerField
@@ -1771,5 +1789,210 @@ object T_test2FRM: TT_test2FRM
       FieldName = 'JOB'
       Size = 50
     end
+  end
+  object Rep1RPT: TppReport
+    AutoStop = False
+    DataPipeline = personPIP
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.SaveDeviceSettings = False
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+    DeviceType = 'Screen'
+    DefaultFileDeviceType = 'PDF'
+    EmailSettings.ReportFormat = 'PDF'
+    LanguageID = 'Default'
+    OpenFile = False
+    OutlineSettings.CreateNode = True
+    OutlineSettings.CreatePageNodes = True
+    OutlineSettings.Enabled = True
+    OutlineSettings.Visible = True
+    ThumbnailSettings.Enabled = True
+    ThumbnailSettings.Visible = True
+    ThumbnailSettings.DeadSpace = 30
+    PDFSettings.EmbedFontOptions = [efUseSubset]
+    PDFSettings.EncryptSettings.AllowCopy = True
+    PDFSettings.EncryptSettings.AllowInteract = True
+    PDFSettings.EncryptSettings.AllowModify = True
+    PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
+    PDFSettings.EncryptSettings.Enabled = False
+    PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.FontEncoding = feAnsi
+    PDFSettings.ImageCompressionLevel = 25
+    RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+    RTFSettings.DefaultFont.Color = clWindowText
+    RTFSettings.DefaultFont.Height = -13
+    RTFSettings.DefaultFont.Name = 'Arial'
+    RTFSettings.DefaultFont.Style = []
+    TextFileName = '($MyDocuments)\Report.pdf'
+    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.Enabled = True
+    XLSSettings.AppName = 'ReportBuilder'
+    XLSSettings.Author = 'ReportBuilder'
+    XLSSettings.Subject = 'Report'
+    XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    Left = 336
+    Top = 376
+    Version = '18.01'
+    mmColumnWidth = 0
+    DataPipelineName = 'personPIP'
+    object ppHeaderBand2: TppHeaderBand
+      Background.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 13229
+      mmPrintPosition = 0
+      object ppLabel1: TppLabel
+        DesignLayer = ppDesignLayer3
+        UserName = 'Label1'
+        AutoSize = False
+        Caption = 'SERIAL_NUMBER'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 6085
+        mmTop = 5292
+        mmWidth = 36248
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel2: TppLabel
+        DesignLayer = ppDesignLayer3
+        UserName = 'Label2'
+        AutoSize = False
+        Caption = 'LAST_NAME'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 44979
+        mmTop = 5292
+        mmWidth = 26194
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel3: TppLabel
+        DesignLayer = ppDesignLayer3
+        UserName = 'Label3'
+        AutoSize = False
+        Caption = 'FIRST_NAME'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 76729
+        mmTop = 5292
+        mmWidth = 27252
+        BandType = 0
+        LayerName = Foreground
+      end
+    end
+    object ppDetailBand1: TppDetailBand
+      Background1.Brush.Style = bsClear
+      Background2.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 9525
+      mmPrintPosition = 0
+      object ppDBText1: TppDBText
+        DesignLayer = ppDesignLayer3
+        UserName = 'DBText1'
+        DataField = 'PERSON_SERIAL'
+        DataPipeline = personPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'personPIP'
+        mmHeight = 4763
+        mmLeft = 6085
+        mmTop = 1058
+        mmWidth = 32808
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText2: TppDBText
+        DesignLayer = ppDesignLayer3
+        UserName = 'DBText2'
+        DataField = 'LAST_FIRST_NAME'
+        DataPipeline = personPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'personPIP'
+        mmHeight = 4763
+        mmLeft = 42598
+        mmTop = 1058
+        mmWidth = 53975
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText3: TppDBText
+        DesignLayer = ppDesignLayer3
+        UserName = 'DBText3'
+        DataField = 'SEMINAR_DAY'
+        DataPipeline = personPIP
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'personPIP'
+        mmHeight = 4763
+        mmLeft = 103981
+        mmTop = 1058
+        mmWidth = 50800
+        BandType = 4
+        LayerName = Foreground
+      end
+    end
+    object ppFooterBand2: TppFooterBand
+      Background.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDesignLayers2: TppDesignLayers
+      object ppDesignLayer3: TppDesignLayer
+        UserName = 'Foreground'
+        LayerType = ltBanded
+        Index = 0
+      end
+    end
+    object ppParameterList2: TppParameterList
+    end
+  end
+  object personPIP: TppDBPipeline
+    DataSource = PersonSRC
+    UserName = 'personPIP'
+    Left = 200
+    Top = 360
   end
 end

@@ -258,10 +258,6 @@
             <Form>R_remindersFRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="t_test2.pas">
-            <Form>T_test2FRM</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="R_AnadFIles.pas">
             <Form>R_AnadFilesFRM</Form>
             <FormType>dfm</FormType>
@@ -288,6 +284,10 @@
         </DCCReference>
         <DCCReference Include="S_backupData.pas">
             <Form>M_backupDataFRM</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="t_test2.pas">
+            <Form>T_test2FRM</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

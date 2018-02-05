@@ -157,8 +157,7 @@ var
  str:string;
 
 begin
-
-//  gpShowModal(TR_Word_issonos1_frm);
+ gpShowModal(TT_test2FRM);
 end;
 
 procedure TM_mainFRM.Button2Click(Sender: TObject);

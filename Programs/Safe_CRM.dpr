@@ -48,14 +48,14 @@ uses
   S_updateStatus in 'S_updateStatus.pas' {S_UpdateStatusFRM},
   M_Instructor in 'M_Instructor.pas' {M_InstructorFRM},
   R_Reminders in 'R_Reminders.pas' {R_remindersFRM},
-  t_test2 in 't_test2.pas' {T_test2FRM},
   R_AnadFIles in 'R_AnadFIles.pas' {R_AnadFilesFRM},
   m_FixMaleFemale in 'm_FixMaleFemale.pas' {M_FixMaleFemaleFRM},
   M_Student in 'M_Student.pas' {M_StudentFRM},
   R_expiry in 'R_expiry.pas' {R_ExpiryFRM},
   S_LoadPDF in 'S_LoadPDF.pas' {S_loadPdfFRM},
   S_LoadDocs in 'S_LoadDocs.pas' {S_LoadDocsFRM},
-  S_backupData in 'S_backupData.pas' {M_backupDataFRM};
+  S_backupData in 'S_backupData.pas' {M_backupDataFRM},
+  t_test2 in 't_test2.pas' {T_test2FRM};
 
 //  R_PendingCertificates in 'R_PendingCertificates.pas' {R_PendingCertificatesFRM};
 
@@ -82,5 +82,6 @@ ReportMemoryLeaksOnShutdown := DebugHook <> 0;
   Application.CreateForm(TS_LoadDocsFRM, S_LoadDocsFRM);
   Application.CreateForm(TM_backupDataFRM, M_backupDataFRM);
   Application.CreateForm(TM_backupDataFRM, M_backupDataFRM);
+  Application.CreateForm(TT_test2FRM, T_test2FRM);
   Application.Run;
 end.

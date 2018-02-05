@@ -1,7 +1,6 @@
 object L_SeminarFRM: TL_SeminarFRM
   Left = 365
   Top = 153
-  Align = alClient
   Caption = '--'
   ClientHeight = 588
   ClientWidth = 1053
@@ -14,7 +13,7 @@ object L_SeminarFRM: TL_SeminarFRM
   KeyPreview = True
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   WindowState = wsMaximized
   OnActivate = FormActivate
   OnClose = FormClose

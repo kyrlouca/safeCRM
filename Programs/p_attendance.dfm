@@ -5,10 +5,10 @@ object P_attendanceFRM: TP_attendanceFRM
   ClientHeight = 538
   ClientWidth = 1002
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
+  Font.Charset = GREEK_CHARSET
   Font.Color = clWindowText
-  Font.Height = -10
-  Font.Name = 'MS Sans Serif'
+  Font.Height = -11
+  Font.Name = 'Arial Narrow'
   Font.Style = []
   KeyPreview = True
   Menu = MainMenu1
@@ -18,7 +18,7 @@ object P_attendanceFRM: TP_attendanceFRM
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -191,16 +191,16 @@ object P_attendanceFRM: TP_attendanceFRM
         DataSource = vPresenceSRC
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -10
+        Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
         TabOrder = 0
         TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Charset = GREEK_CHARSET
         TitleFont.Color = clWindowText
-        TitleFont.Height = -10
-        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Height = -12
+        TitleFont.Name = 'Arial Narrow'
         TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
@@ -899,6 +899,7 @@ object P_attendanceFRM: TP_attendanceFRM
       'where '
       'se.serial_number= :SeminarSerial')
     Active = True
+    Constraints = <>
     AfterScroll = TableSQLAfterScroll
     Left = 49
     Top = 5
@@ -1083,6 +1084,7 @@ object P_attendanceFRM: TP_attendanceFRM
       'se.serial_number= :SeminarSerial')
     DetailFields = 'FK_SEMINAR_SERIAL'
     Active = True
+    Constraints = <>
     BeforeScroll = DaySQLBeforeScroll
     AfterScroll = DaySQLAfterScroll
     Left = 273
@@ -1173,6 +1175,7 @@ object P_attendanceFRM: TP_attendanceFRM
   object VPresenceSQL: TVirtualTable
     Options = [voSkipUnSupportedFieldTypes]
     Active = True
+    Constraints = <>
     FieldDefs = <
       item
         Name = 'PersonSerial'

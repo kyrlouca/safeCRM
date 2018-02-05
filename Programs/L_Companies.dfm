@@ -1,7 +1,6 @@
 object L_companiesFRM: TL_companiesFRM
   Left = 365
   Top = 153
-  Align = alClient
   Caption = '--'
   ClientHeight = 554
   ClientWidth = 1086
@@ -42,8 +41,8 @@ object L_companiesFRM: TL_companiesFRM
       Alignment = taCenter
       Caption = #917#964#945#953#961#949#943#949#962
       Layout = tlCenter
-      ExplicitLeft = 7
-      ExplicitTop = 2
+      ExplicitWidth = 119
+      ExplicitHeight = 32
     end
   end
   object Panel4: TPanel
@@ -653,6 +652,7 @@ object L_companiesFRM: TL_companiesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 0
@@ -669,6 +669,7 @@ object L_companiesFRM: TL_companiesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Prior'
+            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -892,6 +893,7 @@ object L_companiesFRM: TL_companiesFRM
       'where per.is_company='#39'Y'#39
       'order by Last_name')
     Active = True
+    Constraints = <>
     Left = 360
     Top = 96
     object TableSQLSERIAL_NUMBER: TIntegerField
