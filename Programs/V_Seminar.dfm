@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = SeminarTS
+      ActivePage = SubjectTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -819,9 +819,9 @@ object V_SeminarFRM: TV_SeminarFRM
                 ControlType.Strings = (
                   'SEMINAR_DAY;CustomEdit;SeminarDayFLD;F')
                 Selected.Strings = (
-                  'SERIAL_NUMBER'#9'10'#9'A/A'
-                  'SEMINAR_DAY'#9'15'#9#919#956#949#961#959#956#951#957#943#945
-                  'DURATION_HOURS'#9'10'#9#916#953#940#961#954#949#953#945' ('#974#961#949#962')')
+                  'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
+                  'SEMINAR_DAY'#9'15'#9#919#956#949#961#959#956#951#957#943#945#9#9
+                  'DURATION_HOURS'#9'10'#9#916#953#940#961#954#949#953#945' ('#974#961#949#962')'#9#9)
                 IniAttributes.Delimiter = ';;'
                 IniAttributes.UnicodeIniFile = False
                 TitleColor = clBtnFace
@@ -3372,7 +3372,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800700310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800740310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5195,8 +5195,8 @@ object V_SeminarFRM: TV_SeminarFRM
       'select * from instructor where status_active= '#39'Y'#39)
     ReadOnly = True
     Constraints = <>
-    Left = 547
-    Top = 226
+    Left = 539
+    Top = 186
     object WideStringField1: TWideStringField
       DisplayLabel = #917#960#943#952#949#964#959
       DisplayWidth = 12

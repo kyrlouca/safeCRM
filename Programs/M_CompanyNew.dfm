@@ -31,7 +31,6 @@ object M_companyNewFRM: TM_companyNewFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1096
     object Label4: TLabel
       AlignWithMargins = True
       Left = 4
@@ -63,7 +62,6 @@ object M_companyNewFRM: TM_companyNewFRM
     Height = 43
     Align = alBottom
     TabOrder = 2
-    ExplicitWidth = 1096
     object RzPanel1: TRzPanel
       Left = 1003
       Top = 1
@@ -72,7 +70,6 @@ object M_companyNewFRM: TM_companyNewFRM
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
-      ExplicitLeft = 995
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3
@@ -300,23 +297,20 @@ object M_companyNewFRM: TM_companyNewFRM
     Height = 39
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 1096
   end
   object PageControlPC: TPageControl
     Left = 0
     Top = 92
     Width = 1104
     Height = 504
-    ActivePage = EmployeesTS
+    ActivePage = InfoTS
     Align = alClient
     MultiLine = True
     TabOrder = 3
     OnChanging = PageControlPCChanging
-    ExplicitWidth = 1096
     object InfoTS: TTabSheet
       Caption = #917#964#945#953#961#949#943#945
       OnShow = InfoTSShow
-      ExplicitWidth = 1088
       object RzPanel4: TRzPanel
         Left = 0
         Top = 0
@@ -325,7 +319,6 @@ object M_companyNewFRM: TM_companyNewFRM
         Align = alClient
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 1088
         object GroupBox1: TGroupBox
           Left = 3
           Top = 20
@@ -1012,7 +1005,6 @@ object M_companyNewFRM: TM_companyNewFRM
       Caption = #933#960#940#955#955#951#955#959#953
       ImageIndex = 1
       OnShow = EmployeesTSShow
-      ExplicitWidth = 1088
       object RzPanel5: TRzPanel
         Left = 0
         Top = 0
@@ -1021,7 +1013,6 @@ object M_companyNewFRM: TM_companyNewFRM
         Align = alClient
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 1088
         object RzGroupBox1: TRzGroupBox
           Left = 0
           Top = 17
@@ -1091,7 +1082,6 @@ object M_companyNewFRM: TM_companyNewFRM
           Align = alTop
           BorderOuter = fsNone
           TabOrder = 1
-          ExplicitWidth = 1088
         end
         object RzPanel2: TRzPanel
           Left = 593

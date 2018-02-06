@@ -10,7 +10,7 @@ uses
   DBAccess, IBC, MemDS, Wwdbigrd, Wwdbgrid, wwdbedit, vcl.Wwdotdot, vcl.Wwdbcomb,
   G_KyrSQL, RzButton, RzPanel, vcl.wwcheckbox, Vcl.ExtDlgs, vcl.wwbutton,
   RzLabel, RzDBLbl, ppComm, ppRelatv, ppDB, ppDBPipe, ppProd, ppClass, ppReport,pptypes,
-  ppPrnabl, ppCtrls, ppCache, ppBands, ppDesignLayer, ppParameter;
+  ppPrnabl, ppCtrls, ppCache, ppBands, ppDesignLayer, ppParameter, ppVar;
 type
   TS_LoadDocsFRM = class(TForm)
     Panel1: TrzPanel;
@@ -114,20 +114,151 @@ type
     ppDesignLayers1: TppDesignLayers;
     ppDesignLayer1: TppDesignLayer;
     ppDetailBand1: TppDetailBand;
-    comp_owner: TppDBText;
+    compOwner: TppDBText;
     CompOwnerID: TppDBText;
-    AddressFLD: TppDBText;
-    AddressStreetFLD: TppDBText;
-    AddressCItyFLD: TppDBText;
+    CompAddress: TppDBText;
+    CompAddressStreet: TppDBText;
+    CompAddressCIty: TppDBText;
     Button2: TButton;
     ppHeaderBand1: TppHeaderBand;
-    c6: TppLabel;
-    PhoneFixedFLD: TppDBText;
-    c3: TppLabel;
-    c2: TppLabel;
-    C1: TppLabel;
-    c4: TppLabel;
-    c5: TppLabel;
+    Comp_PhoneFixed: TppLabel;
+    CompPhoneFixed: TppDBText;
+    Comp_address: TppLabel;
+    comp_ownerId: TppLabel;
+    Comp_owner: TppLabel;
+    comp_addressStreet: TppLabel;
+    Comp_AddressCity: TppLabel;
+    SeminarSQL: TIBCQuery;
+    seminarSRC: TDataSource;
+    InstructorSRC: TDataSource;
+    SeminarPip: TppDBPipeline;
+    InstructorSQL: TIBCQuery;
+    InstructorPIP: TppDBPipeline;
+    RzPanel4: TRzPanel;
+    RzPanel5: TRzPanel;
+    GroupBox2: TGroupBox;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    RzDBLabel2: TRzDBLabel;
+    Label11: TLabel;
+    wwDBEdit1: TwwDBEdit;
+    RzBitBtn2: TRzBitBtn;
+    Button3: TButton;
+    wwCheckBox3: TwwCheckBox;
+    wwCheckBox4: TwwCheckBox;
+    wwButton2: TwwButton;
+    RzPanel6: TRzPanel;
+    wwDBNavigator1: TwwDBNavigator;
+    wwNavButton1: TwwNavButton;
+    wwNavButton2: TwwNavButton;
+    wwNavButton3: TwwNavButton;
+    wwNavButton4: TwwNavButton;
+    wwNavButton5: TwwNavButton;
+    wwNavButton6: TwwNavButton;
+    wwNavButton7: TwwNavButton;
+    wwNavButton8: TwwNavButton;
+    Button4: TButton;
+    wwDBGrid1: TwwDBGrid;
+    RzPanel7: TRzPanel;
+    VenueSRC: TDataSource;
+    VenueSQL: TIBCQuery;
+    VenuePIP: TppDBPipeline;
+    SeminarSQLSERIAL_NUMBER: TIntegerField;
+    SeminarSQLANAD_NUMBER: TWideStringField;
+    SeminarSQLFK_SEMINAR: TIntegerField;
+    SeminarSQLFK_INSTRUCTOR: TIntegerField;
+    SeminarSQLFK_EXAMINER: TIntegerField;
+    SeminarSQLFK_VENUE: TIntegerField;
+    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
+    SeminarSQLSEMINAR_NAME: TWideStringField;
+    SeminarSQLDATE_STARTED: TDateField;
+    SeminarSQLDATE_COMPLETED: TDateField;
+    SeminarSQLDURATION_DAYS: TIntegerField;
+    SeminarSQLDURATION_HOURS: TIntegerField;
+    SeminarSQLAMOUNT_ANAD: TFloatField;
+    SeminarSQLCOMMENTS: TWideStringField;
+    SeminarSQLANAD_APPROVED: TWideStringField;
+    SeminarSQLSTATUS: TWideStringField;
+    SeminarSQLIS_INVOICED: TWideStringField;
+    SeminarSQLIS_CERTIFICATED: TWideStringField;
+    SeminarSQLMAX_CAPACITY: TIntegerField;
+    SeminarSQLHAS_EXPIRY: TWideStringField;
+    SeminarSQLEXPIRY_PERIOD: TIntegerField;
+    SeminarSQLTYPE_MONO_POLY: TWideStringField;
+    SeminarSQLSEM_CATEGORY: TWideStringField;
+    SeminarSQLFK_COMPANY_INVOICED: TIntegerField;
+    SeminarSQLPASS_PERCENTAGE: TIntegerField;
+    SeminarSQLSPECIFICATION_NUMBER: TWideStringField;
+    InstructorSQLSERIAL_NUMBER: TIntegerField;
+    InstructorSQLANAD_NUMBER: TWideStringField;
+    InstructorSQLNATIONAL_ID: TWideStringField;
+    InstructorSQLFK_COMPANY_SERIAL: TIntegerField;
+    InstructorSQLFIRST_NAME: TWideStringField;
+    InstructorSQLLAST_NAME: TWideStringField;
+    InstructorSQLNICKNAME: TWideStringField;
+    InstructorSQLSTATUS: TWideStringField;
+    InstructorSQLOCCUPATION: TWideStringField;
+    InstructorSQLPHONE_MOBILE: TWideStringField;
+    InstructorSQLPHONE_FIXED: TWideStringField;
+    InstructorSQLPHONE_ALTERNATE: TWideStringField;
+    InstructorSQLFAX: TWideStringField;
+    InstructorSQLEMAIL: TWideStringField;
+    InstructorSQLEMAIL_2: TSmallintField;
+    InstructorSQLADDRESS: TWideStringField;
+    InstructorSQLADDRESS_STREET: TWideStringField;
+    InstructorSQLADDRESS_POST_CODE: TWideStringField;
+    InstructorSQLADDRESS_CITY: TWideStringField;
+    InstructorSQLADDRESS_DISTRICT: TWideStringField;
+    InstructorSQLDATE_STARTED: TDateField;
+    InstructorSQLDATE_BIRTH: TDateField;
+    InstructorSQLDATE_USER: TDateField;
+    InstructorSQLLIST_SOURCE: TWideStringField;
+    InstructorSQLFACEBOOK: TWideStringField;
+    InstructorSQLWEBSITE: TWideStringField;
+    InstructorSQLTWITTER: TWideStringField;
+    InstructorSQLSTATUS_ACTIVE: TWideStringField;
+    InstructorSQLCERTIFIED_ANAD: TWideStringField;
+    InstructorSQLJOB_TITLE: TWideStringField;
+    VenueSQLSERIAL_NUMBER: TIntegerField;
+    VenueSQLVENUE_NAME: TWideStringField;
+    VenueSQLVENUE_LOCATION: TWideStringField;
+    VenueSQLVENUE_CAPACITY: TIntegerField;
+    VenueSQLVENUE_COST: TFloatField;
+    VenueSQLCOMMENTS: TWideStringField;
+    VenueSQLANAD_NUMBER: TWideStringField;
+    VenueSQLROOM_NAME: TWideStringField;
+    comp_lastName: TppLabel;
+    compLastName: TppDBText;
+    sem_name: TppLabel;
+    SemNAME: TppDBText;
+    sem_DATE_STARTED: TppLabel;
+    SemDATE_STARTED: TppDBText;
+    sem_DATE_COMPLETED: TppLabel;
+    SemDATE_COMPLETED: TppDBText;
+    sem_DURATION_DAYS: TppLabel;
+    SemDURATION_DAYS: TppDBText;
+    sem_DURATION_HOURS: TppLabel;
+    SemDURATION_HOURS: TppDBText;
+    ppLabel1: TppLabel;
+    ppDBText1: TppDBText;
+    ppLabel2: TppLabel;
+    ppDBText2: TppDBText;
+    ppLabel3: TppLabel;
+    ppDBText3: TppDBText;
+    ppLabel4: TppLabel;
+    ppDBText4: TppDBText;
+    ppLabel5: TppLabel;
+    ppDBText5: TppDBText;
+    ppLabel6: TppLabel;
+    ppDBText6: TppDBText;
+    ppLabel7: TppLabel;
+    ppDBText7: TppDBText;
+    ppLabel8: TppLabel;
+    ppDBText8: TppDBText;
+    ppLabel9: TppLabel;
+    ppDBText9: TppDBText;
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure SavetoDBClick(Sender: TObject);
@@ -137,6 +268,7 @@ type
     procedure TableSQLNewRecord(DataSet: TDataSet);
     procedure Nav1InsertClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure v1Calc(Sender: TObject; var Value: Variant);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -145,12 +277,15 @@ type
   procedure SaveToFileXX(Const CodeKey:String;Const FileName :String; Const MonoPOly:String);
   procedure CopyAFile(Const DocSerial:Integer;Const FileName :String);
   procedure CopyModifiedFile(Const DocSerial:Integer;Const FileName :String);
-  procedure CreateTextFile(Const CompSerial:Integer; Const FileName :String);
+  procedure CreateTextFile(Const seminarSerial, CompSerial:Integer; Const FileName :String);
 
   procedure SaveXX(Const SerialNumber:Integer;Const  FilePath, DocName :String);
   function FindHex(const FileName:String): Integer;
 
   procedure WriteFiles(Const SeminarSerial:Integer;Const DocType:String);
+  procedure writeTitles(Const Table:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
+  procedure writeValues(Const Table:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
+procedure writeNewLine( Const FileName :String);
 
   public
     { Public declarations }
@@ -325,11 +460,23 @@ end;
 }
 
 procedure TS_LoadDocsFRM.Button2Click(Sender: TObject);
-  var
+const
+  SemArray :Tarray<String>=['serial_number', 'seminar_name', 'date_started', 'date_completed', 'duration_days', 'duration_hours'];
+  CompanyArray :Tarray<String>=['serial_number', 'Last_name'];
+
+var
     SeminarSerial:integer;
 begin
   SeminarSerial:=129;
-  WriteFiles(SeminarSerial,'WORD');
+//  WriteFiles(SeminarSerial,'WORD');
+//CreateTextFile(133,1000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt');
+ writeTitles('Seminar', 133,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',semArray);
+ writeTitles('Person', 10000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',CompanyArray);
+
+ writeNewLine('C:\Data\DelphiProjects\Safe_CRM\aA.txt');
+
+ writeValues('Seminar', 133,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',semArray);
+ writeValues('Person', 10000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',CompanyArray);
 end;
 
 procedure TS_LoadDocsFRM.CopyaFile(Const DocSerial:Integer;Const FileName :String);
@@ -470,6 +617,11 @@ begin
   Dataset.FieldByName('Poly_mono').AsString:='P';
   Dataset.FieldByName('iS_send_to_all').AsString:='Y';
   Dataset.FieldByName('DOC_TYPE').AsString:='WORD';
+end;
+
+procedure TS_LoadDocsFRM.v1Calc(Sender: TObject; var Value: Variant);
+begin
+ value:= Copy(compSQL.FieldByName('last_name').AsString,1,4);
 end;
 
 procedure TS_LoadDocsFRM.SavetoDBClick(Sender: TObject);
@@ -635,12 +787,14 @@ begin
           fname:= SeminarFolder+'\'+fileName+'.doc';
           fTextName:=SeminarFolder+'\'+fileName+'.csv';
           CopyaFile(DocSerial,fName);
-          CreateTextFile(MonoCompanySerial,fTextName);
+          CreateTextFile(seminarSerial,MonoCompanySerial,fTextName);
         end else begin
          //Will copy this file to each Company (only One company if Mono)
           if IsPoly='M' then begin
+                //if mono the company is found on seminar (fk_company_serial)
               Str2:= 'select per.serial_number,per.National_id, per.Last_name from person per where per.serial_number= :PersonSerial';
           end else begin
+                //if poly the companies are found on seminar_company
           str2:=
           '   select per.serial_number,per.National_id, per.Last_name from'
           +'          seminar_company semC left outer join'
@@ -673,7 +827,7 @@ begin
               fname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.doc';
               fTextname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.csv';
               CopyaFile(DocSerial,fName);
-              CreateTextFile(CompSerial,fTextName);
+              CreateTextFile(SeminarSerial,CompSerial,fTextName);
 
               compQR.Next;
             end;
@@ -734,22 +888,188 @@ begin
 
 end;
 
-procedure TS_LoadDocsFRM.CreateTextFile(Const CompSerial:Integer; Const FileName :String);
+procedure TS_LoadDocsFRM.writeTitles(Const Table:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
 var
-//  BlobField: TField;
-  BlobField: TBlobField;
-  BS: TStream;
+  str:String;
+  qr:TksQuery;
+  FieldName:String;
+  val:string;
+  Writer: TStreamWriter;
+  field:TField;
+  date:Tdate;
+
+begin
+
+  { Store the title and then the text. }
+
+  Writer := TStreamWriter.Create(FileName, true, TEncoding.UTF8);
+  str:='Select * from ' + table + ' where serial_number= :Serial';
+  qr:= TksQuery.Create(cn,str);
+  try
+    qr.close;
+    qr.ParamByName('Serial').Value:=Serial;
+    qr.open;
+    for  FieldName in fieldArray do begin
+      field:=qr.FindField(FieldName);
+      if field <>Nil then begin
+        val:= field.AsString;
+//        ShowMessage(fieldName+'-:'+val);
+        Writer.Write(Table+'__'+FieldName+'; ');
+      end;
+    end;
+
+  finally
+    qr.Free;
+    Writer.Free();
+  end;
+
+
+
+end;
+
+procedure TS_LoadDocsFRM.writeValues(Const Table:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
+var
+  str:String;
+  qr:TksQuery;
+  FieldName:String;
+  val:string;
+  Writer: TStreamWriter;
+  field:TField;
+  date:Tdate;
+
+begin
+
+  { Store the title and then the text. }
+
+  Writer := TStreamWriter.Create(FileName, true, TEncoding.UTF8);
+  str:='Select * from ' + table + ' where serial_number= :Serial';
+  qr:= TksQuery.Create(cn,str);
+  try
+    qr.close;
+    qr.ParamByName('Serial').Value:=Serial;
+    qr.open;
+    for  FieldName in fieldArray do begin
+      field:=qr.FindField(FieldName);
+      if field <>Nil then begin
+        if (field.DataType in [ftDate,ftDateTime]) then
+          val:= field.AsString
+//          val:= FormatTimeStampUTCF(field.AsDateTime)
+        else
+          val:= field.AsString;
+        writer.Write(val +'; ');
+      end;
+    end;
+
+  finally
+    qr.Free;
+    Writer.Free();
+  end;
+
+
+
+end;
+
+
+procedure TS_LoadDocsFRM.writeNewLine( Const FileName :String);
+var
+  Writer: TStreamWriter;
+
+begin
+  Writer := TStreamWriter.Create(FileName, true, TEncoding.UTF8);
+  try
+    writer.WriteLine();
+  finally
+    Writer.Free();
+  end;
+end;
+
+
+
+
+procedure TS_LoadDocsFRM.CreateTextFile(Const seminarSerial, CompSerial:Integer; Const FileName :String);
+const
+  SemArray :Tarray<String>=['serial_number', 'seminar_name', 'date_started', 'date_completed', 'duration_days', 'duration_hours'];
+var
   str2:String;
   qr:TksQuery;
   FS:TMemoryStream;
+  InstructorSerial:Integer;
+  VenueSerial:Integer;
+  FieldName:String;
+  val:string;
+  Writer: TStreamWriter;
+  field:TField;
+  date:Tdate;
 
 begin
+
+
+  { Store the title and then the text. }
+
+  { Close and free the writer. }
+
 
 CompSQL.Close;
 compSQL.ParamByName('PersonSerial').Value:=CompSerial;
 CompSQL.Open;
+
+SeminarSQL.Close;
+SeminarSQL.ParamByName('SerialNumber').Value:=SeminarSerial;
+SeminarSQL.open;
+VenueSerial:=SeminarSQL.FieldByName('fk_venue').AsInteger;
+InstructorSerial:=SeminarSQL.FieldByName('fk_Instructor').AsInteger;
+
+
+InstructorSQL.Close;
+InstructorSQL.ParamByName('SerialNumber').Value:=InstructorSerial;
+InstructorSQL.open;
+
+VenueSQL.Close;
+VenueSQL.ParamByName('SerialNumber').Value:=VenueSerial;
+VenueSQL.open;
+
+  Writer := TStreamWriter.Create(FileName, false, TEncoding.UTF8);
+  str2:='Select * from seminar where serial_number= :SeminarSerial';
+  qr:= TksQuery.Create(cn,str2);
+  try
+    qr.close;
+    qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+    qr.open;
+    for  FieldName in SemArray do begin
+      if qr.FindField(FieldName)<>Nil then begin
+        val:= qr.FieldByName(fieldName).AsString;
+        ShowMessage(fieldName+'-:'+val);
+        Writer.Write(FieldName+'; ');
+      end;
+
+    end;
+    Writer.WriteLine();
+
+    for  FieldName in SemArray do begin
+      field:= qr.FindField(FieldName);
+      if field<>Nil then begin
+        if (field.DataType in [ftDate,ftDateTime]) then
+          val:= FormatTimeStampUTCF(field.AsDateTime)
+        else
+          val:= field.AsString;
+        Writer.Write(val+'; ');
+      end;
+
+    end;
+
+
+  finally
+    qr.Free;
+    Writer.Free();
+  end;
+
+
+
+
 //if CompSQL.IsEmpty then
 //  exit;
+
+{
 
      with ValuesRPT do begin
       AllowPrintToFile:=true;
@@ -759,9 +1079,10 @@ CompSQL.Open;
         TextFileName := fileName;
         Print;
      end;
-
+}
 
 end;
+
 
 
 

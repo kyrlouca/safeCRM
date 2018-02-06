@@ -528,6 +528,12 @@ object M_StudentFRM: TM_StudentFRM
           Height = 22
           DataField = 'FIRST_NAME'
           DataSource = TableSRC
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 1
           UnboundDataType = wwDefault
           WantReturns = False
@@ -540,6 +546,12 @@ object M_StudentFRM: TM_StudentFRM
           Height = 22
           DataField = 'LAST_NAME'
           DataSource = TableSRC
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
           TabOrder = 2
           UnboundDataType = wwDefault
           WantReturns = False
@@ -557,7 +569,7 @@ object M_StudentFRM: TM_StudentFRM
           CalendarAttributes.Font.Style = []
           DataField = 'DATE_BIRTH'
           DataSource = TableSRC
-          Date = 23806.000000000000000000
+          Date = 25074.000000000000000000
           Epoch = 1950
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -597,7 +609,7 @@ object M_StudentFRM: TM_StudentFRM
           Items.Strings = (
             'Male'#9'M'
             'Female'#9'F')
-          ItemIndex = 1
+          ItemIndex = 0
           LimitEditRect = True
           Sorted = False
           TabOrder = 5
