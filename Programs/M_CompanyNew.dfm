@@ -319,11 +319,12 @@ object M_companyNewFRM: TM_companyNewFRM
         Align = alClient
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitTop = -1
         object GroupBox1: TGroupBox
           Left = 3
           Top = 20
           Width = 346
-          Height = 333
+          Height = 349
           Caption = #928#955#951#961#959#966#959#961#943#949#962
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -869,7 +870,7 @@ object M_companyNewFRM: TM_companyNewFRM
           Left = 355
           Top = 202
           Width = 272
-          Height = 151
+          Height = 167
           Caption = #916#953#949#973#952#965#957#963#951
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -918,11 +919,24 @@ object M_companyNewFRM: TM_companyNewFRM
             ParentFont = False
           end
           object Label32: TLabel
-            Left = 56
-            Top = 100
+            Left = 55
+            Top = 102
             Width = 28
             Height = 14
             Caption = #928#972#955#951
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label7: TLabel
+            Left = 40
+            Top = 126
+            Width = 43
+            Height = 14
+            Caption = #917#960#945#961#967#943#945
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -974,6 +988,18 @@ object M_companyNewFRM: TM_companyNewFRM
             DataField = 'ADDRESS_CITY'
             DataSource = CompanySRC
             TabOrder = 3
+            UnboundDataType = wwDefault
+            WantReturns = False
+            WordWrap = False
+          end
+          object wwDBEdit4: TwwDBEdit
+            Left = 89
+            Top = 126
+            Width = 161
+            Height = 22
+            DataField = 'ADDRESS_DISTRICT'
+            DataSource = CompanySRC
+            TabOrder = 4
             UnboundDataType = wwDefault
             WantReturns = False
             WordWrap = False
@@ -1784,8 +1810,8 @@ object M_companyNewFRM: TM_companyNewFRM
   end
   object IncludedPersonsSRC: TDataSource
     DataSet = IncludedPersonsSQL
-    Left = 312
-    Top = 297
+    Left = 248
+    Top = 361
   end
   object ExcludedPersonsSQL: TIBCQuery
     UpdatingTable = 'person'

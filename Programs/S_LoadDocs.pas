@@ -1021,12 +1021,15 @@ const
   CompanySQl = 'select * from Person where serial_number = :Serial';
   VenueSQl = 'select * from Venue where serial_number = :Serial';
   InstructorSQl = 'select * from Person where serial_number = :Serial';
+  CountStudentSQL = 'select count(sp.fk_person_serial) as count_student from seminar_person sp where sp.is_guest=''N'' and sp.fk_seminar_serial = :Serial';
 //  DaysSQL =
 
-  SemArray :Tarray<String>=['serial_number', 'seminar_name', 'date_started', 'date_completed', 'duration_days', 'duration_hours'];
-  CompanyArray :Tarray<String>=['Last_name','company_owner','company_owner_id','company_social_sec','company_contact_last','company_contact_first','company_contact_Phone','company_contact_fax','company_contact_email'];
+  SemArray :Tarray<String>=['serial_number','ANAD_number', 'national_id', 'seminar_name', 'date_started', 'date_completed', 'duration_days', 'duration_hours'];
+  CompanyArray :Tarray<String>=['Last_name','company_owner','company_owner_id','company_social_sec','company_contact_last','company_contact_first','company_contact_Phone','company_contact_fax','company_contact_email',
+  'address','ADDRESS_POST_CODE','ADDRESS_STREET','ADDRESS_DISTRICT','ADDRESS_CITY','PHONE_FIXED','email','website'];
   VenueArray :Tarray<String>=['Venue_Name','Venue_location','ANAD_Number'];
   InstructorArray :Tarray<String>=['first_name','Last_name','national_id','ANAD_Number'];
+  CountStudentArray :Tarray<String>=['count_student'];
 var
   str2:String;
   qr:TksQuery;
@@ -1060,6 +1063,7 @@ begin
   end;
 
  writeTitles('Seminar__', SeminarSQL, SeminarSerial,FileName,SemArray);
+ writeTitles('studentCount__', CountStudentSQL, SeminarSerial,FileName,CountStudentArray);
  writeTitles('Company__', CompanySQL, CompSerial,FileName,COmpanyArray);
  writeTitles('Venue__', VenueSQL, VenueSerial,FileName,VenueArray);
  writeTitles('Instructor__', InstructorSQL, InstructorSerial,FileName,InstructorArray);
@@ -1067,6 +1071,7 @@ begin
  writeNewLine(FileName);
 
  writeValues('Seminar__',SeminarSQL, SeminarSerial ,FileName,SemArray);
+ writeValues('studentCount__', CountStudentSQL, SeminarSerial,FileName,CountStudentArray);
  writeValues('Company__', CompanySQL, CompSerial,FileName,CompanyArray);
  writeValues('Venue__',VenueSQL, VenueSerial ,FileName,VenueArray);
  writeValues('Instructor__', InstructorSQL, InstructorSerial,FileName,InstructorArray);

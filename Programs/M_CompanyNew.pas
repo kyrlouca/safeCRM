@@ -159,6 +159,8 @@ type
     ExcludedPersonsSQLFIRST_NAME: TWideStringField;
     ExcludedPersonsSQLNATIONAL_ID: TWideStringField;
     ExcludedPersonsSQLPHONE_MOBILE: TWideStringField;
+    Label7: TLabel;
+    wwDBEdit4: TwwDBEdit;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);
