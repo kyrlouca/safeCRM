@@ -284,6 +284,8 @@ type
     insSeminarAllInstructorsSQLFK_SEMINAR_SUBJECT_SERIAL: TIntegerField;
     certificatesHelpRE: TwwDBRichEdit;
     RzBitBtn2: TRzBitBtn;
+    Label27: TLabel;
+    wwDBEdit16: TwwDBEdit;
     procedure BitBtn1Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure FormActivate(Sender: TObject);

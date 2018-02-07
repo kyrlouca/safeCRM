@@ -292,7 +292,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Top = 67
       Width = 1017
       Height = 618
-      ActivePage = CertificationTS
+      ActivePage = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -592,7 +592,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Left = 34
               Top = 249
               Width = 349
-              Height = 160
+              Height = 192
               Caption = #916#953#940#961#954#949#953#945
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -603,7 +603,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               TabOrder = 1
               object Label18: TLabel
                 Left = 58
-                Top = 21
+                Top = 45
                 Width = 74
                 Height = 14
                 Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
@@ -616,7 +616,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object Label19: TLabel
                 Left = 8
-                Top = 49
+                Top = 73
                 Width = 124
                 Height = 14
                 Caption = #924#941#947#953#963#964#959#962' '#913#961'. '#924#945#952#951#964#974#957
@@ -629,7 +629,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object Label1: TLabel
                 Left = 59
-                Top = 103
+                Top = 127
                 Width = 73
                 Height = 14
                 Caption = #933#960#940#961#967#949#953' '#923#942#958#951
@@ -642,7 +642,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object Label8: TLabel
                 Left = 53
-                Top = 129
+                Top = 153
                 Width = 79
                 Height = 14
                 Caption = #923#942#958#951' '#963#949' '#924#942#957#949#962
@@ -655,7 +655,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               end
               object Label23: TLabel
                 Left = 35
-                Top = 78
+                Top = 102
                 Width = 97
                 Height = 14
                 Caption = #917#955#940#967#953#963#964#959' %'#937#961#974#957' '
@@ -666,33 +666,46 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 Font.Style = []
                 ParentFont = False
               end
+              object Label27: TLabel
+                Left = 54
+                Top = 17
+                Width = 78
+                Height = 14
+                Caption = #916#953#940#961#954#949#953#945' '#924#941#961#949#962
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
               object wwDBEdit4: TwwDBEdit
                 Left = 138
-                Top = 18
+                Top = 42
                 Width = 59
                 Height = 22
                 DataField = 'DURATION_HOURS'
-                DataSource = TableSRC
-                TabOrder = 0
-                UnboundDataType = wwDefault
-                WantReturns = False
-                WordWrap = False
-              end
-              object wwDBEdit9: TwwDBEdit
-                Left = 138
-                Top = 46
-                Width = 59
-                Height = 22
-                DataField = 'MAX_CAPACITY'
                 DataSource = TableSRC
                 TabOrder = 1
                 UnboundDataType = wwDefault
                 WantReturns = False
                 WordWrap = False
               end
+              object wwDBEdit9: TwwDBEdit
+                Left = 138
+                Top = 70
+                Width = 59
+                Height = 22
+                DataField = 'MAX_CAPACITY'
+                DataSource = TableSRC
+                TabOrder = 2
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
               object CompletedFLD: TwwCheckBox
                 Left = 138
-                Top = 102
+                Top = 126
                 Width = 37
                 Height = 18
                 DisableThemes = False
@@ -707,28 +720,40 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
                 DataSource = TableSRC
                 ShowText = False
                 State = cbChecked
-                TabOrder = 3
+                TabOrder = 4
               end
               object wwDBEdit2: TwwDBEdit
                 Left = 138
-                Top = 126
+                Top = 150
                 Width = 59
                 Height = 22
                 DataField = 'EXPIRY_PERIOD'
                 DataSource = TableSRC
-                TabOrder = 4
+                TabOrder = 5
                 UnboundDataType = wwDefault
                 WantReturns = False
                 WordWrap = False
               end
               object wwDBEdit15: TwwDBEdit
                 Left = 138
-                Top = 75
+                Top = 99
                 Width = 59
                 Height = 22
                 DataField = 'PASS_PERCENTAGE'
                 DataSource = TableSRC
-                TabOrder = 2
+                TabOrder = 3
+                UnboundDataType = wwDefault
+                WantReturns = False
+                WordWrap = False
+              end
+              object wwDBEdit16: TwwDBEdit
+                Left = 138
+                Top = 14
+                Width = 59
+                Height = 22
+                DataField = 'DURATION_DAYS'
+                DataSource = TableSRC
+                TabOrder = 0
                 UnboundDataType = wwDefault
                 WantReturns = False
                 WordWrap = False
@@ -742,6 +767,8 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Align = alTop
               BorderOuter = fsNone
               TabOrder = 2
+              ExplicitLeft = 0
+              ExplicitTop = 10
               object wwDBNavigator1: TwwDBNavigator
                 Left = 23
                 Top = 0
@@ -3780,6 +3807,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       'FROM'
       'SEMINAR_type ORDER BY SEMINAR_NAME')
     Active = True
+    Constraints = <>
     AfterScroll = TableSQLAfterScroll
     OnNewRecord = TableSQLNewRecord
     Left = 49
@@ -3931,6 +3959,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
     MasterSource = TableSRC
     Active = True
+    Constraints = <>
     Left = 361
     Top = 13
     ParamData = <
@@ -4040,6 +4069,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     DetailFields = 'FK_SEMINAR_TYPE_SERIAL'
     MasterSource = TableSRC
     Active = True
+    Constraints = <>
     OnNewRecord = SeminarReminderSQLNewRecord
     Left = 385
     Top = 133
@@ -4185,6 +4215,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       
         'where stp.FK_SEMINAR_TYPE_SERIAL = :SeminarSerial and stp.LANGUA' +
         'GE_GREEK_OR_ENGLISH = :language')
+    Constraints = <>
     Left = 689
     Top = 157
     ParamData = <
@@ -4351,6 +4382,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     DetailFields = 'FK_SEMINAR_SUBJECT_SERIAL'
     MasterSource = insSeminarSubjectSRC
     Active = True
+    Constraints = <>
     Left = 33
     Top = 349
     ParamData = <
@@ -4449,6 +4481,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       'seminar_type sty on sub.fk_seminar_type_serial=sty.serial_number'
       'where sty.serial_number= :subjectSerial')
     Active = True
+    Constraints = <>
     AfterScroll = insSeminarSubjectSQLAfterScroll
     Left = 201
     Top = 157
@@ -4580,6 +4613,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       '    fk_instructor_serial is null'
       '    and status_active= '#39'Y'#39)
     Active = True
+    Constraints = <>
     Left = 169
     Top = 453
     ParamData = <

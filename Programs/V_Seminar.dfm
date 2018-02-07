@@ -445,10 +445,10 @@ object V_SeminarFRM: TV_SeminarFRM
             end
           end
           object SecondGRP: TRzGroupBox
-            Left = 416
+            Left = 412
             Top = 24
             Width = 321
-            Height = 177
+            Height = 206
             Caption = #928#955#951#961#959#966#959#961#943#949#962
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -459,7 +459,7 @@ object V_SeminarFRM: TV_SeminarFRM
             TabOrder = 1
             object Label10: TLabel
               Left = 35
-              Top = 22
+              Top = 54
               Width = 74
               Height = 14
               Caption = #916#953#940#961#954#949#953#945' '#911#961#949#962
@@ -472,7 +472,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label12: TLabel
               Left = 12
-              Top = 52
+              Top = 84
               Width = 97
               Height = 14
               Caption = #913#961#953#952#956#972#962' '#924#945#952#951#964#974#957
@@ -485,7 +485,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label13: TLabel
               Left = 32
-              Top = 113
+              Top = 145
               Width = 73
               Height = 14
               Caption = #933#960#940#961#967#949#953' '#923#942#958#951
@@ -498,7 +498,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label19: TLabel
               Left = 61
-              Top = 137
+              Top = 169
               Width = 48
               Height = 14
               Caption = #931#949' '#924#942#957#949#962
@@ -511,7 +511,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
             object Label24: TLabel
               Left = 12
-              Top = 83
+              Top = 115
               Width = 97
               Height = 14
               Caption = #917#955#940#967#953#963#964#959' %'#937#961#974#957' '
@@ -522,33 +522,46 @@ object V_SeminarFRM: TV_SeminarFRM
               Font.Style = []
               ParentFont = False
             end
+            object Label30: TLabel
+              Left = 31
+              Top = 26
+              Width = 78
+              Height = 14
+              Caption = #916#953#940#961#954#949#953#945' '#924#941#961#949#962
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+            end
             object wwDBEdit1: TwwDBEdit
               Left = 116
-              Top = 19
+              Top = 51
               Width = 90
               Height = 22
               DataField = 'DURATION_HOURS'
-              DataSource = SeminarSRC
-              TabOrder = 0
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-            end
-            object wwDBEdit3: TwwDBEdit
-              Left = 116
-              Top = 44
-              Width = 90
-              Height = 22
-              DataField = 'MAX_CAPACITY'
               DataSource = SeminarSRC
               TabOrder = 1
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
             end
+            object wwDBEdit3: TwwDBEdit
+              Left = 116
+              Top = 76
+              Width = 90
+              Height = 22
+              DataField = 'MAX_CAPACITY'
+              DataSource = SeminarSRC
+              TabOrder = 2
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
             object CompletedFLD: TwwCheckBox
               Left = 116
-              Top = 112
+              Top = 144
               Width = 37
               Height = 18
               DisableThemes = False
@@ -561,28 +574,40 @@ object V_SeminarFRM: TV_SeminarFRM
               DataField = 'HAS_EXPIRY'
               DataSource = SeminarSRC
               ShowText = False
-              TabOrder = 3
+              TabOrder = 4
             end
             object wwDBEdit4: TwwDBEdit
               Left = 115
-              Top = 136
+              Top = 168
               Width = 75
               Height = 22
               DataField = 'EXPIRY_PERIOD'
               DataSource = SeminarSRC
-              TabOrder = 4
+              TabOrder = 5
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
             end
             object wwDBEdit6: TwwDBEdit
               Left = 116
-              Top = 80
+              Top = 112
               Width = 59
               Height = 22
               DataField = 'PASS_PERCENTAGE'
               DataSource = SeminarSRC
-              TabOrder = 2
+              TabOrder = 3
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBEdit7: TwwDBEdit
+              Left = 115
+              Top = 23
+              Width = 90
+              Height = 22
+              DataField = 'DURATION_DAYS'
+              DataSource = SeminarSRC
+              TabOrder = 0
               UnboundDataType = wwDefault
               WantReturns = False
               WordWrap = False
@@ -819,9 +844,9 @@ object V_SeminarFRM: TV_SeminarFRM
                 ControlType.Strings = (
                   'SEMINAR_DAY;CustomEdit;SeminarDayFLD;F')
                 Selected.Strings = (
-                  'SERIAL_NUMBER'#9'10'#9'A/A'#9#9
-                  'SEMINAR_DAY'#9'15'#9#919#956#949#961#959#956#951#957#943#945#9#9
-                  'DURATION_HOURS'#9'10'#9#916#953#940#961#954#949#953#945' ('#974#961#949#962')'#9#9)
+                  'SERIAL_NUMBER'#9'10'#9'A/A'
+                  'SEMINAR_DAY'#9'15'#9#919#956#949#961#959#956#951#957#943#945
+                  'DURATION_HOURS'#9'10'#9#916#953#940#961#954#949#953#945' ('#974#961#949#962')')
                 IniAttributes.Delimiter = ';;'
                 IniAttributes.UnicodeIniFile = False
                 TitleColor = clBtnFace
@@ -1135,7 +1160,7 @@ object V_SeminarFRM: TV_SeminarFRM
               TabOrder = 2
               object Label5: TLabel
                 Left = 11
-                Top = 30
+                Top = 25
                 Width = 66
                 Height = 14
                 Caption = #917#954#960#945#953#948#949#965#964#942#962
@@ -1148,7 +1173,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object Label11: TLabel
                 Left = 44
-                Top = 76
+                Top = 73
                 Width = 34
                 Height = 14
                 Caption = #935#974#961#959#962
@@ -1161,7 +1186,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object InstructorBTN: TSpeedButton
                 Left = 234
-                Top = 28
+                Top = 23
                 Width = 21
                 Height = 19
                 Font.Charset = DEFAULT_CHARSET
@@ -1183,7 +1208,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object VenueBTN: TSpeedButton
                 Left = 234
-                Top = 76
+                Top = 71
                 Width = 21
                 Height = 19
                 Font.Charset = DEFAULT_CHARSET
@@ -1205,7 +1230,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object Label9: TLabel
                 Left = 11
-                Top = 55
+                Top = 48
                 Width = 66
                 Height = 14
                 Caption = #913#958#953#959#955#959#947#951#964#942#962
@@ -1218,7 +1243,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object ExaminerBTN: TSpeedButton
                 Left = 234
-                Top = 53
+                Top = 46
                 Width = 21
                 Height = 19
                 Font.Charset = DEFAULT_CHARSET
@@ -1240,7 +1265,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object VenueFLD: TwwDBComboBox
                 Left = 84
-                Top = 74
+                Top = 70
                 Width = 144
                 Height = 21
                 ShowButton = True
@@ -1266,9 +1291,9 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object InstructorFLD: TwwDBLookupCombo
                 Left = 84
-                Top = 27
+                Top = 22
                 Width = 144
-                Height = 24
+                Height = 21
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1290,9 +1315,9 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object ExaminerFLD: TwwDBLookupCombo
                 Left = 84
-                Top = 50
+                Top = 46
                 Width = 144
-                Height = 24
+                Height = 21
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -3372,7 +3397,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800740310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800780310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -420,6 +420,8 @@ type
     N1: TMenuItem;
     N2: TMenuItem;
     SeminarReminderSQLIS_INTERNAL: TWideStringField;
+    Label30: TLabel;
+    wwDBEdit7: TwwDBEdit;
     procedure AcceptBTNClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -920,7 +922,7 @@ var
 begin
   if seminarSQL.State in [dsEdit] then
     SeminarSQL.Post;
-  serial := strToIntdef(InstructorFLD.Value, 0);
+  serial := SeminarSubjectSQL.FieldByName('fk_instructor').AsInteger;
   if Serial < 1 then
     exit;
   frm := TM_InstructorFRM.Create(nil);
@@ -1452,7 +1454,7 @@ var
 begin
   if seminarSQL.State in [dsEdit] then
     SeminarSQL.Post;
-  serial := strToIntdef(ExaminerFLD.Value, 0);
+  serial := SeminarSubjectSQL.FieldByName('fk_examiner').AsInteger;
   if Serial < 1 then
     exit;
   frm := TM_InstructorFRM.Create(nil);

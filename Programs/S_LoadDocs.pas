@@ -283,9 +283,9 @@ type
   function FindHex(const FileName:String): Integer;
 
   procedure WriteFiles(Const SeminarSerial:Integer;Const DocType:String);
-  procedure writeTitles(Const Table:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
-  procedure writeValues(Const Table:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
-procedure writeNewLine( Const FileName :String);
+  procedure writeNewLine( Const FileName :String);
+  procedure writeValues(Const Prefix:string; Const TableSQL:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
+  procedure writeTitles(Const Prefix:String; Const TableSQL:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
 
   public
     { Public declarations }
@@ -462,21 +462,47 @@ end;
 procedure TS_LoadDocsFRM.Button2Click(Sender: TObject);
 const
   SemArray :Tarray<String>=['serial_number', 'seminar_name', 'date_started', 'date_completed', 'duration_days', 'duration_hours'];
-  CompanyArray :Tarray<String>=['serial_number', 'Last_name'];
+  CompanyArray :Tarray<String>=['Last_name','company_social_sec','company_contact_last','company_contact_first','company_contact_Phone','company_contact_fax','company_contact_email'];
+  VenueArray :Tarray<String>=['Venue_Name','Venue_location','ANAD_Number'];
+  InstructorArray :Tarray<String>=['first_name','Last_name','national_id','ANAD_Number'];
 
 var
     SeminarSerial:integer;
+    PersonSerial:Integer;
+    fileName:String;
 begin
-  SeminarSerial:=129;
+  SeminarSerial:=133;
+  PersonSerial:=1000001;
+  FileName:='C:\Data\DelphiProjects\Safe_CRM\Company.csv';
 //  WriteFiles(SeminarSerial,'WORD');
 //CreateTextFile(133,1000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt');
- writeTitles('Seminar', 133,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',semArray);
- writeTitles('Person', 10000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',CompanyArray);
 
- writeNewLine('C:\Data\DelphiProjects\Safe_CRM\aA.txt');
 
- writeValues('Seminar', 133,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',semArray);
- writeValues('Person', 10000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',CompanyArray);
+// writeTitles('person', PersonSerial,FileName,CompanyArray);
+// writeNewLine(FileName);
+// writeValues('Person', PersonSerial ,FileName,CompanyArray);
+//
+// exit;
+//
+// writeTitles('Instructor', 26,FileName,InstructorArray);
+// writeNewLine(FileName);
+// writeValues('Instructor', 26,FileName,InstructorArray);
+//
+// Exit;
+//
+// writeTitles('Venue', 6,FileName,VenueArray);
+// writeNewLine(FileName);
+// writeValues('venue', 6,FileName,VenueArray);
+// Exit;
+//
+//
+// writeTitles('Seminar', 133,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',semArray);
+// writeTitles('Person', 1000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',CompanyArray);
+//
+// writeNewLine('C:\Data\DelphiProjects\Safe_CRM\aA.txt');
+//
+// writeValues('Seminar', 133,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',semArray);
+// writeValues('Person', 1000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',CompanyArray);
 end;
 
 procedure TS_LoadDocsFRM.CopyaFile(Const DocSerial:Integer;Const FileName :String);
@@ -784,7 +810,7 @@ begin
 
         if IsSendToAll='N' then begin
           /////////file for the seminar
-          fname:= SeminarFolder+'\'+fileName+'.doc';
+          fname:= SeminarFolder+'\'+fileName+'.docx';
           fTextName:=SeminarFolder+'\'+fileName+'.csv';
           CopyaFile(DocSerial,fName);
           CreateTextFile(seminarSerial,MonoCompanySerial,fTextName);
@@ -824,7 +850,7 @@ begin
                       exit;
                     end;
               end;
-              fname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.doc';
+              fname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.docx';
               fTextname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.csv';
               CopyaFile(DocSerial,fName);
               CreateTextFile(SeminarSerial,CompSerial,fTextName);
@@ -888,9 +914,9 @@ begin
 
 end;
 
-procedure TS_LoadDocsFRM.writeTitles(Const Table:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
+procedure TS_LoadDocsFRM.writeTitles(Const Prefix:String;Const TableSQL:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
 var
-  str:String;
+//  str:String;
   qr:TksQuery;
   FieldName:String;
   val:string;
@@ -900,11 +926,8 @@ var
 
 begin
 
-  { Store the title and then the text. }
-
   Writer := TStreamWriter.Create(FileName, true, TEncoding.UTF8);
-  str:='Select * from ' + table + ' where serial_number= :Serial';
-  qr:= TksQuery.Create(cn,str);
+  qr:= TksQuery.Create(cn,TableSQL);
   try
     qr.close;
     qr.ParamByName('Serial').Value:=Serial;
@@ -914,7 +937,7 @@ begin
       if field <>Nil then begin
         val:= field.AsString;
 //        ShowMessage(fieldName+'-:'+val);
-        Writer.Write(Table+'__'+FieldName+'; ');
+        Writer.Write(Prefix+FieldName+'; ');
       end;
     end;
 
@@ -927,9 +950,9 @@ begin
 
 end;
 
-procedure TS_LoadDocsFRM.writeValues(Const Table:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
+procedure TS_LoadDocsFRM.writeValues(Const Prefix:string; Const TableSQL:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
 var
-  str:String;
+//  str:String;
   qr:TksQuery;
   FieldName:String;
   val:string;
@@ -942,8 +965,9 @@ begin
   { Store the title and then the text. }
 
   Writer := TStreamWriter.Create(FileName, true, TEncoding.UTF8);
-  str:='Select * from ' + table + ' where serial_number= :Serial';
-  qr:= TksQuery.Create(cn,str);
+//  str:='Select * from ' + table + ' where serial_number= :Serial';
+
+  qr:= TksQuery.Create(cn,TableSQL);
   try
     qr.close;
     qr.ParamByName('Serial').Value:=Serial;
@@ -951,11 +975,16 @@ begin
     for  FieldName in fieldArray do begin
       field:=qr.FindField(FieldName);
       if field <>Nil then begin
-        if (field.DataType in [ftDate,ftDateTime]) then
+        if (field.DataType in [ftDate,ftDateTime]) then begin
           val:= field.AsString
 //          val:= FormatTimeStampUTCF(field.AsDateTime)
-        else
+
+
+        end else if (field.DataType in [ftString, ftFixedChar,ftWideString,ftFixedWideChar]) then begin
+           val:='"'+trim(field.AsString)+'"';
+        end else begin
           val:= field.AsString;
+        end;
         writer.Write(val +'; ');
       end;
     end;
@@ -988,7 +1017,16 @@ end;
 
 procedure TS_LoadDocsFRM.CreateTextFile(Const seminarSerial, CompSerial:Integer; Const FileName :String);
 const
+  SeminarSQL = 'select * from seminar where serial_number = :Serial';
+  CompanySQl = 'select * from Person where serial_number = :Serial';
+  VenueSQl = 'select * from Venue where serial_number = :Serial';
+  InstructorSQl = 'select * from Person where serial_number = :Serial';
+//  DaysSQL =
+
   SemArray :Tarray<String>=['serial_number', 'seminar_name', 'date_started', 'date_completed', 'duration_days', 'duration_hours'];
+  CompanyArray :Tarray<String>=['Last_name','company_owner','company_owner_id','company_social_sec','company_contact_last','company_contact_first','company_contact_Phone','company_contact_fax','company_contact_email'];
+  VenueArray :Tarray<String>=['Venue_Name','Venue_location','ANAD_Number'];
+  InstructorArray :Tarray<String>=['first_name','Last_name','national_id','ANAD_Number'];
 var
   str2:String;
   qr:TksQuery;
@@ -1000,86 +1038,46 @@ var
   Writer: TStreamWriter;
   field:TField;
   date:Tdate;
+  str:String;
 
 begin
 
+//  FileName:='C:\Data\DelphiProjects\Safe_CRM\Company.csv';
 
-  { Store the title and then the text. }
+ if FileExists(Filename) then
+  exit;
 
-  { Close and free the writer. }
-
-
-CompSQL.Close;
-compSQL.ParamByName('PersonSerial').Value:=CompSerial;
-CompSQL.Open;
-
-SeminarSQL.Close;
-SeminarSQL.ParamByName('SerialNumber').Value:=SeminarSerial;
-SeminarSQL.open;
-VenueSerial:=SeminarSQL.FieldByName('fk_venue').AsInteger;
-InstructorSerial:=SeminarSQL.FieldByName('fk_Instructor').AsInteger;
-
-
-InstructorSQL.Close;
-InstructorSQL.ParamByName('SerialNumber').Value:=InstructorSerial;
-InstructorSQL.open;
-
-VenueSQL.Close;
-VenueSQL.ParamByName('SerialNumber').Value:=VenueSerial;
-VenueSQL.open;
-
-  Writer := TStreamWriter.Create(FileName, false, TEncoding.UTF8);
-  str2:='Select * from seminar where serial_number= :SeminarSerial';
-  qr:= TksQuery.Create(cn,str2);
+  str := ' select first 1  sub.fk_instructor, sub.fk_venue from seminar_subject sub where sub.fk_seminar_serial= :Serial';
+  qr:= TksQuery.Create(cn,str);
   try
     qr.close;
-    qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+    qr.ParamByName('Serial').Value:=SeminarSerial;
     qr.open;
-    for  FieldName in SemArray do begin
-      if qr.FindField(FieldName)<>Nil then begin
-        val:= qr.FieldByName(fieldName).AsString;
-        ShowMessage(fieldName+'-:'+val);
-        Writer.Write(FieldName+'; ');
-      end;
-
-    end;
-    Writer.WriteLine();
-
-    for  FieldName in SemArray do begin
-      field:= qr.FindField(FieldName);
-      if field<>Nil then begin
-        if (field.DataType in [ftDate,ftDateTime]) then
-          val:= FormatTimeStampUTCF(field.AsDateTime)
-        else
-          val:= field.AsString;
-        Writer.Write(val+'; ');
-      end;
-
-    end;
-
-
+    InstructorSerial:=qr.FieldByName('fk_instructor').AsInteger;
+    VenueSerial:=qr.FieldByName('fk_venue').AsInteger;
   finally
     qr.Free;
-    Writer.Free();
   end;
 
+ writeTitles('Seminar__', SeminarSQL, SeminarSerial,FileName,SemArray);
+ writeTitles('Company__', CompanySQL, CompSerial,FileName,COmpanyArray);
+ writeTitles('Venue__', VenueSQL, VenueSerial,FileName,VenueArray);
+ writeTitles('Instructor__', InstructorSQL, InstructorSerial,FileName,InstructorArray);
+
+ writeNewLine(FileName);
+
+ writeValues('Seminar__',SeminarSQL, SeminarSerial ,FileName,SemArray);
+ writeValues('Company__', CompanySQL, CompSerial,FileName,CompanyArray);
+ writeValues('Venue__',VenueSQL, VenueSerial ,FileName,VenueArray);
+ writeValues('Instructor__', InstructorSQL, InstructorSerial,FileName,InstructorArray);
 
 
 
-//if CompSQL.IsEmpty then
-//  exit;
-
-{
-
-     with ValuesRPT do begin
-      AllowPrintToFile:=true;
-       ShowPrintDialog := False;
-        DeviceType := dtTextFile;
-//        DeviceType := dtReportTextFile
-        TextFileName := fileName;
-        Print;
-     end;
-}
+//  SeminarSQL.Close;
+//  SeminarSQL.ParamByName('SerialNumber').Value:=SeminarSerial;
+//  SeminarSQL.open;
+//  VenueSerial:=SeminarSQL.FieldByName('fk_venue').AsInteger;
+//  InstructorSerial:=SeminarSQL.FieldByName('fk_Instructor').AsInteger;
 
 end;
 
