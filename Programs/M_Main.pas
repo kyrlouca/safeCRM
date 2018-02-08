@@ -116,6 +116,7 @@ type
     procedure FixMaleFemale1Click(Sender: TObject);
     procedure PDF1Click(Sender: TObject);
     procedure Backup1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -323,6 +324,11 @@ procedure TM_mainFRM.SpeedButton1Click(Sender: TObject);
 begin
   gpShowModal(TL_SeminarFRM);
 
+end;
+
+procedure TM_mainFRM.SpeedButton2Click(Sender: TObject);
+begin
+gpShowModal(TM_StudentFRM);
 end;
 
 procedure TM_mainFRM.SystemParameters1Click(Sender: TObject);

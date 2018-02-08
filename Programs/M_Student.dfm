@@ -365,8 +365,8 @@ object M_StudentFRM: TM_StudentFRM
           'SERIAL_QB'#9'10'#9'A/A QB'
           'STATUS_ACTIVE'#9'9'#9#916#953#945#947#961#945#966#942
           'LAST_NAME'#9'17'#9#917#960#943#952#949#964#959
-          'FIRST_NAME'#9'10'#9#908#957#959#956#945
           'NATIONAL_ID'#9'11'#9#932#945#965#964#972#964#951#964#945
+          'FIRST_NAME'#9'10'#9#908#957#959#956#945
           'PHONE_MOBILE'#9'11'#9#922#953#957#951#964#972
           'COMPANY_NAME'#9'18'#9#917#964#945#953#961#949#943#945)
         IniAttributes.Delimiter = ';;'
@@ -1351,18 +1351,18 @@ object M_StudentFRM: TM_StudentFRM
       FixedChar = True
       Size = 120
     end
+    object TableSQLNATIONAL_ID: TWideStringField
+      DisplayLabel = #932#945#965#964#972#964#951#964#945
+      DisplayWidth = 11
+      FieldName = 'NATIONAL_ID'
+      FixedChar = True
+    end
     object TableSQLFIRST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
       DisplayWidth = 10
       FieldName = 'FIRST_NAME'
       FixedChar = True
       Size = 120
-    end
-    object TableSQLNATIONAL_ID: TWideStringField
-      DisplayLabel = #932#945#965#964#972#964#951#964#945
-      DisplayWidth = 11
-      FieldName = 'NATIONAL_ID'
-      FixedChar = True
     end
     object TableSQLPHONE_MOBILE: TWideStringField
       DisplayLabel = #922#953#957#951#964#972

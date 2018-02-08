@@ -115,7 +115,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = SubjectTS
+      ActivePage = StudentsTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1293,7 +1293,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 Left = 84
                 Top = 22
                 Width = 144
-                Height = 21
+                Height = 24
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1317,7 +1317,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 Left = 84
                 Top = 46
                 Width = 144
-                Height = 21
+                Height = 24
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1387,6 +1387,8 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
+              ExplicitLeft = -2
+              ExplicitTop = 48
             end
           end
           object RzPanel2: TRzPanel
@@ -1478,6 +1480,7 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleLines = 1
               TitleButtons = False
               OnTitleButtonClick = AttendGRDTitleButtonClick
+              OnDblClick = AttendGRDDblClick
               OnUpdateFooter = AttendGRDUpdateFooter
             end
           end
@@ -3397,7 +3400,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800780310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088007C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

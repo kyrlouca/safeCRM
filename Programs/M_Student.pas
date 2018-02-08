@@ -172,6 +172,7 @@ type
     { Public declarations }
     MyInsertState:Boolean;
     IN_ACTION:String;
+    IN_studentSerial:Integer;
   procedure ShowFiltered(Const Status:String);
 
   end;
@@ -263,14 +264,28 @@ procedure TM_StudentFRM.FormActivate(Sender: TObject);
 var
   status:String;
 begin
-  filterBox.ItemIndex:=1;
-  status:= FilterBox.Value;
-  ShowFiltered(Status);
 
+  if IN_ACTION='EDIT' then begin
+    TableSQL.Close;
+    tABLESQL.AddWhere('PER.serial_number = :serial');
+    TableSQL.ParamByName('serial').Value:=IN_studentSerial;
+    TableSQL.Open;
+    If firstFLD.CanFocus then
+      FirstFLD.SetFocus;
 
-if IN_ACTION='INSERT' then begin
+  end ELSE if IN_ACTION='INSERT' then begin
    TableSQL.Insert;
-end;
+
+  end ELSE begin
+    filterBox.ItemIndex:=1;
+    status:= FilterBox.Value;
+    ShowFiltered(Status);
+
+  end;
+
+
+
+
 
 end;
 

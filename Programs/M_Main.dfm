@@ -26,7 +26,7 @@ object M_mainFRM: TM_mainFRM
     Margins.Bottom = 0
     Align = alTop
     BorderOuter = fsGroove
-    Caption = 'Safe CRM - V1.04'
+    Caption = 'Safe CRM - V1.10'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 3947580
     Font.Height = -48
@@ -173,6 +173,7 @@ object M_mainFRM: TM_mainFRM
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE4E0
           E4B7AFBA9D91A09F919DA1939D968B9BA69FABD7D3D8FFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+        OnClick = SpeedButton2Click
       end
     end
   end
@@ -7318,6 +7319,7 @@ object M_mainFRM: TM_mainFRM
       Height = 25
       Caption = 'Button1'
       TabOrder = 1
+      Visible = False
       OnClick = Button1Click
     end
     object Button2: TButton
@@ -7327,6 +7329,7 @@ object M_mainFRM: TM_mainFRM
       Height = 25
       Caption = 'Button2'
       TabOrder = 2
+      Visible = False
       OnClick = Button2Click
     end
     object MainHelpRE: TwwDBRichEdit

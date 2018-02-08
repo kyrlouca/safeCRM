@@ -60,80 +60,7 @@ type
     wwIncrementalSearch1: TwwIncrementalSearch;
     TableSQLDOC_PATH: TWideStringField;
     TableSQLDOC_TYPE: TWideStringField;
-    CompSQL: TIBCQuery;
-    CompSRc: TDataSource;
-    CompPIP: TppDBPipeline;
-    CompSQLSERIAL_NUMBER: TIntegerField;
-    CompSQLSERIAL_QB: TIntegerField;
-    CompSQLFK_COMPANY_SERIAL: TIntegerField;
-    CompSQLLAST_NAME: TWideStringField;
-    CompSQLFIRST_NAME: TWideStringField;
-    CompSQLNATIONAL_ID: TWideStringField;
-    CompSQLNICKNAME: TWideStringField;
-    CompSQLOCCUPATION: TWideStringField;
-    CompSQLPHONE_MOBILE: TWideStringField;
-    CompSQLPHONE_FIXED: TWideStringField;
-    CompSQLPHONE_ALTERNATE: TWideStringField;
-    CompSQLFAX: TWideStringField;
-    CompSQLEMAIL: TWideStringField;
-    CompSQLEMAIL_2: TSmallintField;
-    CompSQLADDRESS: TWideStringField;
-    CompSQLADDRESS_STREET: TWideStringField;
-    CompSQLADDRESS_POST_CODE: TWideStringField;
-    CompSQLADDRESS_CITY: TWideStringField;
-    CompSQLADDRESS_DISTRICT: TWideStringField;
-    CompSQLDATE_STARTED: TDateField;
-    CompSQLDATE_BIRTH: TDateField;
-    CompSQLDATE_USER: TDateField;
-    CompSQLLIST_SOURCE: TWideStringField;
-    CompSQLFACEBOOK: TWideStringField;
-    CompSQLWEBSITE: TWideStringField;
-    CompSQLTWITTER: TWideStringField;
-    CompSQLSTATUS_ACTIVE: TWideStringField;
-    CompSQLSEX: TWideStringField;
-    CompSQLIS_COMPANY: TWideStringField;
-    CompSQLCOMPANY_OWNER: TWideStringField;
-    CompSQLCOMPANY_CONTACT: TWideStringField;
-    CompSQLCOMPANY_REGISTRATION_DATE: TDateField;
-    CompSQLPHONE_CONTACT: TWideStringField;
-    CompSQLCOMPANY_CONTACT_FIRST: TWideStringField;
-    CompSQLCOMPANY_CONTACT_LAST: TWideStringField;
-    CompSQLCOMPANY_OWNER_REG: TWideStringField;
-    CompSQLCOMPANY_CONTACT_PHONE: TWideStringField;
-    CompSQLCOMPANY_CONTACT_EMAIL: TWideStringField;
-    CompSQLCOMPANY_CONTACT_FAX: TWideStringField;
-    CompSQLCOMPANY_SOCIAL_SEC: TWideStringField;
-    CompSQLCOMPANY_EMPLOYEES: TIntegerField;
-    CompSQLPHONE_MOBILE_2: TWideStringField;
-    CompSQLLINKED_IN: TWideStringField;
-    CompSQLJOB: TWideStringField;
-    CompSQLIS_SAFE_COMPANY: TWideStringField;
-    CompSQLCOMPANY_OWNER_ID: TWideStringField;
-    ValuesRPT: TppReport;
-    ppParameterList1: TppParameterList;
-    ppDesignLayers1: TppDesignLayers;
-    ppDesignLayer1: TppDesignLayer;
-    ppDetailBand1: TppDetailBand;
-    compOwner: TppDBText;
-    CompOwnerID: TppDBText;
-    CompAddress: TppDBText;
-    CompAddressStreet: TppDBText;
-    CompAddressCIty: TppDBText;
     Button2: TButton;
-    ppHeaderBand1: TppHeaderBand;
-    Comp_PhoneFixed: TppLabel;
-    CompPhoneFixed: TppDBText;
-    Comp_address: TppLabel;
-    comp_ownerId: TppLabel;
-    Comp_owner: TppLabel;
-    comp_addressStreet: TppLabel;
-    Comp_AddressCity: TppLabel;
-    SeminarSQL: TIBCQuery;
-    seminarSRC: TDataSource;
-    InstructorSRC: TDataSource;
-    SeminarPip: TppDBPipeline;
-    InstructorSQL: TIBCQuery;
-    InstructorPIP: TppDBPipeline;
     RzPanel4: TRzPanel;
     RzPanel5: TRzPanel;
     GroupBox2: TGroupBox;
@@ -162,103 +89,6 @@ type
     Button4: TButton;
     wwDBGrid1: TwwDBGrid;
     RzPanel7: TRzPanel;
-    VenueSRC: TDataSource;
-    VenueSQL: TIBCQuery;
-    VenuePIP: TppDBPipeline;
-    SeminarSQLSERIAL_NUMBER: TIntegerField;
-    SeminarSQLANAD_NUMBER: TWideStringField;
-    SeminarSQLFK_SEMINAR: TIntegerField;
-    SeminarSQLFK_INSTRUCTOR: TIntegerField;
-    SeminarSQLFK_EXAMINER: TIntegerField;
-    SeminarSQLFK_VENUE: TIntegerField;
-    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLDATE_STARTED: TDateField;
-    SeminarSQLDATE_COMPLETED: TDateField;
-    SeminarSQLDURATION_DAYS: TIntegerField;
-    SeminarSQLDURATION_HOURS: TIntegerField;
-    SeminarSQLAMOUNT_ANAD: TFloatField;
-    SeminarSQLCOMMENTS: TWideStringField;
-    SeminarSQLANAD_APPROVED: TWideStringField;
-    SeminarSQLSTATUS: TWideStringField;
-    SeminarSQLIS_INVOICED: TWideStringField;
-    SeminarSQLIS_CERTIFICATED: TWideStringField;
-    SeminarSQLMAX_CAPACITY: TIntegerField;
-    SeminarSQLHAS_EXPIRY: TWideStringField;
-    SeminarSQLEXPIRY_PERIOD: TIntegerField;
-    SeminarSQLTYPE_MONO_POLY: TWideStringField;
-    SeminarSQLSEM_CATEGORY: TWideStringField;
-    SeminarSQLFK_COMPANY_INVOICED: TIntegerField;
-    SeminarSQLPASS_PERCENTAGE: TIntegerField;
-    SeminarSQLSPECIFICATION_NUMBER: TWideStringField;
-    InstructorSQLSERIAL_NUMBER: TIntegerField;
-    InstructorSQLANAD_NUMBER: TWideStringField;
-    InstructorSQLNATIONAL_ID: TWideStringField;
-    InstructorSQLFK_COMPANY_SERIAL: TIntegerField;
-    InstructorSQLFIRST_NAME: TWideStringField;
-    InstructorSQLLAST_NAME: TWideStringField;
-    InstructorSQLNICKNAME: TWideStringField;
-    InstructorSQLSTATUS: TWideStringField;
-    InstructorSQLOCCUPATION: TWideStringField;
-    InstructorSQLPHONE_MOBILE: TWideStringField;
-    InstructorSQLPHONE_FIXED: TWideStringField;
-    InstructorSQLPHONE_ALTERNATE: TWideStringField;
-    InstructorSQLFAX: TWideStringField;
-    InstructorSQLEMAIL: TWideStringField;
-    InstructorSQLEMAIL_2: TSmallintField;
-    InstructorSQLADDRESS: TWideStringField;
-    InstructorSQLADDRESS_STREET: TWideStringField;
-    InstructorSQLADDRESS_POST_CODE: TWideStringField;
-    InstructorSQLADDRESS_CITY: TWideStringField;
-    InstructorSQLADDRESS_DISTRICT: TWideStringField;
-    InstructorSQLDATE_STARTED: TDateField;
-    InstructorSQLDATE_BIRTH: TDateField;
-    InstructorSQLDATE_USER: TDateField;
-    InstructorSQLLIST_SOURCE: TWideStringField;
-    InstructorSQLFACEBOOK: TWideStringField;
-    InstructorSQLWEBSITE: TWideStringField;
-    InstructorSQLTWITTER: TWideStringField;
-    InstructorSQLSTATUS_ACTIVE: TWideStringField;
-    InstructorSQLCERTIFIED_ANAD: TWideStringField;
-    InstructorSQLJOB_TITLE: TWideStringField;
-    VenueSQLSERIAL_NUMBER: TIntegerField;
-    VenueSQLVENUE_NAME: TWideStringField;
-    VenueSQLVENUE_LOCATION: TWideStringField;
-    VenueSQLVENUE_CAPACITY: TIntegerField;
-    VenueSQLVENUE_COST: TFloatField;
-    VenueSQLCOMMENTS: TWideStringField;
-    VenueSQLANAD_NUMBER: TWideStringField;
-    VenueSQLROOM_NAME: TWideStringField;
-    comp_lastName: TppLabel;
-    compLastName: TppDBText;
-    sem_name: TppLabel;
-    SemNAME: TppDBText;
-    sem_DATE_STARTED: TppLabel;
-    SemDATE_STARTED: TppDBText;
-    sem_DATE_COMPLETED: TppLabel;
-    SemDATE_COMPLETED: TppDBText;
-    sem_DURATION_DAYS: TppLabel;
-    SemDURATION_DAYS: TppDBText;
-    sem_DURATION_HOURS: TppLabel;
-    SemDURATION_HOURS: TppDBText;
-    ppLabel1: TppLabel;
-    ppDBText1: TppDBText;
-    ppLabel2: TppLabel;
-    ppDBText2: TppDBText;
-    ppLabel3: TppLabel;
-    ppDBText3: TppDBText;
-    ppLabel4: TppLabel;
-    ppDBText4: TppDBText;
-    ppLabel5: TppLabel;
-    ppDBText5: TppDBText;
-    ppLabel6: TppLabel;
-    ppDBText6: TppDBText;
-    ppLabel7: TppLabel;
-    ppDBText7: TppDBText;
-    ppLabel8: TppLabel;
-    ppDBText8: TppDBText;
-    ppLabel9: TppLabel;
-    ppDBText9: TppDBText;
     procedure FormCreate(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
     procedure SavetoDBClick(Sender: TObject);
@@ -267,8 +97,6 @@ type
     procedure wwButton1Click(Sender: TObject);
     procedure TableSQLNewRecord(DataSet: TDataSet);
     procedure Nav1InsertClick(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure v1Calc(Sender: TObject; var Value: Variant);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -286,6 +114,7 @@ type
   procedure writeNewLine( Const FileName :String);
   procedure writeValues(Const Prefix:string; Const TableSQL:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
   procedure writeTitles(Const Prefix:String; Const TableSQL:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
+  procedure CreateStudentFile( Const SeminarSerial :Integer; Const FileName :String);
 
   public
     { Public declarations }
@@ -368,57 +197,7 @@ begin
 end;
 
 function TS_LoadDocsFRM.FindHex(const FileName:String): Integer;
-var
-  AFile: TFileStream;
-  BR: TBinaryReader;
-  AInteger: Integer;
-  ADouble: Double;
-  AChar: Char;
-  AString: String;
-  size:Integer;
-  goOn:Boolean;
-  fByte:Byte;
-  isPrev:boolean;
-  gChar:Char;
-  dCount:integer;
 begin
-  goOn:=true;
-  isPrev:=False;
-  dCount:=0;
-  AFile := TFileStream.Create(filename, fmOpenRead);
-  BR := TBinaryReader.Create(AFile, TEncoding.Unicode, false);
-  {
-  try
-    while goOn do begin
-          fByte := BR.ReadByte;
-          Achar:=Chr(FByte);
-          if           if (Achar='$')
-                    if (Achar='$') and IsPrev then begin
-//            Achar := BR.ReadChar;
-            fByte := BR.ReadByte;
-            GChar:=Chr(FByte);
-            SHowMessage(Gchar);
-            isPrev:=false;
-          end;
-          isPrev:= (AChar='$');
-          goOn:= (Achar <> '~');
-    end;
-   }
-  {
-    // read a char and write it to the console
-    AChar := BR.ReadChar;
-    Writeln(AChar);
-    // read a string and write it to the console
-    AString := BR.ReadString;
-    Writeln(AString);
-
-    BR.Close;
-  finally
-
-    BR.Free;
-    AFile.Free;
-  end;
-  }
 end;
 
 {
@@ -458,52 +237,6 @@ begin
   end;
 end;
 }
-
-procedure TS_LoadDocsFRM.Button2Click(Sender: TObject);
-const
-  SemArray :Tarray<String>=['serial_number', 'seminar_name', 'date_started', 'date_completed', 'duration_days', 'duration_hours'];
-  CompanyArray :Tarray<String>=['Last_name','company_social_sec','company_contact_last','company_contact_first','company_contact_Phone','company_contact_fax','company_contact_email'];
-  VenueArray :Tarray<String>=['Venue_Name','Venue_location','ANAD_Number'];
-  InstructorArray :Tarray<String>=['first_name','Last_name','national_id','ANAD_Number'];
-
-var
-    SeminarSerial:integer;
-    PersonSerial:Integer;
-    fileName:String;
-begin
-  SeminarSerial:=133;
-  PersonSerial:=1000001;
-  FileName:='C:\Data\DelphiProjects\Safe_CRM\Company.csv';
-//  WriteFiles(SeminarSerial,'WORD');
-//CreateTextFile(133,1000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt');
-
-
-// writeTitles('person', PersonSerial,FileName,CompanyArray);
-// writeNewLine(FileName);
-// writeValues('Person', PersonSerial ,FileName,CompanyArray);
-//
-// exit;
-//
-// writeTitles('Instructor', 26,FileName,InstructorArray);
-// writeNewLine(FileName);
-// writeValues('Instructor', 26,FileName,InstructorArray);
-//
-// Exit;
-//
-// writeTitles('Venue', 6,FileName,VenueArray);
-// writeNewLine(FileName);
-// writeValues('venue', 6,FileName,VenueArray);
-// Exit;
-//
-//
-// writeTitles('Seminar', 133,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',semArray);
-// writeTitles('Person', 1000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',CompanyArray);
-//
-// writeNewLine('C:\Data\DelphiProjects\Safe_CRM\aA.txt');
-//
-// writeValues('Seminar', 133,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',semArray);
-// writeValues('Person', 1000001,'C:\Data\DelphiProjects\Safe_CRM\aA.txt',CompanyArray);
-end;
 
 procedure TS_LoadDocsFRM.CopyaFile(Const DocSerial:Integer;Const FileName :String);
 var
@@ -643,11 +376,6 @@ begin
   Dataset.FieldByName('Poly_mono').AsString:='P';
   Dataset.FieldByName('iS_send_to_all').AsString:='Y';
   Dataset.FieldByName('DOC_TYPE').AsString:='WORD';
-end;
-
-procedure TS_LoadDocsFRM.v1Calc(Sender: TObject; var Value: Variant);
-begin
- value:= Copy(compSQL.FieldByName('last_name').AsString,1,4);
 end;
 
 procedure TS_LoadDocsFRM.SavetoDBClick(Sender: TObject);
@@ -855,11 +583,15 @@ begin
               CopyaFile(DocSerial,fName);
               CreateTextFile(SeminarSerial,CompSerial,fTextName);
 
+              fname:=UseFOlder+'\'+'StudentsFile.txt';
+              CreateStudentFile(SeminarSerial,fname);
+
               compQR.Next;
             end;
           finally
            CompQr.Free;
           end;
+
 
         end;
         qr.Next;
@@ -869,6 +601,7 @@ begin
     qr.Free;
   end;
 
+  MessageDlg('Word Files created in '+#13+#10+SeminarFolder, mtInformation, [mbOK], 0);
 end;
 
 
@@ -999,6 +732,8 @@ begin
 end;
 
 
+
+
 procedure TS_LoadDocsFRM.writeNewLine( Const FileName :String);
 var
   Writer: TStreamWriter;
@@ -1087,6 +822,56 @@ begin
 end;
 
 
+
+
+
+procedure TS_LoadDocsFRM.CreateStudentFile( Const SeminarSerial :Integer; Const FileName :String);
+var
+//  str:String;
+  qr:TksQuery;
+  FieldName:String;
+  val:string;
+  Writer: TStreamWriter;
+  field:TField;
+  date:Tdate;
+  str :String;
+begin
+
+  if FileExists(FileName) then
+    exit;
+
+  Writer := TStreamWriter.Create(FileName, true, TEncoding.UTF8);
+  str:=
+  ' select'
+  +'  per.national_id, per.last_name,per.first_name ,per.job from'
+  +'  seminar_person sp left outer join'
+  +'  person per on sp.fk_person_serial=per.serial_number'
+  +'  where sp.fk_seminar_serial= :seminarSerial';
+
+  qr:= TksQuery.Create(cn,str);
+  try
+    qr.close;
+    qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+    qr.open;
+
+//    writer.Write('National_id ; Last_name ; first_name');
+//    writer.WriteLine();
+    while not qr.Eof do begin
+     writer.Write( qr.FieldByName('National_id').AsString +' ; ');
+     writer.Write( qr.FieldByName('Last_name').AsString   +' ; ');
+     writer.write( qr.FieldByName('first_name').AsString  +' ; ');
+     writer.write( qr.FieldByName('job').AsString );
+     writer.WriteLine();
+     qr.Next;
+    end;
+   finally
+    qr.Free;
+    Writer.Free();
+  end;
+
+
+
+end;
 
 
 End.

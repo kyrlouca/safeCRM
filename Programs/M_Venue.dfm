@@ -329,7 +329,6 @@ object M_venuFRM: TM_venuFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitTop = -1
         object Nav1: TwwDBNavigator
           Left = 3
           Top = 5
@@ -746,6 +745,8 @@ object M_venuFRM: TM_venuFRM
         TitleLines = 1
         TitleButtons = True
         OnTitleButtonClick = Grid1TitleButtonClick
+        ExplicitLeft = 6
+        ExplicitTop = 15
       end
     end
     object RzPanel5: TRzPanel
@@ -816,6 +817,7 @@ object M_venuFRM: TM_venuFRM
       'venue'
       'order by Venue_name')
     Active = True
+    Constraints = <>
     AfterInsert = TableSQLAfterInsert
     Left = 49
     Top = 5
