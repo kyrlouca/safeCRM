@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, DBAccess, IBC,
   MemDS, vcl.wwspeedbutton, vcl.wwdbnavigator, Vcl.ExtCtrls, vcl.wwclearpanel,
   Vcl.Grids, vcl.wwdbigrd, vcl.wwdbgrid, RzPanel, RzRadGrp, Vcl.Mask,
-  vcl.Wwdbedit, Vcl.Buttons, RzButton, Vcl.DBCtrls,jpeg,pngimage, Vcl.ExtDlgs;
+  vcl.Wwdbedit, Vcl.Buttons, RzButton, Vcl.DBCtrls,jpeg,pngimage, Vcl.ExtDlgs,
+  RzShellDialogs;
 
 type
  TitTYPES=(itJPG,itPNG,itBMP);
@@ -76,6 +77,7 @@ type
     PersonGenFLD: TwwDBEdit;
     SpeedButton2: TSpeedButton;
     FileOpen1: TFileOpenDialog;
+    FolderSelectDLG: TRzSelectFolderDialog;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure OptionGRPClick(Sender: TObject);
@@ -292,13 +294,24 @@ end;
 procedure TM_paramsFRM.SpeedButton1Click(Sender: TObject);
 var
   fileName:string;
+  folderName:string;
 begin
+   if not FolderSelectDLG.Execute then begin
+      showMessage('exit');
+      Exit;
+  end;
+ foldername :=FolderSelectDLG.SelectedPathName;
+ FIle1Fld.Text:=folderName;
+ exit;
+
+
   if not FileOPen1.Execute then     begin
       showMessage('exit');
       Exit;
   end;
  filename :=FileOpen1.FileName;
  FIle1Fld.Text:=filename;
+
 
 end;
 

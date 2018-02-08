@@ -3,7 +3,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   Top = 153
   Caption = '--'
   ClientHeight = 728
-  ClientWidth = 1017
+  ClientWidth = 1028
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,7 +23,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   object Panel3: TRzPanel
     Left = 0
     Top = 0
-    Width = 1017
+    Width = 1028
     Height = 685
     Align = alClient
     BorderOuter = fsNone
@@ -35,11 +35,12 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     ParentFont = False
     TabOrder = 0
     VisualStyle = vsClassic
+    ExplicitWidth = 1017
     object TitlePNL: TRzPanel
       AlignWithMargins = True
       Left = 3
       Top = 3
-      Width = 1011
+      Width = 1022
       Height = 48
       Align = alTop
       BorderOuter = fsFlatRounded
@@ -55,6 +56,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       Transparent = True
       VisualStyle = vsClassic
       WordWrap = False
+      ExplicitWidth = 1011
       object certificatesHelpRE: TwwDBRichEdit
         Left = 702
         Top = -1
@@ -281,18 +283,19 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
     object RzPanel8: TRzPanel
       Left = 0
       Top = 54
-      Width = 1017
+      Width = 1028
       Height = 13
       Align = alTop
       BorderOuter = fsNone
       TabOrder = 1
+      ExplicitWidth = 1017
     end
     object PageControlPC: TPageControl
       Left = 0
       Top = 67
-      Width = 1017
+      Width = 1028
       Height = 618
-      ActivePage = SeminarTS
+      ActivePage = CertificationTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -302,27 +305,31 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
       ParentFont = False
       TabOrder = 2
       OnChanging = PageControlPCChanging
+      ExplicitWidth = 1017
       object SeminarTS: TTabSheet
         Caption = #931#949#956#953#957#940#961#953#959
         OnExit = SeminarTSExit
         OnShow = SeminarTSShow
+        ExplicitWidth = 1009
         object RzPanel22: TRzPanel
           Left = 0
           Top = 0
-          Width = 1009
+          Width = 1020
           Height = 587
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitWidth = 1009
           object Panel5: TRzPanel
             Left = 0
             Top = 0
-            Width = 1009
+            Width = 1020
             Height = 39
             Align = alTop
             BorderOuter = fsFlatRounded
             BorderSides = [sdRight, sdBottom]
             TabOrder = 0
+            ExplicitWidth = 1009
             object wwIncrementalSearch1: TwwIncrementalSearch
               Left = 15
               Top = 11
@@ -402,10 +409,11 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           object RzPanel12: TRzPanel
             Left = 393
             Top = 51
-            Width = 616
+            Width = 627
             Height = 536
             Align = alClient
             TabOrder = 2
+            ExplicitWidth = 616
             object GroupBox1: TGroupBox
               Left = 34
               Top = 39
@@ -762,13 +770,12 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             object RzPanel13: TRzPanel
               Left = 2
               Top = 2
-              Width = 612
+              Width = 623
               Height = 23
               Align = alTop
               BorderOuter = fsNone
               TabOrder = 2
-              ExplicitLeft = 0
-              ExplicitTop = 10
+              ExplicitWidth = 612
               object wwDBNavigator1: TwwDBNavigator
                 Left = 23
                 Top = 0
@@ -932,11 +939,12 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           object RzPanel24: TRzPanel
             Left = 0
             Top = 39
-            Width = 1009
+            Width = 1020
             Height = 12
             Align = alTop
             BorderOuter = fsNone
             TabOrder = 3
+            ExplicitWidth = 1009
           end
           object RzPanel30: TRzPanel
             Left = 361
@@ -956,7 +964,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         object RzPanel26: TRzPanel
           Left = 0
           Top = 0
-          Width = 1009
+          Width = 1020
           Height = 587
           Align = alClient
           BorderOuter = fsNone
@@ -1339,7 +1347,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           object Panel2: TRzPanel
             Left = 0
             Top = 0
-            Width = 1009
+            Width = 1020
             Height = 12
             Align = alTop
             BorderOuter = fsNone
@@ -1360,7 +1368,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         object RzPanel27: TRzPanel
           Left = 0
           Top = 0
-          Width = 1009
+          Width = 1020
           Height = 587
           Align = alClient
           BorderOuter = fsNone
@@ -1368,7 +1376,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           object RzPanel6: TRzPanel
             Left = 0
             Top = 0
-            Width = 1009
+            Width = 1020
             Height = 39
             Align = alTop
             BorderOuter = fsFlatRounded
@@ -2011,7 +2019,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           object RzPanel29: TRzPanel
             Left = 0
             Top = 39
-            Width = 1009
+            Width = 1020
             Height = 17
             Align = alTop
             BorderOuter = fsNone
@@ -2026,7 +2034,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         object RzPanel31: TRzPanel
           Left = 0
           Top = 0
-          Width = 1009
+          Width = 1020
           Height = 587
           Align = alClient
           BorderOuter = fsNone
@@ -2034,7 +2042,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           object RzPanel32: TRzPanel
             Left = 0
             Top = 157
-            Width = 1009
+            Width = 1020
             Height = 12
             Align = alTop
             BorderOuter = fsNone
@@ -2373,7 +2381,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
           object RzPanel34: TRzPanel
             Left = 0
             Top = 0
-            Width = 1009
+            Width = 1020
             Height = 157
             Align = alTop
             BorderOuter = fsNone
@@ -2381,7 +2389,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
             object RzGroupBox5: TRzGroupBox
               Left = 0
               Top = 0
-              Width = 1009
+              Width = 1020
               Height = 145
               Align = alTop
               BorderSides = [sdLeft, sdTop, sdRight]
@@ -2396,7 +2404,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               object RzSizePanel3: TRzSizePanel
                 Left = 1
                 Top = 15
-                Width = 1007
+                Width = 1018
                 Height = 10
                 Align = alTop
                 TabOrder = 0
@@ -2404,7 +2412,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               object wwDBGrid3: TwwDBGrid
                 Left = 1
                 Top = 25
-                Width = 1007
+                Width = 1018
                 Height = 119
                 ControlType.Strings = (
                   'IS_GUEST;CheckBox;Y;N')
@@ -2442,14 +2450,16 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
         ImageIndex = 3
         OnExit = CertificationTSExit
         OnShow = CertificationTSShow
+        ExplicitWidth = 1009
         object RzPanel28: TRzPanel
           Left = 0
           Top = 0
-          Width = 1009
+          Width = 1020
           Height = 587
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitWidth = 1009
           object LanguageRGP: TwwRadioGroup
             Left = 23
             Top = 3
@@ -2935,7 +2945,7 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
               Left = 226
               Top = 21
               Width = 600
-              Height = 52
+              Height = 75
               AutoURLDetect = False
               DataField = 'LINE_A1'
               DataSource = SeminarPictureSRC
@@ -3506,20 +3516,22 @@ object M_SeminarTypeFRM: TM_SeminarTypeFRM
   object Panel4: TRzPanel
     Left = 0
     Top = 685
-    Width = 1017
+    Width = 1028
     Height = 43
     Align = alBottom
     BorderOuter = fsFlatRounded
     BorderSides = [sdLeft, sdRight, sdBottom]
     TabOrder = 1
+    ExplicitWidth = 1017
     object RzPanel1: TRzPanel
-      Left = 915
+      Left = 926
       Top = 0
       Width = 100
       Height = 41
       Align = alRight
       BorderOuter = fsNone
       TabOrder = 0
+      ExplicitLeft = 915
       object RzBitBtn1: TRzBitBtn
         Left = 6
         Top = 3

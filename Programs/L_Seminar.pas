@@ -60,7 +60,6 @@ type
     CertificatesBTN: TRzBitBtn;
     RzBitBtn3: TRzBitBtn;
     InvoiceBTN: TRzBitBtn;
-    TableSQLANAD_NUMBER: TWideStringField;
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     TableSQLMAX_CAPACITY: TIntegerField;
     TableSQLHAS_EXPIRY: TWideStringField;
@@ -89,6 +88,7 @@ type
     Label6: TLabel;
     MonoFLD: TwwDBComboBox;
     TableSQLSPECIFICATION_NUMBER: TWideStringField;
+    TableSQLANAD_NUMBER: TWideStringField;
     procedure BitBtn2Click(Sender: TObject);
     procedure TableSQLBeforeEdit(DataSet: TDataSet);
     procedure TableSRCStateChange(Sender: TObject);

@@ -475,6 +475,7 @@ type
     procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
     procedure AllCompGRDTitleButtonClick(Sender: TObject; AFieldName: string);
     procedure AttendGRDDblClick(Sender: TObject);
+    procedure wwDBGrid4DblClick(Sender: TObject);
   private
     { Private declarations }
     cn: TIBCConnection;
@@ -512,7 +513,7 @@ implementation
 
 uses U_Database, G_generalProcs, M_Instructor, M_Venue, G_SFCommonProcs,
   H_Help, v_SeminarPictureTemplate, R_AnadFIles, S_LoadDocs, M_seminarType,
-  M_Student;
+  M_Student, M_CompanyNew;
 
 {$R *.DFM}
 
@@ -1035,6 +1036,24 @@ procedure TV_SeminarFRM.AllCompGRDTitleButtonClick(Sender: TObject;
 
 end;
 
+procedure TV_SeminarFRM.wwDBGrid4DblClick(Sender: TObject);
+vAR
+  Frm:TM_companyNewFRM;
+  studentSerial:Integer;
+begin
+  studentSerial:=Co_CompaniesInSQL.FieldByName('serial_number').AsInteger;
+  if studentSerial<1 then
+    exit;
+  frm := TM_companyNewFRM.Create(nil);
+  try
+    frm.IN_ACTION:='EDIT';
+    frm.IN_company_Serial:= studentSerial;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+end;
+
 procedure TV_SeminarFRM.wwNavButton19Click(Sender: TObject);
 begin
   REminderDescFLD.SetFocus;
@@ -1112,7 +1131,7 @@ end;
 
 procedure TV_SeminarFRM.AllPersonsGRDDblClick(Sender: TObject);
 begin
-  InsertPerson();
+//  InsertPerson();
 end;
 
 procedure TV_SeminarFRM.InsertPerson();

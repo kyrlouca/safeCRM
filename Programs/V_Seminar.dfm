@@ -8,12 +8,12 @@ object V_SeminarFRM: TV_SeminarFRM
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -10
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   WindowState = wsMaximized
   OnActivate = FormActivate
   OnClose = FormClose
@@ -46,7 +46,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Caption = #931#949#956#953#957#940#961#953#959
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 3947580
-      Font.Height = -27
+      Font.Height = -19
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentColor = True
@@ -69,9 +69,9 @@ object V_SeminarFRM: TV_SeminarFRM
         ExplicitHeight = 45
       end
       object StatusFLD: TwwDBComboBox
-        Left = 805
+        Left = 832
         Top = 2
-        Width = 260
+        Width = 233
         Height = 43
         BevelInner = bvNone
         ShowButton = False
@@ -80,6 +80,7 @@ object V_SeminarFRM: TV_SeminarFRM
         AllowClearKey = False
         AutoSize = False
         BorderStyle = bsNone
+        ButtonStyle = cbsCustom
         Color = clBtnFace
         DataField = 'STATUS'
         DataSource = SeminarSRC
@@ -88,6 +89,7 @@ object V_SeminarFRM: TV_SeminarFRM
         Sorted = False
         TabOrder = 0
         UnboundDataType = wwDefault
+        UnboundAlignment = taRightJustify
         Align = alRight
       end
     end
@@ -115,7 +117,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = StudentsTS
+      ActivePage = SubjectTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1173,7 +1175,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object Label11: TLabel
                 Left = 44
-                Top = 73
+                Top = 76
                 Width = 34
                 Height = 14
                 Caption = #935#974#961#959#962
@@ -1208,7 +1210,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object VenueBTN: TSpeedButton
                 Left = 234
-                Top = 71
+                Top = 74
                 Width = 21
                 Height = 19
                 Font.Charset = DEFAULT_CHARSET
@@ -1230,7 +1232,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object Label9: TLabel
                 Left = 11
-                Top = 48
+                Top = 50
                 Width = 66
                 Height = 14
                 Caption = #913#958#953#959#955#959#947#951#964#942#962
@@ -1243,7 +1245,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object ExaminerBTN: TSpeedButton
                 Left = 234
-                Top = 46
+                Top = 48
                 Width = 21
                 Height = 19
                 Font.Charset = DEFAULT_CHARSET
@@ -1265,7 +1267,7 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object VenueFLD: TwwDBComboBox
                 Left = 84
-                Top = 70
+                Top = 74
                 Width = 144
                 Height = 21
                 ShowButton = True
@@ -1293,7 +1295,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 Left = 84
                 Top = 22
                 Width = 144
-                Height = 24
+                Height = 21
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1315,9 +1317,9 @@ object V_SeminarFRM: TV_SeminarFRM
               end
               object ExaminerFLD: TwwDBLookupCombo
                 Left = 84
-                Top = 46
+                Top = 48
                 Width = 144
-                Height = 24
+                Height = 21
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1387,8 +1389,6 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleFont.Style = []
               TitleLines = 1
               TitleButtons = False
-              ExplicitLeft = -2
-              ExplicitTop = 48
             end
           end
           object RzPanel2: TRzPanel
@@ -1842,6 +1842,7 @@ object V_SeminarFRM: TV_SeminarFRM
               TitleLines = 1
               TitleButtons = False
               OnTitleButtonClick = AttendGRDTitleButtonClick
+              OnDblClick = wwDBGrid4DblClick
               OnUpdateFooter = AttendGRDUpdateFooter
             end
           end
@@ -3400,7 +3401,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C0101100088007C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800840310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

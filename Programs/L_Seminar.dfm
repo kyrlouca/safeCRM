@@ -322,7 +322,7 @@ object L_SeminarFRM: TL_SeminarFRM
       Left = 269
       Top = 6
       Width = 428
-      Height = 83
+      Height = 99
       Caption = 'Search Seminars'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1140,7 +1140,6 @@ object L_SeminarFRM: TL_SeminarFRM
       DisplayLabel = #913#925#913#916' '
       DisplayWidth = 9
       FieldName = 'ANAD_NUMBER'
-      Required = True
       FixedChar = True
       Size = 30
     end

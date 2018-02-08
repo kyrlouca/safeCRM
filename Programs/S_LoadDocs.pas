@@ -478,6 +478,7 @@ var
   CompName:String;
   MonoCompanySerial:Integer;
   CompSerial:Integer;
+  temp:String;
 
 begin
 
@@ -511,7 +512,11 @@ begin
     qr.free;
   end;
 
+  temp:= stringreplace(SeminarName, '\', '_', [rfReplaceAll, rfIgnoreCase]);
+  temp:= stringreplace(temp, '/', '_', [rfReplaceAll, rfIgnoreCase]);
   SeminarFolder:=baseFOlder+'\'+SeminarName+'_'+IntToStr(SeminarSerial);
+
+
   if  DirectoryExists(SeminarFOlder) then begin
 //    MessageDlg('Directory to write the Files already EXISTS. Delete first', mtError, [mbOK], 0);
 //    exit;
@@ -571,7 +576,10 @@ begin
               CompName:=CompQR.FieldByName('Last_name').AsString;
               CompSerial:=CompQR.FieldByName('Serial_Number').AsInteger;
               /////////file for a compnay in its own folder
-              useFolder:=SeminarFolder+'\'+trim(compName)+'_'+CompId;
+              temp:= stringreplace(compName, '\', '_', [rfReplaceAll, rfIgnoreCase]);
+              temp:= stringreplace(temp, '/', '_', [rfReplaceAll, rfIgnoreCase]);
+              useFolder:=SeminarFolder+'\'+trim(temp)+'_'+CompId;
+
               if  not DirectoryExists(useFOlder) then begin
                     if not CreateDir(useFOlder) then begin
                       ShowMessage('cannot Create Directory: '+UseFolder);
@@ -583,7 +591,7 @@ begin
               CopyaFile(DocSerial,fName);
               CreateTextFile(SeminarSerial,CompSerial,fTextName);
 
-              fname:=UseFOlder+'\'+'StudentsFile.txt';
+              fname:=UseFOlder+'\'+'StudentsFile.csv';
               CreateStudentFile(SeminarSerial,fname);
 
               compQR.Next;
@@ -835,6 +843,14 @@ var
   field:TField;
   date:Tdate;
   str :String;
+  I:integer;
+  function FillEmpty(str:String):String;
+  begin
+    if trim(str)='' then
+      result:='-'
+    else
+      result:=Trim(str);
+  end;
 begin
 
   if FileExists(FileName) then
@@ -842,11 +858,17 @@ begin
 
   Writer := TStreamWriter.Create(FileName, true, TEncoding.UTF8);
   str:=
-  ' select'
-  +'  per.national_id, per.last_name,per.first_name ,per.job from'
-  +'  seminar_person sp left outer join'
-  +'  person per on sp.fk_person_serial=per.serial_number'
-  +'  where sp.fk_seminar_serial= :seminarSerial';
+  '   select'
+  +'    ''T'' as Id_Type,per.national_id,''Κύπρος'' as Country,'
+  +'    case(per.sex)'
+  +'    when ''M'' then ''A'''
+  +'    when ''F'' then ''Θ'''
+  +'    else ''A'''
+  +'    end as Sex'
+  +'    ,per.last_name,per.first_name ,per.job from'
+  +'    seminar_person sp left outer join'
+  +'    person per on sp.fk_person_serial=per.serial_number'
+  +'    where sp.fk_seminar_serial= :seminarSerial';
 
   qr:= TksQuery.Create(cn,str);
   try
@@ -856,11 +878,17 @@ begin
 
 //    writer.Write('National_id ; Last_name ; first_name');
 //    writer.WriteLine();
+    I:=0;
     while not qr.Eof do begin
-     writer.Write( qr.FieldByName('National_id').AsString +' ; ');
-     writer.Write( qr.FieldByName('Last_name').AsString   +' ; ');
-     writer.write( qr.FieldByName('first_name').AsString  +' ; ');
-     writer.write( qr.FieldByName('job').AsString );
+     inc(i);
+     writer.Write( intToStr(i)+'. ; ');
+     writer.Write( 'T ; ');
+     writer.Write( fillEmpty(qr.FieldByName('National_id').AsString) +' ; ');
+     writer.Write( 'Κύπρος ; ');
+     writer.Write( FillEmpty(qr.FieldByName('sex').AsString)   +' ; ');
+     writer.Write( FillEmpty(qr.FieldByName('Last_name').AsString)   +' ; ');
+     writer.write( FillEmpty(qr.FieldByName('first_name').AsString)  +' ; ');
+     writer.write( FillEmpty(qr.FieldByName('job').AsString ));
      writer.WriteLine();
      qr.Next;
     end;

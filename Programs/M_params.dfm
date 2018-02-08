@@ -304,6 +304,7 @@ object M_paramsFRM: TM_paramsFRM
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 3
+    ExplicitTop = 51
     object OptionGRP: TRzRadioGroup
       Left = 534
       Top = 26
@@ -1186,5 +1187,9 @@ object M_paramsFRM: TM_paramsFRM
     Options = []
     Left = 544
     Top = 501
+  end
+  object FolderSelectDLG: TRzSelectFolderDialog
+    Left = 616
+    Top = 512
   end
 end

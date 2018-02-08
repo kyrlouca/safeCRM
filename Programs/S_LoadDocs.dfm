@@ -1139,8 +1139,6 @@ object S_LoadDocsFRM: TS_LoadDocsFRM
       TitleFont.Style = []
       TitleLines = 1
       TitleButtons = False
-      ExplicitLeft = 2
-      ExplicitTop = 1
     end
     object RzPanel7: TRzPanel
       Left = 601

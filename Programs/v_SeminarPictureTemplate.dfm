@@ -2,25 +2,26 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 721
+  ClientHeight = 701
   ClientWidth = 1027
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -10
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
+  WindowState = wsMaximized
   OnActivate = FormActivate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel4: TRzPanel
     Left = 0
-    Top = 678
+    Top = 658
     Width = 1027
     Height = 43
     Align = alBottom
@@ -269,14 +270,12 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -6
   end
   object RzPanel2: TRzPanel
     Left = 0
     Top = 53
     Width = 1027
-    Height = 625
+    Height = 605
     Align = alClient
     BorderOuter = fsNone
     TabOrder = 2
@@ -284,11 +283,10 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
       Left = 0
       Top = 0
       Width = 1027
-      Height = 625
+      Height = 605
       ActivePage = PictTS
       Align = alClient
       TabOrder = 0
-      ExplicitTop = -1
       object PictTS: TTabSheet
         Caption = 'Template'
         OnShow = PictTSShow
@@ -296,11 +294,10 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
           Left = 0
           Top = 0
           Width = 1019
-          Height = 597
+          Height = 577
           Align = alClient
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitTop = -2
           object LanguageRGP: TwwRadioGroup
             Left = 18
             Top = 3
@@ -310,9 +307,15 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
             ItemIndex = 0
             Caption = #915#955#974#963#963#945
             DataField = 'TYPE_MONO_POLY'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
             Items.Strings = (
               #917#955#955#951#957#953#954#940
               'English')
+            ParentFont = False
             TabOrder = 0
             Values.Strings = (
               'G'
@@ -1275,6 +1278,7 @@ object V_SeminarPictureTemplateFRM: TV_SeminarPictureTemplateFRM
       
         'where stp.FK_SEMINAR_SERIAL = :SeminarSerial  and stp.LANGUAGE_G' +
         'REEK_OR_ENGLISH = :language')
+    Constraints = <>
     Left = 65
     Top = 185
     ParamData = <
