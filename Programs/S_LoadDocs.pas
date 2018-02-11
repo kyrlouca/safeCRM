@@ -514,6 +514,7 @@ begin
 
   temp:= stringreplace(SeminarName, '\', '_', [rfReplaceAll, rfIgnoreCase]);
   temp:= stringreplace(temp, '/', '_', [rfReplaceAll, rfIgnoreCase]);
+  temp:= stringreplace(temp, '.', '_', [rfReplaceAll, rfIgnoreCase]);
   SeminarFolder:=baseFOlder+'\'+SeminarName+'_'+IntToStr(SeminarSerial);
 
 
@@ -543,7 +544,7 @@ begin
 
         if IsSendToAll='N' then begin
           /////////file for the seminar
-          fname:= SeminarFolder+'\'+fileName+'.docx';
+          fname:= SeminarFolder+'\'+fileName+'.docM';
           fTextName:=SeminarFolder+'\'+fileName+'.csv';
           CopyaFile(DocSerial,fName);
           CreateTextFile(seminarSerial,MonoCompanySerial,fTextName);
@@ -578,6 +579,7 @@ begin
               /////////file for a compnay in its own folder
               temp:= stringreplace(compName, '\', '_', [rfReplaceAll, rfIgnoreCase]);
               temp:= stringreplace(temp, '/', '_', [rfReplaceAll, rfIgnoreCase]);
+              temp:= stringreplace(temp, '.', '_', [rfReplaceAll, rfIgnoreCase]);
               useFolder:=SeminarFolder+'\'+trim(temp)+'_'+CompId;
 
               if  not DirectoryExists(useFOlder) then begin
@@ -586,12 +588,12 @@ begin
                       exit;
                     end;
               end;
-              fname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.docx';
+              fname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.docM';
               fTextname:=UseFOlder+'\'+fileName+Trim(compId)+'_'+'.csv';
               CopyaFile(DocSerial,fName);
               CreateTextFile(SeminarSerial,CompSerial,fTextName);
 
-              fname:=UseFOlder+'\'+'StudentsFile.csv';
+              fname:=UseFOlder+'\'+'StudentsFile.xls';
               CreateStudentFile(SeminarSerial,fname);
 
               compQR.Next;
@@ -901,5 +903,85 @@ begin
 
 end;
 
+{
+//macros to copy in Docm File
+// create macros for document
 
+
+Sub SaveDocWithoutSQL()
+With ActiveDocument
+    If .MailMerge.MainDocumentType <> wdNotAMergeDocument Then
+            .MailMerge.MainDocumentType = wdNotAMergeDocument
+            .Save
+            .Close
+    End If
+End With
+End Sub
+Sub MergeDoc()
+'
+' mac1 Macro
+' **** you need a schema.ini to avoid asking for UTF8
+'
+Dim oApp As Word.Application
+Dim oDoc As Word.Document
+Set oDoc = Application.ActiveDocument
+
+Dim myDocFile As String
+myDocFile = ActiveDocument.FullName
+
+Dim ValuesFile As String
+'ValuesFile = "C:\Users\KyrLouca\Documents\TestVBA\Names3.csv"
+ValuesFile = Left(myDocFile, InStr(myDocFile, ".") - 1) & ".csv"
+
+Dim MergedFIle As String
+MergedFIle = GetMergeFileName("__Poly")
+
+
+ActiveDocument.MailMerge.OpenDataSource Name:=ValuesFile, ReadOnly:=True
+With oDoc.MailMerge
+.Destination = wdSendToNewDocument
+.MainDocumentType = wdDirectory
+.Execute
+End With
+
+
+Dim NewDoc As Word.Document
+Set NewDoc = Application.ActiveDocument
+NewDoc.SaveAs FileName:=MergedFIle, fileFormat:=wdFormatXMLDocument
+
+
+oDoc.Close False
+
+oApp.Visible = True
+
+
+
+End Sub
+
+Sub test()
+Dim test As String
+test = GetMergeFileName("__Poly")
+MsgBox test
+
+End Sub
+
+Function GetMergeFileName(filePrefix As String) As String
+
+Dim myFile As String
+myFile = Left(ActiveDocument.Name, InStr(ActiveDocument.Name, ".") - 1)
+myFile = Mid(myFile, 8)
+
+Dim myPath As String
+myPath = Left(ActiveDocument.FullName, InStr(ActiveDocument.FullName, filePrefix) - 1)
+
+Dim Res As String
+Res = myPath & myFile & ".docx"
+GetMergeFileName = Res
+
+End Function
+
+
+
+
+}
 End.
