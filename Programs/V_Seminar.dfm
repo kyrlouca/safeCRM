@@ -117,7 +117,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = SubjectTS
+      ActivePage = StudentsTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -336,18 +336,20 @@ object V_SeminarFRM: TV_SeminarFRM
               Left = 115
               Top = 285
               Width = 185
-              Height = 62
+              Height = 76
               DisableThemes = False
               Caption = #917#960#953#967#949#953#961#953#963#953#945#954#972
               DataField = 'TYPE_MONO_POLY'
               DataSource = SeminarSRC
               Items.Strings = (
                 #924#972#957#959'-'#917#960#953#967#949#953#961#953#963#953#945#954#972
-                #928#972#955#965'-'#917#960#953#967#949#953#961#953#963#953#945#954#972)
+                #928#972#955#965'-'#917#960#953#967#949#953#961#953#963#953#945#954#972
+                #913#960#955#972)
               TabOrder = 7
               Values.Strings = (
                 'M'
-                'P')
+                'P'
+                'N')
               OnChange = MonoRGPChange
             end
             object CompanyFLD: TwwDBLookupCombo
@@ -1295,7 +1297,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 Left = 84
                 Top = 22
                 Width = 144
-                Height = 21
+                Height = 24
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1319,7 +1321,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 Left = 84
                 Top = 48
                 Width = 144
-                Height = 21
+                Height = 24
                 DropDownAlignment = taLeftJustify
                 Selected.Strings = (
                   'LAST_NAME'#9'12'#9#917#960#943#952#949#964#959#9'F'
@@ -1727,7 +1729,7 @@ object V_SeminarFRM: TV_SeminarFRM
                 ParentFont = False
               end
               object SearchPersonFLD: TwwIncrementalSearch
-                Left = 75
+                Left = 77
                 Top = 7
                 Width = 128
                 Height = 22
@@ -3401,7 +3403,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800840310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110008800880310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4277,6 +4279,7 @@ object V_SeminarFRM: TV_SeminarFRM
       '   pout.status_active='#39'Y'#39
       '   and pout.is_company='#39'N'#39
       '   and pefound.serial_number is null'
+      'order by pout.last_name'
       '    ')
     DetailFields = 'FK_SEMINAR_SERIAL'
     ReadOnly = True

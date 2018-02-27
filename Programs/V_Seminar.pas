@@ -1127,6 +1127,11 @@ begin
 
   end;
 
+    if key=VK_DOWN then begin
+    AllPersonsGRD.SetFocus;
+    exit;
+  end;
+
 end;
 
 procedure TV_SeminarFRM.AllPersonsGRDDblClick(Sender: TObject);
@@ -1201,6 +1206,7 @@ begin
   begin
     InsertPerson();
   end;
+
 
 end;
 

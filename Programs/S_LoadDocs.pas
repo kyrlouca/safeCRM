@@ -114,7 +114,7 @@ type
   procedure writeNewLine( Const FileName :String);
   procedure writeValues(Const Prefix:string; Const TableSQL:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
   procedure writeTitles(Const Prefix:String; Const TableSQL:String; Const Serial :Integer; Const FileName :String;Const fieldArray: Array of String);
-  procedure CreateStudentFile( Const SeminarSerial :Integer; Const FileName :String);
+  procedure CreateStudentFile( Const SeminarSerial :Integer; Const CompanySerial:Integer; Const FileName :String);
 
   public
     { Public declarations }
@@ -594,7 +594,7 @@ begin
               CreateTextFile(SeminarSerial,CompSerial,fTextName);
 
               fname:=UseFOlder+'\'+'StudentsFile.xls';
-              CreateStudentFile(SeminarSerial,fname);
+              CreateStudentFile(SeminarSerial,compSerial,fname);
 
               compQR.Next;
             end;
@@ -835,7 +835,7 @@ end;
 
 
 
-procedure TS_LoadDocsFRM.CreateStudentFile( Const SeminarSerial :Integer; Const FileName :String);
+procedure TS_LoadDocsFRM.CreateStudentFile( Const SeminarSerial :Integer;Const CompanySerial:Integer; Const FileName :String);
 var
 //  str:String;
   qr:TksQuery;
@@ -870,12 +870,14 @@ begin
   +'    ,per.last_name,per.first_name ,per.job from'
   +'    seminar_person sp left outer join'
   +'    person per on sp.fk_person_serial=per.serial_number'
-  +'    where sp.fk_seminar_serial= :seminarSerial';
+  +'    where sp.fk_seminar_serial= :seminarSerial '
+  +'    and per.fk_company_serial = :companyserial ';
 
   qr:= TksQuery.Create(cn,str);
   try
     qr.close;
     qr.ParamByName('SeminarSerial').Value:=SeminarSerial;
+    qr.ParamByName('CompanySerial').Value:=CompanySerial;
     qr.open;
 
 //    writer.Write('National_id ; Last_name ; first_name');
