@@ -117,7 +117,7 @@ object V_SeminarFRM: TV_SeminarFRM
       Width = 1073
       Height = 611
       Margins.Left = 30
-      ActivePage = StudentsTS
+      ActivePage = SeminarTS
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -141,7 +141,7 @@ object V_SeminarFRM: TV_SeminarFRM
           object FirstGRP: TRzGroupBox
             Left = 20
             Top = 24
-            Width = 386
+            Width = 466
             Height = 417
             Caption = #928#955#951#961#959#966#959#961#943#949#962
             Font.Charset = DEFAULT_CHARSET
@@ -280,9 +280,9 @@ object V_SeminarFRM: TV_SeminarFRM
               ParentFont = False
             end
             object DescFLD: TwwDBEdit
-              Left = 115
+              Left = 113
               Top = 194
-              Width = 252
+              Width = 344
               Height = 22
               DataField = 'SEMINAR_NAME'
               DataSource = SeminarSRC
@@ -292,9 +292,9 @@ object V_SeminarFRM: TV_SeminarFRM
               WordWrap = False
             end
             object SeminarTypeFLD: TwwDBComboBox
-              Left = 115
-              Top = 169
-              Width = 144
+              Left = 113
+              Top = 167
+              Width = 344
               Height = 21
               ShowButton = True
               Style = csDropDownList
@@ -318,9 +318,9 @@ object V_SeminarFRM: TV_SeminarFRM
               OnCloseUp = SeminarTypeFLDCloseUp
             end
             object RzDBRichEdit1: TRzDBRichEdit
-              Left = 115
+              Left = 113
               Top = 222
-              Width = 252
+              Width = 344
               Height = 49
               DataField = 'COMMENTS'
               DataSource = SeminarSRC
@@ -353,9 +353,9 @@ object V_SeminarFRM: TV_SeminarFRM
               OnChange = MonoRGPChange
             end
             object CompanyFLD: TwwDBLookupCombo
-              Left = 115
+              Left = 113
               Top = 377
-              Width = 252
+              Width = 344
               Height = 22
               DropDownAlignment = taLeftJustify
               Selected.Strings = (
@@ -449,7 +449,7 @@ object V_SeminarFRM: TV_SeminarFRM
             end
           end
           object SecondGRP: TRzGroupBox
-            Left = 412
+            Left = 492
             Top = 24
             Width = 321
             Height = 206
@@ -618,8 +618,8 @@ object V_SeminarFRM: TV_SeminarFRM
             end
           end
           object GroupBox7: TGroupBox
-            Left = 412
-            Top = 236
+            Left = 492
+            Top = 246
             Width = 325
             Height = 59
             Caption = #932#965#960#959#962' '#931#949#956#953#957#945#961#943#959#965
@@ -3403,7 +3403,7 @@ object V_SeminarFRM: TV_SeminarFRM
     Left = 210
     Top = 101
     Bitmap = {
-      494C010110008800880310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101100088008C0310001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4868,8 +4868,8 @@ object V_SeminarFRM: TV_SeminarFRM
     end
   end
   object IBCSQLMonitor1: TIBCSQLMonitor
-    Left = 295
-    Top = 265
+    Left = 311
+    Top = 177
   end
   object CompanySQL: TIBCQuery
     Connection = U_databaseFRM.DataConnection
