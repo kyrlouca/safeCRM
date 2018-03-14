@@ -2,13 +2,13 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 575
+  ClientHeight = 555
   ClientWidth = 1002
   Color = clBtnFace
-  Font.Charset = GREEK_CHARSET
+  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Arial Narrow'
+  Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
   Menu = MainMenu1
@@ -18,7 +18,7 @@ object P_attendanceFRM: TP_attendanceFRM
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 15
+  TextHeight = 14
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -54,12 +54,11 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 532
+    Top = 512
     Width = 1002
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 475
     object RzPanel1: TRzPanel
       Left = 901
       Top = 1
@@ -157,25 +156,35 @@ object P_attendanceFRM: TP_attendanceFRM
     Left = 0
     Top = 92
     Width = 1002
-    Height = 440
+    Height = 420
     Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 2
-    ExplicitHeight = 383
     object Panel5: TPanel
       Left = 457
       Top = 1
       Width = 416
-      Height = 438
+      Height = 418
       Align = alLeft
       BevelOuter = bvNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
       Locked = True
+      ParentFont = False
       TabOrder = 0
-      ExplicitHeight = 381
       object wwDBGrid1: TwwDBGrid
         Left = 0
         Top = 36
         Width = 416
-        Height = 359
+        Height = 339
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
@@ -203,12 +212,13 @@ object P_attendanceFRM: TP_attendanceFRM
         TitleFont.Charset = GREEK_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -12
-        TitleFont.Name = 'Arial Narrow'
+        TitleFont.Name = 'Arial'
         TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
         OnExit = wwDBGrid1Exit
-        ExplicitHeight = 302
+        ExplicitLeft = 6
+        ExplicitTop = 35
         object PresentFLD: TwwCheckBox
           Left = 72
           Top = 62
@@ -357,14 +367,13 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 395
+        Top = 375
         Width = 416
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 2
-        ExplicitTop = 338
         object RzPanel6: TRzPanel
           Left = 315
           Top = 0
@@ -596,12 +605,10 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 456
-      Height = 438
+      Height = 418
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
-      ExplicitLeft = 2
-      ExplicitTop = -4
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
@@ -613,13 +620,12 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 241
+        Top = 221
         Width = 456
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 184
         object Grid1: TwwDBGrid
           Left = 0
           Top = 0

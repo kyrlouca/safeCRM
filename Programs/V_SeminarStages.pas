@@ -127,7 +127,6 @@ type
     CompletedST: TRzBitBtn;
     InvoicedST: TRzBitBtn;
     CertifiedST: TRzBitBtn;
-    b1: TRzButton;
     ImageList1: TImageList;
     procedure AcceptBTNClick(Sender: TObject);
     procedure RzBitBtn1Click(Sender: TObject);
@@ -192,7 +191,9 @@ qr:=TksQuery.Create(cn,'select * from seminar sem where sem.serial_number= :Semi
       isError:=true;
     end;
 
-    if trim(qr.FieldByName('anad_number').AsString)='' then begin
+    if (trim(qr.FieldByName('anad_number').AsString)='') and
+    (trim(qr.FieldByName('TYPE_mono_poly').AsString)<>'N')
+     then begin
       ErrorMemo.Lines.Add('Ο Αριθμός ΑΝΑΔ δεν είναι συμπληρωμένος');
       isError:=true;
     end;
