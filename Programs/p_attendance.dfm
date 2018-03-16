@@ -2,7 +2,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 596
+  ClientHeight = 576
   ClientWidth = 1002
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,12 +54,11 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 553
+    Top = 533
     Width = 1002
     Height = 43
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 472
     object RzPanel1: TRzPanel
       Left = 901
       Top = 1
@@ -157,7 +156,7 @@ object P_attendanceFRM: TP_attendanceFRM
     Left = 0
     Top = 92
     Width = 1002
-    Height = 461
+    Height = 441
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -166,12 +165,11 @@ object P_attendanceFRM: TP_attendanceFRM
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    ExplicitHeight = 380
     object Panel5: TPanel
       Left = 441
       Top = 1
       Width = 504
-      Height = 459
+      Height = 439
       Align = alLeft
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -186,7 +184,7 @@ object P_attendanceFRM: TP_attendanceFRM
         Left = 0
         Top = 36
         Width = 504
-        Height = 380
+        Height = 360
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
@@ -207,21 +205,19 @@ object P_attendanceFRM: TP_attendanceFRM
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
-        Font.Style = [fsBold]
+        Font.Style = []
         ParentFont = False
         TabOrder = 0
         TitleAlignment = taLeftJustify
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
-        TitleFont.Height = -11
+        TitleFont.Height = -13
         TitleFont.Name = 'Arial'
-        TitleFont.Style = [fsBold, fsItalic]
+        TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
         UseTFields = False
         OnExit = wwDBGrid1Exit
-        ExplicitLeft = 6
-        ExplicitTop = 34
         object PresentFLD: TwwCheckBox
           Left = 72
           Top = 62
@@ -249,7 +245,6 @@ object P_attendanceFRM: TP_attendanceFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitWidth = 416
         object wwDBNavigator1: TwwDBNavigator
           Left = 0
           Top = 0
@@ -371,15 +366,13 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 416
+        Top = 396
         Width = 504
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 2
-        ExplicitTop = 335
-        ExplicitWidth = 416
         object RzPanel6: TRzPanel
           Left = 403
           Top = 0
@@ -388,7 +381,6 @@ object P_attendanceFRM: TP_attendanceFRM
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
-          ExplicitLeft = 315
         end
         object SavePresBTN: TBitBtn
           Left = 7
@@ -612,7 +604,7 @@ object P_attendanceFRM: TP_attendanceFRM
       Left = 1
       Top = 1
       Width = 440
-      Height = 459
+      Height = 439
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
@@ -624,18 +616,15 @@ object P_attendanceFRM: TP_attendanceFRM
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitWidth = 456
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 262
+        Top = 242
         Width = 440
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
-        ExplicitTop = 181
-        ExplicitWidth = 456
         object Grid1: TwwDBGrid
           Left = 0
           Top = 0

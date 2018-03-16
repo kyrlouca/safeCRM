@@ -714,7 +714,7 @@ object M_companyNewFRM: TM_companyNewFRM
             WordWrap = False
           end
           object wwDBEdit16: TwwDBEdit
-            Left = 113
+            Left = 114
             Top = 68
             Width = 121
             Height = 22

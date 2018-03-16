@@ -755,11 +755,11 @@ object L_companiesFRM: TL_companiesFRM
           'STATUS_ACTIVE'#9'7'#9#916#953#945#947#961'.'
           'LAST_NAME'#9'24'#9#908#957#959#956#945
           'NATIONAL_ID'#9'12'#9#913#961'. '#917#947#947#961#945#966#942#962
-          'COMPANY_OWNER'#9'16'#9#921#948#953#959#954#964#942#964#951#962
+          'COMPANY_OWNER'#9'18'#9#921#948#953#959#954#964#942#964#951#962
           'ADDRESS_CITY'#9'9'#9#928#972#955#951
           'ADDRESS_DISTRICT'#9'10'#9#917#960#945#961#967#943#945
           'COMPANY_CONTACT'#9'16'#9#917#960#953#954#959#953#957#969#957#943#945
-          'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972
+          'PHONE_ALTERNATE'#9'13'#9#932#951#955'. '#917#960#953#954#959#953#957'.'
           'PHONE_MOBILE'#9'13'#9#932#951#955'. '#922#953#957#951#964#972)
         IniAttributes.Delimiter = ';;'
         IniAttributes.UnicodeIniFile = False
@@ -927,7 +927,7 @@ object L_companiesFRM: TL_companiesFRM
     end
     object TableSQLCOMPANY_OWNER: TWideStringField
       DisplayLabel = #921#948#953#959#954#964#942#964#951#962
-      DisplayWidth = 16
+      DisplayWidth = 18
       FieldName = 'COMPANY_OWNER'
       Size = 160
     end
@@ -951,10 +951,10 @@ object L_companiesFRM: TL_companiesFRM
       FieldName = 'COMPANY_CONTACT'
       Size = 160
     end
-    object TableSQLPHONE_FIXED: TWideStringField
-      DisplayLabel = #932#951#955'. '#931#964#945#952#949#961#972
-      DisplayWidth = 12
-      FieldName = 'PHONE_FIXED'
+    object TableSQLPHONE_ALTERNATE: TWideStringField
+      DisplayLabel = #932#951#955'. '#917#960#953#954#959#953#957'.'
+      DisplayWidth = 13
+      FieldName = 'PHONE_ALTERNATE'
       FixedChar = True
       Size = 15
     end
@@ -962,6 +962,14 @@ object L_companiesFRM: TL_companiesFRM
       DisplayLabel = #932#951#955'. '#922#953#957#951#964#972
       DisplayWidth = 13
       FieldName = 'PHONE_MOBILE'
+      FixedChar = True
+      Size = 15
+    end
+    object TableSQLPHONE_FIXED: TWideStringField
+      DisplayLabel = #932#951#955'. '#931#964#945#952#949#961#972
+      DisplayWidth = 12
+      FieldName = 'PHONE_FIXED'
+      Visible = False
       FixedChar = True
       Size = 15
     end
@@ -991,12 +999,6 @@ object L_companiesFRM: TL_companiesFRM
       FieldName = 'OCCUPATION'
       Visible = False
       Size = 160
-    end
-    object TableSQLPHONE_ALTERNATE: TWideStringField
-      FieldName = 'PHONE_ALTERNATE'
-      Visible = False
-      FixedChar = True
-      Size = 15
     end
     object TableSQLFAX: TWideStringField
       FieldName = 'FAX'
