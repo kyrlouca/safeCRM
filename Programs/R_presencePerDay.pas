@@ -288,7 +288,8 @@ begin
       RField1.Top := 0.2;
 
       RField1.Font.Name:='Arial';
-      RField1.Font.Size:=11;
+      Rfield1.Font.Charset:=DEFAULT_CHARSET;
+      RField1.Font.Size:=9;
       RField1.AutoSize:=false;
 
       if UpperCase(RField1.Name)='PERCENT' then begin

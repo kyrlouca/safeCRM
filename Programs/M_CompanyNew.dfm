@@ -319,7 +319,6 @@ object M_companyNewFRM: TM_companyNewFRM
         Align = alClient
         BorderOuter = fsNone
         TabOrder = 0
-        ExplicitTop = -1
         object GroupBox1: TGroupBox
           Left = 3
           Top = 20
@@ -655,7 +654,7 @@ object M_companyNewFRM: TM_companyNewFRM
             ParentFont = False
           end
           object wwDBEdit8: TwwDBEdit
-            Left = 113
+            Left = 114
             Top = 18
             Width = 121
             Height = 22
@@ -982,7 +981,7 @@ object M_companyNewFRM: TM_companyNewFRM
           end
           object wwDBEdit28: TwwDBEdit
             Left = 89
-            Top = 100
+            Top = 98
             Width = 161
             Height = 22
             DataField = 'ADDRESS_CITY'
@@ -1098,6 +1097,7 @@ object M_companyNewFRM: TM_companyNewFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = True
+            OnDblClick = Grid1DblClick
           end
         end
         object RzPanel3: TRzPanel
@@ -1314,6 +1314,7 @@ object M_companyNewFRM: TM_companyNewFRM
             TitleFont.Style = []
             TitleLines = 1
             TitleButtons = True
+            OnDblClick = AllPersonsGRDDblClick
             OnKeyDown = AllPersonsGRDKeyDown
           end
           object RzSizePanel2: TRzSizePanel

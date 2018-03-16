@@ -179,6 +179,7 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
       '         order by'
       '            ssd.serial_number, spv.last_first_name')
     Active = True
+    Constraints = <>
     Filtered = True
     Left = 64
     Top = 8
@@ -226,6 +227,7 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
   object vt1: TVirtualTable
     Options = [voPersistentData, voStored, voSetEmptyStrToNull, voSkipUnSupportedFieldTypes]
     Active = True
+    Constraints = <>
     FieldDefs = <
       item
         Name = 'vt1Field1'
@@ -1358,9 +1360,9 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
         UserName = 'Shape1'
         Shape = stRoundRect
         mmHeight = 14817
-        mmLeft = 46567
-        mmTop = 15845
-        mmWidth = 74348
+        mmLeft = 45773
+        mmTop = 16140
+        mmWidth = 131763
         BandType = 1
         LayerName = BandLayer3
       end
@@ -1371,7 +1373,7 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Name = 'TIMES NEW ROMAN'
-        Font.Size = 12
+        Font.Size = 10
         Font.Style = []
         Transparent = True
         mmHeight = 5027
@@ -1389,7 +1391,7 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'TIMES NEW ROMAN'
-        Font.Size = 12
+        Font.Size = 10
         Font.Style = []
         ParentDataPipeline = False
         Transparent = True
@@ -1397,7 +1399,7 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
         mmHeight = 4498
         mmLeft = 76422
         mmTop = 17645
-        mmWidth = 49389
+        mmWidth = 96132
         BandType = 1
         LayerName = BandLayer3
       end
@@ -1410,7 +1412,7 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'TIMES NEW ROMAN'
-        Font.Size = 12
+        Font.Size = 10
         Font.Style = []
         ParentDataPipeline = False
         Transparent = True
@@ -1429,7 +1431,7 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Name = 'TIMES NEW ROMAN'
-        Font.Size = 12
+        Font.Size = 10
         Font.Style = []
         Transparent = True
         mmHeight = 5027
@@ -1608,6 +1610,7 @@ object R_presencePErDayFRM: TR_presencePErDayFRM
         'SErial'
       '  ')
     Active = True
+    Constraints = <>
     Filtered = True
     Left = 48
     Top = 304

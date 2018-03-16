@@ -181,6 +181,8 @@ type
     procedure PageControlPCChanging(Sender: TObject; var AllowChange: Boolean);
     procedure InfoTSShow(Sender: TObject);
     procedure SafeFLDClick(Sender: TObject);
+    procedure Grid1DblClick(Sender: TObject);
+    procedure AllPersonsGRDDblClick(Sender: TObject);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -200,10 +202,28 @@ var
 
 implementation
 
-uses   U_Database, G_generalProcs;
+uses   U_Database, G_generalProcs, M_Student;
 
 
 {$R *.DFM}
+
+procedure TM_companyNewFRM.AllPersonsGRDDblClick(Sender: TObject);
+vAR
+  Frm:TM_StudentFRM;
+  studentSerial:Integer;
+begin
+  studentSerial:=(sender as twwdbgrid).DataSource.DataSet.FieldByName('serial_number').AsInteger;
+  if studentSerial<1 then
+    exit;
+  frm := TM_StudentFRM.Create(nil);
+  try
+    frm.IN_ACTION:='EDIT';
+    frm.IN_studentSerial:= studentSerial;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
+end;
 
 procedure TM_companyNewFRM.AllPersonsGRDKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
@@ -324,6 +344,24 @@ end;
 procedure TM_companyNewFRM.FormCreate(Sender: TObject);
 begin
   cn:=U_databaseFRM.DataConnection;
+end;
+
+procedure TM_companyNewFRM.Grid1DblClick(Sender: TObject);
+vAR
+  Frm:TM_StudentFRM;
+  studentSerial:Integer;
+begin
+  studentSerial:=(sender as twwdbgrid).DataSource.DataSet.FieldByName('serial_number').AsInteger;
+  if studentSerial<1 then
+    exit;
+  frm := TM_StudentFRM.Create(nil);
+  try
+    frm.IN_ACTION:='EDIT';
+    frm.IN_studentSerial:= studentSerial;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TM_companyNewFRM.Grid1TitleButtonClick(Sender: TObject;

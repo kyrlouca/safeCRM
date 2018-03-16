@@ -445,14 +445,15 @@ object L_companiesFRM: TL_companiesFRM
     Align = alClient
     TabOrder = 2
     object Panel5: TPanel
-      Left = 905
+      Left = 929
       Top = 1
-      Width = 224
+      Width = 138
       Height = 326
       Align = alLeft
       BevelOuter = bvNone
       Locked = True
       TabOrder = 1
+      ExplicitLeft = 928
       object InsertHawbBTN: TRzBitBtn
         Left = 6
         Top = 35
@@ -612,9 +613,9 @@ object L_companiesFRM: TL_companiesFRM
       end
     end
     object RzPanel2: TRzPanel
-      Left = 41
+      Left = 17
       Top = 1
-      Width = 864
+      Width = 912
       Height = 326
       Align = alLeft
       BorderOuter = fsNone
@@ -622,11 +623,12 @@ object L_companiesFRM: TL_companiesFRM
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 864
+        Width = 912
         Height = 33
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 864
         object Nav1: TwwDBNavigator
           Left = 1
           Top = 7
@@ -652,7 +654,6 @@ object L_companiesFRM: TL_companiesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Button'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 0
@@ -669,7 +670,6 @@ object L_companiesFRM: TL_companiesFRM
             Spacing = 4
             Transparent = False
             Caption = 'Nav1Prior'
-            Enabled = False
             DisabledTextColors.ShadeColor = clGray
             DisabledTextColors.HighlightColor = clBtnHighlight
             Index = 1
@@ -746,16 +746,18 @@ object L_companiesFRM: TL_companiesFRM
       object Grid1: TwwDBGrid
         Left = 0
         Top = 33
-        Width = 849
+        Width = 912
         Height = 293
         ControlType.Strings = (
           'STATUS_ACTIVE;CheckBox;N;Y')
         Selected.Strings = (
           'SERIAL_NUMBER'#9'8'#9'A/A'
-          'STATUS_ACTIVE'#9'12'#9#916#953#945#947#961#945#956#956#941#957#951
-          'LAST_NAME'#9'32'#9#908#957#959#956#945
-          'NATIONAL_ID'#9'17'#9#913#961'. '#917#947#947#961#945#966#942#962
+          'STATUS_ACTIVE'#9'7'#9#916#953#945#947#961'.'
+          'LAST_NAME'#9'24'#9#908#957#959#956#945
+          'NATIONAL_ID'#9'12'#9#913#961'. '#917#947#947#961#945#966#942#962
           'COMPANY_OWNER'#9'16'#9#921#948#953#959#954#964#942#964#951#962
+          'ADDRESS_CITY'#9'9'#9#928#972#955#951
+          'ADDRESS_DISTRICT'#9'10'#9#917#960#945#961#967#943#945
           'COMPANY_CONTACT'#9'16'#9#917#960#953#954#959#953#957#969#957#943#945
           'PHONE_FIXED'#9'12'#9#932#951#955'. '#931#964#945#952#949#961#972
           'PHONE_MOBILE'#9'13'#9#932#951#955'. '#922#953#957#951#964#972)
@@ -780,7 +782,7 @@ object L_companiesFRM: TL_companiesFRM
         TitleAlignment = taLeftJustify
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
-        TitleFont.Height = -13
+        TitleFont.Height = -12
         TitleFont.Name = 'Arial'
         TitleFont.Style = []
         TitleLines = 1
@@ -792,7 +794,7 @@ object L_companiesFRM: TL_companiesFRM
     object RzPanel4: TRzPanel
       Left = 1
       Top = 1
-      Width = 40
+      Width = 16
       Height = 326
       Align = alLeft
       Alignment = taLeftJustify
@@ -903,8 +905,8 @@ object L_companiesFRM: TL_companiesFRM
       Required = True
     end
     object TableSQLSTATUS_ACTIVE: TWideStringField
-      DisplayLabel = #916#953#945#947#961#945#956#956#941#957#951
-      DisplayWidth = 12
+      DisplayLabel = #916#953#945#947#961'.'
+      DisplayWidth = 7
       FieldName = 'STATUS_ACTIVE'
       Required = True
       FixedChar = True
@@ -912,14 +914,14 @@ object L_companiesFRM: TL_companiesFRM
     end
     object TableSQLLAST_NAME: TWideStringField
       DisplayLabel = #908#957#959#956#945
-      DisplayWidth = 32
+      DisplayWidth = 24
       FieldName = 'LAST_NAME'
       FixedChar = True
       Size = 30
     end
     object TableSQLNATIONAL_ID: TWideStringField
       DisplayLabel = #913#961'. '#917#947#947#961#945#966#942#962
-      DisplayWidth = 17
+      DisplayWidth = 12
       FieldName = 'NATIONAL_ID'
       FixedChar = True
     end
@@ -928,6 +930,20 @@ object L_companiesFRM: TL_companiesFRM
       DisplayWidth = 16
       FieldName = 'COMPANY_OWNER'
       Size = 160
+    end
+    object TableSQLADDRESS_CITY: TWideStringField
+      DisplayLabel = #928#972#955#951
+      DisplayWidth = 9
+      FieldName = 'ADDRESS_CITY'
+      FixedChar = True
+      Size = 30
+    end
+    object TableSQLADDRESS_DISTRICT: TWideStringField
+      DisplayLabel = #917#960#945#961#967#943#945
+      DisplayWidth = 10
+      FieldName = 'ADDRESS_DISTRICT'
+      FixedChar = True
+      Size = 30
     end
     object TableSQLCOMPANY_CONTACT: TWideStringField
       DisplayLabel = #917#960#953#954#959#953#957#969#957#943#945
@@ -1009,18 +1025,6 @@ object L_companiesFRM: TL_companiesFRM
     end
     object TableSQLADDRESS_POST_CODE: TWideStringField
       FieldName = 'ADDRESS_POST_CODE'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object TableSQLADDRESS_CITY: TWideStringField
-      FieldName = 'ADDRESS_CITY'
-      Visible = False
-      FixedChar = True
-      Size = 30
-    end
-    object TableSQLADDRESS_DISTRICT: TWideStringField
-      FieldName = 'ADDRESS_DISTRICT'
       Visible = False
       FixedChar = True
       Size = 30

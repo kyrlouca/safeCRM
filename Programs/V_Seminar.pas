@@ -1135,8 +1135,21 @@ begin
 end;
 
 procedure TV_SeminarFRM.AllPersonsGRDDblClick(Sender: TObject);
+vAR
+  Frm:TM_StudentFRM;
+  studentSerial:Integer;
 begin
-//  InsertPerson();
+  studentSerial:=(sender as twwdbgrid).DataSource.DataSet.FieldByName('serial_number').AsInteger;
+  if studentSerial<1 then
+    exit;
+  frm := TM_StudentFRM.Create(nil);
+  try
+    frm.IN_ACTION:='EDIT';
+    frm.IN_studentSerial:= studentSerial;
+    frm.ShowModal;
+  finally
+    frm.Free;
+  end;
 end;
 
 procedure TV_SeminarFRM.InsertPerson();

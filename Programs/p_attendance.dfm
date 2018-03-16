@@ -2,7 +2,7 @@ object P_attendanceFRM: TP_attendanceFRM
   Left = 365
   Top = 153
   Caption = '--'
-  ClientHeight = 555
+  ClientHeight = 596
   ClientWidth = 1002
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -54,11 +54,12 @@ object P_attendanceFRM: TP_attendanceFRM
   end
   object Panel4: TPanel
     Left = 0
-    Top = 512
+    Top = 553
     Width = 1002
     Height = 43
     Align = alBottom
     TabOrder = 3
+    ExplicitTop = 472
     object RzPanel1: TRzPanel
       Left = 901
       Top = 1
@@ -156,7 +157,7 @@ object P_attendanceFRM: TP_attendanceFRM
     Left = 0
     Top = 92
     Width = 1002
-    Height = 420
+    Height = 461
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -165,11 +166,12 @@ object P_attendanceFRM: TP_attendanceFRM
     Font.Style = []
     ParentFont = False
     TabOrder = 2
+    ExplicitHeight = 380
     object Panel5: TPanel
-      Left = 457
+      Left = 441
       Top = 1
-      Width = 416
-      Height = 418
+      Width = 504
+      Height = 459
       Align = alLeft
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -183,15 +185,15 @@ object P_attendanceFRM: TP_attendanceFRM
       object wwDBGrid1: TwwDBGrid
         Left = 0
         Top = 36
-        Width = 416
-        Height = 339
+        Width = 504
+        Height = 380
         ControlType.Strings = (
           'Is_Present;CustomEdit;PresentFLD;F')
         Selected.Strings = (
           'PersonSerial'#9'4'#9'ps'
           'DaySerial'#9'4'#9'ds'
-          'Last_name'#9'16'#9#917#960#943#952#949#964#959
-          'First_Name'#9'10'#9#908#957#959#956#945
+          'Last_name'#9'20'#9#917#960#943#952#949#964#959
+          'First_Name'#9'16'#9#908#957#959#956#945
           'Is_Present'#9'7'#9#928#945#961#974#957
           'Hours_Present'#9'6'#9'Hours')
         IniAttributes.Delimiter = ';;'
@@ -203,22 +205,23 @@ object P_attendanceFRM: TP_attendanceFRM
         DataSource = vPresenceSRC
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -11
+        Font.Height = -13
         Font.Name = 'Arial'
-        Font.Style = []
+        Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 0
         TitleAlignment = taLeftJustify
-        TitleFont.Charset = GREEK_CHARSET
+        TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
-        TitleFont.Height = -12
+        TitleFont.Height = -11
         TitleFont.Name = 'Arial'
-        TitleFont.Style = []
+        TitleFont.Style = [fsBold, fsItalic]
         TitleLines = 1
         TitleButtons = False
+        UseTFields = False
         OnExit = wwDBGrid1Exit
         ExplicitLeft = 6
-        ExplicitTop = 35
+        ExplicitTop = 34
         object PresentFLD: TwwCheckBox
           Left = 72
           Top = 62
@@ -241,11 +244,12 @@ object P_attendanceFRM: TP_attendanceFRM
       object RzPanel2: TRzPanel
         Left = 0
         Top = 0
-        Width = 416
+        Width = 504
         Height = 36
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitWidth = 416
         object wwDBNavigator1: TwwDBNavigator
           Left = 0
           Top = 0
@@ -367,21 +371,24 @@ object P_attendanceFRM: TP_attendanceFRM
       end
       object RzPanel5: TRzPanel
         Left = 0
-        Top = 375
-        Width = 416
+        Top = 416
+        Width = 504
         Height = 43
         Align = alBottom
         BorderOuter = fsFlat
         BorderSides = [sdLeft, sdRight, sdBottom]
         TabOrder = 2
+        ExplicitTop = 335
+        ExplicitWidth = 416
         object RzPanel6: TRzPanel
-          Left = 315
+          Left = 403
           Top = 0
           Width = 100
           Height = 42
           Align = alRight
           BorderOuter = fsNone
           TabOrder = 0
+          ExplicitLeft = 315
         end
         object SavePresBTN: TBitBtn
           Left = 7
@@ -604,28 +611,31 @@ object P_attendanceFRM: TP_attendanceFRM
     object PanelX: TRzPanel
       Left = 1
       Top = 1
-      Width = 456
-      Height = 418
+      Width = 440
+      Height = 459
       Align = alLeft
       BorderOuter = fsNone
       TabOrder = 1
       object RzPanel3: TRzPanel
         Left = 0
         Top = 0
-        Width = 456
+        Width = 440
         Height = 9
         Align = alTop
         BorderOuter = fsNone
         TabOrder = 0
+        ExplicitWidth = 456
       end
       object RzPanel4: TRzPanel
         Left = 0
-        Top = 221
-        Width = 456
+        Top = 262
+        Width = 440
         Height = 197
         Align = alBottom
         BorderOuter = fsNone
         TabOrder = 1
+        ExplicitTop = 181
+        ExplicitWidth = 456
         object Grid1: TwwDBGrid
           Left = 0
           Top = 0
@@ -1239,13 +1249,13 @@ object P_attendanceFRM: TP_attendanceFRM
     end
     object VPresenceSQLLast_name: TStringField
       DisplayLabel = #917#960#943#952#949#964#959
-      DisplayWidth = 16
+      DisplayWidth = 20
       FieldName = 'Last_name'
       Size = 30
     end
     object VPresenceSQLFirst_Name: TStringField
       DisplayLabel = #908#957#959#956#945
-      DisplayWidth = 10
+      DisplayWidth = 16
       FieldName = 'First_Name'
       Size = 30
     end

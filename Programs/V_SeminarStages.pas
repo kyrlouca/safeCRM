@@ -44,29 +44,6 @@ type
     TableSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
     TableSQLLAST_NAME: TWideStringField;
     TableSRC: TIBCDataSource;
-    SeminarSQL: TIBCQuery;
-    SeminarSQLSERIAL_NUMBER: TIntegerField;
-    SeminarSQLFK_SEMINAR: TIntegerField;
-    SeminarSQLFK_INSTRUCTOR: TIntegerField;
-    SeminarSQLFK_VENUE: TIntegerField;
-    SeminarSQLFK_COMPANY_PERSON_SERIAL: TIntegerField;
-    SeminarSQLSEMINAR_NAME: TWideStringField;
-    SeminarSQLSEMINAR_CORP_TYPE: TWideStringField;
-    SeminarSQLDATE_STARTED: TDateField;
-    SeminarSQLDATE_COMPLETED: TDateField;
-    SeminarSQLDURATION_DAYS: TIntegerField;
-    SeminarSQLDURATION_HOURS: TIntegerField;
-    SeminarSQLFEE_ACTUAL: TFloatField;
-    SeminarSQLAMOUNT_ANAD: TFloatField;
-    SeminarSQLCOMMENTS: TWideStringField;
-    SeminarSQLANAD_APPROVED: TWideStringField;
-    SeminarSQLFEE_ESTIMATE: TFloatField;
-    SeminarSQLSTATUS: TWideStringField;
-    SeminarSQLIS_INVOICED: TWideStringField;
-    SeminarSQLIS_CERTIFICATED: TWideStringField;
-    SeminarSQLMAX_CAPACITY: TIntegerField;
-    SeminarSQLFEE_WITH_ANAD_SUB: TFloatField;
-    SeminarSRC: TDataSource;
     RzPanel1: TRzPanel;
     wwDBLookupCombo1: TwwDBLookupCombo;
     Panel1: TRzPanel;
@@ -143,6 +120,7 @@ type
     procedure CategoryChangeFLDCloseUp(Sender: TwwDBComboBox; Select: Boolean);
     procedure Certifcates1Click(Sender: TObject);
     procedure ApprBTNClick(Sender: TObject);
+    procedure SemGRDTitleButtonClick(Sender: TObject; AFieldName: string);
   private
     { Private declarations }
     cn:TIBCConnection;
@@ -356,6 +334,18 @@ ShowStatus(Dataset);
 end;
 
 
+
+procedure TV_SeminarStagesFRM.SemGRDTitleButtonClick(Sender: TObject;
+  AFieldName: string);
+var
+         sortInfoHawb:TSOrtInfo;
+         Table:TIBCQuery;
+begin
+        Table:=TIbcQuery(SemGRD.DataSource.DataSet);
+        SortInfoHawb.Table:=Table;
+        G_GeneralProcs.SortGrid(Table,AFieldName,SOrtInfoHawb);
+
+end;
 
 procedure TV_SeminarStagesFRM.ShowStatus(Dataset:TDataset);
 type
